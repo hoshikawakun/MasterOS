@@ -133,6 +133,123 @@ class Clientes extends MY_Controller
         return $this->layout();
     }
 
+    public function anexar()
+    {
+        $this->load->library('upload');
+        $this->load->library('image_lib');
+
+        $directory = FCPATH . 'assets/anexos/Clientes/ID-' . $this->input->post('idFotoCliente');
+
+        // If it exist, check if it's a directory
+        if (!is_dir($directory . '/thumbs')) {
+            // make directory for images and thumbs
+            try {
+                mkdir($directory . '/thumbs', 0755, true);  
+            }
+            catch(Exception $e){
+                echo json_encode(array('result' => false, 'mensagem' => $e->getMessage()));
+                die();
+            }
+
+        } 
+
+        $upload_conf = array(
+            'upload_path' => $directory,
+            'allowed_types' => 'jpg|png|gif|jpeg|JPG|PNG|GIF|JPEG', // formatos permitidos para foto de cliente
+            'max_size' => 0,
+            'remove_space' => true,
+            'encrypt_name' => true,
+        );
+
+        $this->upload->initialize($upload_conf);
+
+        foreach ($_FILES['userfile'] as $key => $val) {
+            $i = 1;
+            foreach ($val as $v) {
+                $field_name = "file_" . $i;
+                $_FILES[$field_name][$key] = $v;
+                $i++;
+            }
+        }
+        unset($_FILES['userfile']);
+
+        $error = array();
+        $success = array();
+
+        foreach ($_FILES as $field_name => $file) {
+            if (!$this->upload->do_upload($field_name)) {
+                $error['upload'][] = $this->upload->display_errors();
+            } else {
+
+                $upload_data = $this->upload->data();
+
+                if ($upload_data['is_image'] == 1) {
+
+                    // set the resize config
+                    $resize_conf = array(
+
+                        'source_image' => $upload_data['full_path'],
+                        'new_image' => $upload_data['file_path'] . 'thumbs/thumb_' . $upload_data['file_name'],
+                        'width' => 200,
+                        'height' => 125,
+                    );
+
+                    $this->image_lib->initialize($resize_conf);
+
+                    if (!$this->image_lib->resize()) {
+                        $error['resize'][] = $this->image_lib->display_errors();
+                    } else {
+                        $success[] = $upload_data;
+                        $this->load->model('Clientes_model');
+                        $this->Clientes_model->anexar($this->input->post('idFotoCliente'), $upload_data['file_name'], base_url('assets/anexos/Clientes/ID-' . $this->input->post('idFotoCliente')), 'thumb_' . $upload_data['file_name'], $directory);
+                    }
+                } else {
+
+                    $success[] = $upload_data;
+
+                    $this->load->model('Clientes_model');
+
+                    $this->Clientes_model->anexar($this->input->post('idFotoCliente'), $upload_data['file_name'], base_url('assets/anexos/Clientes/ID-' . $this->input->post('idFotoCliente')), '', $directory);
+                }
+            }
+        }
+
+        if (count($error) > 0) {
+            echo json_encode(array('result' => false, 'mensagem' => 'Nenhum arquivo foi anexado.'));
+        } else {
+
+            log_info('Adicionou uma Foto no cliente: ID ' . $this->input->post('idFotoCliente'));
+            echo json_encode(array('result' => true, 'mensagem' => 'Foto adicionada com sucesso.'));
+        }
+    }
+
+    public function excluirAnexo($id = null)
+    {
+        if ($id == null || !is_numeric($id)) {
+            echo json_encode(array('result' => false, 'mensagem' => 'Erro ao tentar excluir Foto.'));
+        } else {
+
+            $this->db->where('fotoID', $id);
+            $file = $this->db->get('foto_clientes', 1)->row();
+			$id = $this->input->post('idClientes');
+
+
+            unlink($file->path . '/' . $file->anexo);
+
+            if ($file->thumb != null) {
+                unlink($file->path . '/thumbs/' . $file->thumb);
+            }
+
+            if ($this->os_model->delete('anexos', 'idAnexos', $id) == true) {
+
+                log_info('Removeu uma Foto no cliente: ID ' . $id);
+                echo json_encode(array('result' => true, 'mensagem' => 'Foto excluída com sucesso.'));
+            } else {
+                echo json_encode(array('result' => false, 'mensagem' => 'Erro ao tentar excluir foto.'));
+            }
+        }
+    }
+
     public function visualizar()
     {
 
