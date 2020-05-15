@@ -86,7 +86,7 @@ class Arquivos extends MY_Controller
 
             $file = $arquivo['file_name'];
             $path = $arquivo['full_path'];
-            $url = base_url() . 'assets/arquivos/' . date('d-m-Y') . '/' . $file;
+            $url = base_url() . 'assets/arquivos/' . date('m-Y') . '/' . $file;
             $tamanho = $arquivo['file_size'];
             $tipo = $arquivo['file_ext'];
 
@@ -230,7 +230,7 @@ class Arquivos extends MY_Controller
             redirect(base_url());
         }
 
-        $date = date('d-m-Y');
+        $date = date('m-Y');
 
         $config['upload_path'] = './assets/arquivos/' . $date;
         $config['allowed_types'] = '*';

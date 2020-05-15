@@ -571,7 +571,7 @@ class Os extends MY_Controller
         $this->load->library('upload');
         $this->load->library('image_lib');
 
-        $directory = FCPATH . 'assets/anexos/' . date('d-m-Y') . '/OS-' . $this->input->post('idOsServico');
+        $directory = FCPATH . 'assets/anexos/' . date('m-Y') . '/OS-' . $this->input->post('idOsServico');
 
         // If it exist, check if it's a directory
         if (!is_dir($directory . '/thumbs')) {
@@ -634,7 +634,7 @@ class Os extends MY_Controller
                     } else {
                         $success[] = $upload_data;
                         $this->load->model('Os_model');
-                        $this->Os_model->anexar($this->input->post('idOsServico'), $upload_data['file_name'], base_url('assets/anexos/' . date('d-m-Y') . '/OS-' . $this->input->post('idOsServico')), 'thumb_' . $upload_data['file_name'], $directory);
+                        $this->Os_model->anexar($this->input->post('idOsServico'), $upload_data['file_name'], base_url('assets/anexos/' . date('m-Y') . '/OS-' . $this->input->post('idOsServico')), 'thumb_' . $upload_data['file_name'], $directory);
                     }
                 } else {
 
@@ -642,7 +642,7 @@ class Os extends MY_Controller
 
                     $this->load->model('Os_model');
 
-                    $this->Os_model->anexar($this->input->post('idOsServico'), $upload_data['file_name'], base_url('assets/anexos/' . date('d-m-Y') . '/OS-' . $this->input->post('idOsServico')), '', $directory);
+                    $this->Os_model->anexar($this->input->post('idOsServico'), $upload_data['file_name'], base_url('assets/anexos/' . date('m-Y') . '/OS-' . $this->input->post('idOsServico')), '', $directory);
                 }
             }
         }
