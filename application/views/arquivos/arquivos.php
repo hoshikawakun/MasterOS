@@ -39,12 +39,12 @@
                     <tr>
                         <th width="5%">#</th>
                         <th width="10%">Miniatura</th>
-                        <th width="10%">Nome</th>
+                        <th>Nome</th>
                         <th width="8%">Data</th>
                         <th>Descrição</th>
                         <th width="8%">Tamanho</th>
                         <th width="5%">Extensão</th>
-                        <th width="14%">Ações</th>
+                        <th width="10%">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -59,19 +59,13 @@
                     foreach ($results as $r) : ?>
                         <tr>
 <td><?= $r->idDocumentos ?></td>
-<td><a href="<?= $r->url ?>"><img src=" <?= $r->url ?> "></td>
+<td><a href="<?= $r->url ?>"><a href="<?= $r->url ?>" target="_new"><img src=" <?= $r->url ?> "></td>
 <td><?= $r->documento ?></td>
 <td><?= date('d/m/Y', strtotime($r->cadastro)) ?></td>
                             <td><?= $r->descricao ?></td>
                             <td><?= $r->tamanho ?> KB</td>
                             <td><?= $r->tipo ?></td>
-                            <td><?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vArquivo')) : ?>
-                                    <a href="<?= base_url() ?>index.php/arquivos/download/<?= $r->idDocumentos; ?>" class="btn tip-top" style="margin-right: 1%" title="Download">
-                                        <i class="fas fa-download"></i>
-                                    </a>
-                                <?php endif ?>
-
-                                <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eArquivo')) : ?>
+                            <td><?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eArquivo')) : ?>
                                     <a href="<?= base_url() ?>index.php/arquivos/editar/<?= $r->idDocumentos ?>" class="btn btn-info tip-top" style="margin-right: 1%" title="Editar">
                                         <i class="fas fa-edit"></i>
                                     </a>

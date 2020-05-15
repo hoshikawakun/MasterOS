@@ -95,7 +95,14 @@ $totalProdutos = 0; ?>
                                     </tr>
                                 <?php } ?>
 
-                                
+                                <?php if ($result->defeito != null) { ?>
+                                    <tr>
+                                        <td><span style="font-size: 13px; ">
+                                            <b>DEFEITO APRESENTADO:</b><br></span>
+                                            <?php echo htmlspecialchars_decode($result->defeito) ?>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
 
                                 <?php if ($result->observacoes != null) { ?>
                                     <tr>

@@ -29,6 +29,10 @@
                             <table class="table table-bordered">
                                 <tbody>
                                     <tr>
+                                        <td style="text-align: right; width: 30%"><strong>Foto</strong></td>
+                                        <td><a href="<?= $result->foto_url ?>" target="_new"><img src="<?= $result->foto_url ?>" width="120" height="120" border="0" /></a></td>
+                                    </tr>
+                                    <tr>
                                         <td style="text-align: right; width: 30%"><strong>Nome</strong></td>
                                         <td>
                                             <?php echo $result->nomeCliente ?>

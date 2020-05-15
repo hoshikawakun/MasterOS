@@ -62,8 +62,8 @@
                         <th width="10%">Data de Entrada</th>
                         <th width="8%">Valor Total</th>
                         <th width="8%">Faturado</th>
-                        <th>Status</th>
-                        <th>Ações</th>
+                     	<th width="16%">Status</th>
+                        <th width="26%">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -146,17 +146,21 @@
 								}
 						if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
                                 echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/editar/' . $r->idOs . '" class="btn btn-info tip-top" title="Editar OS"><i class="fas fa-edit"></i></a>';
-								
+								}
+								if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
                                 $zapnumber = preg_replace("/[^0-9]/", "", $r->celular_cliente);
                                 echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $r->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $r->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($r->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $r->status . '*.%0d%0a '. $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20' . $configuration['whats_app2'] . '%20-%20' . $configuration['whats_app3'] . '"><i class="fab fa-whatsapp" style="font-size:16px;"></i></a>';
-                                echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/enviar_email/' . $r->idOs . '" class="btn btn-warning tip-top" title="Enviar por E-mail"><i class="fas fa-envelope"></i></a>';
                             }
 							if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
                                 echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/imprimir/' . $r->idOs . '" target="_blank" class="btn btn-inverse tip-top" title="Imprimir Normal A4"><i class="fas fa-print"></i></a>';
                             }
                             if ($this->permission->checkPermission($this->session->userdata('permissao'), 'dOs')) {
                                 echo '<a href="#modal-excluir" role="button" data-toggle="modal" os="' . $r->idOs . '" class="btn btn-danger tip-top" title="Excluir OS"><i class="fas fa-trash-alt"></i></a>  ';
-                            }
+								}
+							if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
+								echo '<a style="margin-right: 1%" target="_new" href="https://www.linkcorreios.com.br/' . $r->rastreio . '" class="btn btn-warning tip-top" title="Rastreio Correio"><i class="fas fa-envelope"></i></a>';
+								}
+							
                             echo  '</td>';
                             echo '</tr>';
                         } ?>

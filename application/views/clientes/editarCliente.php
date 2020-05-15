@@ -17,10 +17,6 @@
 } ?>
                 <form action="<?php echo current_url(); ?>" id="formCliente" method="post" class="form-horizontal">
 
-                  
-                  
-                  
-                  
                   <div class="control-group">
                  <label for="foto_url" class="control-label">Foto</label>
                  <div class="controls">
@@ -28,14 +24,9 @@
                  </div>
                  	<div class="controls">
                    <input id="foto_url" type="text" name="foto_url" value="<?php echo $result->foto_url; ?>" />
-                  <input id="foto_url" type="file" name="foto_url" value="<?php echo $result->foto_url; ?>" />
+                   <span class="help-inline">URL</span>
                         </div>
                   </div>
-                  
-                  
-                  
-                  
-                  
                   
                   <div class="control-group">
                       <label for="documento" class="control-label">CPF/CNPJ<span class="required">*</span></label>

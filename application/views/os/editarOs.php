@@ -74,6 +74,7 @@
 			<option <?php if($result->status == 'Garantia'){echo 'selected';} ?> value="Garantia">Garantia</option>
             <option <?php if($result->status == 'Comprado pela Loja'){echo 'selected';} ?> value="Comprado pela Loja">Comprado pela Loja</option>
             <option <?php if($result->status == 'Abandonado'){echo 'selected';} ?> value="Abandonado">Abandonado</option>
+            <option <?php if($result->status == 'Entregue - Faturado'){echo 'selected';} ?> value="Entregue - Faturado">Entregue - Faturado</option>
                                             </select>
                                         </div>
                                         <div class="span3">
@@ -87,7 +88,9 @@
                                       <div class="span3">
                                         <label for="rastreio">Rastreio</label>
                                           <input id="rastreio" type="text" class="span12" name="rastreio" value="<?php echo $result->rastreio ?>" />
-										  <a href="https://www.linkcorreios.com.br/<?php echo $result->rastreio ?>" title="Rastrear" target="_new" class="btn btn-warning"><i class="fas fa-envelope"></i> Rastrear</a>               
+										  <a href="https://www.linkcorreios.com.br/<?php echo $result->rastreio ?>" title="Rastrear" target="_new" class="btn btn-warning"><i class="fas fa-envelope"></i> Rastrear</a>
+                                         <button class="btn btn-primary" id="btnContinuar"><i class="fas fa-sync-alt"></i> Atualizar</button>
+                                                         
                                           </div>
                                     </div>
                                     <div class="span6" style="padding: 1%; margin-left: 0">
@@ -123,7 +126,6 @@
                                             <button class="btn btn-primary" id="btnContinuar"><i class="fas fa-sync-alt"></i> Atualizar</button>
                                             <a href="<?php echo base_url() ?>index.php/os/visualizar/<?php echo $result->idOs; ?>" class="btn btn-secondary"><i class="fas fa-eye"></i> Visualizar OS</a>
                                             <a target="_blank" title="Imprimir" class="btn btn-inverse" href="<?php echo site_url() ?>/os/imprimir/<?php echo $result->idOs; ?>"><i class="fas fa-print"></i> Imprimir A4</a>
-                                            <a title="Enviar por E-mail" class="btn btn-warning" href="<?php echo site_url() ?>/os/enviar_email/<?php echo $result->idOs; ?>"><i class="fas fa-envelope"></i> Enviar por E-mail</a>
                                             <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
                         echo '<a title="Enviar Por WhatsApp" class="btn btn-success" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $result->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $result->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($result->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $result->status . '*.%0d%0a '. $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20' . $configuration['whats_app2'] . '%20-%20' . $configuration['whats_app3'] . '"><i class="fab fa-whatsapp"></i> WhatsApp</a>';
                     } ?>
@@ -312,8 +314,9 @@
                 			 <!-- Fim tab anotações -->
                     </div>
                 </div>
+                </div>
                 &nbsp
-            </div>
+          </div>
         </div>
     </div>
 </div>
@@ -717,7 +720,6 @@
 
                 $.ajax({
                     type: "POST",
-                    url: "<?php echo base_url(); ?>index.php/os/adicionarAnotacao",
                     data: dados,
                     dataType: 'json',
                     success: function(data) {
