@@ -62,7 +62,7 @@
                                                 <option value="Em Andamento">Em Andamento</option>
                                                 <option value="Serviço Concluido">Serviço Concluido</option>
                                                 <option value="Sem Reparo">Sem Reparo</option>
-                                                <option value="Reparo Não Autorizado">Reparo Não Autorizado</option>
+                                                <option value="Não Autorizado">Não Autorizado</option>
                                                 <option value="Contato sem Sucesso">Contato sem Sucesso</option>
                                                 <option value="Pronto-Despachar">Pronto-Despachar</option>
                                                 <option value="Enviado">Enviado</option>

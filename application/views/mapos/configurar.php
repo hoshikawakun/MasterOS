@@ -95,7 +95,7 @@
                             <span class="help-inline">Nome</span>
                         </div>
                         <div class="controls">
-                            <input id="telefone" type="text" name="whats_app3" value="<?= $configuration['whats_app3']?>" />
+                            <input id="telefone" class="telefone1" type="text" name="whats_app3" value="<?= $configuration['whats_app3']?>" />
                             <span class="help-inline">Telefone</span>
                         </div>
                     </div>

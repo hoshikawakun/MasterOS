@@ -128,6 +128,7 @@ class Clientes extends MY_Controller
             }
         }
 
+		$this->data['foto_clientes'] = $this->clientes_model->getAnexos($this->uri->segment(3));
         $this->data['result'] = $this->clientes_model->getById($this->uri->segment(3));
         $this->data['view'] = 'clientes/editarCliente';
         return $this->layout();
@@ -226,13 +227,12 @@ class Clientes extends MY_Controller
     public function excluirAnexo($id = null)
     {
         if ($id == null || !is_numeric($id)) {
-            echo json_encode(array('result' => false, 'mensagem' => 'Erro ao tentar excluir Foto.'));
+            echo json_encode(array('result' => true, 'mensagem' => 'Erro ao tentar excluir foto.'));
         } else {
 
             $this->db->where('fotoID', $id);
             $file = $this->db->get('foto_clientes', 1)->row();
-			$id = $this->input->post('idClientes');
-
+			$idClientes = $this->input->post('idClientes');
 
             unlink($file->path . '/' . $file->anexo);
 
@@ -240,7 +240,7 @@ class Clientes extends MY_Controller
                 unlink($file->path . '/thumbs/' . $file->thumb);
             }
 
-            if ($this->os_model->delete('anexos', 'idAnexos', $id) == true) {
+            if ($this->Clientes_model->delete('foto_clientes', 'fotoID', $id) == true) {
 
                 log_info('Removeu uma Foto no cliente: ID ' . $id);
                 echo json_encode(array('result' => true, 'mensagem' => 'Foto excluída com sucesso.'));
@@ -250,7 +250,8 @@ class Clientes extends MY_Controller
         }
     }
 
-    public function visualizar()
+    
+	public function visualizar()
     {
 
         if (!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))) {
@@ -296,6 +297,7 @@ class Clientes extends MY_Controller
             $this->clientes_model->removeClientVendas($vendas);
         }
 
+		$this->clientes_model->delete('foto_clientes', 'os_id', $id);
         $this->clientes_model->delete('clientes', 'idClientes', $id);
         log_info('Removeu um cliente. ID' . $id);
 

@@ -29,23 +29,22 @@ class Clientes_model extends CI_Model
         $result = !$one ? $query->result() : $query->row();
         return $result;
     }
-	public function anexar($clientes, $anexo, $url, $thumb, $path)
+	public function anexar($id, $anexo, $url, $thumb, $path)
     {
 
         $this->db->set('anexo', $anexo);
         $this->db->set('url', $url);
         $this->db->set('thumb', $thumb);
         $this->db->set('path', $path);
-        $this->db->set('cliente_id', $clientes);
-
+        $this->db->set('cliente_id', $id);
         return $this->db->insert('foto_clientes');
     }
 
-    public function getAnexos($os)
+    public function getAnexos($id)
     {
 
-        $this->db->where('os_id', $os);
-        return $this->db->get('anexos')->result();
+        $this->db->where('cliente_id', $id);
+        return $this->db->get('foto_clientes')->result();
     }
 
     public function getById($id)

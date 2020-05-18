@@ -24,10 +24,12 @@
 				<option value="Em Andamento">Em Andamento</option>
                 <option value="Serviço Concluido">Serviço Concluido</option>
 				<option value="Sem Reparo">Sem Reparo</option>
-				<option value="Reparo Não Autorizado">Reparo Não Autorizado</option>
+				<option value="Não Autorizado">Não Autorizado</option>
+                <option value="Cancelado">Cancelado</option>
 				<option value="Contato sem Sucesso">Contato sem Sucesso</option>
 				<option value="Pronto-Despachar">Pronto-Despachar</option>
                 <option value="Enviado">Enviado</option>
+                <option value="Aguardando Entrega Correio">Aguardando Entrega Correio</option>
                 <option value="Entregue - A Receber">Entregue - A Receber</option>
 				<option value="Garantia">Garantia</option>
 				<option value="Comprado pela Loja">Comprado pela Loja</option>
@@ -103,7 +105,10 @@
 				case 'Sem Reparo':
                     $cor = '#999999';
                     break;
-				case 'Reparo Não Autorizado':
+				case 'Não Autorizado':
+                    $cor = '#990000';
+                    break;
+				case 'Cancelado':
                     $cor = '#990000';
                     break;
 				case 'Contato sem Sucesso':
@@ -113,7 +118,13 @@
                     $cor = '#33CCCC';
                     break;
 				case 'Enviado':
-                    $cor = '#33CCCC';
+                    $cor = '#99CC33';
+                    break;
+				case 'Aguardando Entrega Correio':
+                    $cor = '#996699';
+                    break;
+				case 'Aguardando Codigo Rastreio':
+                    $cor = '#CC66CC';
                     break;
 				case 'Entregue - A Receber':
                     $cor = '#FF0000';
@@ -125,9 +136,9 @@
                     $cor = '#FF66CC';
                     break;
 				case 'Comprado pela Loja':
-                    $cor = '#9999CC';
+                    $cor = '#666666';
                     break;
-					case 'Abandonado':
+				case 'Abandonado':
                     $cor = '#000000';
                     break;
                             }
