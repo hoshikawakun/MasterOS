@@ -193,6 +193,11 @@ $config =
             'rules' => 'trim',
         ),
         array(
+            'field' => 'dataSaida',
+            'label' => 'dataSaida',
+            'rules' => 'trim',
+        ),
+        array(
             'field' => 'laudoTecnico',
             'label' => 'Laudo Tecnico',
             'rules' => 'trim',

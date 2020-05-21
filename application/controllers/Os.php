@@ -124,6 +124,7 @@ class Os extends MY_Controller
                 'rastreio' => set_value('rastreio'),
                 'observacoes' => set_value('observacoes'),
                 'laudoTecnico' => set_value('laudoTecnico'),
+				'dataSaida' => set_value('dataSaida'),
                 'faturado' => 0,
             );
 
@@ -219,6 +220,7 @@ class Os extends MY_Controller
                 'status' => $this->input->post('status'),
                 'observacoes' => $this->input->post('observacoes'),
                 'rastreio' => $this->input->post('rastreio'),
+				'dataSaida' => $this->input->post('dataSaida'),
                 'laudoTecnico' => $this->input->post('laudoTecnico'),
                 'usuarios_id' => $this->input->post('usuarios_id'),
                 'clientes_id' => $this->input->post('clientes_id'),
@@ -332,6 +334,28 @@ class Os extends MY_Controller
         $this->data['emitente'] = $this->mapos_model->getEmitente();
 
         $this->load->view('os/imprimirOs', $this->data);
+    }
+
+    public function imprimirTermica()
+    {
+        if (!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))) {
+            $this->session->set_flashdata('error', 'Item não pode ser encontrado, parâmetro não foi passado corretamente.');
+            redirect('mapos');
+        }
+
+        if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
+            $this->session->set_flashdata('error', 'Você não tem permissão para visualizar O.S.');
+            redirect(base_url());
+        }
+
+        $this->data['custom_error'] = '';
+        $this->load->model('mapos_model');
+        $this->data['result'] = $this->os_model->getById($this->uri->segment(3));
+        $this->data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
+        $this->data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
+        $this->data['emitente'] = $this->mapos_model->getEmitente();
+
+        $this->load->view('os/imprimirOsTermica', $this->data);
     }
 
     public function enviar_email()

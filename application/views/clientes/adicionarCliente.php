@@ -17,16 +17,7 @@
 } ?>
                 <form action="<?php echo current_url(); ?>" id="formCliente" method="post" class="form-horizontal">
                   
-                  <div class="control-group">
-                 <label for="foto_url" class="control-label">Foto</label>
-                 <div class="controls">
-                 <img src=" <?= $result->foto_url ?> " width="80" height="80">
-                 </div>
-                 	<div class="controls">
-                   <input id="foto_url" type="text" name="foto_url" value="<?php echo $result->foto_url; ?>" />
-                   <span class="help-inline">URL</span>
-                        </div>
-                  </div>
+                  
                   
                   <div class="control-group">
                       <label for="documento" class="control-label">CPF/CNPJ<span class="required">*</span></label>
@@ -106,15 +97,7 @@
                             <input id="estado" type="text" name="estado" value="<?php echo set_value('estado'); ?>" />
                         </div>
                     </div>
-					<div class="control-group">
-                    <label for="logo" class="control-label"><span class="required">Logotipo*</span></label>
-                    <div class="controls">
-                        <input type="file" name="userfile" value="" />
-                    </div>
-                </div>
-
-
-                    <div class="form-actions">
+					<div class="form-actions">
                         <div class="span12">
                             <div class="span6 offset3">
                                 <button type="submit" class="btn btn-success"><i class="fas fa-plus"></i> Adicionar</button>

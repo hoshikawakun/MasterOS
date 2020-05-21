@@ -127,14 +127,67 @@ class Clientes extends MY_Controller
                 $this->data['custom_error'] = '<div class="form_error"><p>Ocorreu um erro</p></div>';
             }
         }
-
-		$this->data['foto_clientes'] = $this->clientes_model->getAnexos($this->uri->segment(3));
+		
+		$this->data['foto_clientes'] = $this->clientes_model->getFotos($this->uri->segment(3));
         $this->data['result'] = $this->clientes_model->getById($this->uri->segment(3));
         $this->data['view'] = 'clientes/editarCliente';
         return $this->layout();
     }
 
-    public function anexar()
+    public function visualizar()
+    {
+
+        if (!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))) {
+            $this->session->set_flashdata('error', 'Item não pode ser encontrado, parâmetro não foi passado corretamente.');
+            redirect('mapos');
+        }
+
+        if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'vCliente')) {
+            $this->session->set_flashdata('error', 'Você não tem permissão para visualizar clientes.');
+            redirect(base_url());
+        }
+
+        $this->data['custom_error'] = '';
+        $this->data['result'] = $this->clientes_model->getById($this->uri->segment(3));
+        $this->data['results'] = $this->clientes_model->getOsByCliente($this->uri->segment(3));
+        $this->data['view'] = 'clientes/visualizar';
+        return $this->layout();
+    }
+
+    public function excluir()
+    {
+
+        if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'dCliente')) {
+            $this->session->set_flashdata('error', 'Você não tem permissão para excluir clientes.');
+            redirect(base_url());
+        }
+
+        $id = $this->input->post('id');
+        if ($id == null) {
+            $this->session->set_flashdata('error', 'Erro ao tentar excluir cliente.');
+            redirect(site_url('clientes/gerenciar/'));
+        }
+
+        $os = $this->clientes_model->getAllOsByClient($id);
+        if ($os != null) {
+
+            $this->clientes_model->removeClientOs($os);
+        }
+
+        // excluindo Vendas vinculadas ao cliente
+        $vendas = $this->clientes_model->getAllVendasByClient($id);
+        if ($vendas != null) {
+            $this->clientes_model->removeClientVendas($vendas);
+        }
+		
+		$this->clientes_model->delete('foto_clientes', 'cliente_id', $id);
+        $this->clientes_model->delete('clientes', 'idClientes', $id);
+        log_info('Removeu um cliente. ID' . $id);
+
+        $this->session->set_flashdata('success', 'Cliente excluido com sucesso!');
+        redirect(site_url('clientes/gerenciar/'));
+    }
+	public function anexar()
     {
         $this->load->library('upload');
         $this->load->library('image_lib');
@@ -192,7 +245,7 @@ class Clientes extends MY_Controller
                         'source_image' => $upload_data['full_path'],
                         'new_image' => $upload_data['file_path'] . 'thumbs/thumb_' . $upload_data['file_name'],
                         'width' => 200,
-                        'height' => 125,
+                        'height' => 140,
                     );
 
                     $this->image_lib->initialize($resize_conf);
@@ -216,92 +269,60 @@ class Clientes extends MY_Controller
         }
 
         if (count($error) > 0) {
-            echo json_encode(array('result' => false, 'mensagem' => 'Nenhum arquivo foi anexado.'));
+            echo json_encode(array('result' => false, 'mensagem' => 'Nenhuma foto foi anexada.'));
         } else {
 
-            log_info('Adicionou uma Foto no cliente: ID ' . $this->input->post('idFotoCliente'));
+            log_info('Adicionou Foto(s) no cliente: ID ' . $this->input->post('idFotoCliente'));
             echo json_encode(array('result' => true, 'mensagem' => 'Foto adicionada com sucesso.'));
         }
     }
 
-    public function excluirAnexo($id = null)
+//    public function excluirAnexo($id = null)
+//  {
+//    if ($id == null || !is_numeric($id)) {
+//      echo json_encode(array('result' => true, 'mensagem' => 'Erro ao tentar excluir foto.'));
+//        } else {
+//
+//            $this->db->where('idFotos', $id);
+//            $file = $this->db->get('foto_clientes', 1)->row();
+//			$idClientes = $this->input->post('idClientes');
+//
+//            unlink($file->path . '/' . $file->anexo);
+//
+ //           if ($file->thumb != null) {
+//                unlink($file->path . '/thumbs/' . $file->thumb);
+//            }
+//
+//            log_info('Removeu uma Foto no cliente: ID ' . $idClientes);
+//                echo json_encode(array('result' => true, 'mensagem' => 'Foto excluída com sucesso.'));
+//			 }
+//		}
+		
+		public function excluirAnexo()
     {
-        if ($id == null || !is_numeric($id)) {
-            echo json_encode(array('result' => true, 'mensagem' => 'Erro ao tentar excluir foto.'));
-        } else {
-
-            $this->db->where('fotoID', $id);
-            $file = $this->db->get('foto_clientes', 1)->row();
-			$idClientes = $this->input->post('idClientes');
-
-            unlink($file->path . '/' . $file->anexo);
-
-            if ($file->thumb != null) {
-                unlink($file->path . '/thumbs/' . $file->thumb);
-            }
-
-            if ($this->Clientes_model->delete('foto_clientes', 'fotoID', $id) == true) {
-
-                log_info('Removeu uma Foto no cliente: ID ' . $id);
-                echo json_encode(array('result' => true, 'mensagem' => 'Foto excluída com sucesso.'));
-            } else {
-                echo json_encode(array('result' => false, 'mensagem' => 'Erro ao tentar excluir foto.'));
-            }
-        }
-    }
-
-    
-	public function visualizar()
-    {
-
-        if (!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))) {
-            $this->session->set_flashdata('error', 'Item não pode ser encontrado, parâmetro não foi passado corretamente.');
-            redirect('mapos');
-        }
-
-        if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'vCliente')) {
-            $this->session->set_flashdata('error', 'Você não tem permissão para visualizar clientes.');
-            redirect(base_url());
-        }
-
-        $this->data['custom_error'] = '';
-        $this->data['result'] = $this->clientes_model->getById($this->uri->segment(3));
-        $this->data['results'] = $this->clientes_model->getOsByCliente($this->uri->segment(3));
-        $this->data['view'] = 'clientes/visualizar';
-        return $this->layout();
-    }
-
-    public function excluir()
-    {
-
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'dCliente')) {
-            $this->session->set_flashdata('error', 'Você não tem permissão para excluir clientes.');
+            $this->session->set_flashdata('error', 'Você não tem permissão para excluir arquivos.');
             redirect(base_url());
         }
 
         $id = $this->input->post('id');
-        if ($id == null) {
-            $this->session->set_flashdata('error', 'Erro ao tentar excluir cliente.');
-            redirect(site_url('clientes/gerenciar/'));
+        if ($id == null || !is_numeric($id)) {
+            $this->session->set_flashdata('error', 'Erro! O arquivo não pode ser localizado.');
+            redirect(site_url('arquivos'));
         }
 
-        $os = $this->clientes_model->getAllOsByClient($id);
-        if ($os != null) {
+        $file = $this->arquivos_model->getById($id);
+        $this->db->where('idDocumentos', $id);
+        if ($this->db->delete('documentos')) {
 
-            $this->clientes_model->removeClientOs($os);
+            $path = $file->path;
+            unlink($path);
+            $this->session->set_flashdata('success', 'Arquivo excluido com sucesso!');
+            log_info('Removeu um arquivo. ID: ' . $id);
+
+        } else {
+            $this->session->set_flashdata('error', 'Ocorreu um erro ao tentar excluir o arquivo.');
         }
-
-        // excluindo Vendas vinculadas ao cliente
-        $vendas = $this->clientes_model->getAllVendasByClient($id);
-        if ($vendas != null) {
-            $this->clientes_model->removeClientVendas($vendas);
-        }
-
-		$this->clientes_model->delete('foto_clientes', 'os_id', $id);
-        $this->clientes_model->delete('clientes', 'idClientes', $id);
-        log_info('Removeu um cliente. ID' . $id);
-
-        $this->session->set_flashdata('success', 'Cliente excluido com sucesso!');
-        redirect(site_url('clientes/gerenciar/'));
     }
 }
+//. $this->input->post('idClientes')

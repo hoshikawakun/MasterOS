@@ -82,11 +82,12 @@
                                         </div>
                                         <div class="span3">
                                             <label for="dataInicial">Data de Entrtada<span class="required">*</span></label>
-                                            <input id="dataInicial" autocomplete="off" class="span12 datepicker" type="text" name="dataInicial" value="<?php echo date('d/m/Y', strtotime($result->dataInicial)); ?>" />
-                                        </div>
+                                            <input id="dataInicial" autocomplete="off" class="span12 datepicker" type="text" name="dataInicial" value="<?php echo date('d/m/Y', strtotime($result->dataInicial)); ?>" /><label for="dataSaida">Data de Saida</label>
+                                            <input id="dataSaida" autocomplete="off" class="span12 datepicker" type="text" name="dataSaida" value="<?php echo $result->dataSaida ?>" />
+                                            </div>
                                         <div class="span3">
-                                            <label for="garantia">Garantia</label>
-                                            <input id="garantia" type="text" class="span12" name="garantia" value="<?php echo $result->garantia ?>" />
+                                            <label for="garantia">Garantia até</label>
+                                            <input id="garantia" type="text" class="span12 datepicker" name="garantia" value="<?php echo $result->garantia ?>" />
                                         </div>
                                       <div class="span3">
                                         <label for="rastreio">Rastreio</label>
@@ -129,10 +130,17 @@
                                             <button class="btn btn-primary" id="btnContinuar"><i class="fas fa-sync-alt"></i> Atualizar</button>
                                             <a href="<?php echo base_url() ?>index.php/os/visualizar/<?php echo $result->idOs; ?>" class="btn btn-secondary"><i class="fas fa-eye"></i> Visualizar OS</a>
                                             <a target="_blank" title="Imprimir" class="btn btn-inverse" href="<?php echo site_url() ?>/os/imprimir/<?php echo $result->idOs; ?>"><i class="fas fa-print"></i> Imprimir A4</a>
+                                            <a target="_blank" title="Imprimir" class="btn btn-inverse" href="<?php echo site_url() ?>/os/imprimirTermica/<?php echo $result->idOs; ?>"><i class="fas fa-print"></i> Imprimir Térmica</a>
+                                            
                                             <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
-                        echo '<a title="Enviar Por WhatsApp" class="btn btn-success" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $result->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $result->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($result->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $result->status . '*.%0d%0a '. $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20' . $configuration['whats_app2'] . '%20-%20' . $configuration['whats_app3'] . '"><i class="fab fa-whatsapp"></i> WhatsApp</a>';
-                    } ?>
-                                            <?php if ($result->garantias_id) { ?> <a target="_blank" title="Imprimir Termo de Garantia" class="btn btn-inverse" href="<?php echo site_url() ?>/garantias/imprimir/<?php echo $result->garantias_id; ?>"><i class="fas fa-text-width"></i> Imprimir Termo de Garantia</a> <?php  } ?>
+                        echo '<a target="_blank" title="Adicionar OS" class="btn btn-success" href=' . base_url() . 'index.php/os/adicionar><i class="fas fa-plus"></i> Adicionar OS</a>';} ?>
+                                            
+                                            <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
+                        echo '<a title="Enviar Por WhatsApp" class="btn btn-success" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $result->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $result->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($result->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $result->status . '*.%0d%0a '. $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20' . $configuration['whats_app2'] . '%20-%20' . $configuration['whats_app3'] . '"><i class="fab fa-whatsapp"></i> WhatsApp</a>';} ?>
+                    
+                    
+					
+					<?php if ($result->garantias_id) { ?> <a target="_blank" title="Imprimir Termo de Garantia" class="btn btn-inverse" href="<?php echo site_url() ?>/garantias/imprimir/<?php echo $result->garantias_id; ?>"><i class="fas fa-text-width"></i> Imprimir Termo de Garantia</a> <?php  } ?>
                                             <a href="<?php echo base_url() ?>index.php/os" class="btn"><i class="fas fa-backward"></i> Voltar</a>
                                         </div>
                                     </div>
@@ -584,9 +592,6 @@
                 },
                 dataInicial: {
                     required: true
-                },
-                dataFinal: {
-                    required: true
                 }
             },
             messages: {
@@ -597,9 +602,6 @@
                     required: 'Campo Requerido.'
                 },
                 dataInicial: {
-                    required: 'Campo Requerido.'
-                },
-                dataFinal: {
                     required: 'Campo Requerido.'
                 }
             },

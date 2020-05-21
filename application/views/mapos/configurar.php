@@ -60,19 +60,34 @@
                             <span class="help-inline">Selecione quantos registros deseja exibir nas listas</span>
                         </div>
                     </div>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     <div class="control-group">
-                        <label for="os_notification" class="control-label">Notificação de OS</label>
+                        <label for="gerenciador_arquivos" class="control-label">Gerenciador de Arquivos</label>
                         <div class="controls">
-                            <select name="os_notification" id="os_notification">
-                                <option value="todos">Notificar a Todos</option>
-                                <option value="cliente" <?= $configuration['os_notification'] == 'cliente' ? 'selected' : ''; ?> >Somente o Cliente</option>
-                                <option value="tecnico" <?= $configuration['os_notification'] == 'tecnico' ? 'selected' : ''; ?> >Somente o Técnico</option>
-                                <option value="emitente" <?= $configuration['os_notification'] == 'emitente' ? 'selected' : ''; ?> >Somente o Emitente</option>
-                                <option value="nenhum" <?= $configuration['os_notification'] == 'nenhum' ? 'selected' : ''; ?> >Não Notificar</option>
+                            <select name="gerenciador_arquivos" id="gerenciador_arquivos">
+                                <option value="arquivos_old/arquivos" <?= $configuration['gerenciador_arquivos'] == 'arquivos_old/arquivos' ? 'selected' : ''; ?> >Classico</option>
+                                <option value="arquivos/arquivos" <?= $configuration['gerenciador_arquivos'] == 'arquivos/arquivos' ? 'selected' : ''; ?> >Novo</option>
                             </select>
-                            <span class="help-inline">Selecione a opção de notificação por e-mail no cadastro de OS.</span>
+                            <span class="help-inline">Versão do Gerenciador de Arquivos.</span>
                         </div>
                     </div>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     <div class="control-group">
                         <label for="control_estoque" class="control-label">Controlar Estoque</label>
                         <div class="controls">

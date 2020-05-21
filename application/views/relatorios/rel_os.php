@@ -56,18 +56,22 @@
 				<option value="Orçamento">Orçamento</option>
 				<option value="Orçamento Concluido">Orçamento Concluido</option>
 				<option value="Orçamento Aprovado">Orçamento Aprovado</option>
-				<option value="Aguardando Peças">Aguardando Peças</option>
 				<option value="Em Andamento">Em Andamento</option>
+                <option value="Aguardando Peças">Aguardando Peças</option>
                 <option value="Serviço Concluido">Serviço Concluido</option>
 				<option value="Sem Reparo">Sem Reparo</option>
-				<option value="Reparo Não Autorizado">Reparo Não Autorizado</option>
-				<option value="Contato sem Sucesso">Contato sem Sucesso</option>
+				<option value="Não Autorizado">Não Autorizado</option>
+                <option value="Contato sem Sucesso">Contato sem Sucesso</option>
+                <option value="Cancelado">Cancelado</option>
 				<option value="Pronto-Despachar">Pronto-Despachar</option>
                 <option value="Enviado">Enviado</option>
+                <option value="Aguardando Entrega Correio">Aguardando Codigo Rastreio</option>
+                <option value="Aguardando Entrega Correio">Aguardando Entrega Correio</option>
                 <option value="Entregue - A Receber">Entregue - A Receber</option>
-                <option value="Garantia">Garantia</option>
-				<option value="Comprado pela Loja">Comprado pela Loja</option>
+				<option value="Garantia">Garantia</option>
                 <option value="Abandonado">Abandonado</option>
+				<option value="Comprado pela Loja">Comprado pela Loja</option>
+                <option value="Entregue - Faturado">Entregue - Faturado</option>
                                 </select>
                             </div>
                         </div>

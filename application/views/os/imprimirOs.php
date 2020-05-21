@@ -4,7 +4,7 @@ $totalProdutos = 0; ?>
 <html lang="pt-br">
 
 <head>
-    <title><?= $configuration['app_name']?></title>
+    <title>OS <?php echo $result->idOs ?></title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" />
@@ -39,9 +39,14 @@ $totalProdutos = 0; ?>
                                         <td> <span style="font-size: 20px; "> <?php echo $emitente[0]->nome; ?></span> </br><span><?php echo $emitente[0]->cnpj; ?> </br> <?php echo $emitente[0]->rua . ', ' . $emitente[0]->numero . ' - ' . $emitente[0]->bairro . ' - ' . $emitente[0]->cidade . ' - ' . $emitente[0]->uf; ?> </span> </br> <span> E-mail: <?php echo $emitente[0]->email . ' <br>Fone: ' . $emitente[0]->telefone; ?></span></td>
         
         <td style="width: 25%; text-align: center">
-        <br><span style="font-size: 12px; "><b>N° OS: </b><span><?php echo $result->idOs ?></span></br>
+        <span style="font-size: 12px; "><b>N° OS: </b><span><?php echo $result->idOs ?></span></br>
+        <span style="font-size: 12px; "><b>Emissão:</b> <?php echo date('d/m/Y') ?></span></br>
         <span style="font-size: 12px; "><b>STATUS OS: </b><?php echo $result->status ?></span></br>
-        <span style="font-size: 12px; "><b>Data de Entrada: </b><?php echo date('d/m/Y', strtotime($result->dataInicial)); ?></span></td>
+        <span style="font-size: 12px; "><b>Data de Entrada: </b><?php echo date('d/m/Y', strtotime($result->dataInicial)); ?></span></br>
+        <?php if ($result->dataSaida != null) { ?>
+        <span style="font-size: 12px; "><b>Data de Saida: </b><?php echo htmlspecialchars_decode($result->dataSaida) ?><?php } ?></span></br>
+        <?php if ($result->garantia != null) { ?>
+        <span style="font-size: 12px; "><b>Garantia até: </b><?php echo htmlspecialchars_decode($result->garantia) ?><?php } ?></span></br></td>
                                     </tr>
 
                                 <?php } ?>

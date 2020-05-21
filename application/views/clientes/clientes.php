@@ -15,7 +15,6 @@
             <thead>
                 <tr>
                     <th>Cod.</th>
-                    <th>Foto</th>
                     <th>Nome</th>
                     <th>CPF/CNPJ</th>
                     <th>Telefone</th>
@@ -34,7 +33,6 @@
                     foreach ($results as $r) {
                         echo '<tr>';
                         echo '<td>' . $r->idClientes . '</td>';
-						echo '<td><img src="' . $r->foto_url . '" width="100" height="100">';
 						echo '<td>' . $r->nomeCliente . '</td>';
                         echo '<td>' . $r->documento . '</td>';
                         echo '<td>' . $r->telefone . '</td>';

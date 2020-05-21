@@ -61,7 +61,7 @@ class Arquivos extends MY_Controller
             $this->data['results'] = $this->arquivos_model->search($pesquisa, $de, $ate);
         }
 
-        $this->data['view'] = 'arquivos/arquivos';
+        $this->data['view'] = $this->data['configuration']['gerenciador_arquivos'];
         return $this->layout();
     }
 
@@ -110,9 +110,12 @@ class Arquivos extends MY_Controller
                 'tipo' => $tipo,
             );
 
+
+			$file = $this->arquivos_model->getById($id);
+			$this->db->where('idDocumentos', $id);
             if ($this->arquivos_model->add('documentos', $data) == true) {
                 $this->session->set_flashdata('success', 'Arquivo adicionado com sucesso!');
-
+				
                 log_info('Adicionou um arquivo');
 
                 redirect(site_url('arquivos/adicionar/'));
@@ -121,7 +124,7 @@ class Arquivos extends MY_Controller
             }
         }
 
-        $this->data['view'] = 'arquivos/adicionarArquivo';
+        $this->data['view'] = 'arquivos_old/adicionarArquivo';
         return $this->layout();
     }
 

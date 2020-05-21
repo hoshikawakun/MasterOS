@@ -29,25 +29,7 @@ class Clientes_model extends CI_Model
         $result = !$one ? $query->result() : $query->row();
         return $result;
     }
-	public function anexar($id, $anexo, $url, $thumb, $path)
-    {
-
-        $this->db->set('anexo', $anexo);
-        $this->db->set('url', $url);
-        $this->db->set('thumb', $thumb);
-        $this->db->set('path', $path);
-        $this->db->set('cliente_id', $id);
-        return $this->db->insert('foto_clientes');
-    }
-
-    public function getAnexos($id)
-    {
-
-        $this->db->where('cliente_id', $id);
-        return $this->db->get('foto_clientes')->result();
-    }
-
-    public function getById($id)
+	public function getById($id)
     {
         $this->db->where('idClientes', $id);
         $this->db->limit(1);
@@ -98,6 +80,24 @@ class Clientes_model extends CI_Model
         $this->db->order_by('idOs', 'desc');
         $this->db->limit($this->data['configuration']['per_page']);
         return $this->db->get('os')->result();
+    }
+	public function anexar($jj, $anexo, $url, $thumb, $path)
+    {
+
+        $this->db->set('anexo', $anexo);
+        $this->db->set('url', $url);
+        $this->db->set('thumb', $thumb);
+        $this->db->set('path', $path);
+        $this->db->set('cliente_id', $jj);
+
+        return $this->db->insert('foto_clientes');
+    }
+
+    public function getFotos($jj)
+    {
+
+        $this->db->where('cliente_id', $jj);
+        return $this->db->get('foto_clientes')->result();
     }
 
     /**

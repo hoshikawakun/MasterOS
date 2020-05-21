@@ -336,7 +336,7 @@ class Mapos extends MY_Controller
         $this->form_validation->set_rules('app_name', 'Nome do Sistema', 'required|trim');
         $this->form_validation->set_rules('per_page', 'Registros por página', 'required|numeric|trim');
         $this->form_validation->set_rules('app_theme', 'Tema do Sistema', 'required|trim');
-        $this->form_validation->set_rules('os_notification', 'Notificação de OS', 'required|trim');
+        $this->form_validation->set_rules('gerenciador_arquivos', 'Gerenciador de Arquivos', 'required|trim');
         $this->form_validation->set_rules('control_estoque', 'Controle de Estoque', 'required|trim');
 
         if ($this->form_validation->run() == false) {
@@ -353,6 +353,16 @@ class Mapos extends MY_Controller
                 'whats_app2' => $this->input->post('whats_app2'),
                 'whats_app3' => $this->input->post('whats_app3'),
                 'whats_app4' => $this->input->post('whats_app4'),
+				'gerenciador_arquivos' => $this->input->post('gerenciador_arquivos'),
+				'masteros_1' => $this->input->post('masteros_1'),
+				'masteros_2' => $this->input->post('masteros_2'),
+				'masteros_3' => $this->input->post('masteros_3'),
+				'masteros_4' => $this->input->post('masteros_4'),
+				'masteros_5' => $this->input->post('masteros_5'),
+				'masteros_6' => $this->input->post('masteros_6'),
+				'masteros_7' => $this->input->post('masteros_7'),
+				'masteros_8' => $this->input->post('masteros_8'),
+				'masteros_9' => $this->input->post('masteros_9'),
             ];
 
             if ($this->mapos_model->saveConfiguracao($data) == true) {

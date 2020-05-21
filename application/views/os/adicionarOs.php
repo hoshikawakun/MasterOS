@@ -55,22 +55,24 @@
                                         <div class="span3">
                                             <label for="status">Status<span class="required">*</span></label>
                                             <select class="span12" name="status" id="status" value="">
-												<option value="Orçamento">Orçamento</option>
-                                                <option value="Orçamento Concluido">Orçamento Concluido</option>
-                                                <option value="Orçamento Aprovado">Orçamento Aprovado</option>
-                                                <option value="Aguardando Peças">Aguardando Peças</option>
-                                                <option value="Em Andamento">Em Andamento</option>
-                                                <option value="Serviço Concluido">Serviço Concluido</option>
-                                                <option value="Sem Reparo">Sem Reparo</option>
-                                                <option value="Não Autorizado">Não Autorizado</option>
-                                                <option value="Contato sem Sucesso">Contato sem Sucesso</option>
-                                                <option value="Pronto-Despachar">Pronto-Despachar</option>
-                                                <option value="Enviado">Enviado</option>
-                                                <option value="Entregue - A Receber">Entregue - A Receber</option>
-                                                <option value="Garantia">Garantia</option>
-                                                <option value="Comprado pela Loja">Comprado pela Loja</option>
-                                                <option value="Abandonado">Abandonado</option>
-                                                <option value="Entregue - Faturado">Entregue - Faturado</option>
+											<option value="Orçamento">Orçamento</option>
+											<option value="Orçamento Concluido">Orçamento Concluido</option>
+											<option value="Orçamento Aprovado">Orçamento Aprovado</option>
+											<option value="Em Andamento">Em Andamento</option>
+                							<option value="Aguardando Peças">Aguardando Peças</option>
+                							<option value="Serviço Concluido">Serviço Concluido</option>
+											<option value="Sem Reparo">Sem Reparo</option>
+											<option value="Não Autorizado">Não Autorizado</option>
+                							<option value="Contato sem Sucesso">Contato sem Sucesso</option>
+                							<option value="Cancelado">Cancelado</option>
+											<option value="Pronto-Despachar">Pronto-Despachar</option>
+                							<option value="Enviado">Enviado</option>
+                							<option value="Aguardando Entrega Correio">Aguardando Codigo Rastreio</option>
+                							<option value="Aguardando Entrega Correio">Aguardando Entrega Correio</option>
+                							<option value="Entregue - A Receber">Entregue - A Receber</option>
+											<option value="Garantia">Garantia</option>
+                							<option value="Abandonado">Abandonado</option>
+											<option value="Comprado pela Loja">Comprado pela Loja</option>
                                              </select>
                                         </div>
                                         <div class="span3">
@@ -78,8 +80,8 @@
                                             <input id="dataInicial" autocomplete="off" class="span12 datepicker" type="text" name="dataInicial" value="<?php echo date('d/m/Y'); ?>" />
                                         </div>
                                         <div class="span3">
-                                            <label for="garantia">Garantia</label>
-                                            <input id="garantia" type="text" class="span12" name="garantia" value="" />
+                                            <label for="garantia">Garantia até</label>
+                                            <input id="garantia" type="text" class="span12 datepicker" name="garantia" value="" />
 											</div>
                                             <div class="span3">
                                             <label for="rastreio">Rastreio</label>
