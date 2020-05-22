@@ -173,7 +173,7 @@ class Arquivos extends MY_Controller
         }
 
         $this->data['result'] = $this->arquivos_model->getById($this->uri->segment(3));
-        $this->data['view'] = 'arquivos/editarArquivo';
+        $this->data['view'] = 'arquivos_old/editarArquivo';
         return $this->layout();
     }
 
