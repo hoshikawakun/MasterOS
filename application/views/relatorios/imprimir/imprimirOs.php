@@ -28,19 +28,21 @@
                             <table width="1200" class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th width="120" style="font-size: 15px">CLIENTE</th>
-                                        <th width="150" style="font-size: 15px">STATUS</th>
-                                        <th width="90" style="font-size: 15px">DATA</th>
-                                        <th width="440" style="font-size: 15px">DESCRIÇÃO</th>
-                                        <th width="160" style="font-size: 15px">TOTAL PRODUTOS</th>
-                                        <th width="150" style="font-size: 15px">TOTAL SERVIÇOS</th>
-                                        <th width="90" style="font-size: 15px">TOTAL</th>
+                                        <th width="70" style="font-size: 12px">OS</th>
+                                        <th width="130" style="font-size: 12px">CLIENTE</th>
+                                        <th width="160" style="font-size: 12px">STATUS</th>
+                                        <th width="90" style="font-size: 12px">DATA</th>
+                                        <th width="460" style="font-size: 12px">DESCRIÇÃO</th>
+                                        <th width="100" style="font-size: 12px">TOTAL PRODUTOS</th>
+                                        <th width="100" style="font-size: 12px">TOTAL SERVIÇOS</th>
+                                        <th width="90" style="font-size: 12px">TOTAL</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
                                         foreach ($os as $c) {
                                             echo '<tr>';
+											echo '<td><small>' . $c->idOs . '</small></td>';
                                             echo '<td><small>' . $c->nomeCliente . '</small></td>';
                                             echo '<td><small>' . $c->status . '</small></td>';
                                             echo '<td><small>' . date('d/m/Y', strtotime($c->dataInicial)) . '</small></td>';
