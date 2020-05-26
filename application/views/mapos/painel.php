@@ -100,7 +100,7 @@
 										<?php endif ?>
                                     	<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
                                                 $zapnumber = preg_replace("/[^0-9]/", "", $o->telefone);
-echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a '. $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20' . $configuration['whats_app2'] . '%20-%20' . $configuration['whats_app3'] . '"><i class="fab fa-whatsapp"></i></a>';} ?>
+echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a' . strip_tags($r->laudoTecnico) . '%0d%0a' . strip_tags($o->observacoes) . '%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] . '*"><i class="fab fa-whatsapp"></i></a>';} ?>
 										<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
 <a title="Imprimir OS" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimir/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i> </a>
 										<?php endif ?>
@@ -155,7 +155,7 @@ echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar 
 										<?php endif ?>
                                     	<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
                                                 $zapnumber = preg_replace("/[^0-9]/", "", $o->telefone);
-echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a '. $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20' . $configuration['whats_app2'] . '%20-%20' . $configuration['whats_app3'] . '"><i class="fab fa-whatsapp"></i></a>';} ?>
+echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a' . strip_tags($r->laudoTecnico) . '%0d%0a' . strip_tags($o->observacoes) . '%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] . '*"><i class="fab fa-whatsapp"></i></a>';} ?>
 										<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
 <a title="Imprimir OS" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimir/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i> </a>
 										<?php endif ?>
@@ -210,7 +210,7 @@ echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar 
 										<?php endif ?>
                                     	<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
                                                 $zapnumber = preg_replace("/[^0-9]/", "", $o->telefone);
-echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a '. $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20' . $configuration['whats_app2'] . '%20-%20' . $configuration['whats_app3'] . '"><i class="fab fa-whatsapp"></i></a>';} ?>
+echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a' . strip_tags($r->laudoTecnico) . '%0d%0a' . strip_tags($o->observacoes) . '%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] . '*"><i class="fab fa-whatsapp"></i></a>';} ?>
 										<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
 <a title="Imprimir OS" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimir/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i> </a>
 										<?php endif ?>
@@ -266,7 +266,7 @@ echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar 
 										<?php endif ?>
                                     	<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
                                                 $zapnumber = preg_replace("/[^0-9]/", "", $o->telefone);
-echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a '. $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20' . $configuration['whats_app2'] . '%20-%20' . $configuration['whats_app3'] . '"><i class="fab fa-whatsapp"></i></a>';} ?>
+echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a' . strip_tags($r->laudoTecnico) . '%0d%0a' . strip_tags($o->observacoes) . '%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] . '*"><i class="fab fa-whatsapp"></i></a>';} ?>
 										<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
 <a title="Imprimir OS" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimir/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i> </a>
 										<?php endif ?>
@@ -321,7 +321,7 @@ echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar 
 										<?php endif ?>
                                     	<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
                                                 $zapnumber = preg_replace("/[^0-9]/", "", $o->telefone);
-echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a '. $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20' . $configuration['whats_app2'] . '%20-%20' . $configuration['whats_app3'] . '"><i class="fab fa-whatsapp"></i></a>';} ?>
+echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a' . strip_tags($r->laudoTecnico) . '%0d%0a' . strip_tags($o->observacoes) . '%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] . '*"><i class="fab fa-whatsapp"></i></a>';} ?>
 										<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
 <a title="Imprimir OS" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimir/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i> </a>
 										<?php endif ?>
@@ -377,7 +377,7 @@ echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar 
 										<?php endif ?>
                                     	<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
                                                 $zapnumber = preg_replace("/[^0-9]/", "", $o->telefone);
-echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a '. $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20' . $configuration['whats_app2'] . '%20-%20' . $configuration['whats_app3'] . '"><i class="fab fa-whatsapp"></i></a>';} ?>
+echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a' . strip_tags($r->laudoTecnico) . '%0d%0a' . strip_tags($o->observacoes) . '%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] . '*"><i class="fab fa-whatsapp"></i></a>';} ?>
 										<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
 <a title="Imprimir OS" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimir/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i> </a>
 										<?php endif ?>
@@ -432,7 +432,7 @@ echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar 
 										<?php endif ?>
                                     	<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
                                                 $zapnumber = preg_replace("/[^0-9]/", "", $o->telefone);
-echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a '. $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20' . $configuration['whats_app2'] . '%20-%20' . $configuration['whats_app3'] . '"><i class="fab fa-whatsapp"></i></a>';} ?>
+echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a' . strip_tags($r->laudoTecnico) . '%0d%0a' . strip_tags($o->observacoes) . '%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] . '*"><i class="fab fa-whatsapp"></i></a>';} ?>
 										<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
 <a title="Imprimir OS" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimir/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i> </a>
 										<?php endif ?>
@@ -451,6 +451,7 @@ echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar 
 
 
 <div class="row-fluid" style="margin-top: 0">
+
 
     <div class="span12">
         <div class="widget-box">
@@ -901,6 +902,7 @@ if ($estatisticas_financeiro->total_receita != null || $estatisticas_financeiro-
             },
             unhighlight: function (element, errorClass, validClass) {
                 $(element).parents('.control-group').removeClass('error');
+
                 $(element).parents('.control-group').addClass('success');
             }
         });
