@@ -170,6 +170,7 @@
                         <tr style="backgroud-color: #2D335B">
                             <th>#</th>
                             <th>Data de Entrada</th>
+                            <th>Descrição</th>
                             <th>Defeito</th>
                             <th></th>
                         </tr>
@@ -185,6 +186,7 @@
                             echo '<tr>';
                             echo '<td>' . $r->idOs . '</td>';
                             echo '<td>' . $dataInicial . '</td>';
+							echo '<td>' . $r->descricaoProduto . '</td>';
                             echo '<td>' . $r->defeito . '</td>';
                             echo '<td>';
                             if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {

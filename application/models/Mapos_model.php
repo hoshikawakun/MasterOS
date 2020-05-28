@@ -61,8 +61,9 @@ class Mapos_model extends CI_Model
 
         // buscando os
         $this->db->like('idOs', $termo);
-        $this->db->limit($this->data['configuration']['per_page']);
-        $data['os'] = $this->db->get('os')->result();
+		$this->db->or_like('descricaoProduto', $termo);
+		$this->db->limit($this->data['configuration']['per_page']);
+		$data['os'] = $this->db->get('os')->result();
 
         // buscando produtos
         $this->db->like('descricao', $termo);
