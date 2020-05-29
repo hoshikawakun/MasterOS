@@ -91,9 +91,9 @@
                                         </div>
                                       <div class="span3">
                                         <label for="rastreio">Rastreio</label>
-                                          <input id="rastreio" type="text" class="span12" name="rastreio" value="<?php echo $result->rastreio ?>" />
+                                          <input name="rastreio" type="text" class="span12" id="rastreio" maxlength="13" value="<?php echo $result->rastreio ?>"  />
 										  <a href="https://www.linkcorreios.com.br/<?php echo $result->rastreio ?>" title="Rastrear" target="_new" class="btn btn-warning"><i class="fas fa-envelope"></i> Rastrear</a>
-                                         <button class="btn btn-primary" id="btnContinuar"><i class="fas fa-sync-alt"></i> Atualizar</button>
+                                        <button class="btn btn-primary" id="btnContinuar"><i class="fas fa-sync-alt"></i> Atualizar</button>
                                                          
                                           </div>
                                     </div>
