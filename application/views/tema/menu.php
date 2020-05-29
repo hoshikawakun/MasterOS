@@ -34,12 +34,6 @@
                   }; ?>"><a href="<?= site_url('vendas') ?>"><i class="fas fa-cash-register"></i> <span>Vendas</span></a></li>
     <?php
     } ?>
-    <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vGarantia')) { ?>
-      <li class="<?php if (isset($menuGarantia)) {
-                    echo 'active';
-                  }; ?>"><a href="<?= site_url('garantias') ?>"><i class="fas fa-book"></i> <span>Termos de Garantias</span></a></li>
-    <?php
-    } ?>
     <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vArquivo')) { ?>
       <li class="<?php if (isset($menuArquivos)) {
                     echo 'active';
@@ -121,9 +115,6 @@
           <?php } ?>
           <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'cBackup')) { ?>
             <li><a href="<?= site_url('mapos/backup') ?>">Backup</a></li>
-          <?php } ?>
-          <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vPagamento')) { ?>
-            <li><a href="<?= site_url('pagamentos') ?>"><span>Pagamentos</span></a></li>
           <?php
           } ?>
 
