@@ -48,14 +48,6 @@
                     </a>
                 </li>
             <?php endif ?>
-
-            <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vGarantia')) : ?>
-                <li class="bg_ly">
-                    <a href="<?= base_url() ?>index.php/garantias"><i class="fas fa-book" style="font-size:36px"></i>
-                        <div>Termo Garantia <span class="badge badge-light">F7</span></div>
-                    </a>
-                </li>
-            <?php endif ?>
         </ul>
     </div>
 </div>
@@ -72,8 +64,9 @@
                         <tr>
                             <th width="100">N° OS</th>
                             <th width="100">Data de Entrada</th>
-                            <th width="550">Cliente</th>
+                            <th width="450">Cliente</th>
                             <th width="150">Contato</th>
+                            <th width="100">Valor Total</th>
                             <th width="200">Ações</th>
                         </tr>
                     </thead>
@@ -81,16 +74,11 @@
                         <?php if ($ordens1 != null) : ?>
                             <?php foreach ($ordens1 as $o) : ?>
                                 <tr>
-                                    <td>
-                                        <?= $o->idOs ?>
-                                    </td>
-                                    <td>
-                                        <?= date('d/m/Y', strtotime($o->dataInicial)) ?>
-                                    </td>
-
+                                    <td><?= $o->idOs ?></td>
+                                    <td><?= date('d/m/Y', strtotime($o->dataInicial)) ?></td>
                                     <td><?= $o->nomeCliente ?></td>
-
                                     <td><?= $o->telefone ?></td>
+                                    <td>R$ <?= number_format($o->totalProdutos + $o->totalServicos, 2, ',', '.') ?></td>
                                     <td>
 										<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
 <a title="Visualizar OS" class="btn tip-top" href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" class="btn"><i class="fas fa-eye"></i> </a>
@@ -100,7 +88,7 @@
 										<?php endif ?>
                                     	<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
                                                 $zapnumber = preg_replace("/[^0-9]/", "", $o->telefone);
-echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a' . strip_tags($r->laudoTecnico) . '%0d%0a' . strip_tags($o->observacoes) . '%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] . '*"><i class="fab fa-whatsapp"></i></a>';} ?>
+echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a%0d%0a' . strip_tags($r->laudoTecnico) . '%0d%0a' . strip_tags($o->observacoes) . '%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] . '*"><i class="fab fa-whatsapp"></i></a>';} ?>
 										<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
 <a title="Imprimir OS" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimir/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i> </a>
 										<?php endif ?>
@@ -127,8 +115,9 @@ echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar 
                         <tr>
                             <th width="100">N° OS</th>
                             <th width="100">Data de Entrada</th>
-                            <th width="550">Cliente</th>
+                            <th width="450">Cliente</th>
                             <th width="150">Contato</th>
+                            <th width="100">Valor Total</th>
                             <th width="200">Ações</th>
                         </tr>
                     </thead>
@@ -136,18 +125,13 @@ echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar 
                         <?php if ($ordens2 != null) : ?>
                             <?php foreach ($ordens2 as $o) : ?>
                                 <tr>
-                                    <td>
-                                        <?= $o->idOs ?>
-                                    </td>
-                                    <td>
-                                        <?= date('d/m/Y', strtotime($o->dataInicial)) ?>
-                                    </td>
-
+                                    <td><?= $o->idOs ?></td>
+                                    <td><?= date('d/m/Y', strtotime($o->dataInicial)) ?></td>
                                     <td><?= $o->nomeCliente ?></td>
-
                                     <td><?= $o->telefone ?></td>
+                                    <td>R$ <?= number_format($o->totalProdutos + $o->totalServicos, 2, ',', '.') ?></td>
                                     <td>
-                                        <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
+										<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
 <a title="Visualizar OS" class="btn tip-top" href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" class="btn"><i class="fas fa-eye"></i> </a>
 										<?php endif ?>
 										<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) : ?>
@@ -155,7 +139,7 @@ echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar 
 										<?php endif ?>
                                     	<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
                                                 $zapnumber = preg_replace("/[^0-9]/", "", $o->telefone);
-echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a' . strip_tags($r->laudoTecnico) . '%0d%0a' . strip_tags($o->observacoes) . '%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] . '*"><i class="fab fa-whatsapp"></i></a>';} ?>
+echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a%0d%0a' . strip_tags($r->laudoTecnico) . '%0d%0a' . strip_tags($o->observacoes) . '%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] . '*"><i class="fab fa-whatsapp"></i></a>';} ?>
 										<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
 <a title="Imprimir OS" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimir/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i> </a>
 										<?php endif ?>
@@ -182,8 +166,9 @@ echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar 
                         <tr>
                             <th width="100">N° OS</th>
                             <th width="100">Data de Entrada</th>
-                            <th width="550">Cliente</th>
+                            <th width="450">Cliente</th>
                             <th width="150">Contato</th>
+                            <th width="100">Valor Total</th>
                             <th width="200">Ações</th>
                         </tr>
                     </thead>
@@ -191,18 +176,13 @@ echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar 
                         <?php if ($ordens3 != null) : ?>
                             <?php foreach ($ordens3 as $o) : ?>
                                 <tr>
-                                    <td>
-                                        <?= $o->idOs ?>
-                                    </td>
-                                    <td>
-                                        <?= date('d/m/Y', strtotime($o->dataInicial)) ?>
-                                    </td>
-
+                                    <td><?= $o->idOs ?></td>
+                                    <td><?= date('d/m/Y', strtotime($o->dataInicial)) ?></td>
                                     <td><?= $o->nomeCliente ?></td>
-
                                     <td><?= $o->telefone ?></td>
+                                    <td>R$ <?= number_format($o->totalProdutos + $o->totalServicos, 2, ',', '.') ?></td>
                                     <td>
-                                        <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
+										<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
 <a title="Visualizar OS" class="btn tip-top" href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" class="btn"><i class="fas fa-eye"></i> </a>
 										<?php endif ?>
 										<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) : ?>
@@ -210,7 +190,7 @@ echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar 
 										<?php endif ?>
                                     	<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
                                                 $zapnumber = preg_replace("/[^0-9]/", "", $o->telefone);
-echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a' . strip_tags($r->laudoTecnico) . '%0d%0a' . strip_tags($o->observacoes) . '%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] . '*"><i class="fab fa-whatsapp"></i></a>';} ?>
+echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a%0d%0a' . strip_tags($r->laudoTecnico) . '%0d%0a' . strip_tags($o->observacoes) . '%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] . '*"><i class="fab fa-whatsapp"></i></a>';} ?>
 										<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
 <a title="Imprimir OS" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimir/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i> </a>
 										<?php endif ?>
@@ -238,8 +218,9 @@ echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar 
                         <tr>
                             <th width="100">N° OS</th>
                             <th width="100">Data de Entrada</th>
-                            <th width="550">Cliente</th>
+                            <th width="450">Cliente</th>
                             <th width="150">Contato</th>
+                            <th width="100">Valor Total</th>
                             <th width="200">Ações</th>
                         </tr>
                     </thead>
@@ -247,18 +228,13 @@ echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar 
                         <?php if ($ordens5 != null) : ?>
                             <?php foreach ($ordens5 as $o) : ?>
                                 <tr>
-                                    <td>
-                                        <?= $o->idOs ?>
-                                    </td>
-                                    <td>
-                                        <?= date('d/m/Y', strtotime($o->dataInicial)) ?>
-                                    </td>
-
+                                    <td><?= $o->idOs ?></td>
+                                    <td><?= date('d/m/Y', strtotime($o->dataInicial)) ?></td>
                                     <td><?= $o->nomeCliente ?></td>
-
                                     <td><?= $o->telefone ?></td>
+                                    <td>R$ <?= number_format($o->totalProdutos + $o->totalServicos, 2, ',', '.') ?></td>
                                     <td>
-                                        <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
+										<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
 <a title="Visualizar OS" class="btn tip-top" href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" class="btn"><i class="fas fa-eye"></i> </a>
 										<?php endif ?>
 										<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) : ?>
@@ -266,7 +242,7 @@ echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar 
 										<?php endif ?>
                                     	<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
                                                 $zapnumber = preg_replace("/[^0-9]/", "", $o->telefone);
-echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a' . strip_tags($r->laudoTecnico) . '%0d%0a' . strip_tags($o->observacoes) . '%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] . '*"><i class="fab fa-whatsapp"></i></a>';} ?>
+echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a%0d%0a' . strip_tags($r->laudoTecnico) . '%0d%0a' . strip_tags($o->observacoes) . '%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] . '*"><i class="fab fa-whatsapp"></i></a>';} ?>
 										<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
 <a title="Imprimir OS" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimir/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i> </a>
 										<?php endif ?>
@@ -293,8 +269,9 @@ echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar 
                         <tr>
                             <th width="100">N° OS</th>
                             <th width="100">Data de Entrada</th>
-                            <th width="550">Cliente</th>
+                            <th width="450">Cliente</th>
                             <th width="150">Contato</th>
+                            <th width="100">Valor Total</th>
                             <th width="200">Ações</th>
                         </tr>
                     </thead>
@@ -302,18 +279,13 @@ echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar 
                         <?php if ($ordens4 != null) : ?>
                             <?php foreach ($ordens4 as $o) : ?>
                                 <tr>
-                                    <td>
-                                        <?= $o->idOs ?>
-                                    </td>
-                                    <td>
-                                        <?= date('d/m/Y', strtotime($o->dataInicial)) ?>
-                                    </td>
-
+                                    <td><?= $o->idOs ?></td>
+                                    <td><?= date('d/m/Y', strtotime($o->dataInicial)) ?></td>
                                     <td><?= $o->nomeCliente ?></td>
-
                                     <td><?= $o->telefone ?></td>
+                                    <td>R$ <?= number_format($o->totalProdutos + $o->totalServicos, 2, ',', '.') ?></td>
                                     <td>
-                                        <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
+										<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
 <a title="Visualizar OS" class="btn tip-top" href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" class="btn"><i class="fas fa-eye"></i> </a>
 										<?php endif ?>
 										<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) : ?>
@@ -321,7 +293,7 @@ echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar 
 										<?php endif ?>
                                     	<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
                                                 $zapnumber = preg_replace("/[^0-9]/", "", $o->telefone);
-echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a' . strip_tags($r->laudoTecnico) . '%0d%0a' . strip_tags($o->observacoes) . '%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] . '*"><i class="fab fa-whatsapp"></i></a>';} ?>
+echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a%0d%0a' . strip_tags($r->laudoTecnico) . '%0d%0a' . strip_tags($o->observacoes) . '%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] . '*"><i class="fab fa-whatsapp"></i></a>';} ?>
 										<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
 <a title="Imprimir OS" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimir/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i> </a>
 										<?php endif ?>
@@ -349,8 +321,9 @@ echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar 
                         <tr>
                             <th width="100">N° OS</th>
                             <th width="100">Data de Entrada</th>
-                            <th width="550">Cliente</th>
+                            <th width="450">Cliente</th>
                             <th width="150">Contato</th>
+                            <th width="100">Valor Total</th>
                             <th width="200">Ações</th>
                         </tr>
                     </thead>
@@ -358,18 +331,13 @@ echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar 
                         <?php if ($ordens6 != null) : ?>
                             <?php foreach ($ordens6 as $o) : ?>
                                 <tr>
-                                    <td>
-                                        <?= $o->idOs ?>
-                                    </td>
-                                    <td>
-                                        <?= date('d/m/Y', strtotime($o->dataInicial)) ?>
-                                    </td>
-
+                                    <td><?= $o->idOs ?></td>
+                                    <td><?= date('d/m/Y', strtotime($o->dataInicial)) ?></td>
                                     <td><?= $o->nomeCliente ?></td>
-
                                     <td><?= $o->telefone ?></td>
+                                    <td>R$ <?= number_format($o->totalProdutos + $o->totalServicos, 2, ',', '.') ?></td>
                                     <td>
-                                        <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
+										<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
 <a title="Visualizar OS" class="btn tip-top" href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" class="btn"><i class="fas fa-eye"></i> </a>
 										<?php endif ?>
 										<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) : ?>
@@ -377,7 +345,7 @@ echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar 
 										<?php endif ?>
                                     	<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
                                                 $zapnumber = preg_replace("/[^0-9]/", "", $o->telefone);
-echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a' . strip_tags($r->laudoTecnico) . '%0d%0a' . strip_tags($o->observacoes) . '%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] . '*"><i class="fab fa-whatsapp"></i></a>';} ?>
+echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a%0d%0a' . strip_tags($r->laudoTecnico) . '%0d%0a' . strip_tags($o->observacoes) . '%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] . '*"><i class="fab fa-whatsapp"></i></a>';} ?>
 										<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
 <a title="Imprimir OS" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimir/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i> </a>
 										<?php endif ?>
@@ -404,8 +372,9 @@ echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar 
                         <tr>
                             <th width="100">N° OS</th>
                             <th width="100">Data de Entrada</th>
-                            <th width="550">Cliente</th>
+                            <th width="450">Cliente</th>
                             <th width="150">Contato</th>
+                            <th width="100">Valor Total</th>
                             <th width="200">Ações</th>
                         </tr>
                     </thead>
@@ -413,18 +382,13 @@ echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar 
                         <?php if ($ordens7 != null) : ?>
                             <?php foreach ($ordens7 as $o) : ?>
                                 <tr>
-                                    <td>
-                                        <?= $o->idOs ?>
-                                    </td>
-                                    <td>
-                                        <?= date('d/m/Y', strtotime($o->dataInicial)) ?>
-                                    </td>
-
+                                    <td><?= $o->idOs ?></td>
+                                    <td><?= date('d/m/Y', strtotime($o->dataInicial)) ?></td>
                                     <td><?= $o->nomeCliente ?></td>
-
                                     <td><?= $o->telefone ?></td>
+                                    <td>R$ <?= number_format($o->totalProdutos + $o->totalServicos, 2, ',', '.') ?></td>
                                     <td>
-                                        <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
+										<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
 <a title="Visualizar OS" class="btn tip-top" href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" class="btn"><i class="fas fa-eye"></i> </a>
 										<?php endif ?>
 										<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) : ?>
@@ -432,7 +396,7 @@ echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar 
 										<?php endif ?>
                                     	<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
                                                 $zapnumber = preg_replace("/[^0-9]/", "", $o->telefone);
-echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a' . strip_tags($r->laudoTecnico) . '%0d%0a' . strip_tags($o->observacoes) . '%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] . '*"><i class="fab fa-whatsapp"></i></a>';} ?>
+echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a%0d%0a' . strip_tags($r->laudoTecnico) . '%0d%0a' . strip_tags($o->observacoes) . '%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] . '*"><i class="fab fa-whatsapp"></i></a>';} ?>
 										<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
 <a title="Imprimir OS" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimir/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i> </a>
 										<?php endif ?>
