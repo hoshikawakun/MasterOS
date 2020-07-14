@@ -69,7 +69,9 @@
           <li class=""><a title="Sair do Sistema" href="<?= site_url('login/sair'); ?>"><i class="fas fa-sign-out-alt"></i> <span class="text">Sair do Sistema</span></a></li>
         </ul>
       </li>
-</ul>
+      <li class="pull-right"><a href="https://github.com/hoshikawakun/MasterOS" target="_blank"><i class="fas fa-asterisk"></i> <span class="text">Versão:
+            <?= $this->config->item('app_version'); ?></span></a></li>
+    </ul>
   </div>
   <!--start-top-serch-->
   <div id="search">
