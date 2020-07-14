@@ -91,10 +91,10 @@
                     $cor = '#CCCC00';
                     break;
 				case 'Orçamento Concluido':
-                    $cor = '#0066FF';
+                    $cor = '#CC9966';
                     break;
 				case 'Orçamento Aprovado':
-                    $cor = '#33FF66';
+                    $cor = '#339999';
 					break;
 				case 'Em Andamento':
                     $cor = '#9933FF';
@@ -103,7 +103,7 @@
                     $cor = '#FF6600';
                  	break;
 				case 'Serviço Concluido':
-                    $cor = '#0099FF';
+                    $cor = '#0066FF';
                     break;
 				case 'Sem Reparo':
                     $cor = '#999999';
