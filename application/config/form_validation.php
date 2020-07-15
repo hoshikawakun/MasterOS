@@ -342,5 +342,15 @@ $config =
             'label' => 'ID Os',
             'rules' => 'trim|required|integer',
         )),
+	'equipamento_os' => array(array(
+        'field' => 'equipamento',
+        'label' => 'Equipamento',
+        'rules' => 'required|trim',
+    ),
+        array(
+            'field' => 'os_id',
+            'label' => 'ID Os',
+            'rules' => 'trim|required|integer',
+        )),
 
 );

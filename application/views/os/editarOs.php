@@ -33,6 +33,7 @@
                         <li id="tabServicos"><a href="#tab3" data-toggle="tab">Serviços</a></li>
                         <li id="tabAnexos"><a href="#tab4" data-toggle="tab">Anexos</a></li>
                         <li id="tabAnotacoes"><a href="#tab5" data-toggle="tab">Anotações</a></li>
+                        <li id="tabEquipamentos"><a href="#tab6" data-toggle="tab">Equipamentos</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab1">
@@ -298,6 +299,7 @@
                                     } ?>
                                 </div>
                         </div>
+                        
 						<!--Anotações-->
                         <div class="tab-pane" id="tab5">
             			<a href="#modal-anotacao" id="btn-anotacao" role="button" data-toggle="modal" class="btn btn-success"><i class="fas fa-plus"></i> Adicionar anotação</a>
@@ -318,20 +320,62 @@
                                                 echo '<td>' . $a->anotacao . '</td>';
                                                 echo '<td>' . date('d/m/Y H:i:s', strtotime($a->data_hora))  . '</td>';
                                                 echo '<td><span idAcao="' . $a->idAnotacoes . '" title="Excluir Anotação" class="btn btn-danger anotacao"><i class="fas fa-trash-alt"></i></span></td>';
-                                                echo '</tr>';}
+                                                echo '</tr>';
+                                            }
                                             if (!$anotacoes) {
-                                                echo '<tr><td colspan="2">Nenhuma anotação cadastrada</td></tr>';}?>
+                                                echo '<tr><td colspan="2">Nenhuma anotação cadastrada</td></tr>';
+                                            }
+
+                                            ?>
                                         </tbody>
-                                    </table></div></div></div>
-                			 <!-- Fim tab anotações -->
-                    </div>
-                </div>
-                </div>
-                &nbsp
-          </div>
-        </div>
-    </div>
-</div>
+                                    </table>
+                                </div>
+                        </div>
+                        </div>
+                        
+                        <!--Equipamentos-->
+                       		<div class="tab-pane" id="tab6">
+                            <a href="#modal-equipamento" id="btn-equipamento" role="button" data-toggle="modal" class="btn btn-success"><i class="fas fa-plus"></i> Adicionar Equipamento</a>
+                            <div class="widget-box" id="divEquipamento">
+                            <div class="widget-content nopadding">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Equipamento</th>
+                                                <th>Modelo</th>
+                                                <th>Nº Série</th>
+                                                <th>Voltagem</th>
+                                                <th>Observação</th>
+                                                <th>Ações</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            foreach ($equipamento as $a) {
+                                                echo '<tr>';
+                                                echo '<td>' . $a->equipamento . '</td>';
+                                                echo '<td>' . $a->modelo . '</td>';
+												echo '<td>' . $a->num_serie . '</td>';
+												echo '<td>' . $a->voltagem . '</td>';
+												echo '<td>' . $a->observacao . '</td>';
+                                                echo '<td><span idAcao="' . $a->idEquipamento . '" title="Excluir Equipamento" class="btn btn-danger equipamento"><i class="fas fa-trash-alt"></i></span></td>';
+                                                echo '</tr>';
+                                            }
+                                            if (!$equipamento) {
+                                                echo '<tr><td colspan="2">Nenhum Equipamento cadastrado</td></tr>';
+                                            }
+
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                        </div>
+                        </div>
+                        
+                        <!-- Fim tab Equipamentos -->
+                 </div></div></div>
+                 &nbsp
+                 </div></div></div></div>
 
 <!-- Modal visualizar anexo -->
 <div id="modal-anexo" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -370,6 +414,44 @@
         </div>
         <div class="modal-footer">
             <button class="btn" data-dismiss="modal" aria-hidden="true" id="btn-close-anotacao">Fechar</button>
+            <button class="btn btn-primary">Adicionar</button>
+        </div>
+    </form>
+</div>
+
+<!-- Modal cadastro Equipamentos -->
+<div id="modal-equipamento" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <form action="#" method="POST" id="formEquipamento">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">Adicionar Equipamento</h3>
+        </div>
+        <div class="modal-body">
+            <div class="span12" id="divformEquipamento" style="margin-left: 0"></div>
+          <div class="span6" style="margin-left: 0">
+                <label for="equipamento">Equipamento<span class="required">*</span></label>
+                <input name="equipamento" type="text" class="span12" id="equipamento" value="" />
+            </div>
+          <div class="span6">
+                <label for="modelo">Modelo</label>
+                <input name="modelo" type="text" class="span12" id="equipamento" value="" />
+            </div>
+          <div class="span6" style="margin-left: 0">
+                <label for="num_serie">Nº Série</label>
+                <input name="num_serie" type="text" class="span12" id="equipamento" value="" />
+            </div>
+          <div class="span6">
+                <label for="voltagem">Voltagem</label>
+                <input name="voltagem" type="text" class="span12" id="equipamento" value="" />
+            </div>
+            <div class="span12" style="margin-left: 0">
+              <label for="observacao">Observação</label>
+                <input name="observacao" type="text" class="span12" id="equipamento" value="" />
+                <input type="hidden" name="os_id" value="<?php echo $result->idOs; ?>">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true" id="btn-close-equipamento">Fechar</button>
             <button class="btn btn-primary">Adicionar</button>
         </div>
     </form>
@@ -709,6 +791,45 @@
             }
         });
 
+        $("#formEquipamento").validate({
+            rules: {
+                equipamento: {
+                    required: true
+                }
+            },
+            messages: {
+                equipamento: {
+                    required: 'Insira o Equipamento'
+                }
+            },
+            submitHandler: function(form) {
+                var dados = $(form).serialize();
+                $("#divFormEquipamento").html("<div class='progress progress-info progress-striped active'><div class='bar' style='width: 100%'></div></div>");
+
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo base_url(); ?>index.php/os/adicionarEquipamento",
+                    data: dados,
+                    dataType: 'json',
+                    success: function(data) {
+                        if (data.result == true) {
+                            $("#divEquipamento").load("<?php echo current_url(); ?> #divEquipamento");
+                            $("#equipamento").val('');
+                            $('#btn-close-equipamento').trigger('click');
+                            $("#divFormEquipamento").html('');
+                        } else {
+                            Swal.fire({
+                                type: "error",
+                                title: "Atenção",
+                                text: "Ocorreu um erro ao tentar adicionar Equipamento."
+                            });
+                        }
+                    }
+                });
+                return false;
+            }
+        });
+
         $("#formAnotacao").validate({
             rules: {
                 anotacao: {
@@ -726,6 +847,7 @@
 
                 $.ajax({
                     type: "POST",
+                    url: "<?php echo base_url(); ?>index.php/os/adicionarAnotacao",
                     data: dados,
                     dataType: 'json',
                     success: function(data) {
@@ -876,6 +998,33 @@
             });
         });
 
+        $(document).on('click', '.equipamento', function(event) {
+            var idEquipamento = $(this).attr('idAcao');
+			var idOS = "<?php echo $result->idOs ?>"
+            if ((idEquipamento % 1) == 0) {
+                $("#divEquipamento").html("<div class='progress progress-info progress-striped active'><div class='bar' style='width: 100%'></div></div>");
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo base_url(); ?>index.php/os/excluirEquipamento",
+					data: "idEquipamento=" + idEquipamento + "&idOs=" + idOS,
+                    dataType: 'json',
+                    success: function(data) {
+                        if (data.result == true) {
+                            $("#divEquipamento").load("<?php echo current_url(); ?> #divEquipamento");
+
+                        } else {
+                            Swal.fire({
+                                type: "error",
+                                title: "Atenção",
+                                text: "Ocorreu um erro ao tentar excluir Equipamento."
+                            });
+                        }
+                    }
+                });
+                return false;
+            }
+        });
+
         $(document).on('click', '.anotacao', function(event) {
             var idAnotacao = $(this).attr('idAcao');
 			var idOS = "<?php echo $result->idOs ?>"
@@ -894,7 +1043,7 @@
                             Swal.fire({
                                 type: "error",
                                 title: "Atenção",
-                                text: "Ocorreu um erro ao tentar excluir serviço."
+                                text: "Ocorreu um erro ao tentar excluir Anotação."
                             });
                         }
                     }
