@@ -31,6 +31,9 @@ $periodo = $this->input->get('periodo');
 <div class="span7" style="margin-left: 0">
   <form action="<?php echo current_url(); ?>" method="get">
     <div class="span4" style="margin-left: 0">
+      &nbsp
+    </div>
+    <div class="span4">
       <label>Período <i class="fas fa-calendar-day tip-top" title="Lançamentos com vencimento no período."></i></label>
       <select name="periodo" class="span12">
         <option value="dia">Dia</option>
@@ -46,24 +49,6 @@ $periodo = $this->input->get('periodo');
         <option value="todos" <?php if ($periodo == 'todos') {
     echo 'selected';
 } ?>>Todos</option>
-      </select>
-    </div>
-    <div class="span4">
-      <label>Situação <i class="fas fa-sign tip-top" title="Lançamentos com situação específica ou todos."></i></label>
-      <select name="situacao" class="span12">
-        <option value="todos">Todos</option>
-        <option value="previsto" <?php if ($situacao == 'previsto') {
-    echo 'selected';
-} ?>>Previsto</option>
-        <option value="atrasado" <?php if ($situacao == 'atrasado') {
-    echo 'selected';
-} ?>>Atrasado</option>
-        <option value="realizado" <?php if ($situacao == 'realizado') {
-    echo 'selected';
-} ?>>Realizado</option>
-        <option value="pendente" <?php if ($situacao == 'pendente') {
-    echo 'selected';
-} ?>>Pendente</option>
       </select>
     </div>
     <div class="span4">
@@ -95,7 +80,7 @@ $periodo = $this->input->get('periodo');
               <th>Tipo</th>
               <th>Cliente / Fornecedor</th>
               <th>Descrição</th>
-              <th>Vencimento</th>
+              <th>Entrada</th>
               <th>Status</th>
               <th>Valor</th>
               <th>Ações</th>
@@ -173,13 +158,13 @@ $periodo = $this->input->get('periodo');
   <form id="formReceita" action="<?php echo base_url() ?>index.php/financeiro/adicionarReceita" method="post">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-      <h3 id="myModalLabel">MapOS - Adicionar Receita</h3>
+      <h3 id="myModalLabel">Adicionar Receita</h3>
     </div>
     <div class="modal-body">
 
       <div class="span12 alert alert-info" style="margin-left: 0"> Obrigatório o preenchimento dos campos com asterisco.</div>
       <div class="span12" style="margin-left: 0">
-        <label for="descricao">Descrição</label>
+        <label for="descricao">Descrição*</label>
         <input class="span12" id="descricao" type="text" name="descricao" />
         <input id="urlAtual" type="hidden" name="urlAtual" value="<?php echo current_url() ?>" />
       </div>
@@ -198,7 +183,7 @@ $periodo = $this->input->get('periodo');
           <input class="span12 money" id="valor" type="text" name="valor" />
         </div>
         <div class="span4">
-          <label for="vencimento">Data Vencimento*</label>
+          <label for="vencimento">Data Entrada*</label>
           <input class="span12 datepicker" id="vencimento" type="text" name="vencimento" />
         </div>
 
@@ -241,12 +226,12 @@ $periodo = $this->input->get('periodo');
   <form id="formDespesa" action="<?php echo base_url() ?>index.php/financeiro/adicionarDespesa" method="post">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-      <h3 id="myModalLabel">MapOS - Adicionar Despesa</h3>
+      <h3 id="myModalLabel">Adicionar Despesa</h3>
     </div>
     <div class="modal-body">
       <div class="span12 alert alert-info" style="margin-left: 0"> Obrigatório o preenchimento dos campos com asterisco.</div>
       <div class="span12" style="margin-left: 0">
-        <label for="descricao">Descrição</label>
+        <label for="descricao">Descrição*</label>
         <input class="span12" id="descricao" type="text" name="descricao" />
         <input id="urlAtual" type="hidden" name="urlAtual" value="<?php echo current_url() ?>" />
       </div>
@@ -265,7 +250,7 @@ $periodo = $this->input->get('periodo');
           <input class="span12 money" type="text" name="valor" />
         </div>
         <div class="span4">
-          <label for="vencimento">Data Vencimento*</label>
+          <label for="vencimento">Data Entrada*</label>
           <input class="span12 datepicker" type="text" name="vencimento" />
         </div>
 
@@ -311,12 +296,12 @@ $periodo = $this->input->get('periodo');
   <form id="formEditar" action="<?php echo base_url() ?>index.php/financeiro/editar" method="post">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-      <h3 id="myModalLabel">MapOS - Editar Lançamento</h3>
+      <h3 id="myModalLabel">Editar Lançamento</h3>
     </div>
     <div class="modal-body">
       <div class="span12 alert alert-info" style="margin-left: 0"> Obrigatório o preenchimento dos campos com asterisco.</div>
       <div class="span12" style="margin-left: 0">
-        <label for="descricao">Descrição</label>
+        <label for="descricao">Descrição*</label>
         <input class="span12" id="descricaoEditar" type="text" name="descricao" />
         <input id="urlAtualEditar" type="hidden" name="urlAtual" value="" />
       </div>
@@ -336,7 +321,7 @@ $periodo = $this->input->get('periodo');
           <input class="span12 money" type="text" name="valor" id="valorEditar" />
         </div>
         <div class="span4">
-          <label for="vencimento">Data Vencimento*</label>
+          <label for="vencimento">Data Entrada*</label>
           <input class="span12 datepicker" type="text" name="vencimento" id="vencimentoEditar" />
         </div>
         <div class="span4">
@@ -391,7 +376,7 @@ $periodo = $this->input->get('periodo');
 <div id="modalExcluir" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">MapOS - Excluir Lançamento</h3>
+    <h3 id="myModalLabel">Excluir Lançamento</h3>
   </div>
   <div class="modal-body">
     <h5 style="text-align: center">Deseja realmente excluir esse lançamento?</h5>

@@ -151,7 +151,7 @@
                     <input class="span12 money" id="valor" type="text" name="valor" value="<?php echo number_format($total, 2); ?> " />
                 </div>
                 <div class="span4">
-                    <label for="vencimento">Data Vencimento*</label>
+                    <label for="vencimento">Data Entrada*</label>
                     <input class="span12 datepicker" autocomplete="off" id="vencimento" type="text" name="vencimento" />
                 </div>
             </div>

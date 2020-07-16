@@ -302,15 +302,17 @@
                         
 						<!--Anotações-->
                         <div class="tab-pane" id="tab5">
-            			<a href="#modal-anotacao" id="btn-anotacao" role="button" data-toggle="modal" class="btn btn-success"><i class="fas fa-plus"></i> Adicionar anotação</a>
+            			<div class="span12" style="padding: 1%; margin-left: 0">
+                        <a href="#modal-anotacao" id="btn-anotacao" role="button" data-toggle="modal" class="btn btn-success"><i class="fas fa-plus"></i> Adicionar anotação</a>
+                        </div>
             			<div class="widget-box" id="divAnotacoes">
             			<div class="widget-content nopadding">
-            			<table class="table table-bordered">
+            			<table width="100%" class="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>Anotação</th>
-                                                <th>Data/Hora</th>
-                                                <th>Ações</th>
+                                                <th width="73%">Anotação</th>
+                                                <th width="20%">Data/Hora</th>
+                                                <th width="7%">Ações</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -330,23 +332,25 @@
                                         </tbody>
                                     </table>
                                 </div>
-                        </div>
-                        </div>
+                                </div>
+                                </div>
                         
                         <!--Equipamentos-->
-                       		<div class="tab-pane" id="tab6">
-                            <a href="#modal-equipamento" id="btn-equipamento" role="button" data-toggle="modal" class="btn btn-success"><i class="fas fa-plus"></i> Adicionar Equipamento</a>
+                       	<div class="tab-pane" id="tab6">
+                        <div class="span12" style="padding: 1%; margin-left: 0">
+                        <a href="#modal-equipamento" id="btn-equipamento" role="button" data-toggle="modal" class="btn btn-success"><i class="fas fa-plus"></i> Adicionar Equipamento</a>
+                        </div>
                             <div class="widget-box" id="divEquipamento">
                             <div class="widget-content nopadding">
-                                    <table class="table table-bordered">
+                                    <table  width="100%" class="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>Equipamento</th>
-                                                <th>Modelo</th>
-                                                <th>Nº Série</th>
-                                                <th>Voltagem</th>
-                                                <th>Observação</th>
-                                                <th>Ações</th>
+                                                <th width="15%">Equipamento</th>
+                                                <th width="15%">Modelo</th>
+                                                <th width="15%">Nº Série</th>
+                                                <th width="5%">Voltagem</th>
+                                                <th width="43%">Observação</th>
+                                                <th width="7%">Ações</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -369,8 +373,8 @@
                                         </tbody>
                                     </table>
                                 </div>
-                        </div>
-                        </div>
+                                </div>
+                                </div>
                         
                         <!-- Fim tab Equipamentos -->
                  </div></div></div>
@@ -485,7 +489,7 @@
                     <input class="span12 money" id="valor" type="text" name="valor" value="<?php echo number_format($total, 2); ?> " />
                 </div>
                 <div class="span4">
-                    <label for="vencimento">Data Vencimento*</label>
+                    <label for="vencimento">Data Entrada*</label>
                     <input class="span12 datepicker" autocomplete="off" id="vencimento" type="text" name="vencimento" />
                 </div>
             </div>
