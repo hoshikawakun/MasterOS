@@ -346,7 +346,7 @@
                                         <thead>
                                             <tr>
                                                 <th width="15%">Equipamento</th>
-                                                <th width="15%">Modelo</th>
+                                                <th width="15%">Modelo/Cor</th>
                                                 <th width="15%">Nº Série</th>
                                                 <th width="5%">Voltagem</th>
                                                 <th width="43%">Observação</th>
@@ -437,7 +437,7 @@
                 <input name="equipamento" type="text" class="span12" id="equipamento" value="" />
             </div>
           <div class="span6">
-                <label for="modelo">Modelo</label>
+                <label for="modelo">Modelo/Cor</label>
                 <input name="modelo" type="text" class="span12" id="equipamento" value="" />
             </div>
           <div class="span6" style="margin-left: 0">
