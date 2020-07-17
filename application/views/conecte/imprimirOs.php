@@ -203,7 +203,8 @@ $totalProdutos = 0; ?>
                         <?php } ?>
                         <?php
                         if ($totalProdutos != 0 || $totalServico != 0) {
-                            echo "<h4 style='font-size: 12px; text-align: right'>Valor Total: R$" . number_format($totalProdutos + $totalServico, 2, ',', '.') . "</h4>";}?>
+                            echo "<h4 style='font-size: 12px; text-align: right'>Valor Total: R$" . number_format($totalProdutos + $totalServico, 2, ',', '.') . "</h4>";}?><br>
+
                             <table width="100%" class="table table-bordered table-condensed">
                             	<tr>
                                     <td>
