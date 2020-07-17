@@ -1,21 +1,14 @@
 <?php
 
 if (!$results) { ?>
-    <div class="widget-box">
-        <div class="widget-title">
-            <span class="icon">
-                <i class="fas fa-tags"></i>
-            </span>
-            <h5>Compras</h5>
-
-        </div>
-
-        <div class="widget-content nopadding">
-
-
-            <table class="table table-bordered ">
-                <thead>
-                    <tr style="backgroud-color: #2D335B">
+    <div class="span12">
+        <div class="widget-box">
+            <div class="widget-title">
+                <span class="icon"><i class="fas fa-tags"></i></span>
+                <h5>Compras</h5>
+            </div>
+            <div class="widget-content">
+                <table class="table table-bordered">
                         <th>#</th>
                         <th>Data da Compra</th>
                         <th>Responsável</th>
@@ -32,23 +25,18 @@ if (!$results) { ?>
             </table>
         </div>
     </div>
+</div>
 <?php
 } else { ?>
-
-
-    <div class="widget-box">
-        <div class="widget-title">
-            <span class="icon">
-                <i class="fas fa-shopping-cart"></i>
-            </span>
-            <h5>Compras</h5>
-
-        </div>
-
-        <div class="widget-content nopadding">
-
-
-            <table class="table table-bordered ">
+		
+        <div class="span12">
+        <div class="widget-box">
+            <div class="widget-title">
+                <span class="icon"><i class="fas fa-shopping-cart"></i></span>
+                <h5>Compras</h5>
+            </div>
+            <div class="widget-content">
+                <table class="table table-bordered">
                 <thead>
                     <tr style="backgroud-color: #2D335B">
                         <th>#</th>

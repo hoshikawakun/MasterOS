@@ -41,7 +41,7 @@
                                 <form action="<?php echo current_url(); ?>" method="post" id="formOs">
                                     <?php echo form_hidden('idOs', $result->idOs) ?>
                                     <div class="span12" style="padding: 1%; margin-left: 0">
-                                        <h3>N° OS:
+                                        <h3>OS N°:
                                             <?php echo $result->idOs; ?>
                                         </h3>
                                         <div class="span6" style="margin-left: 0">
@@ -397,7 +397,6 @@
     <div class="modal-footer">
         <button class="btn" data-dismiss="modal" aria-hidden="true">Fechar</button>
         <a href="" id-imagem="" class="btn btn-inverse" id="download">Download</a>
-        <a href="" link="" class="btn btn-danger" id="excluir-anexo">Excluir Anexo</a>
     </div>
 </div>
 

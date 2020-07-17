@@ -309,6 +309,7 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
         $this->data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
         $this->data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
         $this->data['pagamento'] = $this->pagamentos_model->getPagamentos($this->uri->segment(3));
+		$this->data['equipamento'] = $this->os_model->getEquipamento($this->uri->segment(3));
         $this->data['emitente'] = $this->mapos_model->getEmitente();
 
         if ($this->data['pagamento']) {
@@ -336,6 +337,7 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
         $this->data['result'] = $this->os_model->getById($this->uri->segment(3));
         $this->data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
         $this->data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
+		$this->data['equipamento'] = $this->os_model->getEquipamento($this->uri->segment(3));
         $this->data['emitente'] = $this->mapos_model->getEmitente();
 
         $this->load->view('os/imprimirOs', $this->data);
@@ -358,6 +360,7 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
         $this->data['result'] = $this->os_model->getById($this->uri->segment(3));
         $this->data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
         $this->data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
+		$this->data['equipamento'] = $this->os_model->getEquipamento($this->uri->segment(3));
         $this->data['emitente'] = $this->mapos_model->getEmitente();
 
         $this->load->view('os/imprimirOsTermica', $this->data);
@@ -385,6 +388,7 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
 
         $this->data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
         $this->data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
+		$this->data['equipamento'] = $this->os_model->getEquipamento($this->uri->segment(3));
         $this->data['emitente'] = $this->mapos_model->getEmitente();
 
         if (!isset($this->data['emitente'][0]->email)) {
@@ -805,6 +809,7 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
 
         $dados['produtos'] = $this->os_model->getProdutos($idOs);
         $dados['servicos'] = $this->os_model->getServicos($idOs);
+        $dados['equipamento'] = $this->os_model->getEquipamento($idOs);
         $dados['emitente'] = $this->mapos_model->getEmitente();
 
         $emitente = $dados['emitente'][0]->email;

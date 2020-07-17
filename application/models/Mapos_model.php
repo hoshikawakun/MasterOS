@@ -194,12 +194,17 @@ class Mapos_model extends CI_Model
 		$this->db->limit($this->data['configuration']['per_page']);
         return $this->db->get()->result();
     }
-	public function getProdutosMinimo()
-    {
+	public function getProdutosMinimo() {
 
-        $sql = "SELECT * FROM produtos WHERE estoque <= estoqueMinimo AND estoqueMinimo > 0 LIMIT 500";
-        return $this->db->query($sql)->result();
-    }
+    $this->db->select('*');
+    $this->db->from('produtos');
+    $this->db->where('estoque <= estoqueMinimo AND estoqueMinimo > 0');
+    $this->db->limit($this->data['configuration']['per_page']);
+
+    return $this->db->get()->result();
+
+}
+
 
     public function getOsEstatisticas()
     {

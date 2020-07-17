@@ -1,35 +1,26 @@
 <?php
 // alterar para permissão de o cliente adicionar ou não a ordem de serviço
 if (!$this->session->userdata('cadastra_os')) { ?>
-    <div class="span12" style="margin-left: 0">
-        <div class="span3">
-            <a href="<?php echo base_url(); ?>index.php/mine/adicionarOs" class="btn btn-success span12"><i class="fas fa-plus"></i> Adicionar OS</a>
-        </div>
-    </div>
 <?php
 }
 
 if (!$results) {
     ?>
-    <div class="span12" style="margin-left: 0">
+    <div class="span12">
         <div class="widget-box">
             <div class="widget-title">
-                <span class="icon">
-                    <i class="fas fa-diagnoses"></i>
-                </span>
+                <span class="icon"><i class="fas fa-diagnoses"></i></span>
                 <h5>Ordens de Serviço</h5>
-
             </div>
-
-            <div class="widget-content nopadding">
-
-
-                <table class="table table-bordered ">
+            <div class="widget-content">
+                <table class="table table-bordered">
                     <thead>
                         <tr style="backgroud-color: #2D335B">
                             <th>#</th>
                             <th>Responsável</th>
                             <th>Data de Entrada</th>
+                            <th>Data de Saida</th>
+                            <th>Garantia até</th>
                             <th>Status</th>
                             <th></th>
                         </tr>
@@ -42,32 +33,27 @@ if (!$results) {
                     </tbody>
                 </table>
             </div>
-        </div>
-
-    </div>
+            </div>
+            </div>
 
 <?php
 } else { ?>
 
-    <div class="span12" style="margin-left: 0">
+    <div class="span12">
         <div class="widget-box">
             <div class="widget-title">
-                <span class="icon">
-                    <i class="fas fa-diagnoses"></i>
-                </span>
+                <span class="icon"><i class="fas fa-diagnoses"></i></span>
                 <h5>Ordens de Serviço</h5>
-
             </div>
-
-            <div class="widget-content nopadding">
-
-
-                <table class="table table-bordered ">
+            <div class="widget-content">
+                <table class="table table-bordered">
                     <thead>
-                        <tr style="backgroud-color: #2D335B">
+                       <tr style="backgroud-color: #2D335B">
                             <th>#</th>
                             <th>Responsável</th>
                             <th>Data de Entrada</th>
+                            <th>Data de Saida</th>
+                            <th>Garantia até</th>
                             <th>Status</th>
                             <th></th>
                         </tr>
@@ -76,24 +62,32 @@ if (!$results) {
                         <?php foreach ($results as $r) {
                                 $dataInicial = date(('d/m/Y'), strtotime($r->dataInicial));
                                 $dataFinal = date(('d/m/Y'), strtotime($r->dataFinal));
-                                if ($r->status == "Aberto") {
-                                    $status = '<span class="label label-success">Aberto</span>';
-                                } elseif ($r->status == "Orçamento") {
-                                    $status = '<span class="label label-info">Orçamento</span>';
-                                } elseif ($r->status == "Finalizado") {
-                                    $status = '<span class="label label-important">Finalizado</span>';
-                                } elseif ($r->status == "Cancelado") {
-                                    $status = '<span class="label label-inverse">Cancelado</span>';
-                                } elseif ($r->status == "Entregue - Faturado") {
-                                    $status = '<span class="label">Entregue - Faturado</span>';
-                                } else {
-                                    $status = '<span class="label">Em Andamento</span>';
-                                }
+                if ($r->status == "Orçamento") {$status = '<span class="label label-sonic01">Orçamento</span>';}
+			elseif ($r->status == "Orçamento Concluido") {$status = '<span class="label label-sonic02">Orçamento Concluido</span>';}
+			elseif ($r->status == "Orçamento Aprovado") {$status = '<span class="label label-sonic03">Orçamento Aprovado</span>';}
+			elseif ($r->status == "Em Andamento") {$status = '<span class="label label-sonic04">Em Andamento</span>';}
+			elseif ($r->status == "Aguardando Peças") {$status = '<span class="label label-sonic05">Aguardando Peças</span>';}
+			elseif ($r->status == "Serviço Concluido") {$status = '<span class="label label-sonic06">Serviço Concluido</span>';}
+			elseif ($r->status == "Sem Reparo") {$status = '<span class="label label-sonic07">Sem Reparo</span>';}
+			elseif ($r->status == "Não Autorizado") {$status = '<span class="label label-sonic08">Não Autorizado</span>';}
+			elseif ($r->status == "Contato sem Sucesso") {$status = '<span class="label label-sonic09">Contato sem Sucesso</span>';}
+			elseif ($r->status == "Cancelado") {$status = '<span class="label label-sonic10">Cancelado</span>';}
+			elseif ($r->status == "Pronto-Despachar") {$status = '<span class="label label-sonic11">Pronto-Despachar</span>';}
+			elseif ($r->status == "Enviado") {$status = '<span class="label label-sonic12">Enviado</span>';}
+			elseif ($r->status == "Aguardando Codigo Rastreio") {$status = '<span class="label label-sonic13">Aguardando Codigo Rastreio</span>';}
+			elseif ($r->status == "Aguardando Entrega Correio") {$status = '<span class="label label-sonic14">Aguardando Entrega Correio</span>';}
+			elseif ($r->status == "Entregue - A Receber") {$status = '<span class="label label-sonic15">Entregue - A Receber</span>';}
+			elseif ($r->status == "Garantia") {$status = '<span class="label label-sonic16">Garantia</span>';}
+			elseif ($r->status == "Abandonado") {$status = '<span class="label label-sonic17">Abandonado</span>';}
+			elseif ($r->status == "Comprado pela Loja") {$status = '<span class="label label-sonic18">Comprado pela Loja</span>';}
+			elseif ($r->status == "Entregue - Faturado") {$status = '<span class="label label-sonic19">Entregue - Faturado</span>';}
+								
                                 echo '<tr>';
                                 echo '<td>' . $r->idOs . '</td>';
                                 echo '<td>' . $r->nome . '</td>';
                                 echo '<td>' . $dataInicial . '</td>';
-                                echo '<td>' . $dataFinal . '</td>';
+                                echo '<td>' . $r->dataSaida . '</td>';
+								echo '<td>' . $r->garantia . '</td>';
                                 echo '<td>' . $status . '</td>';
 
 

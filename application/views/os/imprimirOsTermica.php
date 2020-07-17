@@ -45,7 +45,7 @@ $totalProdutos = 0; ?>
                                                 <?php echo $emitente[0]->rua . ', ' . $emitente[0]->numero . ' ' . $emitente[0]->bairro; ?></br><?php echo $emitente[0]->cidade . ' - ' . $emitente[0]->uf; ?></span> </br> <span style="font-size: 8px; ">Fone: <?php echo $emitente[0]->telefone; ?></span></td>
                                     </tr>
                                     <tr>
-                                        <td style="width: 100%; font-size: 8px;"><b>N° OS:</b> <span><?php echo $result->idOs ?></span><span style="padding-left: 5%;"><b>Emissão:</b> <?php echo date('d/m/Y') ?></span></td>
+                                        <td style="width: 100%; font-size: 8px;"><b>OS N°:</b> <span><?php echo $result->idOs ?></span><span style="padding-left: 5%;"><b>Emissão:</b> <?php echo date('d/m/Y') ?></span></td>
                                     </tr>
 
                                 <?php } ?>

@@ -31,6 +31,7 @@
                         <li id="tabProdutos"><a href="#tab2" data-toggle="tab">Produtos</a></li>
                         <li id="tabServicos"><a href="#tab3" data-toggle="tab">Serviços</a></li>
                         <li id="tabAnexos"><a href="#tab4" data-toggle="tab">Anexos</a></li>
+                        <li id="tabEquipamentos"><a href="#tab6" data-toggle="tab">Equipamentos</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab1">
@@ -42,7 +43,7 @@
 
 
                                     <div class="span6" style="margin-left: 0">
-                                        <h3>#Protocolo:
+                                        <h3>OS N°:
                                             <?php echo $result->idOs ?>
                                         </h3>
                                         <input id="valorTotal" type="hidden" name="valorTotal" value="" />
@@ -65,34 +66,39 @@
                                     </div>
 
                                     <div class="span3">
-                                        <label for="garantia">Garantia</label>
+                                        <label for="garantia">Garantia até</label>
                                         <input id="garantia" disabled="disabled" type="text" class="span12" name="garantia" value="<?php echo $result->garantia ?>" />
                                     </div>
+                                  
                                   <div class="span3">
                                     <label for="rastreio">Rastreio</label>
-                                          <input id="rastreio" type="text" class="span12" name="rastreio" value="<?php echo $result->rastreio ?>" />
-										  </div>
+                                        <input id="rastreio" disabled="disabled" type="text" class="span12" name="rastreio" value="<?php echo $result->rastreio ?>" /><a href="https://www.linkcorreios.com.br/<?php echo $result->rastreio ?>" title="Rastrear" target="_new" class="btn btn-warning"><i class="fas fa-envelope"></i> Rastrear</a>
+                                    </div>
                                 </div>
-
-
-                                <div class="span12" style="padding: 1%; margin-left: 0">
-                                    <label for="descricaoProduto">Descrição Produto/Serviço</label>
-                                    <textarea class="span12 editor" name="descricaoProduto" id="descricaoProduto" cols="30" rows="5" disabled><?php echo $result->descricaoProduto; ?></textarea>
-                                </div>
-
-                                <div class="span12" style="padding: 1%; margin-left: 0">
-                                    <label for="defeito">Defeito</label>
-                                    <textarea class="span12 editor" name="defeito" id="defeito" cols="30" rows="5" disabled><?php echo $result->defeito; ?></textarea>
-                                </div>
-
-                                <div class="span12" style="padding: 1%; margin-left: 0">
-                                    <label for="observacoes">Observações</label>
-                                    <textarea class="span12 editor" name="observacoes" id="observacoes" cols="30" rows="5" disabled><?php echo $result->observacoes; ?></textarea>
-                                </div>
-
-                                <div class="span12" style="padding: 1%; margin-left: 0">
-                                    <label for="laudoTecnico">Laudo Técnico</label>
-                                    <textarea class="span12 editor" name="laudoTecnico" id="laudoTecnico" cols="30" rows="5" disabled><?php echo $result->laudoTecnico; ?></textarea>
+                                
+                              <div class="span6" style="padding: 1%; margin-left: 0">
+                                        <label for="descricaoProduto">
+                                  <h4>Descrição Produto/Serviço</h4>
+                                      </label>
+                                      <textarea name="descricaoProduto" cols="30" rows="5" disabled="disabled" readonly="readonly" class="span12 editor" id="descricaoProduto"><?php echo $result->descricaoProduto ?></textarea>
+                              </div>
+                                    <div class="span6" style="padding: 1%; margin-left: 0">
+                                        <label for="defeito">
+                                      <h4>Defeito</h4>
+                                        </label>
+                                        <textarea name="defeito" cols="30" rows="5" disabled="disabled" readonly="readonly" class="span12 editor" id="defeito"><?php echo $result->defeito ?></textarea>
+                                    </div>
+                                    <div class="span6" style="padding: 1%; margin-left: 0">
+                                        <label for="observacoes">
+                                      <h4>Observações</h4>
+                                        </label>
+                                        <textarea name="observacoes" cols="30" rows="5" disabled="disabled" readonly="readonly" class="span12 editor" id="observacoes"><?php echo $result->observacoes ?></textarea>
+                                    </div>
+                              <div class="span6" style="padding: 1%; margin-left: 0">
+                                        <label for="laudoTecnico">
+                                <h4>Laudo Técnico</h4>
+                                  </label>
+                                  <textarea name="laudoTecnico" cols="30" rows="5" disabled="disabled" readonly="readonly" class="span12 editor" id="laudoTecnico"><?php echo $result->laudoTecnico ?></textarea>
                                 </div>
 
                             </div>
@@ -102,9 +108,10 @@
 
                         <!--Produtos-->
                         <div class="tab-pane" id="tab2">
-
-                            <div class="span12" id="divProdutos" style="margin-left: 0">
-                                <table class="table table-bordered" id="tblProdutos">
+                        <div class="span12" style="padding: 1%; margin-left: 0">
+                        <div class="widget-box" id="divProdutos">
+                        <div class="widget-content nopadding">
+                                    <table  width="100%" class="table table-bordered">
                                     <thead>
                                         <tr>
                                             <th>Produto</th>
@@ -133,15 +140,16 @@
                                     </tbody>
                                 </table>
                             </div>
-
-                        </div>
+                            </div>
+                            </div>
+                            </div>
 
                         <!--Serviços-->
-                        <div class="tab-pane" id="tab3">
+                        	<div class="tab-pane" id="tab3">
                             <div class="span12" style="padding: 1%; margin-left: 0">
-
-                                <div class="span12" id="divServicos" style="margin-left: 0">
-                                    <table class="table table-bordered">
+                        	<div class="widget-box" id="divServicos">
+                        	<div class="widget-content nopadding">
+                                    <table  width="100%" class="table table-bordered">
                                         <thead>
                                             <tr>
                                                 <th>Serviço</th>
@@ -167,12 +175,10 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                </div>
-
-                            </div>
-                        </div>
-
-
+                                </div></div></div></div>
+                        
+                        
+                        
                         <!--Anexos-->
                         <div class="tab-pane" id="tab4">
                             <div class="span12" style="padding: 1%; margin-left: 0">
@@ -212,10 +218,42 @@
 
                             </div>
                         </div>
-
-
-
-                    </div>
+                        
+                        <!--Equipamentos-->
+                       	<div class="tab-pane" id="tab6">
+                        <div class="span12" style="padding: 1%; margin-left: 0">
+                        <div class="widget-box" id="divEquipamento">
+                        <div class="widget-content nopadding">
+                                    <table  width="100%" class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th width="15%">Equipamento</th>
+                                                <th width="15%">Modelo/Cor</th>
+                                                <th width="15%">Nº Série</th>
+                                                <th width="5%">Voltagem</th>
+                                                <th width="50%">Observação</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            foreach ($equipamento as $a) {
+                                                echo '<tr>';
+                                                echo '<td>' . $a->equipamento . '</td>';
+                                                echo '<td>' . $a->modelo . '</td>';
+												echo '<td>' . $a->num_serie . '</td>';
+												echo '<td>' . $a->voltagem . '</td>';
+												echo '<td>' . $a->observacao . '</td>';
+                                                echo '</tr>';}?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                        
+                        <!-- Fim tab Equipamentos -->
+                        
+                        </div>
 
                 </div>
 

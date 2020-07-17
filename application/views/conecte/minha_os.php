@@ -214,7 +214,7 @@
 
                     function Popup(data) {
                         var mywindow = window.open('', 'MapOs', 'height=600,width=800');
-                        mywindow.document.write('<html><head><title>Map Os</title>');
+                        mywindow.document.write('<html><head><title><?php echo $this->config->item('app_name') ?></title>');
                         mywindow.document.write("<link rel='stylesheet' href='<?php echo base_url(); ?>assets/css/bootstrap.min.css' /><link rel='stylesheet' href='<?php echo base_url(); ?>assets/css/bootstrap-responsive.min.css' />");
                         mywindow.document.write("<link rel='stylesheet' href='<?php echo base_url(); ?>assets/css/matrix-style.css' /> <link rel='stylesheet' href='<?php echo base_url(); ?>assets/css/matrix-media.css' />");
 

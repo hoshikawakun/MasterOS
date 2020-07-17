@@ -149,7 +149,7 @@
                 <table class="table table-bordered ">
                     <thead>
                         <tr style="backgroud-color: #2D335B">
-                            <th>N° OS</th>
+                            <th>OS N°</th>
                             <th>Data de Entrada</th>
                             <th>Descricao</th>
                             <th>Defeito</th>
@@ -173,7 +173,7 @@
                 <table class="table table-bordered ">
                     <thead>
                         <tr style="backgroud-color: #2D335B">
-                            <th>N° OS</th>
+                            <th>OS N°</th>
                             <th>Data de Entrada</th>
                             <th>Descricao</th>
                             <th>Defeito</th>

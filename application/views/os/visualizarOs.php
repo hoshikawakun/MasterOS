@@ -38,12 +38,17 @@ $totalProdutos = 0; ?>
                                     <tr>
                                         <td colspan="3" class="alert">Você precisa configurar os dados do emitente. >>><a href="<?php echo base_url(); ?>index.php/mapos/emitente">Configurar</a>
                                             <<<</td> </tr> <?php } else { ?> <tr>
-                                        <td style="width: 25%"><img src=" <?php echo $emitente[0]->url_logo; ?> " style="max-height: 100px"></td>
-                                        <td> <span style="font-size: 20px; "> <?php echo $emitente[0]->nome; ?></span> </br><span><?php echo $emitente[0]->cnpj; ?> </br> <?php echo $emitente[0]->rua . ', ' . $emitente[0]->numero . ' - ' . $emitente[0]->bairro . ' - ' . $emitente[0]->cidade . ' - ' . $emitente[0]->uf; ?> </span> </br> <span> E-mail: <?php echo $emitente[0]->email . ' - Fone: ' . $emitente[0]->telefone; ?></span></td>
-                                                <td style="width: 25%; text-align: center">
-        <span style="font-size: 12px; "><b>N° OS: </b><span><?php echo $result->idOs ?></span></br>
+                                      <td style="width: 25%"><br><img src=" <?php echo $emitente[0]->url_logo; ?> " style="max-height: 100px"></td>
+                                        <td> <span style="font-size: 20px; "> <?php echo $emitente[0]->nome; ?></span> </br><span><?php echo $emitente[0]->cnpj; ?> </br> <?php echo $emitente[0]->rua . ', ' . $emitente[0]->numero . ' - ' . $emitente[0]->bairro . ' - ' . $emitente[0]->cidade . ' - ' . $emitente[0]->uf; ?> </span> </br> <span> E-mail: <?php echo $emitente[0]->email . ' <br>Fone: ' . $emitente[0]->telefone; ?></span></td>
+        
+        <td style="width: 25%; text-align: center">
+        <span style="font-size: 12px; "><b>OS N°: </b><span><?php echo $result->idOs ?></span></br>
         <span style="font-size: 12px; "><b>STATUS OS: </b><?php echo $result->status ?></span></br>
-        <span style="font-size: 12px; "><b>Data de Entrada: </b><?php echo date('d/m/Y', strtotime($result->dataInicial)); ?></span></td>
+        <span style="font-size: 12px; "><b>Data de Entrada: </b><?php echo date('d/m/Y', strtotime($result->dataInicial)); ?></span></br>
+        <?php if ($result->dataSaida != null) { ?>
+        <span style="font-size: 12px; "><b>Data de Saida: </b><?php echo htmlspecialchars_decode($result->dataSaida) ?><?php } ?></span></br>
+        <?php if ($result->garantia != null) { ?>
+        <span style="font-size: 12px; "><b>Garantia até: </b><?php echo htmlspecialchars_decode($result->garantia) ?><?php } ?></span></br></td>
                                     </tr>
 
                                 <?php } ?>
@@ -125,11 +130,38 @@ $totalProdutos = 0; ?>
                                         </td>
                                     </tr>
                                 <?php } ?>
+                                <td><span style="font-size: 13px"></td>
                             </tbody>
                         </table>
+                        
+						<?php if ($equipamento != null) { ?>
+                            <table width="100%" class="table table-bordered table-condensed" id="tblEquipamento">
+                                <thead>
+                                    <tr>
+                                        <th width="20%">Equipamento</th>
+                                        <th width="20%">Modelo/Cor</th>
+                                        <th width="15%">Nº Série</th>
+                                        <th width="5%">Voltagem</th>
+                                        <th width="40%">Observação</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
 
-                        <?php if ($produtos != null) { ?>
-                            <br />
+                                    foreach ($equipamento as $e) {
+
+                                        		echo '<tr>';
+                                                echo '<td>' . $e->equipamento . '</td>';
+                                                echo '<td>' . $e->modelo . '</td>';
+												echo '<td>' . $e->num_serie . '</td>';
+												echo '<td>' . $e->voltagem . '</td>';
+												echo '<td>' . $e->observacao . '</td>';
+                                                echo '</tr>';} ?>
+    									</tbody>
+                            </table>
+                        <?php } ?>
+						
+						<?php if ($produtos != null) { ?>
                             <table width="100%" class="table table-bordered table-condensed" id="tblProdutos">
                                 <thead>
                                     <tr>
@@ -195,7 +227,7 @@ $totalProdutos = 0; ?>
                         <?php } ?>
                         <?php
                         if ($totalProdutos != 0 || $totalServico != 0) {
-                            echo "<h4 style='text-align: right'>Valor Total: R$" . number_format($totalProdutos + $totalServico, 2, ',', '.') . "</h4>";
+                            echo "<h4 style='font-size: 15px; text-align: right'>Valor Total: R$" . number_format($totalProdutos + $totalServico, 2, ',', '.') . "</h4>";
                         }
                         ?>
                     </div>

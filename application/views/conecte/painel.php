@@ -16,47 +16,63 @@
 <div class="span12" style="margin-left: 0">
 
     <div class="widget-box">
-        <div class="widget-title"><span class="icon"><i class="fas fa-signal"></i></span>
+        <div class="widget-title"><span class="icon"><i class="fas fa-diagnoses"></i></span>
             <h5>Últimas Ordens de Serviço</h5>
         </div>
         <div class="widget-content">
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Data de Entrada</th>
-                        <th>Garantia</th>
-                        <th>Status</th>
-                        <th></th>
+                        	<th>#</th>
+                            <th>Data de Entrada</th>
+                            <th>Data de Saida</th>
+                            <th>Garantia até</th>
+                            <th>Status</th>
+                            <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
-                    if ($os != null) {
-                        foreach ($os as $o) {
-
-
-                            echo '<tr>';
-                            echo '<td>' . $o->idOs . '</td>';
-                            echo '<td>' . date('d/m/Y', strtotime($o->dataInicial)) . '</td>';
-                            echo '<td>' . date('d/m/Y', strtotime($o->dataFinal)) . '</td>';
-                            echo '<td>' . $o->garantia . '</td>';
-                            echo '<td>' . $o->status . '</td>';
-                            echo '<td> <a href="' . base_url() . 'index.php/mine/visualizarOs/' . $o->idOs . '" class="btn"> <i class="fas fa-eye" ></i> </a></td>';
-                            echo '</tr>';
-                        }
-                    } else {
-                        echo '<tr><td colspan="3">Nenhum ordem de serviço encontrada.</td></tr>';
-                    }
-
-                    ?>
+                    <?php foreach ($os as $r) {
+                                $dataInicial = date(('d/m/Y'), strtotime($r->dataInicial));
+                                $dataFinal = date(('d/m/Y'), strtotime($r->dataFinal));
+                if ($r->status == "Orçamento") {$status = '<span class="label label-sonic01">Orçamento</span>';}
+			elseif ($r->status == "Orçamento Concluido") {$status = '<span class="label label-sonic02">Orçamento Concluido</span>';}
+			elseif ($r->status == "Orçamento Aprovado") {$status = '<span class="label label-sonic03">Orçamento Aprovado</span>';}
+			elseif ($r->status == "Em Andamento") {$status = '<span class="label label-sonic04">Em Andamento</span>';}
+			elseif ($r->status == "Aguardando Peças") {$status = '<span class="label label-sonic05">Aguardando Peças</span>';}
+			elseif ($r->status == "Serviço Concluido") {$status = '<span class="label label-sonic06">Serviço Concluido</span>';}
+			elseif ($r->status == "Sem Reparo") {$status = '<span class="label label-sonic07">Sem Reparo</span>';}
+			elseif ($r->status == "Não Autorizado") {$status = '<span class="label label-sonic08">Não Autorizado</span>';}
+			elseif ($r->status == "Contato sem Sucesso") {$status = '<span class="label label-sonic09">Contato sem Sucesso</span>';}
+			elseif ($r->status == "Cancelado") {$status = '<span class="label label-sonic10">Cancelado</span>';}
+			elseif ($r->status == "Pronto-Despachar") {$status = '<span class="label label-sonic11">Pronto-Despachar</span>';}
+			elseif ($r->status == "Enviado") {$status = '<span class="label label-sonic12">Enviado</span>';}
+			elseif ($r->status == "Aguardando Codigo Rastreio") {$status = '<span class="label label-sonic13">Aguardando Codigo Rastreio</span>';}
+			elseif ($r->status == "Aguardando Entrega Correio") {$status = '<span class="label label-sonic14">Aguardando Entrega Correio</span>';}
+			elseif ($r->status == "Entregue - A Receber") {$status = '<span class="label label-sonic15">Entregue - A Receber</span>';}
+			elseif ($r->status == "Garantia") {$status = '<span class="label label-sonic16">Garantia</span>';}
+			elseif ($r->status == "Abandonado") {$status = '<span class="label label-sonic17">Abandonado</span>';}
+			elseif ($r->status == "Comprado pela Loja") {$status = '<span class="label label-sonic18">Comprado pela Loja</span>';}
+			elseif ($r->status == "Entregue - Faturado") {$status = '<span class="label label-sonic19">Entregue - Faturado</span>';}
+								
+                                echo '<tr>';
+                                echo '<td>' . $r->idOs . '</td>';
+                                echo '<td>' . $dataInicial . '</td>';
+                                echo '<td>' . $r->dataSaida . '</td>';
+								echo '<td>' . $r->garantia . '</td>';
+                                echo '<td>' . $status . '</td>';
+								echo '<td><a href="' . base_url() . 'index.php/mine/visualizarOs/' . $r->idOs . '" class="btn tip-top" title="Visualizar e Imprimir"><i class="fas fa-eye"></i></a>
+                                  <a href="' . base_url() . 'index.php/mine/imprimirOs/' . $r->idOs . '" target="_blank" class="btn btn-inverse tip-top" title="Imprimir"><i class="fas fa-print"></i></a>
+                              </td>';
+                                echo '</tr>';
+                            } ?>
                 </tbody>
             </table>
         </div>
     </div>
 
     <div class="widget-box">
-        <div class="widget-title"><span class="icon"><i class="fas fa-signal"></i></span>
+        <div class="widget-title"><span class="icon"><i class="fas fa-shopping-cart"></i></span>
             <h5>Últimas Compras</h5>
         </div>
         <div class="widget-content">
@@ -97,4 +113,5 @@
         </div>
     </div>
 
+    </div>
 </div>

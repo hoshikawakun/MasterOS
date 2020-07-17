@@ -153,7 +153,7 @@ class Mine extends CI_Controller
 
         $config['base_url'] = base_url() . 'index.php/mine/compras/';
         $config['total_rows'] = $this->Conecte_model->count('vendas', $this->session->userdata('cliente_id'));
-        $config['per_page'] = 20;
+        $config['per_page'] = $this->data['configuration']['per_page'];
         $config['next_link'] = 'Próxima';
         $config['prev_link'] = 'Anterior';
         $config['full_tag_open'] = '<div class="pagination alternate"><ul>';
@@ -193,7 +193,7 @@ class Mine extends CI_Controller
 
         $config['base_url'] = base_url() . 'index.php/mine/os/';
         $config['total_rows'] = $this->Conecte_model->count('os', $this->session->userdata('cliente_id'));
-        $config['per_page'] = 20;
+        $config['per_page'] = $this->data['configuration']['per_page'];
         $config['next_link'] = 'Próxima';
         $config['prev_link'] = 'Anterior';
         $config['full_tag_open'] = '<div class="pagination alternate"><ul>';
@@ -235,6 +235,7 @@ class Mine extends CI_Controller
         $data['result'] = $this->os_model->getById($this->uri->segment(3));
         $data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
         $data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
+		$data['equipamento'] = $this->os_model->getEquipamento($this->uri->segment(3));
         $data['emitente'] = $this->mapos_model->getEmitente();
 
         if ($data['result']->idClientes != $this->session->userdata('cliente_id')) {
@@ -260,6 +261,7 @@ class Mine extends CI_Controller
         $data['result'] = $this->os_model->getById($this->uri->segment(3));
         $data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
         $data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
+        $data['equipamento'] = $this->os_model->getEquipamento($this->uri->segment(3));
         $data['emitente'] = $this->mapos_model->getEmitente();
 
         if ($data['result']->idClientes != $this->session->userdata('cliente_id')) {
@@ -344,6 +346,7 @@ class Mine extends CI_Controller
 
                 $data['produtos'] = $this->os_model->getProdutos($id);
                 $data['servicos'] = $this->os_model->getServicos($id);
+                $data['equipamento'] = $this->os_model->getEquipamento($id);
                 $data['emitente'] = $this->mapos_model->getEmitente();
 
                 $this->load->view('conecte/minha_os', $data);
@@ -420,6 +423,7 @@ class Mine extends CI_Controller
             $this->data['result'] = $this->os_model->getById($id);
             $this->data['produtos'] = $this->os_model->getProdutos($id);
             $this->data['servicos'] = $this->os_model->getServicos($id);
+			$this->data['equipamento'] = $this->os_model->getEquipamento($id);
             $this->data['anexos'] = $this->os_model->getAnexos($id);
 
             if ($this->data['result']->idClientes != $this->session->userdata('cliente_id')) {

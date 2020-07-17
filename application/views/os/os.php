@@ -29,7 +29,7 @@
                 <option value="Cancelado">Cancelado</option>
 				<option value="Pronto-Despachar">Pronto-Despachar</option>
                 <option value="Enviado">Enviado</option>
-                <option value="Aguardando Entrega Correio">Aguardando Codigo Rastreio</option>
+                <option value="Aguardando Codigo Rastreio">Aguardando Codigo Rastreio</option>
                 <option value="Aguardando Entrega Correio">Aguardando Entrega Correio</option>
                 <option value="Entregue - A Receber">Entregue - A Receber</option>
 				<option value="Garantia">Garantia</option>
@@ -61,7 +61,7 @@
         <table width="100%" class="table table-bordered ">
                 <thead>
                     <tr style="background-color: #2D335B">
-                        <th width="5%">N° OS</th>
+                        <th width="5%">OS N°</th>
                         <th>Cliente</th>
                         <th>Responsável</th>
                         <th width="10%">Data de Entrada</th>

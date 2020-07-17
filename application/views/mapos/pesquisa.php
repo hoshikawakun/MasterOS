@@ -9,19 +9,16 @@
             </div>
         </form>
     </div>
-</div>
     <div class="span12" style="margin-left: 0; margin-top: 0">
         <!--Produtoss-->
         <div class="span12">
-            <div class="widget-box" style="min-height: 200px">
-                <div class="widget-title">
-                    <span class="icon">
-                        <i class="fas fa-shopping-bag"></i>
-                    </span>
-                    <h5>Produtos</h5>
-                </div>
-                <div class="widget-content nopadding">
-                    <table class="table table-bordered ">
+        <div class="widget-box">
+            <div class="widget-title">
+                <span class="icon"><i class="fas fa-shopping-bag"></i></span>
+                <h5>Produtos</h5>
+            </div>
+            <div class="widget-content">
+                <table class="table table-bordered">
                         <thead>
                             <tr style="backgroud-color: #2D335B">
                                 <th>#</th>
@@ -61,15 +58,13 @@
 	<div class="span12" style="margin-left: 0">
         <!--Clientes-->
         <div class="span12">
-            <div class="widget-box" style="min-height: 200px">
-                <div class="widget-title">
-                    <span class="icon">
-                        <i class="fas fa-user"></i>
-                    </span>
-                    <h5>Clientes</h5>
-                </div>
-                <div class="widget-content nopadding">
-                    <table class="table table-bordered ">
+        <div class="widget-box">
+            <div class="widget-title">
+                <span class="icon"><i class="fas fa-user"></i></span>
+                <h5>Clientes</h5>
+            </div>
+            <div class="widget-content">
+                <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -109,63 +104,15 @@
     </div>
 </div>
 	<div class="span12" style="margin-left: 0">
-    <!--Serviços-->
+        <!--Ordens de Serviço-->
     <div class="span12">
-        <div class="widget-box" style="min-height: 200px">
+        <div class="widget-box">
             <div class="widget-title">
-                <span class="icon">
-                    <i class="fas fa-wrench"></i>
-                </span>
-                <h5>Serviços</h5>
-            </div>
-            <div class="widget-content nopadding">
-                <table class="table table-bordered ">
-                    <thead>
-                        <tr style="backgroud-color: #2D335B">
-                            <th>#</th>
-                            <th>Nome</th>
-                            <th>Preço</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        if ($servicos == null) {
-                            echo '<tr><td colspan="4">Nenhum serviço foi encontrado.</td></tr>';
-                        }
-                        foreach ($servicos as $r) {
-                            echo '<tr>';
-                            echo '<td>' . $r->idServicos . '</td>';
-                            echo '<td>' . $r->nome . '</td>';
-                            echo '<td>' . $r->preco . '</td>';
-                            echo '<td>';
-                            if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eServico')) {
-                                echo '<a href="' . base_url() . 'index.php/servicos/editar/' . $r->idServicos . '" class="btn btn-info tip-top" title="Editar Serviço"><i class="fas fa-edit"></i></a>';
-                            }
-                            echo '</td>';
-                            echo '</tr>';
-                        }
-                        ?>
-                        <tr>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
-	<div class="span12" style="margin-left: 0">
-    <!--Ordens de Serviço-->
-    <div class="span12">
-        <div class="widget-box" style="min-height: 200px">
-            <div class="widget-title">
-                <span class="icon">
-                    <i class="fas fa-diagnoses"></i>
-                </span>
+                <span class="icon"><i class="fas fa-diagnoses"></i></span>
                 <h5>Ordens de Serviço</h5>
             </div>
-            <div class="widget-content nopadding">
-                <table class="table table-bordered ">
+            <div class="widget-content">
+                <table class="table table-bordered">
                     <thead>
                         <tr style="backgroud-color: #2D335B">
                             <th>#</th>
@@ -194,6 +141,50 @@
                             }
                             if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
                                 echo '<a href="' . base_url() . 'index.php/os/editar/' . $r->idOs . '" class="btn btn-info tip-top" title="Editar OS"><i class="fas fa-edit"></i></a>';
+                            }
+                            echo '</td>';
+                            echo '</tr>';
+                        }
+                        ?>
+                        <tr>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="span12" style="margin-left: 0">
+    <!--Serviços-->
+    <div class="span12">
+        <div class="widget-box">
+            <div class="widget-title">
+                <span class="icon"><i class="fas fa-wrench"></i></span>
+                <h5>Serviços</h5>
+            </div>
+            <div class="widget-content">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr style="backgroud-color: #2D335B">
+                            <th>#</th>
+                            <th>Nome</th>
+                            <th>Preço</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        if ($servicos == null) {
+                            echo '<tr><td colspan="4">Nenhum serviço foi encontrado.</td></tr>';
+                        }
+                        foreach ($servicos as $r) {
+                            echo '<tr>';
+                            echo '<td>' . $r->idServicos . '</td>';
+                            echo '<td>' . $r->nome . '</td>';
+                            echo '<td>' . $r->preco . '</td>';
+                            echo '<td>';
+                            if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eServico')) {
+                                echo '<a href="' . base_url() . 'index.php/servicos/editar/' . $r->idServicos . '" class="btn btn-info tip-top" title="Editar Serviço"><i class="fas fa-edit"></i></a>';
                             }
                             echo '</td>';
                             echo '</tr>';
