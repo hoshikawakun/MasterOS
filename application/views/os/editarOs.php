@@ -72,7 +72,7 @@
 <option <?php if($result->status == 'Cancelado'){echo 'selected';} ?> value="Cancelado">Cancelado</option>
 <option <?php if($result->status == 'Pronto-Despachar'){echo 'selected';} ?> value="Pronto-Despachar">Pronto-Despachar</option>
 <option <?php if($result->status == 'Enviado'){echo 'selected';} ?> value="Enviado">Enviado</option>
-<option <?php if($result->status == 'Aguardando Codigo Rastreio'){echo 'selected';} ?> value="Aguardando Codigo Rastreio">Aguardando Codigo Rastreio</option>
+<option <?php if($result->status == 'Aguardando Envio'){echo 'selected';} ?> value="Aguardando Envio">Aguardando Envio</option>
 <option <?php if($result->status == 'Aguardando Entrega Correio'){echo 'selected';} ?> value="Aguardando Entrega Correio">Aguardando Entrega Correio</option>
 <option <?php if($result->status == 'Entregue - A Receber'){echo 'selected';} ?> value="Entregue - A Receber">Entregue - A Receber</option>
 <option <?php if($result->status == 'Garantia'){echo 'selected';} ?> value="Garantia">Garantia</option>

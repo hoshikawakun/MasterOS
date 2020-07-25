@@ -29,7 +29,7 @@
                 <option value="Cancelado">Cancelado</option>
 				<option value="Pronto-Despachar">Pronto-Despachar</option>
                 <option value="Enviado">Enviado</option>
-                <option value="Aguardando Codigo Rastreio">Aguardando Codigo Rastreio</option>
+                <option value="Aguardando Envio">Aguardando Envio</option>
                 <option value="Aguardando Entrega Correio">Aguardando Entrega Correio</option>
                 <option value="Entregue - A Receber">Entregue - A Receber</option>
 				<option value="Garantia">Garantia</option>
@@ -123,7 +123,7 @@
 				case 'Enviado':
                     $cor = '#99CC33';
                     break;
-				case 'Aguardando Codigo Rastreio':
+				case 'Aguardando Envio':
                     $cor = '#CC66CC';
                     break;
 				case 'Aguardando Entrega Correio':

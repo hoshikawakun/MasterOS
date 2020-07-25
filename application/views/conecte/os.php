@@ -74,7 +74,7 @@ if (!$results) {
 			elseif ($r->status == "Cancelado") {$status = '<span class="label label-sonic10">Cancelado</span>';}
 			elseif ($r->status == "Pronto-Despachar") {$status = '<span class="label label-sonic11">Pronto-Despachar</span>';}
 			elseif ($r->status == "Enviado") {$status = '<span class="label label-sonic12">Enviado</span>';}
-			elseif ($r->status == "Aguardando Codigo Rastreio") {$status = '<span class="label label-sonic13">Aguardando Codigo Rastreio</span>';}
+			elseif ($r->status == "Aguardando Envio") {$status = '<span class="label label-sonic13">Aguardando Envio</span>';}
 			elseif ($r->status == "Aguardando Entrega Correio") {$status = '<span class="label label-sonic14">Aguardando Entrega Correio</span>';}
 			elseif ($r->status == "Entregue - A Receber") {$status = '<span class="label label-sonic15">Entregue - A Receber</span>';}
 			elseif ($r->status == "Garantia") {$status = '<span class="label label-sonic16">Garantia</span>';}

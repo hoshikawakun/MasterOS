@@ -67,7 +67,7 @@
                 							<option value="Cancelado">Cancelado</option>
 											<option value="Pronto-Despachar">Pronto-Despachar</option>
                 							<option value="Enviado">Enviado</option>
-                							<option value="Aguardando Entrega Correio">Aguardando Codigo Rastreio</option>
+                							<option value="Aguardando Envio">Aguardando Envio</option>
                 							<option value="Aguardando Entrega Correio">Aguardando Entrega Correio</option>
                 							<option value="Entregue - A Receber">Entregue - A Receber</option>
 											<option value="Garantia">Garantia</option>
