@@ -79,9 +79,45 @@ class Relatorios extends MY_Controller
             redirect(base_url());
         }
 
-        $data['title'] = 'Relatório de Clientes';
+        $format = $this->input->get('format');
+        
+        if($format == 'xls'){
+            $clientes = $this->Relatorios_model->clientesRapid($array = true);
+            $cabecalho = array(
+                'Código' => 'integer', 
+                'Nome' => 'string', 
+                'Sexo' => 'string', 
+                'Pessoa Física' => 'string', 
+                'Documento' => 'string', 
+                'Telefone' => 'string', 
+                'Celular' => 'string', 
+                'E-mail' => 'string',
+                'Data de Cadastro' => 'YYYY-MM-DD',
+                'Rua' => 'string',
+                'Número' => 'string',
+                'Bairro' => 'string',
+                'Cidade' => 'string',
+                'Estado' => 'string',
+                'CEP' => 'string',
+                'Contato' => 'string',
+                'Complemento' => 'string',
+            );
+
+            $writer = new XLSXWriter();
+    
+            $writer->writeSheetHeader('Sheet1', $cabecalho);
+            foreach ($clientes as $cliente)
+                $writer->writeSheetRow('Sheet1', $cliente);
+    
+            $arquivo = $writer->writeToString();
+            $this->load->helper('download');
+            force_download('relatorio_clientes.xlsx', $arquivo);
+            return;
+        }
+
         $data['clientes'] = $this->Relatorios_model->clientesRapid();
         $data['emitente'] = $this->Mapos_model->getEmitente();
+        $data['title'] = 'Relatório de Clientes';
         $data['topo'] = $this->load->view('relatorios/imprimir/imprimirTopo', $data, true);
 
         $this->load->helper('mpdf');
