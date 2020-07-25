@@ -81,16 +81,16 @@ class Relatorios extends MY_Controller
 
         $format = $this->input->get('format');
         
-        if($format == 'xls'){
+        if ($format == 'xls') {
             $clientes = $this->Relatorios_model->clientesRapid($array = true);
-            $cabecalho = array(
-                'Código' => 'integer', 
-                'Nome' => 'string', 
-                'Sexo' => 'string', 
-                'Pessoa Física' => 'string', 
-                'Documento' => 'string', 
-                'Telefone' => 'string', 
-                'Celular' => 'string', 
+            $cabecalho = [
+                'Código' => 'integer',
+                'Nome' => 'string',
+                'Sexo' => 'string',
+                'Pessoa Física' => 'string',
+                'Documento' => 'string',
+                'Telefone' => 'string',
+                'Celular' => 'string',
                 'E-mail' => 'string',
                 'Data de Cadastro' => 'YYYY-MM-DD',
                 'Rua' => 'string',
@@ -101,13 +101,14 @@ class Relatorios extends MY_Controller
                 'CEP' => 'string',
                 'Contato' => 'string',
                 'Complemento' => 'string',
-            );
+            ];
 
             $writer = new XLSXWriter();
     
             $writer->writeSheetHeader('Sheet1', $cabecalho);
-            foreach ($clientes as $cliente)
+            foreach ($clientes as $cliente) {
                 $writer->writeSheetRow('Sheet1', $cliente);
+            }
     
             $arquivo = $writer->writeToString();
             $this->load->helper('download');
