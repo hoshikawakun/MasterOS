@@ -71,17 +71,34 @@ class Conecte_model extends CI_Model
         $this->db->select($fields);
         $this->db->from($table);
         $this->db->join('usuarios', 'os.usuarios_id = usuarios.idUsuarios', 'left');
+		$this->db->join('produtos_os', 'produtos_os.os_id = os.idOs', 'left');
+        $this->db->join('servicos_os', 'servicos_os.os_id = os.idOs', 'left');
         $this->db->where('clientes_id', $cliente);
         $this->db->limit($perpage, $start);
         $this->db->order_by('idOs', 'desc');
-        if ($where) {
-            $this->db->where($where);
-        }
-        
         $query = $this->db->get();
         
         $result =  !$one  ? $query->result() : $query->row();
         return $result;
+    }
+
+    public function getProdutos($id = null)
+    {
+
+        $this->db->select('produtos_os.*, produtos.*');
+        $this->db->from('produtos_os');
+        $this->db->join('produtos', 'produtos.idProdutos = produtos_os.produtos_id');
+        $this->db->where('os_id', $id);
+        return $this->db->get()->result();
+    }
+
+    public function getServicos($id = null)
+    {
+        $this->db->select('servicos_os.*, servicos.nome, servicos.preco as precoVenda');
+        $this->db->from('servicos_os');
+        $this->db->join('servicos', 'servicos.idServicos = servicos_os.servicos_id');
+        $this->db->where('os_id', $id);
+        return $this->db->get()->result();
     }
 
     public function count($table, $cliente)

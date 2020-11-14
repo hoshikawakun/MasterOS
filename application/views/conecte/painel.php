@@ -56,14 +56,14 @@
 			elseif ($r->status == "Entregue - Faturado") {$status = '<span class="label label-sonic19">Entregue - Faturado</span>';}
 								
                                 echo '<tr>';
-                                echo '<td>' . $r->idOs . '</td>';
-                                echo '<td>' . $dataInicial . '</td>';
-                                echo '<td>' . $r->dataSaida . '</td>';
-								echo '<td>' . $r->garantia . '</td>';
-                                echo '<td>' . $status . '</td>';
-								echo '<td><a href="' . base_url() . 'index.php/mine/visualizarOs/' . $r->idOs . '" class="btn tip-top" title="Visualizar e Imprimir"><i class="fas fa-eye"></i></a>
+                                echo '<td><div align="center">' . $r->idOs . '</div></td>';
+                                echo '<td><div align="center">' . $dataInicial . '</div></td>';
+                                echo '<td><div align="center">' . $r->dataSaida . '</div></td>';
+								echo '<td><div align="center">' . $r->garantia . '</div></td>';
+                                echo '<td><div align="center">' . $status . '</div></td>';
+								echo '<td><div align="center"><a href="' . base_url() . 'index.php/mine/visualizarOs/' . $r->idOs . '" class="btn tip-top" title="Visualizar e Imprimir"><i class="fas fa-eye"></i></a>
                                   <a href="' . base_url() . 'index.php/mine/imprimirOs/' . $r->idOs . '" target="_blank" class="btn btn-inverse tip-top" title="Imprimir"><i class="fas fa-print"></i></a>
-                              </td>';
+                              </div></td>';
                                 echo '</tr>';
                             } ?>
                 </tbody>
@@ -96,11 +96,11 @@
                                 $faturado = 'Não';
                             }
                             echo '<tr>';
-                            echo '<td>' . $p->idVendas . '</td>';
-                            echo '<td>' . date('d/m/Y', strtotime($p->dataVenda)) . '</td>';
-                            echo '<td>' . $p->nome . '</td>';
-                            echo '<td>' . $faturado . '</td>';
-                            echo '<td> <a href="' . base_url() . 'index.php/mine/visualizarCompra/' . $p->idVendas . '" class="btn"> <i class="fas fa-eye" ></i> </a></td>';
+                            echo '<td><div align="center">' . $p->idVendas . '</div></td>';
+                            echo '<td><div align="center">' . date('d/m/Y', strtotime($p->dataVenda)) . '</div></td>';
+                            echo '<td><div align="center">' . $p->nome . '</div></td>';
+                            echo '<td><div align="center">' . $faturado . '</div></td>';
+                            echo '<td><div align="center"><a href="' . base_url() . 'index.php/mine/visualizarCompra/' . $p->idVendas . '" class="btn"> <i class="fas fa-eye" ></i> </a></div></td>';
                             echo '</tr>';
                         }
                     } else {

@@ -50,29 +50,30 @@
                                     </div>
                                     <div class="span6">
                                         <label for="tecnico">Técnico / Responsável</label>
-                                        <input disabled="disabled" id="tecnico" class="span12" type="text" name="tecnico" value="<?php echo $result->nome ?>" />
+                                        <input name="tecnico" type="text" disabled="disabled" class="span12" id="tecnico" value="<?php echo $result->nome ?>" readonly="readonly" />
 
                                     </div>
                                 </div>
                                 <div class="span12" style="padding: 1%; margin-left: 0">
                                     <div class="span3">
                                         <label for="status">Status<span class="required"></span></label>
-                                        <input disabled="disabled" type="text" name="status" id="status" value="<?php echo $result->status; ?>">
+                                        <input name="status" type="text" disabled="disabled" id="status" value="<?php echo $result->status; ?>" readonly="readonly">
 
                                     </div>
                                     <div class="span3">
-                                        <label for="dataInicial">Data de Entrada<span class="required">*</span></label>
-                                        <input id="dataInicial" disabled="disabled" class="span12 datepicker" type="text" name="dataInicial" value="<?php echo date('d/m/Y', strtotime($result->dataInicial)); ?>" />
-                                    </div>
+                                      <label for="dataInicial">Data de Entrtada<span class="required">*</span></label>
+                                            <input name="dataInicial" type="text" disabled="disabled" class="span12 datepicker" id="dataInicial" autocomplete="off" value="<?php echo date('d/m/Y', strtotime($result->dataInicial)); ?>" readonly="readonly" /><label for="dataSaida">Data de Saida</label>
+                                            <input name="dataSaida" type="text" disabled="disabled" class="span12 datepicker" id="dataSaida" autocomplete="off" value="<?php echo $result->dataSaida ?>" readonly="readonly" />
+                                  </div>
 
                                     <div class="span3">
                                         <label for="garantia">Garantia até</label>
-                                        <input id="garantia" disabled="disabled" type="text" class="span12" name="garantia" value="<?php echo $result->garantia ?>" />
+                                        <input name="garantia" type="text" disabled="disabled" class="span12" id="garantia" value="<?php echo $result->garantia ?>" readonly="readonly" />
                                     </div>
                                   
                                   <div class="span3">
                                     <label for="rastreio">Rastreio</label>
-                                        <input id="rastreio" disabled="disabled" type="text" class="span12" name="rastreio" value="<?php echo $result->rastreio ?>" /><a href="https://www.linkcorreios.com.br/<?php echo $result->rastreio ?>" title="Rastrear" target="_new" class="btn btn-warning"><i class="fas fa-envelope"></i> Rastrear</a>
+                                        <input name="rastreio" type="text" disabled="disabled" class="span12" id="rastreio" value="<?php echo $result->rastreio ?>" readonly="readonly" /><a href="https://www.linkcorreios.com.br/<?php echo $result->rastreio ?>" title="Rastrear" target="_new" class="btn btn-warning"><i class="fas fa-envelope"></i> Rastrear</a>
                                     </div>
                                 </div>
                                 

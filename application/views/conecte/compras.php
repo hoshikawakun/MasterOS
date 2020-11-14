@@ -55,15 +55,14 @@ if (!$results) { ?>
                                 $faturado = 'Não';
                             }
                             echo '<tr>';
-                            echo '<td>' . $r->idVendas . '</td>';
-                            echo '<td>' . $dataVenda . '</td>';
+                            echo '<td><div align="center">' . $r->idVendas . '</div></td>';
+                            echo '<td><div align="center">' . $dataVenda . '</div></td>';
                             echo '<td>' . $r->nome . '</td>';
-                            echo '<td>' . $faturado . '</td>';
-
-                            echo '<td><a href="' . base_url() . 'index.php/mine/visualizarCompra/' . $r->idVendas . '" class="btn tip-top" title="Visualizar mais detalhes"><i class="fas fa-eye"></i></a>
+                            echo '<td><div align="center">' . $faturado . '</div></td>';
+							echo '<td><div align="center"><a href="' . base_url() . 'index.php/mine/visualizarCompra/' . $r->idVendas . '" class="btn tip-top" title="Visualizar mais detalhes"><i class="fas fa-eye"></i></a>
                       <a href="' . base_url() . 'index.php/mine/imprimirCompra/' . $r->idVendas . '" target="_blank" class="btn btn-inverse tip-top" title="Imprimir"><i class="fas fa-print"></i></a>
                       
-                  </td>';
+                  </div></td>';
                             echo '</tr>';
                         } ?>
                     <tr>
