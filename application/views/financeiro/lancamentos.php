@@ -1,7 +1,6 @@
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/jquery-ui/css/smoothness/jquery-ui-1.9.2.custom.css" />
 <script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery-ui/js/jquery-ui-1.9.2.custom.js"></script>
 <script src="<?php echo base_url() ?>assets/js/sweetalert2.all.min.js"></script>
-<script src="<?php echo base_url() ?>assets/js/dayjs.min.js"></script>
 
 <?php $situacao = $this->input->get('situacao');
 $periodo = $this->input->get('periodo');
@@ -19,10 +18,6 @@ $periodo = $this->input->get('periodo');
   input.valid {
     border-color: #5bb75b;
   }
-
-  textarea {
-    resize: vertical;
-  }
 </style>
 
 
@@ -37,24 +32,40 @@ $periodo = $this->input->get('periodo');
   <form action="<?php echo current_url(); ?>" method="get">
     <div class="span2" style="margin-left: 0">
       <label>Período <i class="fas fa-calendar-day tip-top" title="Lançamentos com vencimento no período."></i></label>
-      <select id="periodo" name="periodo" class="span12">
-        <option value="dia" <?= $this->input->get('periodo') === 'dia' ? 'selected' : '' ?>>Dia</option>
-        <option value="semana" <?= $this->input->get('periodo') === 'semana' ? 'selected' : '' ?>>Semana</option>
-        <option value="mes" <?= $this->input->get('periodo') === 'mes' ? 'selected' : '' ?>>Mês</option>
-        <option value="ano" <?= $this->input->get('periodo') === 'ano' ? 'selected' : '' ?>>Ano</option>
-        <option value="todos" <?= $this->input->get('periodo') === 'todos' ? 'selected' : '' ?>>Todos</option>
-      </select>
+      <select name="periodo" class="span12">
+        <option value="dia">Dia</option>
+        <option value="semana" <?php if ($periodo == 'semana') {
+    echo 'selected';
+} ?>>Semana</option>
+        <option value="mes" <?php if ($periodo == 'mes') {
+    echo 'selected';
+} ?>>Mês</option>
+        <option value="ano" <?php if ($periodo == 'ano') {
+    echo 'selected';
+} ?>>Ano</option>
+        <option value="todos" <?php if ($periodo == 'todos') {
+    echo 'selected';
+} ?>>Todos</option>
       </select>
     </div>
 
     <div class="span2">
-      <label>Vencimento (de) <i class="fas fa-calendar-day tip-top" title="Vencimento (de)"></i></label>
-      <input id="vencimento_de" type="text" class="span12 datepicker" name="vencimento_de" value="<?= $this->input->get('vencimento_de') ? $this->input->get('vencimento_de') : date('d/m/Y') ?>">
-    </div>
-
-    <div class="span2">
-      <label>Vencimento (até) <i class="fas fa-calendar-day tip-top" title="Vencimento (até)"></i></label>
-      <input id="vencimento_ate" type="text" class="span12 datepicker" name="vencimento_ate" value="<?= $this->input->get('vencimento_ate') ? $this->input->get('vencimento_ate') : date('d/m/Y') ?>">
+      <label>Situação <i class="fas fa-sign tip-top" title="Lançamentos com situação específica ou todos."></i></label>
+      <select name="situacao" class="span12">
+        <option value="todos">Todos</option>
+        <option value="previsto" <?php if ($situacao == 'previsto') {
+    echo 'selected';
+} ?>>Previsto</option>
+        <option value="atrasado" <?php if ($situacao == 'atrasado') {
+    echo 'selected';
+} ?>>Atrasado</option>
+        <option value="realizado" <?php if ($situacao == 'realizado') {
+    echo 'selected';
+} ?>>Realizado</option>
+        <option value="pendente" <?php if ($situacao == 'pendente') {
+    echo 'selected';
+} ?>>Pendente</option>
+      </select>
     </div>
 
     <div class="span2">
@@ -63,15 +74,6 @@ $periodo = $this->input->get('periodo');
         <option value="">Todos</option>
         <option value="receita" <?= $this->input->get('tipo') === 'receita' ? 'selected' : '' ?>>Receita</option>
         <option value="despesa" <?= $this->input->get('tipo') === 'despesa' ? 'selected' : '' ?>>Despesa</option>
-      </select>
-    </div>
-
-    <div class="span2">
-      <label>Status <i class="fa fa-file-signature tip-top" title="Tipo."></i></label>
-      <select name="status" class="span12">
-        <option value="">Todos</option>
-        <option value="0" <?= $this->input->get('status') === '0' ? 'selected' : '' ?>>Pendente</option>
-        <option value="1" <?= $this->input->get('status') === '1' ? 'selected' : '' ?>>Pago</option>
       </select>
     </div>
 
@@ -97,7 +99,7 @@ $periodo = $this->input->get('periodo');
 
     </div>
 
-    <div class="widget-content nopadding tab-content">
+    <div class="widget-content nopadding">
 
 
       <table class="table table-bordered " id="divLancamentos">
@@ -109,7 +111,6 @@ $periodo = $this->input->get('periodo');
             <th>Descrição</th>
             <th>Vencimento</th>
             <th>Status</th>
-            <th>Observações</th>
             <th>Valor</th>
             <th>Ações</th>
           </tr>
@@ -118,42 +119,41 @@ $periodo = $this->input->get('periodo');
           <?php
 
           if (!$results) {
-            echo '<tr>
-              <td colspan="8" >Nenhum lançamento encontrado</td>
-            </tr>';
+              echo '<tr>
+                        <td colspan="8" >Nenhum lançamento encontrado</td>
+                      </tr>';
           }
           foreach ($results as $r) {
-            $vencimento = date(('d/m/Y'), strtotime($r->data_vencimento));
-            if ($r->baixado == 0) {
-              $status = 'Pendente';
-            } else {
-              $status = 'Pago';
-            };
-            if ($r->tipo == 'receita') {
-              $label = 'success';
-            } else {
-              $label = 'important';
-            }
-            echo '<tr>';
-            echo '<td>' . $r->idLancamentos . '</td>';
-            echo '<td><span class="label label-' . $label . '">' . ucfirst($r->tipo) . '</span></td>';
-            echo '<td>' . $r->cliente_fornecedor . '</td>';
-            echo '<td>' . $r->descricao . '</td>';
-            echo '<td>' . $vencimento . '</td>';
-            echo '<td>' . $status . '</td>';
-            echo '<td>' . $r->observacoes . '</td>';
-            echo '<td> R$ ' . number_format($r->valor, 2, ',', '.') . '</td>';
+              $vencimento = date(('d/m/Y'), strtotime($r->data_vencimento));
+              if ($r->baixado == 0) {
+                  $status = 'Pendente';
+              } else {
+                  $status = 'Pago';
+              };
+              if ($r->tipo == 'receita') {
+                  $label = 'success';
+              } else {
+                  $label = 'important';
+              }
+              echo '<tr>';
+              echo '<td>' . $r->idLancamentos . '</td>';
+              echo '<td><span class="label label-' . $label . '">' . ucfirst($r->tipo) . '</span></td>';
+              echo '<td>' . $r->cliente_fornecedor . '</td>';
+              echo '<td>' . $r->descricao . '</td>';
+              echo '<td>' . $vencimento . '</td>';
+              echo '<td>' . $status . '</td>';
+              echo '<td> R$ ' . number_format($r->valor, 2, ',', '.') . '</td>';
 
-            echo '<td>';
-            if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eLancamento')) {
-              echo '<a href="#modalEditar" style="margin-right: 1%" data-toggle="modal" role="button" idLancamento="' . $r->idLancamentos . '" descricao="' . $r->descricao . '" valor="' . $r->valor . '" vencimento="' . date('d/m/Y', strtotime($r->data_vencimento)) . '" pagamento="' . date('d/m/Y', strtotime($r->data_pagamento)) . '" baixado="' . $r->baixado . '" cliente="' . $r->cliente_fornecedor . '" formaPgto="' . $r->forma_pgto . '" tipo="' . $r->tipo . '" class="btn btn-info tip-top editar" title="Editar Lançamento"><i class="fas fa-edit"></i></a>';
-            }
-            if ($this->permission->checkPermission($this->session->userdata('permissao'), 'dLancamento')) {
-              echo '<a href="#modalExcluir" data-toggle="modal" role="button" idLancamento="' . $r->idLancamentos . '" class="btn btn-danger tip-top excluir" title="Excluir Lançamento"><i class="fas fa-trash-alt"></i></a>';
-            }
+              echo '<td>';
+              if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eLancamento')) {
+                  echo '<a href="#modalEditar" style="margin-right: 1%" data-toggle="modal" role="button" idLancamento="' . $r->idLancamentos . '" descricao="' . $r->descricao . '" valor="' . $r->valor . '" vencimento="' . date('d/m/Y', strtotime($r->data_vencimento)) . '" pagamento="' . date('d/m/Y', strtotime($r->data_pagamento)) . '" baixado="' . $r->baixado . '" cliente="' . $r->cliente_fornecedor . '" formaPgto="' . $r->forma_pgto . '" tipo="' . $r->tipo . '" class="btn btn-info tip-top editar" title="Editar Lançamento"><i class="fas fa-edit"></i></a>';
+              }
+              if ($this->permission->checkPermission($this->session->userdata('permissao'), 'dLancamento')) {
+                  echo '<a href="#modalExcluir" data-toggle="modal" role="button" idLancamento="' . $r->idLancamentos . '" class="btn btn-danger tip-top excluir" title="Excluir Lançamento"><i class="fas fa-trash-alt"></i></a>';
+              }
 
-            echo '</td>';
-            echo '</tr>';
+              echo '</td>';
+              echo '</tr>';
           } ?>
           <tr>
 
@@ -203,10 +203,6 @@ $periodo = $this->input->get('periodo');
           <input class="span12" id="cliente" type="text" name="cliente" />
         </div>
 
-        <div class="span12" style="margin-left: 0">
-          <label for="observacoes">Observações</label>
-          <textarea class="span12" id="observacoes" name="observacoes"></textarea>
-        </div>
 
       </div>
       <div class="span12" style="margin-left: 0">
@@ -274,10 +270,6 @@ $periodo = $this->input->get('periodo');
           <input class="span12" id="fornecedor" type="text" name="fornecedor" />
         </div>
 
-        <div class="span12" style="margin-left: 0">
-          <label for="observacoes">Observações</label>
-          <textarea class="span12" id="observacoes" name="observacoes"></textarea>
-        </div>
 
       </div>
       <div class="span12" style="margin-left: 0">
@@ -493,7 +485,6 @@ $periodo = $this->input->get('periodo');
         },
         vencimento: {
           required: 'Campo Requerido.'
-
         }
       }
     });
@@ -591,29 +582,6 @@ $periodo = $this->input->get('periodo');
       dateFormat: 'dd/mm/yy'
     });
 
-    $('#periodo').on('change', function(event) {
-      const period = $('#periodo').val();
-
-      switch (period) {
-        case 'dia':
-          $('#vencimento_de').val(dayjs().locale('pt-br').format('DD/MM/YYYY'));
-          $('#vencimento_ate').val(dayjs().locale('pt-br').format('DD/MM/YYYY'));
-          break;
-        case 'semana':
-          $('#vencimento_de').val(dayjs().startOf('week').locale('pt-br').format('DD/MM/YYYY'));
-          $('#vencimento_ate').val(dayjs().endOf('week').locale('pt-br').format('DD/MM/YYYY'));
-          break;
-        case 'mes':
-          $('#vencimento_de').val(dayjs().startOf('month').locale('pt-br').format('DD/MM/YYYY'));
-          $('#vencimento_ate').val(dayjs().endOf('month').locale('pt-br').format('DD/MM/YYYY'));
-          break;
-        case 'ano':
-          $('#vencimento_de').val(dayjs().startOf('year').locale('pt-br').format('DD/MM/YYYY'));
-          $('#vencimento_ate').val(dayjs().endOf('year').locale('pt-br').format('DD/MM/YYYY'));
-          break;
-      }
-    });
-
     $("#cliente_fornecedor").autocomplete({
       source: "<?php echo base_url(); ?>index.php/financeiro/autoCompleteClienteFornecedor",
       minLength: 1,
@@ -621,5 +589,6 @@ $periodo = $this->input->get('periodo');
         $("#cliente_fornecedor").val(ui.item.value);
       }
     });
+
   });
 </script>
