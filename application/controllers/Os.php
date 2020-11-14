@@ -450,6 +450,7 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
         }
 
         $id = $this->input->post('id');
+		$os =$this->os_model->getById($id);
         if ($id == null) {
 
             $this->session->set_flashdata('error', 'Erro ao tentar excluir OS.');
@@ -460,7 +461,9 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
         $this->os_model->delete('produtos_os', 'os_id', $id);
         $this->os_model->delete('anexos', 'os_id', $id);
         $this->os_model->delete('os', 'idOs', $id);
-		$this->os_model->delete('equipamento', 'idOs', $id);
+        if ((int) $os->faturado === 1) {
+            $this->os_model->delete('lancamentos', 'descricao', "Fatura de OS - #${id}");
+        }
 
         log_info('Removeu uma OS. ID: ' . $id);
         $this->session->set_flashdata('success', 'OS excluída com sucesso!');

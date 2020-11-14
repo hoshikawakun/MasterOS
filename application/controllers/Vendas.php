@@ -188,23 +188,25 @@ class Vendas extends MY_Controller
 
     public function excluir()
     {
-
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'dVenda')) {
             $this->session->set_flashdata('error', 'Você não tem permissão para excluir vendas');
             redirect(base_url());
         }
 
-        $id = $this->input->post('id');
-        if ($id == null) {
+        $this->load->model('vendas_model');
 
+        $id = $this->input->post('id');
+        $venda = $this->vendas_model->getById($id);
+        if ($venda == null) {
             $this->session->set_flashdata('error', 'Erro ao tentar excluir venda.');
             redirect(site_url('vendas/gerenciar/'));
         }
 
-        $this->load->model('vendas_model');
-
         $this->vendas_model->delete('itens_de_vendas', 'vendas_id', $id);
         $this->vendas_model->delete('vendas', 'idVendas', $id);
+        if ((int) $venda->faturado === 1) {
+            $this->vendas_model->delete('lancamentos', 'descricao', "Fatura de Venda - #${id}");
+        }
 
         log_info('Removeu uma venda. ID: ' . $id);
 
