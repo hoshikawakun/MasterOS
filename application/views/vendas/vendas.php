@@ -10,14 +10,17 @@
         <h5>Vendas</h5>
     </div>
     <div class="widget-content nopadding">
+	<div class="tab-content">
+</div>
+     </div>
         <table width="100%" class="table table-bordered ">
             <thead>
                 <tr style="background-color: #2D335B">
-                    <th width="8%">#</th>
-                    <th width="10%">Data da Venda</th>
+                    <th>#</th>
+                    <th>Data da Venda</th>
                     <th>Cliente</th>
-                    <th width="12%">Telefone</th>
-                    <th width="8%">Faturado</th>
+                    <th>Telefone</th>
+                    <th>Faturado</th>
                     <th width="17%">Ações</th>
                 </tr>
             </thead>
@@ -36,13 +39,13 @@
                         } else {
                             $faturado = 'Não';
                         }
-                        echo '<tr>';
-                        echo '<td>' . $r->idVendas . '</td>';
-                        echo '<td>' . $dataVenda . '</td>';
-                        echo '<td><a href="' . base_url() . 'index.php/clientes/visualizar/' . $r->idClientes . '">' . $r->nomeCliente . '</a></td>';
-						echo '<td><a href="' . base_url() . 'index.php/clientes/visualizar/' . $r->idClientes . '">' . $r->telefone . '</a></td>';
-                        echo '<td>' . $faturado . '</td>';
-                        echo '<td>';
+			echo '<tr>';
+			echo '<td><div align="center">' . $r->idVendas . '</div></td>';
+			echo '<td><div align="center">' . $dataVenda . '</div></td>';
+			echo '<td><a href="' . base_url() . 'index.php/clientes/visualizar/' . $r->idClientes . '">' . $r->nomeCliente . '</a></td>';
+			echo '<td><div align="center"><a href="' . base_url() . 'index.php/clientes/visualizar/' . $r->idClientes . '">' . $r->telefone . '</a></div></td>';
+			echo '<td><div align="center">' . $faturado . '</div></td>';
+			echo '<td><div align="center">';
                         if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vVenda')) {
                             echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/vendas/visualizar/' . $r->idVendas . '" class="btn tip-top" title="Visualizar mais detalhes"><i class="fas fa-eye"></i></a>';
                             echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/vendas/imprimir/' . $r->idVendas . '" target="_blank" class="btn btn-inverse tip-top" title="Imprimir A4"><i class="fas fa-print"></i></a>';
@@ -53,7 +56,7 @@
                         if ($this->permission->checkPermission($this->session->userdata('permissao'), 'dVenda')) {
                             echo '<a href="#modal-excluir" role="button" data-toggle="modal" venda="' . $r->idVendas . '" class="btn btn-danger tip-top" title="Excluir Venda"><i class="fas fa-trash-alt"></i></a>';
                         }
-                        echo '</td>';
+                        echo '</div></td>';
                         echo '</tr>';
                     } ?>
                 <tr>

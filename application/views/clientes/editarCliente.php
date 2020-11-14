@@ -12,7 +12,11 @@
                 <h5>Editar Cliente</h5>
             </div>
             <div class="widget-content nopadding">
-                <?php if ($custom_error != '') {
+	<div class="tab-content">
+</div>
+     </div>
+
+				<?php if ($custom_error != '') {
     echo '<div class="alert alert-danger">' . $custom_error . '</div>';
 } ?>
                 <form action="<?php echo current_url(); ?>" id="formCliente" method="post" class="form-horizontal">
@@ -30,6 +34,12 @@
                         <div class="controls">
                             <input id="nomeCliente" type="text" name="nomeCliente" value="<?php echo $result->nomeCliente; ?>" />
                         </div>
+                    </div>
+                  <div class="control-group">
+                        <label for="senha" class="control-label">Senha</label>
+                        <div class="controls">
+                            <input id="senha" class="senha" type="text" name="senha" value="<?php echo $result->senha; ?>" />
+                      </div>
                     </div>
                     <div class="control-group">
                         <label for="telefone" class="control-label">Telefone<span class="required">*</span></label>

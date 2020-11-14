@@ -11,12 +11,16 @@
     </div>
 
     <div class="widget-content nopadding">
+	<div class="tab-content">
+</div>
+     </div>
         <table class="table table-bordered ">
             <thead>
                 <tr>
                     <th>Cod.</th>
                     <th>Nome</th>
                     <th>CPF/CNPJ</th>
+                    <th>Senha</th>
                     <th>Telefone</th>
                     <th>Email</th>
                     <th>Ações</th>
@@ -32,12 +36,13 @@
                     }
                     foreach ($results as $r) {
                         echo '<tr>';
-                        echo '<td>' . $r->idClientes . '</td>';
+                        echo '<td><div align="center">' . $r->idClientes . '</div></td>';
 						echo '<td>' . $r->nomeCliente . '</td>';
-                        echo '<td>' . $r->documento . '</td>';
-                        echo '<td>' . $r->telefone . '</td>';
-                        echo '<td>' . $r->email . '</td>';
-                        echo '<td>';
+                        echo '<td><div align="center">' . $r->documento . '</div></td>';
+                        echo '<td><div align="center">' . $r->senha . '</div></td>';
+                        echo '<td><div align="center">' . $r->telefone . '</div></td>';
+                        echo '<td><div align="center">' . $r->email . '</div></td>';
+                        echo '<td><div align="center">';
                         if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vCliente')) {
                             echo '<a href="' . base_url() . 'index.php/clientes/visualizar/' . $r->idClientes . '" style="margin-right: 1%" class="btn tip-top" title="Visualizar mais detalhes"><i class="fas fa-eye"></i></a>';
                         }

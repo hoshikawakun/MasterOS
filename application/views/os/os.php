@@ -58,17 +58,20 @@
         <h5>Ordens de Serviço</h5>
     </div>
     <div class="widget-content nopadding">
+	<div class="tab-content">
+</div>
+     </div>
         <table width="100%" class="table table-bordered ">
                 <thead>
                     <tr style="background-color: #2D335B">
-                        <th width="5%">OS N°</th>
+                        <th>OS N°</th>
                         <th>Cliente</th>
                         <th>Responsável</th>
-                        <th width="10%">Data de Entrada</th>
-                        <th width="8%">Valor Total</th>
-                        <th width="8%">Faturado</th>
-                     	<th width="16%">Status</th>
-                        <th width="26%">Ações</th>
+                        <th>Data de Entrada</th>
+                        <th>Valor Total</th>
+                        <th>Faturado</th>
+                     	<th>Status</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -147,14 +150,14 @@
                             }
                     
                             echo '<tr>';
-                            echo '<td>' . $r->idOs . '</td>';
-                            echo '<td>' . $r->nomeCliente . '</td>';
+                            echo '<td><div align="center">' . $r->idOs . '</div></td>';
+							echo '<td>' . $r->nomeCliente . '</td>';
                             echo '<td>' . $r->nome . '</td>';
-                            echo '<td>' . $dataInicial . '</td>';
-							echo '<td>R$ ' . number_format($r->totalProdutos + $r->totalServicos, 2, ',', '.') . '</td>';
-							echo '<td>R$ ' . number_format($r->valorTotal, 2, ',', '.') . '</td>';
-					echo '<td><span class="badge" style="background-color: ' . $cor . '; border-color: ' . $cor . '">' . $r->status . '</span> </td>';
-                            echo '<td>';
+                            echo '<td><div align="center">' . $dataInicial . '</div></td>';
+							echo '<td><div align="center">R$: ' . number_format($r->totalProdutos + $r->totalServicos, 2, ',', '.') . '</div></td>';
+							echo '<td><div align="center">R$: ' . number_format($r->valorTotal, 2, ',', '.') . '</div></td>';
+					echo '<td><div align="center"><span class="badge" style="background-color: ' . $cor . '; border-color: ' . $cor . '">' . $r->status . '</span></div></td>';
+                            echo '<td><div align="center">';
 						if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
 							echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/visualizar/' . $r->idOs . '" class="btn tip-top" title="Visualizar mais detalhes"><i class="fas fa-eye"></i></a>';
 								}
@@ -163,7 +166,7 @@
 								}
 								if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
                                 $zapnumber = preg_replace("/[^0-9]/", "", $r->celular_cliente);
-                                echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $r->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $r->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($r->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $r->status . '*.%0d%0a%0d%0a' . strip_tags($r->laudoTecnico) . '%0d%0a' . strip_tags($r->observacoes) . '%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] . '*"><i class="fab fa-whatsapp" style="font-size:16px;"></i></a>';
+								echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $r->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $r->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($r->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $r->status . '*.%0d%0a%0d%0a' . strip_tags($r->defeito) . '%0d%0a%0d%0a' . strip_tags($r->laudoTecnico) . '%0d%0a%0d%0a' . strip_tags($r->observacoes) . '%0d%0a%0d%0aValor%20Total&#58%20*'. number_format($r->totalProdutos + $r->totalServicos, 2, ',', '.') . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20esta%20senha%20para%20fazer%20Log-In%20*' . strip_tags($r->senha) . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*"><i class="fab fa-whatsapp" style="font-size:16px;"></i></a>';
                             }
 							if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
                                 echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/imprimir/' . $r->idOs . '" target="_blank" class="btn btn-inverse tip-top" title="Imprimir Normal A4"><i class="fas fa-print"></i></a>';
@@ -175,7 +178,7 @@
 								echo '<a style="margin-right: 1%" target="_new" href="https://www.linkcorreios.com.br/' . $r->rastreio . '" class="btn btn-warning tip-top" title="Rastreio Correio"><i class="fas fa-envelope"></i></a>';
 								}
 							
-                            echo  '</td>';
+                            echo  '</div></td>';
                             echo '</tr>';
                         } ?>
                 </tbody>

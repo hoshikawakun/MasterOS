@@ -34,6 +34,9 @@
             <h5>Arquivos</h5>
         </div>
         <div class="widget-content nopadding">
+	<div class="tab-content">
+</div>
+     </div>
             <table width="100%" class="table table-bordered ">
                 <thead>
                     <tr>
@@ -57,15 +60,15 @@
                               </tr>';
                     }
                     foreach ($results as $r) : ?>
-                        <tr>
-							<td><?= $r->idDocumentos ?></td>
-							<td><a href="<?= $r->url ?>"><a href="<?= $r->url ?>" target="_new"><img src=" <?= $r->url ?> "></td>
-							<td><?= $r->documento ?></td>
-							<td><?= date('d/m/Y', strtotime($r->cadastro)) ?></td>
-                            <td><?= $r->descricao ?></td>
-                            <td><?= $r->tamanho ?> KB</td>
-                            <td><?= $r->tipo ?></td>
-                            <td><?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eArquivo')) : ?>
+                    	<tr>
+                        <td><div align="center"><?= $r->idDocumentos ?></div></td>
+                        <td><div align="center"><a href="<?= $r->url ?>"><a href="<?= $r->url ?>" target="_new"><img src=" <?= $r->url ?> "></div></td>
+                        <td><?= $r->documento ?></td>
+                        <td><div align="center"><?= date('d/m/Y', strtotime($r->cadastro)) ?></div></td>
+                        <td><?= $r->descricao ?></div></td>
+                        <td><div align="center"><?= $r->tamanho ?> KB</div></td>
+                        <td><div align="center"><?= $r->tipo ?></div></td>
+                        <td><div align="center"><?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eArquivo')) : ?>
                                     <a href="<?= base_url() ?>index.php/arquivos/editar/<?= $r->idDocumentos ?>" class="btn btn-info tip-top" style="margin-right: 1%" title="Editar">
                                         <i class="fas fa-edit"></i>
                                     </a>
@@ -76,7 +79,7 @@
                                         <i class="fas fa-trash-alt"></i>
                                     </a>
                                 <?php endif ?>
-                            </td>
+                            </div></td>
                         </tr>
                     <?php endforeach ?>
               </tbody>

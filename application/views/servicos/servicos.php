@@ -10,14 +10,17 @@
         <h5>Serviços</h5>
     </div>
     <div class="widget-content nopadding">
+	<div class="tab-content">
+</div>
+     </div>
         <table width="100%" class="table table-bordered ">
             <thead>
                 <tr style="backgroud-color: #2D335B">
-                    <th width="10%">Cod. Serviço</th>
-                    <th width="35%">Nome</th>
-                    <th width="35%">Descrição</th>
-                    <th width="10%">Preço</th>
-                    <th width="10%">Ações</th>
+                    <th>Cod. Serviço</th>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Preço</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,18 +32,18 @@
                     }
                     foreach ($results as $r) {
                         echo '<tr>';
-                        echo '<td>' . $r->idServicos . '</td>';
+                        echo '<td><div align="center">' . $r->idServicos . '</div></td>';
                         echo '<td>' . $r->nome . '</td>';
                         echo '<td>' . $r->descricao . '</td>';
-						echo '<td>R$ ' . number_format($r->preco, 2, ',', '.') . '</td>';
-                        echo '<td>';
+						echo '<td><div align="center">R$: ' . number_format($r->preco, 2, ',', '.') . '</div></td>';
+                        echo '<td><div align="center">';
                         if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eServico')) {
                             echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/servicos/editar/' . $r->idServicos . '" class="btn btn-info tip-top" title="Editar Serviço"><i class="fas fa-edit"></i></a>';
                         }
                         if ($this->permission->checkPermission($this->session->userdata('permissao'), 'dServico')) {
                             echo '<a href="#modal-excluir" role="button" data-toggle="modal" servico="' . $r->idServicos . '" class="btn btn-danger tip-top" title="Excluir Serviço"><i class="fas fa-trash-alt"></i></a>  ';
                         }
-                        echo '</td>';
+                        echo '</div></td>';
                         echo '</tr>';
                     } ?>
             </tbody>

@@ -13,6 +13,9 @@
         <h5>Produtos</h5>
     </div>
     <div class="widget-content nopadding">
+	<div class="tab-content">
+</div>
+     </div>
         <table width="100%" class="table table-bordered ">
             <thead>
             <tr style="backgroud-color: #2D335B">
@@ -34,12 +37,12 @@
             }
             foreach ($results as $r) {
                 echo '<tr>';
-                echo '<td>' . $r->idProdutos . '</td>';
-                echo '<td>' . $r->codDeBarra . '</td>';
+                echo '<td><div align="center">' . $r->idProdutos . '</div></td>';
+                echo '<td><div align="center">' . $r->codDeBarra . '</div></td>';
                 echo '<td>' . $r->descricao . '</td>';
-                echo '<td>' . $r->estoque . '</td>';
-                echo '<td>R$ ' . number_format($r->precoVenda, 2, ',', '.') . '</td>';
-                echo '<td>';
+                echo '<td><div align="center">' . $r->estoque . '</div></td>';
+                echo '<td><div align="center">R$: ' . number_format($r->precoVenda, 2, ',', '.') . '</div></td>';
+                echo '<td><div align="center">';
                 if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vProduto')) {
                     echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/produtos/visualizar/' . $r->idProdutos . '" class="btn tip-top" title="Visualizar Produto"><i class="fas fa-eye"></i></a>  ';
                 }
@@ -52,7 +55,7 @@
                 if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eProduto')) {
                     echo '<a href="#atualizar-estoque" role="button" data-toggle="modal" produto="' . $r->idProdutos . '" estoque="' . $r->estoque . '" class="btn btn-primary tip-top" title="Atualizar Estoque"><i class="fas fa-plus-square"></i></a>';
                 }
-                echo '</td>';
+                echo '</div></td>';
                 echo '</tr>';
             } ?>
             </tbody>
