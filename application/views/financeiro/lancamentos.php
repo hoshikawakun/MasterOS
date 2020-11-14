@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/jquery-ui/css/smoothness/jquery-ui-1.9.2.custom.css" />
 <script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery-ui/js/jquery-ui-1.9.2.custom.js"></script>
 <script src="<?php echo base_url() ?>assets/js/sweetalert2.all.min.js"></script>
+<script src="<?php echo base_url() ?>assets/js/dayjs.min.js"></script>
 
 <?php $situacao = $this->input->get('situacao');
 $periodo = $this->input->get('periodo');
@@ -18,6 +19,10 @@ $periodo = $this->input->get('periodo');
   input.valid {
     border-color: #5bb75b;
   }
+
+  textarea {
+    resize: vertical;
+  }
 </style>
 
 
@@ -28,125 +33,149 @@ $periodo = $this->input->get('periodo');
   </div>
 <?php } ?>
 
-<div class="span7" style="margin-left: 0">
+<div class="span12" style="margin-left: 0;margin-top: 1rem;">
   <form action="<?php echo current_url(); ?>" method="get">
-    <div class="span4" style="margin-left: 0">
-      &nbsp
-    </div>
-    <div class="span4">
+    <div class="span2" style="margin-left: 0">
       <label>Período <i class="fas fa-calendar-day tip-top" title="Lançamentos com vencimento no período."></i></label>
-      <select name="periodo" class="span12">
-        <option value="dia">Dia</option>
-        <option value="semana" <?php if ($periodo == 'semana') {
-    echo 'selected';
-} ?>>Semana</option>
-        <option value="mes" <?php if ($periodo == 'mes') {
-    echo 'selected';
-} ?>>Mês</option>
-        <option value="ano" <?php if ($periodo == 'ano') {
-    echo 'selected';
-} ?>>Ano</option>
-        <option value="todos" <?php if ($periodo == 'todos') {
-    echo 'selected';
-} ?>>Todos</option>
+      <select id="periodo" name="periodo" class="span12">
+        <option value="dia" <?= $this->input->get('periodo') === 'dia' ? 'selected' : '' ?>>Dia</option>
+        <option value="semana" <?= $this->input->get('periodo') === 'semana' ? 'selected' : '' ?>>Semana</option>
+        <option value="mes" <?= $this->input->get('periodo') === 'mes' ? 'selected' : '' ?>>Mês</option>
+        <option value="ano" <?= $this->input->get('periodo') === 'ano' ? 'selected' : '' ?>>Ano</option>
+        <option value="todos" <?= $this->input->get('periodo') === 'todos' ? 'selected' : '' ?>>Todos</option>
+      </select>
       </select>
     </div>
-    <div class="span4">
-      &nbsp
-      <button type="submit" class="span12 btn btn-primary">Filtrar</button>
+
+    <div class="span2">
+      <label>Vencimento (de) <i class="fas fa-calendar-day tip-top" title="Vencimento (de)"></i></label>
+      <input id="vencimento_de" type="text" class="span12 datepicker" name="vencimento_de" value="<?= $this->input->get('vencimento_de') ? $this->input->get('vencimento_de') : date('d/m/Y') ?>">
     </div>
 
+    <div class="span2">
+      <label>Vencimento (até) <i class="fas fa-calendar-day tip-top" title="Vencimento (até)"></i></label>
+      <input id="vencimento_ate" type="text" class="span12 datepicker" name="vencimento_ate" value="<?= $this->input->get('vencimento_ate') ? $this->input->get('vencimento_ate') : date('d/m/Y') ?>">
+    </div>
+
+    <div class="span2">
+      <label>Tipo <i class="fas fa-hand-holding-usd tip-top" title="Tipo."></i></label>
+      <select name="tipo" class="span12">
+        <option value="">Todos</option>
+        <option value="receita" <?= $this->input->get('tipo') === 'receita' ? 'selected' : '' ?>>Receita</option>
+        <option value="despesa" <?= $this->input->get('tipo') === 'despesa' ? 'selected' : '' ?>>Despesa</option>
+      </select>
+    </div>
+
+    <div class="span2">
+      <label>Status <i class="fa fa-file-signature tip-top" title="Tipo."></i></label>
+      <select name="status" class="span12">
+        <option value="">Todos</option>
+        <option value="0" <?= $this->input->get('status') === '0' ? 'selected' : '' ?>>Pendente</option>
+        <option value="1" <?= $this->input->get('status') === '1' ? 'selected' : '' ?>>Pago</option>
+      </select>
+    </div>
+
+    <div class="span2">
+      <label>Cliente/Fornecedor <i class="fas fa-user tip-top" title="Cliente."></i></label>
+      <input id="cliente_fornecedor" type="text" class="span12" name="cliente" value="<?= $this->input->get('cliente') ?>">
+    </div>
+
+    <div class="span2 pull-right">
+      &nbsp
+      <button type="submit" class="span12 btn btn-primary btn-sm" style="margin-top: 0.3rem;">Filtrar</button>
+    </div>
   </form>
 </div>
 
 <div class="span12" style="margin-left: 0;">
+  <div class="widget-box">
+    <div class="widget-title">
+      <span class="icon">
+        <i class="fas fa-hand-holding-usd"></i>
+      </span>
+      <h5>Lançamentos Financeiros</h5>
 
-    <div class="widget-box">
-      <div class="widget-title">
-        <span class="icon">
-          <i class="fas fa-hand-holding-usd"></i>
-        </span>
-        <h5>Lançamentos Financeiros</h5>
-
-      </div>
-
-      <div class="widget-content nopadding">
-
-
-        <table class="table table-bordered " id="divLancamentos">
-          <thead>
-            <tr style="backgroud-color: #2D335B">
-              <th>#</th>
-              <th>Tipo</th>
-              <th>Cliente / Fornecedor</th>
-              <th>Descrição</th>
-              <th>Entrada</th>
-              <th>Status</th>
-              <th>Valor</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php
-
-              if (!$results) {
-                  echo '<tr>
-                        <td colspan="8" >Nenhum lançamento encontrado</td>
-                      </tr>';
-              }
-              foreach ($results as $r) {
-                  $vencimento = date(('d/m/Y'), strtotime($r->data_vencimento));
-                  if ($r->baixado == 0) {
-                      $status = 'Pendente';
-                  } else {
-                      $status = 'Pago';
-                  };
-                  if ($r->tipo == 'receita') {
-                      $label = 'success';
-                  } else {
-                      $label = 'important';
-                  }
-                  echo '<tr>';
-                  echo '<td>' . $r->idLancamentos . '</td>';
-                  echo '<td><span class="label label-' . $label . '">' . ucfirst($r->tipo) . '</span></td>';
-                  echo '<td>' . $r->cliente_fornecedor . '</td>';
-                  echo '<td>' . $r->descricao . '</td>';
-                  echo '<td>' . $vencimento . '</td>';
-                  echo '<td>' . $status . '</td>';
-                  echo '<td> R$ ' . number_format($r->valor, 2, ',', '.') . '</td>';
-
-                  echo '<td>';
-                  if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eLancamento')) {
-                      echo '<a href="#modalEditar" style="margin-right: 1%" data-toggle="modal" role="button" idLancamento="' . $r->idLancamentos . '" descricao="' . $r->descricao . '" valor="' . $r->valor . '" vencimento="' . date('d/m/Y', strtotime($r->data_vencimento)) . '" pagamento="' . date('d/m/Y', strtotime($r->data_pagamento)) . '" baixado="' . $r->baixado . '" cliente="' . $r->cliente_fornecedor . '" formaPgto="' . $r->forma_pgto . '" tipo="' . $r->tipo . '" class="btn btn-info tip-top editar" title="Editar Lançamento"><i class="fas fa-edit"></i></a>';
-                  }
-                  if ($this->permission->checkPermission($this->session->userdata('permissao'), 'dLancamento')) {
-                      echo '<a href="#modalExcluir" data-toggle="modal" role="button" idLancamento="' . $r->idLancamentos . '" class="btn btn-danger tip-top excluir" title="Excluir Lançamento"><i class="fas fa-trash-alt"></i></a>';
-                  }
-
-                  echo '</td>';
-                  echo '</tr>';
-              } ?>
-            <tr>
-
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td colspan="6" style="text-align: right; color: green"> <strong>Total Receitas:</strong></td>
-              <td colspan="3" style="text-align: left; color: green"><strong>R$ <?php echo number_format($totals['receitas'], 2, ',', '.') ?></strong></td>
-            </tr>
-            <tr>
-              <td colspan="6" style="text-align: right; color: red"> <strong>Total Despesas:</strong></td>
-              <td colspan="3" style="text-align: left; color: red"><strong>R$ <?php echo number_format($totals['despesas'], 2, ',', '.') ?></strong></td>
-            </tr>
-            <tr>
-              <td colspan="6" style="text-align: right"> <strong>Saldo:</strong></td>
-              <td colspan="3" style="text-align: left;"><strong>R$ <?php echo number_format($totals['receitas'] - $totals['despesas'], 2, ',', '.') ?></strong></td>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
     </div>
+
+    <div class="widget-content nopadding tab-content">
+
+
+      <table class="table table-bordered " id="divLancamentos">
+        <thead>
+          <tr style="backgroud-color: #2D335B">
+            <th>#</th>
+            <th>Tipo</th>
+            <th>Cliente / Fornecedor</th>
+            <th>Descrição</th>
+            <th>Vencimento</th>
+            <th>Status</th>
+            <th>Observações</th>
+            <th>Valor</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+
+          if (!$results) {
+            echo '<tr>
+              <td colspan="8" >Nenhum lançamento encontrado</td>
+            </tr>';
+          }
+          foreach ($results as $r) {
+            $vencimento = date(('d/m/Y'), strtotime($r->data_vencimento));
+            if ($r->baixado == 0) {
+              $status = 'Pendente';
+            } else {
+              $status = 'Pago';
+            };
+            if ($r->tipo == 'receita') {
+              $label = 'success';
+            } else {
+              $label = 'important';
+            }
+            echo '<tr>';
+            echo '<td>' . $r->idLancamentos . '</td>';
+            echo '<td><span class="label label-' . $label . '">' . ucfirst($r->tipo) . '</span></td>';
+            echo '<td>' . $r->cliente_fornecedor . '</td>';
+            echo '<td>' . $r->descricao . '</td>';
+            echo '<td>' . $vencimento . '</td>';
+            echo '<td>' . $status . '</td>';
+            echo '<td>' . $r->observacoes . '</td>';
+            echo '<td> R$ ' . number_format($r->valor, 2, ',', '.') . '</td>';
+
+            echo '<td>';
+            if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eLancamento')) {
+              echo '<a href="#modalEditar" style="margin-right: 1%" data-toggle="modal" role="button" idLancamento="' . $r->idLancamentos . '" descricao="' . $r->descricao . '" valor="' . $r->valor . '" vencimento="' . date('d/m/Y', strtotime($r->data_vencimento)) . '" pagamento="' . date('d/m/Y', strtotime($r->data_pagamento)) . '" baixado="' . $r->baixado . '" cliente="' . $r->cliente_fornecedor . '" formaPgto="' . $r->forma_pgto . '" tipo="' . $r->tipo . '" class="btn btn-info tip-top editar" title="Editar Lançamento"><i class="fas fa-edit"></i></a>';
+            }
+            if ($this->permission->checkPermission($this->session->userdata('permissao'), 'dLancamento')) {
+              echo '<a href="#modalExcluir" data-toggle="modal" role="button" idLancamento="' . $r->idLancamentos . '" class="btn btn-danger tip-top excluir" title="Excluir Lançamento"><i class="fas fa-trash-alt"></i></a>';
+            }
+
+            echo '</td>';
+            echo '</tr>';
+          } ?>
+          <tr>
+
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="6" style="text-align: right; color: green"> <strong>Total Receitas:</strong></td>
+            <td colspan="3" style="text-align: left; color: green"><strong>R$ <?php echo number_format($totals['receitas'], 2, ',', '.') ?></strong></td>
+          </tr>
+          <tr>
+            <td colspan="6" style="text-align: right; color: red"> <strong>Total Despesas:</strong></td>
+            <td colspan="3" style="text-align: left; color: red"><strong>R$ <?php echo number_format($totals['despesas'], 2, ',', '.') ?></strong></td>
+          </tr>
+          <tr>
+            <td colspan="6" style="text-align: right"> <strong>Saldo:</strong></td>
+            <td colspan="3" style="text-align: left;"><strong>R$ <?php echo number_format($totals['receitas'] - $totals['despesas'], 2, ',', '.') ?></strong></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
 
 </div>
 
@@ -158,13 +187,13 @@ $periodo = $this->input->get('periodo');
   <form id="formReceita" action="<?php echo base_url() ?>index.php/financeiro/adicionarReceita" method="post">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-      <h3 id="myModalLabel">Adicionar Receita</h3>
+      <h3 id="myModalLabel">MapOS - Adicionar Receita</h3>
     </div>
     <div class="modal-body">
 
       <div class="span12 alert alert-info" style="margin-left: 0"> Obrigatório o preenchimento dos campos com asterisco.</div>
       <div class="span12" style="margin-left: 0">
-        <label for="descricao">Descrição*</label>
+        <label for="descricao">Descrição</label>
         <input class="span12" id="descricao" type="text" name="descricao" />
         <input id="urlAtual" type="hidden" name="urlAtual" value="<?php echo current_url() ?>" />
       </div>
@@ -174,6 +203,10 @@ $periodo = $this->input->get('periodo');
           <input class="span12" id="cliente" type="text" name="cliente" />
         </div>
 
+        <div class="span12" style="margin-left: 0">
+          <label for="observacoes">Observações</label>
+          <textarea class="span12" id="observacoes" name="observacoes"></textarea>
+        </div>
 
       </div>
       <div class="span12" style="margin-left: 0">
@@ -183,7 +216,7 @@ $periodo = $this->input->get('periodo');
           <input class="span12 money" id="valor" type="text" name="valor" />
         </div>
         <div class="span4">
-          <label for="vencimento">Data Entrada*</label>
+          <label for="vencimento">Data Vencimento*</label>
           <input class="span12 datepicker" id="vencimento" type="text" name="vencimento" />
         </div>
 
@@ -226,12 +259,12 @@ $periodo = $this->input->get('periodo');
   <form id="formDespesa" action="<?php echo base_url() ?>index.php/financeiro/adicionarDespesa" method="post">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-      <h3 id="myModalLabel">Adicionar Despesa</h3>
+      <h3 id="myModalLabel">MapOS - Adicionar Despesa</h3>
     </div>
     <div class="modal-body">
       <div class="span12 alert alert-info" style="margin-left: 0"> Obrigatório o preenchimento dos campos com asterisco.</div>
       <div class="span12" style="margin-left: 0">
-        <label for="descricao">Descrição*</label>
+        <label for="descricao">Descrição</label>
         <input class="span12" id="descricao" type="text" name="descricao" />
         <input id="urlAtual" type="hidden" name="urlAtual" value="<?php echo current_url() ?>" />
       </div>
@@ -241,6 +274,10 @@ $periodo = $this->input->get('periodo');
           <input class="span12" id="fornecedor" type="text" name="fornecedor" />
         </div>
 
+        <div class="span12" style="margin-left: 0">
+          <label for="observacoes">Observações</label>
+          <textarea class="span12" id="observacoes" name="observacoes"></textarea>
+        </div>
 
       </div>
       <div class="span12" style="margin-left: 0">
@@ -250,7 +287,7 @@ $periodo = $this->input->get('periodo');
           <input class="span12 money" type="text" name="valor" />
         </div>
         <div class="span4">
-          <label for="vencimento">Data Entrada*</label>
+          <label for="vencimento">Data Vencimento*</label>
           <input class="span12 datepicker" type="text" name="vencimento" />
         </div>
 
@@ -296,12 +333,12 @@ $periodo = $this->input->get('periodo');
   <form id="formEditar" action="<?php echo base_url() ?>index.php/financeiro/editar" method="post">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-      <h3 id="myModalLabel">Editar Lançamento</h3>
+      <h3 id="myModalLabel">MapOS - Editar Lançamento</h3>
     </div>
     <div class="modal-body">
       <div class="span12 alert alert-info" style="margin-left: 0"> Obrigatório o preenchimento dos campos com asterisco.</div>
       <div class="span12" style="margin-left: 0">
-        <label for="descricao">Descrição*</label>
+        <label for="descricao">Descrição</label>
         <input class="span12" id="descricaoEditar" type="text" name="descricao" />
         <input id="urlAtualEditar" type="hidden" name="urlAtual" value="" />
       </div>
@@ -321,7 +358,7 @@ $periodo = $this->input->get('periodo');
           <input class="span12 money" type="text" name="valor" id="valorEditar" />
         </div>
         <div class="span4">
-          <label for="vencimento">Data Entrada*</label>
+          <label for="vencimento">Data Vencimento*</label>
           <input class="span12 datepicker" type="text" name="vencimento" id="vencimentoEditar" />
         </div>
         <div class="span4">
@@ -376,7 +413,7 @@ $periodo = $this->input->get('periodo');
 <div id="modalExcluir" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Excluir Lançamento</h3>
+    <h3 id="myModalLabel">MapOS - Excluir Lançamento</h3>
   </div>
   <div class="modal-body">
     <h5 style="text-align: center">Deseja realmente excluir esse lançamento?</h5>
@@ -456,6 +493,7 @@ $periodo = $this->input->get('periodo');
         },
         vencimento: {
           required: 'Campo Requerido.'
+
         }
       }
     });
@@ -512,10 +550,10 @@ $periodo = $this->input->get('periodo');
       $("#urlAtualEditar").val($(location).attr('href'));
       var baixado = $(this).attr('baixado');
       if (baixado == 1) {
-        $("#pagoEditar").attr('checked', true);
+        $("#pagoEditar").prop('checked', true);
         $("#divPagamentoEditar").show();
       } else {
-        $("#pagoEditar").attr('checked', false);
+        $("#pagoEditar").prop('checked', false);
         $("#divPagamentoEditar").hide();
       }
 
@@ -553,5 +591,35 @@ $periodo = $this->input->get('periodo');
       dateFormat: 'dd/mm/yy'
     });
 
+    $('#periodo').on('change', function(event) {
+      const period = $('#periodo').val();
+
+      switch (period) {
+        case 'dia':
+          $('#vencimento_de').val(dayjs().locale('pt-br').format('DD/MM/YYYY'));
+          $('#vencimento_ate').val(dayjs().locale('pt-br').format('DD/MM/YYYY'));
+          break;
+        case 'semana':
+          $('#vencimento_de').val(dayjs().startOf('week').locale('pt-br').format('DD/MM/YYYY'));
+          $('#vencimento_ate').val(dayjs().endOf('week').locale('pt-br').format('DD/MM/YYYY'));
+          break;
+        case 'mes':
+          $('#vencimento_de').val(dayjs().startOf('month').locale('pt-br').format('DD/MM/YYYY'));
+          $('#vencimento_ate').val(dayjs().endOf('month').locale('pt-br').format('DD/MM/YYYY'));
+          break;
+        case 'ano':
+          $('#vencimento_de').val(dayjs().startOf('year').locale('pt-br').format('DD/MM/YYYY'));
+          $('#vencimento_ate').val(dayjs().endOf('year').locale('pt-br').format('DD/MM/YYYY'));
+          break;
+      }
+    });
+
+    $("#cliente_fornecedor").autocomplete({
+      source: "<?php echo base_url(); ?>index.php/financeiro/autoCompleteClienteFornecedor",
+      minLength: 1,
+      select: function(event, ui) {
+        $("#cliente_fornecedor").val(ui.item.value);
+      }
+    });
   });
 </script>
