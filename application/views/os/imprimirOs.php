@@ -116,11 +116,11 @@ $totalProdutos = 0; ?>
                             <table width="100%" style="font-size: 10px" class="table table-bordered table-condensed" id="tblEquipamento">
                                 <thead>
                                     <tr>
-                                        <th width="20%">Equipamento</th>
-                                        <th width="20%">Modelo/Cor</th>
-                                        <th width="15%">Nº Série</th>
-                                        <th width="5%">Voltagem</th>
-                                        <th width="40%">Observação</th>
+                                        <th>Equipamento</th>
+                                        <th>Modelo/Cor</th>
+                                        <th>Nº Série</th>
+                                        <th>Voltagem</th>
+                                        <th>Observação</th>
                                     </tr>
                                 </thead>
                                     <?php

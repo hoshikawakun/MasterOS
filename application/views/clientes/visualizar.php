@@ -45,6 +45,12 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td style="text-align: right; width: 30%"><strong>Senha</strong></td>
+                                        <td>
+                                            <?php echo $result->senha ?>
+                                        </td>
+                                    </tr>
+                                    <tr>
                                         <td style="text-align: right"><strong>Data de Cadastro</strong></td>
                                         <td>
                                             <?php echo date('d/m/Y', strtotime($result->dataCadastro)) ?>
