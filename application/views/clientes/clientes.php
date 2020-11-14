@@ -46,6 +46,10 @@
                         if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vCliente')) {
                             echo '<a href="' . base_url() . 'index.php/clientes/visualizar/' . $r->idClientes . '" style="margin-right: 1%" class="btn tip-top" title="Visualizar mais detalhes"><i class="fas fa-eye"></i></a>';
                         }
+						if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vCliente')) {
+                                $zapnumber = preg_replace("/[^0-9]/", "", $r->telefone);
+								echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Msg WhatsApp" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '"><i class="fab fa-whatsapp" style="font-size:16px;"></i></a>';
+                            }
                         if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eCliente')) {
                             echo '<a href="' . base_url() . 'index.php/clientes/editar/' . $r->idClientes . '" style="margin-right: 1%" class="btn btn-info tip-top" title="Editar Cliente"><i class="fas fa-edit"></i></a>';
                         }
