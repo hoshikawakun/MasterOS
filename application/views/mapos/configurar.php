@@ -34,9 +34,7 @@
                         <div class="span5">
 <textarea name="termo_uso" class="editor"><?= $configuration['termo_uso']?></textarea>
                   </div></div>
-                    
-                    
-                    <div class="control-group">
+                   <div class="control-group">
                         <label for="app_theme" class="control-label">Tema do Sistema</label>
                         <div class="controls">
                             <select name="app_theme" id="app_theme">
@@ -63,13 +61,6 @@
                             <span class="help-inline">Selecione quantos registros deseja exibir nas listas</span>
                         </div>
                     </div>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
                     <div class="control-group">
                         <label for="gerenciador_arquivos" class="control-label">Gerenciador de Arquivos</label>
                         <div class="controls">
@@ -80,17 +71,6 @@
                             <span class="help-inline">Versão do Gerenciador de Arquivos.</span>
                         </div>
                     </div>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
                     <div class="control-group">
                         <label for="control_estoque" class="control-label">Controlar Estoque</label>
                         <div class="controls">
@@ -100,7 +80,7 @@
                             </select>
                             <span class="help-inline">Ativar ou desativar o controle de estoque.</span>
                         </div>
-                    </div>
+                    </div><hr />
                     <div class="control-group">
                         <label for="app_name" class="control-label">Mensagem WhatsApp</label>
                         <div class="controls">
@@ -111,17 +91,30 @@
                         <div class="controls">
                             <input type="text" required name="whats_app2" value="<?= $configuration['whats_app2']?>">
                             <span class="help-inline">Nome</span>
-                        </div>
+                        </div></div>
                         <div class="controls">
                             <input id="telefone" class="telefone1" type="text" name="whats_app3" value="<?= $configuration['whats_app3']?>" />
                             <span class="help-inline">Telefone</span>
                         </div>
-                    </div>
-                    <div class="form-actions">
-                        <div class="span12">
+                        <div class="controls">
+                            <textarea name="whats_app4" widg="50" required="required"><?= $configuration['whats_app4']?>
+                            </textarea>
+                            <span class="help-inline">URL Area do Usuário</span>
+                        </div><hr />
+                        <div class="control-group">
+                        <label for="app_name" class="control-label">Mensagem Rápida</label>
+                        <div class="controls">
+                        <input id="telefone" class="telefone1" type="text" name="masteros_1" value="" />
+                            <span class="help-inline"><a href="https://web.whatsapp.com/send?phone=55<?= $configuration['masteros_1']?>" title="Enviar WhatsWapp" target="_new" class="btn btn-success"><i class="fab fa-whatsapp"></i> Enviar WhatsWapp</a></span>
+                            <span class="help-inline"><input disabled="disabled" value=" <?= $configuration['masteros_1']?>" readonly="readonly" /></span>
+                            </div></div><br />
+	<div class="widget-content nopadding">
+	<div class="span12" id="divProdutosServicos" style=" margin-left: 0">
+	<div class="form-actions">
                             <div class="span6">
                                 <button type="submit" class="btn btn-primary"><i class="fas fa-sync-alt"></i> Salvar Configurações</button>
                             </div>
+                        </div>
                         </div>
                     </div>
                 </form>
