@@ -17,13 +17,13 @@
     <script src="<?php echo base_url() ?>assets/js/funcoes.js"></script>
     <!-- Script webeddy.com.br -->
     <script>
-        function formatar(mascara, documento) {
-            var i = documento.value.length;
+        function formatar(mascara, senha) {
+            var i = senha.value.length;
             var saida = mascara.substring(0, 1);
             var texto = mascara.substring(i)
 
             if (texto.substring(0, 1) != saida) {
-                documento.value += texto.substring(0, 1);
+                senha.value += texto.substring(0, 1);
             }
 
         }
@@ -53,14 +53,14 @@
             <div class="control-group">
                 <div class="controls">
                     <div class="main_input_box">
-                        <span class="add-on bg_lg"><i class="fas fa-user"></i></span><input id="email" name="email" type="text" placeholder="Email" />
+                        <span class="add-on bg_lg"><i class="fas fa-user"></i></span><input id="telefone" class="telefone1" type="text" name="telefone" placeholder="Telefone" />
                     </div>
                 </div>
             </div>
             <div class="control-group">
                 <div class="controls">
                     <div class="main_input_box">
-                        <span class="add-on bg_ly"><i class="fas fa-id-card"></i></span><input class="cpfcnpj" maxlength="18" size="18" name="documento" type="text" placeholder="CPF/CNPJ" OnKeyPress="formatar('000.000.000/0000-00', this)" />
+                        <span class="add-on bg_lb"><i class="fas fa-lock"></i></span><input name="senha" type="password" />
                     </div>
                 </div>
             </div>

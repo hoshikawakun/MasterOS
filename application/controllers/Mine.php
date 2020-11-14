@@ -1,3 +1,4 @@
+<?php $totalServico = 0; $totalProdutos = 0; ?>
 <?php if (!defined('BASEPATH')) { exit('No direct script access allowed'); }
 
 class Mine extends CI_Controller
@@ -26,8 +27,8 @@ class Mine extends CI_Controller
     {
 
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('email', 'Email', 'valid_email|required|trim');
-        $this->form_validation->set_rules('documento', 'Documento', 'required|trim');
+        $this->form_validation->set_rules('telefone', 'Telefone', 'required|trim');
+        $this->form_validation->set_rules('senha', 'Senha', 'required|trim');
         $ajax = $this->input->get('ajax');
         if ($this->form_validation->run() == false) {
 
@@ -40,11 +41,11 @@ class Mine extends CI_Controller
             }
         } else {
 
-            $email = $this->input->post('email');
-            $documento = $this->input->post('documento');
+            $telefone = $this->input->post('telefone');
+            $senha = $this->input->post('senha');
 
-            $this->db->where('email', $email);
-            $this->db->where('documento', $documento);
+            $this->db->where('telefone', $telefone);
+            $this->db->where('senha', $senha);
             $this->db->limit(1);
             $cliente = $this->db->get('clientes');
             if($cliente->num_rows() > 0){
@@ -215,7 +216,12 @@ class Mine extends CI_Controller
 
         $this->pagination->initialize($config);
 
-        $data['results'] = $this->Conecte_model->getOs('os', '*', '', $config['per_page'], $this->uri->segment(3), '', '', $this->session->userdata('cliente_id'));
+        $data['results'] = $this->Conecte_model->getOs(
+		'os',
+		'*',
+		'COALESCE((SELECT SUM(produtos_os.preco * produtos_os.quantidade ) FROM produtos_os WHERE produtos_os.os_id = os.idOs), 0) totalProdutos,
+		 COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos', 
+		 $config['per_page'], $this->uri->segment(3), '', '', $this->session->userdata('cliente_id'));
 
         $data['output'] = 'conecte/os';
         $this->load->view('conecte/template', $data);
