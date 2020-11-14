@@ -10,9 +10,6 @@
         <h5>Serviços</h5>
     </div>
     <div class="widget-content nopadding">
-	<div class="tab-content">
-</div>
-     </div>
         <table width="100%" class="table table-bordered ">
             <thead>
                 <tr style="backgroud-color: #2D335B">

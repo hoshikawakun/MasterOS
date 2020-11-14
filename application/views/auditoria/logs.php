@@ -8,9 +8,6 @@
         <h5>Logs</h5>
     </div>
     <div class="widget-content nopadding">
-	<div class="tab-content">
-</div>
-     </div>
         <table class="table table-bordered ">
             <thead>
                 <tr style="backgroud-color: #2D335B">

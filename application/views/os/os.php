@@ -58,9 +58,6 @@
         <h5>Ordens de Serviço</h5>
     </div>
     <div class="widget-content nopadding">
-	<div class="tab-content">
-</div>
-     </div>
         <table width="100%" class="table table-bordered ">
                 <thead>
                     <tr style="background-color: #2D335B">

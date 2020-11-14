@@ -10,9 +10,6 @@
         <h5>Pagamentos</h5>
     </div>
     <div class="widget-content nopadding">
-	<div class="tab-content">
-</div>
-     </div>
         <table class="table table-bordered ">
             <thead>
                 <tr style="background-color: #2D335B">

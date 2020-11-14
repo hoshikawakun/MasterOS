@@ -30,9 +30,6 @@
                 <h5>Cadastre-se no sistema</h5>
             </div>
             <div class="widget-content nopadding">
-	<div class="tab-content">
-</div>
-     </div>
 
                 <form action="<?php echo current_url(); ?>" id="formCliente" method="post" class="form-horizontal">
                     <div class="control-group">

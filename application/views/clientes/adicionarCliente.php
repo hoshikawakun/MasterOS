@@ -11,9 +11,6 @@
                 <h5>Cadastro de Cliente</h5>
             </div>
             <div class="widget-content nopadding">
-	<div class="tab-content">
-</div>
-     </div>
             <?php if ($custom_error != '') {
     echo '<div class="alert alert-danger">' . $custom_error . '</div>';
 } ?>

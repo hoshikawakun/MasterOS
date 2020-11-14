@@ -9,9 +9,6 @@
     </div>
 
     <div class="widget-content nopadding">
-	<div class="tab-content">
-</div>
-     </div>
         <table class="table table-bordered ">
             <thead>
                 <tr>
