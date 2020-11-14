@@ -9,8 +9,8 @@
             </div>
             <div class="widget-content">
                 <ul class="site-stats">
-                    <li><a target="_blank" href="<?php echo base_url() ?>index.php/relatorios/osRapid"><i class="fas fa-diagnoses"></i> <small>Todas as OS</small></a></li>
-
+                    <li><a target="_blank" href="<?php echo base_url() ?>index.php/relatorios/osRapid"><i class="fas fa-diagnoses"></i> <small>Todas as OS - pdf</small></a></li>
+                    <li><a target="_blank" href="<?php echo base_url() ?>index.php/relatorios/osRapid?format=xls"><i class="fas fa-diagnoses"></i> <small>Todas as OS - xls</small></a></li>
                 </ul>
             </div>
         </div>
@@ -53,28 +53,24 @@
                                 <label for="">Status:</label>
                                 <select name="status" id="" class="span12">
                                     <option value=""></option>
-				<option value="Orçamento">Orçamento</option>
-				<option value="Orçamento Concluido">Orçamento Concluido</option>
-				<option value="Orçamento Aprovado">Orçamento Aprovado</option>
-				<option value="Em Andamento">Em Andamento</option>
-                <option value="Aguardando Peças">Aguardando Peças</option>
-                <option value="Serviço Concluido">Serviço Concluido</option>
-				<option value="Sem Reparo">Sem Reparo</option>
-				<option value="Não Autorizado">Não Autorizado</option>
-                <option value="Contato sem Sucesso">Contato sem Sucesso</option>
-                <option value="Cancelado">Cancelado</option>
-				<option value="Pronto-Despachar">Pronto-Despachar</option>
-                <option value="Enviado">Enviado</option>
-                <option value="Aguardando Envio">Aguardando Envio</option>
-                <option value="Aguardando Entrega Correio">Aguardando Entrega Correio</option>
-                <option value="Entregue - A Receber">Entregue - A Receber</option>
-				<option value="Garantia">Garantia</option>
-                <option value="Abandonado">Abandonado</option>
-				<option value="Comprado pela Loja">Comprado pela Loja</option>
-                <option value="Entregue - Faturado">Entregue - Faturado</option>
+                                    <option value="Orçamento">Orçamento</option>
+                                    <option value="Aberto">Aberto</option>
+                                    <option value="Em Andamento">Em Andamento</option>
+                                    <option value="Finalizado">Finalizado</option>
+                                    <option value="Faturado">Faturado</option>
+                                    <option value="Cancelado">Cancelado</option>
+                                    <option value="Aguardando Peças">Aguardando Peças</option>
+                                </select>
+                            </div>
+                            <div class="span6">
+                                <label for="">Tipo de impressão:</label>
+                                <select name="format" class="span12">
+                                    <option value="">PDF</option>
+                                    <option value="xls">XLS</option>
                                 </select>
                             </div>
                         </div>
+
                         <div class="span12" style="margin-left: 0; text-align: center">
                             <input type="reset" class="btn" value="Limpar" />
                             <button class="btn btn-inverse"><i class="fas fa-print"></i> Imprimir</button>
