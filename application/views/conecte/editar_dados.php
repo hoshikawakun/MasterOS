@@ -10,6 +10,12 @@
             <div class="widget-content nopadding">
 
                 <form action="<?php echo current_url(); ?>" id="formCliente" method="post" class="form-horizontal">
+                <div class="control-group">
+                        <label for="documento" class="control-label">CPF/CNPJ<span class="required">*</span></label>
+                        <div class="controls">
+                            <input id="documento" type="text" name="documento" value="<?php echo $result->documento; ?>" />
+                        </div>
+                    </div>
                     <div class="control-group">
                         <input type="hidden" name="idClientes" id="idClientes" value="<?php echo $result->idClientes; ?>" />
                         <label for="nomeCliente" class="control-label">Nome<span class="required">*</span></label>
@@ -18,9 +24,9 @@
                         </div>
                     </div>
                     <div class="control-group">
-                        <label for="documento" class="control-label">CPF<span class="required">*</span></label>
+                        <label for="senha" class="control-label">Senha</label>
                         <div class="controls">
-                            <input id="documento" type="text" name="documento" value="<?php echo $result->documento; ?>" />
+                            <input id="senha" type="text" name="senha" value="<?php echo $result->senha; ?>" />
                         </div>
                     </div>
                     <div class="control-group">

@@ -38,6 +38,12 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td style="text-align: right"><strong>Senha</strong></td>
+                                        <td>
+                                            <?php echo $result->senha ?>
+                                        </td>
+                                    </tr>
+                                    <tr>
                                         <td style="text-align: right"><strong>Data de Cadastro</strong></td>
                                         <td>
                                             <?php echo date('d/m/Y', strtotime($result->dataCadastro)) ?>
@@ -68,7 +74,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style="text-align: right"><strong>Celular</strong></td>
+                                        <td style="text-align: right"><strong>Telefone 2</strong></td>
                                         <td>
                                             <?php echo $result->celular ?>
                                         </td>
