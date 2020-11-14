@@ -119,10 +119,12 @@ class Vendas_model extends CI_Model
         $this->db->select('*');
         $this->db->limit($this->data['configuration']['per_page']);
         $this->db->like('nomeCliente', $q);
+		$this->db->or_like('telefone', $q);
+		$this->db->or_like('celular', $q);
         $query = $this->db->get('clientes');
         if ($query->num_rows() > 0) {
             foreach ($query->result_array() as $row) {
-                $row_set[] = array('label'=>$row['nomeCliente'].' | Telefone: '.$row['telefone'],'id'=>$row['idClientes']);
+				$row_set[] = array('label' => $row['nomeCliente'] . ' | Telefone: ' . $row['telefone'] . ' | ' . $row['celular'], 'id' => $row['idClientes']);
             }
             echo json_encode($row_set);
         }

@@ -71,7 +71,8 @@ class Vendas extends MY_Controller
 
             $data = array(
                 'dataVenda' => $dataVenda,
-                'clientes_id' => $this->input->post('clientes_id'),
+                'observacoes' => $this->input->post('observacoes'),
+				'clientes_id' => $this->input->post('clientes_id'),
                 'usuarios_id' => $this->input->post('usuarios_id'),
                 'faturado' => 0,
             );
@@ -122,6 +123,7 @@ class Vendas extends MY_Controller
 
             $data = array(
                 'dataVenda' => $dataVenda,
+				'observacoes' => $this->input->post('observacoes'),
                 'usuarios_id' => $this->input->post('usuarios_id'),
                 'clientes_id' => $this->input->post('clientes_id'),
             );
