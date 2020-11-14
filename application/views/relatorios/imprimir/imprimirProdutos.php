@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Master OS</title>
+    <title>MAPOS</title>
     <meta charset="UTF-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,16 +14,15 @@
 </head>
 
 <body style="background-color: transparent">
-
     <div class="container-fluid">
-
         <div class="row-fluid">
             <div class="span12">
-
                 <div class="widget-box">
-					
+                    <?= $topo ?>
                     <div class="widget-title">
-                        <h4 style="text-align: center">Produtos</h4>
+                        <h4 style="text-align: center; font-size: 1.1em; padding: 5px;">
+                            <?= ucfirst($title) ?>
+                        </h4>
                     </div>
                     <div class="widget-content nopadding">
 

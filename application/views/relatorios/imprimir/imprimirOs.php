@@ -20,7 +20,7 @@
                 <div class="widget-box">
                     <?= $topo ?>
                     <div class="widget-title">
-                        <h4 style="text-align: center">
+                        <h4 style="text-align: center; font-size: 1.1em; padding: 5px;">
                             <?= ucfirst($title) ?>
                         </h4>
                     </div>
@@ -32,7 +32,7 @@
                                     <th width="110" style="font-size: 12px">CLIENTE</th>
                                     <th width="140" style="font-size: 12px">STATUS</th>
                                     <th width="70" style="font-size: 12px">DATA</th>
-                                    <th width="440" style="font-size: 12px">DESCRIÇÃO</th>
+                                    <th width="400" style="font-size: 12px">DESCRIÇÃO</th>
                                     <th width="100" style="font-size: 12px">TOTAL PRODUTOS</th>
                                     <th width="100" style="font-size: 12px">TOTAL SERVIÇOS</th>
                                     <th width="90" style="font-size: 12px">TOTAL</th>
@@ -69,7 +69,7 @@
                     </div>
                 </div>
 
-                <p style="text-align: right">Data do Relatório: <?php echo date('d/m/Y'); ?>
+                <h5 style="text-align: right; font-size: 0.8em; padding: 5px;">Data do Relatório: <?php echo date('d/m/Y'); ?>
                 </p>
             </div>
         </div>
