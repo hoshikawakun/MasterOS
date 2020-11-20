@@ -83,10 +83,11 @@ CREATE TABLE `clientes` (
   `estado` varchar(20) DEFAULT NULL,
   `cep` varchar(20) DEFAULT NULL,
   `foto_url` varchar(1000) DEFAULT '',
+  `senha` varchar(20) NOT NULL DEFAULT '',
   PRIMARY KEY (`idClientes`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
-INSERT INTO `clientes` (`idClientes`, `nomeCliente`, `sexo`, `pessoa_fisica`, `documento`, `telefone`, `celular`, `email`, `dataCadastro`, `rua`, `numero`, `bairro`, `cidade`, `estado`, `cep`, `foto_url`) VALUES (1, 'Geral', '', 1, '000.000.000-00', '(00) 0000-0000', '', '', '2019-04-23', '-', '-', '-', '-', '-', '00000-000', NULL);
+INSERT INTO `clientes` (`idClientes`, `nomeCliente`, `sexo`, `pessoa_fisica`, `documento`, `telefone`, `celular`, `email`, `dataCadastro`, `rua`, `numero`, `bairro`, `cidade`, `estado`, `cep`, `foto_url`, `senha`) VALUES (1, 'Geral', '', 1, '000.000.000-00', '(00) 0000-0000', '', '', '2019-04-23', 'Endereço', 'Número', 'Bairro', 'Cidade', 'Estado', '00000-000', NULL, 'fw6q3xSXbd');
 
 
 #
