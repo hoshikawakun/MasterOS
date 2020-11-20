@@ -28,6 +28,7 @@ class Conecte_model extends CI_Model
     {
         
         $this->db->where('clientes_id', $cliente);
+		$this->db->join('usuarios', 'os.usuarios_id = usuarios.idUsuarios', 'left');
         $this->db->limit($this->data['configuration']['per_page']);
 
         return $this->db->get('os')->result();
@@ -70,9 +71,10 @@ class Conecte_model extends CI_Model
         
         $this->db->select($fields);
         $this->db->from($table);
+		$this->db->select('
+	   COALESCE((SELECT SUM(produtos_os.preco * produtos_os.quantidade ) FROM produtos_os WHERE produtos_os.os_id = os.idOs), 0) totalProdutos,
+	   COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos');
         $this->db->join('usuarios', 'os.usuarios_id = usuarios.idUsuarios', 'left');
-		$this->db->join('produtos_os', 'produtos_os.os_id = os.idOs', 'left');
-        $this->db->join('servicos_os', 'servicos_os.os_id = os.idOs', 'left');
         $this->db->where('clientes_id', $cliente);
         $this->db->limit($perpage, $start);
         $this->db->order_by('idOs', 'desc');
