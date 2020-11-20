@@ -68,6 +68,7 @@ class Clientes extends MY_Controller
                 'estado' => set_value('estado'),
                 'cep' => set_value('cep'),
 				'foto_url' => set_value('foto_url'),
+				'senha' => set_value('senha'),
                 'dataCadastro' => date('Y-m-d'),
             );
 
@@ -116,6 +117,7 @@ class Clientes extends MY_Controller
                 'estado' => $this->input->post('estado'),
                 'cep' => $this->input->post('cep'),
 				'foto_url' => $this->input->post('foto_url'),
+				'senha' => $this->input->post('senha'),
 				
             );
 
