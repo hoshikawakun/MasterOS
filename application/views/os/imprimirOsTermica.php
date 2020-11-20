@@ -125,7 +125,7 @@ $totalProdutos = 0; ?>
                                 <?php if ($result->defeito != null) { ?>
                                     <tr>
                                         <td colspan="5">
-                                            <div style="font-size: 8px"><b>Defeito Apresentado: </b>
+                                            <div style="font-size: 8px"><b>Problema Informado: </b>
                                               <?php echo htmlspecialchars_decode($result->defeito) ?>
                                         </div></td>
                                     </tr>

@@ -85,7 +85,7 @@ $totalProdutos = 0; ?>
                                 <?php if ($result->defeito != null) { ?>
                                     <tr>
                                         <td>
-                                        <span style="font-size: 10px"><b>DEFEITO APRESENTADO:</b><br></span>
+                                        <span style="font-size: 10px"><b>Problema Informado:</b><br></span>
                                         <span style="font-size: 10px"><?php echo htmlspecialchars_decode($result->defeito) ?></span>
                                         </td>
                                     </tr>
@@ -94,7 +94,7 @@ $totalProdutos = 0; ?>
                                 <?php if ($result->observacoes != null) { ?>
                                     <tr>
                                         <td>
-                                        <span style="font-size: 10px"><b>OBSERVAÇÕES:</b><br></span>
+                                        <span style="font-size: 10px"><b>Observações:</b><br></span>
                                         <span style="font-size: 10px"><?php echo htmlspecialchars_decode($result->observacoes) ?></span>
                                         </td>
                                     </tr>
@@ -103,7 +103,7 @@ $totalProdutos = 0; ?>
                                 <?php if ($result->laudoTecnico != null) { ?>
                                     <tr>
                                         <td>
-                                        <span style="font-size: 10px"><b>LAUDO TÉCNICO:</b><br></span>
+                                        <span style="font-size: 10px"><b>Relatório Técnico:</b><br></span>
                                         <span style="font-size: 10px"><?php echo htmlspecialchars_decode($result->laudoTecnico) ?></span>
                                         </td>
                                     </tr>

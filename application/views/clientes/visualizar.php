@@ -162,7 +162,7 @@
                             <th>OS N°</th>
                             <th>Data de Entrada</th>
                             <th>Descricao</th>
-                            <th>Defeito</th>
+                            <th>Problema Informado</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -186,7 +186,7 @@
                             <th>OS N°</th>
                             <th>Data de Entrada</th>
                             <th>Descricao</th>
-                            <th>Defeito</th>
+                            <th>Problema Informado</th>
                             <th></th>
                         </tr>
                     </thead>

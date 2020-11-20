@@ -93,7 +93,7 @@ $totalProdutos = 0; ?>
                             <?php if ($result->rastreio != null) { ?>
                                     <tr>
                                         <td><span style="font-size: 13px; ">
-                                            <b>COD. DE RASTREIO:</b><br></span>
+                                            <b>Cod. de Rastreio:</b><br></span>
                                             <?php echo htmlspecialchars_decode($result->rastreio) ?>
                                         </td>
                                     </tr>
@@ -111,7 +111,7 @@ $totalProdutos = 0; ?>
                                 <?php if ($result->defeito != null) { ?>
                                     <tr>
                                         <td><span style="font-size: 13px; ">
-                                            <b>DEFEITO APRESENTADO:</b><br></span>
+                                            <b>Problema Informado:</b><br></span>
                                             <?php echo htmlspecialchars_decode($result->defeito) ?>
                                         </td>
                                     </tr>
@@ -120,7 +120,7 @@ $totalProdutos = 0; ?>
                                 <?php if ($result->observacoes != null) { ?>
                                     <tr>
                                         <td><span style="font-size: 13px; ">
-                                            <b>OBSERVAÇÕES:</b><br></span>
+                                            <b>Observações:</b><br></span>
                                             <?php echo htmlspecialchars_decode($result->observacoes) ?>
                                         </td>
                                     </tr>
@@ -129,7 +129,7 @@ $totalProdutos = 0; ?>
                                 <?php if ($result->laudoTecnico != null) { ?>
                                     <tr>
                                         <td><span style="font-size: 13px; ">
-                                            <b>LAUDO TÉCNICO:</b><br></span>
+                                            <b>Relatório Técnico:</b><br></span>
                                             <?php echo htmlspecialchars_decode($result->laudoTecnico) ?>
                                         </td>
                                     </tr>

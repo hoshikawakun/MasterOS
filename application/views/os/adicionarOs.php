@@ -96,7 +96,7 @@
                                     </div>
                                     <div class="span6" style="padding: 1%; margin-left: 0">
                                         <label for="defeito">
-                                            <h4>Defeito</h4>
+                                            <h4>Problema Informado</h4>
                                         </label>
                                         <textarea class="span12 editor" name="defeito" id="defeito" cols="30" rows="5"></textarea>
                                     </div>

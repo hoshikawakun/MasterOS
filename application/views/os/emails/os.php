@@ -183,7 +183,7 @@ $totalProdutos = 0; ?>
             <?php if ($result->defeito) { ?>
                 <tr class="heading">
                     <td colspan="4">
-                        <b>Defeito Apresentado</b>
+                        <b>Problema Informado</b>
                     </td>
                 </tr>
                 <tr>
