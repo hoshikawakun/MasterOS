@@ -144,7 +144,7 @@ $totalProdutos = 0; ?>
                                 <?php if ($result->laudoTecnico != null) { ?>
                                     <tr>
                                         <td colspan="5">
-                                            <div style="font-size: 8px"><b>Laudo Técnico: </b><br>
+                                            <div style="font-size: 8px"><b>Relatório Técnico: </b><br>
                                               <?php echo htmlspecialchars_decode($result->laudoTecnico) ?>
                                         </div></td>
                                     </tr>

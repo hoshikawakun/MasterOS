@@ -129,7 +129,7 @@
                                             <?php if ($result->laudoTecnico != null) { ?>
                                                 <tr>
                                                     <td>
-                                                        <strong>Laudo Técnico</strong> <br>
+                                                        <strong>Relatório Técnico</strong> <br>
                                                         <?php echo htmlspecialchars_decode($result->laudoTecnico) ?>
                                                     </td>
                                                 </tr>

@@ -97,7 +97,7 @@
                                     </div>
                               <div class="span6" style="padding: 1%; margin-left: 0">
                                         <label for="laudoTecnico">
-                                <h4>Laudo Técnico</h4>
+                                <h4>Relatório Técnico</h4>
                                   </label>
                                   <textarea name="laudoTecnico" cols="30" rows="5" disabled="disabled" readonly="readonly" class="span12 editor" id="laudoTecnico"><?php echo $result->laudoTecnico ?></textarea>
                                 </div>

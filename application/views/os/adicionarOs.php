@@ -108,7 +108,7 @@
                                     </div>
                                     <div class="span6" style="padding: 1%; margin-left: 0">
                                         <label for="laudoTecnico">
-                                            <h4>Laudo Técnico</h4>
+                                            <h4>Relatório Técnico</h4>
                                         </label>
                                         <textarea class="span12 editor" name="laudoTecnico" id="laudoTecnico" cols="30" rows="5"></textarea>
                                     </div>
