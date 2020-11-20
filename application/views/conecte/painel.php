@@ -22,19 +22,23 @@
         <div class="widget-content">
             <table class="table table-bordered">
                 <thead>
-                    <tr>
-                        	<th>#</th>
+                       <tr style="backgroud-color: #2D335B">
+                            <th>OS N°</th>
+                            <th>Responsável</th>
                             <th>Data de Entrada</th>
                             <th>Data de Saida</th>
                             <th>Garantia até</th>
+                            <th>Total</th>
+                            <th>Faturado</th>
                             <th>Status</th>
-                            <th>Ações</th>
-                    </tr>
-                </thead>
+                            <th></th>
+                        </tr>
+                    </thead>
                 <tbody>
                     <?php foreach ($os as $r) {
                                 $dataInicial = date(('d/m/Y'), strtotime($r->dataInicial));
                                 $dataFinal = date(('d/m/Y'), strtotime($r->dataFinal));
+								$ValorTotal = number_format($r->totalProdutos + $r->totalServicos, 2, ',', '.');
                 if ($r->status == "Orçamento") {$status = '<span class="label label-sonic01">Orçamento</span>';}
 			elseif ($r->status == "Orçamento Concluido") {$status = '<span class="label label-sonic02">Orçamento Concluido</span>';}
 			elseif ($r->status == "Orçamento Aprovado") {$status = '<span class="label label-sonic03">Orçamento Aprovado</span>';}
@@ -56,11 +60,14 @@
 			elseif ($r->status == "Entregue - Faturado") {$status = '<span class="label label-sonic19">Entregue - Faturado</span>';}
 								
                                 echo '<tr>';
-                                echo '<td><div align="center">' . $r->idOs . '</div></td>';
-                                echo '<td><div align="center">' . $dataInicial . '</div></td>';
-                                echo '<td><div align="center">' . $r->dataSaida . '</div></td>';
-								echo '<td><div align="center">' . $r->garantia . '</div></td>';
-                                echo '<td><div align="center">' . $status . '</div></td>';
+						echo '<td><div align="center">' . $r->idOs . '</div></td>';
+						echo '<td>' . $r->nome . '</td>';
+						echo '<td><div align="center">' . $dataInicial . '</div></td>';
+						echo '<td><div align="center">' . $r->dataSaida . '</div></td>';
+						echo '<td><div align="center">' . $r->garantia . '</div></td>';
+						echo '<td><div align="center">R$: ' . $ValorTotal . '</div></td>';
+						echo '<td><div align="center">R$: ' . number_format($r->valorTotal, 2, ',', '.') . '</div></td>';
+						echo '<td><div align="center">' . $status . '</div></td>';
 								echo '<td><div align="center"><a href="' . base_url() . 'index.php/mine/visualizarOs/' . $r->idOs . '" class="btn tip-top" title="Visualizar e Imprimir"><i class="fas fa-eye"></i></a>
                                   <a href="' . base_url() . 'index.php/mine/imprimirOs/' . $r->idOs . '" target="_blank" class="btn btn-inverse tip-top" title="Imprimir"><i class="fas fa-print"></i></a>
                               </div></td>';

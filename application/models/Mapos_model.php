@@ -120,15 +120,10 @@ class Mapos_model extends CI_Model
 
 	public function getOsOrcamento()
     {
-        $this->db->select('
-            os.*,
+       $this->db->select('os.*,
 COALESCE((SELECT SUM(produtos_os.preco * produtos_os.quantidade ) FROM produtos_os WHERE produtos_os.os_id = os.idOs), 0) totalProdutos,
-COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos,
-            clientes.nomeCliente'
-        );
-		$this->db->join('produtos_os', 'produtos_os.os_id = os.idOs', 'left');
-        $this->db->join('servicos_os', 'servicos_os.os_id = os.idOs', 'left');
-        $this->db->select('os.*, clientes.nomeCliente');
+COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos');
+		$this->db->select('os.*, clientes.nomeCliente');
 		$this->db->select('os.*, clientes.telefone');
         $this->db->from('os');
         $this->db->join('clientes', 'clientes.idClientes = os.clientes_id', 'emitente', 'emitente.telefone');
@@ -139,15 +134,10 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
 
     public function getOsOrcamentoConcluido()
     {
-        $this->db->select('
-            os.*,
+       $this->db->select('os.*,
 COALESCE((SELECT SUM(produtos_os.preco * produtos_os.quantidade ) FROM produtos_os WHERE produtos_os.os_id = os.idOs), 0) totalProdutos,
-COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos,
-            clientes.nomeCliente'
-        );
-		$this->db->join('produtos_os', 'produtos_os.os_id = os.idOs', 'left');
-        $this->db->join('servicos_os', 'servicos_os.os_id = os.idOs', 'left');
-        $this->db->select('os.*, clientes.nomeCliente');
+COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos');
+		$this->db->select('os.*, clientes.nomeCliente');
 		$this->db->select('os.*, clientes.telefone');
         $this->db->from('os');
         $this->db->join('clientes', 'clientes.idClientes = os.clientes_id');
@@ -158,15 +148,10 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
 
     public function getOsOrcamentoAprovado()
     {
-        $this->db->select('
-            os.*,
+       $this->db->select('os.*,
 COALESCE((SELECT SUM(produtos_os.preco * produtos_os.quantidade ) FROM produtos_os WHERE produtos_os.os_id = os.idOs), 0) totalProdutos,
-COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos,
-            clientes.nomeCliente'
-        );
-		$this->db->join('produtos_os', 'produtos_os.os_id = os.idOs', 'left');
-        $this->db->join('servicos_os', 'servicos_os.os_id = os.idOs', 'left');
-        $this->db->select('os.*, clientes.nomeCliente');
+COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos');
+		$this->db->select('os.*, clientes.nomeCliente');
 		$this->db->select('os.*, clientes.telefone');
         $this->db->from('os');
         $this->db->join('clientes', 'clientes.idClientes = os.clientes_id');
@@ -177,15 +162,10 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
 
     public function getOsEmAndamento()
     {
-        $this->db->select('
-            os.*,
+       $this->db->select('os.*,
 COALESCE((SELECT SUM(produtos_os.preco * produtos_os.quantidade ) FROM produtos_os WHERE produtos_os.os_id = os.idOs), 0) totalProdutos,
-COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos,
-            clientes.nomeCliente'
-        );
-		$this->db->join('produtos_os', 'produtos_os.os_id = os.idOs', 'left');
-        $this->db->join('servicos_os', 'servicos_os.os_id = os.idOs', 'left');
-        $this->db->select('os.*, clientes.nomeCliente');
+COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos');
+		$this->db->select('os.*, clientes.nomeCliente');
 		$this->db->select('os.*, clientes.telefone');
         $this->db->from('os');
         $this->db->join('clientes', 'clientes.idClientes = os.clientes_id');
@@ -196,15 +176,10 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
 
     public function getOsAguardandoPecas()
     {
-        $this->db->select('
-            os.*,
+       $this->db->select('os.*,
 COALESCE((SELECT SUM(produtos_os.preco * produtos_os.quantidade ) FROM produtos_os WHERE produtos_os.os_id = os.idOs), 0) totalProdutos,
-COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos,
-            clientes.nomeCliente'
-        );
-		$this->db->join('produtos_os', 'produtos_os.os_id = os.idOs', 'left');
-        $this->db->join('servicos_os', 'servicos_os.os_id = os.idOs', 'left');
-        $this->db->select('os.*, clientes.nomeCliente');
+COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos');
+		$this->db->select('os.*, clientes.nomeCliente');
 		$this->db->select('os.*, clientes.telefone');
         $this->db->from('os');
         $this->db->join('clientes', 'clientes.idClientes = os.clientes_id');
@@ -215,15 +190,10 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
 
     public function getOsConcluido()
     {
-        $this->db->select('
-            os.*,
-COALESCE((SELECT SUM(produtos_os.preco * produtos_os.quantidade ) FROM produtos_os WHERE produtos_os.os_id = os.idOs), 0) totalProdutos,
-COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos,
-            clientes.nomeCliente'
-        );
-		$this->db->join('produtos_os', 'produtos_os.os_id = os.idOs', 'left');
-        $this->db->join('servicos_os', 'servicos_os.os_id = os.idOs', 'left');
-        $this->db->select('os.*, clientes.nomeCliente');
+       $this->db->select('
+	   COALESCE((SELECT SUM(produtos_os.preco * produtos_os.quantidade ) FROM produtos_os WHERE produtos_os.os_id = os.idOs), 0) totalProdutos,
+	   COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos');
+		$this->db->select('os.*, clientes.nomeCliente');
 		$this->db->select('os.*, clientes.telefone');
         $this->db->from('os');
         $this->db->join('clientes', 'clientes.idClientes = os.clientes_id');
@@ -234,15 +204,10 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
 
     public function getOsEntregueAReceber()
     {
-        $this->db->select('
-            os.*,
+       $this->db->select('os.*,
 COALESCE((SELECT SUM(produtos_os.preco * produtos_os.quantidade ) FROM produtos_os WHERE produtos_os.os_id = os.idOs), 0) totalProdutos,
-COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos,
-            clientes.nomeCliente'
-        );
-		$this->db->join('produtos_os', 'produtos_os.os_id = os.idOs', 'left');
-        $this->db->join('servicos_os', 'servicos_os.os_id = os.idOs', 'left');
-        $this->db->select('os.*, clientes.nomeCliente');
+COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos');
+		$this->db->select('os.*, clientes.nomeCliente');
 		$this->db->select('os.*, clientes.telefone');
         $this->db->from('os');
         $this->db->join('clientes', 'clientes.idClientes = os.clientes_id');
