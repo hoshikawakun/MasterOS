@@ -26,7 +26,7 @@ if (!$results) {
                             <th>Total</th>
                             <th>Faturado</th>
                             <th>Status</th>
-                            <th></th>
+                            <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -61,7 +61,7 @@ if (!$results) {
                             <th>Total</th>
                             <th>Faturado</th>
                             <th>Status</th>
-                            <th></th>
+                            <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
