@@ -17,6 +17,7 @@ class Os_model extends CI_Model
     {
 
         $this->db->select($fields . ',clientes.nomeCliente, clientes.telefone as celular_cliente');
+		$this->db->select($fields . ',clientes.senha');
         $this->db->from($table);
         $this->db->join('clientes', 'clientes.idClientes = os.clientes_id');
         $this->db->limit($perpage, $start);
@@ -50,6 +51,7 @@ class Os_model extends CI_Model
         }
 
         $this->db->select($fields . ',clientes.nomeCliente, clientes.telefone as celular_cliente, usuarios.nome, garantias.*');
+		$this->db->select($fields . ',clientes.senha');
         $this->db->from($table);
         $this->db->join('clientes', 'clientes.idClientes = os.clientes_id');
         $this->db->join('usuarios', 'usuarios.idUsuarios = os.usuarios_id');

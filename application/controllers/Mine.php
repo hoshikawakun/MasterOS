@@ -468,6 +468,8 @@ class Mine extends CI_Controller
                 'cidade' => set_value('cidade'),
                 'estado' => set_value('estado'),
                 'cep' => set_value('cep'),
+				'foto_url' => $this->input->post('foto_url'),
+				'senha' => $this->input->post('senha'),
                 'dataCadastro' => date('Y-m-d'),
             );
 
