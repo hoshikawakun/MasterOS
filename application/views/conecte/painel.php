@@ -15,13 +15,15 @@
 
 <div class="span12" style="margin-left: 0">
 
-    <div class="widget-box">
-        <div class="widget-title"><span class="icon"><i class="fas fa-diagnoses"></i></span>
-            <h5>Últimas Ordens de Serviço</h5>
-        </div>
-        <div class="widget-content">
-            <table class="table table-bordered">
-                <thead>
+    <div class="span12">
+        <div class="widget-box">
+            <div class="widget-title">
+                <span class="icon"><i class="fas fa-diagnoses"></i></span>
+                <h5>Últimas Ordens de Serviço</h5>
+            </div>
+            <div class="widget-content">
+                <table class="table table-bordered">
+                    <thead>
                        <tr style="backgroud-color: #2D335B">
                             <th>OS N°</th>
                             <th>Responsável</th>
@@ -31,11 +33,11 @@
                             <th>Total</th>
                             <th>Faturado</th>
                             <th>Status</th>
-                            <th></th>
+                            <th>Ações</th>
                         </tr>
                     </thead>
-                <tbody>
-                    <?php foreach ($os as $r) {
+                    <tbody>
+                        <?php foreach ($os as $r) {
                                 $dataInicial = date(('d/m/Y'), strtotime($r->dataInicial));
                                 $dataFinal = date(('d/m/Y'), strtotime($r->dataFinal));
 								$ValorTotal = number_format($r->totalProdutos + $r->totalServicos, 2, ',', '.');
@@ -59,7 +61,7 @@
 			elseif ($r->status == "Comprado pela Loja") {$status = '<span class="label label-sonic18">Comprado pela Loja</span>';}
 			elseif ($r->status == "Entregue - Faturado") {$status = '<span class="label label-sonic19">Entregue - Faturado</span>';}
 								
-                                echo '<tr>';
+						echo '<tr>';
 						echo '<td><div align="center">' . $r->idOs . '</div></td>';
 						echo '<td>' . $r->nome . '</td>';
 						echo '<td><div align="center">' . $dataInicial . '</div></td>';
@@ -68,13 +70,18 @@
 						echo '<td><div align="center">R$: ' . $ValorTotal . '</div></td>';
 						echo '<td><div align="center">R$: ' . number_format($r->valorTotal, 2, ',', '.') . '</div></td>';
 						echo '<td><div align="center">' . $status . '</div></td>';
-								echo '<td><div align="center"><a href="' . base_url() . 'index.php/mine/visualizarOs/' . $r->idOs . '" class="btn tip-top" title="Visualizar e Imprimir"><i class="fas fa-eye"></i></a>
+						echo '<td><div align="center"><a href="' . base_url() . 'index.php/mine/visualizarOs/' . $r->idOs . '" class="btn tip-top" title="Visualizar"><i class="fas fa-eye"></i></a>
                                   <a href="' . base_url() . 'index.php/mine/imprimirOs/' . $r->idOs . '" target="_blank" class="btn btn-inverse tip-top" title="Imprimir"><i class="fas fa-print"></i></a>
+                                  <a href="' . base_url() . 'index.php/mine/detalhesOs/' . $r->idOs . '" class="btn btn-info tip-top" title="Visualizar mais detalhes"><i class="fas fa-bars"></i></a>  
                               </div></td>';
                                 echo '</tr>';
                             } ?>
-                </tbody>
-            </table>
+                        <tr>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
@@ -90,7 +97,7 @@
                         <th>Data de Venda</th>
                         <th>Responsável</th>
                         <th>Faturado</th>
-                        <th></th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
