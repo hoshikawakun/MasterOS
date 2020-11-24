@@ -28,9 +28,10 @@
 <a href="#modal-faturar" title="Faturar" id="btn-faturar" role="button" data-toggle="modal" class="btn btn-mini btn-danger"><i class="fas fa-cash-register"></i> Faturar</a>
                                             <?php } ?>
 
-<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
-												$zapnumber = preg_replace("/[^0-9]/", "", $result->celular_cliente);
-                        echo '<a title="Enviar Por WhatsApp" class="btn btn-mini btn-success" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $result->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $result->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($result->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $result->status . '*.%0d%0a%0d%0a' . strip_tags($result->defeito) . '%0d%0a%0d%0a' . strip_tags($result->laudoTecnico) . '%0d%0a%0d%0a' . strip_tags($result->observacoes) . '%0d%0a%0d%0aValor%20Total%20R$&#58%20*'. number_format($result->totalProdutos + $result->totalServicos, 2, ',', '.') . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20esta%20senha%20para%20fazer%20Log-In%20*' . strip_tags($result->senha) . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*"><i class="fab fa-whatsapp"></i> WhatsApp</a>';} ?>
+
+                        
+                        
+                        <a href="#modal-enviar-whatsapp" title="Enviar WhatsApp" id="btn-whatsapp" role="button" data-toggle="modal" class="btn btn-mini btn-success"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                         
 <div class="row-fluid" style="margin-top:0">
     <div class="span12">
@@ -154,7 +155,7 @@
                                             
                                             <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
 												$zapnumber = preg_replace("/[^0-9]/", "", $result->celular_cliente);
-                        echo '<a title="Enviar Por WhatsApp" class="btn btn-success" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $result->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $result->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($result->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $result->status . '*.%0d%0a%0d%0a' . strip_tags($result->defeito) . '%0d%0a%0d%0a' . strip_tags($result->laudoTecnico) . '%0d%0a%0d%0a' . strip_tags($result->observacoes) . '%0d%0a%0d%0aValor%20Total%20R$&#58%20*'. number_format($result->totalProdutos + $result->totalServicos, 2, ',', '.') . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20esta%20senha%20para%20fazer%20Log-In%20*' . strip_tags($result->senha) . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*"><i class="fab fa-whatsapp"></i> WhatsApp</a>';} ?>
+                        echo '<a title="Enviar Por WhatsApp" class="btn btn-success" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $result->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $result->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($result->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $result->status . '*.%0d%0a%0d%0a' . strip_tags($result->defeito) . '%0d%0a%0d%0a' . strip_tags($result->laudoTecnico) . '%0d%0a%0d%0a' . strip_tags($result->observacoes) . '%0d%0a%0d%0aValor%20Total%20R$&#58%20*'. number_format($result->totalProdutos + $result->totalServicos, 2, ',', '.') . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20esta%20senha%20para%20fazer%20Log-In%20*' . strip_tags($result->senha) . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*' . number_format($totals + $totalp, 2, ',', '.') . '"><i class="fab fa-whatsapp"></i> WhatsApp</a>';} ?>
                     
                     
 					
@@ -205,9 +206,9 @@
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $total = 0;
+                                        $totalp = 0;
                                         foreach ($produtos as $p) {
-                                            $total = $total + $p->subTotal;
+                                            $totalp = $totalp + $p->subTotal;
                                             echo '<tr>';
                                             echo '<td>' . $p->codDeBarra . '</td>';
                                             echo '<td>' . $p->descricao . '</td>';
@@ -220,10 +221,11 @@
                                         <tr>
                                             <td colspan="5" style="text-align: right"><strong>Total:</strong></td>
                                             <td><strong>R$
-                                                    <?php echo number_format($total, 2, ',', '.'); ?><input type="hidden" id="total-venda" value="<?php echo number_format($total, 2); ?>"></strong></td>
+                                                    <?php echo number_format($totalp, 2, ',', '.'); ?><input type="hidden" id="totalp-venda" value="<?php echo number_format($totalp, 2); ?>"></strong></td>
                                         </tr>
                                     </tbody>
                                 </table></div></div></div>
+                                
                         <!--Serviços-->
                         <div class="tab-pane" id="tab3">
             			<div class="span12 well" style="padding: 1%; margin-left: 0">
@@ -257,28 +259,28 @@
                                                 <th width="8%">Quantidade</th>
                                                 <th width="9%">Preço</th>
                                                 <th width="5%">Ações</th>
-                                                <th width="9%">Sub-total</th>
+                                                <th width="9%">Sub-totals</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $total = 0;
+                                            $totals = 0;
                                             foreach ($servicos as $s) {
                                                 $preco = $s->preco ?: $s->precoVenda;
-                                                $subtotal = $preco * ($s->quantidade ?: 1);
-                                                $total = $total + $subtotal;
+                                                $subtotals = $preco * ($s->quantidade ?: 1);
+                                                $totals = $totals + $subtotals;
                                                 echo '<tr>';
                                                 echo '<td>' . $s->nome . '</td>';
                                                 echo '<td>' . ($s->quantidade ?: 1) . '</td>';
                                                 echo '<td>R$ ' . $preco  . '</td>';
                                                 echo '<td><span idAcao="' . $s->idServicos_os . '" title="Excluir Serviço" class="btn btn-danger servico"><i class="fas fa-trash-alt"></i></span></td>';
-                                                echo '<td>R$ ' . number_format($subtotal, 2, ',', '.') . '</td>';
+                                                echo '<td>R$ ' . number_format($subtotals, 2, ',', '.') . '</td>';
                                                 echo '</tr>';
                                             } ?>
                                             <tr>
                                                 <td colspan="4" style="text-align: right"><strong>Total:</strong></td>
                                                 <td><strong>R$
-                                                        <?php echo number_format($total, 2, ',', '.'); ?><input type="hidden" id="total-servico" value="<?php echo number_format($total, 2); ?>"></strong></td>
+                                                        <?php echo number_format($totals, 2, ',', '.'); ?><input type="hidden" id="totals-servico" value="<?php echo number_format($totals, 2); ?>"></strong></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -449,19 +451,19 @@
           <div class="span6" style="margin-left: 0">
                 <label for="equipamento">Equipamento<span class="required">*</span></label>
                 <input name="equipamento" type="text" class="span12" id="equipamento" value="" />
-            </div>
+          </div>
           <div class="span6">
                 <label for="modelo">Modelo/Cor</label>
                 <input name="modelo" type="text" class="span12" id="equipamento" value="" />
-            </div>
+          </div>
           <div class="span6" style="margin-left: 0">
                 <label for="num_serie">Nº Série</label>
                 <input name="num_serie" type="text" class="span12" id="equipamento" value="" />
-            </div>
+          </div>
           <div class="span6">
                 <label for="voltagem">Voltagem</label>
                 <input name="voltagem" type="text" class="span12" id="equipamento" value="" />
-            </div>
+          </div>
             <div class="span12" style="margin-left: 0">
               <label for="observacao">Observação</label>
                 <input name="observacao" type="text" class="span12" id="equipamento" value="" />
@@ -480,13 +482,13 @@
     <form id="formFaturar" action="<?php echo current_url() ?>" method="post">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="myModalLabel">Faturar Venda</h3>
+            <h3 id="myModalLabel">Faturar OS</h3>
         </div>
         <div class="modal-body">
             <div class="span12 alert alert-info" style="margin-left: 0"> Obrigatório o preenchimento dos campos com asterisco.</div>
             <div class="span12" style="margin-left: 0">
                 <label for="descricao">Descrição</label>
-                <input class="span12" id="descricao" type="text" name="descricao" value="Fatura de Venda - #<?php echo $result->idOs; ?> " />
+                <input class="span12" id="descricao" type="text" name="descricao" value="Fatura de OS Nº: <?php echo $result->idOs; ?> " />
             </div>
             <div class="span12" style="margin-left: 0">
                 <div class="span12" style="margin-left: 0">
@@ -500,7 +502,7 @@
                 <div class="span4" style="margin-left: 0">
                     <label for="valor">Valor*</label>
                     <input type="hidden" id="tipo" name="tipo" value="receita" />
-                    <input class="span12 money" id="valor" type="text" name="valor" value="<?php echo number_format($total, 2); ?> " />
+                    <input class="span12 money" id="valor" type="text" name="valor" value="<?php echo number_format($totals + $totalp, 2, ',', '.') ?> " />
                 </div>
                 <div class="span4">
                     <label for="vencimento">Data Entrada*</label>
@@ -533,7 +535,46 @@
             <div class="modal-footer">
                 <button class="btn" data-dismiss="modal" aria-hidden="true" id="btn-cancelar-faturar">Cancelar</button>
                 <button class="btn btn-primary">Faturar</button>
+            
             </div>
+    </form>
+</div>
+</div>
+
+<!-- Modal WhatsApp-->
+<div id="modal-enviar-whatsapp" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <form action="<?php echo current_url() ?>" method="post">
+        <div class="modal-header">
+            <div align="center">
+              <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
+												$zapnumber = preg_replace("/[^0-9]/", "", $result->celular_cliente);
+                        echo '<a title="Enviar Por WhatsApp" class="btn btn-success" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $result->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $result->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($result->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $result->status . '*.%0d%0a%0d%0a' . strip_tags($result->defeito) . '%0d%0a%0d%0a' . strip_tags($result->laudoTecnico) . '%0d%0a%0d%0a' . strip_tags($result->observacoes) . '%0d%0a%0d%0aValor%20Total%20*R$&#58%20'. number_format($totals + $totalp, 2, ',', '.') . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20esta%20senha%20para%20fazer%20Log-In%20*' . strip_tags($result->senha) . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*"><i class="fab fa-whatsapp"></i> Enviar WhatsApp</a>';} ?>
+              
+            </div>
+        </div>
+        <div class="modal-body">
+        <div class="span12" style="margin-left: 0">
+          <font size='2'>Prezado(a) <b><?php echo $result->nomeCliente ?></b>
+          <br><br>
+        <div>Sua <b>O.S <?php echo $result->idOs ?></b> referente ao equipamento <b><?php echo $result->descricaoProduto ?></b> foi atualizada para <b><?php echo $result->status ?></b></div>
+        <br>
+        <?php echo $result->defeito ?>
+        <br>
+        <?php echo $result->laudoTecnico ?>
+        <br>
+        <?php echo $result->observacoes ?>
+        <br><br>
+        <div>Valor Total <b>R$: <?php echo number_format($totals + $totalp, 2, ',', '.') ?></b></div>
+        <br>
+		<?php echo $configuration['whats_app1'] ?>
+        <br><br>
+        <div>Atenciosamente <b><?php echo $configuration['whats_app2'] ?></b> - <b><?php echo $configuration['whats_app3'] ?></b></div>
+        <br>
+        <div>Acesse a área do cliente pelo link <font color='#1E90FF'><?php echo $configuration['whats_app4'] ?></font></div>
+        <div>E utilize esta senha para fazer Log-In  <b><?php echo $result->senha ?></b></div>
+        <div>Você poderá edita-la no menu <b>Minha Conta</b></div>
+        </font>
+      </div>
     </form>
 </div>
 
@@ -564,6 +605,17 @@
             total_servico = parseFloat(total_servico);
             valor = parseFloat(valor);
             $('#valor').val(valor + total_servico);
+        });
+
+        $(document).on('click', '#btn-whatsapp', function(event) {
+            event.preventDefault();
+            valores = $('#total-venda').val();
+            total_servicos = $('#total-servico').val();
+            valores = valores.replace(',', '');
+            total_servicos = total_servicos.replace(',', '');
+            total_servicos = parseFloat(total_servicos);
+            valores = parseFloat(valores);
+            $('#valores').val(valores + total_servicos);
         });
 
         $("#formFaturar").validate({
