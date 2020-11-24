@@ -222,7 +222,9 @@ class Mine extends CI_Controller
 		'*',
 		'COALESCE((SELECT SUM(produtos_os.preco * produtos_os.quantidade ) FROM produtos_os WHERE produtos_os.os_id = os.idOs), 0) totalProdutos,
 		 COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos', 
-		 $config['per_page'], $this->uri->segment(3), '', '', $this->session->userdata('cliente_id'));
+		 $config['per_page'],
+		 $this->uri->segment(3), '', '',
+		 $this->session->userdata('cliente_id'));
 
         $data['output'] = 'conecte/os';
         $this->load->view('conecte/template', $data);

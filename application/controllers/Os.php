@@ -59,8 +59,8 @@ class Os extends MY_Controller
         $this->data['configuration']['total_rows'] = $this->os_model->count('os');
 
         $this->pagination->initialize($this->data['configuration']);
-
-                $this->data['results'] = $this->os_model->getOs(
+		
+		$this->data['results'] = $this->os_model->getOs(
             'os',
             'os.*,
             
@@ -274,7 +274,8 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
             }
         }
 
-        $this->data['result'] = $this->os_model->getById($this->uri->segment(3));
+        
+		$this->data['result'] = $this->os_model->getById($this->uri->segment(3));
 
         $this->data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
         $this->data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
