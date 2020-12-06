@@ -48,6 +48,14 @@
                     </a>
                 </li>
             <?php endif ?>
+
+            <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vLancamento')) : ?>
+                <li class="btn btn-warning tip-top">
+                    <a href="<?= base_url() ?>index.php/financeiro/lancamentos"><i class="fas fa-book" style="font-size:36px"></i>
+                        <div>Lançamentos <span class="badge badge-light">F8</span></div>
+                    </a>
+                </li>
+            <?php endif ?>
         </ul>
     </div>
 </div>

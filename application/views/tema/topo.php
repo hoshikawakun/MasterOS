@@ -39,8 +39,8 @@
     shortcut.add("F6", function() {
       location.href = '<?= site_url('vendas'); ?>';
     });
-    shortcut.add("F7", function() {
-      location.href = '<?= site_url('garantias'); ?>';
+    shortcut.add("F8", function() {
+      location.href = '<?= site_url('financeiro/lancamentos'); ?>';
     });
     shortcut.add("F8", function() {});
     shortcut.add("F9", function() {});
