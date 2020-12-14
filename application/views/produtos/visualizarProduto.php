@@ -13,6 +13,12 @@
                 <table class="table table-bordered">
                     <tbody>
                         <tr>
+                            <td style="text-align: right; width: 30%"><strong>SKU</strong></td>
+                            <td>
+                                <?php echo $result->idProdutos ?>
+                            </td>
+                        </tr>
+                        <tr>
                             <td style="text-align: right; width: 30%"><strong>Código de Barra</strong></td>
                             <td>
                                 <?php echo $result->codDeBarra ?>

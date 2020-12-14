@@ -42,7 +42,7 @@
                 </span>
                 <h5>Editar OS</h5>
             </div>
-            <div class="widget-content nopadding">
+          <div class="widget-content nopadding">
                 <div class="span12" id="divProdutosServicos" style=" margin-left: 0">
                     <ul class="nav nav-tabs">
                         <li class="active" id="tabDetalhes"><a href="#tab1" data-toggle="tab">Detalhes da OS</a></li>
@@ -73,7 +73,7 @@
                                             <input id="tecnico" class="span12" type="text" name="tecnico" value="<?php echo $result->nome ?>" />
                                             <input id="usuarios_id" class="span12" type="hidden" name="usuarios_id" value="<?php echo $result->usuarios_id ?>" />
                                         </div>
-                                    </div>
+                                  </div>
                                     <div class="span12" style="padding: 1%; margin-left: 0">
                                         <div class="span3">
                                             <label for="status">Status<span class="required">*</span></label>
@@ -103,7 +103,7 @@
                                             <label for="dataInicial">Data de Entrtada<span class="required">*</span></label>
                                             <input id="dataInicial" autocomplete="off" class="span12 datepicker" type="text" name="dataInicial" value="<?php echo date('d/m/Y', strtotime($result->dataInicial)); ?>" /><label for="dataSaida">Data de Saida</label>
                                             <input id="dataSaida" autocomplete="off" class="span12 datepicker" type="text" name="dataSaida" value="<?php echo $result->dataSaida ?>" />
-                                            </div>
+                                      </div>
                                         <div class="span3">
                                             <label for="garantia">Garantia até</label>
                                             <input id="garantia" type="text" class="span12 datepicker" name="garantia" value="<?php echo $result->garantia ?>" />
@@ -114,7 +114,7 @@
 										  <a href="https://www.linkcorreios.com.br/<?php echo $result->rastreio ?>" title="Rastrear" target="_new" class="btn btn-warning"><i class="fas fa-envelope"></i> Rastrear</a>
                                         <button class="btn btn-primary" title="Atualizar" id="btnContinuar"><i class="fas fa-sync-alt"></i> Atualizar</button>
                                                          
-                                          </div>
+                                      </div>
                                     </div>
                                     <div class="span6" style="padding: 1%; margin-left: 0">
                                         <label for="descricaoProduto">
@@ -189,14 +189,15 @@
                                         <label for="">.</label>
                                         <button class="btn btn-success span12" id="btnAdicionarProduto"><i class="fas fa-plus"></i> Adicionar</button>
                                     </div>
-                                </form>
-                        		</div>
+                          </form>
+                   		  </div>
             			<div class="widget-box" id="divProdutos">
             			<div class="widget-content nopadding">
 								<table width="100%" class="table table-bordered" id="tblProdutos">
                                     <thead>
                                         <tr>
-                                        	<th width="10%">#</th>
+                                        	<th width="8%">SKU</th>
+                                            <th width="10%">Cod. Barras</th>
                                             <th>Produto</th>
                                             <th width="8%">Quantidade</th>
                                             <th width="8%">Preço unit.</th>
@@ -210,18 +211,19 @@
                                         foreach ($produtos as $p) {
                                             $totalp = $totalp + $p->subTotal;
                                             echo '<tr>';
-                                            echo '<td>' . $p->codDeBarra . '</td>';
+											echo '<td><div align="center">' . $p->idProdutos . '</div></td>';
+                                            echo '<td><div align="center">' . $p->codDeBarra . '</div></td>';
                                             echo '<td>' . $p->descricao . '</td>';
-                                            echo '<td>' . $p->quantidade . '</td>';
-                                            echo '<td>R$ ' . ($p->preco ?: $p->precoVenda)  . '</td>';
-                                            echo '<td><a href="" idAcao="' . $p->idProdutos_os . '" prodAcao="' . $p->idProdutos . '" quantAcao="' . $p->quantidade . '" title="Excluir Produto" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></td>';
-                                            echo '<td>R$ ' . number_format($p->subTotal, 2, ',', '.') . '</td>';
+                                            echo '<td><div align="center">' . $p->quantidade . '</div></td>';
+                                            echo '<td><div align="center">R$ ' . ($p->preco ?: $p->precoVenda)  . '</div></td>';
+                                            echo '<td><div align="center"><a href="" idAcao="' . $p->idProdutos_os . '" prodAcao="' . $p->idProdutos . '" quantAcao="' . $p->quantidade . '" title="Excluir Produto" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></div></td>';
+                                            echo '<td><div align="center">R$ ' . number_format($p->subTotal, 2, ',', '.') . '</div></td>';
                                             echo '</tr>';
                                         } ?>
                                         <tr>
-                                            <td colspan="5" style="text-align: right"><strong>Total:</strong></td>
-                                            <td><strong>R$
-                                                    <?php echo number_format($totalp, 2, ',', '.'); ?><input type="hidden" id="totalp-venda" value="<?php echo number_format($totalp, 2); ?>"></strong></td>
+                                            <td colspan="6" style="text-align: right"><strong>Total:</strong></td>
+                                            <td><strong><div align="center">R$
+                                                    <?php echo number_format($totalp, 2, ',', '.'); ?><input type="hidden" id="totalp-venda" value="<?php echo number_format($totalp, 2); ?>"></div></strong></td>
                                         </tr>
                                     </tbody>
                                 </table></div></div></div>
@@ -249,7 +251,7 @@
                                             <button class="btn btn-success span12"><i class="fas fa-plus"></i> Adicionar</button>
                                         </div>
                                     </form>
-                                </div>
+                          </div>
                         <div class="widget-box" id="divServicos">
             			<div class="widget-content nopadding">
 									<table width="100%" class="table table-bordered">
@@ -271,22 +273,23 @@
                                                 $totals = $totals + $subtotals;
                                                 echo '<tr>';
                                                 echo '<td>' . $s->nome . '</td>';
-                                                echo '<td>' . ($s->quantidade ?: 1) . '</td>';
-                                                echo '<td>R$ ' . $preco  . '</td>';
-                                                echo '<td><span idAcao="' . $s->idServicos_os . '" title="Excluir Serviço" class="btn btn-danger servico"><i class="fas fa-trash-alt"></i></span></td>';
-                                                echo '<td>R$ ' . number_format($subtotals, 2, ',', '.') . '</td>';
+                                                echo '<td><div align="center">' . ($s->quantidade ?: 1) . '</div></td>';
+                                                echo '<td><div align="center">R$ ' . $preco  . '</div></td>';
+                                                echo '<td><div align="center"><span idAcao="' . $s->idServicos_os . '" title="Excluir Serviço" class="btn btn-danger servico"><i class="fas fa-trash-alt"></i></span></div></td>';
+                                                echo '<td><div align="center">R$ ' . number_format($subtotals, 2, ',', '.') . '</div></td>';
                                                 echo '</tr>';
                                             } ?>
                                             <tr>
                                                 <td colspan="4" style="text-align: right"><strong>Total:</strong></td>
-                                                <td><strong>R$
-                                                        <?php echo number_format($totals, 2, ',', '.'); ?><input type="hidden" id="totals-servico" value="<?php echo number_format($totals, 2); ?>"></strong></td>
+                                                <td><strong><div align="center">R$
+                                                        <?php echo number_format($totals, 2, ',', '.'); ?><input type="hidden" id="totals-servico" value="<?php echo number_format($totals, 2); ?>"></div></strong></td>
                                             </tr>
                                         </tbody>
                                     </table>
-                                </div>
-                                </div>
-                                </div>
+                          </div>
+                          </div>
+                      </div>
+                                
                         <!--Anexos-->
                         <div class="tab-pane" id="tab4">
                             <div class="span12 well" style="padding: 1%; margin-left: 0" id="form-anexos">
@@ -301,8 +304,9 @@
                                             <button class="btn btn-success span12"><i class="fas fa-paperclip"></i> Anexar</button>
                                         </div>
                                     </form>
-                                </div>
-                                <div class="span12 pull-left" id="divAnexos" style="margin-left: 0">
+                          </div>
+                          
+                          <div class="span12" id="divAnexos" style="margin-left: 1">
                                     <?php
                                     foreach ($anexos as $a) {
                                         if ($a->thumb == null) {
@@ -337,20 +341,20 @@
                                             foreach ($anotacoes as $a) {
                                                 echo '<tr>';
                                                 echo '<td>' . $a->anotacao . '</td>';
-                                                echo '<td>' . date('d/m/Y H:i:s', strtotime($a->data_hora))  . '</td>';
-                                                echo '<td><span idAcao="' . $a->idAnotacoes . '" title="Excluir Anotação" class="btn btn-danger anotacao"><i class="fas fa-trash-alt"></i></span></td>';
+                                                echo '<td><div align="center">' . date('d/m/Y H:i:s', strtotime($a->data_hora))  . '</div></td>';
+                                                echo '<td><div align="center"><span idAcao="' . $a->idAnotacoes . '" title="Excluir Anotação" class="btn btn-danger anotacao"><i class="fas fa-trash-alt"></i></span></div></td>';
                                                 echo '</tr>';
                                             }
                                             if (!$anotacoes) {
-                                                echo '<tr><td colspan="2">Nenhuma anotação cadastrada</td></tr>';
+                                                echo '<tr><td colspan="3">Nenhuma anotação cadastrada</td></tr>';
                                             }
 
                                             ?>
                                         </tbody>
-                                    </table>
-                                </div>
-                                </div>
-                                </div>
+                          </table>
+                          </div>
+                          </div>
+                      </div>
                         
                         <!--Equipamentos-->
                        	<div class="tab-pane" id="tab6">
@@ -365,8 +369,8 @@
                                                 <th width="15%">Equipamento</th>
                                                 <th width="15%">Modelo/Cor</th>
                                                 <th width="15%">Nº Série</th>
-                                                <th width="5%">Voltagem</th>
-                                                <th width="43%">Observação</th>
+                                                <th width="8%">Voltagem</th>
+                                                <th>Observação</th>
                                                 <th width="7%">Ações</th>
                                             </tr>
                                         </thead>
@@ -374,29 +378,25 @@
                                             <?php
                                             foreach ($equipamento as $a) {
                                                 echo '<tr>';
-                                                echo '<td>' . $a->equipamento . '</td>';
-                                                echo '<td>' . $a->modelo . '</td>';
-												echo '<td>' . $a->num_serie . '</td>';
-												echo '<td>' . $a->voltagem . '</td>';
-												echo '<td>' . $a->observacao . '</td>';
-                                                echo '<td><span idAcao="' . $a->idEquipamento . '" title="Excluir Equipamento" class="btn btn-danger equipamento"><i class="fas fa-trash-alt"></i></span></td>';
+                                                echo '<td><div align="center">' . $a->equipamento . '</div></td>';
+                                                echo '<td><div align="center">' . $a->modelo . '</div></td>';
+												echo '<td><div align="center">' . $a->num_serie . '</div></td>';
+												echo '<td><div align="center">' . $a->voltagem . '</div></td>';
+												echo '<td><div align="center">' . $a->observacao . '</div></td>';
+                                                echo '<td><div align="center"><span idAcao="' . $a->idEquipamento . '" title="Excluir Equipamento" class="btn btn-danger equipamento"><i class="fas fa-trash-alt"></i></span></div></td>';
                                                 echo '</tr>';
                                             }
                                             if (!$equipamento) {
-                                                echo '<tr><td colspan="2">Nenhum Equipamento cadastrado</td></tr>';
+                                                echo '<tr><td colspan="6">Nenhum Equipamento cadastrado</td></tr>';
                                             }
 
                                             ?>
                                         </tbody>
                                     </table>
-                                </div>
-                                </div>
-                                </div>
-                        
+                 </div></div></div></div></div>&nbsp
+                 </div></div></div></div></div>
                         <!-- Fim tab Equipamentos -->
-                 </div></div></div>
-                 &nbsp
-                 </div></div></div></div>
+                 
 
 <!-- Modal visualizar anexo -->
 <div id="modal-anexo" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -428,7 +428,7 @@
             <div class="span12" id="divFormAnotacoes" style="margin-left: 0"></div>
             <div class="span12" style="margin-left: 0">
                 <label for="anotacao">Anotação</label>
-                <textarea class="span12" name="anotacao" id="anotacao" cols="30" rows="3"></textarea>
+                <textarea class="span12 editor" name="anotacao" id="anotacao" cols="30" rows="3"></textarea>
                 <input type="hidden" name="os_id" value="<?php echo $result->idOs; ?>">
             </div>
         </div>
@@ -537,14 +537,15 @@
                 <button class="btn btn-primary">Faturar</button>
             
             </div>
-    </form>
 </div>
+    </form>
 </div>
 
 <!-- Modal WhatsApp-->
 <div id="modal-enviar-whatsapp" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="<?php echo current_url() ?>" method="post">
         <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             <div align="center">
               <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
 												$zapnumber = preg_replace("/[^0-9]/", "", $result->celular_cliente);

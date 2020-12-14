@@ -39,8 +39,38 @@
                 <form action="<?php echo current_url(); ?>" id="formProduto" method="post" class="form-horizontal">
                     <div class="control-group">
                         <label for="codDeBarra" class="control-label">Código de Barra<span class=""></span></label>
+                        <?php function gerar_cod_barras($tamanho, $maiusculas, $minusculas, $numeros, $simbolos){
+  $ma = "ABCDEFGHIJKLMNOPQRSTUVYXWZ"; // $ma contem as letras maiúsculas
+  $mi = "abcdefghijklmnopqrstuvyxwz"; // $mi contem as letras minusculas
+  $nu = "0123456789"; // $nu contem os números
+  $si = "!@#$%¨&*()_+="; // $si contem os símbolos
+
+  if ($maiusculas){
+        // se $maiusculas for "true", a variável $ma é embaralhada e adicionada para a variável $cod_barras
+        $cod_barras .= str_shuffle($ma);
+  }
+
+    if ($minusculas){
+        // se $minusculas for "true", a variável $mi é embaralhada e adicionada para a variável $cod_barras
+        $cod_barras .= str_shuffle($mi);
+    }
+
+    if ($numeros){
+        // se $numeros for "true", a variável $nu é embaralhada e adicionada para a variável $cod_barras
+        $cod_barras .= str_shuffle($nu);
+    }
+
+    if ($simbolos){
+        // se $simbolos for "true", a variável $si é embaralhada e adicionada para a variável $cod_barras
+        $cod_barras .= str_shuffle($si);
+    }
+
+    // retorna a cod_barras embaralhada com "str_shuffle" com o tamanho definido pela variável $tamanho
+    return substr(str_shuffle($cod_barras),0,$tamanho);
+}
+?>
                         <div class="controls">
-                            <input id="codDeBarra" type="text" name="codDeBarra" value="<?php echo set_value('codDeBarra'); ?>" />
+                            <input id="codDeBarra" type="text" name="codDeBarra" maxlength="12" value="<?php echo gerar_cod_barras(10, false, false, true, false); ?><?php echo gerar_cod_barras(2, false, false, true, false); ?>" />
                         </div>
                     </div>
                     <div class="control-group">

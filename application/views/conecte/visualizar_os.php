@@ -161,7 +161,8 @@ $totalProdutos = 0; ?>
                             <table width="100%" class="table table-bordered table-condensed" id="tblProdutos">
                                 <thead>
                                     <tr>
-                                        <th width="11%">#</th>
+                                    	<th width="8%">SKU</th>
+                                        <th width="10%">Cod. Barras</th>
                                         <th>Produto</th>
                                         <th width="10%">Quantidade</th>
                                         <th width="10%">Preço unit.</th>
@@ -175,15 +176,16 @@ $totalProdutos = 0; ?>
 
                                         $totalProdutos = $totalProdutos + $p->subTotal;
                                         echo '<tr>';
-                                        echo '<td>' . $p->codDeBarra . '</td>';
-										echo '<td>' . $p->descricao . '</td>';
-                                        echo '<td>' . $p->quantidade . '</td>';
-                                        echo '<td>R$ ' . $p->preco ?: $p->precoVenda . '</td>';
-                                        echo '<td>R$ ' . number_format($p->subTotal, 2, ',', '.') . '</td>';
+										echo '<td><div align="center">' . $p->idProdutos . '</div></td>';
+										echo '<td><div align="center">' . $p->codDeBarra . '</div></td>';
+                                        echo '<td>' . $p->descricao . '</td>';
+                                        echo '<td><div align="center">' . $p->quantidade . '</div></td>';
+                                        echo '<td><div align="center">R$ ' . $p->preco ?: $p->precoVenda . '</div></td>';
+										echo '<td><div align="center">R$ ' . number_format($p->subTotal, 2, ',', '.') . '</div></td>';
                                         echo '</tr>';} ?>
     									<tr>
-                                        <td colspan="4" style="text-align: right"><strong>Total:</strong></td>
-                                        <td><strong>R$ <?php echo number_format($totalProdutos, 2, ',', '.'); ?></strong></td>
+                                        <td colspan="6" style="text-align: right"><strong>Total:</strong></td>
+                                        <td><strong><div align="center">R$ <?php echo number_format($totalProdutos, 2, ',', '.'); ?></div></strong></td>
                                     	</tr>
                                 </tbody>
                             </table>
@@ -208,14 +210,14 @@ $totalProdutos = 0; ?>
                                         $totalServico = $totalServico + $subtotal;
                                         echo '<tr>';
                                         echo '<td>' . $s->nome . '</td>';
-                                        echo '<td>' . ($s->quantidade ?: 1) . '</td>';
-                                        echo '<td>R$ ' . $preco . '</td>';
-                                        echo '<td>R$ ' . number_format($subtotal, 2, ',', '.') . '</td>';
+                                        echo '<td><div align="center">' . ($s->quantidade ?: 1) . '</div></td>';
+                                        echo '<td><div align="center">R$ ' . $preco . '</div></td>';
+                                        echo '<td><div align="center">R$ ' . number_format($subtotal, 2, ',', '.') . '</div></td>';
                                         echo '</tr>';
                                     } ?>
 
                                     <tr>
-                                        <td colspan="3" style="text-align: right"><strong>Total:</strong></td>
+                                        <td colspan="4" style="text-align: right"><strong>Total:</strong></td>
                                         <td><strong>R$ <?php echo number_format($totalServico, 2, ',', '.'); ?></strong></td>
                                     </tr>
                                 </tbody>

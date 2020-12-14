@@ -1,7 +1,11 @@
 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'aProduto')) { ?>
     <a href="<?php echo base_url(); ?>index.php/produtos/adicionar" class="btn btn-success"><i class="fas fa-plus"></i> Adicionar Produto</a>
+    
     <a href="#modal-etiquetas" role="button" data-toggle="modal" class="btn btn-success span2" style="float: right;">
-        <i class="fas fa-barcode"></i> Gerar Etiquetas</a>
+        <i class="fas fa-barcode"></i> Gerar Etiquetas Cod. Barra</a>
+    
+    <a href="#modal-etiquetas_sku" role="button" data-toggle="modal" class="btn btn-success span2" style="float: right;">
+        <i class="fas fa-barcode"></i> Gerar Etiquetas SKU</a>
 
 <?php } ?>
 
@@ -16,8 +20,8 @@
         <table width="100%" class="table table-bordered ">
             <thead>
             <tr style="backgroud-color: #2D335B">
-                <th>Cod. Produto</th>
-                <th>Código de Barra</th>
+                <th>SKU</th>
+                <th>Cod. Barras</th>
                 <th>Nome</th>
                 <th>Estoque</th>
                 <th>Preço</th>
@@ -136,13 +140,15 @@
                     <input class="span12" type="checkbox" name="qtdEtiqueta" value="true"/>
                 </div>
 
-                <div class="span6">
+                <div class="hide">
                     <label class="span12" for="valor">Formato Etiqueta</label>
                     <select name="etiquetaCode">
+                    	<option value="UPCA">UPCA</option>
                         <option value="EAN13">EAN-13</option>
-                        <option value="UPCA">UPCA</option>
                         <option value="C93">CODE 93</option>
-                        <option value="C128A">CODE 128</option>
+                        <option value="C128A">CODE 128 A</option>
+                        <option value="C128B">CODE 128 B</option>
+                        <option value="C128C">CODE 128 C</option>
                         <option value="CODABAR">CODABAR</option>
                         <option value="QR">QR-CODE</option>
                     </select>
@@ -158,6 +164,47 @@
 </div>
 
 <script src="<?php echo base_url() ?>assets/js/jquery.validate.js"></script>
+
+<!-- Modal Etiquetas SKU-->
+<div id="modal-etiquetas_sku" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <form action="<?php echo base_url() ?>index.php/relatorios/produtosEtiquetasSKU" method="get">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h5 id="myModalLabel">Gerar etiquetas com Código SKU</h5>
+        </div>
+        <div class="modal-body">
+            <div class="span12 alert alert-info" style="margin-left: 0"> Escolha o intervalo de produtos para gerar as etiquetas.</div>
+
+            <div class="span12" style="margin-left: 0;">
+                <div class="span6" style="margin-left: 0;">
+                    <label for="valor">De</label>
+                    <input class="span9" style="margin-left: 0" type="text" id="de_id" name="de_id" placeholder="ID do primeiro produto" value=""/>
+                </div>
+
+
+                <div class="span6">
+                    <label for="valor">Até</label>
+                    <input class="span9" type="text" id="ate_id" name="ate_id" placeholder="ID do último produto" value=""/>
+                </div>
+
+                <div class="hide">
+                    <label class="span12" for="valor">Formato Etiqueta</label>
+                    <select name="etiquetaCode">
+                    	<option value="C128B">CODE 128 B</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+            <button class="btn btn-success">Gerar</button>
+        </div>
+    </form>
+</div>
+
+<script src="<?php echo base_url() ?>assets/js/jquery.validate.js"></script>
+
 <!-- Modal Etiquetas e Estoque-->
 <script type="text/javascript">
     $(document).ready(function () {
