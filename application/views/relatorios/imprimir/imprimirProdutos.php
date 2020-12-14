@@ -26,14 +26,15 @@
                     </div>
                     <div class="widget-content nopadding">
 
-                        <table width="1100" class="table table-bordered">
+                        <table width="1300" class="table table-bordered">
                       <thead>
                           <tr>
-                              <th width="690" style="font-size: 15px">Nome</th>
-                              <th width="70" style="font-size: 15px">UN</th>
-                              <th width="130" style="font-size: 15px">Preço Compra</th>
-                              <th width="120" style="font-size: 15px">Preço Venda</th>
-                              <th width="90" style="font-size: 15px">Estoque</th>
+                          <th width="690" align="center" style="font-size: 15px">Nome</th>
+                          <th width="110" align="center" style="font-size: 15px">SKU</th>
+                          <th width="150" align="center" style="font-size: 15px">Cod. Barras</th>
+                          <th width="130" align="center" style="font-size: 15px">Preço Compra</th>
+                          <th width="130" align="center" style="font-size: 15px">Preço Venda</th>
+                          <th width="90" align="center" style="font-size: 15px">Estoque</th>
                           </tr>
                       </thead>
                       <tbody>
@@ -41,10 +42,11 @@
                           foreach ($produtos as $p) {
                               echo '<tr>';
                               echo '<td>' . $p->descricao. '</td>';
-                              echo '<td>' . $p->unidade . '</td>';
-                              echo '<td>' . $p->precoCompra . '</td>' ;
-                              echo '<td>' . $p->precoVenda . '</td>' ;
-                              echo '<td>' . $p->estoque. '</td>';
+                              echo '<td align="center">' . $p->idProdutos . '</td>';
+							  echo '<td align="center">' . $p->codDeBarra . '</td>';
+                              echo '<td align="center">R$: ' . $p->precoCompra . '</td>' ;
+                              echo '<td align="center">R$: ' . $p->precoVenda . '</td>' ;
+                              echo '<td align="center">' . $p->estoque. '</td>';
                               echo '</tr>';
                           }
                           ?>

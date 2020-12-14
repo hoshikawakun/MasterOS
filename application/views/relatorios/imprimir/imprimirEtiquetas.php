@@ -112,7 +112,7 @@
 									</div>
 								</div>
                                 <div class="barcodecell">
-		<barcode code="<?= $p->codDeBarra ?>" text="0" type="<?= $this->input->get("etiquetaCode") ?>" size="0.8" disableborder="0" class="barcode" />
+		<barcode code="<?= $p->codDeBarra ?>" text="0" type="<?= $this->input->get("etiquetaCode") ?>" size="0.7" disableborder="0" class="barcode" />
 								</div>
                                 </div>
                                 
@@ -139,7 +139,7 @@
 									</div>
 								</div>
                                 <div class="barcodecell">
-		<barcode code="<?= $p->codDeBarra ?>" text="0" type="<?= $this->input->get("etiquetaCode") ?>" size="0.8" disableborder="0" class="barcode" />
+		<barcode code="<?= $p->codDeBarra ?>" text="0" type="<?= $this->input->get("etiquetaCode") ?>" size="0.7" disableborder="0" class="barcode" />
 								</div>
                                 </div>
                                 
