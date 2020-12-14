@@ -69,12 +69,13 @@ class Mapos_model extends CI_Model
 		
 		// Buscando equipamento_os
 		$this->db->like('idEquipamento', $termo);
-		$this->db->or_like('num_serie', $termo);
 		$this->db->limit($this->data['configuration']['per_page']);
 		$data['equipamento_os'] = $this->db->get('equipamento_os')->result();
 
         // buscando produtos
-        $this->db->like('descricao', $termo);
+        $this->db->like('idProdutos', $termo);
+		$this->db->or_like('codDeBarra', $termo);
+		$this->db->or_like('descricao', $termo);
         $this->db->limit($this->data['configuration']['per_page']);
         $data['produtos'] = $this->db->get('produtos')->result();
 

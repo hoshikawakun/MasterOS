@@ -140,20 +140,22 @@
                 <table class="table table-bordered">
                         <thead>
                             <tr style="backgroud-color: #2D335B">
-                                <th>#</th>
+                                <th>SKU</th>
+                                <th>Cod. Barras</th>
                                 <th>Nome</th>
                                 <th>Preço</th>
-                                <th></th>
+                                <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             if ($produtos == null) {
-                                echo '<tr><td colspan="4">Nenhum produto foi encontrado.</td></tr>';
+                                echo '<tr><td colspan="5">Nenhum produto foi encontrado.</td></tr>';
                             }
                             foreach ($produtos as $r) {
                                 echo '<tr>';
                                 echo '<td><div align="center">' . $r->idProdutos . '</div></td>';
+								echo '<td><div align="center">' . $r->codDeBarra . '</div></td>';
                                 echo '<td>' . $r->descricao . '</td>';
                                 echo '<td><div align="center">' . $r->precoVenda . '</div></td>';
                                 echo '<td><div align="center">';
@@ -189,7 +191,7 @@
                                 <th>#</th>
                                 <th>Nome</th>
                                 <th>CPF/CNPJ</th>
-                                <th></th>
+                                <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -238,7 +240,7 @@
                             <th>#</th>
                             <th>Nome</th>
                             <th>Preço</th>
-                            <th></th>
+                            <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
