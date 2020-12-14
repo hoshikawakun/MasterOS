@@ -38,7 +38,7 @@
                 <thead>
                     <tr>
                         <th width="5%">#</th>
-                        <th width="10%">Miniatura</th>
+                        <th width="12%">Miniatura</th>
                         <th>Nome</th>
                         <th width="8%">Data</th>
                         <th>Descrição</th>
@@ -58,13 +58,13 @@
                     }
                     foreach ($results as $r) : ?>
                     	<tr>
-                        <td><div align="center"><?= $r->idDocumentos ?></div></td>
-                        <td><div align="center"><a href="<?= $r->url ?>"><a href="<?= $r->url ?>" target="_new"><img src=" <?= $r->url ?> "></div></td>
+                        <td><div align="center"><?= $r->idDocumentos ?></td>
+                        <td><div align="center"><a href="<?= $r->url ?>"><a href="<?= $r->url ?>" target="_new"><img src=" <?= $r->url ?> "></td>
                         <td><?= $r->documento ?></td>
-                        <td><div align="center"><?= date('d/m/Y', strtotime($r->cadastro)) ?></div></td>
-                        <td><?= $r->descricao ?></div></td>
+                        <td><div align="center"><?= date('d/m/Y', strtotime($r->cadastro)) ?></td>
+                        <td><?= $r->descricao ?></td>
                         <td><div align="center"><?= $r->tamanho ?> KB</div></td>
-                        <td><div align="center"><?= $r->tipo ?></div></td>
+                        <td><div align="center"><?= $r->tipo ?></td>
                         <td><div align="center"><?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eArquivo')) : ?>
                                     <a href="<?= base_url() ?>index.php/arquivos/editar/<?= $r->idDocumentos ?>" class="btn btn-info tip-top" style="margin-right: 1%" title="Editar">
                                         <i class="fas fa-edit"></i>
@@ -76,7 +76,8 @@
                                         <i class="fas fa-trash-alt"></i>
                                     </a>
                                 <?php endif ?>
-                            </div></td>
+                            </div>
+                            </td>
                         </tr>
                     <?php endforeach ?>
               </tbody>
