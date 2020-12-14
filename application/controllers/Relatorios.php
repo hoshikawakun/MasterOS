@@ -197,6 +197,22 @@ class Relatorios extends MY_Controller
         }
     }
 
+    public function produtosEtiquetasSKU()
+    {
+        $de = $this->input->get('de_id');
+        $ate = $this->input->get('ate_id');
+
+        if ($de <= $ate) {
+            $data['produtos'] = $this->Relatorios_model->produtosEtiquetasSKU($de, $ate);
+            $this->load->helper('mpdf');
+            $html = $this->load->view('relatorios/imprimir/imprimirEtiquetasSKU', $data, true);
+            pdf_create($html, 'etiquetas_' . $de . '_' . $ate, true);
+        } else {
+            $this->session->set_flashdata('error', 'O campo "<b>De</b>" não pode ser maior doque o campo "<b>Até</b>"!');
+            redirect('produtos');
+        }
+    }
+
     public function sku()
     {
         if (!($this->permission->checkPermission($this->session->userdata('permissao'), 'rVenda')

@@ -21,7 +21,7 @@
 }
 
 .detalheProdutoEtiquetaEan13 {
-	width: 145px;
+	width: 160px;
 	height: auto;
 	border: 1px dashed #777;
 	float: left;
@@ -30,9 +30,9 @@
 
 .descricaoProdutoEtiqueta {
 	text-align: center;
-	font-size: 70%;
+	font-size: 75%;
 }
 
 .textoProdutoEtiqueta {
-	font-size: 70%;
+	font-size: 75%;
 }

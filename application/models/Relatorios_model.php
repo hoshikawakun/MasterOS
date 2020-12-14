@@ -131,6 +131,15 @@ class Relatorios_model extends CI_Model
         return $this->db->query($query)->result();
     }
 
+    public function produtosEtiquetasSKU($de, $ate)
+    {
+        $query = "SELECT * FROM produtos WHERE idProdutos BETWEEN ".$this->db->escape($de)." AND ".$this->db->escape($ate)." ORDER BY idProdutos";
+
+        $this->db->order_by('descricao', 'asc');
+
+        return $this->db->query($query)->result();
+    }
+
     public function skuRapid($array = false)
     {
         $this->db->select('clientes.idClientes, clientes.nomeCliente, produtos.idProdutos, produtos.descricao, itens_de_vendas.quantidade, vendas.idVendas as idRelacionado, vendas.dataVenda as dataOcorrencia, itens_de_vendas.preco, (itens_de_vendas.preco * itens_de_vendas.quantidade) as precoTotal, "venda" as origem');
