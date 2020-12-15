@@ -70,7 +70,7 @@
 }
 ?>
                         <div class="controls">
-                            <input id="codDeBarra" type="text" name="codDeBarra" maxlength="12" value="<?php echo gerar_cod_barras(10, false, false, true, false); ?><?php echo gerar_cod_barras(2, false, false, true, false); ?>" />
+                            <input id="codDeBarra" type="text" name="codDeBarra" maxlength="13" value="<?php echo gerar_cod_barras(10, false, false, true, false); ?><?php echo gerar_cod_barras(2, false, false, true, false); ?>" />
                         </div>
                     </div>
                     <div class="control-group">
