@@ -1,3 +1,6 @@
+<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'aProduto')) { ?>
+    <a href="<?php echo base_url(); ?>index.php/produtos/adicionar" class="btn btn-success"><i class="fas fa-plus"></i> Adicionar Produto</a>
+<?php } ?>
 <div class="accordion" id="collapse-group">
     <div class="accordion-group widget-box">
         <div class="accordion-heading">
