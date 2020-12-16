@@ -49,7 +49,7 @@
                                 	<?php $string = strtoupper($p->descricao); ?>
 									<div>
                                     <strong>
-                                    <?php print(limitarTexto($string, $limite = 23)); ?>
+                                    <?php print(limitarTexto($string, $limite = 30)); ?>
                                     </strong>
 									</div>
 								</div>
@@ -76,7 +76,7 @@
                                 	<?php $string = strtoupper($p->descricao); ?>
 									<div>
                                     <strong>
-                                    <?php print(limitarTexto($string, $limite = 23)); ?>
+                                    <?php print(limitarTexto($string, $limite = 30)); ?>
                                     </strong>
 									</div>
 								</div>
