@@ -50,7 +50,7 @@
                                 	<?php $string = strtoupper($p->descricao); ?>
 									<div>
                                     <strong>
-                                    <?php print(limitarTexto($string, $limite = 23)); ?>
+                                    <?php print(limitarTexto($string, $limite = 40)); ?>
                                     </strong>
 									</div>
 								</div>
@@ -78,7 +78,7 @@
                                 	<?php $string = strtoupper($p->descricao); ?>
 									<div>
                                     <strong>
-                                    <?php print(limitarTexto($string, $limite = 23)); ?>
+                                    <?php print(limitarTexto($string, $limite = 40)); ?>
                                     </strong>
 									</div>
 								</div>
@@ -107,7 +107,7 @@
                                 	<?php $string = strtoupper($p->descricao); ?>
 									<div>
                                     <strong>
-                                    <?php print(limitarTexto($string, $limite = 23)); ?>
+                                    <?php print(limitarTexto($string, $limite = 40)); ?>
                                     </strong>
 									</div>
 								</div>
@@ -134,7 +134,7 @@
                                 	<?php $string = strtoupper($p->descricao); ?>
 									<div>
                                     <strong>
-                                    <?php print(limitarTexto($string, $limite = 23)); ?>
+                                    <?php print(limitarTexto($string, $limite = 40)); ?>
                                     </strong>
 									</div>
 								</div>
