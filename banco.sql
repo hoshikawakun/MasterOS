@@ -17,7 +17,6 @@ CREATE TABLE `anexos` (
   CONSTRAINT `fk_anexos_os1` FOREIGN KEY (`os_id`) REFERENCES `os` (`idOs`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
 #
 # TABLE STRUCTURE FOR: anotacoes_os
 #
@@ -31,7 +30,6 @@ CREATE TABLE `anotacoes_os` (
   `os_id` int(11) NOT NULL,
   PRIMARY KEY (`idAnotacoes`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 
 #
 # TABLE STRUCTURE FOR: categorias
@@ -48,7 +46,6 @@ CREATE TABLE `categorias` (
   PRIMARY KEY (`idCategorias`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
 #
 # TABLE STRUCTURE FOR: ci_sessions
 #
@@ -58,7 +55,7 @@ DROP TABLE IF EXISTS `ci_sessions`;
 CREATE TABLE `ci_sessions` (
   `id` varchar(128) NOT NULL,
   `ip_address` varchar(45) NOT NULL,
-  `timestamp` int(10) unsigned NOT NULL DEFAULT '0',
+  `timestamp` int(10) unsigned NOT NULL DEFAULT 0,
   `data` blob NOT NULL,
   KEY `ci_sessions_timestamp` (`timestamp`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -74,7 +71,7 @@ CREATE TABLE `clientes` (
   `idClientes` int(11) NOT NULL AUTO_INCREMENT,
   `nomeCliente` varchar(255) NOT NULL,
   `sexo` varchar(20) DEFAULT NULL,
-  `pessoa_fisica` tinyint(1) NOT NULL DEFAULT '1',
+  `pessoa_fisica` tinyint(1) NOT NULL DEFAULT 1,
   `documento` varchar(20) NOT NULL,
   `telefone` varchar(20) NOT NULL,
   `celular` varchar(20) DEFAULT NULL,
@@ -93,7 +90,6 @@ CREATE TABLE `clientes` (
 
 INSERT INTO `clientes` (`idClientes`, `nomeCliente`, `sexo`, `pessoa_fisica`, `documento`, `telefone`, `celular`, `email`, `dataCadastro`, `rua`, `numero`, `bairro`, `cidade`, `estado`, `cep`, `foto_url`, `senha`) VALUES (1, 'Geral', '', 1, '000.000.000-00', '(00) 0000-0000', '', '', '2019-04-23', 'Rua', '000', 'Bairo', 'Cidade', 'Estado', '00000-000', NULL, 'fw6q3xSXbd');
 
-
 #
 # TABLE STRUCTURE FOR: configuracoes
 #
@@ -103,22 +99,22 @@ DROP TABLE IF EXISTS `configuracoes`;
 CREATE TABLE `configuracoes` (
   `idConfig` int(11) NOT NULL AUTO_INCREMENT,
   `config` varchar(20) NOT NULL,
-  `valor` text,
+  `valor` text DEFAULT NULL,
   PRIMARY KEY (`idConfig`),
   UNIQUE KEY `config` (`config`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 INSERT INTO `configuracoes` (`idConfig`, `config`, `valor`) VALUES (1, 'app_name', 'Nome da sua Loja');
 INSERT INTO `configuracoes` (`idConfig`, `config`, `valor`) VALUES (2, 'app_theme', 'default');
-INSERT INTO `configuracoes` (`idConfig`, `config`, `valor`) VALUES (3, 'per_page', '50');
+INSERT INTO `configuracoes` (`idConfig`, `config`, `valor`) VALUES (3, 'per_page', '25');
 INSERT INTO `configuracoes` (`idConfig`, `config`, `valor`) VALUES (4, 'os_notification', NULL);
 INSERT INTO `configuracoes` (`idConfig`, `config`, `valor`) VALUES (5, 'control_estoque', '1');
-INSERT INTO `configuracoes` (`idConfig`, `config`, `valor`) VALUES (6, 'termo_uso', '<p>Aki você vai colocar<br>O termo de uso da OS<br></p>');
+INSERT INTO `configuracoes` (`idConfig`, `config`, `valor`) VALUES (6, 'termo_uso', '<p><strong>Eu, abaixo assinado proprietário (e/ou fiel representante) do aparelho(s) acima descrito autorizo assumo as seguintes condições:<br>1. Por se tratar de equipamento(s) com micro componentes a serem interligados entre si, os defeitos apresentados poderão provocar danos aos demais componentes, isentando assim a ASSISTÊNCIA TÉCNICA da responsabilidade dos defeitos.<br>2. Em caso de desistência do reparo, caberá a ASSISTÊNCIA TÉCNICA apenas a responsabilidade da devolução do equipamento no estado em que se encontra, ficando isenta de qualquer reclamação e/ou ônus de minha parte;<br>3. Eu Abaixo Assinado estou ciente de que caso seja efetuado o procedimento de reballing para a tentativa do reparo, devido envolver altas temperaturas que são acima de 200°, sendo assim o equipamento pode vim a parar completamente de funcionar.<br>4. A Garantia dos serviços executados e informada nesse documento, e contada à partir da retirada do equipamento;<br>5. Os equipamentos em garantia no caso de defeito, só serão aceitos com a apresentação desta ordem de serviço e desde que os selos de garantia não estejam violados;<br>6. A garantia será dada somente sobre os componentes eletrônicos e mão de obra aplicada no reparo especificado nesta Ordem de Serviço;<br>7. O cliente declara que o equipamento e de sua propriedade/responsabilidade, e não sendo produto de furto, roubo ou derivado de qualquer ato ilícito sendo de sua total responsabilidade;<br>ATENÇÃO: Os equipamentos não retirados no prazo de 15 dias, sofrerão reajuste e taxa de armazenamento no valor de 2% ao dia sobre o valor do orçamento. De acordo com o Código&nbsp; do Consumidor nº 8078/90 Artigo 39 incluso VII... A permanência do equipamento após o conserto ou orçamento e de no máximo&nbsp; 90 DIAS (Noventa DIAS). Após este prazo será tido como ABANDONADO e será desmantelado para retirada das peças utilizadas no reparo e o restante será descartado, para a liberação de espaço.<br></strong></p>');
 INSERT INTO `configuracoes` (`idConfig`, `config`, `valor`) VALUES (7, 'whats_app1', 'Favor entrar em contato para saber mais detalhes.');
 INSERT INTO `configuracoes` (`idConfig`, `config`, `valor`) VALUES (8, 'whats_app2', 'Nome da sua Loja');
 INSERT INTO `configuracoes` (`idConfig`, `config`, `valor`) VALUES (9, 'whats_app3', '(00) 00000-0000');
-INSERT INTO `configuracoes` (`idConfig`, `config`, `valor`) VALUES (10, 'whats_app4', NULL);
-INSERT INTO `configuracoes` (`idConfig`, `config`, `valor`) VALUES (11, 'masteros_1', NULL);
+INSERT INTO `configuracoes` (`idConfig`, `config`, `valor`) VALUES (10, 'whats_app4', '');
+INSERT INTO `configuracoes` (`idConfig`, `config`, `valor`) VALUES (11, 'masteros_1', '');
 INSERT INTO `configuracoes` (`idConfig`, `config`, `valor`) VALUES (12, 'masteros_2', NULL);
 INSERT INTO `configuracoes` (`idConfig`, `config`, `valor`) VALUES (13, 'masteros_3', NULL);
 INSERT INTO `configuracoes` (`idConfig`, `config`, `valor`) VALUES (14, 'masteros_4', NULL);
@@ -148,7 +144,6 @@ CREATE TABLE `contas` (
   PRIMARY KEY (`idContas`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
 #
 # TABLE STRUCTURE FOR: documentos
 #
@@ -157,8 +152,8 @@ DROP TABLE IF EXISTS `documentos`;
 
 CREATE TABLE `documentos` (
   `idDocumentos` int(11) NOT NULL AUTO_INCREMENT,
-  `documento` text,
-  `descricao` text,
+  `documento` text DEFAULT NULL,
+  `descricao` text DEFAULT NULL,
   `file` varchar(100) DEFAULT NULL,
   `path` varchar(300) DEFAULT NULL,
   `url` varchar(300) DEFAULT NULL,
@@ -168,7 +163,6 @@ CREATE TABLE `documentos` (
   `tamanho` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idDocumentos`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 
 #
 # TABLE STRUCTURE FOR: email_queue
@@ -184,10 +178,9 @@ CREATE TABLE `email_queue` (
   `message` text NOT NULL,
   `status` enum('pending','sending','sent','failed') DEFAULT NULL,
   `date` datetime DEFAULT NULL,
-  `headers` text,
+  `headers` text DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 
 #
 # TABLE STRUCTURE FOR: emitente
@@ -211,7 +204,6 @@ CREATE TABLE `emitente` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
 #
 # TABLE STRUCTURE FOR: equipamento_os
 #
@@ -221,17 +213,16 @@ DROP TABLE IF EXISTS `equipamento_os`;
 CREATE TABLE `equipamento_os` (
   `idEquipamento` int(11) NOT NULL AUTO_INCREMENT,
   `equipamento` text NOT NULL,
-  `num_serie` text,
-  `modelo` text,
-  `voltagem` text,
-  `descricao` text,
-  `observacao` text,
+  `num_serie` text DEFAULT NULL,
+  `modelo` text DEFAULT NULL,
+  `voltagem` text DEFAULT NULL,
+  `descricao` text DEFAULT NULL,
+  `observacao` text DEFAULT NULL,
   `os_id` int(11) NOT NULL,
   PRIMARY KEY (`idEquipamento`),
   KEY `fk_equipamento_os` (`os_id`),
   CONSTRAINT `fk_equipamento_os_os1` FOREIGN KEY (`os_id`) REFERENCES `os` (`idOs`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 
 #
 # TABLE STRUCTURE FOR: equipamentos
@@ -297,7 +288,6 @@ CREATE TABLE `foto_clientes` (
   CONSTRAINT `fk_clientes_foto_clientes1` FOREIGN KEY (`cliente_id`) REFERENCES `clientes` (`idClientes`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
 #
 # TABLE STRUCTURE FOR: garantias
 #
@@ -308,7 +298,7 @@ CREATE TABLE `garantias` (
   `idGarantias` int(11) NOT NULL AUTO_INCREMENT,
   `dataGarantia` date DEFAULT NULL,
   `refGarantia` varchar(15) DEFAULT NULL,
-  `textoGarantia` text,
+  `textoGarantia` text DEFAULT NULL,
   `usuarios_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`idGarantias`),
   KEY `fk_garantias_usuarios1` (`usuarios_id`),
@@ -335,7 +325,6 @@ CREATE TABLE `itens_de_vendas` (
   CONSTRAINT `fk_itens_de_vendas_vendas1` FOREIGN KEY (`vendas_id`) REFERENCES `vendas` (`idVendas`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
 #
 # TABLE STRUCTURE FOR: lancamentos
 #
@@ -348,7 +337,7 @@ CREATE TABLE `lancamentos` (
   `valor` varchar(15) NOT NULL,
   `data_vencimento` date NOT NULL,
   `data_pagamento` date DEFAULT NULL,
-  `baixado` tinyint(1) DEFAULT '0',
+  `baixado` tinyint(1) DEFAULT 0,
   `cliente_fornecedor` varchar(255) DEFAULT NULL,
   `forma_pgto` varchar(100) DEFAULT NULL,
   `tipo` varchar(45) DEFAULT NULL,
@@ -366,7 +355,6 @@ CREATE TABLE `lancamentos` (
   CONSTRAINT `fk_lancamentos_contas1` FOREIGN KEY (`contas_id`) REFERENCES `contas` (`idContas`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
 #
 # TABLE STRUCTURE FOR: logs
 #
@@ -382,7 +370,6 @@ CREATE TABLE `logs` (
   `ip` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idLogs`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 
 #
 # TABLE STRUCTURE FOR: marcas
@@ -420,15 +407,15 @@ DROP TABLE IF EXISTS `os`;
 CREATE TABLE `os` (
   `idOs` int(11) NOT NULL AUTO_INCREMENT,
   `dataInicial` date DEFAULT NULL,
-  `dataFinal` text,
-  `dataSaida` text,
+  `dataFinal` text DEFAULT NULL,
+  `dataSaida` text DEFAULT NULL,
   `garantia` varchar(45) DEFAULT NULL,
-  `rastreio` text,
-  `descricaoProduto` text,
-  `defeito` text,
+  `rastreio` text DEFAULT NULL,
+  `descricaoProduto` text DEFAULT NULL,
+  `defeito` text DEFAULT NULL,
   `status` varchar(45) DEFAULT NULL,
-  `observacoes` text,
-  `laudoTecnico` text,
+  `observacoes` text DEFAULT NULL,
+  `laudoTecnico` text DEFAULT NULL,
   `valorTotal` varchar(15) DEFAULT NULL,
   `clientes_id` int(11) NOT NULL,
   `usuarios_id` int(11) NOT NULL,
@@ -443,7 +430,6 @@ CREATE TABLE `os` (
   CONSTRAINT `fk_os_lancamentos1` FOREIGN KEY (`lancamento`) REFERENCES `lancamentos` (`idLancamentos`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_os_usuarios1` FOREIGN KEY (`usuarios_id`) REFERENCES `usuarios` (`idUsuarios`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 
 #
 # TABLE STRUCTURE FOR: pagamento
@@ -462,7 +448,6 @@ CREATE TABLE `pagamento` (
   PRIMARY KEY (`idPag`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
 #
 # TABLE STRUCTURE FOR: permissoes
 #
@@ -472,7 +457,7 @@ DROP TABLE IF EXISTS `permissoes`;
 CREATE TABLE `permissoes` (
   `idPermissao` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(80) NOT NULL,
-  `permissoes` text,
+  `permissoes` text DEFAULT NULL,
   `situacao` tinyint(1) DEFAULT NULL,
   `data` date DEFAULT NULL,
   PRIMARY KEY (`idPermissao`)
@@ -489,7 +474,7 @@ DROP TABLE IF EXISTS `produtos`;
 
 CREATE TABLE `produtos` (
   `idProdutos` int(11) NOT NULL AUTO_INCREMENT,
-  `codDeBarra` varchar(70) NOT NULL,
+  `codDeBarra` varchar(70) DEFAULT NULL,
   `descricao` varchar(80) NOT NULL,
   `unidade` varchar(10) DEFAULT NULL,
   `precoCompra` decimal(10,2) DEFAULT NULL,
@@ -499,8 +484,7 @@ CREATE TABLE `produtos` (
   `saida` tinyint(1) DEFAULT NULL,
   `entrada` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`idProdutos`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
+) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=latin1;
 
 #
 # TABLE STRUCTURE FOR: produtos_os
@@ -523,7 +507,6 @@ CREATE TABLE `produtos_os` (
   CONSTRAINT `fk_produtos_os_produtos1` FOREIGN KEY (`produtos_id`) REFERENCES `produtos` (`idProdutos`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
 #
 # TABLE STRUCTURE FOR: servicos
 #
@@ -537,7 +520,6 @@ CREATE TABLE `servicos` (
   `preco` decimal(10,2) NOT NULL,
   PRIMARY KEY (`idServicos`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 
 #
 # TABLE STRUCTURE FOR: servicos_os
@@ -559,7 +541,6 @@ CREATE TABLE `servicos_os` (
   CONSTRAINT `fk_servicos_os_os1` FOREIGN KEY (`os_id`) REFERENCES `os` (`idOs`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_servicos_os_servicos1` FOREIGN KEY (`servicos_id`) REFERENCES `servicos` (`idServicos`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 
 #
 # TABLE STRUCTURE FOR: usuarios
@@ -591,6 +572,7 @@ CREATE TABLE `usuarios` (
   CONSTRAINT `fk_usuarios_permissoes1` FOREIGN KEY (`permissoes_id`) REFERENCES `permissoes` (`idPermissao`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
+
 INSERT INTO `usuarios` (`idUsuarios`, `nome`, `rg`, `cpf`, `rua`, `numero`, `bairro`, `cep`, `cidade`, `estado`, `email`, `senha`, `telefone`, `celular`, `situacao`, `dataCadastro`, `permissoes_id`, `dataExpiracao`) VALUES (1, 'admin_name', '0', '000.000.000-00', '-', '-', '-', '00000-000', '-', '-', 'admin_email', 'admin_password', '(00) 00000-0000', NULL, 1, 'admin_created_at', 1, 'data_expiracao');
 
 
@@ -609,7 +591,7 @@ CREATE TABLE `vendas` (
   `clientes_id` int(11) NOT NULL,
   `usuarios_id` int(11) DEFAULT NULL,
   `lancamentos_id` int(11) DEFAULT NULL,
-  `observacoes` text,
+  `observacoes` text DEFAULT NULL,
   PRIMARY KEY (`idVendas`),
   KEY `fk_vendas_clientes1` (`clientes_id`),
   KEY `fk_vendas_usuarios1` (`usuarios_id`),
@@ -617,7 +599,6 @@ CREATE TABLE `vendas` (
   CONSTRAINT `fk_vendas_clientes1` FOREIGN KEY (`clientes_id`) REFERENCES `clientes` (`idClientes`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_vendas_lancamentos1` FOREIGN KEY (`lancamentos_id`) REFERENCES `lancamentos` (`idLancamentos`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_vendas_usuarios1` FOREIGN KEY (`usuarios_id`) REFERENCES `usuarios` (`idUsuarios`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 SET foreign_key_checks = 1;
