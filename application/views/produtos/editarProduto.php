@@ -25,9 +25,6 @@
         text-indent: 0;
     }
 </style>
-<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'aProduto')) { ?>
-    <a href="<?php echo base_url(); ?>index.php/produtos/adicionar" class="btn btn-success"><i class="fas fa-plus"></i> Adicionar Produto</a>
-<?php } ?>
 <div class="row-fluid" style="margin-top:0">
     <div class="span12">
         <div class="widget-box">

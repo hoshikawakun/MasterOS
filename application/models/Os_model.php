@@ -171,12 +171,13 @@ class Os_model extends CI_Model
 
         $this->db->select('*');
         $this->db->limit($this->data['configuration']['per_page']);
-        $this->db->like('codDeBarra', $q);
-        $this->db->or_like('descricao', $q);        
-        $query = $this->db->get('produtos');
+        $this->db->like('idProdutos', $q);
+		$this->db->or_like('codDeBarra', $q);
+		$this->db->or_like('descricao', $q);
+		$query = $this->db->get('produtos');
         if ($query->num_rows() > 0) {
             foreach ($query->result_array() as $row) {
-            $row_set[] = array('label'=>$row['codDeBarra'].' | '.$row['descricao'].' | Preço: R$ '.$row['precoVenda'].' | Estoque: '.$row['estoque'],'estoque'=>$row['estoque'],'id'=>$row['idProdutos'],'preco'=>$row['precoVenda']);
+            $row_set[] = array('label'=>$row['idProdutos'].' | '.$row['codDeBarra'].' | '.$row['descricao'].' | Preço: R$ '.$row['precoVenda'].' | Estoque: '.$row['estoque'],'estoque'=>$row['estoque'],'id'=>$row['idProdutos'],'preco'=>$row['precoVenda']);
             }
             echo json_encode($row_set);
         }
@@ -187,13 +188,14 @@ class Os_model extends CI_Model
 
         $this->db->select('*');
         $this->db->limit($this->data['configuration']['per_page']);
-        $this->db->like('codDeBarra', $q);
-        $this->db->or_like('descricao', $q);
+        $this->db->like('idProdutos', $q);
+		$this->db->or_like('codDeBarra', $q);
+		$this->db->or_like('descricao', $q);
         $this->db->where('saida', 1);
         $query = $this->db->get('produtos');
         if ($query->num_rows() > 0) {
             foreach ($query->result_array() as $row) {
-            $row_set[] = array('label'=>$row['codDeBarra'].' | '.$row['descricao'].' | Preço: R$ '.$row['precoVenda'].' | Estoque: '.$row['estoque'],'estoque'=>$row['estoque'],'id'=>$row['idProdutos'],'preco'=>$row['precoVenda']);
+            $row_set[] = array('label'=>$row['idProdutos'].' | '.$row['codDeBarra'].' | '.$row['descricao'].' | Preço: R$ '.$row['precoVenda'].' | Estoque: '.$row['estoque'],'estoque'=>$row['estoque'],'id'=>$row['idProdutos'],'preco'=>$row['precoVenda']);
             }
             echo json_encode($row_set);
         }

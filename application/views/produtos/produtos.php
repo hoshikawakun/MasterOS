@@ -136,7 +136,7 @@
                 </div>
 
                 <div class="span4">
-                    <label for="valor">Apenas itens em Estoque</label>
+                    <label for="valor">Qtd. do Estoque</label>
                     <input class="span12" type="checkbox" name="qtdEtiqueta" value="true"/>
                 </div>
 
@@ -181,17 +181,11 @@
                     <input class="span9" style="margin-left: 0" type="text" id="de_id" name="de_id" placeholder="ID do primeiro produto" value=""/>
                 </div>
 
-
                 <div class="span6">
                     <label for="valor">Até</label>
                     <input class="span9" type="text" id="ate_id" name="ate_id" placeholder="ID do último produto" value=""/>
                 </div>
-                
-                <div class="span4">
-                    <label for="valor">Apenas itens em Estoque</label>
-                    <input class="span12" type="checkbox" name="qtdEtiqueta" value="true"/>
-                </div>
-                
+
                 <div class="hide">
                     <label class="span12" for="valor">Formato Etiqueta</label>
                     <select name="etiquetaCode">
