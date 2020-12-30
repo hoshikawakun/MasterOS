@@ -26,7 +26,6 @@
                     <thead>
                        <tr style="backgroud-color: #2D335B">
                             <th>OS N°</th>
-                            <th>Responsável</th>
                             <th>Data de Entrada</th>
                             <th>Data de Saida</th>
                             <th>Garantia até</th>
@@ -63,7 +62,6 @@
 								
 						echo '<tr>';
 						echo '<td><div align="center">' . $r->idOs . '</div></td>';
-						echo '<td>' . $r->nome . '</td>';
 						echo '<td><div align="center">' . $dataInicial . '</div></td>';
 						echo '<td><div align="center">' . $r->dataSaida . '</div></td>';
 						echo '<td><div align="center">' . $r->garantia . '</div></td>';
