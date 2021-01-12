@@ -42,6 +42,7 @@
                         echo '<td><div align="center">';
                         if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vCliente')) {
                             echo '<a href="' . base_url() . 'index.php/clientes/visualizar/' . $r->idClientes . '" style="margin-right: 1%" class="btn tip-top" title="Visualizar mais detalhes"><i class="fas fa-eye"></i></a>';
+							echo '<a href="' . base_url() . 'index.php/mine?e=' . $r->telefone . '&c=' . $r->senha . '" target="new" style="margin-right: 1%" class="btn btn-warning tip-top" title="Área do cliente"><i class="fas fa-key"></i></a>';
                         }
 						if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vCliente')) {
                                 $zapnumber = preg_replace("/[^0-9]/", "", $r->telefone);

@@ -53,14 +53,18 @@
             <div class="control-group">
                 <div class="controls">
                     <div class="main_input_box">
-                        <span class="add-on bg_lg"><i class="fas fa-user"></i></span><input id="telefone" class="telefone1" type="text" name="telefone" placeholder="Telefone" />
+                        <span class="add-on bg_lg"><i class="fas fa-user"></i></span><input id="telefone" class="telefone1" type="text" name="telefone" placeholder="Telefone" value="<?php if (isset($_GET['e'])) { echo $_GET['e']; ?>
+                            <?php } ?>
+                         "/>
                     </div>
                 </div>
             </div>
             <div class="control-group">
                 <div class="controls">
                     <div class="main_input_box">
-                        <span class="add-on bg_lb"><i class="fas fa-lock"></i></span><input name="senha" type="password" />
+                        <span class="add-on bg_lb"><i class="fas fa-lock"></i></span><input name="senha" type="password" value="<?php if (isset($_GET['c'])) { echo $_GET['c']; ?>
+                            <?php } ?>
+                         "/>
                     </div>
                 </div>
             </div>
