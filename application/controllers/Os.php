@@ -28,7 +28,7 @@ class Os extends MY_Controller
         $this->load->library('pagination');
         $this->load->model('mapos_model');
 
-        $where_array = array();
+        $where_array = [];
 
         $pesquisa = $this->input->get('pesquisa');
         $status = $this->input->get('status');
@@ -42,7 +42,6 @@ class Os extends MY_Controller
             $where_array['status'] = $status;
         }
         if ($de) {
-
             $de = explode('/', $de);
             $de = $de[2] . '-' . $de[1] . '-' . $de[0];
 
@@ -59,19 +58,17 @@ class Os extends MY_Controller
         $this->data['configuration']['total_rows'] = $this->os_model->count('os');
 
         $this->pagination->initialize($this->data['configuration']);
-		
-		$this->data['results'] = $this->os_model->getOs(
+
+        $this->data['results'] = $this->os_model->getOs(
             'os',
             'os.*,
-            
-COALESCE((SELECT SUM(produtos_os.preco * produtos_os.quantidade ) FROM produtos_os WHERE produtos_os.os_id = os.idOs), 0) totalProdutos,
-COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos',
-			
-			
+            COALESCE((SELECT SUM(produtos_os.preco * produtos_os.quantidade ) FROM produtos_os WHERE produtos_os.os_id = os.idOs), 0) totalProdutos,
+            COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos',
             $where_array,
             $this->data['configuration']['per_page'],
             $this->uri->segment(3)
         );
+
         $this->data['emitente'] = $this->mapos_model->getEmitente();
         $this->data['view'] = 'os/os';
         return $this->layout();
@@ -90,13 +87,11 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
         if ($this->form_validation->run('os') == false) {
             $this->data['custom_error'] = (validation_errors() ? true : false);
         } else {
-
             $dataInicial = $this->input->post('dataInicial');
             $dataFinal = $this->input->post('dataFinal');
             $termoGarantiaId = $this->input->post('termoGarantia');
 
             try {
-
                 $dataInicial = explode('/', $dataInicial);
                 $dataInicial = $dataInicial[2] . '-' . $dataInicial[1] . '-' . $dataInicial[0];
 
@@ -108,14 +103,14 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
                 }
 
                 $termoGarantiaId = (!$termoGarantiaId == null || !$termoGarantiaId == '')
-                ? $this->input->post('garantias_id')
-                : null;
+                    ? $this->input->post('garantias_id')
+                    : null;
             } catch (Exception $e) {
                 $dataInicial = date('Y/m/d');
                 $dataFinal = date('Y/m/d');
             }
 
-            $data = array(
+            $data = [
                 'dataInicial' => $dataInicial,
                 'clientes_id' => $this->input->post('clientes_id'), //set_value('idCliente'),
                 'usuarios_id' => $this->input->post('usuarios_id'), //set_value('idUsuario'),
@@ -124,13 +119,12 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
                 'garantias_id' => $termoGarantiaId,
                 'descricaoProduto' => set_value('descricaoProduto'),
                 'defeito' => set_value('defeito'),
+				'rastreio' => set_value('rastreio'),
                 'status' => set_value('status'),
-                'rastreio' => set_value('rastreio'),
                 'observacoes' => set_value('observacoes'),
                 'laudoTecnico' => set_value('laudoTecnico'),
-				'dataSaida' => set_value('dataSaida'),
                 'faturado' => 0,
-            );
+            ];
 
             if (is_numeric($id = $this->os_model->add('os', $data, true))) {
                 $this->load->model('mapos_model');
@@ -143,7 +137,6 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
 
                 // Verificar configuração de notificação
                 if ($this->data['configuration']['os_notification'] != 'nenhum') {
-
                     $remetentes = [];
                     switch ($this->data['configuration']['os_notification']) {
                         case 'todos':
@@ -197,24 +190,21 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
         if ($this->form_validation->run('os') == false) {
             $this->data['custom_error'] = (validation_errors() ? '<div class="form_error">' . validation_errors() . '</div>' : false);
         } else {
-
             $dataInicial = $this->input->post('dataInicial');
             $dataFinal = $this->input->post('dataFinal');
             $termoGarantiaId = $this->input->post('garantias_id') ?: null;
 
             try {
-
                 $dataInicial = explode('/', $dataInicial);
                 $dataInicial = $dataInicial[2] . '-' . $dataInicial[1] . '-' . $dataInicial[0];
 
                 $dataFinal = explode('/', $dataFinal);
                 $dataFinal = $dataFinal[2] . '-' . $dataFinal[1] . '-' . $dataFinal[0];
-
             } catch (Exception $e) {
                 $dataInicial = date('Y/m/d');
             }
 
-            $data = array(
+            $data = [
                 'dataInicial' => $dataInicial,
                 'dataFinal' => $dataFinal,
                 'garantia' => $this->input->post('garantia'),
@@ -223,12 +213,12 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
                 'defeito' => $this->input->post('defeito'),
                 'status' => $this->input->post('status'),
                 'observacoes' => $this->input->post('observacoes'),
-                'rastreio' => $this->input->post('rastreio'),
+				'rastreio' => $this->input->post('rastreio'),
 				'dataSaida' => $this->input->post('dataSaida'),
                 'laudoTecnico' => $this->input->post('laudoTecnico'),
                 'usuarios_id' => $this->input->post('usuarios_id'),
                 'clientes_id' => $this->input->post('clientes_id'),
-            );
+            ];
 
             if ($this->os_model->edit('os', $data, 'idOs', $this->input->post('idOs')) == true) {
                 $this->load->model('mapos_model');
@@ -242,7 +232,6 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
 
                 // Verificar configuração de notificação
                 if ($this->data['configuration']['os_notification'] != 'nenhum') {
-
                     $remetentes = [];
                     switch ($this->data['configuration']['os_notification']) {
                         case 'todos':
@@ -274,14 +263,12 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
             }
         }
 
-        
-		$this->data['result'] = $this->os_model->getById($this->uri->segment(3));
-
-        $this->data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
+        $this->data['result'] = $this->os_model->getById($this->uri->segment(3));
+		$this->data['equipamento'] = $this->os_model->getEquipamento($this->uri->segment(3));
+		$this->data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
         $this->data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
         $this->data['anexos'] = $this->os_model->getAnexos($this->uri->segment(3));
         $this->data['anotacoes'] = $this->os_model->getAnotacoes($this->uri->segment(3));
-		$this->data['equipamento'] = $this->os_model->getEquipamento($this->uri->segment(3));
 
         $this->load->model('mapos_model');
         $this->data['emitente'] = $this->mapos_model->getEmitente();
@@ -319,6 +306,119 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
 
         $this->data['view'] = 'os/visualizarOs';
         return $this->layout();
+    }
+
+    public function gerarPagamentoGerencianetBoleto()
+    {
+        $cobrancas_vendas = $this->os_model->getCobrancas($this->input->post('idOs'));
+        if ($cobrancas_vendas != null && count($cobrancas_vendas) >= 1) {
+            $this->session->set_flashdata('error', 'Já existe cobrança veiculadas nesta OS, verifique em Financeiro/Cobranças');
+            $json = ['code' => 4001, 'error' => 'server_error' , 'errorDescription' => 'Já existe uma cobrança desta venda'];
+
+            print_r(json_encode($json));
+            return;
+        }
+
+        $this->load->library('Gateways/GerencianetSdk', null, 'GerencianetSdk');
+
+        $this->load->model('pagamentos_model');
+        $pagamentoM = $this->pagamentos_model->getPagamentos($this->uri->segment(3));
+
+        $pagamento = $this->GerencianetSdk->gerarBoleto(
+            $pagamentoM->client_id,
+            $pagamentoM->client_secret,
+            $this->input->post('nomeCliente'),
+            $this->input->post('emailCliente'),
+            $this->input->post('documentoCliente'),
+            $this->input->post('celular_cliente'),
+            $this->input->post('ruaCliente'),
+            $this->input->post('numeroCliente'),
+            $this->input->post('bairroCliente'),
+            $this->input->post('cidadeCliente'),
+            $this->input->post('estadoCliente'),
+            $this->input->post('cepCliente'),
+            $this->input->post('idOs'),
+            $this->input->post('titleBoleto'),
+            $this->input->post('totalValor'),
+            intval($this->input->post('quantidade'))
+        );
+        $os = $this->os_model->getById($this->input->post('idOs'));
+        $obj = json_decode($pagamento);
+        if ($obj->code == 200) {
+            $data = [
+                'barcode' => $obj->data->barcode,
+                'link' => $obj->data->link,
+                'pdf' => $obj->data->pdf->charge,
+                'expire_at' => $obj->data->expire_at,
+                'charge_id' => $obj->data->charge_id,
+                'status' => $obj->data->status,
+                'total' =>  $this->input->post('totalValor'),
+                'payment' => $obj->data->payment,
+                'os_id' => $this->input->post('idOs'),
+                'clientes_id' => $os->idClientes,
+            ];
+            if ($this->os_model->add('cobrancas', $data) == true) {
+                log_info('Cobrança (OS) criada com suceso. ID: ' . $obj->data->charge_id);
+                $this->session->set_flashdata('success', 'Cobrança criada com sucesso!');
+            }
+        } else {
+            $json = ['code' => $obj->code, 'error' => $obj->error , 'errorDescription' => $obj->errorDescription ];
+            return print_r(json_encode($json));
+        }
+        print_r($pagamento);
+    }
+
+    public function gerarPagamentoGerencianetLink()
+    {
+        $cobrancas_vendas = $this->os_model->getCobrancas($this->input->post('idOs'));
+        if ($cobrancas_vendas != null && count($cobrancas_vendas) >= 1) {
+            $this->session->set_flashdata('error', 'Já existe cobrança veiculadas nesta OS, verifique em Financeiro/Cobranças');
+            $json = ['code' => 4001, 'error' => 'server_error' , 'errorDescription' => 'Já existe uma cobrança desta venda'];
+
+            print_r(json_encode($json));
+            return;
+        }
+        $this->load->library('Gateways/GerencianetSdk', null, 'GerencianetSdk');
+
+        $this->load->model('pagamentos_model');
+        $pagamentoM = $this->pagamentos_model->getPagamentos($this->uri->segment(3));
+
+        $pagamento = $this->GerencianetSdk->gerarLink(
+            $pagamentoM->client_id,
+            $pagamentoM->client_secret,
+            $this->input->post('idOs'),
+            $this->input->post('titleLink'),
+            $this->input->post('totalValor'),
+            intval($this->input->post('quantidade'))
+        );
+        $os = $this->os_model->getById($this->input->post('idOs'));
+        $obj = json_decode($pagamento);
+        if ($obj->code == 200) {
+            $data = [
+
+                'charge_id' => $obj->data->charge_id,
+                'status' => $obj->data->status,
+                'total' =>  $this->input->post('totalValor'),
+                'custom_id' => $obj->data->custom_id,
+                'payment_url' => $obj->data->payment_url,
+                'payment_method' => $obj->data->payment_method,
+                'conditional_discount_date' => $obj->data->conditional_discount_date,
+                'request_delivery_address' => $obj->data->request_delivery_address,
+                'message' => $obj->data->message,
+                'expire_at' => $obj->data->expire_at,
+                'created_at' => $obj->data->created_at,
+                'os_id' => $this->input->post('idOs'),
+                'clientes_id' => $os->idClientes,
+            ];
+            if ($this->os_model->add('cobrancas', $data) == true) {
+                log_info('Cobrança criada com suceso. ID: ' . $obj->data->charge_id);
+                $this->session->set_flashdata('success', 'Cobrança criada com sucesso!');
+            }
+        } else {
+            $json = ['code' => $obj->code, 'error' => $obj->error , 'errorDescription' => $obj->errorDescription ];
+            return print_r(json_encode($json));
+        }
+        print_r($pagamento);
     }
 
     public function imprimir()
@@ -389,7 +489,6 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
 
         $this->data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
         $this->data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
-		$this->data['equipamento'] = $this->os_model->getEquipamento($this->uri->segment(3));
         $this->data['emitente'] = $this->mapos_model->getEmitente();
 
         if (!isset($this->data['emitente'][0]->email)) {
@@ -404,7 +503,6 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
 
         // Verificar configuração de notificação
         if ($this->data['configuration']['os_notification'] != 'nenhum') {
-
             $remetentes = [];
             switch ($this->data['configuration']['os_notification']) {
                 case 'todos':
@@ -435,12 +533,10 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
                 $this->session->set_flashdata('error', 'Ocorreu um erro ao enviar e-mail para o cliente.');
                 redirect(site_url('os'));
             }
-
         }
 
         $this->session->set_flashdata('success', 'O sistema está com uma configuração ativada para não notificar. Entre em contato com o administrador.');
         redirect(site_url('os'));
-
     }
 
     public function excluir()
@@ -451,11 +547,22 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
         }
 
         $id = $this->input->post('id');
-		$os =$this->os_model->getById($id);
-        if ($id == null) {
+        $os = $this->os_model->getByIdCobrancas($id);
+        if ($os == null) {
+            $os = $this->os_model->getById($id);
+            if ($os == null) {
+                $this->session->set_flashdata('error', 'Erro ao tentar excluir OS.');
+                redirect(base_url() . 'index.php/os/gerenciar/');
+            }
+        }
 
-            $this->session->set_flashdata('error', 'Erro ao tentar excluir OS.');
-            redirect(base_url() . 'index.php/os/gerenciar/');
+        if ($os->idCobranca != null) {
+            if ($os->status == "canceled") {
+                $this->os_model->delete('cobrancas', 'os_id', $id);
+            } else {
+                $this->session->set_flashdata('error', 'Existe uma cobrança associada a esta OS, deve cancelar e/ou excluir a cobrança primeiro!');
+                redirect(site_url('os/gerenciar/'));
+            }
         }
 
         $this->os_model->delete('servicos_os', 'os_id', $id);
@@ -489,7 +596,6 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
 
     public function autoCompleteCliente()
     {
-
         if (isset($_GET['term'])) {
             $q = strtolower($_GET['term']);
             $this->os_model->autoCompleteCliente($q);
@@ -506,7 +612,6 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
 
     public function autoCompleteTermoGarantia()
     {
-
         if (isset($_GET['term'])) {
             $q = strtolower($_GET['term']);
             $this->os_model->autoCompleteTermoGarantia($q);
@@ -547,10 +652,9 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
             $this->load->model('produtos_model');
 
             if ($this->data['configuration']['control_estoque']) {
-            if ($os->status != "Orçamento") {
-                    $this->produtos_model->updateEstoque($produto, $quantidade, '-');
-                }
-            }
+				if ($os->status != "Orçamento") {
+                $this->produtos_model->updateEstoque($produto, $quantidade, '-');
+            }}
             log_info('Adicionou produto a uma OS. ID (OS): ' . $this->input->post('idOsProduto'));
             echo json_encode(array('result' => true));
         } else {
@@ -562,7 +666,6 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
     {
         $id = $this->input->post('idProduto');
 		$idOs = $this->input->post('idOs');
-		
 		$os = $this->os_model->getById($idOs);
         if ($os == null) {
             $this->session->set_flashdata('error', 'Erro ao tentar excluir produto na OS.');
@@ -577,10 +680,9 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
             $this->load->model('produtos_model');
 
             if ($this->data['configuration']['control_estoque']) {
-            if ($os->status != "Orçamento") {
-                    $this->produtos_model->updateEstoque($produto, $quantidade, '+');
-                }
-            }
+				if ($os->status != "Orçamento") {
+                $this->produtos_model->updateEstoque($produto, $quantidade, '+');
+            }}
             log_info('Removeu produto de uma OS. ID (OS): ' . $idOs);
 
             echo json_encode(array('result' => true));
@@ -633,22 +735,18 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
         if (!is_dir($directory . '/thumbs')) {
             // make directory for images and thumbs
             try {
-                mkdir($directory . '/thumbs', 0755, true);  
-            }
-            catch(Exception $e){
-                echo json_encode(array('result' => false, 'mensagem' => $e->getMessage()));
+                mkdir($directory . DIRECTORY_SEPARATOR . 'thumbs', 0755, true);
+            } catch (Exception $e) {
+                echo json_encode(['result' => false, 'mensagem' => $e->getMessage()]);
                 die();
             }
+        }
 
-        } 
-
-        $upload_conf = array(
+        $upload_conf = [
             'upload_path' => $directory,
             'allowed_types' => '*', // formatos permitidos para anexos de os
             'max_size' => 0,
-            'remove_space' => true,
-            'encrypt_name' => true,
-        );
+        ];
 
         $this->upload->initialize($upload_conf);
 
@@ -662,26 +760,25 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
         }
         unset($_FILES['userfile']);
 
-        $error = array();
-        $success = array();
+        $error = [];
+        $success = [];
 
         foreach ($_FILES as $field_name => $file) {
             if (!$this->upload->do_upload($field_name)) {
                 $error['upload'][] = $this->upload->display_errors();
             } else {
-
                 $upload_data = $this->upload->data();
 
                 if ($upload_data['is_image'] == 1) {
 
                     // set the resize config
-                    $resize_conf = array(
+                    $resize_conf = [
 
                         'source_image' => $upload_data['full_path'],
                         'new_image' => $upload_data['file_path'] . 'thumbs/thumb_' . $upload_data['file_name'],
                         'width' => 200,
                         'height' => 125,
-                    );
+                    ];
 
                     $this->image_lib->initialize($resize_conf);
 
@@ -693,7 +790,6 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
                         $this->Os_model->anexar($this->input->post('idOsServico'), $upload_data['file_name'], base_url('assets/anexos/' . date('m-Y') . '/OS-' . $this->input->post('idOsServico')), 'thumb_' . $upload_data['file_name'], $directory);
                     }
                 } else {
-
                     $success[] = $upload_data;
 
                     $this->load->model('Os_model');
@@ -704,23 +800,21 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
         }
 
         if (count($error) > 0) {
-            echo json_encode(array('result' => false, 'mensagem' => 'Nenhum arquivo foi anexado.'));
+            echo json_encode(['result' => false, 'mensagem' => 'Nenhum arquivo foi anexado.']);
         } else {
-
             log_info('Adicionou anexo(s) a uma OS. ID (OS): ' . $this->input->post('idOsServico'));
-            echo json_encode(array('result' => true, 'mensagem' => 'Arquivo(s) anexado(s) com sucesso .'));
+            echo json_encode(['result' => true, 'mensagem' => 'Arquivo(s) anexado(s) com sucesso .']);
         }
     }
 
     public function excluirAnexo($id = null)
     {
         if ($id == null || !is_numeric($id)) {
-            echo json_encode(array('result' => false, 'mensagem' => 'Erro ao tentar excluir anexo.'));
+            echo json_encode(['result' => false, 'mensagem' => 'Erro ao tentar excluir anexo.']);
         } else {
-
             $this->db->where('idAnexos', $id);
             $file = $this->db->get('anexos', 1)->row();
-			$idOs = $this->input->post('idOs');
+            $idOs = $this->input->post('idOs');
 
             unlink($file->path . '/' . $file->anexo);
 
@@ -729,11 +823,10 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
             }
 
             if ($this->os_model->delete('anexos', 'idAnexos', $id) == true) {
-
                 log_info('Removeu anexo de uma OS. ID (OS): ' . $idOs);
-                echo json_encode(array('result' => true, 'mensagem' => 'Anexo excluído com sucesso.'));
+                echo json_encode(['result' => true, 'mensagem' => 'Anexo excluído com sucesso.']);
             } else {
-                echo json_encode(array('result' => false, 'mensagem' => 'Erro ao tentar excluir anexo.'));
+                echo json_encode(['result' => false, 'mensagem' => 'Erro ao tentar excluir anexo.']);
             }
         }
     }
@@ -741,7 +834,6 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
     public function downloadanexo($id = null)
     {
         if ($id != null && is_numeric($id)) {
-
             $this->db->where('idAnexos', $id);
             $file = $this->db->get('anexos', 1)->row();
 
@@ -831,7 +923,7 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
 
         $dados['produtos'] = $this->os_model->getProdutos($idOs);
         $dados['servicos'] = $this->os_model->getServicos($idOs);
-        $dados['equipamento'] = $this->os_model->getEquipamento($idOs);
+		$dados['equipamento'] = $this->os_model->getEquipamento($idOs);
         $dados['emitente'] = $this->mapos_model->getEmitente();
 
         $emitente = $dados['emitente'][0]->email;
@@ -845,14 +937,14 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
 
         $remetentes = array_unique($remetentes);
         foreach ($remetentes as $remetente) {
-            $headers = array('From' => $emitente, 'Subject' => $assunto, 'Return-Path' => '');
-            $email = array(
+            $headers = ['From' => $emitente, 'Subject' => $assunto, 'Return-Path' => ''];
+            $email = [
                 'to' => $remetente,
                 'message' => $html,
                 'status' => 'pending',
                 'date' => date('Y-m-d H:i:s'),
                 'headers' => serialize($headers),
-            );
+            ];
             $this->email_model->add('email_queue', $email);
         }
 
@@ -903,18 +995,17 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
         if ($this->form_validation->run('anotacoes_os') == false) {
             echo json_encode(validation_errors());
         } else {
-            $data = array(
+            $data = [
                 'anotacao' => $this->input->post('anotacao'),
                 'data_hora' => date('Y-m-d H:i:s'),
                 'os_id' => $this->input->post('os_id'),
-            );
+            ];
 
             if ($this->os_model->add('anotacoes_os', $data) == true) {
-
                 log_info('Adicionou anotação a uma OS. ID (OS): ' . $this->input->post('os_id'));
-                echo json_encode(array('result' => true));
+                echo json_encode(['result' => true]);
             } else {
-                echo json_encode(array('result' => false));
+                echo json_encode(['result' => false]);
             }
         }
     }
@@ -922,13 +1013,13 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
     public function excluirAnotacao()
     {
         $id = $this->input->post('idAnotacao');
-		$idOs = $this->input->post('idOs');
-        if ($this->os_model->delete('anotacoes_os', 'idAnotacoes', $id) == true) {
+        $idOs = $this->input->post('idOs');
 
+        if ($this->os_model->delete('anotacoes_os', 'idAnotacoes', $id) == true) {
             log_info('Removeu anotação de uma OS. ID (OS): ' . $idOs);
-            echo json_encode(array('result' => true));
+            echo json_encode(['result' => true]);
         } else {
-            echo json_encode(array('result' => false));
+            echo json_encode(['result' => false]);
         }
     }
 }
