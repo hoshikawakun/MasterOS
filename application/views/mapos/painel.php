@@ -105,7 +105,7 @@
   <a title="Imprimir OS" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimir/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i> </a>
 								<?php endif ?>
                                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
-										  '<a style="margin-right: 1%" target="_new" href="https://www.linkcorreios.com.br/<?= $o->rastreio ?>" class="btn btn-warning tip-top" title="Rastreio Correio"><i class="fas fa-envelope"></i></a>
+										  <a style="margin-right: 1%" target="_new" href="https://www.linkcorreios.com.br/<?= $o->rastreio ?>" class="btn btn-warning tip-top" title="Rastreio Correio"><i class="fas fa-envelope"></i></a>
                                 <?php endif ?>
 								</div></td>
                                 </tr>
@@ -162,7 +162,7 @@
   <a title="Imprimir OS" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimir/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i> </a>
 								<?php endif ?>
                                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
-										  '<a style="margin-right: 1%" target="_new" href="https://www.linkcorreios.com.br/<?= $o->rastreio ?>" class="btn btn-warning tip-top" title="Rastreio Correio"><i class="fas fa-envelope"></i></a>
+										  <a style="margin-right: 1%" target="_new" href="https://www.linkcorreios.com.br/<?= $o->rastreio ?>" class="btn btn-warning tip-top" title="Rastreio Correio"><i class="fas fa-envelope"></i></a>
                                 <?php endif ?>
 								</div></td>
                                 </tr>
@@ -218,7 +218,7 @@
   <a title="Imprimir OS" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimir/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i> </a>
 								<?php endif ?>
                                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
-										  '<a style="margin-right: 1%" target="_new" href="https://www.linkcorreios.com.br/<?= $o->rastreio ?>" class="btn btn-warning tip-top" title="Rastreio Correio"><i class="fas fa-envelope"></i></a>
+										  <a style="margin-right: 1%" target="_new" href="https://www.linkcorreios.com.br/<?= $o->rastreio ?>" class="btn btn-warning tip-top" title="Rastreio Correio"><i class="fas fa-envelope"></i></a>
                                 <?php endif ?>
 								</div></td>
                                 </tr>
@@ -274,7 +274,7 @@
   <a title="Imprimir OS" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimir/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i> </a>
 								<?php endif ?>
                                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
-										  '<a style="margin-right: 1%" target="_new" href="https://www.linkcorreios.com.br/<?= $o->rastreio ?>" class="btn btn-warning tip-top" title="Rastreio Correio"><i class="fas fa-envelope"></i></a>
+										  <a style="margin-right: 1%" target="_new" href="https://www.linkcorreios.com.br/<?= $o->rastreio ?>" class="btn btn-warning tip-top" title="Rastreio Correio"><i class="fas fa-envelope"></i></a>
                                 <?php endif ?>
 								</div></td>
                                 </tr>
@@ -330,7 +330,7 @@
   <a title="Imprimir OS" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimir/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i> </a>
 								<?php endif ?>
                                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
-										  '<a style="margin-right: 1%" target="_new" href="https://www.linkcorreios.com.br/<?= $o->rastreio ?>" class="btn btn-warning tip-top" title="Rastreio Correio"><i class="fas fa-envelope"></i></a>
+										  <a style="margin-right: 1%" target="_new" href="https://www.linkcorreios.com.br/<?= $o->rastreio ?>" class="btn btn-warning tip-top" title="Rastreio Correio"><i class="fas fa-envelope"></i></a>
                                 <?php endif ?>
 								</div></td>
                                 </tr>
@@ -378,15 +378,12 @@
 								<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) : ?>
   <a title="Editar OS" class="btn btn-info tip-top" href="<?= base_url() ?>index.php/os/editar/<?= $o->idOs ?>" class="btn"><i class="fas fa-edit"></i> </a>
 								<?php endif ?>
-								<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
-									$zapnumber = preg_replace("/[^0-9]/", "", $o->telefone);
-									$total_os = number_format($o->totalProdutos + $o->totalServicos, 2, ',', '.');
-									echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a%0d%0a' . strip_tags($o->defeito) . '%0d%0a%0d%0a' . strip_tags($o->laudoTecnico) . '%0d%0a%0d%0a' . strip_tags($o->observacoes) . '%0d%0a%0d%0aValor%20Total%20R$&#58%20*'. $total_os . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20esta%20senha%20para%20fazer%20Log-In%20*' . strip_tags($o->senha) . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*"><i class="fab fa-whatsapp" style="font-size:16px;"></i></a>';} ?>
+								
 								<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
   <a title="Imprimir OS" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimir/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i> </a>
 								<?php endif ?>
                                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
-										  '<a style="margin-right: 1%" target="_new" href="https://www.linkcorreios.com.br/<?= $o->rastreio ?>" class="btn btn-warning tip-top" title="Rastreio Correio"><i class="fas fa-envelope"></i></a>
+										  <a style="margin-right: 1%" target="_new" href="https://www.linkcorreios.com.br/<?= $o->rastreio ?>" class="btn btn-warning tip-top" title="Rastreio Correio"><i class="fas fa-envelope"></i></a>
                                 <?php endif ?>
 								</div></td>
                                 </tr>
@@ -464,102 +461,130 @@
 </div>
 
 <?php if ($estatisticas_financeiro != null) {
-if ($estatisticas_financeiro->total_receita != null || $estatisticas_financeiro->total_despesa != null || $estatisticas_financeiro->total_receita_pendente != null || $estatisticas_financeiro->total_despesa_pendente != null) {  ?>
+    if ($estatisticas_financeiro->total_receita != null || $estatisticas_financeiro->total_despesa != null || $estatisticas_financeiro->total_receita_pendente != null || $estatisticas_financeiro->total_despesa_pendente != null) {  ?>
 
-    <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'rFinanceiro')) : ?>
-        <div class="row-fluid" style="margin-top: 0">
+        <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'rFinanceiro')) : ?>
+            <div class="row-fluid" style="margin-top: 0">
 
-            <div class="row-fluid" style="margin-top: 0;">
-                <div class="span12">
-                    <div class="widget-box">
-                        <div class="widget-title">
-                            <span class="icon"><i class="fas fa-diagnoses"></i></span>
-                            <h5>
-                                Balanço Mensal do Ano:
-                            </h5>
-                            <form method="get">
-                                <input type="number" name="year" style="height: 1.1rem; margin-bottom: 0; margin-top: 0.2rem" value="<?php echo intval(preg_replace( '/[^0-9]/', '', $this->input->get('year'))) ?: date('Y') ?>">
-                                <button type="submit" class="btn-xs" style="height: 1.8rem; margin-bottom: 0; margin-top: 0.2rem">Pesquisar</button>
-                            </form>
-                        </div>
-                        <div class="widget-content">
-                            <div class="row-fluid">
-                                <div class="span12">
-                                    <div id="chart-vendas-mes1" style=""></div>
+                <div class="row-fluid" style="margin-top: 0;">
+                    <div class="span12">
+                        <div class="widget-box">
+                            <div class="widget-title">
+                                <span class="icon"><i class="fas fa-diagnoses"></i></span>
+                                <h5>
+                                    Balanço Mensal do Ano:
+                                </h5>
+                                <form method="get">
+                                    <input type="number" name="year" style="height: 1.1rem; margin-bottom: 0; margin-top: 0.2rem" value="<?php echo intval(preg_replace('/[^0-9]/', '', $this->input->get('year'))) ?: date('Y') ?>">
+                                    <button type="submit" class="btn-xs" style="height: 1.8rem; margin-bottom: 0; margin-top: 0.2rem">Pesquisar</button>
+                                </form>
+                            </div>
+                            <div class="widget-content">
+                                <div class="row-fluid">
+                                    <div class="span12">
+                                        <div id="chart-vendas-mes1" style=""></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <script src="<?= base_url('assets/js/highchart/highcharts.js') ?>"></script>
+            <script src="<?= base_url('assets/js/highchart/highcharts.js') ?>"></script>
 
-        <script type="text/javascript">
-            $(function () {
-                var myChart = Highcharts.chart('chart-vendas-mes1', {
-                    chart: {
-                        type: 'column'
-                    },
-                    title: {
-                        text: 'Vendas'
-                    },
-                    xAxis: {
-                        categories: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
-                    },
-                    yAxis: {
+            <script type="text/javascript">
+                $(function() {
+                    var myChart = Highcharts.chart('chart-vendas-mes1', {
+                        chart: {
+                            type: 'column'
+                        },
                         title: {
-                            text: 'Reais',
-                            format: 'R$: {value}'
-                        }
-                    },
-                    tooltip: {
-                        valueDecimals: 2,
-                        valuePrefix: 'R$: '
-
-
-                    },
-                    plotOptions: {
-                        series: {
-                            dataLabels: {
-                                enabled: true,
-                                format: 'R$: {y}',
-
-
+                            text: 'Vendas'
+                        },
+                        xAxis: {
+                            categories: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+                        },
+                        yAxis: {
+                            title: {
+                                text: 'Reais',
+                                format: 'R$: {value}'
                             }
-                        }
-                    },
-                    credits: {
-                        enabled: false
-                    },
-                    series: [{
-                        name: 'Receita Líquida',
-                        negativeColor: '#FF0000',
-                        data: [<?php echo ($vendas_mes->VALOR_JAN_REC - $vendas_mes->VALOR_JAN_DES); ?>,
-                            <?php echo ($vendas_mes->VALOR_FEV_REC - $vendas_mes->VALOR_FEV_DES); ?>,
-                            <?php echo ($vendas_mes->VALOR_MAR_REC - $vendas_mes->VALOR_MAR_DES); ?>,
-                            <?php echo ($vendas_mes->VALOR_ABR_REC - $vendas_mes->VALOR_ABR_DES); ?>,
-                            <?php echo ($vendas_mes->VALOR_MAI_REC - $vendas_mes->VALOR_MAI_DES); ?>,
-                            <?php echo ($vendas_mes->VALOR_JUN_REC - $vendas_mes->VALOR_JUN_DES); ?>,
-                            <?php echo ($vendas_mes->VALOR_JUL_REC - $vendas_mes->VALOR_JUL_DES); ?>,
-                            <?php echo ($vendas_mes->VALOR_AGO_REC - $vendas_mes->VALOR_AGO_DES); ?>,
-                            <?php echo ($vendas_mes->VALOR_SET_REC - $vendas_mes->VALOR_SET_DES); ?>,
-                            <?php echo ($vendas_mes->VALOR_OUT_REC - $vendas_mes->VALOR_OUT_DES); ?>,
-                            <?php echo ($vendas_mes->VALOR_NOV_REC - $vendas_mes->VALOR_NOV_DES); ?>,
-                            <?php echo ($vendas_mes->VALOR_DEZ_REC - $vendas_mes->VALOR_DEZ_DES); ?>]
-                    }]
+                        },
+                        tooltip: {
+                            valueDecimals: 2,
+                            valuePrefix: 'R$: '
+                        },
+                        plotOptions: {
+                            series: {
+                                dataLabels: {
+                                    enabled: true,
+                                    format: 'R$: {y}',
+                                }
+                            }
+                        },
+                        credits: {
+                            enabled: false
+                        },
+                        series: [{
+                            name: 'Receita Líquida',
+                            data: [<?php echo($vendas_mes->VALOR_JAN_REC - $vendas_mes->VALOR_JAN_DES); ?>,
+                                <?php echo($vendas_mes->VALOR_FEV_REC - $vendas_mes->VALOR_FEV_DES); ?>,
+                                <?php echo($vendas_mes->VALOR_MAR_REC - $vendas_mes->VALOR_MAR_DES); ?>,
+                                <?php echo($vendas_mes->VALOR_ABR_REC - $vendas_mes->VALOR_ABR_DES); ?>,
+                                <?php echo($vendas_mes->VALOR_MAI_REC - $vendas_mes->VALOR_MAI_DES); ?>,
+                                <?php echo($vendas_mes->VALOR_JUN_REC - $vendas_mes->VALOR_JUN_DES); ?>,
+                                <?php echo($vendas_mes->VALOR_JUL_REC - $vendas_mes->VALOR_JUL_DES); ?>,
+                                <?php echo($vendas_mes->VALOR_AGO_REC - $vendas_mes->VALOR_AGO_DES); ?>,
+                                <?php echo($vendas_mes->VALOR_SET_REC - $vendas_mes->VALOR_SET_DES); ?>,
+                                <?php echo($vendas_mes->VALOR_OUT_REC - $vendas_mes->VALOR_OUT_DES); ?>,
+                                <?php echo($vendas_mes->VALOR_NOV_REC - $vendas_mes->VALOR_NOV_DES); ?>,
+                                <?php echo($vendas_mes->VALOR_DEZ_REC - $vendas_mes->VALOR_DEZ_DES); ?>
+                            ]
+                        },
+                        {
+                            name: 'Receita Bruta',
+                            data: [<?php echo($vendas_mes->VALOR_JAN_REC); ?>,
+                                <?php echo($vendas_mes->VALOR_FEV_REC); ?>,
+                                <?php echo($vendas_mes->VALOR_MAR_REC); ?>,
+                                <?php echo($vendas_mes->VALOR_ABR_REC); ?>,
+                                <?php echo($vendas_mes->VALOR_MAI_REC); ?>,
+                                <?php echo($vendas_mes->VALOR_JUN_REC); ?>,
+                                <?php echo($vendas_mes->VALOR_JUL_REC); ?>,
+                                <?php echo($vendas_mes->VALOR_AGO_REC); ?>,
+                                <?php echo($vendas_mes->VALOR_SET_REC); ?>,
+                                <?php echo($vendas_mes->VALOR_OUT_REC); ?>,
+                                <?php echo($vendas_mes->VALOR_NOV_REC); ?>,
+                                <?php echo($vendas_mes->VALOR_DEZ_REC); ?>
+                            ]
+                        },
+                        {
+                            name: 'Despesas',
+                            data: [<?php echo($vendas_mes->VALOR_JAN_DES); ?>,
+                                <?php echo($vendas_mes->VALOR_FEV_DES); ?>,
+                                <?php echo($vendas_mes->VALOR_MAR_DES); ?>,
+                                <?php echo($vendas_mes->VALOR_ABR_DES); ?>,
+                                <?php echo($vendas_mes->VALOR_MAI_DES); ?>,
+                                <?php echo($vendas_mes->VALOR_JUN_DES); ?>,
+                                <?php echo($vendas_mes->VALOR_JUL_DES); ?>,
+                                <?php echo($vendas_mes->VALOR_AGO_DES); ?>,
+                                <?php echo($vendas_mes->VALOR_SET_DES); ?>,
+                                <?php echo($vendas_mes->VALOR_OUT_DES); ?>,
+                                <?php echo($vendas_mes->VALOR_NOV_DES); ?>,
+                                <?php echo($vendas_mes->VALOR_DEZ_DES); ?>
+                            ]
+                        }]
+                    });
                 });
-            });
-
-        </script>
-    <?php endif ?>
-<?php  } } ?>
+            </script>
+        <?php endif ?>
+<?php  }
+} ?>
 
 <?php if ($estatisticas_financeiro != null) {
-    if ($estatisticas_financeiro->total_receita != null || $estatisticas_financeiro->total_despesa != null || $estatisticas_financeiro->total_receita_pendente != null || $estatisticas_financeiro->total_despesa_pendente != null) {  ?>
-  
-  <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'rFinanceiro')) : ?>
+    if ($estatisticas_financeiro->total_receita != null || $estatisticas_financeiro->total_despesa != null || $estatisticas_financeiro->total_receita_pendente != null) {  ?>
+
+        <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'rFinanceiro')) : ?>
 </p>
 <div class="row-fluid" style="margin-top: 0">
 
