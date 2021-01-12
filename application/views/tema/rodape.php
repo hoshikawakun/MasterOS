@@ -1,6 +1,6 @@
 <!--Footer-part-->
 <div class="row-fluid">
-	<div id="footer" class="span12">2020 &copy; Master-OS - Emanuel Victor - Versão: <?= $this->config->item('app_version'); ?></div>
+	<div id="footer" class="span12">2020 - 2021 &copy; Master-OS - Emanuel Victor - Versão: <?= $this->config->item('app_version'); ?></div>
   </div>
   <!--end-Footer-part-->
   <script src="<?= base_url(); ?>assets/js/bootstrap.min.js"></script>

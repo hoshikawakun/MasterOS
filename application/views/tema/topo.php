@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="<?= base_url(); ?>assets/css/matrix-media.css" />
   <link href="<?= base_url(); ?>assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
   <link rel="stylesheet" href="<?= base_url(); ?>assets/css/fullcalendar.css" />
+  
   <?php if($configuration['app_theme'] == 'white') { ?>
     <link rel="stylesheet" href="<?= base_url(); ?>assets/css/tema.css" />
   <?php } ?>
@@ -18,6 +19,7 @@
   <script type="text/javascript" src="<?= base_url(); ?>assets/js/jquery-1.12.4.min.js"></script>
   <script type="text/javascript" src="<?= base_url(); ?>assets/js/shortcut.js"></script>
   <script type="text/javascript" src="<?= base_url(); ?>assets/js/funcoesGlobal.js"></script>
+  <script type="text/javascript" src="<?= base_url(); ?>assets/js/datatables.min.js"></script>
 
   <script type="text/javascript">
     shortcut.add("escape", function() {

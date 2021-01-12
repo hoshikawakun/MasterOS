@@ -58,7 +58,7 @@
         <h5>Ordens de Serviço</h5>
     </div>
     <div class="widget-content nopadding">
-        <table width="100%" class="table table-bordered ">
+        <table id="tabela" width="100%" class="table table-bordered">
                 <thead>
                     <tr style="background-color: #2D335B">
                         <th>OS N°</th>

@@ -17,7 +17,7 @@
         <h5>Produtos</h5>
     </div>
     <div class="widget-content nopadding">
-        <table width="100%" class="table table-bordered ">
+        <table id="tabela" width="100%" class="table table-bordered">
             <thead>
             <tr style="backgroud-color: #2D335B">
                 <th>SKU</th>

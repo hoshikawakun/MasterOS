@@ -8,7 +8,7 @@ if (!$results) { ?>
                 <h5>Compras</h5>
             </div>
             <div class="widget-content">
-                <table class="table table-bordered">
+                <table id="tabela" class="table table-bordered">
                         <th>#</th>
                         <th>Data da Compra</th>
                         <th>Responsável</th>
@@ -36,7 +36,7 @@ if (!$results) { ?>
                 <h5>Compras</h5>
             </div>
             <div class="widget-content">
-                <table class="table table-bordered">
+                <table id="tabela" class="table table-bordered">
                 <thead>
                     <tr style="backgroud-color: #2D335B">
                         <th>#</th>
