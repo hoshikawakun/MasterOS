@@ -99,11 +99,21 @@
 <option <?php if($result->status == 'Entregue - Faturado'){echo 'selected';} ?> value="Entregue - Faturado">Entregue - Faturado</option>
                                             </select>
                                         </div>
+                                        
                                         <div class="span3">
                                             <label for="dataInicial">Data de Entrtada<span class="required">*</span></label>
                                             <input id="dataInicial" autocomplete="off" class="span12 datepicker" type="text" name="dataInicial" value="<?php echo date('d/m/Y', strtotime($result->dataInicial)); ?>" /><label for="dataSaida">Data de Saida</label>
                                             <input id="dataSaida" autocomplete="off" class="span12 datepicker" type="text" name="dataSaida" value="<?php echo $result->dataSaida ?>" />
                                       </div>
+                                      
+                                      <div class="span3">Nº Série
+                                        <input id="serial" type="text" class="span12" name="serial" maxlength="30" value="<?php echo $result->serial ?>" />
+                                        </div>
+                                        <div class="span3">
+                                        <label for="marca">Marca</label>
+                                          <input id="marca" type="text" class="span12" name="marca" maxlength="30" value="<?php echo $result->marca ?>" />
+                                        </div>
+                                        
                                         <div class="span3">
                                             <label for="garantia">Garantia até</label>
                                             <input id="garantia" type="text" class="span12 datepicker" name="garantia" value="<?php echo $result->garantia ?>" />
@@ -308,16 +318,22 @@
                           
                           <div class="span12" id="divAnexos" style="margin-left: 1">
                                     <?php
-                                    foreach ($anexos as $a) {
-                                        if ($a->thumb == null) {
-                                            $thumb = base_url() . 'assets/img/icon-file.png';
-                                            $link = base_url() . 'assets/img/icon-file.png';
-                                        } else {
-                                            $thumb = $a->url . '/thumbs/' . $a->thumb;
-                                            $link = $a->url .'/'. $a->anexo;
+                                        foreach ($anexos as $a) {
+                                            if ($a->thumb == null) {
+                                                $thumb = base_url() . 'assets/img/icon-file.png';
+                                                $link = base_url() . 'assets/img/icon-file.png';
+                                            } else {
+                                                $thumb = $a->url . '/thumbs/' . $a->thumb;
+                                                $link = $a->url .'/'. $a->anexo;
+                                            }
+                                            echo '<div class="span3" style="min-height: 150px; margin-left: 0">
+                                                    <a style="min-height: 150px;" href="#modal-anexo" imagem="' . $a->idAnexos . '" link="' . $link . '" role="button" class="btn anexo span12" data-toggle="modal">
+                                                        <img src="' . $thumb . '" alt="">
+                                                    </a>
+                                                    <span>'. $a->anexo .'</span>
+                                                </div>';
                                         }
-                                        echo '<div class="span3" style="min-height: 150px; margin-left: 0"><a style="min-height: 150px;" href="#modal-anexo" imagem="' . $a->idAnexos . '" link="' . $link . '" role="button" class="btn anexo span12" data-toggle="modal"><img src="' . $thumb . '" alt=""></a></div>';
-                                    } ?>
+                                    ?>
                                 </div>
                         </div>
                         

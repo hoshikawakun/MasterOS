@@ -120,6 +120,8 @@ class Os extends MY_Controller
                 'descricaoProduto' => set_value('descricaoProduto'),
                 'defeito' => set_value('defeito'),
 				'rastreio' => set_value('rastreio'),
+				'marca' => set_value('marca'),
+				'serial' => set_value('serial'),
                 'status' => set_value('status'),
                 'observacoes' => set_value('observacoes'),
                 'laudoTecnico' => set_value('laudoTecnico'),
@@ -214,6 +216,8 @@ class Os extends MY_Controller
                 'status' => $this->input->post('status'),
                 'observacoes' => $this->input->post('observacoes'),
 				'rastreio' => $this->input->post('rastreio'),
+				'marca' => $this->input->post('marca'),
+				'serial' => $this->input->post('serial'),
 				'dataSaida' => $this->input->post('dataSaida'),
                 'laudoTecnico' => $this->input->post('laudoTecnico'),
                 'usuarios_id' => $this->input->post('usuarios_id'),
@@ -746,6 +750,8 @@ class Os extends MY_Controller
             'upload_path' => $directory,
             'allowed_types' => '*', // formatos permitidos para anexos de os
             'max_size' => 0,
+			'remove_space' => true,
+			'encrypt_name' => false,
         ];
 
         $this->upload->initialize($upload_conf);

@@ -42,8 +42,7 @@
 
 
                                     <div class="span6" style="margin-left: 0">
-                                        <h3>#Protocolo:
-                                            <?php echo $result->idOs ?>
+                                        <h3>#<strong>OS N°</strong>: <?php echo $result->idOs ?>
                                         </h3>
                                         <input id="valorTotal" type="hidden" name="valorTotal" value="" />
                                     </div>

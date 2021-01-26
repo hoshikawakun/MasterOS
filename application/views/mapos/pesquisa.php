@@ -26,6 +26,7 @@
                             <th>Data de Entrada</th>
                             <th>Descrição</th>
                             <th>Problema Informado</th>
+                            <th>Nº Série</th>
                             <th>Status</th>
                             <th>Ações</th>
                         </tr>
@@ -34,7 +35,7 @@
                         <?php
                         
 						if ($os == null) {
-                            echo '<tr><td colspan="6">Nenhuma os foi encontrado.</td></tr>';
+                            echo '<tr><td colspan="7">Nenhuma os foi encontrado.</td></tr>';
                         }
                         foreach ($os as $r) {
                             $dataInicial = date(('d/m/Y'), strtotime($r->dataInicial));
@@ -103,6 +104,7 @@
                             echo '<td><div align="center">' . $dataInicial . '</div></td>';
 							echo '<td>' . $r->descricaoProduto . '</td>';
                             echo '<td>' . $r->defeito . '</td>';
+							echo '<td><div align="center">' . $r->serial . '</div></td>';
                             echo '<td><div align="center"><span class="badge" style="background-color: ' . $cor . '; border-color: ' . $cor . '">' . $r->status . '</span></div></td>';
                             echo '<td><div align="center">';
 						if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {

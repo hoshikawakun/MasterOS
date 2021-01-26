@@ -80,6 +80,14 @@
                                             <input id="dataInicial" autocomplete="off" class="span12 datepicker" type="text" name="dataInicial" value="<?php echo date('d/m/Y'); ?>" />
                                         </div>
                                         <div class="span3">
+                                            <label for="serial">Nº Série</label>
+                                            <input id="serial" type="text" class="span12" name="serial" maxlength="30" value="<?php echo $result->serial ?>" />
+                                        </div>
+                                        <div class="span3">
+                                        <label for="marca">Marca</label>
+                                          <input id="marca" type="text" class="span12" name="marca" maxlength="30" value="<?php echo $result->marca ?>" />
+                                        </div>
+                                        <div class="span3">
                                             <label for="garantia">Garantia até</label>
                                             <input id="garantia" type="text" class="span12 datepicker" name="garantia" value="" />
 											</div>

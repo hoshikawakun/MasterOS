@@ -59,7 +59,7 @@ $totalProdutos = 0; ?>
                             </tbody>
                         </table>
 
-                        <table class="table table-condensend">
+                        <table class="table table-condensend" width="100%">
                       <tbody>
                         <tr>
                           <td padding-left: 0"><ul>
@@ -84,7 +84,23 @@ $totalProdutos = 0; ?>
                     </table>
 
                     </div>
-
+                    <div style="margin-top: 0; padding-top: 0">
+                      
+                      <table class="table table-condensed" width="100%">
+                            <td><?php if ($result->serial != null) { ?>
+                                    <span style="font-size: 13px; ">
+                              <b>Nº Série:</b><br></span>
+                                            <?php echo htmlspecialchars_decode($result->serial) ?>
+                            <?php } ?></td>
+                            <td><?php if ($result->marca != null) { ?>
+                                    <span style="font-size: 13px; ">
+                              <b>Marca:</b><br></span>
+                                            <?php echo htmlspecialchars_decode($result->marca) ?>
+                            <?php } ?></td>
+                          </tr>
+                        </table>
+                        
+                  </div>
                     <div style="margin-top: 0; padding-top: 0">
 
                         <table class="table table-condensed">
