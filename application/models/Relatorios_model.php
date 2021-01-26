@@ -243,7 +243,7 @@ class Relatorios_model extends CI_Model
         $this->db->join('clientes', 'clientes.idClientes = os.clientes_id');
         $this->db->join('total_produtos', 'total_produtos.os_id = os.idOs', 'left');
         $this->db->join('total_servicos', 'total_servicos.os_id = os.idOs', 'left');
-        $this->db->order_by('os.dataInicial', 'DESC');
+        $this->db->order_by('os.dataInicial', 'desc');
 
         $result = $this->db->get();
         if ($array) {
