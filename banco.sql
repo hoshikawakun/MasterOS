@@ -424,6 +424,8 @@ CREATE TABLE `os` (
   `lancamento` int(11) DEFAULT NULL,
   `faturado` tinyint(1) NOT NULL,
   `garantias_id` int(11) DEFAULT NULL,
+  `marca` varchar(45) DEFAULT NULL,
+  `serial` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idOs`),
   KEY `fk_os_clientes1` (`clientes_id`),
   KEY `fk_os_usuarios1` (`usuarios_id`),
