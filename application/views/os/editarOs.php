@@ -24,6 +24,8 @@
                     
 <a target="_blank" title="Imprimir" class="btn btn-mini btn-inverse" href="<?php echo site_url() ?>/os/imprimir/<?php echo $result->idOs; ?>"><i class="fas fa-print"></i> Imprimir A4</a>
 
+<a target="_blank" title="Imprimir" class="btn btn-mini btn-inverse" href="<?php echo site_url() ?>/os/imprimirTermica/<?php echo $result->idOs; ?>"><i class="fas fa-print"></i> Imprimir Termica</a>
+
 <?php if ($result->faturado == 0) { ?>
 <a href="#modal-faturar" title="Faturar" id="btn-faturar" role="button" data-toggle="modal" class="btn btn-mini btn-danger"><i class="fas fa-cash-register"></i> Faturar</a>
                                             <?php } ?>
@@ -159,7 +161,7 @@
                                             <button class="btn btn-primary" title="Atualizar" id="btnContinuar"><i class="fas fa-sync-alt"></i> Atualizar</button>
                                             <a href="<?php echo base_url() ?>index.php/os/visualizar/<?php echo $result->idOs; ?>" title="Visualizar OS" class="btn btn-secondary"><i class="fas fa-eye"></i> Visualizar OS</a>
                                             <a target="_blank" title="Imprimir" class="btn btn-inverse" href="<?php echo site_url() ?>/os/imprimir/<?php echo $result->idOs; ?>"><i class="fas fa-print"></i> Imprimir A4</a>
-                                            
+                                            <a target="_blank" title="Imprimir" class="btn btn-inverse" href="<?php echo site_url() ?>/os/imprimirTermica/<?php echo $result->idOs; ?>"><i class="fas fa-print"></i> Imprimir Termica</a>
                                             <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
                         echo '<a target="_blank" title="Adicionar OS" class="btn btn-success" href=' . base_url() . 'index.php/os/adicionar><i class="fas fa-plus"></i> Adicionar OS</a>';} ?>
                                             

@@ -169,6 +169,9 @@
 							if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
                                 echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/imprimir/' . $r->idOs . '" target="_blank" class="btn btn-inverse tip-top" title="Imprimir Normal A4"><i class="fas fa-print"></i></a>';
                             }
+							if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
+                                echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/imprimirTermica/' . $r->idOs . '" target="_blank" class="btn btn-inverse tip-top" title="Imprimir Termica"><i class="fas fa-print"></i></a>';
+                            }
                             if ($this->permission->checkPermission($this->session->userdata('permissao'), 'dOs')) {
                                 echo '<a href="#modal-excluir" role="button" data-toggle="modal" os="' . $r->idOs . '" class="btn btn-danger tip-top" title="Excluir OS"><i class="fas fa-trash-alt"></i></a>  ';
 								}
