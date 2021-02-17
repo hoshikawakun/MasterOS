@@ -1,356 +1,473 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
-$config =
-
-	array('clientes' => array(
-	array(
-    'field' => 'nomeCliente',
-    'label' => 'Nome',
-    'rules' => 'required|trim',
-),
-	array(
-        'field' => 'documento',
-        'label' => 'CPF/CNPJ',
-        'rules' => 'required|trim',
-    ),
-    array(
-        'field' => 'telefone',
-        'label' => 'Telefone',
-        'rules' => 'required|trim',
-    ),
-    array(
-        'field' => 'rua',
-        'label' => 'Rua',
-        'rules' => 'required|trim',
-    ),
-    array(
-        'field' => 'bairro',
-        'label' => 'Bairro',
-        'rules' => 'required|trim',
-    ),
-    array(
-        'field' => 'cidade',
-        'label' => 'Cidade',
-        'rules' => 'required|trim',
-    ),
-    array(
-        'field' => 'estado',
-        'label' => 'Estado',
-        'rules' => 'required|trim',
-    ),
-    array(
-        'field' => 'cep',
-        'label' => 'CEP',
-        'rules' => 'required|trim',
-    ))
-    ,
-    'servicos' => array(array(
-        'field' => 'nome',
-        'label' => 'Nome',
-        'rules' => 'required|trim',
-    ),
-        array(
+$config = [
+    'clientes' => [
+        [
+            'field' => 'nomeCliente',
+            'label' => 'Nome',
+            'rules' => 'required|trim',
+        ],
+        [
+            'field' => 'documento',
+            'label' => 'CPF/CNPJ',
+			'rules' => 'required|trim',
+        ],
+        [
+            'field' => 'telefone',
+            'label' => 'Telefone',
+            'rules' => 'trim',
+        ],
+        [
+            'field' => 'email',
+            'label' => 'Email',
+            'rules' => 'trim|valid_email',
+        ],
+        [
+            'field' => 'rua',
+            'label' => 'Rua',
+            'rules' => 'trim',
+        ],
+        [
+            'field' => 'numero',
+            'label' => 'Número',
+            'rules' => 'trim',
+        ],
+        [
+            'field' => 'bairro',
+            'label' => 'Bairro',
+            'rules' => 'trim',
+        ],
+        [
+            'field' => 'cidade',
+            'label' => 'Cidade',
+            'rules' => 'trim',
+        ],
+        [
+            'field' => 'estado',
+            'label' => 'Estado',
+            'rules' => 'trim',
+        ],
+        [
+            'field' => 'cep',
+            'label' => 'CEP',
+            'rules' => 'trim',
+        ]
+    ],
+    'servicos' => [
+        [
+            'field' => 'nome',
+            'label' => 'Nome',
+            'rules' => 'required|trim',
+        ],
+        [
             'field' => 'descricao',
             'label' => '',
             'rules' => 'trim',
-        ),
-        array(
+        ],
+        [
             'field' => 'preco',
             'label' => '',
             'rules' => 'required|trim',
-        ))
-    ,
-    'produtos' => array(array(
-        'field' => 'descricao',
-        'label' => '',
-        'rules' => 'required|trim',
-    ),
-        array(
+        ]
+    ],
+    'produtos' => [
+        [
+            'field' => 'descricao',
+            'label' => '',
+            'rules' => 'required|trim',
+        ],
+        [
             'field' => 'unidade',
             'label' => 'Unidade',
             'rules' => 'required|trim',
-        ),
-        array(
+        ],
+        [
+            'field' => 'precoCompra',
+            'label' => 'Preço de Compra',
+            'rules' => 'trim',
+        ],
+        [
             'field' => 'precoVenda',
-            'label' => 'Preo de Venda',
+            'label' => 'Preço de Venda',
             'rules' => 'required|trim',
-        ),
-        array(
+        ],
+        [
             'field' => 'estoque',
             'label' => 'Estoque',
             'rules' => 'required|trim',
-        ),
-        array(
+        ],
+        [
             'field' => 'estoqueMinimo',
-            'label' => 'Estoque Mnimo',
+            'label' => 'Estoque Minimo',
             'rules' => 'trim',
-        ))
-    ,
-    'usuarios' => array(array(
-        'field' => 'nome',
-        'label' => 'Nome',
-        'rules' => 'required|trim',
-    ),
-        array(
+        ]
+    ],
+    'usuarios' => [
+        [
+            'field' => 'nome',
+            'label' => 'Nome',
+            'rules' => 'required|trim',
+        ],
+        [
             'field' => 'rg',
             'label' => 'RG',
             'rules' => 'required|trim',
-        ),
-        array(
+        ],
+        [
             'field' => 'cpf',
             'label' => 'CPF',
-            'rules' => 'required|trim|is_unique[usuarios.cpf]',
-        ),
-        array(
+            'rules' => 'required|trim|verific_cpf_cnpj|is_unique[usuarios.cpf]',
+            'errors' => [
+                'verific_cpf_cnpj' => "O campo %s não é um CPF válido."
+            ],
+        ],
+        [
             'field' => 'rua',
             'label' => 'Rua',
             'rules' => 'required|trim',
-        ),
-        array(
+        ],
+        [
             'field' => 'numero',
             'label' => 'Numero',
             'rules' => 'required|trim',
-        ),
-        array(
+        ],
+        [
             'field' => 'bairro',
             'label' => 'Bairro',
             'rules' => 'required|trim',
-        ),
-        array(
+        ],
+        [
             'field' => 'cidade',
             'label' => 'Cidade',
             'rules' => 'required|trim',
-        ),
-        array(
+        ],
+        [
             'field' => 'estado',
             'label' => 'Estado',
             'rules' => 'required|trim',
-        ),
-        array(
+        ],
+        [
+            'field' => 'cep',
+            'label' => 'CEP',
+            'rules' => 'required|trim',
+        ],
+        [
             'field' => 'email',
             'label' => 'Email',
             'rules' => 'required|trim|valid_email|is_unique[usuarios.email]',
-        ),
-        array(
+        ],
+        [
             'field' => 'senha',
             'label' => 'Senha',
             'rules' => 'required|trim',
-        ),
-        array(
+        ],
+        [
             'field' => 'telefone',
             'label' => 'Telefone',
             'rules' => 'required|trim',
-        ),
-        array(
+        ],
+        [
             'field' => 'situacao',
             'label' => 'Situacao',
             'rules' => 'required|trim',
-        ))
-    ,
-    'os' => array(array(
-        'field' => 'dataInicial',
-        'label' => 'DataInicial',
-        'rules' => 'required|trim',
-        ),
-        array(
+        ]
+    ],
+    'os' => [
+        [
+            'field' => 'dataInicial',
+            'label' => 'DataInicial',
+            'rules' => 'required|trim',
+        ],
+        [
+            'field' => 'dataFinal',
+            'label' => 'DataFinal',
+            'rules' => 'required|trim',
+        ],
+        [
+            'field' => 'dataSaida',
+            'label' => 'DataSaida',
+            'rules' => 'trim',
+        ],
+        [
             'field' => 'garantia',
             'label' => 'Garantia',
             'rules' => 'trim',
-        ),
-        array(
+        ],
+        [
+            'field' => 'termoGarantia',
+            'label' => 'Termo Garantia',
+            'rules' => 'trim',
+        ],
+        [
             'field' => 'descricaoProduto',
             'label' => 'DescricaoProduto',
             'rules' => 'trim',
-        ),
-        array(
+        ],
+        [
             'field' => 'defeito',
             'label' => 'Defeito',
             'rules' => 'trim',
-        ),
-        array(
+        ],
+        [
             'field' => 'status',
             'label' => 'Status',
             'rules' => 'required|trim',
-        ),
-        array(
+        ],
+        [
             'field' => 'observacoes',
             'label' => 'Observacoes',
             'rules' => 'trim',
-        ),
-        array(
+        ],
+        [
             'field' => 'clientes_id',
             'label' => 'clientes',
             'rules' => 'trim|required',
-        ),
-        array(
+        ],
+        [
             'field' => 'usuarios_id',
             'label' => 'usuarios_id',
             'rules' => 'trim|required',
-        ),
-        array(
+        ],
+        [
             'field' => 'rastreio',
-            'label' => 'rastreio',
+            'label' => 'Rastreio',
             'rules' => 'trim',
-        ),
-        array(
-            'field' => 'dataSaida',
-            'label' => 'dataSaida',
+        ],
+        [
+            'field' => 'marca',
+            'label' => 'Marca',
             'rules' => 'trim',
-        ),
-        array(
+        ],
+        [
+            'field' => 'serial',
+            'label' => 'Serial',
+            'rules' => 'trim',
+        ],
+        [
             'field' => 'laudoTecnico',
             'label' => 'Laudo Tecnico',
             'rules' => 'trim',
-        ))
-
-    ,
-    'tiposUsuario' => array(array(
-        'field' => 'nomeTipo',
-        'label' => 'NomeTipo',
-        'rules' => 'required|trim',
-    ),
-        array(
+        ]
+    ],
+    'tiposUsuario' => [
+        [
+            'field' => 'nomeTipo',
+            'label' => 'NomeTipo',
+            'rules' => 'required|trim',
+        ],
+        [
             'field' => 'situacao',
             'label' => 'Situacao',
             'rules' => 'required|trim',
-        ))
-
-    ,
-    'receita' => array(array(
-        'field' => 'descricao',
-        'label' => 'Descrição',
-        'rules' => 'required|trim',
-    ),
-        array(
+        ]
+    ],
+    'receita' => [
+        [
+            'field' => 'descricao',
+            'label' => 'Descrição',
+            'rules' => 'required|trim',
+        ],
+        [
             'field' => 'valor',
             'label' => 'Valor',
             'rules' => 'required|trim',
-        ),
-        array(
+        ],
+        [
             'field' => 'vencimento',
             'label' => 'Data Vencimento',
             'rules' => 'required|trim',
-        ),
+        ],
 
-        array(
+        [
             'field' => 'cliente',
             'label' => 'Cliente',
             'rules' => 'required|trim',
-        ),
-        array(
+        ],
+        [
             'field' => 'tipo',
             'label' => 'Tipo',
             'rules' => 'required|trim',
-        ))
-    ,
-    'despesa' => array(array(
-        'field' => 'descricao',
-        'label' => 'Descrição',
-        'rules' => 'required|trim',
-    ),
-        array(
+        ]
+    ],
+    'despesa' => [
+        [
+            'field' => 'descricao',
+            'label' => 'Descrição',
+            'rules' => 'required|trim',
+        ],
+        [
             'field' => 'valor',
             'label' => 'Valor',
             'rules' => 'required|trim',
-        ),
-        array(
+        ],
+        [
             'field' => 'vencimento',
             'label' => 'Data Vencimento',
             'rules' => 'required|trim',
-        ),
-        array(
+        ],
+        [
             'field' => 'fornecedor',
             'label' => 'Fornecedor',
             'rules' => 'required|trim',
-        ),
-        array(
+        ],
+        [
             'field' => 'tipo',
             'label' => 'Tipo',
             'rules' => 'required|trim',
-        ))
-    ,
-    'garantias' => array(array(
-        'field' => 'dataGarantia',
-        'label' => 'dataGarantia',
-        'rules' => 'trim',
-    ),
-        array(
+        ]
+    ],
+    'garantias' => [
+        [
+            'field' => 'dataGarantia',
+            'label' => 'dataGarantia',
+            'rules' => 'trim',
+        ],
+        [
             'field' => 'usuarios_id',
             'label' => 'usuarios_id',
             'rules' => 'trim',
-        ),
-        array(
+        ],
+        [
             'field' => 'refGarantia',
             'label' => 'refGarantia',
             'rules' => 'trim',
-        ),
-        array(
+        ],
+        [
             'field' => 'textoGarantia',
             'label' => 'textoGarantia',
             'rules' => 'required|trim',
-        ))
-    ,
-    'pagamentos' => array(array(
-        'field' => 'Nome',
-        'label' => 'nomePag',
-        'rules' => 'trim',
-    ),
-        array(
+        ]
+    ],
+    'pagamentos' => [
+        [
+            'field' => 'Nome',
+            'label' => 'nomePag',
+            'rules' => 'trim',
+        ],
+        [
             'field' => 'clientId',
             'label' => 'clientId',
             'rules' => 'trim',
-        ),
-        array(
+        ],
+        [
             'field' => 'clientSecret',
             'label' => 'clientSecret',
             'rules' => 'trim',
-        ),
-        array(
+        ],
+        [
             'field' => 'publicKey',
             'label' => 'publicKey',
             'rules' => 'trim',
-        ),
-        array(
+        ],
+        [
             'field' => 'accessToken',
             'label' => 'accessToken',
             'rules' => 'trim',
-        ))
-    ,
-    'vendas' => array(array(
-
-        'field' => 'dataVenda',
-        'label' => 'Data da Venda',
-        'rules' => 'required|trim',
-    ),
-        array(
+        ]
+    ],
+    'vendas' => [
+        [
+            'field' => 'dataVenda',
+            'label' => 'Data da Venda',
+            'rules' => 'required|trim',
+        ],
+        [
+            'field' => 'observacoes',
+            'label' => 'Observacoes',
+            'rules' => 'trim',
+        ],
+        [
+            'field' => 'obs',
+            'label' => 'Obs',
+            'rules' => 'trim',
+        ],
+        [
             'field' => 'clientes_id',
             'label' => 'clientes',
             'rules' => 'trim|required',
-        ),
-        array(
+        ],
+        [
             'field' => 'usuarios_id',
             'label' => 'usuarios_id',
             'rules' => 'trim|required',
-        )),
-    'anotacoes_os' => array(array(
-        'field' => 'anotacao',
-        'label' => 'Anotação',
-        'rules' => 'required|trim',
-    ),
-        array(
+        ]
+    ],
+    'anotacoes_os' => [
+        [
+            'field' => 'anotacao',
+            'label' => 'Anotação',
+            'rules' => 'required|trim',
+        ],
+        [
             'field' => 'os_id',
             'label' => 'ID Os',
             'rules' => 'trim|required|integer',
-        )),
-	'equipamento_os' => array(array(
-        'field' => 'equipamento',
-        'label' => 'Equipamento',
-        'rules' => 'required|trim',
-    ),
-        array(
-            'field' => 'os_id',
-            'label' => 'ID Os',
-            'rules' => 'trim|required|integer',
-        )),
-
-);
+        ]
+    ],
+    'adicionar_produto_os' => [
+        [
+            'field' => 'idProduto',
+            'label' => 'idProduto',
+            'rules' => 'trim|required|numeric',
+        ],
+        [
+            'field' => 'quantidade',
+            'label' => 'quantidade',
+            'rules' => 'trim|required|numeric|greater_than[0]',
+        ],
+        [
+            'field' => 'preco',
+            'label' => 'preco',
+            'rules' => 'trim|required|numeric|greater_than[-1]',
+        ],
+        [
+            'field' => 'idOsProduto',
+            'label' => 'idOsProduto',
+            'rules' => 'trim|required|numeric',
+        ],
+    ],
+    'adicionar_servico_os' => [
+        [
+            'field' => 'idServico',
+            'label' => 'idServico',
+            'rules' => 'trim|required|numeric',
+        ],
+        [
+            'field' => 'quantidade',
+            'label' => 'quantidade',
+            'rules' => 'trim|required|numeric|greater_than[0]',
+        ],
+        [
+            'field' => 'preco',
+            'label' => 'preco',
+            'rules' => 'trim|required|numeric|greater_than[-1]',
+        ],
+        [
+            'field' => 'idOsServico',
+            'label' => 'idOsServico',
+            'rules' => 'trim|required|numeric',
+        ],
+    ],
+    'cobrancas' => [
+        [
+            'field' => 'id',
+            'label' => 'id',
+            'rules' => 'required|trim',
+        ],
+        [
+            'field' => 'tipo',
+            'label' => 'tipo',
+            'rules' => 'required|trim',
+        ],
+        [
+            'field' => 'forma_pagamento',
+            'label' => 'forma_pagamento',
+            'rules' => 'required|trim',
+        ],
+        [
+            'field' => 'gateway_de_pagamento',
+            'label' => 'gateway_de_pagamento',
+            'rules' => 'required|trim',
+        ],
+    ],
+];
