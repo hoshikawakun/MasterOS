@@ -107,6 +107,8 @@
 				<?php endif ?>
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a title="Imprimir Termica" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimirTermica/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i></a>
 				<?php endif ?>
+                <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a title="Imprimir Termica 2" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimirTermica2/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i></a>
+				<?php endif ?>
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a style="margin-right: 1%" target="_new" href="https://www.linkcorreios.com.br/<?= $o->rastreio ?>" class="btn btn-warning tip-top" title="Rastreio Correio"><i class="fas fa-envelope"></i></a>
 				<?php endif ?></div>
                 				</td>
@@ -164,6 +166,8 @@
 				<?php endif ?>
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a title="Imprimir Termica" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimirTermica/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i></a>
 				<?php endif ?>
+                <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a title="Imprimir Termica 2" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimirTermica2/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i></a>
+				<?php endif ?>
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a style="margin-right: 1%" target="_new" href="https://www.linkcorreios.com.br/<?= $o->rastreio ?>" class="btn btn-warning tip-top" title="Rastreio Correio"><i class="fas fa-envelope"></i></a>
 				<?php endif ?></div>
                 				</td>
@@ -219,6 +223,8 @@
 				<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a title="Imprimir OS" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimir/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i></a>
 				<?php endif ?>
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a title="Imprimir Termica" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimirTermica/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i></a>
+				<?php endif ?>
+                <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a title="Imprimir Termica 2" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimirTermica2/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i></a>
 				<?php endif ?>
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a style="margin-right: 1%" target="_new" href="https://www.linkcorreios.com.br/<?= $o->rastreio ?>" class="btn btn-warning tip-top" title="Rastreio Correio"><i class="fas fa-envelope"></i></a>
 				<?php endif ?></div>
@@ -276,6 +282,8 @@
 				<?php endif ?>
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a title="Imprimir Termica" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimirTermica/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i></a>
 				<?php endif ?>
+                <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a title="Imprimir Termica 2" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimirTermica2/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i></a>
+				<?php endif ?>
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a style="margin-right: 1%" target="_new" href="https://www.linkcorreios.com.br/<?= $o->rastreio ?>" class="btn btn-warning tip-top" title="Rastreio Correio"><i class="fas fa-envelope"></i></a>
 				<?php endif ?></div>
                 				</td>
@@ -332,6 +340,8 @@
 				<?php endif ?>
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a title="Imprimir Termica" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimirTermica/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i></a>
 				<?php endif ?>
+                <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a title="Imprimir Termica 2" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimirTermica2/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i></a>
+				<?php endif ?>
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a style="margin-right: 1%" target="_new" href="https://www.linkcorreios.com.br/<?= $o->rastreio ?>" class="btn btn-warning tip-top" title="Rastreio Correio"><i class="fas fa-envelope"></i></a>
 				<?php endif ?></div>
                 				</td>
@@ -387,6 +397,8 @@
 				<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a title="Imprimir OS" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimir/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i></a>
 				<?php endif ?>
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a title="Imprimir Termica" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimirTermica/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i></a>
+				<?php endif ?>
+                <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a title="Imprimir Termica 2" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimirTermica2/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i></a>
 				<?php endif ?>
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a style="margin-right: 1%" target="_new" href="https://www.linkcorreios.com.br/<?= $o->rastreio ?>" class="btn btn-warning tip-top" title="Rastreio Correio"><i class="fas fa-envelope"></i></a>
 				<?php endif ?></div>
