@@ -5,7 +5,10 @@
         <i class="fas fa-barcode"></i> Gerar Etiquetas Cod. Barra</a>
     
     <a href="#modal-etiquetas_sku" role="button" data-toggle="modal" class="btn btn-success span2" style="float: right;">
-        <i class="fas fa-barcode"></i> Gerar Etiquetas SKU</a>
+        <i class="fas fa-barcode"></i> Gerar Etiquetas Cod. Produto</a>
+        
+        <a href="#modal-etiquetas-qr" role="button" data-toggle="modal" class="btn btn-success span2" style="float: right;">
+        <i class="fas fa-barcode"></i> Gerar Etiquetas Cod. QR</a>
 
 <?php } ?>
 
@@ -16,12 +19,12 @@
         </span>
         <h5>Produtos</h5>
     </div>
-    <div class="widget-content nopadding">
-        <table id="tabela" width="100%" class="table table-bordered">
+    <div class="widget-content nopadding tab-content">
+        <table id="tabela" class="table table-bordered ">
             <thead>
             <tr style="backgroud-color: #2D335B">
-                <th>SKU</th>
-                <th>Cod. Barras</th>
+                <th>Cod. Produto</th>
+                <th>Cod. de Barra</th>
                 <th>Nome</th>
                 <th>Estoque</th>
                 <th>Preço</th>
@@ -38,11 +41,11 @@
             }
             foreach ($results as $r) {
                 echo '<tr>';
-                echo '<td><div align="center">' . $r->idProdutos . '</div></td>';
-                echo '<td><div align="center">' . $r->codDeBarra . '</div></td>';
+                echo '<td><div align="center">' . $r->idProdutos . '</td>';
+                echo '<td><div align="center">' . $r->codDeBarra . '</td>';
                 echo '<td>' . $r->descricao . '</td>';
-                echo '<td><div align="center">' . $r->estoque . '</div></td>';
-                echo '<td><div align="center">R$: ' . number_format($r->precoVenda, 2, ',', '.') . '</div></td>';
+                echo '<td><div align="center">' . $r->estoque . '</td>';
+                echo '<td><div align="center">' . number_format($r->precoVenda, 2, ',', '.') . '</td>';
                 echo '<td><div align="center">';
                 if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vProduto')) {
                     echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/produtos/visualizar/' . $r->idProdutos . '" class="btn tip-top" title="Visualizar Produto"><i class="fas fa-eye"></i></a>  ';
@@ -56,7 +59,7 @@
                 if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eProduto')) {
                     echo '<a href="#atualizar-estoque" role="button" data-toggle="modal" produto="' . $r->idProdutos . '" estoque="' . $r->estoque . '" class="btn btn-primary tip-top" title="Atualizar Estoque"><i class="fas fa-plus-square"></i></a>';
                 }
-                echo '</div></td>';
+                echo '</td>';
                 echo '</tr>';
             } ?>
             </tbody>
@@ -113,7 +116,7 @@
     </form>
 </div>
 
-<!-- Modal Etiquetas -->
+<!-- Modal Etiquetas Cod. Barras -->
 <div id="modal-etiquetas" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="<?php echo base_url() ?>index.php/relatorios/produtosEtiquetas" method="get">
         <div class="modal-header">
@@ -165,7 +168,7 @@
 
 <script src="<?php echo base_url() ?>assets/js/jquery.validate.js"></script>
 
-<!-- Modal Etiquetas SKU-->
+<!-- Modal Etiquetas Cod. SKU-->
 <div id="modal-etiquetas_sku" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="<?php echo base_url() ?>index.php/relatorios/produtosEtiquetasSKU" method="get">
         <div class="modal-header">
@@ -185,11 +188,60 @@
                     <label for="valor">Até</label>
                     <input class="span9" type="text" id="ate_id" name="ate_id" placeholder="ID do último produto" value=""/>
                 </div>
+                
+                <div class="span4">
+                    <label for="valor">Qtd. do Estoque</label>
+                    <input class="span12" type="checkbox" name="qtdEtiqueta" value="true"/>
+                </div>
 
                 <div class="hide">
                     <label class="span12" for="valor">Formato Etiqueta</label>
                     <select name="etiquetaCode">
                     	<option value="C128B">CODE 128 B</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+            <button class="btn btn-success">Gerar</button>
+        </div>
+    </form>
+</div>
+
+<script src="<?php echo base_url() ?>assets/js/jquery.validate.js"></script>
+
+<!-- Modal Etiquetas Cod. QR-->
+<div id="modal-etiquetas-qr" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <form action="<?php echo base_url() ?>index.php/relatorios/produtosEtiquetasQR" method="get">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h5 id="myModalLabel">Gerar etiquetas com Código QR</h5>
+        </div>
+        <div class="modal-body">
+            <div class="span12 alert alert-info" style="margin-left: 0"> Escolha o intervalo de produtos para gerar as etiquetas.</div>
+
+            <div class="span12" style="margin-left: 0;">
+                <div class="span6" style="margin-left: 0;">
+                    <label for="valor">De</label>
+                    <input class="span9" style="margin-left: 0" type="text" id="de_id" name="de_id" placeholder="ID do primeiro produto" value=""/>
+                </div>
+
+                <div class="span6">
+                    <label for="valor">Até</label>
+                    <input class="span9" type="text" id="ate_id" name="ate_id" placeholder="ID do último produto" value=""/>
+                </div>
+                
+                <div class="span4">
+                    <label for="valor">Qtd. do Estoque</label>
+                    <input class="span12" type="checkbox" name="qtdEtiqueta" value="true"/>
+                </div>
+
+                <div class="hide">
+                    <label class="span12" for="valor">Formato Etiqueta</label>
+                    <select name="etiquetaCode">
+                    <option value="QR">QR-CODE</option>
                     </select>
                 </div>
 
@@ -239,4 +291,3 @@
         });
     });
 </script>
-

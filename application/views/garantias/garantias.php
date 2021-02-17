@@ -9,8 +9,8 @@
         </span>
         <h5>Termo de Garantia</h5>
     </div>
-    <div class="widget-content nopadding">
-        <table class="table table-bordered ">
+    <div class="widget-content nopadding tab-content">
+        <table id="tabela" class="table table-bordered ">
             <thead>
                 <tr style="backgroud-color: #2D335B">
                     <th>#</th>
@@ -22,8 +22,8 @@
                 </tr>
             </thead>
             <tbody>
-                <?php 
-                    if(!$results){
+                <?php
+                    if (!$results) {
                         echo '<tr>
                                 <td colspan="6">Nenhum Termo de Garantia Cadastrada</td>
                                 </tr>';
@@ -33,14 +33,14 @@
                         $textoGarantiaShort = mb_strimwidth(strip_tags($r->textoGarantia), 0, 50, "...");
 
                         echo '<tr>';
-                        echo '<td>' . $r->idGarantias . '</td>';
-                        echo '<td>' . $dataGarantia . '</td>';
-                        echo '<td>' . $r->refGarantia . '</td>';
+                        echo '<td><div align="center">' . $r->idGarantias . '</td>';
+                        echo '<td><div align="center">' . $dataGarantia . '</td>';
+                        echo '<td><div align="center">' . $r->refGarantia . '</td>';
                         echo '<td>' . $textoGarantiaShort . '</td>';
                         echo '<td><a href="' . base_url() . 'index.php/usuarios/editar/' . $r->idUsuarios . '">' . $r->nome . '</a></td>';
-                        echo '<td>';
+                        echo '<td><div align="center">';
                         if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vGarantia')) {
-                            echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/garantias/visualizar/' . $r->idGarantias . '" class="btn tip-top" title="Visualizar mais detalhes"><i class="fas fa-eye"></i></a>';
+                            echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/garantias/visualizar/' . $r->idGarantias . '" class="btn tip-top" title="Ver mais detalhes"><i class="fas fa-eye"></i></a>';
                             echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/garantias/imprimir/' . $r->idGarantias . '" target="_blank" class="btn btn-inverse tip-top" title="Imprimir"><i class="fas fa-print"></i></a>';
                         }
                         if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eGarantia')) {
@@ -52,8 +52,6 @@
                         echo '</td>';
                         echo '</tr>';
                     } ?>
-                <tr>
-                </tr>
             </tbody>
         </table>
     </div>

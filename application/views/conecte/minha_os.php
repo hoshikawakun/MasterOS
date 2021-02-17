@@ -2,10 +2,11 @@
 <html lang="pt-br">
 
 <head>
-    <title>Área do Cliente - <?= $this->config->item('app_name') ?></title>
+    <title><?php echo $this->config->item('app_name') ?></title>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content="<?php echo $this->config->item('app_name') . ' - ' . $this->config->item('app_subname') ?>">
+    <link rel="shortcut icon" type="image/png" href="<?php echo base_url(); ?>assets/img/favicon.png"/>
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap-responsive.min.css"/>
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/matrix-style.css"/>
@@ -93,20 +94,10 @@
 
                                 <div style="margin-top: 0; padding-top: 0">
 
-                                    <?php if ($result->rastreio != null || $result->descricaoProduto != null || $result->defeito != null || $result->laudoTecnico != null || $result->observacoes) { ?>
+                                    <?php if ($result->descricaoProduto != null || $result->defeito != null || $result->laudoTecnico != null || $result->observacoes) { ?>
 
                                         <table class="table table-condensed">
                                             <tbody>
-                                            <?php if ($result->rastreio != null) { ?>
-                                                <tr>
-                                                    <td>
-                                                        <strong>Cod. de Rastreio</strong><br>
-                                                        <?php echo htmlspecialchars_decode($result->rastreio) ?>
-                                                    </td>
-                                                </tr>
-
-                                            <?php } ?>
-                                            
                                             <?php if ($result->descricaoProduto != null) { ?>
                                                 <tr>
                                                     <td>
@@ -129,7 +120,7 @@
                                             <?php if ($result->laudoTecnico != null) { ?>
                                                 <tr>
                                                     <td>
-                                                        <strong>Relatório Técnico</strong> <br>
+                                                        <strong>Laudo Técnico</strong> <br>
                                                         <?php echo htmlspecialchars_decode($result->laudoTecnico) ?>
                                                     </td>
                                                 </tr>
@@ -163,7 +154,6 @@
                                             <?php
 
                                             foreach ($produtos as $p) {
-
                                                 $totalProdutos = $totalProdutos + $p->subTotal;
                                                 echo '<tr>';
                                                 echo '<td style="text-align: center">' . $p->descricao . '</td>';
@@ -214,7 +204,7 @@
 
                     function Popup(data) {
                         var mywindow = window.open('', 'MapOs', 'height=600,width=800');
-                        mywindow.document.write('<html><head><title><?php echo $this->config->item('app_name') ?></title>');
+                        mywindow.document.write('<html><head><title>Map Os</title>');
                         mywindow.document.write("<link rel='stylesheet' href='<?php echo base_url(); ?>assets/css/bootstrap.min.css' /><link rel='stylesheet' href='<?php echo base_url(); ?>assets/css/bootstrap-responsive.min.css' />");
                         mywindow.document.write("<link rel='stylesheet' href='<?php echo base_url(); ?>assets/css/matrix-style.css' /> <link rel='stylesheet' href='<?php echo base_url(); ?>assets/css/matrix-media.css' />");
 

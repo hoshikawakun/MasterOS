@@ -117,7 +117,8 @@ $totalProdutos = 0; ?>
                             </td>
                             <td style="text-align: right">
                                 OS #: <?= $result->idOs ?><br>
-                                Data de Entrada: <?= date('d/m/Y', strtotime($result->dataInicial)); ?>
+                                Data Inicial: <?= date('d/m/Y', strtotime($result->dataInicial)); ?> <br>
+                                Data Final: <?= $result->dataFinal ? date('d/m/Y', strtotime($result->dataFinal)) : ''; ?>
                             </td>
                         </tr>
                     </table>
@@ -139,7 +140,7 @@ $totalProdutos = 0; ?>
                             <td style="text-align: right">
                                 <?= $emitente[0]->nome; ?> <br>
                                 Responsável: <?= $result->nome ?><br>
-                                <?= $result->email_responsavel ?>
+                                <?= $result->email_usuario ?>
                             </td>
                         </tr>
                     </table>
@@ -183,7 +184,7 @@ $totalProdutos = 0; ?>
             <?php if ($result->defeito) { ?>
                 <tr class="heading">
                     <td colspan="4">
-                        <b>Problema Informado</b>
+                        <b>Defeito Apresentado</b>
                     </td>
                 </tr>
                 <tr>
@@ -229,15 +230,14 @@ $totalProdutos = 0; ?>
                 </tr>
 
                 <?php foreach ($produtos as $p) {
-
-                        $totalProdutos = $totalProdutos + $p->subTotal;
-                        echo '<tr class="item">';
-                        echo '<td>' . $p->descricao . '</td>';
-                        echo '<td>' . $p->quantidade . '</td>';
-                        echo '<td>' . $p->preco ?: $p->precoVenda . '</td>';
-                        echo '<td style="text-align: center">R$ ' . number_format($p->subTotal, 2, ',', '.') . '</td>';
-                        echo '</tr>';
-                    } ?>
+    $totalProdutos = $totalProdutos + $p->subTotal;
+    echo '<tr class="item">';
+    echo '<td>' . $p->descricao . '</td>';
+    echo '<td>' . $p->quantidade . '</td>';
+    echo '<td>' . $p->preco ?: $p->precoVenda . '</td>';
+    echo '<td style="text-align: center">R$ ' . number_format($p->subTotal, 2, ',', '.') . '</td>';
+    echo '</tr>';
+} ?>
 
                 <tr class="item">
                     <td colspan="3"></td>
@@ -255,16 +255,16 @@ $totalProdutos = 0; ?>
                 </tr>
 
                 <?php foreach ($servicos as $s) {
-                        $preco = $s->preco ?: $s->precoVenda;
-                        $subtotal = $preco * ($s->quantidade ?: 1);
-                        $totalServico = $totalServico + $subtotal;
-                        echo '<tr class="item">';
-                        echo '<td>' . $s->nome . '</td>';
-                        echo '<td>' . ($s->quantidade ?: 1) . '</td>';
-                        echo '<td>R$ ' . $preco . '</td>';
-                        echo '<td>R$ ' . number_format($subtotal, 2, ',', '.') . '</td>';
-                        echo '</tr>';
-                    } ?>
+    $preco = $s->preco ?: $s->precoVenda;
+    $subtotal = $preco * ($s->quantidade ?: 1);
+    $totalServico = $totalServico + $subtotal;
+    echo '<tr class="item">';
+    echo '<td>' . $s->nome . '</td>';
+    echo '<td>' . ($s->quantidade ?: 1) . '</td>';
+    echo '<td>' . $preco . '</td>';
+    echo '<td>R$ ' . number_format($subtotal, 2, ',', '.') . '</td>';
+    echo '</tr>';
+} ?>
 
                 <tr class="item">
                     <td colspan="3"></td>

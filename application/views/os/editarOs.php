@@ -24,16 +24,15 @@
                     
 <a target="_blank" title="Imprimir" class="btn btn-mini btn-inverse" href="<?php echo site_url() ?>/os/imprimir/<?php echo $result->idOs; ?>"><i class="fas fa-print"></i> Imprimir A4</a>
 
-<a target="_blank" title="Imprimir" class="btn btn-mini btn-inverse" href="<?php echo site_url() ?>/os/imprimirTermica/<?php echo $result->idOs; ?>"><i class="fas fa-print"></i> Imprimir Termica</a>
+<a target="_blank" title="Imprimir Termica" class="btn btn-mini btn-inverse" href="<?php echo site_url() ?>/os/imprimirTermica/<?php echo $result->idOs; ?>"><i class="fas fa-print"></i> Imprimir Termica</a>
+
+<a target="_blank" title="Imprimir Termica 2" class="btn btn-mini btn-inverse" href="<?php echo site_url() ?>/os/imprimirTermica2/<?php echo $result->idOs; ?>"><i class="fas fa-print"></i> Imprimir Termica 2</a>
 
 <?php if ($result->faturado == 0) { ?>
 <a href="#modal-faturar" title="Faturar" id="btn-faturar" role="button" data-toggle="modal" class="btn btn-mini btn-danger"><i class="fas fa-cash-register"></i> Faturar</a>
                                             <?php } ?>
-
-
-                        
-                        
-                        <a href="#modal-enviar-whatsapp" title="Enviar WhatsApp" id="btn-whatsapp" role="button" data-toggle="modal" class="btn btn-mini btn-success"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                                            
+<a href="#modal-whatsapp" title="Enviar WhatsApp" id="btn-whatsapp" role="button" data-toggle="modal" class="btn btn-mini btn-success"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                         
 <div class="row-fluid" style="margin-top:0">
     <div class="span12">
@@ -59,24 +58,26 @@
                             <div class="span12" id="divCadastrarOs">
                                 <form action="<?php echo current_url(); ?>" method="post" id="formOs">
                                     <?php echo form_hidden('idOs', $result->idOs) ?>
-                                    
-                                  <div class="span12" style="padding: 1%; margin-left: 0">
-                                        <h3>OS N°:
-                                            <?php echo $result->idOs; ?>
-                                        </h3>
+                                    <div class="span12" style="padding: 1%; margin-left: 0">
+                                        <h3>N° OS: #<?php echo $result->idOs; ?></h3>
                                         <div class="span6" style="margin-left: 0">
                                             <label for="cliente">Cliente<span class="required">*</span></label>
-                                            <input id="cliente" class="span12" type="text" name="cliente" value="<?php echo $result->nomeCliente ?>" />
-                                            <input id="clientes_id" class="span12" type="hidden" name="clientes_id" value="<?php echo $result->clientes_id ?>" />
-                                            <input id="valorTotal" type="hidden" name="valorTotal" value="" />
+                                            <input id="cliente" class="span12" type="text" name="cliente"
+                                                   value="<?php echo $result->nomeCliente ?>"/>
+                                            <input id="clientes_id" class="span12" type="hidden" name="clientes_id"
+                                                   value="<?php echo $result->clientes_id ?>"/>
+                                            <input id="valorTotal" type="hidden" name="valorTotal" value=""/>
                                         </div>
                                         <div class="span6">
-                                            <label for="tecnico">Técnico / Responsável<span class="required">*</span></label>
-                                            <input id="tecnico" class="span12" type="text" name="tecnico" value="<?php echo $result->nome ?>" />
-                                            <input id="usuarios_id" class="span12" type="hidden" name="usuarios_id" value="<?php echo $result->usuarios_id ?>" />
+                                            <label for="tecnico">Técnico / Responsável<span
+                                                        class="required">*</span></label>
+                                            <input id="tecnico" class="span12" type="text" name="tecnico"
+                                                   value="<?php echo $result->nome ?>"/>
+                                            <input id="usuarios_id" class="span12" type="hidden" name="usuarios_id"
+                                                   value="<?php echo $result->usuarios_id ?>"/>
                                         </div>
-                                  </div>
-                                    <div class="span12" style="padding: 1%; margin-left: 0">
+                                    </div>
+                    <div class="span12" style="padding: 1%; margin-left: 0">
                                         <div class="span3">
                                             <label for="status">Status<span class="required">*</span></label>
                                             <select class="span12" name="status" id="status" value="">
@@ -100,78 +101,83 @@
 <option <?php if($result->status == 'Comprado pela Loja'){echo 'selected';} ?> value="Comprado pela Loja">Comprado pela Loja</option>
 <option <?php if($result->status == 'Entregue - Faturado'){echo 'selected';} ?> value="Entregue - Faturado">Entregue - Faturado</option>
                                             </select>
+                                            <label for="rastreio">Rastreio</label>
+                                          <input name="rastreio" type="text" class="span12" id="rastreio" maxlength="13" value="<?php echo $result->rastreio ?>"  />
+										  <a href="https://www.linkcorreios.com.br/<?php echo $result->rastreio ?>" title="Rastrear" target="_new" class="btn btn-warning"><i class="fas fa-envelope"></i> Rastrear</a>
+                                        <button class="btn btn-primary" title="Atualizar" id="btnContinuar"><i class="fas fa-sync-alt"></i> Atualizar</button>
                                         </div>
                                         
                                         <div class="span3">
                                             <label for="dataInicial">Data de Entrtada<span class="required">*</span></label>
-                                            <input id="dataInicial" autocomplete="off" class="span12 datepicker" type="text" name="dataInicial" value="<?php echo date('d/m/Y', strtotime($result->dataInicial)); ?>" /><label for="dataSaida">Data de Saida</label>
-                                            <input id="dataSaida" autocomplete="off" class="span12 datepicker" type="text" name="dataSaida" value="<?php echo $result->dataSaida ?>" />
+<input id="dataInicial" autocomplete="off" class="span12 datepicker" type="text" name="dataInicial" value="<?php echo date('d/m/Y', strtotime($result->dataInicial)); ?>" />
+											<label for="dataFinal">Data Final<span class="required">*</span></label>
+<input id="dataFinal" autocomplete="off" class="span12 datepicker" type="text" name="dataFinal" value="<?php echo date('d/m/Y', strtotime($result->dataFinal)); ?>" />
                                       </div>
-                                      
                                       <div class="span3">Nº Série
-                                        <input id="serial" type="text" class="span12" name="serial" maxlength="30" value="<?php echo $result->serial ?>" />
-                                        </div>
-                                        <div class="span3">
-                                        <label for="marca">Marca</label>
-                                          <input id="marca" type="text" class="span12" name="marca" maxlength="30" value="<?php echo $result->marca ?>" />
+                             <input id="serial" type="text" class="span12" name="serial" maxlength="30" value="<?php echo $result->serial ?>" />
+                             <label for="dataSaida">Data de Saida</label>
+                             <input id="dataSaida" autocomplete="off" class="span12 datepicker" type="text" name="dataSaida" value="<?php echo $result->dataSaida ?>" />
                                         </div>
                                         
                                         <div class="span3">
-                                            <label for="garantia">Garantia até</label>
+                                        <label for="marca">Marca</label>
+                                          <input id="marca" type="text" class="span12" name="marca" maxlength="30" value="<?php echo $result->marca ?>" />
+                                        <label for="garantia">Garantia até</label>
                                             <input id="garantia" type="text" class="span12 datepicker" name="garantia" value="<?php echo $result->garantia ?>" />
                                         </div>
-                                      <div class="span3">
-                                        <label for="rastreio">Rastreio</label>
-                                          <input name="rastreio" type="text" class="span12" id="rastreio" maxlength="13" value="<?php echo $result->rastreio ?>"  />
-										  <a href="https://www.linkcorreios.com.br/<?php echo $result->rastreio ?>" title="Rastrear" target="_new" class="btn btn-warning"><i class="fas fa-envelope"></i> Rastrear</a>
-                                        <button class="btn btn-primary" title="Atualizar" id="btnContinuar"><i class="fas fa-sync-alt"></i> Atualizar</button>
-                                                         
-                                      </div>
-                                    </div>
+                                        
+                                  </div>
                                     <div class="span6" style="padding: 1%; margin-left: 0">
                                         <label for="descricaoProduto">
                                             <h4>Descrição Produto/Serviço</h4>
                                         </label>
-                                        <textarea class="span12 editor" name="descricaoProduto" id="descricaoProduto" cols="30" rows="5"><?php echo $result->descricaoProduto ?></textarea>
+                                        <textarea class="span12 editor" name="descricaoProduto" id="descricaoProduto"
+                                                  cols="30" rows="5"><?php echo $result->descricaoProduto ?></textarea>
                                     </div>
                                     <div class="span6" style="padding: 1%; margin-left: 0">
                                         <label for="defeito">
                                             <h4>Problema Informado</h4>
                                         </label>
-                                        <textarea class="span12 editor" name="defeito" id="defeito" cols="30" rows="5"><?php echo $result->defeito ?></textarea>
+                                        <textarea class="span12 editor" name="defeito" id="defeito" cols="30"
+                                                  rows="5"><?php echo $result->defeito ?></textarea>
                                     </div>
                                     <div class="span6" style="padding: 1%; margin-left: 0">
                                         <label for="observacoes">
                                             <h4>Observações</h4>
                                         </label>
-                                        <textarea class="span12 editor" name="observacoes" id="observacoes" cols="30" rows="5"><?php echo $result->observacoes ?></textarea>
+                                        <textarea class="span12 editor" name="observacoes" id="observacoes" cols="30"
+                                                  rows="5"><?php echo $result->observacoes ?></textarea>
                                     </div>
                                     <div class="span6" style="padding: 1%; margin-left: 0">
                                         <label for="laudoTecnico">
                                             <h4>Relatório Técnico</h4>
                                         </label>
-                                        <textarea class="span12 editor" name="laudoTecnico" id="laudoTecnico" cols="30" rows="5"><?php echo $result->laudoTecnico ?></textarea>
-                                    </div>
+                                        <textarea class="span12 editor" name="laudoTecnico" id="laudoTecnico" cols="30"
+                                                  rows="5"><?php echo $result->laudoTecnico ?></textarea>
+                                  </div>
                                     <div class="span12" style="padding: 1%; margin-left: 0">
                                         <div class="span6 offset3" style="text-align: center">
                                             <?php if ($result->faturado == 0) { ?>
                                                 <a href="#modal-faturar" title="Faturar" id="btn-faturar" role="button" data-toggle="modal" class="btn btn-danger"><i class="fas fa-cash-register"></i> Faturar</a>
                                             <?php
                                             } ?>
-                                            <button class="btn btn-primary" title="Atualizar" id="btnContinuar"><i class="fas fa-sync-alt"></i> Atualizar</button>
-                                            <a href="<?php echo base_url() ?>index.php/os/visualizar/<?php echo $result->idOs; ?>" title="Visualizar OS" class="btn btn-secondary"><i class="fas fa-eye"></i> Visualizar OS</a>
-                                            <a target="_blank" title="Imprimir" class="btn btn-inverse" href="<?php echo site_url() ?>/os/imprimir/<?php echo $result->idOs; ?>"><i class="fas fa-print"></i> Imprimir A4</a>
-                                            <a target="_blank" title="Imprimir" class="btn btn-inverse" href="<?php echo site_url() ?>/os/imprimirTermica/<?php echo $result->idOs; ?>"><i class="fas fa-print"></i> Imprimir Termica</a>
-                                            <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
+	<button class="btn btn-primary" title="Atualizar" id="btnContinuar"><i class="fas fa-sync-alt"></i> Atualizar</button>
+
+	<a href="<?php echo base_url() ?>index.php/os/visualizar/<?php echo $result->idOs; ?>" title="Visualizar OS" class="btn btn-secondary"><i class="fas fa-eye"></i> Visualizar OS</a>
+    
+	<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
                         echo '<a target="_blank" title="Adicionar OS" class="btn btn-success" href=' . base_url() . 'index.php/os/adicionar><i class="fas fa-plus"></i> Adicionar OS</a>';} ?>
-                                            
-                                            <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
-												$zapnumber = preg_replace("/[^0-9]/", "", $result->celular_cliente);
-                        echo '<a title="Enviar Por WhatsApp" class="btn btn-success" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $result->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $result->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($result->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $result->status . '*.%0d%0a%0d%0a' . strip_tags($result->defeito) . '%0d%0a%0d%0a' . strip_tags($result->laudoTecnico) . '%0d%0a%0d%0a' . strip_tags($result->observacoes) . '%0d%0a%0d%0aValor%20Total%20R$&#58%20*'. number_format($result->totalProdutos + $result->totalServicos, 2, ',', '.') . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20esta%20senha%20para%20fazer%20Log-In%20*' . strip_tags($result->senha) . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*' . number_format($totals + $totalp, 2, ',', '.') . '"><i class="fab fa-whatsapp"></i> WhatsApp</a>';} ?>
-                    
-                    
-					
-					<a href="<?php echo base_url() ?>index.php/os" class="btn"><i class="fas fa-backward"></i> Voltar</a>
+                        
+	<a href="#modal-whatsapp" title="Enviar WhatsApp" id="btn-whatsapp" role="button" data-toggle="modal" class="btn btn-success"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    
+    <a target="_blank" title="Imprimir" class="btn btn-inverse" href="<?php echo site_url() ?>/os/imprimir/<?php echo $result->idOs; ?>"><i class="fas fa-print"></i> Imprimir A4</a>
+    
+    <a target="_blank" title="Imprimir Termica" class="btn btn-inverse" href="<?php echo site_url() ?>/os/imprimirTermica/<?php echo $result->idOs; ?>"><i class="fas fa-print"></i> Imprimir Termica</a>
+    
+    <a target="_blank" title="Imprimir Termica 2" class="btn btn-inverse" href="<?php echo site_url() ?>/os/imprimirTermica2/<?php echo $result->idOs; ?>"><i class="fas fa-print"></i> Imprimir Termica 2</a>
+                        
+	<a href="<?php echo base_url() ?>index.php/os" class="btn"><i class="fas fa-backward"></i> Voltar</a>
+                        
                                         </div>
                                     </div>
                                 </form>
@@ -179,66 +185,78 @@
                         </div>
                         <!--Produtos-->
                         <div class="tab-pane" id="tab2">
-            			<div class="span12 well" style="padding: 1%; margin-left: 0">
-                        
-                        <form id="formProdutos" action="<?php echo base_url() ?>index.php/os/adicionarProduto" method="post">
+                        <div class="span12 well" style="padding: 1%; margin-left: 0">
+                                <form id="formProdutos" action="<?php echo base_url() ?>index.php/os/adicionarProduto"
+                                      method="post">
                                     <div class="span6">
-                                        <input type="hidden" name="idProduto" id="idProduto" />
-                                        <input type="hidden" name="idOsProduto" id="idOsProduto" value="<?php echo $result->idOs; ?>" />
-                                        <input type="hidden" name="estoque" id="estoque" value="" />
+                                        <input type="hidden" name="idProduto" id="idProduto"/>
+                                        <input type="hidden" name="idOsProduto" id="idOsProduto"
+                                               value="<?php echo $result->idOs; ?>"/>
+                                        <input type="hidden" name="estoque" id="estoque" value=""/>
                                         <label for="">Produto</label>
-                                        <input type="text" class="span12" name="produto" id="produto" placeholder="Digite o nome do produto" />
+                                        <input type="text" class="span12" name="produto" id="produto"
+                                               placeholder="Digite o nome do produto"/>
                                     </div>
                                     <div class="span2">
                                         <label for="">Preço</label>
-                                        <input type="text" placeholder="Preço" id="preco" name="preco" class="span12 money" />
+                                        <input type="text" placeholder="Preço" id="preco" name="preco"
+                                               class="span12 money"/>
                                     </div>
                                     <div class="span2">
                                         <label for="">Quantidade</label>
-                                        <input type="text" placeholder="Quantidade" id="quantidade" name="quantidade" class="span12" />
+                                        <input type="text" placeholder="Quantidade" id="quantidade" name="quantidade"
+                                               class="span12"/>
                                     </div>
                                     <div class="span2">
                                         <label for="">.</label>
-                                        <button class="btn btn-success span12" id="btnAdicionarProduto"><i class="fas fa-plus"></i> Adicionar</button>
+                                        <button class="btn btn-success span12" id="btnAdicionarProduto"><i
+                                                    class="fas fa-plus"></i> Adicionar
+                                        </button>
                                     </div>
-                          </form>
-                   		  </div>
-            			<div class="widget-box" id="divProdutos">
-            			<div class="widget-content nopadding">
-								<table width="100%" class="table table-bordered" id="tblProdutos">
+                                </form>
+                            </div>
+                            <div class="widget-box" id="divProdutos">
+                            <div class="widget-content nopadding">
+                                <table width="100%" class="table table-bordered" id="tblProdutos">
                                     <thead>
-                                        <tr>
-                                        	<th width="8%">SKU</th>
+                                    <tr>
+                                       		<th width="8%">Cod. SKU</th>
                                             <th width="10%">Cod. Barras</th>
                                             <th>Produto</th>
                                             <th width="8%">Quantidade</th>
-                                            <th width="8%">Preço unit.</th>
-                                            <th width="5%">Ações</th>
-                                            <th width="8%">Sub-total</th>
-                                        </tr>
+                                            <th width="10%">Preço unit.</th>
+                                            <th width="6%">Ações</th>
+                                            <th width="10%">Sub-total</th>
+                                    </tr>
                                     </thead>
                                     <tbody>
-                                        <?php
-                                        $totalp = 0;
-                                        foreach ($produtos as $p) {
-                                            $totalp = $totalp + $p->subTotal;
-                                            echo '<tr>';
-											echo '<td><div align="center">' . $p->idProdutos . '</div></td>';
-                                            echo '<td><div align="center">' . $p->codDeBarra . '</div></td>';
+                                    <?php
+                                    $total = 0;
+                                    foreach ($produtos as $p) {
+                                        $total = $total + $p->subTotal;
+                                        echo '<tr>';
+											echo '<td><div align="center">' . $p->idProdutos . '</td>';
+                                            echo '<td><div align="center">' . $p->codDeBarra . '</td>';
                                             echo '<td>' . $p->descricao . '</td>';
-                                            echo '<td><div align="center">' . $p->quantidade . '</div></td>';
-                                            echo '<td><div align="center">R$ ' . ($p->preco ?: $p->precoVenda)  . '</div></td>';
-                                            echo '<td><div align="center"><a href="" idAcao="' . $p->idProdutos_os . '" prodAcao="' . $p->idProdutos . '" quantAcao="' . $p->quantidade . '" title="Excluir Produto" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></div></td>';
-                                            echo '<td><div align="center">R$ ' . number_format($p->subTotal, 2, ',', '.') . '</div></td>';
+                                            echo '<td><div align="center">' . $p->quantidade . '</td>';
+                                            echo '<td><div align="center">R$: ' . ($p->preco ?: $p->precoVenda)  . '</td>';
+                                            echo '<td><div align="center"><a href="" idAcao="' . $p->idProdutos_os . '" prodAcao="' . $p->idProdutos . '" quantAcao="' . $p->quantidade . '" title="Excluir Produto" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></td>';
+                                            echo '<td><div align="center">R$: ' . number_format($p->subTotal, 2, ',', '.') . '</td>';
                                             echo '</tr>';
-                                        } ?>
-                                        <tr>
-                                            <td colspan="6" style="text-align: right"><strong>Total:</strong></td>
-                                            <td><strong><div align="center">R$
-                                                    <?php echo number_format($totalp, 2, ',', '.'); ?><input type="hidden" id="totalp-venda" value="<?php echo number_format($totalp, 2); ?>"></div></strong></td>
-                                        </tr>
+                                    } ?>
+                                    <tr>
+                                        <td colspan="6" style="text-align: right"><strong>Total:</strong></td>
+                                        <td><strong>R$
+                                                <?php echo number_format($total, 2, ',', '.'); ?><input type="hidden"
+                                                                                                        id="total-venda"
+                                                                                                        value="<?php echo number_format($total, 2); ?>"></strong>
+                                        </td>
+                                    </tr>
                                     </tbody>
-                                </table></div></div></div>
+                                </table>
+                            </div>
+                        </div>
+                        </div>
                                 
                         <!--Serviços-->
                         <div class="tab-pane" id="tab3">
@@ -271,9 +289,9 @@
                                             <tr>
                                                 <th>Serviço</th>
                                                 <th width="8%">Quantidade</th>
-                                                <th width="9%">Preço</th>
-                                                <th width="5%">Ações</th>
-                                                <th width="9%">Sub-totals</th>
+                                                <th width="10%">Preço</th>
+                                                <th width="6%">Ações</th>
+                                                <th width="10%">Sub-totals</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -293,8 +311,9 @@
                                             } ?>
                                             <tr>
                                                 <td colspan="4" style="text-align: right"><strong>Total:</strong></td>
-                                                <td><strong><div align="center">R$
-                                                        <?php echo number_format($totals, 2, ',', '.'); ?><input type="hidden" id="totals-servico" value="<?php echo number_format($totals, 2); ?>"></div></strong></td>
+                                                <td><strong>R$
+                                                <?php echo number_format($totals, 2, ',', '.'); ?><input type="hidden" id="total-servico" value="
+												<?php echo number_format($totals, 2); ?>"></strong></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -317,27 +336,26 @@
                                         </div>
                                     </form>
                           </div>
-                          
-                          <div class="span12" id="divAnexos" style="margin-left: 1">
+                          <div class="span12 pull-right" id="divAnexos" style="margin-left: 0">
                                     <?php
-                                        foreach ($anexos as $a) {
-                                            if ($a->thumb == null) {
-                                                $thumb = base_url() . 'assets/img/icon-file.png';
-                                                $link = base_url() . 'assets/img/icon-file.png';
-                                            } else {
-                                                $thumb = $a->url . '/thumbs/' . $a->thumb;
-                                                $link = $a->url .'/'. $a->anexo;
-                                            }
-                                            echo '<div class="span3" style="min-height: 150px; margin-left: 0">
-                                                    <a style="min-height: 150px;" href="#modal-anexo" imagem="' . $a->idAnexos . '" link="' . $link . '" role="button" class="btn anexo span12" data-toggle="modal">
+                                    foreach ($anexos as $a) {
+                                        if ($a->thumb == null) {
+                                            $thumb = base_url() . 'assets/img/icon-file.png';
+                                            $link = base_url() . 'assets/img/icon-file.png';
+                                        } else {
+                                            $thumb = $a->url . '/thumbs/' . $a->thumb;
+                                            $link = $a->url . '/' . $a->anexo;
+                                        }
+                                        echo '<div class="span3" style="min-height: 230px; margin-left: 0">
+                                                    <a style="min-height: 200px;" href="#modal-anexo" imagem="' . $a->idAnexos . '" link="' . $link . '" role="button" class="btn anexo span12" data-toggle="modal">
                                                         <img src="' . $thumb . '" alt="">
                                                     </a>
-                                                    <span>'. $a->anexo .'</span>
+                                                    <span>' . $a->anexo . '</span>
                                                 </div>';
-                                        }
+                                    }
                                     ?>
                                 </div>
-                        </div>
+                            </div>
                         
 						<!--Anotações-->
                         <div class="tab-pane" id="tab5">
@@ -356,6 +374,10 @@
                                         </thead>
                                         <tbody>
                                             <?php
+											// DEFINE O FUSO HORARIO COMO O HORARIO DE BRASILIA
+											date_default_timezone_set('America/Sao_Paulo');
+											// CRIA UMA VARIAVEL E ARMAZENA A HORA ATUAL DO FUSO-HORÀRIO DEFINIDO (BRASÍLIA)
+											$dataLocal = date('d/m/Y H:i:s', time());
                                             foreach ($anotacoes as $a) {
                                                 echo '<tr>';
                                                 echo '<td>' . $a->anotacao . '</td>';
@@ -384,12 +406,12 @@
                                     <table  width="100%" class="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th width="15%">Equipamento</th>
-                                                <th width="15%">Modelo/Cor</th>
-                                                <th width="15%">Nº Série</th>
-                                                <th width="8%">Voltagem</th>
+                                                <th>Equipamento</th>
+                                                <th>Modelo/Cor</th>
+                                                <th>Nº Série</th>
+                                                <th>Voltagem</th>
                                                 <th>Observação</th>
-                                                <th width="7%">Ações</th>
+                                                <th>Ações</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -521,7 +543,8 @@
                 <div class="span4" style="margin-left: 0">
                     <label for="valor">Valor*</label>
                     <input type="hidden" id="tipo" name="tipo" value="receita" />
-                    <input class="span12 money" id="valor" type="text" name="valor" value="<?php echo number_format($totals + $totalp, 2, ',', '.') ?> " />
+                    <input class="span12 money" id="valor" type="text" name="valor"
+                           value="<?php echo number_format($total, 2); ?> "/>
                 </div>
                 <div class="span4">
                     <label for="vencimento">Data Entrada*</label>
@@ -543,10 +566,10 @@
                         <select name="formaPgto" id="formaPgto" class="span12">
                             <option value="Dinheiro">Dinheiro</option>
                             <option value="Cartão de Crédito">Cartão de Crédito</option>
-                            <option value="Cheque">Cheque</option>
                             <option value="Boleto">Boleto</option>
                             <option value="Depósito">Depósito</option>
                             <option value="Débito">Débito</option>
+                            <option value="Pix">Pix</option>
                         </select>
                     </div>
                 </div>
@@ -561,14 +584,15 @@
 </div>
 
 <!-- Modal WhatsApp-->
-<div id="modal-enviar-whatsapp" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="modal-whatsapp" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="<?php echo current_url() ?>" method="post">
         <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             <div align="center">
               <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
 												$zapnumber = preg_replace("/[^0-9]/", "", $result->celular_cliente);
-                        echo '<a title="Enviar Por WhatsApp" class="btn btn-success" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $result->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $result->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($result->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $result->status . '*.%0d%0a%0d%0a' . strip_tags($result->defeito) . '%0d%0a%0d%0a' . strip_tags($result->laudoTecnico) . '%0d%0a%0d%0a' . strip_tags($result->observacoes) . '%0d%0a%0d%0aValor%20Total%20*R$&#58%20'. number_format($totals + $totalp, 2, ',', '.') . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20esta%20senha%20para%20fazer%20Log-In%20*' . strip_tags($result->senha) . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*"><i class="fab fa-whatsapp"></i> Enviar WhatsApp</a>';} ?>
+												$totalOS = number_format($totals + $total, 2, ',', '.');
+                        echo '<a title="Enviar Por WhatsApp" class="btn btn-success" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $result->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $result->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($result->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $result->status . '*.%0d%0a%0d%0a' . strip_tags($result->defeito) . '%0d%0a%0d%0a' . strip_tags($result->laudoTecnico) . '%0d%0a%0d%0a' . strip_tags($result->observacoes) . '%0d%0a%0d%0aValor%20Total%20*R$&#58%20'. $totalOS . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20estes%20dados%20para%20fazer%20Log-in%0d%0aEmail:%20*' . strip_tags($result->email) . '*%0d%0aSenha:%20*' . strip_tags($result->senha) . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*"><i class="fab fa-whatsapp"></i> Enviar WhatsApp</a>';} ?>
               
             </div>
         </div>
@@ -584,15 +608,17 @@
         <br>
         <?php echo $result->observacoes ?>
         <br><br>
-        <div>Valor Total <b>R$: <?php echo number_format($totals + $totalp, 2, ',', '.') ?></b></div>
+        <div>Valor Total <b>R$: <?php echo number_format($totals + $total, 2, ',', '.') ?></b></div>
         <br>
 		<?php echo $configuration['whats_app1'] ?>
         <br><br>
         <div>Atenciosamente <b><?php echo $configuration['whats_app2'] ?></b> - <b><?php echo $configuration['whats_app3'] ?></b></div>
         <br>
         <div>Acesse a área do cliente pelo link <font color='#1E90FF'><?php echo $configuration['whats_app4'] ?></font></div>
-        <div>E utilize esta senha para fazer Log-In  <b><?php echo $result->senha ?></b></div>
-        <div>Você poderá edita-la no menu <b>Minha Conta</b></div>
+        <div>E utilize estes dados para fazer Log-In.
+        <br>Email: <b><?php echo $result->email ?></b>
+        <br>Senha: <b><?php echo $result->senha ?></b></div>
+        <div>Você poderá edita-los no menu <b>Minha Conta</b></div>
         </font>
       </div>
     </form>
@@ -629,16 +655,73 @@
 
         $(document).on('click', '#btn-whatsapp', function(event) {
             event.preventDefault();
-            valores = $('#total-venda').val();
-            total_servicos = $('#total-servico').val();
-            valores = valores.replace(',', '');
-            total_servicos = total_servicos.replace(',', '');
-            total_servicos = parseFloat(total_servicos);
-            valores = parseFloat(valores);
-            $('#valores').val(valores + total_servicos);
+            valor = $('#total-venda').val();
+            total_servico = $('#total-servico').val();
+            valor = valor.replace(',', '');
+            total_servico = total_servico.replace(',', '');
+            total_servico = parseFloat(total_servico);
+            valor = parseFloat(valor);
+            $('#valor').val(valor + total_servico);
         });
 
         $("#formFaturar").validate({
+            rules: {
+                descricao: {
+                    required: true
+                },
+                cliente: {
+                    required: true
+                },
+                valor: {
+                    required: true
+                },
+                vencimento: {
+                    required: true
+                }
+
+            },
+            messages: {
+                descricao: {
+                    required: 'Campo Requerido.'
+                },
+                cliente: {
+                    required: 'Campo Requerido.'
+                },
+                valor: {
+                    required: 'Campo Requerido.'
+                },
+                vencimento: {
+                    required: 'Campo Requerido.'
+                }
+            },
+            submitHandler: function(form) {
+                var dados = $(form).serialize();
+                $('#btn-cancelar-faturar').trigger('click');
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo base_url(); ?>index.php/os/faturar",
+                    data: dados,
+                    dataType: 'json',
+                    success: function(data) {
+                        if (data.result == true) {
+
+                            window.location.reload(true);
+                        } else {
+                            Swal.fire({
+                                type: "error",
+                                title: "Atenção",
+                                text: "Ocorreu um erro ao tentar faturar OS."
+                            });
+                            $('#progress-fatura').hide();
+                        }
+                    }
+                });
+
+                return false;
+            }
+        });
+
+        $("#formwhatsapp").validate({
             rules: {
                 descricao: {
                     required: true

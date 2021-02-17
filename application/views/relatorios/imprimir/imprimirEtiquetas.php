@@ -12,34 +12,21 @@
 
 <body style="background-color: transparent">
 
-<div class="container-fluid">
+	<div class="container-fluid">
 		<div class="row-fluid">
 			<div class="span12">
 				<div class="widget-box">
-				  <div class="widget-content nopadding">
+					<div class="widget-content nopadding tab-content">
 						<?php
-						function limitarTexto($texto, $limite)
-						{
-							$contador = strlen($texto);
-							if ($contador >= $limite) {
-								$texto = substr($texto, 0, strrpos(substr($texto, 0, $limite), ' ')) . '...';
-								return $texto;
-							} else {
-								return $texto;
-							}
-						}
-						if (
-							$this->input->get("etiquetaCode") !== "EAN13" && $this->input->get("etiquetaCode") !== "QR"
-							&& $this->input->get("etiquetaCode") !== "UPCA"
-						) {
-							if (isset($_GET['qtdEtiqueta'])) {
-								foreach ($produtos as $p) {
-									for ($i = 0; $p->estoque >  $i++;) {
-
-
-										?>
-                                        
-								<div class="detalheProdutoEtiquetaEan13">
+                        if (
+                            $this->input->get("etiquetaCode") !== "EAN13" && $this->input->get("etiquetaCode") !== "QR"
+                            && $this->input->get("etiquetaCode") !== "UPCA"
+                        ) {
+                            if (isset($_GET['qtdEtiqueta'])) {
+                                foreach ($produtos as $p) {
+                                    for ($i = 0; $p->estoque >  $i++;) {
+                                        ?>
+							<div class="detalheProdutoEtiquetaEan13">
                                 <div class="descricaoProdutoEtiqueta">
                                 <table width="100%" class="table table-condensend">
                                 <tr>
@@ -55,19 +42,17 @@
 									</div>
 								</div>
                                 <div class="barcodecell">
-		<barcode code="<?= $p->codDeBarra ?>" text="0" type="<?= $this->input->get("etiquetaCode") ?>" size="0.7" disableborder="0" class="barcode" />
+		<barcode code="<?= $p->codDeBarra ?>" text="0" type="<?= $this->input->get("etiquetaCode") ?>" size="0.7" disableborder="0"
+									 class="barcode" />
 								</div>
-                                </div>
-                                
-								<?php }
-											}
-										} else {
-
-											foreach ($produtos as $p) {
-
-												?>
-                                                
-								<div class="detalheProdutoEtiquetaEan13">
+							</div>
+							<?php
+                                    }
+                                }
+                            } else {
+                                foreach ($produtos as $p) {
+                                    ?>
+							<div class="detalheProdutoEtiquetaEan13">
                                 <div class="descricaoProdutoEtiqueta">
                                 <table width="100%" class="table table-condensend">
                                 <tr>
@@ -83,20 +68,20 @@
 									</div>
 								</div>
                                 <div class="barcodecell">
-		<barcode code="<?= $p->codDeBarra ?>" text="0" type="<?= $this->input->get("etiquetaCode") ?>" size="0.7" disableborder="0" class="barcode" />
+		<barcode code="<?= $p->codDeBarra ?>" text="0" type="<?= $this->input->get("etiquetaCode") ?>" size="0.7" disableborder="0"
+									 class="barcode" />
 								</div>
-                                </div>
-                            
-							<?php }
-										}
-									} else {
 
-										if (isset($_GET['qtdEtiqueta'])) {
-											foreach ($produtos as $p) {
-												for ($i = 0; $p->estoque >  $i++;) 
-								{?>
-                                
-								<div class="detalheProdutoEtiquetaEan13">
+							</div>
+							<?php
+                                }
+                            }
+                        } else {
+                            if (isset($_GET['qtdEtiqueta'])) {
+                                foreach ($produtos as $p) {
+                                    for ($i = 0; $p->estoque >  $i++;) {
+                                        ?>
+							<div class="detalheProdutoEtiquetaEan13">
                                 <div class="descricaoProdutoEtiqueta">
                                 <table width="100%" class="table table-condensend">
                                 <tr>
@@ -112,18 +97,19 @@
 									</div>
 								</div>
                                 <div class="barcodecell">
-		<barcode code="<?= $p->codDeBarra ?>" text="0" type="<?= $this->input->get("etiquetaCode") ?>" size="0.7" disableborder="0" class="barcode" />
+		<barcode code="<?= $p->codDeBarra ?>" text="0" type="<?= $this->input->get("etiquetaCode") ?>" size="0.62" disableborder="0"
+									 class="barcode" />
 								</div>
-                                </div>
-                                
-                            <?php }
-											}
-										} else {
+							</div>
 
-											foreach ($produtos as $p) 
-											{?>
-                                                
-								<div class="detalheProdutoEtiquetaEan13">
+
+							<?php
+                                    }
+                                }
+                            } else {
+                                foreach ($produtos as $p) {
+                                    ?>
+							<div class="detalheProdutoEtiquetaEan13">
                                 <div class="descricaoProdutoEtiqueta">
                                 <table width="100%" class="table table-condensend">
                                 <tr>
@@ -139,21 +125,23 @@
 									</div>
 								</div>
                                 <div class="barcodecell">
-		<barcode code="<?= $p->codDeBarra ?>" text="0" type="<?= $this->input->get("etiquetaCode") ?>" size="0.7" disableborder="0" class="barcode" />
+		<barcode code="<?= $p->codDeBarra ?>" text="0" type="<?= $this->input->get("etiquetaCode") ?>" size="0.62" disableborder="0"
+									 class="barcode" />
 								</div>
-                                </div>
-                                
-							<?php }
-							}
-						}
-						?>
 
-				  </div>
+							</div>
+							<?php
+                                }
+                            }
+                        }
+                        ?>
+
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	
+
 </body>
 
 </html>

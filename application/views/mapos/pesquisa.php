@@ -56,7 +56,7 @@
 				case 'Aguardando Peças':
                     $cor = '#FF6600';
                  	break;
-				case 'Serviço Concluido':
+				case 'Finalizado':
                     $cor = '#0066FF';
                     break;
 				case 'Sem Reparo':
@@ -202,9 +202,11 @@
                                 echo '<tr><td colspan="4">Nenhum cliente foi encontrado.</td></tr>';
                             }
                             foreach ($clientes as $r) {
+								$NomeClienteShort = mb_strimwidth(strip_tags($r->nomeCliente), 0, 25, "...");
+								
                                 echo '<tr>';
                                 echo '<td><div align="center">' . $r->idClientes . '</div></td>';
-                                echo '<td>' . $r->nomeCliente . '</td>';
+                                echo '<td>' . $NomeClienteShort . '</td>';
                                 echo '<td><div align="center">' . $r->documento . '</div></td>';
                                 echo '<td><div align="center">';
                                 if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vCliente')) {

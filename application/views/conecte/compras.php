@@ -1,14 +1,21 @@
 <?php
 
 if (!$results) { ?>
-    <div class="span12">
-        <div class="widget-box">
-            <div class="widget-title">
-                <span class="icon"><i class="fas fa-tags"></i></span>
-                <h5>Compras</h5>
-            </div>
-            <div class="widget-content">
-                <table id="tabela" class="table table-bordered">
+    <div class="widget-box">
+        <div class="widget-title">
+            <span class="icon">
+                <i class="fas fa-tags"></i>
+            </span>
+            <h5>Compras</h5>
+
+        </div>
+
+        <div class="widget-content nopadding tab-content">
+
+
+            <table id="tabela" class="table table-bordered ">
+                <thead>
+                    <tr style="backgroud-color: #2D335B">
                         <th>#</th>
                         <th>Data da Compra</th>
                         <th>Responsável</th>
@@ -25,18 +32,23 @@ if (!$results) { ?>
             </table>
         </div>
     </div>
-</div>
 <?php
 } else { ?>
-		
-        <div class="span12">
-        <div class="widget-box">
-            <div class="widget-title">
-                <span class="icon"><i class="fas fa-shopping-cart"></i></span>
-                <h5>Compras</h5>
-            </div>
-            <div class="widget-content">
-                <table id="tabela" class="table table-bordered">
+
+
+    <div class="widget-box">
+        <div class="widget-title">
+            <span class="icon">
+                <i class="fas fa-shopping-cart"></i>
+            </span>
+            <h5>Compras</h5>
+
+        </div>
+
+        <div class="widget-content nopadding tab-content">
+
+
+            <table id="tabela" class="table table-bordered ">
                 <thead>
                     <tr style="backgroud-color: #2D335B">
                         <th>#</th>
@@ -48,26 +60,24 @@ if (!$results) { ?>
                 </thead>
                 <tbody>
                     <?php foreach ($results as $r) {
-                            $dataVenda = date(('d/m/Y'), strtotime($r->dataVenda));
-                            if ($r->faturado == 1) {
-                                $faturado = 'Sim';
-                            } else {
-                                $faturado = 'Não';
-                            }
-                            echo '<tr>';
-                            echo '<td><div align="center">' . $r->idVendas . '</div></td>';
-                            echo '<td><div align="center">' . $dataVenda . '</div></td>';
-                            echo '<td>' . $r->nome . '</td>';
-                            echo '<td><div align="center">' . $faturado . '</div></td>';
-							echo '<td><div align="center"><a href="' . base_url() . 'index.php/mine/visualizarCompra/' . $r->idVendas . '" class="btn tip-top" title="Visualizar mais detalhes"><i class="fas fa-eye"></i></a>
-                      <a href="' . base_url() . 'index.php/mine/imprimirCompra/' . $r->idVendas . '" target="_blank" class="btn btn-inverse tip-top" title="Imprimir"><i class="fas fa-print"></i></a>
-                      
-                  </div></td>';
-                            echo '</tr>';
-                        } ?>
-                    <tr>
+    $dataVenda = date(('d/m/Y'), strtotime($r->dataVenda));
+    if ($r->faturado == 1) {
+        $faturado = 'Sim';
+    } else {
+        $faturado = 'Não';
+    }
+    echo '<tr>';
+    echo '<td>' . $r->idVendas . '</td>';
+    echo '<td>' . $dataVenda . '</td>';
+    echo '<td>' . $r->nome . '</td>';
+    echo '<td>' . $faturado . '</td>';
 
-                    </tr>
+    echo '<td><a href="' . base_url() . 'index.php/mine/visualizarCompra/' . $r->idVendas . '" class="btn tip-top" title="Ver mais detalhes"><i class="fas fa-eye"></i></a>
+                      <a href="' . base_url() . 'index.php/mine/imprimirCompra/' . $r->idVendas . '" target="_blank" class="btn btn-inverse tip-top" title="Imprimir"><i class="fas fa-print"></i></a>
+
+                  </td>';
+    echo '</tr>';
+} ?>
                 </tbody>
             </table>
         </div>

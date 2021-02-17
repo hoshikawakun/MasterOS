@@ -61,10 +61,11 @@
         <table id="tabela" width="100%" class="table table-bordered">
                 <thead>
                     <tr style="background-color: #2D335B">
-                        <th>OS N°</th>
+                        <th>N° OS</th>
                         <th>Cliente</th>
                         <th>Responsável</th>
                         <th>Data de Entrada</th>
+                        <th>Venc. Garantia</th>
                         <th>Valor Total</th>
                         <th>Faturado</th>
                      	<th>Status</th>
@@ -80,7 +81,8 @@
                                   </tr>';
                         }
                         foreach ($results as $r) {
-                            $dataInicial = date(('d/m/Y'), strtotime($r->dataInicial));
+                            $NomeClienteShort = mb_strimwidth(strip_tags($r->nomeCliente), 0, 25, "...");
+							$dataInicial = date(('d/m/Y'), strtotime($r->dataInicial));
                             if ($r->dataFinal != null) {
                                 $dataFinal = date(('d/m/Y'), strtotime($r->dataFinal));
                             } else {
@@ -145,12 +147,17 @@
                     $cor = '#006633';
                     break;
                             }
-                    
+                    $vencGarantia = '';
+
+                        if ($r->garantia && is_numeric($r->garantia)) {
+                            $vencGarantia = dateInterval($r->dataFinal, $r->garantia);
+                        }
                             echo '<tr>';
                             echo '<td><div align="center">' . $r->idOs . '</div></td>';
-							echo '<td>' . $r->nomeCliente . '</td>';
+							echo '<td>' . $NomeClienteShort . '</td>';
                             echo '<td>' . $r->nome . '</td>';
                             echo '<td><div align="center">' . $dataInicial . '</div></td>';
+							echo '<td><div align="center">' . $r->garantia . '</div></td>';
 							echo '<td><div align="center">R$: ' . number_format($r->totalProdutos + $r->totalServicos, 2, ',', '.') . '</div></td>';
 							echo '<td><div align="center">R$: ' . number_format($r->valorTotal, 2, ',', '.') . '</div></td>';
 					echo '<td><div align="center"><span class="badge" style="background-color: ' . $cor . '; border-color: ' . $cor . '">' . $r->status . '</span></div></td>';
@@ -170,7 +177,7 @@
                                 echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/imprimir/' . $r->idOs . '" target="_blank" class="btn btn-inverse tip-top" title="Imprimir Normal A4"><i class="fas fa-print"></i></a>';
                             }
 							if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
-                                echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/imprimirTermica/' . $r->idOs . '" target="_blank" class="btn btn-inverse tip-top" title="Imprimir Termica"><i class="fas fa-print"></i></a>';
+                                echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/imprimirTermica2/' . $r->idOs . '" target="_blank" class="btn btn-inverse tip-top" title="Imprimir Termica 2"><i class="fas fa-print"></i></a>';
                             }
                             if ($this->permission->checkPermission($this->session->userdata('permissao'), 'dOs')) {
                                 echo '<a href="#modal-excluir" role="button" data-toggle="modal" os="' . $r->idOs . '" class="btn btn-danger tip-top" title="Excluir OS"><i class="fas fa-trash-alt"></i></a>  ';

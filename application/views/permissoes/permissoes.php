@@ -8,8 +8,8 @@
         <h5>Permissões</h5>
     </div>
 
-    <div class="widget-content nopadding">
-        <table id="tabela" class="table table-bordered">
+    <div class="widget-content nopadding tab-content">
+        <table id="tabela" class="table table-bordered ">
             <thead>
                 <tr>
                     <th>#</th>
@@ -20,8 +20,8 @@
                 </tr>
             </thead>
             <tbody>
-                <?php 
-                
+                <?php
+
                     if (!$results) {
                         echo '<tr>
                                 <td colspan="5">Nenhuma Permissão foi cadastrada</td>
@@ -34,12 +34,11 @@
                             $situacao = 'Inativo';
                         }
                         echo '<tr>';
-                        echo '<td>' . $r->idPermissao . '</td>';
+                        echo '<td><div align="center">' . $r->idPermissao . '</td>';
                         echo '<td>' . $r->nome . '</td>';
-                        echo '<td>' . date('d/m/Y', strtotime($r->data)) . '</td>';
-                        echo '<td>' . $situacao . '</td>';
-                        echo '<td>
-                                <a href="' . base_url() . 'index.php/permissoes/editar/' . $r->idPermissao . '" class="btn btn-info tip-top" title="Editar Permissão"><i class="fas fa-edit"></i></a>
+                        echo '<td><div align="center">' . date('d/m/Y', strtotime($r->data)) . '</td>';
+                        echo '<td><div align="center">' . $situacao . '</td>';
+                        echo '<td><div align="center"><a href="' . base_url() . 'index.php/permissoes/editar/' . $r->idPermissao . '" class="btn btn-info tip-top" title="Editar Permissão"><i class="fas fa-edit"></i></a>
                                 <a href="#modal-excluir" role="button" data-toggle="modal" permissao="' . $r->idPermissao . '" class="btn btn-danger tip-top" title="Desativar Permissão"><i class="fas fa-trash-alt"></i></a>
                               </td>';
                         echo '</tr>';

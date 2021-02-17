@@ -2,10 +2,11 @@
 <html lang="pt-br">
 
 <head>
-    <title>Área do Cliente - <?= $this->config->item('app_name') ?></title>
+    <title><?php echo $this->config->item('app_name') ?></title>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content="<?php echo $this->config->item('app_name') . ' - ' . $this->config->item('app_subname') ?>">
+    <link rel="shortcut icon" type="image/png" href="<?php echo base_url(); ?>assets/img/favicon.png"/>
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/bootstrap-responsive.min.css" />
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/matrix-login.css" />
@@ -16,19 +17,12 @@
     <script src="<?php echo base_url() ?>assets/js/jquery.mask.min.js"></script>
     <script src="<?php echo base_url() ?>assets/js/funcoes.js"></script>
     <!-- Script webeddy.com.br -->
-    <script>
-        function formatar(mascara, senha) {
-            var i = senha.value.length;
-            var saida = mascara.substring(0, 1);
-            var texto = mascara.substring(i)
-
-            if (texto.substring(0, 1) != saida) {
-                senha.value += texto.substring(0, 1);
-            }
-
-        }
-    </script>
+    
 </head>
+<?php
+   $parse_email = $this->input->get('e');
+   $parse_cpfcnpj = $this->input->get('c');
+?>
 <!-- particles.js container -->
 <div id="particles-js"><canvas class="particles-js-canvas-el" width="842" height="913" style="width: 100%; height: 100%;"></canvas></div>
 
@@ -48,14 +42,12 @@
                 </div>
             <?php } ?>
             <div class="control-group normal_text">
-                <h3><img src="<?php echo base_url()?>assets/img/logo2.png" alt="Logo" /></h3>
+                <h3><img src="<?= base_url() ?>application/views/arquivos/source/Logo_Login_Sistema/logo.png" alt="Logo" /></h3>
             </div>
             <div class="control-group">
                 <div class="controls">
                     <div class="main_input_box">
-                        <span class="add-on bg_lg"><i class="fas fa-user"></i></span><input id="telefone" class="telefone1" type="text" name="telefone" placeholder="Telefone" value="<?php if (isset($_GET['e'])) { echo $_GET['e']; ?>
-                            <?php } ?>
-                         "/>
+                        <span class="add-on bg_lg"><i class="fas fa-user"></i></span><input id="email" name="email" type="text" placeholder="Email" value="<?php echo trim($parse_email); ?>"/>
                     </div>
                 </div>
             </div>
@@ -69,7 +61,7 @@
                 </div>
             </div>
             <div class="form-actions" style="text-align: center">
-                <button class="btn btn-info btn-large" /> Acessar</button>
+                <button class="btn btn-info btn-large"> Acessar</button>
                 <a href="<?= site_url('mine/cadastrar') ?>" class="btn btn-success btn-large">Cadastrar-me</a>
             </div>
         </form>

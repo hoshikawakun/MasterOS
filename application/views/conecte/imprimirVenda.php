@@ -3,10 +3,11 @@
 <html lang="pt-br">
 
 <head>
-    <title>Área do Cliente - <?= $this->config->item('app_name') ?></title>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Map_OS_<?php echo $result->idVendas ?>_<?php echo $result->nomeCliente ?></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="<?php echo $this->config->item('app_name') . ' - ' . $this->config->item('app_subname') ?>">
+    <link rel="shortcut icon" type="image/png" href="<?php echo base_url(); ?>assets/img/favicon.png"/>
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap-responsive.min.css" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/matrix-style.css" />
@@ -62,7 +63,7 @@
                                                 </span>
                                                 <span><?php echo $result->nome ?></span> <br />
                                                 <span>Telefone: <?php echo $result->telefone ?></span><br />
-                                                <span>Email: <?php echo $result->email ?></span>
+                                                <span>Email: <?php echo $result->email_user ?></span>
                                             </li>
                                         </ul>
                                     </td>
@@ -89,7 +90,6 @@
                                     <?php
 
                                         foreach ($produtos as $p) {
-
                                             $totalProdutos = $totalProdutos + $p->subTotal;
                                             echo '<tr>';
                                             echo '<td>' . $p->descricao . '</td>';

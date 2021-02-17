@@ -7,7 +7,7 @@
         </span>
         <h5>Logs</h5>
     </div>
-    <div class="widget-content nopadding">
+    <div class="widget-content nopadding tab-content">
         <table id="tabela" class="table table-bordered ">
             <thead>
                 <tr style="backgroud-color: #2D335B">
@@ -20,14 +20,14 @@
             </thead>
             <tbody>
                 <?php foreach ($results as $r) {
-                    echo '<tr>';
-                    echo '<td>' . $r->usuario . '</td>';
-                    echo '<td>' . date('d/m/Y', strtotime($r->data)) . '</td>';
-                    echo '<td>' . $r->hora . '</td>';
-                    echo '<td>' . $r->ip . '</td>';
-                    echo '<td>' . $r->tarefa . '</td>';
-                    echo '</tr>';
-                } ?>
+    echo '<tr>';
+    echo '<td><div align="center">' . $r->usuario . '</td>';
+    echo '<td><div align="center">' . date('d/m/Y', strtotime($r->data)) . '</td>';
+    echo '<td><div align="center">' . $r->hora . '</td>';
+    echo '<td><div align="center">' . $r->ip . '</td>';
+    echo '<td><div align="center">' . $r->tarefa . '</td>';
+    echo '</tr>';
+} ?>
                 <?php if (!$results) { ?>
                     <tr>
                         <td colspan="5">Nenhum registro encontrado.</td>

@@ -37,13 +37,13 @@
                         
 
                         echo '<tr>';
-                        echo '<td>' . $r->idPag . '</td>';
-                        echo '<td>' . $r->nome . '</td>';
-                        echo '<td>' . $textoClientIdShort . '</td>';
-                        echo '<td>' . $textoClientSecretShort . '</td>';
-                        echo '<td>' . $textoPublicKeyShort . '</td>';
-                        echo '<td>' . $textoAccessTokenShort . '</td>';
-                        echo '<td>';
+                        echo '<td><div align="center">' . $r->idPag . '</td>';
+                        echo '<td><div align="center">' . $r->nome . '</td>';
+                        echo '<td><div align="center">' . $textoClientIdShort . '</td>';
+                        echo '<td><div align="center">' . $textoClientSecretShort . '</td>';
+                        echo '<td><div align="center">' . $textoPublicKeyShort . '</td>';
+                        echo '<td><div align="center">' . $textoAccessTokenShort . '</td>';
+                        echo '<td><div align="center">';
                         if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vPagamento')) {
                             echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/pagamentos/visualizar/' . $r->idPag . '" class="btn tip-top" title="Visualizar mais detalhes"><i class="fas fa-eye"></i></a>';
                         }

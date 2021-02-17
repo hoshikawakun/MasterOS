@@ -11,10 +11,10 @@
                 </span>
                 <h5>Editar Usuário</h5>
             </div>
-            <div class="widget-content nopadding">
+            <div class="widget-content nopadding tab-content">
                 <?php if ($custom_error != '') {
-                    echo '<div class="alert alert-danger">' . $custom_error . '</div>';
-                } ?>
+    echo '<div class="alert alert-danger">' . $custom_error . '</div>';
+} ?>
                 <form action="<?php echo current_url(); ?>" id="formUsuario" method="post" class="form-horizontal">
                     <div class="control-group">
                         <?php echo form_hidden('idUsuarios', $result->idUsuarios) ?>
@@ -30,22 +30,30 @@
                             <input id="rg" type="text" name="rg" value="<?php echo $result->rg; ?>" />
                         </div>
                     </div>
-
-                    <div class="control-group">
+                    
+                  <div class="control-group">
                         <label for="cpf" class="control-label">CPF<span class="required">*</span></label>
                         <div class="controls">
-                            <input class="cpfcnpj" type="text" name="cpf" value="<?php echo $result->cpf; ?>" />
-                        </div>
+                            <input name="cpf" type="text" class="cpfcnpj" value="<?php echo $result->cpf; ?>" />
+                      </div>
                     </div>
+                    
                     <div class="control-group">
                         <label for="telefone" class="control-label">Telefone<span class="required">*</span></label>
                         <div class="controls">
-                            <input id="telefone" type="text" name="telefone" value="<?php echo $result->telefone; ?>" />
+                            <input id="telefone" class="telefone1" type="text" name="telefone" value="<?php echo $result->telefone; ?>" />
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <label for="email" class="control-label">Email</label>
+                        <label for="celular" class="control-label">Telefone 2</label>
+                        <div class="controls">
+                            <input id="celular" class="telefone1" type="text" name="celular" value="<?php echo $result->celular; ?>" />
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="email" class="control-label">Email<span class="required">*</span></label>
                         <div class="controls">
                             <input id="email" type="text" name="email" value="<?php echo $result->email; ?>" />
                         </div>
@@ -67,14 +75,14 @@
                     </div>
 
                     <div class="control-group">
-                        <label for="rua" class="control-label">Endereço<span class="required">*</span></label>
+                        <label for="rua" class="control-label">Rua<span class="required">*</span></label>
                         <div class="controls">
                             <input id="rua" type="text" name="rua" value="<?php echo $result->rua; ?>" />
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <label for="numero" class="control-label">Numero</label>
+                        <label for="numero" class="control-label">Numero<span class="required">*</span></label>
                         <div class="controls">
                             <input id="numero" type="text" name="numero" value="<?php echo $result->numero; ?>" />
                         </div>
@@ -115,12 +123,12 @@
                         <div class="controls">
                             <select name="situacao" id="situacao">
                                 <?php if ($result->situacao == 1) {
-                                    $ativo = 'selected';
-                                    $inativo = '';
-                                } else {
-                                    $ativo = '';
-                                    $inativo = 'selected';
-                                } ?>
+    $ativo = 'selected';
+    $inativo = '';
+} else {
+    $ativo = '';
+    $inativo = 'selected';
+} ?>
                                 <option value="1" <?php echo $ativo; ?>>Ativo</option>
                                 <option value="0" <?php echo $inativo; ?>>Inativo</option>
                             </select>
@@ -133,13 +141,13 @@
                         <div class="controls">
                             <select name="permissoes_id" id="permissoes_id">
                                 <?php foreach ($permissoes as $p) {
-                                    if ($p->idPermissao == $result->permissoes_id) {
-                                        $selected = 'selected';
-                                    } else {
-                                        $selected = '';
-                                    }
-                                    echo '<option value="' . $p->idPermissao . '"' . $selected . '>' . $p->nome . '</option>';
-                                } ?>
+    if ($p->idPermissao == $result->permissoes_id) {
+        $selected = 'selected';
+    } else {
+        $selected = '';
+    }
+    echo '<option value="' . $p->idPermissao . '"' . $selected . '>' . $p->nome . '</option>';
+} ?>
                             </select>
                         </div>
                     </div>
@@ -181,7 +189,13 @@
                 telefone: {
                     required: true
                 },
+                email: {
+                    required: true
+                },
                 rua: {
+                    required: true
+                },
+                numero: {
                     required: true
                 },
                 bairro: {
@@ -210,7 +224,13 @@
                 telefone: {
                     required: 'Campo Requerido.'
                 },
+                email: {
+                    required: 'Campo Requerido.'
+                },
                 rua: {
+                    required: 'Campo Requerido.'
+                },
+                numero: {
                     required: 'Campo Requerido.'
                 },
                 bairro: {

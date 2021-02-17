@@ -89,16 +89,16 @@
 </div>
      </div>
                                 <div class="widget-content nopadding">
-                                    <table class="table table-bordered" id="tblProdutos">
+                                    <table width="100%S" class="table table-bordered" id="tblProdutos">
                                         <thead>
                                             <tr>
-                                            	<th width="6%">SKU</th>
+                                            	<th width="8%">Cod. SKU</th>
                                                 <th width="10%">Cod. Barras</th>
                                                 <th>Produto</th>
                                                 <th width="8%">Quantidade</th>
-                                                <th width="8%">Preço</th>
-                                                <th width="5%">Ações</th>
-                                                <th width="8%">Sub-total</th>
+                                                <th width="10%">Preço</th>
+                                                <th width="6%">Ações</th>
+                                                <th width="10%">Sub-total</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -119,16 +119,20 @@
                                             } ?>
                                             <tr>
                                                 <td colspan="6" style="text-align: right"><strong>Total:</strong></td>
-                                                <td><strong><div align="center">R$
+                                                <td><div align="center"><strong>R$
                                                         <?php echo number_format($total, 2, ',', '.'); ?></strong> <input type="hidden" id="total-venda" value="<?php echo number_format($total, 2); ?>"></div></td>
                                             </tr>
                                         </tbody>
                                     </table>
-                                </div></div>
-                                <div class="span12" style="padding: 1%; margin-left: 0">
-       <label for="observacoes"><h4>Observações</h4></label>
-                                        <textarea class="editor" name="observacoes" id="observacoes" cols="30" rows="5"><?php echo $result->observacoes ?></textarea>
-                                    </div>
+                                </div>
+				<!--
+                <div class="span12" style="padding: 1%; margin-left: 0">
+                
+                <label><h4>Observações</h4></label>
+                <textarea name="observacoes" cols="30" rows="5" class="editor" value=""><?php echo $result->obs ?></textarea>
+                </div>
+                                -->
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -186,10 +190,10 @@
                         <select name="formaPgto" id="formaPgto" class="span12">
                             <option value="Dinheiro">Dinheiro</option>
                             <option value="Cartão de Crédito">Cartão de Crédito</option>
-                            <option value="Cheque">Cheque</option>
                             <option value="Boleto">Boleto</option>
                             <option value="Depósito">Depósito</option>
                             <option value="Débito">Débito</option>
+                            <option value="Pix">Pix</option>
                         </select>
                     </div>
                 </div>

@@ -30,7 +30,7 @@
                       <thead>
                           <tr>
                           <th width="690" align="center" style="font-size: 15px">Nome</th>
-                          <th width="110" align="center" style="font-size: 15px">SKU</th>
+                          <th width="130" align="center" style="font-size: 15px">Cod. Produto</th>
                           <th width="150" align="center" style="font-size: 15px">Cod. Barras</th>
                           <th width="130" align="center" style="font-size: 15px">Preço Compra</th>
                           <th width="130" align="center" style="font-size: 15px">Preço Venda</th>
