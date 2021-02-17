@@ -1,4 +1,10 @@
-<?php if (!defined('BASEPATH')) {
+<?php
+
+use PhpOffice\PhpWord\IOFactory;
+use PhpOffice\PhpWord\Settings;
+use PhpOffice\PhpWord\TemplateProcessor;
+
+if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
@@ -60,7 +66,7 @@ class Relatorios extends MY_Controller
         $data['dataInicial'] = date('d/m/Y', strtotime($dataInicial));
         $data['dataFinal'] = date('d/m/Y', strtotime($dataFinal));
 
-        $data['clientes'] = $this->Relatorios_model->clientesCustom($dataInicial, $dataFinal);
+        $data['clientes'] = $this->Relatorios_model->clientesCustom($dataInicial, $dataFinal, $this->input->get('tipocliente'));
         $data['emitente'] = $this->Mapos_model->getEmitente();
         $data['title'] = 'Relatório de Clientes Customizado';
         $data['topo'] = $this->load->view('relatorios/imprimir/imprimirTopo', $data, true);
@@ -206,6 +212,22 @@ class Relatorios extends MY_Controller
             $data['produtos'] = $this->Relatorios_model->produtosEtiquetasSKU($de, $ate);
             $this->load->helper('mpdf');
             $html = $this->load->view('relatorios/imprimir/imprimirEtiquetasSKU', $data, true);
+            pdf_create($html, 'etiquetas_' . $de . '_' . $ate, true);
+        } else {
+            $this->session->set_flashdata('error', 'O campo "<b>De</b>" não pode ser maior doque o campo "<b>Até</b>"!');
+            redirect('produtos');
+        }
+    }
+
+    public function produtosEtiquetasQR()
+    {
+        $de = $this->input->get('de_id');
+        $ate = $this->input->get('ate_id');
+
+        if ($de <= $ate) {
+            $data['produtos'] = $this->Relatorios_model->produtosEtiquetasQR($de, $ate);
+            $this->load->helper('mpdf');
+            $html = $this->load->view('relatorios/imprimir/imprimirEtiquetasQR', $data, true);
             pdf_create($html, 'etiquetas_' . $de . '_' . $ate, true);
         } else {
             $this->session->set_flashdata('error', 'O campo "<b>De</b>" não pode ser maior doque o campo "<b>Até</b>"!');
@@ -856,5 +878,136 @@ class Relatorios extends MY_Controller
         $this->load->helper('mpdf');
         $html = $this->load->view('relatorios/imprimir/imprimirVendas', $data, true);
         pdf_create($html, 'relatorio_vendas' . date('d/m/y'), true);
+    }
+
+    public function receitasBrutasMei()
+    {
+        if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'rFinanceiro')) {
+            $this->session->set_flashdata('error', 'Você não tem permissão para gerar relatórios financeiros.');
+            redirect(base_url());
+        }
+
+        $this->data['view'] = 'relatorios/rel_receitas_brutas_mei';
+
+        return $this->layout();
+    }
+
+    public function receitasBrutasRapid()
+    {
+        if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'rFinanceiro')) {
+            $this->session->set_flashdata('error', 'Você não tem permissão para gerar relatórios financeiros.');
+            redirect(base_url());
+        }
+
+        $this->load->helper('download');
+        $this->load->helper('file');
+
+        $format = $this->input->get('format') ?: 'docx';
+
+        $templatePath = realpath(FCPATH . "assets/relatorios/RELATORIO_MENSAL_DAS_RECEITAS_BRUTAS_MEI.docx");
+        if (!$templatePath) {
+            $this->session->set_flashdata('error', 'Modelo de relatório não encontrado!');
+
+            return redirect('/relatorios/receitasBrutasMei');
+        }
+
+        $tempFilePath = FCPATH . "assets" . DIRECTORY_SEPARATOR . "relatorios" . DIRECTORY_SEPARATOR . "temp.docx";
+        $generatedFilePath = FCPATH . "assets" . DIRECTORY_SEPARATOR . "relatorios" . DIRECTORY_SEPARATOR . "RELATORIO_MENSAL_DAS_RECEITAS_BRUTAS_MEI_GERADO.$format";
+
+        $templateProcessor = new TemplateProcessor($templatePath);
+        $data = $this->Relatorios_model->receitasBrutasRapid();
+        $templateProcessor->setValues($data);
+
+        if ($format === 'docx') {
+            $templateProcessor->saveAs($generatedFilePath);
+
+            $fileContents = file_get_contents($generatedFilePath);
+            unlink($generatedFilePath);
+
+            return force_download("relatorio_receitas_brutas_mei_rapido.$format", $fileContents);
+        } else {
+            Settings::setPdfRendererName(Settings::PDF_RENDERER_MPDF);
+            Settings::setPdfRendererPath('.');
+
+            $templateProcessor->saveAs($tempFilePath);
+            $template = IOFactory::load($tempFilePath);
+            $pdfWriter = IOFactory::createWriter($template, 'PDF');
+            $pdfWriter->save($generatedFilePath);
+
+            $fileContents = file_get_contents($generatedFilePath);
+            unlink($tempFilePath);
+            unlink($generatedFilePath);
+
+            return $this->output
+                ->set_header("Content-disposition: inline;filename=" . "relatorio_receitas_brutas_mei_rapido.$format")
+                ->set_content_type(get_mime_by_extension($generatedFilePath))
+                ->set_status_header(200)
+                ->set_output($fileContents)
+                ->_display();
+        }
+    }
+
+    public function receitasBrutasCustom()
+    {
+        if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'rFinanceiro')) {
+            $this->session->set_flashdata('error', 'Você não tem permissão para gerar relatórios financeiros.');
+            redirect(base_url());
+        }
+
+        $this->load->helper('download');
+        $this->load->helper('file');
+
+        $format = $this->input->get('format') ?: 'docx';
+        $dataInicial = $this->input->get('dataInicial');
+        $dataFinal = $this->input->get('dataFinal');
+
+        $templatePath = realpath(FCPATH . "assets/relatorios/RELATORIO_MENSAL_DAS_RECEITAS_BRUTAS_MEI.docx");
+        if (!$templatePath) {
+            $this->session->set_flashdata('error', 'Modelo de relatório não encontrado!');
+
+            return redirect('/relatorios/receitasBrutasMei');
+        }
+
+        $tempFilePath = FCPATH . "assets" . DIRECTORY_SEPARATOR . "relatorios" . DIRECTORY_SEPARATOR . "temp.docx";
+        $generatedFilePath = FCPATH . "assets" . DIRECTORY_SEPARATOR . "relatorios" . DIRECTORY_SEPARATOR . "RELATORIO_MENSAL_DAS_RECEITAS_BRUTAS_MEI_GERADO.$format";
+
+        $templateProcessor = new TemplateProcessor($templatePath);
+        $data = $this->Relatorios_model->receitasBrutasCustom($dataInicial, $dataFinal);
+        $templateProcessor->setValues($data);
+
+        if ($format === 'docx') {
+            $templateProcessor->saveAs($generatedFilePath);
+
+            $fileContents = file_get_contents($generatedFilePath);
+            unlink($generatedFilePath);
+
+            return force_download(
+                sprintf(
+                    "relatorio_receitas_brutas_mei_custom_%s_até_%s.$format",
+                    $dataInicial,
+                    $dataFinal
+                ),
+                $fileContents
+            );
+        } else {
+            Settings::setPdfRendererName(Settings::PDF_RENDERER_MPDF);
+            Settings::setPdfRendererPath('.');
+
+            $templateProcessor->saveAs($tempFilePath);
+            $template = IOFactory::load($tempFilePath);
+            $pdfWriter = IOFactory::createWriter($template, 'PDF');
+            $pdfWriter->save($generatedFilePath);
+
+            $fileContents = file_get_contents($generatedFilePath);
+            unlink($tempFilePath);
+            unlink($generatedFilePath);
+
+            return $this->output
+                ->set_header("Content-disposition: inline;filename=" . "relatorio_receitas_brutas_mei_custom_%s_até_%s.$format")
+                ->set_content_type(get_mime_by_extension($generatedFilePath))
+                ->set_status_header(200)
+                ->set_output($fileContents)
+                ->_display();
+        }
     }
 }

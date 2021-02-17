@@ -1,4 +1,8 @@
-<?php if (! defined('BASEPATH')) {
+<?php
+
+use Piggly\Pix\Payload;
+
+if (! defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
@@ -11,15 +15,14 @@ class Vendas_model extends CI_Model
      *
      */
 
-    function __construct()
+    public function __construct()
     {
         parent::__construct();
     }
 
     
-    function get($table, $fields, $where = '', $perpage = 0, $start = 0, $one = false, $array = 'array')
+    public function get($table, $fields, $where = '', $perpage = 0, $start = 0, $one = false, $array = 'array')
     {
-        
         $this->db->select($fields.', clientes.nomeCliente, clientes.idClientes');
         $this->db->from($table);
         $this->db->limit($perpage, $start);
@@ -35,12 +38,25 @@ class Vendas_model extends CI_Model
         return $result;
     }
 
-    function getById($id)
+    public function getById($id)
     {
-        $this->db->select('vendas.*, clientes.*, lancamentos.data_vencimento, usuarios.telefone, usuarios.email,usuarios.nome');
+        $this->db->select('vendas.*, clientes.*, clientes.email as emailCliente, lancamentos.data_vencimento, usuarios.telefone as telefone_usuario, usuarios.email as email_usuario, usuarios.nome');
         $this->db->from('vendas');
         $this->db->join('clientes', 'clientes.idClientes = vendas.clientes_id');
         $this->db->join('usuarios', 'usuarios.idUsuarios = vendas.usuarios_id');
+        $this->db->join('lancamentos', 'vendas.idVendas = lancamentos.vendas_id', 'LEFT');
+        $this->db->where('vendas.idVendas', $id);
+        $this->db->limit(1);
+        return $this->db->get()->row();
+    }
+
+    public function getByIdCobrancas($id)
+    {
+        $this->db->select('vendas.*, clientes.*, clientes.email as emailCliente, lancamentos.data_vencimento, usuarios.telefone as telefone_usuario, usuarios.email as email_usuario, usuarios.nome, usuarios.nome, cobrancas.vendas_id,cobrancas.idCobranca,cobrancas.status');
+        $this->db->from('vendas');
+        $this->db->join('clientes', 'clientes.idClientes = vendas.clientes_id');
+        $this->db->join('usuarios', 'usuarios.idUsuarios = vendas.usuarios_id');
+        $this->db->join('cobrancas', 'cobrancas.vendas_id = vendas.idVendas');
         $this->db->join('lancamentos', 'vendas.idVendas = lancamentos.vendas_id', 'LEFT');
         $this->db->where('vendas.idVendas', $id);
         $this->db->limit(1);
@@ -56,8 +72,15 @@ class Vendas_model extends CI_Model
         return $this->db->get()->result();
     }
 
+    public function getCobrancas($id = null)
+    {
+        $this->db->select('cobrancas.*');
+        $this->db->from('cobrancas');
+        $this->db->where('vendas_id', $id);
+        return $this->db->get()->result();
+    }
     
-    function add($table, $data, $returnId = false)
+    public function add($table, $data, $returnId = false)
     {
         $this->db->insert($table, $data);
         if ($this->db->affected_rows() == '1') {
@@ -70,7 +93,7 @@ class Vendas_model extends CI_Model
         return false;
     }
     
-    function edit($table, $data, $fieldID, $ID)
+    public function edit($table, $data, $fieldID, $ID)
     {
         $this->db->where($fieldID, $ID);
         $this->db->update($table, $data);
@@ -82,7 +105,7 @@ class Vendas_model extends CI_Model
         return false;
     }
     
-    function delete($table, $fieldID, $ID)
+    public function delete($table, $fieldID, $ID)
     {
         $this->db->where($fieldID, $ID);
         $this->db->delete($table);
@@ -93,23 +116,20 @@ class Vendas_model extends CI_Model
         return false;
     }
 
-    function count($table)
+    public function count($table)
     {
         return $this->db->count_all($table);
     }
 
     public function autoCompleteProduto($q)
     {
-
         $this->db->select('*');
         $this->db->limit($this->data['configuration']['per_page']);
-        $this->db->like('idProdutos', $q);
-		$this->db->or_like('codDeBarra', $q);
-		$this->db->or_like('descricao', $q);
+        $this->db->like('descricao', $q);
         $query = $this->db->get('produtos');
         if ($query->num_rows() > 0) {
-		foreach ($query->result_array() as $row) {
-		$row_set[] = array('label'=>$row['idProdutos'].' | '.$row['codDeBarra'].' | '.$row['descricao'].' | Preço: R$ '.$row['precoVenda'].' | Estoque: '.$row['estoque'],'estoque'=>$row['estoque'],'id'=>$row['idProdutos'],'preco'=>$row['precoVenda']);
+            foreach ($query->result_array() as $row) {
+                $row_set[] = ['label'=>$row['descricao'].' | Preço: R$ '.$row['precoVenda'].' | Estoque: '.$row['estoque'],'estoque'=>$row['estoque'],'id'=>$row['idProdutos'],'preco'=>$row['precoVenda']];
             }
             echo json_encode($row_set);
         }
@@ -117,24 +137,23 @@ class Vendas_model extends CI_Model
 
     public function autoCompleteCliente($q)
     {
-
         $this->db->select('*');
         $this->db->limit($this->data['configuration']['per_page']);
         $this->db->like('nomeCliente', $q);
-		$this->db->or_like('telefone', $q);
-		$this->db->or_like('celular', $q);
         $query = $this->db->get('clientes');
         if ($query->num_rows() > 0) {
             foreach ($query->result_array() as $row) {
-				$row_set[] = array('label' => $row['nomeCliente'] . ' | Telefone: ' . $row['telefone'] . ' | ' . $row['celular'], 'id' => $row['idClientes']);
+                $row_set[] = ['label'=>$row['nomeCliente'].' | Telefone: '.$row['telefone'],'id'=>$row['idClientes']];
             }
+            echo json_encode($row_set);
+        } else {
+            $row_set[] = ['label'=> 'Adicionar cliente...', 'id' => null];
             echo json_encode($row_set);
         }
     }
 
     public function autoCompleteUsuario($q)
     {
-
         $this->db->select('*');
         $this->db->limit($this->data['configuration']['per_page']);
         $this->db->like('nome', $q);
@@ -142,10 +161,45 @@ class Vendas_model extends CI_Model
         $query = $this->db->get('usuarios');
         if ($query->num_rows() > 0) {
             foreach ($query->result_array() as $row) {
-                $row_set[] = array('label'=>$row['nome'].' | Telefone: '.$row['telefone'],'id'=>$row['idUsuarios']);
+                $row_set[] = ['label'=>$row['nome'].' | Telefone: '.$row['telefone'],'id'=>$row['idUsuarios']];
             }
             echo json_encode($row_set);
         }
+    }
+
+    public function getQrCode($id, $pixKey, $emitente)
+    {
+        if (empty($id) || empty($pixKey) || empty($emitente)) {
+            return;
+        }
+
+        $produtos = $this->getProdutos($id);
+        $totalProdutos = array_reduce(
+            $produtos,
+            function ($carry, $produto) {
+                return $carry + ($produto->quantidade * $produto->preco);
+            },
+            0
+        );
+        $amount = round(floatval($totalProdutos), 2);
+
+        if ($amount <= 0) {
+            return;
+        }
+
+        $pix = (new Payload())
+            ->applyValidCharacters()
+            ->applyUppercase()
+            ->applyEmailWhitespace()
+            ->setPixKey(getPixKeyType($pixKey), $pixKey)
+            ->setMerchantName($emitente->nome)
+            ->setMerchantCity($emitente->cidade)
+            ->setAmount($amount)
+            ->setTid($id)
+            ->setDescription(sprintf("%s - Pagamento - Venda %s", $emitente->nome, $id))
+            ->setAsReusable(false);
+
+        return $pix->getQRCode();
     }
 }
 

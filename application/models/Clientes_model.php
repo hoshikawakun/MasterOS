@@ -15,7 +15,6 @@ class Clientes_model extends CI_Model
 
     public function get($table, $fields, $where = '', $perpage = 0, $start = 0, $one = false, $array = 'array')
     {
-
         $this->db->select($fields);
         $this->db->from($table);
         $this->db->order_by('idClientes', 'desc');
@@ -29,7 +28,8 @@ class Clientes_model extends CI_Model
         $result = !$one ? $query->result() : $query->row();
         return $result;
     }
-	public function getById($id)
+
+    public function getById($id)
     {
         $this->db->where('idClientes', $id);
         $this->db->limit(1);
@@ -81,24 +81,6 @@ class Clientes_model extends CI_Model
         $this->db->limit($this->data['configuration']['per_page']);
         return $this->db->get('os')->result();
     }
-	public function anexar($jj, $anexo, $url, $thumb, $path)
-    {
-
-        $this->db->set('anexo', $anexo);
-        $this->db->set('url', $url);
-        $this->db->set('thumb', $thumb);
-        $this->db->set('path', $path);
-        $this->db->set('cliente_id', $jj);
-
-        return $this->db->insert('foto_clientes');
-    }
-
-    public function getFotos($jj)
-    {
-
-        $this->db->where('cliente_id', $jj);
-        return $this->db->get('foto_clientes')->result();
-    }
 
     /**
      * Retorna todas as OS vinculados ao cliente
@@ -119,7 +101,6 @@ class Clientes_model extends CI_Model
     public function removeClientOs($os)
     {
         try {
-
             foreach ($os as $o) {
                 $this->db->where('os_id', $o->idOs);
                 $this->db->delete('servicos_os');
@@ -130,7 +111,6 @@ class Clientes_model extends CI_Model
                 $this->db->where('idOs', $o->idOs);
                 $this->db->delete('os');
             }
-
         } catch (Exception $e) {
             return false;
         }
@@ -156,7 +136,6 @@ class Clientes_model extends CI_Model
     public function removeClientVendas($vendas)
     {
         try {
-
             foreach ($vendas as $v) {
                 $this->db->where('vendas_id', $v->idVendas);
                 $this->db->delete('itens_de_vendas');
@@ -164,12 +143,9 @@ class Clientes_model extends CI_Model
                 $this->db->where('idVendas', $v->idVendas);
                 $this->db->delete('vendas');
             }
-
         } catch (Exception $e) {
             return false;
         }
         return true;
     }
 }
-
-    

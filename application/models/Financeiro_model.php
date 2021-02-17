@@ -19,10 +19,10 @@ class Financeiro_model extends CI_Model
 
     public function get($table, $fields, $where = '', $perpage = 0, $start = 0, $one = false, $array = 'array')
     {
-        $this->db->select($fields);
+        $this->db->select($fields.', usuarios.*');
         $this->db->from($table);
-        //$this->db->order_by('data_vencimento', 'asc');
-		$this->db->order_by('idLancamentos', 'desc');
+        $this->db->join('usuarios', 'usuarios.idUsuarios = usuarios_id', 'left');
+        $this->db->order_by('data_vencimento', 'asc');
         $this->db->limit($perpage, $start);
         if ($where) {
             $this->db->where($where);
@@ -49,6 +49,7 @@ class Financeiro_model extends CI_Model
 
         return (array) $this->db->get()->row();
     }
+
 
     public function getById($id)
     {
@@ -102,12 +103,26 @@ class Financeiro_model extends CI_Model
     public function autoCompleteClienteFornecedor($q)
     {
         $this->db->select('DISTINCT(cliente_fornecedor) as cliente_fornecedor');
-        $this->db->limit(5);
+        $this->db->limit($this->data['configuration']['per_page']);
         $this->db->like('cliente_fornecedor', $q);
         $query = $this->db->get('lancamentos');
         if ($query->num_rows() > 0) {
             foreach ($query->result_array() as $row) {
                 $row_set[] = ['label' => $row['cliente_fornecedor'], 'id' => $row['cliente_fornecedor']];
+            }
+            echo json_encode($row_set);
+        }
+    }
+
+    public function autoCompleteClienteReceita($q)
+    {
+        $this->db->select('idClientes, nomeCliente');
+        $this->db->limit($this->data['configuration']['per_page']);
+        $this->db->like('nomeCliente', $q);
+        $query = $this->db->get('clientes');
+        if ($query->num_rows() > 0) {
+            foreach ($query->result_array() as $row) {
+                $row_set[] = ['label' => $row['nomeCliente'], 'id' => $row['idClientes']];
             }
             echo json_encode($row_set);
         }

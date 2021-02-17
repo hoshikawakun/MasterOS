@@ -1,4 +1,7 @@
 <?php
+
+use Piggly\Pix\Payload;
+
 class Os_model extends CI_Model
 {
 
@@ -15,7 +18,6 @@ class Os_model extends CI_Model
 
     public function get($table, $fields, $where = '', $perpage = 0, $start = 0, $one = false, $array = 'array')
     {
-
         $this->db->select($fields . ',clientes.nomeCliente, clientes.telefone as celular_cliente');
 		$this->db->select($fields . ',clientes.senha');
         $this->db->from($table);
@@ -29,15 +31,14 @@ class Os_model extends CI_Model
         $query = $this->db->get();
 
         $result = !$one ? $query->result() : $query->row();
+
         return $result;
     }
 
     public function getOs($table, $fields, $where = [], $perpage = 0, $start = 0, $one = false, $array = 'array')
     {
-
-        $lista_clientes = array();
+        $lista_clientes = [];
         if ($where) {
-
             if (array_key_exists('pesquisa', $where)) {
                 $this->db->select('idClientes');
                 $this->db->like('nomeCliente', $where['pesquisa']);
@@ -56,7 +57,7 @@ class Os_model extends CI_Model
         $this->db->join('clientes', 'clientes.idClientes = os.clientes_id');
         $this->db->join('usuarios', 'usuarios.idUsuarios = os.usuarios_id');
         $this->db->join('garantias', 'garantias.idGarantias = os.garantias_id', 'left');
-		$this->db->join('produtos_os', 'produtos_os.os_id = os.idOs', 'left');
+        $this->db->join('produtos_os', 'produtos_os.os_id = os.idOs', 'left');
         $this->db->join('servicos_os', 'servicos_os.os_id = os.idOs', 'left');
 
         // condicionais da pesquisa
@@ -79,17 +80,17 @@ class Os_model extends CI_Model
         }
         // condicional data final
         if (array_key_exists('ate', $where)) {
-
             $this->db->where('dataFinal <=', $where['ate']);
         }
 
         $this->db->limit($perpage, $start);
-
         $this->db->order_by('os.idOs', 'desc');
-		$this->db->group_by('os.idOs');
+        $this->db->group_by('os.idOs');
+
         $query = $this->db->get();
 
         $result = !$one ? $query->result() : $query->row();
+
         return $result;
     }
 
@@ -102,16 +103,31 @@ class Os_model extends CI_Model
         $this->db->join('garantias', 'garantias.idGarantias = os.garantias_id', 'left');
         $this->db->where('os.idOs', $id);
         $this->db->limit(1);
+
+        return $this->db->get()->row();
+    }
+
+    public function getByIdCobrancas($id)
+    {
+        $this->db->select('os.*, clientes.*, clientes.celular as celular_cliente, garantias.refGarantia, usuarios.telefone as telefone_usuario, usuarios.email as email_usuario, usuarios.nome,cobrancas.os_id,cobrancas.idCobranca,cobrancas.status');
+        $this->db->from('os');
+        $this->db->join('clientes', 'clientes.idClientes = os.clientes_id');
+        $this->db->join('usuarios', 'usuarios.idUsuarios = os.usuarios_id');
+        $this->db->join('cobrancas', 'cobrancas.os_id = os.idOs');
+        $this->db->join('garantias', 'garantias.idGarantias = os.garantias_id', 'left');
+        $this->db->where('os.idOs', $id);
+        $this->db->limit(1);
+
         return $this->db->get()->row();
     }
 
     public function getProdutos($id = null)
     {
-
         $this->db->select('produtos_os.*, produtos.*');
         $this->db->from('produtos_os');
         $this->db->join('produtos', 'produtos.idProdutos = produtos_os.produtos_id');
         $this->db->where('os_id', $id);
+
         return $this->db->get()->result();
     }
 
@@ -121,12 +137,12 @@ class Os_model extends CI_Model
         $this->db->from('servicos_os');
         $this->db->join('servicos', 'servicos.idServicos = servicos_os.servicos_id');
         $this->db->where('os_id', $id);
+
         return $this->db->get()->result();
     }
 
     public function add($table, $data, $returnId = false)
     {
-
         $this->db->insert($table, $data);
         if ($this->db->affected_rows() == '1') {
             if ($returnId == true) {
@@ -168,8 +184,7 @@ class Os_model extends CI_Model
 
     public function autoCompleteProduto($q)
     {
-
-        $this->db->select('*');
+		$this->db->select('*');
         $this->db->limit($this->data['configuration']['per_page']);
         $this->db->like('idProdutos', $q);
 		$this->db->or_like('codDeBarra', $q);
@@ -185,8 +200,7 @@ class Os_model extends CI_Model
 
     public function autoCompleteProdutoSaida($q)
     {
-
-        $this->db->select('*');
+		$this->db->select('*');
         $this->db->limit($this->data['configuration']['per_page']);
         $this->db->like('idProdutos', $q);
 		$this->db->or_like('codDeBarra', $q);
@@ -203,8 +217,7 @@ class Os_model extends CI_Model
 
     public function autoCompleteCliente($q)
     {
-
-        $this->db->select('*');
+		$this->db->select('*');
         $this->db->limit($this->data['configuration']['per_page']);
         $this->db->like('nomeCliente', $q);
 		$this->db->or_like('telefone', $q);
@@ -236,14 +249,13 @@ class Os_model extends CI_Model
 
     public function autoCompleteTermoGarantia($q)
     {
-
         $this->db->select('*');
         $this->db->limit($this->data['configuration']['per_page']);
         $this->db->like('LOWER(refGarantia)', $q);
         $query = $this->db->get('garantias');
         if ($query->num_rows() > 0) {
             foreach ($query->result_array() as $row) {
-                $row_set[] = array('label' => $row['refGarantia'], 'id' => $row['idGarantias']);
+                $row_set[] = ['label' => $row['refGarantia'], 'id' => $row['idGarantias']];
             }
             echo json_encode($row_set);
         }
@@ -266,7 +278,6 @@ class Os_model extends CI_Model
 
     public function anexar($os, $anexo, $url, $thumb, $path)
     {
-
         $this->db->set('anexo', $anexo);
         $this->db->set('url', $url);
         $this->db->set('thumb', $thumb);
@@ -278,12 +289,11 @@ class Os_model extends CI_Model
 
     public function getAnexos($os)
     {
-
         $this->db->where('os_id', $os);
         return $this->db->get('anexos')->result();
     }
-	
-	public function getEquipamento($os)
+
+    public function getEquipamento($os)
     {
         $this->db->where('os_id', $os);
         $this->db->order_by('idEquipamento', 'desc');
@@ -294,6 +304,86 @@ class Os_model extends CI_Model
     {
         $this->db->where('os_id', $os);
         $this->db->order_by('idAnotacoes', 'desc');
+
         return $this->db->get('anotacoes_os')->result();
+    }
+
+    public function getCobrancas($id = null)
+    {
+        $this->db->select('cobrancas.*');
+        $this->db->from('cobrancas');
+        $this->db->where('os_id', $id);
+
+        return $this->db->get()->result();
+    }
+
+    public function criarTextoWhats($textoBase, $troca)
+    {
+        $procura = ["{CLIENTE_NOME}", "{NUMERO_OS}", "{STATUS_OS}", "{VALOR_OS}", "{DESCRI_PRODUTOS}", "{EMITENTE}", "{TELEFONE_EMITENTE}", "{OBS_OS}", "{DEFEITO_OS}", "{LAUDO_OS}", "{DATA_FINAL}", "{DATA_INICIAL}", "{DATA_GARANTIA}"];
+        $textoBase = str_replace($procura, $troca, $textoBase);
+        $textoBase = strip_tags($textoBase);
+        $textoBase = htmlentities(urlencode($textoBase));
+        return $textoBase;
+    }
+
+    public function valorTotalOS($id = null)
+    {
+        $totalServico = 0;
+        $totalProdutos = 0;
+        if ($servicos = $this->getServicos($id)) {
+            foreach ($servicos as $s) {
+                $preco = $s->preco ?: $s->precoVenda;
+                $totalServico = $totalServico + ($preco * ($s->quantidade ?: 1));
+            }
+        }
+        if ($produtos = $this->getProdutos($id)) {
+            foreach ($produtos as $p) {
+                $totalProdutos = $totalProdutos + $p->subTotal;
+            }
+        }
+
+        return ['totalServico' => $totalServico, 'totalProdutos' => $totalProdutos];
+    }
+
+    public function isEditable($id = null)
+    {
+        if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
+            return false;
+        }
+        if ($os = $this->getById($id)) {
+            $osT = (int)($os->status === "Faturado" || $os->status === "Cancelado" || $os->faturado == 1);
+            if ($osT) {
+                return !(bool)$this->data['configuration']['control_editos'];
+            }
+        }
+        return true;
+    }
+
+    public function getQrCode($id, $pixKey, $emitente)
+    {
+        if (empty($id) || empty($pixKey) || empty($emitente)) {
+            return;
+        }
+
+        $result = $this->valorTotalOS($id);
+        $amount = round(floatval($result['totalServico'] + $result['totalProdutos']), 2);
+
+        if ($amount <= 0) {
+            return;
+        }
+
+        $pix = (new Payload())
+            ->applyValidCharacters()
+            ->applyUppercase()
+            ->applyEmailWhitespace()
+            ->setPixKey(getPixKeyType($pixKey), $pixKey)
+            ->setMerchantName($emitente->nome)
+            ->setMerchantCity($emitente->cidade)
+            ->setAmount($amount)
+            ->setTid($id)
+            ->setDescription(sprintf("%s - Pagamento - OS %s", $emitente->nome, $id))
+            ->setAsReusable(false);
+
+        return $pix->getQRCode();
     }
 }
