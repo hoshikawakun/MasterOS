@@ -54,7 +54,7 @@ hr{ border-top-color:#dadada;}
 	z-index: -9;
 }
 #header h1 {
-	background: url("../../application/views/arquivos/source/Logo_Login_Sistema/logo2.png") no-repeat scroll 0 0 transparent;
+	background: url("../img/logo2.png") no-repeat scroll 0 0 transparent;
 	height: 55px;
 	left: 10px;
 	line-height: 600px;
