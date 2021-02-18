@@ -42,7 +42,7 @@
                 </div>
             <?php } ?>
             <div class="control-group normal_text">
-                <h3><img src="<?= base_url() ?>application/views/arquivos/source/Logo_Login_Sistema/logo.png" alt="Logo" /></h3>
+                <h3><img src="<?php echo base_url()?>application/views/arquivos/source/Logo_Login_Sistema/logo.png" alt="Logo"></h3>
             </div>
             <div class="control-group">
                 <div class="controls">
