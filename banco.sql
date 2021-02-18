@@ -524,20 +524,20 @@ CREATE TABLE `vendas` (
 -- Records 
 -- ----------------------------
 INSERT INTO `clientes` VALUES ('1', 'Geral', '', '1', '000.000.000-00', '(00) 0000-0000', '', 'teste@biglobe.ne.jp', '2019-04-23', 'Rua', '0', 'Centro', 'Cidade', 'Estado', '00000-000', null, 'fw6q3xSXbd', '0', null, '');
-INSERT INTO `configuracoes` VALUES ('1', 'app_name', 'Master-OS');
+INSERT INTO `configuracoes` VALUES ('1', 'app_name', 'Nome da sua Loja');
 INSERT INTO `configuracoes` VALUES ('2', 'app_theme', 'default');
 INSERT INTO `configuracoes` VALUES ('3', 'per_page', '20');
 INSERT INTO `configuracoes` VALUES ('4', 'os_notification', 'nenhum');
 INSERT INTO `configuracoes` VALUES ('5', 'control_estoque', '1');
-INSERT INTO `configuracoes` VALUES ('6', 'termo_uso', '<p><strong>Eu, abaixo assinado proprietário (e/ou fiel representante) do aparelho(s) acima descrito autorizo assumo as seguintes condições:<br>1.\r\n Por se tratar de equipamento(s) com micro componentes \r\ninterligados entre si, os defeitos apresentados poderão provocar danos \r\naos demais componentes, isentando assim a ASSISTÊNCIA TÉCNICA da \r\nresponsabilidade dos defeitos.<br>2. Em caso de desistência do reparo, \r\ncaberá a ASSISTÊNCIA TÉCNICA apenas a responsabilidade da devolução do \r\nequipamento no estado em que se encontra, ficando isenta de qualquer \r\nreclamação e/ou ônus de minha parte;<br>3. Eu Abaixo Assinado estou ciente de que caso seja efetuado o procedimento de </strong><strong><strong>Reballing (BGA)</strong>\r\n para a tentativa do reparo, devido envolver altas temperaturas que são \r\nacima de 200°, sendo assim o equipamento pode vim a parar completamente \r\nde funcionar.<br>4. A Garantia dos serviços executados e informada nesse documento, e contada à partir da retirada do equipamento;<br>5.\r\n Os equipamentos em garantia no caso de defeito, só serão aceitos com a \r\napresentação desta ordem de serviço e desde que os selos de garantia não\r\n estejam violados;<br>6. A garantia será dada somente sobre os \r\ncomponentes eletrônicos e mão de obra aplicada no reparo especificado \r\nnesta Ordem de Serviço;<br>7. O cliente declara que o equipamento e de \r\nsua propriedade/responsabilidade, e não sendo produto de furto, roubo ou\r\n derivado de qualquer ato ilícito sendo de sua total responsabilidade;<br><br>ATENÇÃO:\r\n Os equipamentos não retirados no prazo de 15 dias, sofrerão reajuste e \r\ntaxa de armazenamento no valor de 2% ao dia sobre o valor do orçamento. \r\nDe acordo com o Código&nbsp; do Consumidor nº 8078/90 Artigo 39 incluso \r\nVII... A permanência do equipamento após o conserto ou orçamento e de no\r\n máximo&nbsp; 90 DIAS (Noventa DIAS). Após este prazo será tido como \r\nABANDONADO e será desmantelado para retirada das peças utilizadas no \r\nreparo e o restante será descartado, para a liberação de espaço.<br></strong></p>');
+INSERT INTO `configuracoes` VALUES ('6', 'termo_uso', '<p>Aki voc� vai colocar<br>O termo de uso da OS<br></p>');
 INSERT INTO `configuracoes` VALUES ('7', 'whats_app1', 'Favor entrar em contato para saber mais detalhes. ');
 INSERT INTO `configuracoes` VALUES ('8', 'whats_app2', 'Nome da sua Loja');
 INSERT INTO `configuracoes` VALUES ('9', 'whats_app3', '(00) 00000-0000');
-INSERT INTO `configuracoes` VALUES ('10', 'whats_app4', ' ');
+INSERT INTO `configuracoes` VALUES ('10', 'whats_app4', null);
 INSERT INTO `configuracoes` VALUES ('11', 'whats_app5', null);
 INSERT INTO `configuracoes` VALUES ('12', 'whats_app6', null);
 INSERT INTO `configuracoes` VALUES ('13', 'masteros_0', '@sistema.com');
-INSERT INTO `configuracoes` VALUES ('14', 'masteros_1', '');
+INSERT INTO `configuracoes` VALUES ('14', 'masteros_1', null);
 INSERT INTO `configuracoes` VALUES ('15', 'masteros_2', null);
 INSERT INTO `configuracoes` VALUES ('16', 'masteros_3', null);
 INSERT INTO `configuracoes` VALUES ('17', 'masteros_4', null);
