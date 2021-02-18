@@ -126,7 +126,7 @@ $periodo = $this->input->get('periodo');
 
                 if (!$results) {
                     echo '<tr>
-              <td colspan="8" >Nenhum lançamento encontrado</td>
+              <td colspan="9" >Nenhum lançamento encontrado</td>
             </tr>';
                 }
                 foreach ($results as $r) {
@@ -164,17 +164,17 @@ $periodo = $this->input->get('periodo');
                 </tbody>
                 <tfoot>
                 <tr>
-                    <td colspan="6" style="text-align: right; color: green"><strong>Total Receitas:</strong></td>
+                    <td colspan="7" style="text-align: right; color: green"><strong>Total Receitas:</strong></td>
                     <td colspan="3" style="text-align: left; color: green">
                         <strong>R$ <?php echo number_format($totals['receitas'], 2, ',', '.') ?></strong></td>
                 </tr>
                 <tr>
-                    <td colspan="6" style="text-align: right; color: red"><strong>Total Despesas:</strong></td>
+                    <td colspan="7" style="text-align: right; color: red"><strong>Total Despesas:</strong></td>
                     <td colspan="3" style="text-align: left; color: red">
                         <strong>R$ <?php echo number_format($totals['despesas'], 2, ',', '.') ?></strong></td>
                 </tr>
                 <tr>
-                    <td colspan="6" style="text-align: right"><strong>Saldo:</strong></td>
+                    <td colspan="7" style="text-align: right"><strong>Saldo:</strong></td>
                     <td colspan="3" style="text-align: left;">
                         <strong>R$ <?php echo number_format($totals['receitas'] - $totals['despesas'], 2, ',', '.') ?></strong>
                     </td>
