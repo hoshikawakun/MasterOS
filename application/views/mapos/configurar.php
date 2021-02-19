@@ -40,6 +40,7 @@
                             <div class="controls">
                                 <select name="app_theme" id="app_theme">
                                     <option value="default">Padrão</option>
+                                    <option value="novo" <?= $configuration['app_theme'] == 'novo' ? 'selected' : ''; ?> >Novo</option>
                                     <option value="white" <?= $configuration['app_theme'] == 'white' ? 'selected' : ''; ?> >Neve</option>
                                 </select>
                                 <span class="help-inline">Selecione o tema que que deseja usar no sistema</span>
