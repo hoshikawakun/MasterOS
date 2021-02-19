@@ -17,29 +17,24 @@
 /* ===========================> ACTIVE <=========================== */
 
 /* SUBMENU FINANCEIRO E OUTROS*/
-#sidebar > ul li ul li.active a{
-    background-color: #7BCAE1;
-}
+#sidebar > ul li ul li.active a {color: #fff; background-color: #33cc66;}
 
-/* MENUS LATERAIS*/
-#sidebar > ul > li.active{
-    background-color: rgba(79, 176, 241, 0.548);
-}
 
-/* ITENS ATIVOS */
-#sidebar > ul > li.active a{
-    color:black;
-}  
+/* MENUS LATERAIS*/ /*Cor dos Selecionados*/
+#sidebar > ul > li.active {background-color: #0099cc; border-bottom: 1px solid #0099cc;  border-top: 1px solid #0099cc;}
+
+
+/* ITENS ATIVOS */ /*Cor da letra do Selecionado*/
+#sidebar > ul > li.active a{ color:#ffffff; text-decoration:none;}
+
 
 /* ===========================> HOVERS <=========================== */
 
-/*MENUS LATERAIS*/
-#sidebar > ul > li > a:hover{
-    background-color: #27a9e3;
-    color: #fff;
-}
+/*MENUS LATERAIS*/ /*Cor com o Mouse Encima*/
+#sidebar > ul > li > a:hover {background-color: #0099cc; color:#ffffff;}
 
-/* ICONES DE VISUALIZAR */
+
+/* ICONES DE VISUALIZAR */ /*???????????????*/
 .visualizar:hover{
     background-color: #548B54;
 }
@@ -58,25 +53,19 @@ li:hover{
     color:#666;
 }
 
-/* SUBMENU FINANCEIRO E OUTROS*/
-#sidebar > ul li ul li a:hover{
-    background-color: #7BCAE1;
-}
+/* SUBMENU FINANCEIRO E OUTROS*/ /*Cor do Mouse Encima*/
+#sidebar > ul li ul li a:hover{background-color: #33cc66;}
 
 /* MENU SUPERIOR (SAIR, VERSÂO, MINHA CONTA)*/
-#user-nav > ul > li > a:hover{
-    background-color: #7BCAE1;
-}
+#user-nav > ul > li > a:hover{ background-color: #3399cc;}
 
 /* COR DO FUNDO DOS BOTÕES (FINANCEIRO, RELATORIO, CONFIGURAÇÃO) */
-#sidebar > ul > li > a > .label:hover{
-    background-color: #ffffff;
-}
+#sidebar > ul > li > a > .label:hover{background-color: #000000;}
 
 /*ITENS DO DASHBOARD - ICONES*/
-.quick-actions li a:hover {
-    border-radius: 5px;
-}
+.quick-actions li a:hover { border-radius: 5px;}
+
+a:hover, a:focus {text-decoration: none; color:#33cc66;}
 
 /* ===========================> CSS NORMAL <=========================== */
 
@@ -85,81 +74,84 @@ input {
     border-radius: 7px !important;
 }
 
-/* BACKGROUND DO SISTEMA */
-body{
-    background-color: white;
-}
+/* Cor da fonte da escrtia interna das Tabelas */
+body{ background-color: #2e363f; color:#666666;}
+
 
 /* REMOVER BORDAS ENTRE OS ITENS */
-#sidebar > ul > li{
-    border:none !important;
-}
+#sidebar > ul > li {border-top: 1px solid #555555;}
+
 
 /* COR DOS CAMPOS DOS SUBMENUS (FINANCEIRO, RELATORIO, CONFIGURAÇÃO) */
-#sidebar > ul > li > ul{
-    background-color:#E0E0E0;
-}
-/* COR DOS TEXTOS DENTRO DOS SUBMENUS (FINANCEIRO, RELATORIO, CONFIGURAÇÃO) */
-#sidebar > ul li ul li a{color:black;}
+#sidebar > ul li ul {background-color: #555555;}
 
-/* BORDA NOS MENUS LATERAIS */
-#sidebar > ul{
-    border:none;
-}
+
+/* COR DOS TEXTOS DENTRO DOS SUBMENUS (FINANCEIRO, RELATORIO, CONFIGURAÇÃO) */
+#sidebar > ul li ul li a{ color:#ffffff}
+
+
+/* BORDA INFERIOR MENUS LATERAIS */
+#sidebar > ul {border-bottom: 1px solid #555555}
+
 
 /* ICONES DOS ITENS DO MENU LATERAL E OUTROS */
-#user-nav > ul > li > a > i, #sidebar li a i{
-    opacity: .99;
-}
+#user-nav > ul > li > a > i, #sidebar li a i { opacity: .7; margin-top: 2px;}
 
-/* CORES DOS  TEXTOS DO MENI LATERAL */
-#sidebar > ul > li > a{
-    color:#000000;
-}
+/* CORES DOS  TEXTOS DO MENU LATERAL */
+#sidebar > ul > li > a{ color:#ffffff;}
 
-/* COR DO FUNDO DOS BOTÕES (FINANCEIRO, RELATORIO, CONFIGURAÇÃO) */
-#sidebar > ul > li > a > .label{
-    background-color: #ffffff;
-}
+/* COR DOS BOTÕES (FINANCEIRO, RELATORIO, CONFIGURAÇÃO) */
+#sidebar > ul > li > a > .label{background-color: #ff6666;}
 
 /* COR DOS ICONES MENU LATERAL E MENU SUPERIOR */
-#user-nav > ul > li > a > i, #sidebar li a i{
-    color:#000000;
-}
+
+#user-nav > ul > li > a > i, #sidebar li a i{ color:#ffffff;}
 
 /*ITENS DO DASHBOARD - ICONES*/
-.bg_lr {border-radius: 5px;}
-.bg_ls {border-radius: 5px;}
-.bg_lo {border-radius: 5px;}
-.bg_ly {border-radius: 5px;}
-.bg_lg {border-radius: 5px;}
-.bg_lb {border-radius: 5px;}
+.bg_lb {border-radius: 5px;}	/*Clientes*/
+.bg_jj {border-radius: 5px;}	/*Produtos*/
+.bg_lg {border-radius: 5px;}	/*Serviços*/
+.bg_lo {border-radius: 5px;}	/*OS*/
+.bg_ls {border-radius: 5px;}	/*Vendas*/
+.bg_jk {border-radius: 5px;}	/*Lançamento Financeiro*/
+
 
 /* TEMPO DECARGA DA TELA */
-.tempo-carga{
-    color: #787878;
-    margin: 10px 0 0 20px;
-}
+.tempo-carga{color: #787878; margin: 10px 0 0 20px;}
 
 /* ICONE RELÓGIO */
-.icon-time{
-    color:#000000 !important;
-}
+.icon-time{color:#ffcc00 !important;}
 
 /* ESTATISTICAS DO SISTEMA*/
-.bg_lh{
-    border-radius: 5px;
-}
+.bg_lh{ border-radius: 5px;}
 
 /*CABEÇALHO E BARCUMB*/
-#header{background-color: #ffffff}
-#breadcrumb{background-color: #D0D0D0}
-#breadcrumb a{color: #000000}
+#header{background-color: #2e363f}
+#breadcrumb{background-color: #c0c0c0} /* Barra Superior */
+#breadcrumb a{color: #000000} /* Cor da fonte da escrita */
+
+/*Cor das Tabelas e conteudos*/
+.widget-box {
+	background: none repeat scroll 0 0 #f9f9f9; /*Cor Interna*/
+	border-left: 1px solid #bbbbbb;	/*Borda Lateral Esquerda*/
+	border-top: 1px solid #bbbbbb;	/*Borda Superior*/
+	border-right: 1px solid #bbbbbb;	/*Borda Lateral Direita*/
+	clear: both;
+	margin-top: 16px;
+	margin-bottom: 16px;
+	position: relative;
+}
+.widget-title, .modal-header, .table th, div.dataTables_wrapper .ui-widget-header {background:#e8e8f3;}	/*Cor Cabeçalho das Tabelas*/
+.widget-title span.icon {padding: 9px 10px 7px 11px; float: left; border-right:1px solid #bbbbbb;}	/*Separadores*/
+.widget-content {padding:15px; border-bottom: 1px solid #bbbbbb;}	/*Borda Inferior*/
+.widget-title, .modal-header, .table th, div.dataTables_wrapper .ui-widget-header {border-bottom: 1px solid #bbbbbb;}/*Borda Interna*/
+ tr:hover{ background:#eeeeee;} span.icon .checker {margin-top: -5px;margin-right: 0;}
 
 /* RELOGIO */
-.textoHora{
-    color: #000000; 
-}
+.textoHora{color: #ffcc00;}
+
+/*Cor Interna do Sistema*/
+#content {background: none repeat scroll 0 0 #eeeeee;}
 
 /* BORDA ENTRE OS ITENS DO MENU SUPERIOR */
 #user-nav > ul > li{
@@ -167,19 +159,19 @@ body{
     border-bottom: none;
     border-left: 1px solid;
     border-right: none;
-    border-color: #D0D0D0;
+    border-color: #2e363f;
 }
 
 /* BORDA AO LADO DIRETO DO BOTÂO (SAIR DO SISTEMA) */
 #user-nav > ul{
     border-left:none;
     border-right: 1px solid;
-    border-color: #E8E8E8;
+    border-color: #2e363f;
 }
 
 /* TEXTOS DO MENU SUPERIOR */
 .navbar-inverse .brand, .navbar-inverse .nav>li>a{
-    color: #000000;
+    color: #ffffff;
     text-shadow:none;
 }
 
@@ -190,10 +182,10 @@ body{
 }
 #search button{
     border-radius:5px;
-    background-color: #ffffff;
+    background-color: #20c07a;
 }
 #search button i{
-    color:black;
+    color: #000000;
 }
 
 /* ICONES*/
@@ -203,14 +195,13 @@ body{
 }
 
 /* ICONES DE VISUALIZAR */
-.visualizar{
-    background-color: #7CCD7C;
-}
+.visualizar{background-color: #7CCD7C;}
+
 
 /* Responsive design */
 @media (max-width: 480px) {
     #user-nav {
-        border-top:1px solid #D0D0D0;
+        border-top:1px solid #c0c0c0;
         background:#FFF;
     }
     #sidebar > ul li span {
