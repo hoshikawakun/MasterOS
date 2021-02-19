@@ -34,7 +34,7 @@ hr{ border-top-color:#dadada;}
 
 /*Metro Background color class*/
 .bg_lb{ background:#006633;}
-.bg_db{ background:#24748C;}
+.bg_db{ background:#24748c;}
 .bg_lg{ background:#CCCC00;}
 .bg_dg{ background:#28b779;}
 .bg_ly{ background:#993300;}
@@ -44,7 +44,9 @@ hr{ border-top-color:#dadada;}
 .bg_lr{ background:#f74d4d;}
 .bg_lv{ background:#603bbc;}
 .bg_lh{ background:#b6b3b3;}
-.bg_jj{ background:#0099FF;}
+.bg_jj{ background:#0099ff;}
+.bg_jk{ background:#ff9933;}
+.bg_ww{ background:#ffffff;}
 
 /* Header */
 #header {
