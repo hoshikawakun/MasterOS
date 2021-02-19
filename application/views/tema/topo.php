@@ -12,9 +12,9 @@
   <link href="<?= base_url(); ?>assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
   <link rel="stylesheet" href="<?= base_url(); ?>assets/css/fullcalendar.css" />
   
-  <?php if($configuration['app_theme'] == 'white') { ?>
-    <link rel="stylesheet" href="<?= base_url(); ?>assets/css/tema.css" />
-  <?php } ?>
+  <?php if($configuration['app_theme'] == 'white') { ?><link rel="stylesheet" href="<?= base_url(); ?>assets/css/tema.css" /><?php } ?>
+  <?php if($configuration['app_theme'] == 'novo') { ?><link rel="stylesheet" href="<?= base_url(); ?>assets/css/tema2.css" /><?php } ?>
+  
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
   <script type="text/javascript" src="<?= base_url(); ?>assets/js/jquery-1.12.4.min.js"></script>
   <script type="text/javascript" src="<?= base_url(); ?>assets/js/shortcut.js"></script>
@@ -44,10 +44,8 @@
     shortcut.add("F8", function() {
       location.href = '<?= site_url('financeiro/lancamentos'); ?>';
     });
-    shortcut.add("F8", function() {});
     shortcut.add("F9", function() {});
     shortcut.add("F10", function() {});
-    shortcut.add("F11", function() {});
     shortcut.add("F12", function() {});
   </script>
 
