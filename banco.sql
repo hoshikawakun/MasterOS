@@ -525,7 +525,7 @@ CREATE TABLE `vendas` (
 -- ----------------------------
 INSERT INTO `clientes` VALUES ('1', 'Geral', '', '1', '000.000.000-00', '(00) 0000-0000', '', 'teste@biglobe.ne.jp', '2019-04-23', 'Rua', '0', 'Centro', 'Cidade', 'Estado', '00000-000', null, 'fw6q3xSXbd', '0', null, '');
 INSERT INTO `configuracoes` VALUES ('1', 'app_name', 'Nome da sua Loja');
-INSERT INTO `configuracoes` VALUES ('2', 'app_theme', 'default');
+INSERT INTO `configuracoes` VALUES ('2', 'app_theme', 'novo');
 INSERT INTO `configuracoes` VALUES ('3', 'per_page', '20');
 INSERT INTO `configuracoes` VALUES ('4', 'os_notification', 'nenhum');
 INSERT INTO `configuracoes` VALUES ('5', 'control_estoque', '1');
