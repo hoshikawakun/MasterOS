@@ -404,6 +404,38 @@ $config = [
             'rules' => 'trim|required|integer',
         ]
     ],
+    'equipamento_os' => [
+        [
+            'field' => 'equipamento',
+            'label' => 'Equipamento',
+            'rules' => 'required|trim',
+        ],
+        [
+            'field' => 'modelo',
+            'label' => 'Modelo/Cor',
+            'rules' => 'required|trim',
+        ],
+        [
+            'field' => 'num_serie',
+            'label' => 'Nº Série',
+            'rules' => 'required|trim',
+        ],
+        [
+            'field' => 'voltagem',
+            'label' => 'Voltagem',
+            'rules' => 'required|trim',
+        ],
+        [
+            'field' => 'observacao',
+            'label' => 'Observação',
+            'rules' => 'required|trim',
+        ],
+        [
+            'field' => 'os_id',
+            'label' => 'ID Os',
+            'rules' => 'trim|required|integer',
+        ]
+    ],
     'adicionar_produto_os' => [
         [
             'field' => 'idProduto',
