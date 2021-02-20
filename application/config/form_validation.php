@@ -413,22 +413,22 @@ $config = [
         [
             'field' => 'modelo',
             'label' => 'Modelo/Cor',
-            'rules' => 'required|trim',
+            'rules' => 'trim',
         ],
         [
             'field' => 'num_serie',
             'label' => 'Nº Série',
-            'rules' => 'required|trim',
+            'rules' => 'trim',
         ],
         [
             'field' => 'voltagem',
             'label' => 'Voltagem',
-            'rules' => 'required|trim',
+            'rules' => 'trim',
         ],
         [
             'field' => 'observacao',
             'label' => 'Observação',
-            'rules' => 'required|trim',
+            'rules' => 'trim',
         ],
         [
             'field' => 'os_id',
