@@ -53,6 +53,8 @@ li:hover{
     color:#666;
 }
 
+
+
 /* SUBMENU FINANCEIRO E OUTROS*/ /*Cor do Mouse Encima*/
 #sidebar > ul li ul li a:hover{background-color: #33cc66;}
 
@@ -135,17 +137,26 @@ body{ background-color: #2e363f; color:#666666;}
 	background: none repeat scroll 0 0 #f9f9f9; /*Cor Interna*/
 	border-left: 1px solid #bbbbbb;	/*Borda Lateral Esquerda*/
 	border-top: 1px solid #bbbbbb;	/*Borda Superior*/
-	border-right: 1px solid #bbbbbb;	/*Borda Lateral Direita*/
+	border-right: 1px solid #000000;	/*Borda Lateral Direita*/
 	clear: both;
 	margin-top: 16px;
 	margin-bottom: 16px;
 	position: relative;
 }
-.widget-title, .modal-header, .table th, div.dataTables_wrapper .ui-widget-header {background:#e8e8f3;}	/*Cor Cabeçalho das Tabelas*/
-.widget-title span.icon {padding: 9px 10px 7px 11px; float: left; border-right:1px solid #bbbbbb;}	/*Separadores*/
-.widget-content {padding:15px; border-bottom: 1px solid #bbbbbb;}	/*Borda Inferior*/
-.widget-title, .modal-header, .table th, div.dataTables_wrapper .ui-widget-header {border-bottom: 1px solid #bbbbbb;}/*Borda Interna*/
- tr:hover{ background:#eeeeee;} span.icon .checker {margin-top: -5px;margin-right: 0;}
+
+select, .table-bordered{border-radius:0px;} /*Bordas da Tabela Interna*/
+select, .table-bordered{border-left: 0px solid #bbbbbb;} /*Borda Lateral Esquerda*/
+select, .table-bordered{border-right:0px solid #bbbbbb;} /*Borda Lateral Direita*/
+select, .table-bordered{border-top: 0px solid #bbbbbb;} /*Borda Superior*/
+select, .table-bordered{border-bottom: 0px solid #bbbbbb;} /*Borda Inferior*/
+.table th{border-bottom: 1px solid #bbbbbb;} /*Borda Inferior Interna*/
+.table th{background:#bbbbbb;} /*Cor Cabeçalho das Tabelas Internas*/
+.widget-title, .modal-header, div.dataTables_wrapper .ui-widget-header {background:#e8e8f3;}	/*Cor Cabeçalho das Tabelas Externas*/
+.widget-title, .modal-header, div.dataTables_wrapper .ui-widget-header {border-bottom: 1px solid #000000;}/*Borda Inferior Interna das Tabelas Externas*/
+.widget-title span.icon {padding: 9px 10px 7px 11px; float: left; border-right:1px solid #bbbbbb;}	/*Separadores Tabela Externa*/
+.widget-content {border-bottom: 1px solid #bbbbbb;}	/*Borda Inferior*/
+.widget-content {padding:10px;}/*Margem entre a tabela interna e externa*/
+tr:hover{ background:#ffcc00;} span.icon .checker {margin-top: -5px;margin-right: 0;} /*Cor interna da linha da tabela com Mouse Sobre encima*/ 
 
 /* RELOGIO */
 .textoHora{color: #ffcc00;}

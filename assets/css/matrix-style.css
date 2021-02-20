@@ -187,7 +187,7 @@ hr{ border-top-color:#dadada;}
 #sidebar > ul li ul li a {
 	padding: 10px 0 10px 25px;
 	display: block;
-	color: #777777;
+	color: #ff0000;
 }
 #sidebar > ul li ul li:first-child a {
 	border-top: 0;
@@ -514,13 +514,13 @@ hr{ border-top-color:#dadada;}
 }
 /* Widgets */
 .widget-box {
-	background: none repeat scroll 0 0 #F9F9F9;
-	border-left: 1px solid #CDCDCD;
-	border-top: 1px solid #CDCDCD;
-	border-right: 1px solid #CDCDCD;
+	background: none repeat scroll 0 0 #F9F9F9;  /*Cor Interna*/
+	border-left: 1px solid #CDCDCD; /*Borda Lateral Esquerda*/
+	border-top: 1px solid #CDCDCD; /*Borda Superior*/
+	border-right: 1px solid #CDCDCD; /*Borda Lateral Direita*/
 	clear: both;
 	margin-top: 16px;
-	margin-bottom: 16px;
+	margin-bottom: 16px; /*Espaço inferior para a Proxima Tabela*/
 	position: relative;
 }
 .widget-box.widget-calendar, .widget-box.widget-chat {
@@ -538,9 +538,9 @@ hr{ border-top-color:#dadada;}
 	margin-bottom: 0;
 }
 .widget-title, .modal-header, .table th, div.dataTables_wrapper .ui-widget-header {
-	 background:#efefef;
-	border-bottom: 1px solid #CDCDCD;
-	height: 36px;
+	background:#efefef; /*COR CABEÇALHO DAS TABELAS*/
+	border-bottom: 1px solid #CDCDCD; /*Borda Inferior Interna Tabela Externa*/
+	height: 36px; /*tamanho altura interna cabeçalho*/
 }
 .widget-title .nav-tabs {
 	border-bottom: 0 none;
@@ -548,7 +548,7 @@ hr{ border-top-color:#dadada;}
 .widget-title .nav-tabs li a {
 	border-bottom: medium none !important;
 	border-left: 1px solid #DDDDDD;
-		border-radius: 0 0 0 0;
+	border-radius: 0 0 0 0;
 	border-right: 1px solid #DDDDDD;
 	border-top: medium none;
 	color: #999999;
@@ -573,7 +573,7 @@ hr{ border-top-color:#dadada;}
 }
 .widget-title span.icon {
 	padding: 9px 10px 7px 11px;
-	float: left; border-right:1px solid #dadada;
+	float: left; border-right:1px solid #dadada; /*Separadores Tabela Externa*/
 }
 .widget-title h5 {
 	color: #666;
@@ -598,8 +598,7 @@ hr{ border-top-color:#dadada;}
 	margin-right: 190px;
 }
 .widget-content {
-	padding:15px;
-	border-bottom: 1px solid #cdcdcd;
+	padding:10px; /*Margem entre a tabela interna e externa*/
 }
 .widget-box.widget-plain .widget-content {
 	padding: 12px 0 0;
