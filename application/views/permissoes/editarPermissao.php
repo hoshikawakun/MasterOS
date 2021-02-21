@@ -43,7 +43,7 @@
                     <div class="control-group">
                         <label for="documento" class="control-label"></label>
                         <div class="controls">
-                            <table class="table table-bordered">
+                            <table class="table">
                                 <tbody>
                                 <tr>
                                     <td>

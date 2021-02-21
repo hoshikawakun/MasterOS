@@ -86,14 +86,14 @@
                                 </table>
   <hr>
 							<?php if ($produtos != null) { ?>
-                            <table width="100%" style="font-size: 10px" class="table table-bordered table-condensed" id="tblProdutos">
+                            <table width="100%" style="font-size: 10px" class="table table-mapos table-condensed" id="tblProdutos">
                                 <thead>
                                     <tr>
-                                    	<th width="8%">Cod.</th>
-                                        <th>Produto</th>
-                                        <th width="8%">Qt.</th>
-                                        <th width="8%">R$ UN</th>
-                                        <th width="8%">Sub-total</th>
+                                    	<th width="10%">Cod. Produto</th>
+                                        <th>     Produto     </th>
+                                        <th width="8%">  Qt.  </th>
+                                        <th width="10%">Preço unit.</th>
+                                        <th width="20%">Sub-total</th>
                                     </tr>
                                 </thead>
                                     <?php

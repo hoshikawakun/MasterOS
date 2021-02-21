@@ -36,7 +36,7 @@
                             </div>
                             <div class="collapse in accordion-body" id="collapseGOne">
                                 <div class="widget-content">
-                                    <table class="table table-bordered">
+                                    <table class="table">
                                         <tbody>
                                         <tr>
                                             <td>
@@ -80,7 +80,7 @@
                             </div>
                             <div class="collapse accordion-body" id="collapseGTwo">
                                 <div class="widget-content">
-                                    <table class="table table-bordered">
+                                    <table class="table">
                                         <tbody>
                                         <tr>
                                             <td>
@@ -124,7 +124,7 @@
                             </div>
                             <div class="collapse accordion-body" id="collapseGThree">
                                 <div class="widget-content">
-                                    <table class="table table-bordered">
+                                    <table class="table">
                                         <tbody>
                                         <tr>
                                             <td>
@@ -168,7 +168,7 @@
                             </div>
                             <div class="collapse accordion-body" id="collapseGThree3">
                                 <div class="widget-content">
-                                    <table class="table table-bordered">
+                                    <table class="table">
                                         <tbody>
                                         <tr>
                                             <td>
@@ -212,7 +212,7 @@
                             </div>
                             <div class="collapse accordion-body" id="collapseGThree33">
                                 <div class="widget-content">
-                                    <table class="table table-bordered">
+                                    <table class="table">
                                         <tbody>
                                         <tr>
                                             <td>
@@ -256,7 +256,7 @@
                             </div>
                             <div class="collapse accordion-body" id="collapseGThree333">
                                 <div class="widget-content">
-                                    <table class="table table-bordered">
+                                    <table class="table">
                                         <tbody>
                                         <tr>
                                             <td>
@@ -300,7 +300,7 @@
                             </div>
                             <div class="collapse accordion-body" id="collapseGThree3333">
                                 <div class="widget-content">
-                                    <table class="table table-bordered">
+                                    <table class="table">
                                         <tbody>
                                         <tr>
                                             <td>
@@ -344,7 +344,7 @@
                             </div>
                             <div class="collapse accordion-body" id="collapseGThree33333">
                                 <div class="widget-content">
-                                    <table class="table table-bordered">
+                                    <table class="table">
                                         <tbody>
                                         <tr>
                                             <td>
@@ -388,7 +388,7 @@
                             </div>
                             <div class="collapse accordion-body" id="collapseGThree333343">
                                 <div class="widget-content">
-                                    <table class="table table-bordered">
+                                    <table class="table">
                                         <tbody>
                                         <tr>
                                             <td>
@@ -458,7 +458,7 @@
                             </div>
                             <div class="collapse accordion-body" id="collapseGThree333335">
                                 <div class="widget-content">
-                                    <table class="table table-bordered">
+                                    <table class="table">
                                         <tbody>
                                         <tr>
                                             <td>
@@ -516,7 +516,7 @@
                             </div>
                             <div class="collapse accordion-body" id="collapseGThree333338">
                                 <div class="widget-content">
-                                    <table class="table table-bordered">
+                                    <table class="table">
                                         <tbody>
                                         <tr>
                                             <td>

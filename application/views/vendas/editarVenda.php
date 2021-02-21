@@ -89,7 +89,7 @@
 </div>
      </div>
                                 <div class="widget-content nopadding">
-                                    <table width="100%S" class="table table-bordered" id="tblProdutos">
+                                    <table width="100%S" class="table" id="tblProdutos">
                                         <thead>
                                             <tr>
                                             	<th width="8%">Cod. SKU</th>

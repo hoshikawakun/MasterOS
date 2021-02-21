@@ -84,7 +84,7 @@
   </table>
   <hr>
 							<?php if ($produtos != null) { ?>
-                            <table width="100%" style="font-size: 12px" class="table table-bordered table-condensed" id="tblProdutos">
+                            <table width="100%" style="font-size: 12px" class="table table-condensed" id="tblProdutos">
                                 <thead>
                                     <tr>
                                         <th width="12%">Cod. Produto</th>

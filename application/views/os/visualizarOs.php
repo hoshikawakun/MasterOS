@@ -167,7 +167,7 @@ $totalProdutos = 0; ?>
                         </table>
                         <div class"span12">
 						<?php if ($equipamento != null) { ?>
-                            <table width="100%" class="table table-bordered table-condensed" id="tblEquipamento">
+                            <table width="100%" class="table table-condensed" id="tblEquipamento">
                                 <thead>
                                     <tr>
                                         <th width="20%">Equipamento</th>
@@ -195,7 +195,7 @@ $totalProdutos = 0; ?>
 						</div>
                         <div class"span12">
 						<?php if ($produtos != null) { ?>
-                            <table width="100%" class="table table-bordered table-condensed" id="tblProdutos">
+                            <table width="100%" class="table table-condensed" id="tblProdutos">
                                 <thead>
                                     <tr>
                                         <th width="8%">SKU</th>
@@ -230,7 +230,7 @@ $totalProdutos = 0; ?>
                         </div>
                         <div class"span12">
 						<?php if ($servicos != null) { ?>
-                            <table width="100%" class="table table-bordered table-condensed">
+                            <table width="100%" class="table table-condensed">
                                 <thead>
                                     <tr>
                                         <th>Serviço</th>
@@ -270,7 +270,7 @@ $totalProdutos = 0; ?>
                         <!-- ANEXOS -->
                         <div class"span12">
 						<?php if ($anexos != null) { ?>
-                            <table class="table table-bordered table-condensed">
+                            <table class="table table-condensed">
                                 <thead>
                                     <tr>
                                         <th>Anexo</th>

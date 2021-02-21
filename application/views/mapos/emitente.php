@@ -130,7 +130,7 @@
                 </div>
                 <div class="widget-content ">
                     <div class="alert alert-info">Os dados abaixo serão utilizados no cabeçalho das telas de impressão.</div>
-                    <table width="100%" class="table table-bordered">
+                    <table width="100%" class="table">
                         <tbody>
                             <tr>
 			<td style="width: 25%"><div align="center"><span><b>Logo</b></span><br /> <img src=" <?= $dados[0]->url_logo; ?> " alt="Logo"/></div></td>

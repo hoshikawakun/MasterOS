@@ -107,7 +107,7 @@ $periodo = $this->input->get('periodo');
         <div class="widget-content nopadding tab-content">
 
 
-            <table class="table table-bordered " id="divLancamentos">
+            <table class="table" id="divLancamentos">
                 <thead>
                 <tr style="backgroud-color: #2D335B">
                     <th>#</th>

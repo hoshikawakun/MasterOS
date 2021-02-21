@@ -25,7 +25,7 @@
                     </div>
                     <div class="collapse in accordion-body" id="collapseGOne">
                         <div class="widget-content">
-                            <table class="table table-bordered">
+                            <table class="table">
                                 <tbody>
                                 <tr>
                                     <td style="text-align: right; width: 30%"><strong>Nome</strong></td>
@@ -67,7 +67,7 @@
                     </div>
                     <div class="collapse accordion-body" id="collapseGTwo">
                         <div class="widget-content">
-                            <table class="table table-bordered">
+                            <table class="table">
                                 <tbody>
                                 <tr>
                                         <td style="text-align: right; width: 30%"><strong>Telefone</strong></td>
@@ -113,7 +113,7 @@
                     </div>
                     <div class="collapse accordion-body" id="collapseGThree">
                         <div class="widget-content">
-                            <table class="table table-bordered">
+                            <table class="table">
                                 <tbody>
                                 <tr>
                                     <td style="text-align: right; width: 30%"><strong>Rua</strong></td>
@@ -162,7 +162,7 @@
         <!--Tab 2-->
         <div id="tab2" class="tab-pane" style="min-height: 300px">
             <?php if (!$results) { ?>
-                <table class="table table-bordered ">
+                <table class="table">
                     <thead>
                     <tr style="backgroud-color: #2D335B">
                         <th>N° OS</th>
@@ -181,7 +181,7 @@
                 </table>
                 <?php
             } else { ?>
-                <table class="table table-bordered ">
+                <table class="table">
                     <thead>
                     <tr style="backgroud-color: #2D335B">
                         <th>N° OS</th>

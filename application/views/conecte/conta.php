@@ -23,7 +23,7 @@
                     </div>
                     <div class="collapse in accordion-body" id="collapseGOne">
                         <div class="widget-content">
-                            <table class="table table-bordered">
+                            <table class="table">
                                 <tbody>
                                     <tr>
                                         <td style="text-align: right; width: 30%"><strong>Nome</strong></td>
@@ -59,7 +59,7 @@
                     </div>
                     <div class="collapse accordion-body" id="collapseGTwo">
                         <div class="widget-content">
-                            <table class="table table-bordered">
+                            <table class="table">
                                 <tbody>
                                     <tr>
                                         <td style="text-align: right; width: 30%"><strong>Telefone</strong></td>
@@ -95,7 +95,7 @@
                     </div>
                     <div class="collapse accordion-body" id="collapseGThree">
                         <div class="widget-content">
-                            <table class="table table-bordered">
+                            <table class="table">
                                 <tbody>
                                     <tr>
                                         <td style="text-align: right; width: 30%"><strong>Rua</strong></td>

@@ -74,7 +74,7 @@
                 <h5>Serviços Concluidos</h5>
             </div>
             <div class="widget-content">
-                <table class="table table-bordered">
+                <table class="table">
                     <thead>
                         <tr>
                             <th>OS N°</th>

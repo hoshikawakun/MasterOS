@@ -19,7 +19,7 @@
                 <h5>Ordens de Serviço</h5>
             </div>
             <div class="widget-content">
-                <table class="table table-bordered">
+                <table class="table table">
                     <thead>
                         <tr style="backgroud-color: #2D335B">
                             <th>OS N°</th>
@@ -38,6 +38,8 @@
                             echo '<tr><td colspan="7">Nenhuma os foi encontrado.</td></tr>';
                         }
                         foreach ($os as $r) {
+							$DescricaoShort = mb_strimwidth(strip_tags($r->descricaoProduto), 0, 25, "...");
+							$defeitoShort = mb_strimwidth(strip_tags($r->defeito), 0, 25, "...");
                             $dataInicial = date(('d/m/Y'), strtotime($r->dataInicial));
                             $dataFinal = date(('d/m/Y'), strtotime($r->dataFinal));
 							switch ($r->status) {
@@ -102,8 +104,8 @@
                             echo '<tr>';
                             echo '<td><div align="center">' . $r->idOs . '</div></td>';
                             echo '<td><div align="center">' . $dataInicial . '</div></td>';
-							echo '<td>' . $r->descricaoProduto . '</td>';
-                            echo '<td>' . $r->defeito . '</td>';
+							echo '<td>' . $DescricaoShort . '</td>';
+                            echo '<td>' . $defeitoShort . '</td>';
 							echo '<td><div align="center">' . $r->serial . '</div></td>';
                             echo '<td><div align="center"><span class="badge" style="background-color: ' . $cor . '; border-color: ' . $cor . '">' . $r->status . '</span></div></td>';
                             echo '<td><div align="center">';
@@ -139,7 +141,7 @@
                 <h5>Produtos</h5>
             </div>
             <div class="widget-content">
-                <table class="table table-bordered">
+                <table class="table">
                         <thead>
                             <tr style="backgroud-color: #2D335B">
                                 <th>SKU</th>
@@ -187,7 +189,7 @@
                 <h5>Clientes</h5>
             </div>
             <div class="widget-content">
-                <table class="table table-bordered">
+                <table class="table">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -238,7 +240,7 @@
                 <h5>Serviços</h5>
             </div>
             <div class="widget-content">
-                <table class="table table-bordered">
+                <table class="table">
                     <thead>
                         <tr style="backgroud-color: #2D335B">
                             <th>#</th>

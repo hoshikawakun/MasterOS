@@ -6,7 +6,7 @@
         <h5>Cobranças</h5>
     </div>
     <div class="widget-content nopadding tab-content">
-        <table width="100%" id="tabela" class="table table-bordered ">
+        <table width="100%" id="tabela" class="table">
             <thead>
                 <tr style="background-color: #2D335B">
                     <th>#</th>

@@ -58,7 +58,7 @@
         <h5>Ordens de Serviço</h5>
     </div>
     <div class="widget-content nopadding">
-        <table id="tabela" width="100%" class="table table-bordered">
+        <table id="tabela" width="100%" class="table">
                 <thead>
                     <tr>
                         <th>N° OS</th>

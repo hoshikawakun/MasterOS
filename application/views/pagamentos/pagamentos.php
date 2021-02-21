@@ -10,7 +10,7 @@
         <h5>Pagamentos</h5>
     </div>
     <div class="widget-content nopadding">
-        <table id="tabela" class="table table-bordered">
+        <table id="tabela" class="table">
             <thead>
                 <tr style="background-color: #2D335B">
                     <th>#</th>

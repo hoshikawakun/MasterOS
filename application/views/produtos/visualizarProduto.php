@@ -10,7 +10,7 @@
         </div>
         <div class="collapse in accordion-body">
             <div class="widget-content">
-                <table class="table table-bordered">
+                <table class="table">
                     <tbody>
                         <tr>
                             <td style="text-align: right; width: 30%"><strong>Código de Barra</strong></td>

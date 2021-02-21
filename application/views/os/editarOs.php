@@ -217,7 +217,7 @@
                             </div>
                             <div class="widget-box" id="divProdutos">
                             <div class="widget-content nopadding">
-                                <table width="100%" class="table table-bordered" id="tblProdutos">
+                                <table width="100%" class="table" id="tblProdutos">
                                     <thead>
                                     <tr>
                                        		<th width="8%">Cod. SKU</th>
@@ -284,7 +284,7 @@
                           </div>
                         <div class="widget-box" id="divServicos">
             			<div class="widget-content nopadding">
-									<table width="100%" class="table table-bordered">
+									<table width="100%" class="table">
                                         <thead>
                                             <tr>
                                                 <th>Serviço</th>
@@ -364,7 +364,7 @@
                         </div>
             			<div class="widget-box" id="divAnotacoes">
             			<div class="widget-content nopadding">
-            			<table width="100%" class="table table-bordered">
+            			<table width="100%" class="table">
                                         <thead>
                                             <tr>
                                                 <th width="73%">Anotação</th>
@@ -403,7 +403,7 @@
                         </div>
                             <div class="widget-box" id="divEquipamento">
                             <div class="widget-content nopadding">
-                                    <table  width="100%" class="table table-bordered">
+                                    <table  width="100%" class="table">
                                         <thead>
                                             <tr>
                                                 <th>Equipamento</th>

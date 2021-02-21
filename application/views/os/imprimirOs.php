@@ -139,7 +139,7 @@ $totalProdutos = 0; ?>
       </table>
                         
                         <?php if ($equipamento != null) { ?>
-                            <table width="100%" style="font-size: 10px" class="table table-bordered table-condensed" id="tblEquipamento">
+                            <table width="100%" style="font-size: 10px" class="table table-mapos table-condensed" id="tblEquipamento">
                                 <thead>
                                     <tr>
                                         <th>Equipamento</th>
@@ -165,7 +165,7 @@ $totalProdutos = 0; ?>
                         
 						<?php if ($produtos != null) { ?>
                             <br />
-                            <table width="100%" style="font-size: 10px" class="table table-bordered table-condensed" id="tblProdutos">
+                            <table width="100%" style="font-size: 10px" class="table table-mapos table-condensed" id="tblProdutos">
                                 <thead>
                                     <tr>
                                     	<th width="10%">Cod. Produto</th>
@@ -200,7 +200,7 @@ $totalProdutos = 0; ?>
                         
 						<?php if ($servicos != null) { ?>
                         <br/>
-                      <table width="100%" style="font-size: 10px" class="table table-bordered table-condensed">
+                      <table width="100%" style="font-size: 10px" class="table table-mapos table-condensed">
                                 <thead>
                                     <tr>
                                         <th>Serviço</th>
@@ -254,7 +254,7 @@ $totalProdutos = 0; ?>
 									<!-- Fim QR Code PIX -->
               
 <br>                          
-<table width="100%" style="font-size: 10px" class="table table-bordered table-condensed">
+<table width="100%" style="font-size: 10px" class="table table-mapos table-condensed">
                                 <thead>
                                     <tr>
                                         <th>Termo de Uso</th>

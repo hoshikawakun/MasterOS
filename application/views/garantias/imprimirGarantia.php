@@ -83,7 +83,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <table class="table table-bordered table-condensed">
+                        <table class="table table-mapos table-condensed">
                             <tbody>
                                 <tr>
                                     <td>Data

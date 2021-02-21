@@ -157,7 +157,7 @@ $totalProdutos = 0; ?>
 
                         <?php if ($produtos != null) { ?>
                             <br />
-                            <table style='font-size: 8px;' class="table table-bordered table-condensed" id="tblProdutos">
+                            <table style='font-size: 8px;' class="table table-mapos table-condensed" id="tblProdutos">
                                 <thead>
                                     <tr>
                                         <th><div style="font-size: 8px">Qtd.</div></th>
@@ -190,7 +190,7 @@ $totalProdutos = 0; ?>
                         <?php } ?>
 
                         <?php if ($servicos != null) { ?>
-                            <table style='font-size: 8px;' class="table table-bordered table-condensed">
+                            <table style='font-size: 8px;' class="table table-mapos table-condensed">
                                 <thead>
                                     <tr>
                                         <th><div style="font-size: 8px">Qtd.</div></th>
@@ -222,7 +222,7 @@ $totalProdutos = 0; ?>
                             </table>
                         <?php } ?>
 
-                      <table class="table table-bordered table-condensed">
+                      <table class="table table-mapos table-condensed">
                             <tbody>
                                 <tr>
                                     <td colspan="5"> <?php
@@ -235,7 +235,7 @@ $totalProdutos = 0; ?>
                                 </tr>
                             </tbody>
                       </table>
-                      <table class="table table-bordered table-condensed">
+                      <table class="table table-mapos table-condensed">
                             <tbody>
                                 <tr>
 

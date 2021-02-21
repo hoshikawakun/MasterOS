@@ -26,7 +26,7 @@
                     </div>
                     <div class="widget-content nopadding">
 
-                        <table width="1000" class="table table-bordered">
+                        <table width="1000" class="table table-mapos">
                             <thead>
                                 <tr>
                                     <th width="300" style="font-size: 15px">Nome</th>

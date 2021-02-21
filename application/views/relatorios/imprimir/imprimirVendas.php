@@ -26,7 +26,7 @@
                     </div>
                     <div class="widget-content nopadding">
 
-                        <table width="1000" class="table table-bordered">
+                        <table width="1000" class="table table-mapos">
                             <thead>
                                 <tr>
                                     <th width="600" style="font-size: 1.1em; padding: 5px;">Cliente</th>

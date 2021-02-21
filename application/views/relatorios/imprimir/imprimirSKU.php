@@ -25,7 +25,7 @@
                         </h4>
                     </div>
                     <div class="widget-content nopadding">
-                        <table class="table table-bordered">
+                        <table class="table table-mapos">
                             <thead>
                                 <tr>
                                     <th width="80" style="font-size: 15px">ID Cliente</th>

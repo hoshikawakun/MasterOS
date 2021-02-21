@@ -131,7 +131,7 @@ $totalProdutos = 0; ?>
 
                         <?php if ($produtos != null) { ?>
                             <br />
-                            <table class="table table-bordered" id="tblProdutos">
+                            <table class="table table-mapos" id="tblProdutos">
                                 <thead>
                                     <tr>
                                         <th>Produto</th>
@@ -165,7 +165,7 @@ $totalProdutos = 0; ?>
                         } ?>
 
                         <?php if ($servicos != null) { ?>
-                            <table class="table table-bordered">
+                            <table class="table table-mapos">
                                 <thead>
                                     <tr>
                                         <th>Serviço</th>

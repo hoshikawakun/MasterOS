@@ -22,7 +22,7 @@
                 <h5>Últimas Ordens de Serviço</h5>
             </div>
             <div class="widget-content">
-                <table id="tabela" class="table table-bordered">
+                <table id="tabela" class="table">
                     <thead>
                        <tr style="backgroud-color: #2D335B">
                             <th>OS N°</th>
@@ -95,7 +95,7 @@
             <h5>Últimas Compras</h5>
         </div>
         <div class="widget-content">
-            <table id="tabela" class="table table-bordered">
+            <table id="tabela" class="table">
                 <thead>
                     <tr>
                         <th>#</th>
