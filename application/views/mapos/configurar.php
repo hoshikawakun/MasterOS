@@ -52,7 +52,6 @@
                             <select name="per_page" id="theme">
                                 <option value="10" <?= $configuration['per_page'] == '10' ? 'selected' : ''; ?> >10</option>
                                 <option value="20" <?= $configuration['per_page'] == '20' ? 'selected' : ''; ?> >20</option>
-                                <option value="30" <?= $configuration['per_page'] == '30' ? 'selected' : ''; ?> >30</option>
                                 <option value="50" <?= $configuration['per_page'] == '50' ? 'selected' : ''; ?> >50</option>
                                 <option value="75" <?= $configuration['per_page'] == '75' ? 'selected' : ''; ?> >75</option>
                                 <option value="100" <?= $configuration['per_page'] == '100' ? 'selected' : ''; ?> >100</option>
