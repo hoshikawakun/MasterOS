@@ -60,7 +60,7 @@
     <div class="widget-content nopadding">
         <table id="tabela" width="100%" class="table table-bordered">
                 <thead>
-                    <tr style="background-color: #2D335B">
+                    <tr>
                         <th>N° OS</th>
                         <th>Cliente</th>
                         <th>Responsável</th>
