@@ -31,7 +31,7 @@
 /* ===========================> HOVERS <=========================== */
 
 /*MENUS LATERAIS*/ /*Cor com o Mouse Encima*/
-#sidebar > ul > li > a:hover {background-color: #0099cc; color:#ffffff;}
+#sidebar > ul > li > a:hover {background-color: #0099cc; color:#000000;}
 
 
 /* ICONES DE VISUALIZAR */ /*???????????????*/
@@ -49,65 +49,56 @@
 }
 
 /* LINHA */
-li:hover{
-    color:#666;
-}
-
-
+li:hover{color:#666;}
 
 /* SUBMENU FINANCEIRO E OUTROS*/ /*Cor do Mouse Encima*/
-#sidebar > ul li ul li a:hover{background-color: #33cc66;}
+#sidebar > ul li ul li a:hover{background-color: #33cc66; color:#000000}
 
 /* MENU SUPERIOR (SAIR, VERSÂO, MINHA CONTA)*/
-#user-nav > ul > li > a:hover{ background-color: #3399cc;}
+#user-nav > ul > li > a:hover{ background-color: #3399cc; color:#000000}
 
-/* COR DO FUNDO DOS BOTÕES (FINANCEIRO, RELATORIO, CONFIGURAÇÃO) */
-#sidebar > ul > li > a > .label:hover{background-color: #000000;}
+/* COR DO FUNDO DOS BOTÕES (FINANCEIRO, RELATORIO, CONFIGURAÇÃO) */ /*Quando Mouse Encima*/
+#sidebar > ul > li > a > .label:hover{background-color: #000;}
 
 /*ITENS DO DASHBOARD - ICONES*/
 .quick-actions li a:hover { border-radius: 5px;}
 
-a:hover, a:focus {text-decoration: none; color:#33cc66;}
+a:hover, a:focus {text-decoration: none; color:#33cc66;} /*Verde*/
 
 /* ===========================> CSS NORMAL <=========================== */
 
 /* BORDAR REDONDA EM TODOS OS INPUTS */
 input {
-    border-radius: 7px !important;
+    border-radius: 5px !important;
 }
 
 /* Cor da fonte da escrtia interna das Tabelas */
-body{ background-color: #2e363f; color:#666666;}
+body{color:#555555;}
 
 
 /* REMOVER BORDAS ENTRE OS ITENS */
 #sidebar > ul > li {border-top: 1px solid #555555;}
 
-
-/* COR DOS CAMPOS DOS SUBMENUS (FINANCEIRO, RELATORIO, CONFIGURAÇÃO) */
-#sidebar > ul li ul {background-color: #555555;}
-
-
-/* COR DOS TEXTOS DENTRO DOS SUBMENUS (FINANCEIRO, RELATORIO, CONFIGURAÇÃO) */
-#sidebar > ul li ul li a{ color:#ffffff}
-
-
 /* BORDA INFERIOR MENUS LATERAIS */
 #sidebar > ul {border-bottom: 1px solid #555555}
 
+/* COR DE FUNDO DOS CAMPOS DOS SUBMENUS (FINANCEIRO, RELATORIO, CONFIGURAÇÃO) */
+#sidebar > ul li ul {background-color: #444444;}
+
+/* COR DOS TEXTOS DENTRO DOS SUBMENUS (FINANCEIRO, RELATORIO, CONFIGURAÇÃO) */
+#sidebar > ul li ul li a{ color:#dddddd}
 
 /* ICONES DOS ITENS DO MENU LATERAL E OUTROS */
 #user-nav > ul > li > a > i, #sidebar li a i { opacity: .7; margin-top: 2px;}
 
 /* CORES DOS  TEXTOS DO MENU LATERAL */
-#sidebar > ul > li > a{ color:#ffffff;}
+#sidebar > ul > li > a{ color:#dddddd;}
 
 /* COR DOS BOTÕES (FINANCEIRO, RELATORIO, CONFIGURAÇÃO) */
 #sidebar > ul > li > a > .label{background-color: #ff6666;}
 
 /* COR DOS ICONES MENU LATERAL E MENU SUPERIOR */
-
-#user-nav > ul > li > a > i, #sidebar li a i{ color:#ffffff;}
+#user-nav > ul > li > a > i, #sidebar li a i{color:#ffffff;}
 
 /*ITENS DO DASHBOARD - ICONES*/
 .bg_lb {border-radius: 5px;}	/*Clientes*/
@@ -128,35 +119,56 @@ body{ background-color: #2e363f; color:#666666;}
 .bg_lh{ border-radius: 5px;}
 
 /*CABEÇALHO E BARCUMB*/
-#header{background-color: #2e363f}
-#breadcrumb{background-color: #c5c5c5} /* Barra Superior */
-#breadcrumb a{color: #000000} /* Cor da fonte da escrita */
+#header{background-color: #2e363f} body{background-color: #2e363f;} /*Cor de fundo do Sistema*/
+#breadcrumb{background-color: #dddddd} /* Cor de Fubdo da Barra Superior */
+#breadcrumb a{color: #333333;} /* Cor da fonte da escrita da Barra Superior */
 
-/*Cor das Tabelas e conteudos*/
-.widget-box {
+
+/*Bordas das Tabelas*/
+
+/*.widget-box {
 	background: none repeat scroll 0 0 #f9f9f9; /*Cor Interna*/
-	border-left: 1px solid #bbbbbb;	/*Borda Lateral Esquerda*/
-	border-top: 1px solid #bbbbbb;	/*Borda Superior*/
-	border-right: 1px solid #000000;	/*Borda Lateral Direita*/
-	clear: both;
+	/*border-left: 0px solid #bbbbbb;	/*Borda Lateral Esquerda*/
+	/*border-top: 0px solid #bbbbbb;	/*Borda Superior*/
+	/*border-right: 0px solid #000000;	/*Borda Lateral Direita*/
+	/*clear: both;
 	margin-top: 16px;
 	margin-bottom: 16px;
 	position: relative;
-}
+}*/
 
-select, .table-bordered{border-radius:0px;} /*Bordas da Tabela Interna*/
-select, .table-bordered{border-left: 0px solid #bbbbbb;} /*Borda Lateral Esquerda*/
-select, .table-bordered{border-right:0px solid #bbbbbb;} /*Borda Lateral Direita*/
-select, .table-bordered{border-top: 0px solid #bbbbbb;} /*Borda Superior*/
-select, .table-bordered{border-bottom: 0px solid #bbbbbb;} /*Borda Inferior*/
-.table th{border-bottom: 1px solid #bbbbbb;} /*Borda Inferior Interna*/
-.table th{background:#bbbbbb;} /*Cor Cabeçalho das Tabelas Internas*/
-.widget-title, .modal-header, div.dataTables_wrapper .ui-widget-header {background:#e8e8f3;}	/*Cor Cabeçalho das Tabelas Externas*/
-.widget-title, .modal-header, div.dataTables_wrapper .ui-widget-header {border-bottom: 1px solid #000000;}/*Borda Inferior Interna das Tabelas Externas*/
-.widget-title span.icon {padding: 9px 10px 7px 11px; float: left; border-right:1px solid #bbbbbb;}	/*Separadores Tabela Externa*/
-.widget-content {border-bottom: 1px solid #bbbbbb;}	/*Borda Inferior*/
-.widget-content {padding:10px;}/*Margem entre a tabela interna e externa*/
-tr:hover{ background:#ffcc00;} span.icon .checker {margin-top: -5px;margin-right: 0;} /*Cor interna da linha da tabela com Mouse Sobre encima*/ 
+/*select, .table-bordered{border-radius:0px;} /*Cantos externos da Tabela Interna*/
+/*select, .table-bordered{border-left: 0px solid #bbbbb2;} /*Borda Lateral Esquerda da Tabela Interna*/
+/*select, .table-bordered{border-right: 0px solid #bbbbb2;} /*Borda Lateral Direita da Tabela Interna*/
+/*select, .table-bordered{border-top: 0px solid #bbbbb2;} /*Borda Superior da Tabela Interna*/
+/*select, .table-bordered{border-bottom: 0px solid #bbbbb2;} /*Borda Inferior da Tabela Interna*/
+
+
+/*select, .table-mapos {border: 1px solid #999999;} /*Borda Geral*/
+/*select, .table-mapos {border-radius:0px;} /*Cantos externos da Tabela Interna*/
+/*select, .table-mapos {border-left: 1px solid #999999;} /*Borda Lateral Esquerda*/
+/*select, .table-mapos {border-right: 1px solid #999999;} /*Borda Lateral Direita*/
+/*select, .table-mapos {border-top: 1px solid #999999;} /*Borda Superior*/
+/*select, .table-mapos {border-bottom: 1px solid #999999;} /*Borda Inferior*/
+
+/*.table-mapos{border:1px solid #000;border-collapse:separate;*border-collapse:collapse;border-left:1;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px}
+.table-mapos th, .table-mapos td{border:1px solid #999}*/
+
+
+
+.table {border: 1px solid #bbbbb2;} /*Borda Geral da Tabela Interna*/
+.table tr td {border: 1px solid #bbbbb2;} /*Cor das Bordas da Tabela Interna*/
+.table th {border:1px solid #bbbbb2;}/*Cor das colunas do cabeçalho da Tabela Interna*/
+.table th {text-align:center padding: 5px 10px 2px;} /*Alinhamento da escrita do cabeçalho da Tabela Interna*/
+.table th {font-size: 10px;} /*Tamanho da escrita do cabeçalho da Tabela Interna*/
+.table th {color: #555555;} /*Cor da escrita do cabeçalho da Tabela Interna*/
+.table th {background:#eeeeee;} /*Cor Cabeçalho da Tabela Interna*/
+.widget-title, .modal-header, div.dataTables_wrapper .ui-widget-header {background:#eeeeee; } /*Cor do Cabeçalho da Tabela Externa*/
+.widget-title, .modal-header, div.dataTables_wrapper .ui-widget-header {border: 1px solid #bbbbb2; border-radius:1px;} /*Borda geral do Cabeçalho Tabela Externa*/
+.widget-box {border: 1px solid #bbbbb2; border-radius:5px;} /*Borda Geral Tabela Externa*/
+.widget-title span.icon {padding: 9px 10px 7px 11px; float: left; border-right:1px solid #bbbbb2;} /*Separadores Tabela Externa*/
+.widget-content {padding: 0px;} /*Margem entre a tabela interna e externa*/
+tr:hover{ background:#e9e9e9;} span.icon .checker {margin-top: -5px; margin-right: 0;} /*Cor interna da linha da tabela com Mouse Sobre encima*/ 
 
 /* RELOGIO */
 .textoHora{color: #ffcc00;}
