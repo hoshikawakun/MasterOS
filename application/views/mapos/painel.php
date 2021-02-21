@@ -133,7 +133,7 @@
                 <h5>OS Aprovados</h5>
             </div>
             <div class="widget-content">
-                <table class="table table-bordered">
+                <table class="table">
                     <thead>
                         <tr>
                             <th>OS N°</th>
@@ -191,7 +191,7 @@
                 <h5>Orçamentos Concluidos</h5>
             </div>
             <div class="widget-content">
-                <table class="table table-bordered">
+                <table class="table">
                     <thead>
                         <tr>
                             <th>OS N°</th>
@@ -249,7 +249,7 @@
                 <h5>Em Orçamento</h5>
             </div>
             <div class="widget-content">
-                <table class="table table-bordered">
+                <table class="table">
                     <thead>
                         <tr>
                             <th>OS N°</th>
@@ -307,7 +307,7 @@
                 <h5>Aguardando Peças</h5>
             </div>
             <div class="widget-content">
-                <table class="table table-bordered">
+                <table class="table">
                     <thead>
                         <tr>
                             <th>OS N°</th>
@@ -365,7 +365,7 @@
                 <h5>Entregue - A Receber</h5>
             </div>
             <div class="widget-content">
-                <table class="table table-bordered">
+                <table class="table">
                     <thead>
                         <tr>
                             <th>OS N°</th>
@@ -423,7 +423,7 @@
                 <h5>Produtos Com Estoque Mínimo</h5>
             </div>
             <div class="widget-content">
-                <table class="table table-bordered">
+                <table class="table">
                     <thead>
                         <tr>
                             <th>Cod. Item</th>
@@ -485,7 +485,7 @@
                 <h5>Agenda</h5>
             </div>
             <div class="widget-content">
-                <table class="table table-bordered">
+                <table class="table">
 
                     <div id='source-calendar'>
                         <form method="post">
@@ -551,7 +551,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
             <script src="<?= base_url('assets/js/highchart/highcharts.js') ?>"></script>
 
