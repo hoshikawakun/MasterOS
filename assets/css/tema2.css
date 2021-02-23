@@ -71,11 +71,6 @@ a:hover, a:focus {text-decoration: none; color:#33cc66;} /*Verde*/
 input {
     border-radius: 5px !important;
 }
-
-/* Cor da fonte da escrtia interna das Tabelas */
-body{color:#555555;}
-
-
 /* REMOVER BORDAS ENTRE OS ITENS */
 #sidebar > ul > li {border-top: 1px solid #555555;}
 
@@ -121,33 +116,17 @@ body{color:#555555;}
 /*CABEÇALHO E BARCUMB*/
 #header{background-color: #2e363f}
 body{background-color: #2e363f;} /*Cor de fundo do Sistema*/
+body{color:#555555;} /* Cor da fonte da escrtia interna das Tabelas */
 #breadcrumb{background-color: #dddddd} /* Cor de Fubdo da Barra Superior */
 #breadcrumb a{color: #333333;} /* Cor da fonte da escrita da Barra Superior */
 
 
 /*Bordas das Tabelas*/
-
-/*.widget-box {
-	/*background: none repeat scroll 0 0 #f9f9f9; /*Cor Interna*/
-	/*border: 1px solid #ff00ff;/* border-radius:5px; /*Borda Geral*/
-	/*border-left: 1px solid #f00;	/*Borda Lateral Esquerda*/
-	/*border-right: 1px solid #f00;	/*Borda Lateral Direita*/
-	/*border-top: 1px solid #f00;	/*Borda Superior*/
-	/*border-bottom: 0px solid #F00; /*Borda Inferior*/
-	/*clear: both;
-	margin-top: 16px;
-	margin-bottom: 16px;
-	position: relative;
-} */
-
-
-
 /*select, .table-bordered{border-radius:0px;} /*Cantos externos da Tabela Interna*/
 /*select, .table-bordered{border-left: 0px solid #bbbbb2;} /*Borda Lateral Esquerda da Tabela Interna*/
 /*select, .table-bordered{border-right: 0px solid #bbbbb2;} /*Borda Lateral Direita da Tabela Interna*/
 /*select, .table-bordered{border-top: 0px solid #bbbbb2;} /*Borda Superior da Tabela Interna*/
 /*select, .table-bordered{border-bottom: 0px solid #bbbbb2;} /*Borda Inferior da Tabela Interna*/
-
 
 .view_table {border: 1px solid #bbbbb2;} /*Borda Geral da Tabela Interna*/
 .view_table tr td {border: 1px solid #bbbbb2;} /*Cor das Bordas da Tabela Interna*/
@@ -157,14 +136,16 @@ body{background-color: #2e363f;} /*Cor de fundo do Sistema*/
 .view_table th {color: #555555;} /*Cor da escrita do cabeçalho da Tabela Interna*/
 .view_table th {background:#eeeeee;} /*Cor Cabeçalho da Tabela Interna*/
 
+/*.table_w {width:100%;margin-bottom:20px} /**/
+/*.table_w th,.table_w td{padding:8px;line-height:20px;text-align:left;vertical-align:top;border-top:1px solid #ddd} /**/
+/*.table_w th{font-weight:bold} /**/
+/*.table_w thead th{vertical-align:bottom} /**/
+/*.table_w caption+thead tr:first-child th,.table_w caption+thead tr:first-child td,.table_w colgroup+thead tr:first-child th,.table_w colgroup+thead tr:first-child td,.table_w thead:first-child tr:first-child th,.table_w thead:first-child tr:first-child td{border-top:0} /**/
+/*.table_w tbody+tbody{border-top:2px solid #ddd} /**/
+/*.table_w .table_w{background-color:#fff} /**/
 
-.table_w{width:100%;margin-bottom:20px}
-.table_w th,.table_w td{padding:8px;line-height:20px;text-align:left;vertical-align:top;border-top:1px solid #ddd}
-.table_w th{font-weight:bold}
-.table_w thead th{vertical-align:bottom}
-.table_w caption+thead tr:first-child th,.table_w caption+thead tr:first-child td,.table_w colgroup+thead tr:first-child th,.table_w colgroup+thead tr:first-child td,.table_w thead:first-child tr:first-child th,.table_w thead:first-child tr:first-child td{border-top:0}
-.table_w tbody+tbody{border-top:2px solid #ddd}
-.table_w .table_w{background-color:#fff}
+/*.table-mapos{border:1px solid #aaa;border-collapse:separate;*border-collapse:collapse;border-left:0;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px} */
+.table-mapos th,.table-mapos td{border:1px solid #bbbbb2}
 
 /*select, .table-mapos {border: 1px solid #999999;} /*Borda Geral*/
 /*select, .table-mapos {border-radius:0px;} /*Cantos externos da Tabela Interna*/
@@ -176,8 +157,6 @@ body{background-color: #2e363f;} /*Cor de fundo do Sistema*/
 /*.table-mapos{border:1px solid #000;border-collapse:separate;*border-collapse:collapse;border-left:1;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px}
 .table-mapos th, .table-mapos td{border:1px solid #999}*/
 
-
-
 .table {border: 1px solid #bbbbb2;} /*Borda Geral da Tabela Interna*/
 .table tr td {border: 1px solid #bbbbb2;} /*Cor das Bordas da Tabela Interna*/
 .table th {border:1px solid #bbbbb2;}/*Cor das colunas do cabeçalho da Tabela Interna*/
@@ -185,12 +164,44 @@ body{background-color: #2e363f;} /*Cor de fundo do Sistema*/
 .table th {font-size: 10px;} /*Tamanho da escrita do cabeçalho da Tabela Interna*/
 .table th {color: #555555;} /*Cor da escrita do cabeçalho da Tabela Interna*/
 .table th {background:#eeeeee;} /*Cor Cabeçalho da Tabela Interna*/
+
+/*.widget-box {background: none repeat scroll 0 0 #F9F9F9;}  /*Cor Interna*/
+.widget-box {border-top: 0px solid #CDCDCD;} /*Borda Superior*/
+.widget-box {border-bottom: 0px solid #CDCDCD;} /*Borda inferior*/
+.widget-box {border-left: 0px solid #CDCDCD;} /*Borda Lateral Esquerda*/
+.widget-box {border-right: 0px solid #CDCDCD;} /*Borda Lateral Direita*/
+
+.widget_box_Painel {border-top: 0px solid #CDCDCD;} /*Borda Superior*/
+.widget_box_Painel {border-bottom: 0px solid #CDCDCD;} /*Borda inferior*/
+.widget_box_Painel {border-left: 0px solid #CDCDCD;} /*Borda Lateral Esquerda*/
+.widget_box_Painel {border-right: 0px solid #CDCDCD;} /*Borda Lateral Direita*/
+
+
+/*.widget_box_Painel2 {border: 1px solid #bbbbb2;} /*Borda Geral*/
+.widget_box_Painel2 {border-top: 0px solid #CDCDCD;} /*Borda Superior*/
+.widget_box_Painel2 {border-bottom: 1px solid #bbbbb2;} /*Borda inferior*/
+.widget_box_Painel2 {border-left: 1px solid #bbbbb2;} /*Borda Lateral Esquerda*/
+.widget_box_Painel2 {border-right: 1px solid #bbbbb2;} /*Borda Lateral Direita*/
+
+.widget_estatisticas {padding: 1px;}
+
+.widget_box_master_os {border-bottom: 0px solid #bbbbb2;} /*Borda Geral*/
+.widget_box_master_os {border-top: 0px solid #bbbbb2;} /*Borda Superior*/
+.widget_box_master_os {border-bottom: 1px solid #bbbbb2;} /*Borda inferior*/
+.widget_box_master_os {border-left: 1px solid #bbbbb2;} /*Borda Lateral Esquerda*/
+.widget_box_master_os {border-right: 1px solid #bbbbb2;} /*Borda Lateral Direita*/
+.widget_box_master_os {padding: 10px;}
+
 .widget-title, .modal-header, div.dataTables_wrapper .ui-widget-header {background:#eeeeee; } /*Cor do Cabeçalho da Tabela Externa*/
 .widget-title, .modal-header, div.dataTables_wrapper .ui-widget-header {border: 1px solid #bbbbb2; border-radius:1px;} /*Borda geral do Cabeçalho Tabela Externa*/
-.widget-master_os {border-bottom: 1px solid #bbbbb2;} /*Borda Geral*/
-.widget-agenda {padding: 10px;}
-.widget-agenda {border: 1px solid #bbbbb2;}
-.widget-title span.icon {padding: 9px 10px 7px 11px; float: left; border-right:1px solid #bbbbb2;} /*Separadores Tabela Externa*/
+.widget-title, .modal-header, div.dataTables_wrapper .ui-widget-header {height: 35px;} /*tamanho interno do cabeçalho*/
+.widget-title h5 {padding: 12px 10px 7px 11px; color: #555;} /*Cor da escrita do cabeçalho da Tabela Externa*/
+.widget-title span.icon {padding: 8px 10px 7px 11px; float: left; border-right:1px solid #bbbbb2;} /*Separadores Tabela Externa*/
+
+
+
+
+
 .widget-content {padding: 0px;} /*Margem entre a tabela interna e externa*/
 /*tr:hover{ background:#e9e9e9;} span.icon .checker {margin-top: -5px; margin-right: 0;} /*Cor interna da linha da tabela com Mouse Sobre encima*/ 
 
@@ -265,8 +276,8 @@ body{background-color: #2e363f;} /*Cor de fundo do Sistema*/
 	url(images/ui-bg_glass_75_e6e6e6_1x400.png) 50% 50% repeat-x; font-weight: normal; color: #000; } /*Cor dos numeros*/
 	
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
-	border: 1px solid #f00; background: #ffffff /*Cor da borda do dia Selecionado*/
-	url(images/ui-bg_glass_65_ffffff_1x400.png) 50% 50% repeat-x; font-weight: normal; color: #f00; } /*Cor do numero do dia Selecionado*/
+	border: 1px solid #bbbbb2; background: #ffffff /*Cor da borda do dia Selecionado*/
+	url(images/ui-bg_glass_65_ffffff_1x400.png) 50% 50% repeat-x; font-weight: normal; color: #bbbbb2; } /*Cor do numero do dia Selecionado*/
 
 .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
 	border: 1px solid #ffcc00; background: #fbf9ee /*Cor da borda do dia atual*/ 
