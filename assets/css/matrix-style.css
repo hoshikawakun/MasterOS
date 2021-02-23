@@ -523,8 +523,9 @@ hr{ border-top-color:#dadada;}
 .widget-box {
 	background: none repeat scroll 0 0 #F9F9F9;  /*Cor Interna*/
 	border-left: 1px solid #CDCDCD; /*Borda Lateral Esquerda*/
-	border-top: 1px solid #CDCDCD; /*Borda Superior*/
 	border-right: 1px solid #CDCDCD; /*Borda Lateral Direita*/
+	border-top: 1px solid #CDCDCD; /*Borda Superior*/
+	border-bottom: 1px solid #CDCDCD; /*Borda inferior*/
 	clear: both;
 	margin-top: 16px;
 	margin-bottom: 16px; /*Espaço inferior para a Proxima Tabela*/
