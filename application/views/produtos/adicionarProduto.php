@@ -34,7 +34,7 @@
                 </span>
                 <h5>Cadastro de Produto</h5>
             </div>
-            <div class="widget-content nopadding tab-content">
+            <div class="widget_box_Painel2">
                 <?php echo $custom_error; ?>
                 <form action="<?php echo current_url(); ?>" id="formProduto" method="post" class="form-horizontal">
                     <div class="control-group">
