@@ -531,6 +531,19 @@ hr{ border-top-color:#dadada;}
 	margin-bottom: 16px; /*Espaço inferior para a Proxima Tabela*/
 	position: relative;
 }
+
+.widget_box_vizualizar {
+	background: none repeat scroll 0 0 #F9F9F9;  /*Cor Interna*/
+	border-left: 1px solid #CDCDCD; /*Borda Lateral Esquerda*/
+	border-right: 1px solid #CDCDCD; /*Borda Lateral Direita*/
+	border-top: 1px solid #CDCDCD; /*Borda Superior*/
+	border-bottom: 1px solid #CDCDCD; /*Borda inferior*/
+	clear: both;
+	margin-top: 16px;
+	margin-bottom: 16px; /*Espaço inferior para a Proxima Tabela*/
+	position: relative;
+}
+
 .widget-box.widget-calendar, .widget-box.widget-chat {
 	overflow:hidden !important;
 }
@@ -545,6 +558,13 @@ hr{ border-top-color:#dadada;}
 	margin-top: 0;
 	margin-bottom: 0;
 }
+
+.widget_title_vizualizar {
+	background:#efefef; /*COR CABEÇALHO DAS TABELAS*/
+	border-bottom: 1px solid #CDCDCD; /*Borda Inferior Interna Tabela Externa*/
+	height: 36px; /*tamanho altura interna cabeçalho*/
+}
+
 .widget-title, .modal-header, .table th, div.dataTables_wrapper .ui-widget-header {
 	background:#efefef; /*COR CABEÇALHO DAS TABELAS*/
 	border-bottom: 1px solid #CDCDCD; /*Borda Inferior Interna Tabela Externa*/
@@ -605,6 +625,9 @@ hr{ border-top-color:#dadada;}
 .widget-calendar .widget-title .label {
 	margin-right: 190px;
 }
+.widget_content_vusualizar {
+	padding: 10px; /*Margem entre a tabela interna e externa*/
+} 
 .widget-content {
 	padding:10px; /*Margem entre a tabela interna e externa*/
 }
