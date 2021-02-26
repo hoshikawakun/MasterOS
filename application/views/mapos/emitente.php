@@ -136,7 +136,7 @@
 			<td style="width: 25%"><div align="center"><span><b>Logo</b></span> <img src=" <?= $dados[0]->url_logo; ?> " alt="Logo"/></div></td>
             <td style="width: 25%"><div align="center"><span><b>Logo Térmica</b></span><img src=" <?= $dados[0]->url_termica; ?> " alt="Logo Térmica"/></div></td>
             <td>
-	<span style="font-size: 20px; "><br /><b><?= $dados[0]->nome; ?></b></span><br><span>
+	<span style="font-size: 20px; "><b><?= $dados[0]->nome; ?></b></span><br><span>
 	<i class="fas fa-fingerprint" style="margin:5px 1px"></i> <?= $dados[0]->cnpj; ?><br>
     <i class="fas fa-map-marker-alt" style="margin:4px 3px"></i> <?= $dados[0]->rua . ', nº: ' . $dados[0]->numero . ', ' . $dados[0]->bairro . ' - ' . $dados[0]->cidade . ' - ' . $dados[0]->uf; ?><br>
     <i class="fas fa-map-marker-alt" style="margin:4px 3px"></i> <?= 'CEP: ' . $dados[0]->cep; ?><br>
