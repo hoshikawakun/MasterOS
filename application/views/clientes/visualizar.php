@@ -1,5 +1,5 @@
-<div class="widget-box">
-    <div class="widget-title">
+<div class="widget_box_vizualizar">
+    <div class="widget_title_vizualizar">
         <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#tab1">Dados do Cliente</a></li>
             <li><a data-toggle="tab" href="#tab2">Ordens de Serviço</a></li>
@@ -11,10 +11,10 @@
             </div>
         </ul>
     </div>
-    <div class="widget-content tab-content">
+    <div class="widget_content_vusualizar tab-content">
         <div id="tab1" class="tab-pane active" style="min-height: 300px">
             <div class="accordion" id="collapse-group">
-                <div class="accordion-group widget-box">
+                <div class="accordion-group widget_box_vizualizar3">
                     <div class="accordion-heading">
                         <div class="widget-title">
                             <a data-parent="#collapse-group" href="#collapseGOne" data-toggle="collapse">
@@ -23,8 +23,9 @@
                             </a>
                         </div>
                     </div>
+                    
                     <div class="collapse in accordion-body" id="collapseGOne">
-                        <div class="widget-content">
+                        <div class="widget_content_vusualizar widget_box_vizualizar2">
                             <table class="table">
                                 <tbody>
                                 <tr>
@@ -56,7 +57,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="accordion-group widget-box">
+                <div class="accordion-group widget_box_vizualizar3">
                     <div class="accordion-heading">
                         <div class="widget-title">
                             <a data-parent="#collapse-group" href="#collapseGTwo" data-toggle="collapse">
@@ -66,7 +67,7 @@
                         </div>
                     </div>
                     <div class="collapse accordion-body" id="collapseGTwo">
-                        <div class="widget-content">
+                        <div class="widget_content_vusualizar widget_box_vizualizar2">
                             <table class="table">
                                 <tbody>
                                 <tr>
@@ -102,7 +103,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="accordion-group widget-box">
+                <div class="accordion-group widget_box_vizualizar3">
                     <div class="accordion-heading">
                         <div class="widget-title">
                             <a data-parent="#collapse-group" href="#collapseGThree" data-toggle="collapse">
@@ -112,7 +113,7 @@
                         </div>
                     </div>
                     <div class="collapse accordion-body" id="collapseGThree">
-                        <div class="widget-content">
+                        <div class="widget_content_vusualizar widget_box_vizualizar2">
                             <table class="table">
                                 <tbody>
                                 <tr>
@@ -160,8 +161,12 @@
             </div>
         </div>
         <!--Tab 2-->
-        <div id="tab2" class="tab-pane" style="min-height: 300px">
+      <div id="tab2" class="tab-pane" style="min-height: 300px">
             <?php if (!$results) { ?>
+            <div class="widget-title">
+                <span class="icon"><i class="fas fa-diagnoses"></i></span>
+                <h5>Ordens de Serviço</h5>
+            </div>
                 <table class="table">
                     <thead>
                     <tr style="backgroud-color: #2D335B">
@@ -170,7 +175,6 @@
                         <th>Data Final</th>
                         <th>Descricao</th>
                         <th>Defeito</th>
-                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -181,6 +185,10 @@
                 </table>
                 <?php
             } else { ?>
+            <div class="widget-title">
+                <span class="icon"><i class="fas fa-diagnoses"></i></span>
+                <h5>Ordens de Serviço</h5>
+            </div>
                 <table class="table">
                     <thead>
                     <tr style="backgroud-color: #2D335B">
@@ -189,7 +197,6 @@
                         <th>Data Final</th>
                         <th>Descricao</th>
                         <th>Defeito</th>
-                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -198,13 +205,13 @@
                         $dataInicial = date(('d/m/Y'), strtotime($r->dataInicial));
                         $dataFinal = date(('d/m/Y'), strtotime($r->dataFinal));
                         echo '<tr>';
-                        echo '<td>' . $r->idOs . '</td>';
-                        echo '<td>' . $dataInicial . '</td>';
-                        echo '<td>' . $dataFinal . '</td>';
-                        echo '<td>' . $r->descricaoProduto . '</td>';
-                        echo '<td>' . $r->defeito . '</td>';
+                        echo '<td><div align="center">' . $r->idOs . '</td>';
+                        echo '<td><div align="center">' . $dataInicial . '</td>';
+                        echo '<td><div align="center">' . $dataFinal . '</td>';
+                        echo '<td><div align="center">' . $r->descricaoProduto . '</td>';
+                        echo '<td><div align="center">' . $r->defeito . '</td>';
 
-                        echo '<td>';
+                        echo '<td><div align="center">';
                         if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
                             echo '<a href="' . base_url() . 'index.php/os/visualizar/' . $r->idOs . '" style="margin-right: 1%" class="btn tip-top" title="Ver mais detalhes"><i class="fas fa-eye"></i></a>';
                         }
