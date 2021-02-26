@@ -66,14 +66,13 @@
 <!--End-Action boxes-->
 
 <div class="row-fluid" style="margin-top: 0">
-    <!--Serviços Concluidos-->
-    <div class="span12">
-        <div class="widget-box">
+	<!--Serviços Concluidos-->
+    <div class="widget_box_Painel">
             <div class="widget-title">
                 <span class="icon"><i class="fas fa-diagnoses"></i></span>
                 <h5>Serviços Concluidos</h5>
             </div>
-            <div class="widget-content">
+            <div class="widget_content">
                 <table class="table">
                     <thead>
                         <tr>
@@ -116,23 +115,22 @@
                             <?php endforeach ?>
                         <?php else : ?>
                             <tr>
-                                <td colspan="6">Todos os Serviços Cocluidos.</td>
+                                <td colspan="6">Nenhum Serviço Concluido.</td>
                             </tr>
                         <?php endif ?>
                     </tbody>
                 </table>
             </div>
         </div>
-    </div>
     <!--Fim Serviços Concluidos-->
     
     <!--OS Aprovados-->
-    <div class="widget-box">
+    <div class="widget_box_Painel">
             <div class="widget-title">
                 <span class="icon"><i class="fas fa-diagnoses"></i></span>
                 <h5>OS Aprovados</h5>
             </div>
-            <div class="widget-content">
+            <div class="widget_content">
                 <table class="table">
                     <thead>
                         <tr>
@@ -175,22 +173,22 @@
                             <?php endforeach ?>
                         <?php else : ?>
                             <tr>
-                                <td colspan="6">Nenhum Orçamento Aprovado.</td>
+                                <td colspan="6">Nenhuma OS Aprovados.</td>
                             </tr>
                         <?php endif ?>
                     </tbody>
                 </table>
             </div>
         </div>
-    <!--Fim OS Aprovados-->
+    <!--Fim Orçamentos Concluidos-->
     
     <!--Orçamentos Concluidos-->
-    <div class="widget-box">
+    <div class="widget_box_Painel">
             <div class="widget-title">
                 <span class="icon"><i class="fas fa-diagnoses"></i></span>
                 <h5>Orçamentos Concluidos</h5>
             </div>
-            <div class="widget-content">
+            <div class="widget_content">
                 <table class="table">
                     <thead>
                         <tr>
@@ -243,12 +241,12 @@
     <!--Fim Orçamentos Concluidos-->
     
     <!--Em Orçamento-->
-    <div class="widget-box">
+    <div class="widget_box_Painel">
             <div class="widget-title">
                 <span class="icon"><i class="fas fa-diagnoses"></i></span>
                 <h5>Em Orçamento</h5>
             </div>
-            <div class="widget-content">
+            <div class="widget_content">
                 <table class="table">
                     <thead>
                         <tr>
@@ -301,12 +299,12 @@
     <!--Fim Em Orçamento-->
     
     <!--Aguardando Peças-->
-    <div class="widget-box">
+    <div class="widget_box_Painel">
             <div class="widget-title">
                 <span class="icon"><i class="fas fa-diagnoses"></i></span>
                 <h5>Aguardando Peças</h5>
             </div>
-            <div class="widget-content">
+            <div class="widget_content">
                 <table class="table">
                     <thead>
                         <tr>
@@ -359,12 +357,12 @@
     <!--Fim Aguardando Peças-->
     
     <!--Entregue - A Receber-->
-    <div class="widget-box">
+    <div class="widget_box_Painel">
             <div class="widget-title">
                 <span class="icon"><i class="fas fa-diagnoses"></i></span>
                 <h5>Entregue - A Receber</h5>
             </div>
-            <div class="widget-content">
+            <div class="widget_content">
                 <table class="table">
                     <thead>
                         <tr>
@@ -417,12 +415,12 @@
     <!--Fim Entregue - A Receber-->
     
     <!--Produtos Com Estoque Mínimo-->
-    <div class="widget-box">
+    <div class="widget_box_Painel">
             <div class="widget-title">
                 <span class="icon"><i class="fas fa-shopping-bag"></i></span>
                 <h5>Produtos Com Estoque Mínimo</h5>
             </div>
-            <div class="widget-content">
+            <div class="widget_content">
                 <table class="table">
                     <thead>
                         <tr>
@@ -478,14 +476,14 @@
         </div>
     <!--Fim Produtos Com Estoque Mínimo-->
     
-    <!--Agenda-->
+    <!-- Agenda -->
     <div class="widget-box">
             <div class="widget-title">
                 <span class="icon"><i class="fas fa-shopping-bag"></i></span>
                 <h5>Agenda</h5>
             </div>
-            <div class="widget-content">
-                <table class="table">
+            <div class="widget_box_master_os">
+                <table class="table table-mapos">
 
                     <div id='source-calendar'>
                         <form method="post">
@@ -519,16 +517,14 @@
                 </table>
             </div>
         </div>
-    <!--Fim Agenda-->
-</div>
-
+    <!-- Fim Agenda -->
+    
+    <!-- Balanço Mensal do Ano -->
 <?php if ($estatisticas_financeiro != null) {
     if ($estatisticas_financeiro->total_receita != null || $estatisticas_financeiro->total_despesa != null || $estatisticas_financeiro->total_receita_pendente != null || $estatisticas_financeiro->total_despesa_pendente != null) {  ?>
 
         <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'rFinanceiro')) : ?>
             <div class="row-fluid" style="margin-top: 0">
-
-                <div class="row-fluid" style="margin-top: 0;">
                     <div class="span12">
                         <div class="widget-box">
                             <div class="widget-title">
@@ -541,7 +537,7 @@
                                     <button type="submit" class="btn-xs" style="height: 1.8rem; margin-bottom: 0; margin-top: 0.2rem">Pesquisar</button>
                                 </form>
                             </div>
-                            <div class="widget-content">
+                            <div class="widget_box_master_os">
                                 <div class="row-fluid">
                                     <div class="span12">
                                         <div id="chart-vendas-mes1" style=""></div>
@@ -645,42 +641,39 @@
         <?php endif ?>
 <?php  }
 } ?>
+    <!--Fim Balanço Mensal do Ano -->
+
+</div>
 
 <?php if ($estatisticas_financeiro != null) {
     if ($estatisticas_financeiro->total_receita != null || $estatisticas_financeiro->total_despesa != null || $estatisticas_financeiro->total_receita_pendente != null || $estatisticas_financeiro->total_despesa_pendente != null) {  ?>
 
         <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'rFinanceiro')) : ?>
+        
             <div class="row-fluid" style="margin-top: 0">
-
-                <div class="span4">
-
-                    <div class="widget-box">
+            	<div class="span4">
+                	<div class="widget-box">
                         <div class="widget-title"><span class="icon"><i class="fas fa-hand-holding-usd"></i></span>
                             <h5>Estatísticas financeiras - Realizado</h5>
                         </div>
-                        <div class="widget-content">
+                        <div class="widget_estatisticas widget_box_Painel2">
                             <div class="row-fluid">
-                                <div class="span12">
-                                    <div id="chart-financeiro" style=""></div>
+                                    <div id="chart-financeiro" style="">
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="span4">
-
-                    <div class="widget-box">
+                	<div class="widget-box">
                         <div class="widget-title"><span class="icon"><i class="fas fa-hand-holding-usd"></i></span>
                             <h5>Estatísticas financeiras - Pendente</h5>
                         </div>
-                        <div class="widget-content">
+                        <div class="widget_estatisticas widget_box_Painel2">
                             <div class="row-fluid">
-                                <div class="span12">
-                                    <div id="chart-financeiro2" style=""></div>
+                                    <div id="chart-financeiro2" style="">
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -688,17 +681,14 @@
 
 
                 <div class="span4">
-
-                    <div class="widget-box">
+                	 <div class="widget-box">
                         <div class="widget-title"><span class="icon"><i class="fas fa-cash-register"></i></span>
                             <h5>Total em caixa / Previsto</h5>
                         </div>
-                        <div class="widget-content">
+                        <div class="widget_estatisticas widget_box_Painel2">
                             <div class="row-fluid">
-                                <div class="span12">
-                                    <div id="chart-financeiro-caixa" style=""></div>
+                                    <div id="chart-financeiro-caixa" style="">
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -710,6 +700,8 @@
 <?php  }
 } ?>
 
+<div class="row-fluid" style="margin-top: 0">
+<!-- Estatísticas de OS -->
 <?php if ($os != null && $this->permission->checkPermission($this->session->userdata('permissao'), 'rOs')) { ?>
     <div class="row-fluid" style="margin-top: 0">
 
@@ -719,7 +711,7 @@
                 <div class="widget-title"><span class="icon"><i class="fas fa-diagnoses"></i></span>
                     <h5>Estatísticas de OS</h5>
                 </div>
-                <div class="widget-content">
+                <div class="widget_estatisticas widget_box_Painel2">
                     <div class="row-fluid">
                         <div class="span12">
                             <div id="chart-os" style=""></div>
@@ -731,8 +723,9 @@
         </div>
     </div>
 <?php } ?>
+<!-- Fim Estatísticas de OS -->
 
-
+<!-- Estatísticas do Sistema -->
 <div class="row-fluid" style="margin-top: 0">
 
     <div class="span12">
@@ -741,7 +734,7 @@
             <div class="widget-title"><span class="icon"><i class="fas fa-signal"></i></span>
                 <h5>Estatísticas do Sistema</h5>
             </div>
-            <div class="widget-content">
+            <div class="widget_estatisticas widget_box_Painel2">
                 <div class="row-fluid">
                     <div class="span12">
                         <ul class="site-stats">
@@ -762,6 +755,8 @@
             </div>
         </div>
     </div>
+</div>
+<!-- Fim Estatísticas do Sistema -->
 </div>
 
 <?php if ($os != null && $this->permission->checkPermission($this->session->userdata('permissao'), 'rOs')) { ?>
