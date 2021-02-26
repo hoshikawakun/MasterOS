@@ -12,7 +12,7 @@
                     </span>
                     <h5>Dados do Emitente</h5>
                 </div>
-                <div class="widget-content ">
+                <div class="widget_content ">
                     <div class="alert alert-danger">Nenhum dado foi cadastrado até o momento. Essas informações
                         estarão disponíveis na tela de impressão de OS.</div>
                     <a href="#modalCadastrar" data-toggle="modal" role="button" class="btn btn-success">Cadastrar Dados</a>
@@ -120,23 +120,23 @@
 } else { ?>
 
     <div class="row-fluid" style="margin-top:0">
-        <div class="span12">
-            <div class="widget-box">
-                <div class="widget-title">
-                    <span class="icon">
-                        <i class="fas fa-align-justify"></i>
-                    </span>
-                    <h5>Dados do Emitente</h5>
-                </div>
-                <div class="widget-content ">
-                    <div class="alert alert-info">Os dados abaixo serão utilizados no cabeçalho das telas de impressão.</div>
-                    <table width="100%" class="table">
-                        <tbody>
-                            <tr>
-			<td style="width: 25%"><div align="center"><span><b>Logo</b></span><br /> <img src=" <?= $dados[0]->url_logo; ?> " alt="Logo"/></div></td>
-            <td style="width: 25%"><div align="center"><span><b>Logo Térmica</b></span><br /> <img src=" <?= $dados[0]->url_termica; ?> " alt="Logo Térmica"/></div></td>
+        <div class="alert alert-info">Os dados abaixo serão utilizados no cabeçalho das telas de impressão.</div>
+
+			<div class="row-fluid" style="margin-top:0">
+			<div class="span12">
+			<div class="widget_box_Painel">
+			<div class="widget-title">
+			<span class="icon"><i class="fas fa-align-justify"></i></span>
+			<h5>Dados do Emitente</h5>
+			</div>
+			<div class="widget_content">
+			<table width="100%" class="table_master_os">
+			<tbody>
+  			<tr>
+			<td style="width: 25%"><div align="center"><span><b>Logo</b></span> <img src=" <?= $dados[0]->url_logo; ?> " alt="Logo"/></div></td>
+            <td style="width: 25%"><div align="center"><span><b>Logo Térmica</b></span><img src=" <?= $dados[0]->url_termica; ?> " alt="Logo Térmica"/></div></td>
             <td>
-	<span style="font-size: 20px; "><b><?= $dados[0]->nome; ?></b></span><br><span>
+	<span style="font-size: 20px; "><br /><b><?= $dados[0]->nome; ?></b></span><br><span>
 	<i class="fas fa-fingerprint" style="margin:5px 1px"></i> <?= $dados[0]->cnpj; ?><br>
     <i class="fas fa-map-marker-alt" style="margin:4px 3px"></i> <?= $dados[0]->rua . ', nº: ' . $dados[0]->numero . ', ' . $dados[0]->bairro . ' - ' . $dados[0]->cidade . ' - ' . $dados[0]->uf; ?><br>
     <i class="fas fa-map-marker-alt" style="margin:4px 3px"></i> <?= 'CEP: ' . $dados[0]->cep; ?><br>
@@ -144,15 +144,22 @@
     <span><i class="fas fa-phone-alt" style="margin:5px 1px"></i> <?=  $dados[0]->telefone; ?></span>
     							</td>
                             </tr>
-                        </tbody>
-                    </table>
+                            </tbody>
+  <tr>
+    <td colspan="3">
+      <div align="center"  style="padding: 10px;" ><a href="#modalAlterar" data-toggle="modal" role="button" class="btn btn-primary">Atualizar Dados</a>
+        <a href="#modalLogo" data-toggle="modal" role="button" class="btn btn-inverse">Atualizar Logo</a>
+        <a href="#modalTermica" data-toggle="modal" role="button" class="btn btn-inverse">Atualizar Logo Termica</a></div></td>
+  </tr>
+</table>
 
-                    <a href="#modalAlterar" data-toggle="modal" role="button" class="btn btn-primary">Atualizar Dados</a>
-                    <a href="#modalLogo" data-toggle="modal" role="button" class="btn btn-inverse">Atualizar Logo</a>
-                    <a href="#modalTermica" data-toggle="modal" role="button" class="btn btn-inverse">Atualizar Logo Termica</a>
-                </div>
-            </div>
-        </div>
+
+
+
+</div>
+</div>
+</div>
+</div>
     </div>
 
 
