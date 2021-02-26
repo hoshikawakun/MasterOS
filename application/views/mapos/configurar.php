@@ -9,25 +9,27 @@
 <script type="text/javascript" src="<?php echo base_url() ?>assets/trumbowyg/langs/pt_br.js"></script>
 
 <div class="row-fluid" style="margin-top:0">
-    <div class="span12">
-        <div class="widget-box">
+			<div class="span12">
+			
             <div class="widget-title">
             <span class="icon">
             <i class="fas fa-wrench"></i>
             </span>
                 <h5>Configurações do Sistema</h5>
             </div>
-            <ul class="nav nav-tabs">
+            <div class="widget_box_Painel2"> <!-- Borda Geral -->
+            <ul class="nav nav-tabs ">
                 <li class="active"><a data-toggle="tab" href="#home">Gerais</a></li>
+                <li><a data-toggle="tab" href="#menu5">Misc</a></li>
                 <li><a data-toggle="tab" href="#menu1">Financeiro</a></li>
                 <li><a data-toggle="tab" href="#menu2">Termo de Uso OS</a></li>
            <!-- <li><a data-toggle="tab" href="#menu3">Notificações</a></li> -->
                 <li><a data-toggle="tab" href="#menu4">Mensagem WhatsApp</a></li>
             </ul>
             <form action="<?php echo current_url(); ?>" id="formConfigurar" method="post" class="form-horizontal">
-                <div class="widget-content nopadding tab-content">
-                    <?php echo $custom_error; ?>
-                    <!-- Menu Gerais -->
+            <div class="widget_content nopadding tab-content">
+            <?php echo $custom_error; ?>
+            <!-- Menu Gerais -->
                     <div id="home" class="tab-pane fade in active">
                         <div class="control-group">
                             <label for="app_name" class="control-label">Nome do Sistema</label>
@@ -44,43 +46,6 @@
                                     <option value="white" <?= $configuration['app_theme'] == 'white' ? 'selected' : ''; ?> >Neve</option>
                                 </select>
                                 <span class="help-inline">Selecione o tema que que deseja usar no sistema</span>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                        <label for="per_page" class="control-label">Registros por Página</label>
-                        <div class="controls">
-                            <select name="per_page" id="theme">
-                                <option value="10" <?= $configuration['per_page'] == '10' ? 'selected' : ''; ?> >10</option>
-                                <option value="20" <?= $configuration['per_page'] == '20' ? 'selected' : ''; ?> >20</option>
-                                <option value="50" <?= $configuration['per_page'] == '50' ? 'selected' : ''; ?> >50</option>
-                                <option value="75" <?= $configuration['per_page'] == '75' ? 'selected' : ''; ?> >75</option>
-                                <option value="100" <?= $configuration['per_page'] == '100' ? 'selected' : ''; ?> >100</option>
-                                <option value="150" <?= $configuration['per_page'] == '150' ? 'selected' : ''; ?> >150</option>
-                                <option value="200" <?= $configuration['per_page'] == '200' ? 'selected' : ''; ?> >200</option>
-                                <option value="500">500</option>
-                                <option value="1000" <?= $configuration['per_page'] == '1000' ? 'selected' : ''; ?> >1000</option>
-                            </select>
-                            <span class="help-inline">Selecione quantos registros deseja exibir nas listas</span>
-                        </div>
-                    </div>
-                    <div class="control-group">
-                            <label for="control_estoque" class="control-label">Controlar Estoque</label>
-                            <div class="controls">
-                                <select name="control_estoque" id="control_estoque">
-                                    <option value="1">Sim</option>
-                                    <option value="0" <?= $configuration['control_estoque'] == '0' ? 'selected' : ''; ?> >Não</option>
-                                </select>
-                                <span class="help-inline">Ativar ou desativar o controle de estoque.</span>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label for="control_datatable" class="control-label">Visualização em Tabelas Dinâmicas</label>
-                            <div class="controls">
-                                <select name="control_datatable" id="control_datatable">
-                                    <option value="1">Sim</option>
-                                    <option value="0" <?= $configuration['control_datatable'] == '0' ? 'selected' : ''; ?> >Não</option>
-                                </select>
-                                <span class="help-inline">Ativar ou desativar a visualização em tabelas dinâmicas</span>
                             </div>
                         </div>
                         <div class="control-group">
@@ -116,6 +81,59 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Fim Menu Gerais -->
+                    
+                    <!-- Menu Misc -->
+<div id="menu5" class="tab-pane fade">
+                        <div class="control-group">
+                        <label for="per_page" class="control-label">Registros por Página</label>
+                        <div class="controls">
+                            <select name="per_page" id="theme">
+                                <option value="10" <?= $configuration['per_page'] == '10' ? 'selected' : ''; ?> >10</option>
+                                <option value="20" <?= $configuration['per_page'] == '20' ? 'selected' : ''; ?> >20</option>
+                                <option value="30" <?= $configuration['per_page'] == '30' ? 'selected' : ''; ?> >30</option>
+                                <option value="50" <?= $configuration['per_page'] == '50' ? 'selected' : ''; ?> >50</option>
+                                <option value="75" <?= $configuration['per_page'] == '75' ? 'selected' : ''; ?> >75</option>
+                                <option value="100" <?= $configuration['per_page'] == '100' ? 'selected' : ''; ?> >100</option>
+                                <option value="150" <?= $configuration['per_page'] == '150' ? 'selected' : ''; ?> >150</option>
+                                <option value="200" <?= $configuration['per_page'] == '200' ? 'selected' : ''; ?> >200</option>
+                                <option value="300" <?= $configuration['per_page'] == '300' ? 'selected' : ''; ?> >300</option>
+                                <option value="500" <?= $configuration['per_page'] == '500' ? 'selected' : ''; ?> >500</option>
+                                <option value="750" <?= $configuration['per_page'] == '750' ? 'selected' : ''; ?> >750</option>
+                                <option value="1000" <?= $configuration['per_page'] == '1000' ? 'selected' : ''; ?> >1000</option>
+                            </select>
+                            <span class="help-inline">Selecione quantos registros deseja exibir nas listas</span>
+                        </div>
+                    </div>
+                        <div class="control-group">
+                            <label for="control_estoque" class="control-label">Controlar Estoque</label>
+                            <div class="controls">
+                                <select name="control_estoque" id="control_estoque">
+                                    <option value="1">Sim</option>
+                                    <option value="0" <?= $configuration['control_estoque'] == '0' ? 'selected' : ''; ?> >Não</option>
+                                </select>
+                                <span class="help-inline">Ativar ou desativar o controle de estoque.</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="control_datatable" class="control-label">Visualização em Tabelas Dinâmicas</label>
+                            <div class="controls">
+                                <select name="control_datatable" id="control_datatable">
+                                    <option value="1">Sim</option>
+                                    <option value="0" <?= $configuration['control_datatable'] == '0' ? 'selected' : ''; ?> >Não</option>
+                                </select>
+                                <span class="help-inline">Ativar ou desativar a visualização em tabelas dinâmicas</span>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <div class="span8">
+                                <div class="span9">
+                                    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fim Menu Misc -->
                     
                     <!-- Menu Financeiro -->
                     <div id="menu1" class="tab-pane fade">
@@ -154,6 +172,7 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Fim Menu Financeiro -->
                     
                     <!-- Menu Termo de Uso OS -->
                     <div id="menu2" class="tab-pane fade">
@@ -170,6 +189,7 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Fim Menu Termo de Uso OS -->
                     
                     <!-- Menu Notificações -->
                     <div id="menu3" class="tab-pane fade">
@@ -195,6 +215,7 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Fim Menu Notificações -->
                     
                     <!-- Menu Mensagem WhatsApp -->
                     <div id="menu4" class="tab-pane fade">
@@ -226,10 +247,15 @@
                           </div>
                       </div>
                   </div>
-                    </div>
-                 </div>
-              </div>
-           </div>
+                  <!-- Fim Menu Mensagem WhatsApp -->
+</div>
+
+
+
+
+
+
+
 <!-- Modal -->
 <div id="modal-confirmaratualiza" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="<?php echo base_url() ?>index.php/clientes/excluir" method="post">
