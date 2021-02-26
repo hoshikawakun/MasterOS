@@ -40,6 +40,7 @@
                                 class="fas fa-arrow-left"></i> Voltar</a>
                 </div>
             </div>
+            <div class="widget_box_Painel2">
             <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#home">Informações Pessoais</a></li>
                 <li><a data-toggle="tab" href="#menu2">Endereço</a></li>
@@ -167,7 +168,7 @@
                         <div class="form-actions">
                             <div class="span12">
                                 <div class="span6 offset3">
-                                    <button type="submit" class="btn btn-success">Salvar</button>
+                                    <button type="submit" class="btn btn-primary">Salvar</button>
                                 </div>
                             </div>
                         </div>
@@ -225,11 +226,12 @@
                         <div class="form-actions">
                             <div class="span12">
                                 <div class="span6 offset3">
-                                    <button type="submit" class="btn btn-success">Salvar</button>
+                                    <button type="submit" class="btn btn-primary">Salvar</button>
                                 </div>
                             </div>
                         </div>
             </form>
+            </div>
         </div>
     </div>
 </div>
