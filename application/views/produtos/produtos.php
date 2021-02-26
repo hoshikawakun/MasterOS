@@ -19,7 +19,7 @@
         </span>
         <h5>Produtos</h5>
     </div>
-    <div class="widget-content nopadding tab-content">
+    <div class="widget_content nopadding tab-content">
         <table id="tabela" class="table">
             <thead>
             <tr style="backgroud-color: #2D335B">
@@ -71,7 +71,7 @@
 <!-- Modal -->
 <div id="modal-excluir" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="<?php echo base_url() ?>index.php/produtos/excluir" method="post">
-        <div class="modal-header">
+        <div class="modal_header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             <h5 id="myModalLabel"><i class="fas fa-trash-alt"></i> Excluir Produto</h5>
         </div>
@@ -87,9 +87,9 @@
 </div>
 
 <!-- Modal Estoque -->
-<div id="atualizar-estoque" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="atualizar-estoque" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="<?php echo base_url() ?>index.php/produtos/atualizar_estoque" method="post" id="formEstoque">
-        <div class="modal-header">
+        <div class="modal_header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             <h5 id="myModalLabel"><i class="fas fa-plus-square"></i> Atualizar Estoque</h5>
         </div>
@@ -109,7 +109,7 @@
                 </div>
             </div>
         </div>
-        <div class="modal-footer">
+        <div class="form-actions">
             <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
             <button class="btn btn-primary">Atualizar</button>
         </div>
