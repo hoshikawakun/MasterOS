@@ -18,8 +18,8 @@
                 <span class="icon"><i class="fas fa-diagnoses"></i></span>
                 <h5>Ordens de Serviço</h5>
             </div>
-            <div class="widget-content">
-                <table class="table table">
+            <div class="widget_content">
+                <table class="table">
                     <thead>
                         <tr style="backgroud-color: #2D335B">
                             <th>OS N°</th>
@@ -38,10 +38,10 @@
                             echo '<tr><td colspan="7">Nenhuma os foi encontrado.</td></tr>';
                         }
                         foreach ($os as $r) {
-							$DescricaoShort = mb_strimwidth(strip_tags($r->descricaoProduto), 0, 25, "...");
-							$defeitoShort = mb_strimwidth(strip_tags($r->defeito), 0, 25, "...");
                             $dataInicial = date(('d/m/Y'), strtotime($r->dataInicial));
                             $dataFinal = date(('d/m/Y'), strtotime($r->dataFinal));
+							$descricaoShort = mb_strimwidth(strip_tags($r->descricaoProduto), 0, 25, "...");
+							$defeitoShort = mb_strimwidth(strip_tags($r->defeito), 0, 25, "...");
 							switch ($r->status) {
 				case 'Orçamento':
                     $cor = '#CCCC00';
@@ -104,7 +104,7 @@
                             echo '<tr>';
                             echo '<td><div align="center">' . $r->idOs . '</div></td>';
                             echo '<td><div align="center">' . $dataInicial . '</div></td>';
-							echo '<td>' . $DescricaoShort . '</td>';
+							echo '<td>' . $descricaoShort . '</td>';
                             echo '<td>' . $defeitoShort . '</td>';
 							echo '<td><div align="center">' . $r->serial . '</div></td>';
                             echo '<td><div align="center"><span class="badge" style="background-color: ' . $cor . '; border-color: ' . $cor . '">' . $r->status . '</span></div></td>';
@@ -140,11 +140,11 @@
                 <span class="icon"><i class="fas fa-shopping-bag"></i></span>
                 <h5>Produtos</h5>
             </div>
-            <div class="widget-content">
+            <div class="widget_content">
                 <table class="table">
                         <thead>
                             <tr style="backgroud-color: #2D335B">
-                                <th>SKU</th>
+                                <th>Cod. Produto</th>
                                 <th>Cod. Barras</th>
                                 <th>Nome</th>
                                 <th>Preço</th>
@@ -157,10 +157,11 @@
                                 echo '<tr><td colspan="5">Nenhum produto foi encontrado.</td></tr>';
                             }
                             foreach ($produtos as $r) {
+								$descricaoShort = mb_strimwidth(strip_tags($r->descricao), 0, 50, "...");
                                 echo '<tr>';
                                 echo '<td><div align="center">' . $r->idProdutos . '</div></td>';
 								echo '<td><div align="center">' . $r->codDeBarra . '</div></td>';
-                                echo '<td>' . $r->descricao . '</td>';
+                                echo '<td>' . $descricaoShort . '</td>';
                                 echo '<td><div align="center">' . $r->precoVenda . '</div></td>';
                                 echo '<td><div align="center">';
                                 if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vProduto')) {
@@ -188,7 +189,7 @@
                 <span class="icon"><i class="fas fa-user"></i></span>
                 <h5>Clientes</h5>
             </div>
-            <div class="widget-content">
+            <div class="widget_content">
                 <table class="table">
                         <thead>
                             <tr>
@@ -239,7 +240,7 @@
                 <span class="icon"><i class="fas fa-wrench"></i></span>
                 <h5>Serviços</h5>
             </div>
-            <div class="widget-content">
+            <div class="widget_content">
                 <table class="table">
                     <thead>
                         <tr style="backgroud-color: #2D335B">
