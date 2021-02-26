@@ -144,26 +144,24 @@ body{color:#555555;} /* Cor da fonte da escrtia interna das Tabelas */
 /*.table_w tbody+tbody{border-top:2px solid #ddd} /**/
 /*.table_w .table_w{background-color:#fff} /**/
 
-/*.table-mapos{border:1px solid #aaa;border-collapse:separate;*border-collapse:collapse;border-left:0;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px} */
-.table-mapos th,.table-mapos td{border:1px solid #bbbbb2}
+/*.table_master_os{border:1px solid #f00;border-collapse:separate;*border-collapse:collapse;border-left:0;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px}*/
+/*.table_master_os th,.table_master_os td{border:1px solid #f00}*/
 
-/*select, .table-mapos {border: 1px solid #999999;} /*Borda Geral*/
-/*select, .table-mapos {border-radius:0px;} /*Cantos externos da Tabela Interna*/
-/*select, .table-mapos {border-left: 1px solid #999999;} /*Borda Lateral Esquerda*/
-/*select, .table-mapos {border-right: 1px solid #999999;} /*Borda Lateral Direita*/
-/*select, .table-mapos {border-top: 1px solid #999999;} /*Borda Superior*/
-/*select, .table-mapos {border-bottom: 1px solid #999999;} /*Borda Inferior*/
+.table_master_os td {vertical-align:top;}
+.table_master_os td {border-right: 1px solid #f00;}
+.table_master_os td {border-left: 1px solid #f00;}
+.table_master_os td {border-bottom: 1px solid #f00;}
 
-/*.table-mapos{border:1px solid #000;border-collapse:separate;*border-collapse:collapse;border-left:1;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px}
-.table-mapos th, .table-mapos td{border:1px solid #999}*/
 
-.table {border: 1px solid #bbbbb2;} /*Borda Geral da Tabela Interna*/
-.table tr td {border: 1px solid #bbbbb2;} /*Cor das Bordas da Tabela Interna*/
-.table th {border:1px solid #bbbbb2;}/*Cor das colunas do cabeçalho da Tabela Interna*/
+.table {border-left: 1px solid #f00;} /*Borda Geral da Tabela Interna*/
+.table {border-right: 1px solid #f00;} /*Borda Geral da Tabela Interna*/
+.table {border-bottom: 1px solid #f00;} /*Borda Geral da Tabela Interna*/
+.table tr td {border: 1px solid #f00;} /*Cor das Bordas da Tabela Interna*/
+.table th {border:1px solid #f00;}/*Cor das colunas do cabeçalho da Tabela Interna*/
 .table th {text-align:center padding: 5px 10px 2px;} /*Alinhamento da escrita do cabeçalho da Tabela Interna*/
 .table th {font-size: 10px;} /*Tamanho da escrita do cabeçalho da Tabela Interna*/
-.table th {color: #555555;} /*Cor da escrita do cabeçalho da Tabela Interna*/
-.table th {background:#eeeeee;} /*Cor Cabeçalho da Tabela Interna*/
+.table th {color: #f00;} /*Cor da escrita do cabeçalho da Tabela Interna*/
+.table th {background:#ffff;} /*Cor Cabeçalho da Tabela Interna*/
 
 /*.widget-box {background: none repeat scroll 0 0 #F9F9F9;}  /*Cor Interna*/
 .widget-box {border-top: 0px solid #CDCDCD;} /*Borda Superior*/
@@ -175,34 +173,65 @@ body{color:#555555;} /* Cor da fonte da escrtia interna das Tabelas */
 .widget_box_Painel {border-bottom: 0px solid #CDCDCD;} /*Borda inferior*/
 .widget_box_Painel {border-left: 0px solid #CDCDCD;} /*Borda Lateral Esquerda*/
 .widget_box_Painel {border-right: 0px solid #CDCDCD;} /*Borda Lateral Direita*/
+/*.widget_box_Painel {border: 1px solid #CDCDCD;} /*Borda Lateral Direita*/
 
+.widget_box_Painel4 {border: 1px solid #f00;}/**/
 
-/*.widget_box_Painel2 {border: 1px solid #bbbbb2;} /*Borda Geral*/
 .widget_box_Painel2 {border-top: 0px solid #CDCDCD;} /*Borda Superior*/
-.widget_box_Painel2 {border-bottom: 1px solid #bbbbb2;} /*Borda inferior*/
-.widget_box_Painel2 {border-left: 1px solid #bbbbb2;} /*Borda Lateral Esquerda*/
-.widget_box_Painel2 {border-right: 1px solid #bbbbb2;} /*Borda Lateral Direita*/
+.widget_box_Painel2 {border-bottom: 1px solid #f00;} /*Borda inferior*/
+.widget_box_Painel2 {border-left: 1px solid #f00;} /*Borda Lateral Esquerda*/
+.widget_box_Painel2 {border-right: 1px solid #f00;} /*Borda Lateral Direita*/
+
+/* Cor da borda menu interno de navegação */
+.nav-tabs{border-bottom:1px solid #f00}
+.nav-tabs>li>a:hover,.nav-tabs>li>a:focus{border-color:#f00 #f00 #f00}/**/
+.nav-tabs>.active>a,.nav-tabs>.active>a:hover,.nav-tabs>.active>a:focus{border:1px solid #f00; border-bottom-color:transparent;}/**/
+.form-actions {border-top:1px solid #f00;}/**/
+/* Fim Cor da borda menu interno de navegação */
+
+hr{ border-top-color:#f00;}
+
+/*.widget_box {
+/*.widget_box {border-top: 0px solid #bbbbb2;} /*Borda Superior*/
+/*.widget_box {border-bottom: 1px solid #bbbbb2;} /*Borda inferior*/
+/*.widget_box {border-left: 1px solid #bbbbb2;} /*Borda Lateral Esquerda*/
+/*.widget_box {border-right: 1px solid #bbbbb2;} /*Borda Lateral Direita*/
+
+.widget_box {
+	background: none repeat scroll 0 0 #f9f9f9;  /*Cor Interna*/
+	border: 1px solid #bbbbb2; /*Borda Geral*/
+	/*border-left: 1px solid #bbbbb2; /*Borda Lateral Esquerda*/
+	/*border-right: 1px solid #bbbbb2; /*Borda Lateral Direita*/
+	/*border-top: 1px solid #bbbbb2; /*Borda Superior*/
+	/*border-bottom: 1px solid #bbbbb2; /*Borda inferior*/
+	clear: both;
+	margin-top: 16px;
+	margin-bottom: 16px; /*Espaço inferior para a Proxima Tabela*/
+	position: relative;
+}
 
 .widget_estatisticas {padding: 1px;}
 
 .widget_box_master_os {border-bottom: 0px solid #bbbbb2;} /*Borda Geral*/
 .widget_box_master_os {border-top: 0px solid #bbbbb2;} /*Borda Superior*/
-.widget_box_master_os {border-bottom: 1px solid #bbbbb2;} /*Borda inferior*/
-.widget_box_master_os {border-left: 1px solid #bbbbb2;} /*Borda Lateral Esquerda*/
-.widget_box_master_os {border-right: 1px solid #bbbbb2;} /*Borda Lateral Direita*/
+.widget_box_master_os {border-bottom: 1px solid #f00;} /*Borda inferior*/
+.widget_box_master_os {border-left: 1px solid #f00;} /*Borda Lateral Esquerda*/
+.widget_box_master_os {border-right: 1px solid #f00;} /*Borda Lateral Direita*/
 .widget_box_master_os {padding: 10px;}
 
 .widget-title, .modal-header, div.dataTables_wrapper .ui-widget-header {background:#eeeeee; } /*Cor do Cabeçalho da Tabela Externa*/
-.widget-title, .modal-header, div.dataTables_wrapper .ui-widget-header {border: 1px solid #bbbbb2; border-radius:1px;} /*Borda geral do Cabeçalho Tabela Externa*/
+.widget-title, .modal-header, div.dataTables_wrapper .ui-widget-header {border: 1px solid #f00; border-radius:1px;} /*Borda geral do Cabeçalho Tabela Externa*/
 .widget-title, .modal-header, div.dataTables_wrapper .ui-widget-header {height: 35px;} /*tamanho interno do cabeçalho*/
 .widget-title h5 {padding: 12px 10px 7px 11px; color: #555;} /*Cor da escrita do cabeçalho da Tabela Externa*/
-.widget-title span.icon {padding: 8px 10px 7px 11px; float: left; border-right:1px solid #bbbbb2;} /*Separadores Tabela Externa*/
+.widget-title span.icon {padding: 8px 10px 7px 11px; float: left; border-right:1px solid #f00;} /*Separadores Tabela Externa*/
 
 
 
 
 
 .widget-content {padding: 0px;} /*Margem entre a tabela interna e externa*/
+.widget_content {padding: 0px;} /*Margem entre a tabela interna e externa*/
+.widget_content_vusualizar {padding: 10px;} /*Margem entre a tabela interna e externa*/
 /*tr:hover{ background:#e9e9e9;} span.icon .checker {margin-top: -5px; margin-right: 0;} /*Cor interna da linha da tabela com Mouse Sobre encima*/ 
 
 /* RELOGIO */
@@ -284,3 +313,42 @@ body{color:#555555;} /* Cor da fonte da escrtia interna das Tabelas */
 	url(images/ui-bg_glass_55_fbf9ee_1x400.png) 50% 50% repeat-x; color: #000000; } /*Cor do numero do dia atual*/
 
 
+/*----------------------------------*/
+/* Pag Visualizar */
+
+.widget_box_vizualizar {
+	background: none repeat scroll 0 0 #F9F9F9;  /*Cor Interna*/
+	border-left: 1px solid #f00; /*Borda Lateral Esquerda*/
+	border-right: 1px solid #f00; /*Borda Lateral Direita*/
+	border-top: 1px solid #f00; /*Borda Superior*/
+	border-bottom: 1px solid #f00; /*Borda inferior*/
+	border-radius: 0px 0px 5px 5px;
+	clear: both;
+	margin-top: 16px;
+	margin-bottom: 16px; /*Espaço inferior para a Proxima Tabela*/
+	position: relative;
+}
+
+.widget_title_vizualizar .buttons {
+	float: right;
+	margin: 8px 10px 0 0;
+}
+
+.widget_box_vizualizar3 {
+	background: none repeat scroll 0 0 #F9F9F9;  /*Cor Interna*/
+	border-left: 0px solid #f00; /*Borda Lateral Esquerda*/
+	border-right: 0px solid #f00; /*Borda Lateral Direita*/
+	border-top: 0px solid #f00; /*Borda Superior*/
+	border-bottom: 0px solid #f00; /*Borda inferior*/
+	clear: both;
+	margin-top: 16px;
+	margin-bottom: 16px; /*Espaço inferior para a Proxima Tabela*/
+	position: relative;
+}
+
+.widget_box_vizualizar2 {border-bottom: 0px solid #f00;} /*Borda Geral*/
+.widget_box_vizualizar2 {border-top: 0px solid #f00;} /*Borda Superior*/
+.widget_box_vizualizar2 {border-bottom: 1px solid #f00;} /*Borda inferior*/
+.widget_box_vizualizar2 {border-left: 1px solid #f00;} /*Borda Lateral Esquerda*/
+.widget_box_vizualizar2 {border-right: 1px solid #f00;} /*Borda Lateral Direita*/
+.widget_box_vizualizar2 {border-radius: 0px 0px 5px 5px;}
