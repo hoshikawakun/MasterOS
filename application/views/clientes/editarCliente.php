@@ -40,6 +40,7 @@
                                 class="fas fa-arrow-left"></i> Voltar</a>
                 </div>
             </div>
+            <div class="widget_box_Painel2">
             <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#home">Informações Pessoais</a></li>
                 <li><a data-toggle="tab" href="#menu2">Endereço</a></li>
@@ -210,6 +211,7 @@
                         </div>
                     </div>
             </form>
+            </div>
         </div>
     </div>
 </div>
