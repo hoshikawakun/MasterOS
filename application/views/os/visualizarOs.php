@@ -36,7 +36,7 @@ $totalProdutos = 0; ?>
                     
                 </div>
             </div>
-            <div class="widget-content" id="printOs">
+            <div class="widget_content" id="printOs">
                 <div class="invoice-content">
                     <div class="invoice-head" style="margin-bottom: 0">
 
@@ -167,7 +167,7 @@ $totalProdutos = 0; ?>
                         </table>
                         <div class"span12">
 						<?php if ($equipamento != null) { ?>
-                            <table width="100%" class="table table-condensed" id="tblEquipamento">
+                            <table width="100%" class="table table-bordered table-condensed" id="tblEquipamento">
                                 <thead>
                                     <tr>
                                         <th width="20%">Equipamento</th>
@@ -195,7 +195,7 @@ $totalProdutos = 0; ?>
 						</div>
                         <div class"span12">
 						<?php if ($produtos != null) { ?>
-                            <table width="100%" class="table table-condensed" id="tblProdutos">
+                            <table width="100%" class="table table-bordered table-condensed" id="tblProdutos">
                                 <thead>
                                     <tr>
                                         <th width="8%">SKU</th>
@@ -230,7 +230,7 @@ $totalProdutos = 0; ?>
                         </div>
                         <div class"span12">
 						<?php if ($servicos != null) { ?>
-                            <table width="100%" class="table table-condensed">
+                            <table width="100%" class="table table-bordered table-condensed">
                                 <thead>
                                     <tr>
                                         <th>Serviço</th>
@@ -270,7 +270,7 @@ $totalProdutos = 0; ?>
                         <!-- ANEXOS -->
                         <div class"span12">
 						<?php if ($anexos != null) { ?>
-                            <table class="table table-condensed">
+                            <table class="table table-bordered table-condensed">
                                 <thead>
                                     <tr>
                                         <th>Anexo</th>
@@ -313,9 +313,9 @@ $totalProdutos = 0; ?>
 <?= $modalGerarPagamento ?>
 
 <!-- Modal visualizar anexo -->
-<div id="modal-anexo" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+<div id="modal-anexo" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
-    <div class="modal-header">
+    <div class="modal_header_anexos">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h3 id="myModalLabel">Visualizar Anexo</h3>
     </div>
