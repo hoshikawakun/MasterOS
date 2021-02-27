@@ -33,7 +33,7 @@
             </span>
             <h5>Arquivos</h5>
         </div>
-        <div class="widget-content nopadding">
+        <div class="widget_content nopadding">
                 <table id="tabela" width="100%" class="table">
                 <thead>
                     <tr>
@@ -88,11 +88,11 @@
 
 <?= $this->pagination->create_links() ?>
 
-<div id="modal-excluir" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="modal-excluir" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="<?= base_url() ?>index.php/arquivos/excluir" method="post">
-        <div class="modal-header">
+        <div class="modal_header_anexos">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h5 id="myModalLabel">Excluir Arquivo</h5>
+            <h3 id="myModalLabel">Excluir Arquivo</h3>
         </div>
         <div class="modal-body">
             <input type="hidden" id="idDocumento" name="id" value="" />
