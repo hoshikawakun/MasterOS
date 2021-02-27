@@ -43,7 +43,7 @@
                 </span>
                 <h5>Editar OS</h5>
             </div>
-          <div class="widget-content nopadding">
+          <div class="widget_box_Painel2">
                 <div class="span12" id="divProdutosServicos" style=" margin-left: 0">
                     <ul class="nav nav-tabs">
                         <li class="active" id="tabDetalhes"><a href="#tab1" data-toggle="tab">Detalhes da OS</a></li>
@@ -216,8 +216,8 @@
                                 </form>
                             </div>
                             <div class="widget-box" id="divProdutos">
-                            <div class="widget-content nopadding">
-                                <table width="100%" class="table" id="tblProdutos">
+                            <div class="widget_content nopadding">
+                                <table width="100%" class="table_r" id="tblProdutos">
                                     <thead>
                                     <tr>
                                        		<th width="8%">Cod. SKU</th>
@@ -283,8 +283,8 @@
                                     </form>
                           </div>
                         <div class="widget-box" id="divServicos">
-            			<div class="widget-content nopadding">
-									<table width="100%" class="table">
+            			<div class="widget_content nopadding">
+									<table width="100%" class="table_r">
                                         <thead>
                                             <tr>
                                                 <th>Serviço</th>
@@ -336,7 +336,7 @@
                                         </div>
                                     </form>
                           </div>
-                          <div class="span12 pull-right" id="divAnexos" style="margin-left: 0">
+                          <div class="span12" id="divAnexos" style="margin-left: 0">
                                     <?php
                                     foreach ($anexos as $a) {
                                         if ($a->thumb == null) {
@@ -347,13 +347,11 @@
                                             $link = $a->url . '/' . $a->anexo;
                                         }
                                         echo '<div class="span3" style="min-height: 230px; margin-left: 0">
-                                                    <a style="min-height: 200px;" href="#modal-anexo" imagem="' . $a->idAnexos . '" link="' . $link . '" role="button" class="btn anexo span12" data-toggle="modal">
-                                                        <img src="' . $thumb . '" alt="">
-                                                    </a>
-                                                    <span>' . $a->anexo . '</span>
-                                                </div>';
-                                    }
-                                    ?>
+										<a style="min-height: 200px;" href="#modal-anexo" imagem="' . $a->idAnexos . '" link="' . $link . '" role="button" class="btn anexo span12 box_anexos" data-toggle="modal">
+										<img src="' . $thumb . '" alt="">
+										</a>
+										<span>' . $a->anexo . '</span>
+										</div>';} ?>
                                 </div>
                             </div>
                         
@@ -363,8 +361,8 @@
                         <a href="#modal-anotacao" id="btn-anotacao" role="button" data-toggle="modal" class="btn btn-success"><i class="fas fa-plus"></i> Adicionar anotação</a>
                         </div>
             			<div class="widget-box" id="divAnotacoes">
-            			<div class="widget-content nopadding">
-            			<table width="100%" class="table">
+            			<div class="widget_content nopadding">
+            			<table width="100%" class="table_r">
                                         <thead>
                                             <tr>
                                                 <th width="73%">Anotação</th>
@@ -402,8 +400,8 @@
                         <a href="#modal-equipamento" id="btn-equipamento" role="button" data-toggle="modal" class="btn btn-success"><i class="fas fa-plus"></i> Adicionar Equipamento</a>
                         </div>
                             <div class="widget-box" id="divEquipamento">
-                            <div class="widget-content nopadding">
-                                    <table  width="100%" class="table">
+                            <div class="widget_content nopadding">
+                                    <table  width="100%" class="table_r">
                                         <thead>
                                             <tr>
                                                 <th>Equipamento</th>
@@ -439,8 +437,8 @@
                  
 
 <!-- Modal visualizar anexo -->
-<div id="modal-anexo" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-header">
+<div id="modal-anexo" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal_header_anexos">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h3 id="myModalLabel">Visualizar Anexo</h3>
     </div>
@@ -459,9 +457,9 @@
 </div>
 
 <!-- Modal cadastro anotações -->
-<div id="modal-anotacao" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="modal-anotacao" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="#" method="POST" id="formAnotacao">
-        <div class="modal-header">
+        <div class="modal_header_anexos">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             <h3 id="myModalLabel">Adicionar Anotação</h3>
         </div>
@@ -481,9 +479,9 @@
 </div>
 
 <!-- Modal cadastro Equipamentos -->
-<div id="modal-equipamento" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="modal-equipamento" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="#" method="POST" id="formEquipamento">
-        <div class="modal-header">
+        <div class="modal_header_anexos">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             <h3 id="myModalLabel">Adicionar Equipamento</h3>
         </div>
@@ -519,9 +517,9 @@
 </div>
 
 <!-- Modal Faturar-->
-<div id="modal-faturar" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="modal-faturar" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form id="formFaturar" action="<?php echo current_url() ?>" method="post">
-        <div class="modal-header">
+        <div class="modal_header_anexos">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             <h3 id="myModalLabel">Faturar OS</h3>
         </div>
@@ -584,9 +582,9 @@
 </div>
 
 <!-- Modal WhatsApp-->
-<div id="modal-whatsapp" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="modal-whatsapp" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="<?php echo current_url() ?>" method="post">
-        <div class="modal-header">
+        <div class="modal_header_anexos">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             <div align="center">
               <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
