@@ -14,7 +14,7 @@
                 </span>
                 <h5>Cadastro de Arquivo</h5>
             </div>
-            <div class="widget-content nopadding">
+            <div class="widget_box_Painel2">
                 <?php echo $custom_error; ?>
                 <form action="<?php echo current_url(); ?>" id="formArquivo" method="post" class="form-horizontal">
 
