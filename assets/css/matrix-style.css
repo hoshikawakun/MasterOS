@@ -1071,7 +1071,7 @@ div.dataTables_wrapper .ui-widget-header {
 	border-bottom: 0;
 	text-align: center;
 	color: #666666; /*Cor da escrita do cabeçalho das Tabelas Internas*/
-}*/
+}
 .table.with-check tr th:first-child, .table.with-check tr td:first-child {
 	width: 10px;
 }
