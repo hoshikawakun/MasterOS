@@ -581,6 +581,14 @@ class Os extends MY_Controller
         }
     }
 
+    public function autoCompleteClienteOs()
+    {
+        if (isset($_GET['term'])) {
+            $q = strtolower($_GET['term']);
+            $this->os_model->autoCompleteClienteOs($q);
+        }
+    }
+
     public function autoCompleteUsuario()
     {
         if (isset($_GET['term'])) {
