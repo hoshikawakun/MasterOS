@@ -49,8 +49,8 @@
     </div>
 
     <a href="#notification" id="call-modal" role="button" class="btn" data-toggle="modal" style="display: none ">notification</a>
-    <div id="notification" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-header">
+    <div id="notification" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal_header_anexos">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             <h4 id="myModalLabel">MapOS</h4>
         </div>
