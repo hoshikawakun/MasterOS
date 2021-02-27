@@ -231,6 +231,20 @@ class Os_model extends CI_Model
         }
     }
 
+    public function autoCompleteClienteOs($q)
+    {
+		$this->db->select('*');
+        $this->db->limit($this->data['configuration']['per_page']);
+        $this->db->like('nomeCliente', $q);
+        $query = $this->db->get('clientes');
+        if ($query->num_rows() > 0) {
+            foreach ($query->result_array() as $row) {
+		$row_set[] = array('label' => $row['nomeCliente'], 'id' => $row['idClientes']);
+		}
+            echo json_encode($row_set);
+        }
+    }
+
     public function autoCompleteUsuario($q)
     {
 
