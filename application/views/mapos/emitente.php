@@ -23,9 +23,9 @@
     </div>
 
 
-    <div id="modalCadastrar" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="modalCadastrar" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <form action="<?= site_url('mapos/cadastrarEmitente'); ?>" id="formCadastrar" enctype="multipart/form-data" method="post" class="form-horizontal">
-            <div class="modal-header">
+            <div class="modal_header_anexos">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h3 id="myModalLabel">Cadastrar Dados do Emitente</h3>
             </div>
@@ -165,9 +165,9 @@
 
 <!-- Editar Dados Emitente -->
 
-    <div id="modalAlterar" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="modalAlterar" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <form action="<?= site_url('mapos/editarEmitente'); ?>" id="formAlterar" enctype="multipart/form-data" method="post" class="form-horizontal">
-            <div class="modal-header">
+            <div class="modal_header_anexos">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h3 id="">Editar Dados do Emitente</h3>
             </div>
@@ -252,9 +252,9 @@
 
 <!-- Atualizar Logo -->
 
-    <div id="modalLogo" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="modalLogo" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <form action="<?= site_url('mapos/editarLogo'); ?>" id="formLogo" enctype="multipart/form-data" method="post" class="form-horizontal">
-            <div class="modal-header">
+            <div class="modal_header_anexos">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h3 id="">Atualizar Logotipo</h3>
             </div>
@@ -277,9 +277,9 @@
 
 <!-- Atualizar Logo Termica-->
 
-<div id="modalTermica" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="modalTermica" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <form action="<?= site_url('mapos/editarLogoTermica'); ?>" id="formLogoTermica" enctype="multipart/form-data" method="post" class="form-horizontal">
-            <div class="modal-header">
+            <div class="modal_header_anexos">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h3 id="">Atualizar Logotipo</h3>
             </div>
