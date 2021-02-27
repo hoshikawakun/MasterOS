@@ -362,7 +362,6 @@ hr{ border-top-color:#f00;}
 
 .modal_header {border-bottom: 1px solid #f00; height: auto; padding: 8px 15px 5px; background-color:#ccc} /*Borda inferior*/ 
 .modal_header {border-radius: 5px 5px 0px 0px;}
-.box_anexos {border: 1px solid #f00; padding: 0px;}
 .well {border-bottom: 1px solid #f00; border-top: 1px solid #f00; background-color:#eee}
 
 .well_i {min-height:20px;}
@@ -395,7 +394,7 @@ hr{ border-top-color:#f00;}
 .table_p th  {border-right: 1px solid #f00;} /*Cor das colunas do cabeçalho da Tabela Interna*/
 .table_p tr td {border: 1px solid #f00; font-size:12px; padding: 8px;} /*Cor das Bordas da Tabela Interna*/
 .table_p th {text-align:center; padding: 5px;} /*Alinhamento da escrita do cabeçalho da Tabela Interna*/
-.table_p th {font-size: 12px;} /*Tamanho da escrita do cabeçalho da Tabela Interna*/
+.table_p th {font-size: 11px;} /*Tamanho da escrita do cabeçalho da Tabela Interna*/
 .table_p th {color: #f00;} /*Cor da escrita do cabeçalho da Tabela Interna*/
 .table_p th {background:#ffff;} /*Cor Cabeçalho da Tabela Interna*/
 
