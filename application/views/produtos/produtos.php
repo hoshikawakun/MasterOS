@@ -14,13 +14,14 @@
 
 <div class="widget-box">
     <div class="widget-title">
-        <span class="icon">
-            <i class="fas fa-shopping-bag"></i>
-        </span>
-        <h5>Produtos</h5>
+    <span class="icon"><i class="fas fa-shopping-bag"></i></span>
+    <h5>Produtos</h5>
     </div>
-    <div class="widget_content nopadding tab-content">
-        <table id="tabela" class="table">
+    <div class="widget-content nopadding">
+    <!--
+    <div class="widget_box_Painel2">
+    -->
+        <table id="tabela" width="100%" class="table_p">
             <thead>
             <tr style="backgroud-color: #2D335B">
                 <th>Cod. Produto</th>
@@ -69,11 +70,11 @@
 <?php echo $this->pagination->create_links(); ?>
 
 <!-- Modal -->
-<div id="modal-excluir" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="modal-excluir" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="<?php echo base_url() ?>index.php/produtos/excluir" method="post">
-        <div class="modal_header">
+        <div class="modal_header_anexos">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h5 id="myModalLabel"><i class="fas fa-trash-alt"></i> Excluir Produto</h5>
+            <h3 id="myModalLabel"><i class="fas fa-trash-alt"></i> Excluir Produto</h3>
         </div>
         <div class="modal-body">
             <input type="hidden" id="idProduto" class="idProduto" name="id" value=""/>
@@ -89,9 +90,9 @@
 <!-- Modal Estoque -->
 <div id="atualizar-estoque" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="<?php echo base_url() ?>index.php/produtos/atualizar_estoque" method="post" id="formEstoque">
-        <div class="modal_header">
+        <div class="modal_header_anexos">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h5 id="myModalLabel"><i class="fas fa-plus-square"></i> Atualizar Estoque</h5>
+            <h3 id="myModalLabel"><i class="fas fa-plus-square"></i> Atualizar Estoque</h3>
         </div>
         <div class="modal-body">
             <div class="control-group">
@@ -117,11 +118,11 @@
 </div>
 
 <!-- Modal Etiquetas Cod. Barras -->
-<div id="modal-etiquetas" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="modal-etiquetas" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="<?php echo base_url() ?>index.php/relatorios/produtosEtiquetas" method="get">
-        <div class="modal-header">
+        <div class="modal_header_anexos">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h5 id="myModalLabel">Gerar etiquetas com Código de Barras</h5>
+            <h3 id="myModalLabel">Gerar etiquetas com Código de Barras</h3>
         </div>
         <div class="modal-body">
             <div class="span12 alert alert-info" style="margin-left: 0"> Escolha o intervalo de produtos para gerar as etiquetas.</div>
@@ -169,11 +170,11 @@
 <script src="<?php echo base_url() ?>assets/js/jquery.validate.js"></script>
 
 <!-- Modal Etiquetas Cod. SKU-->
-<div id="modal-etiquetas_sku" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="modal-etiquetas_sku" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="<?php echo base_url() ?>index.php/relatorios/produtosEtiquetasSKU" method="get">
-        <div class="modal-header">
+        <div class="modal_header_anexos">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h5 id="myModalLabel">Gerar etiquetas com Código SKU</h5>
+            <h3 id="myModalLabel">Gerar etiquetas com Cód. Produto</h3>
         </div>
         <div class="modal-body">
             <div class="span12 alert alert-info" style="margin-left: 0"> Escolha o intervalo de produtos para gerar as etiquetas.</div>
@@ -213,11 +214,11 @@
 <script src="<?php echo base_url() ?>assets/js/jquery.validate.js"></script>
 
 <!-- Modal Etiquetas Cod. QR-->
-<div id="modal-etiquetas-qr" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="modal-etiquetas-qr" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="<?php echo base_url() ?>index.php/relatorios/produtosEtiquetasQR" method="get">
-        <div class="modal-header">
+        <div class="modal_header_anexos">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h5 id="myModalLabel">Gerar etiquetas com Código QR</h5>
+            <h3 id="myModalLabel">Gerar etiquetas com Código QR</h3>
         </div>
         <div class="modal-body">
             <div class="span12 alert alert-info" style="margin-left: 0"> Escolha o intervalo de produtos para gerar as etiquetas.</div>
