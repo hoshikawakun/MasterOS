@@ -347,7 +347,7 @@
                                             $link = $a->url . '/' . $a->anexo;
                                         }
                                         echo '<div class="span3" style="min-height: 230px; margin-left: 0">
-										<a style="min-height: 200px;" href="#modal-anexo" imagem="' . $a->idAnexos . '" link="' . $link . '" role="button" class="btn anexo span12 box_anexos" data-toggle="modal">
+										<a style="min-height: 200px; border: 1px solid #bbbbbb;" href="#modal-anexo" imagem="' . $a->idAnexos . '" link="' . $link . '" role="button" class="btn anexo span12" data-toggle="modal">
 										<img src="' . $thumb . '" alt="">
 										</a>
 										<span>' . $a->anexo . '</span>
