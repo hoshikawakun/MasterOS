@@ -3,16 +3,17 @@
 <?php } ?>
 
 <div class="widget-box">
-    <div class="widget-title">
-        <span class="icon">
-            <i class="fas fa-wrench"></i>
-        </span>
-        <h5>Serviços</h5>
-    </div>
-    <div class="widget-content nopadding tab-content">
-        <table id="tabela" class="table">
+	<div class="widget-title">
+	<span class="icon"><i class="fas fa-wrench"></i></span>
+	<h5>Serviços</h5>
+	</div>
+	<div class="widget-content nopadding">
+    <!--
+    <div class="widget_box_Painel2">
+    -->
+        <table id="tabela" width="100%" class="table_p">
             <thead>
-                <tr style="backgroud-color: #2D335B">
+                <tr>
                     <th>Cod. Serviço</th>
                     <th>Nome</th>
                     <th>Preço</th>
@@ -50,11 +51,11 @@
 <?php echo $this->pagination->create_links(); ?>
 
 <!-- Modal -->
-<div id="modal-excluir" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="modal-excluir" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="<?php echo base_url() ?>index.php/servicos/excluir" method="post">
-        <div class="modal-header">
+        <div class="modal_header_anexos">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h5 id="myModalLabel">Excluir Serviço</h5>
+            <h3 id="myModalLabel">Excluir Serviço</h3>
         </div>
         <div class="modal-body">
             <input type="hidden" id="idServico" name="id" value="" />
