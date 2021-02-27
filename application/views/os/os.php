@@ -13,10 +13,11 @@
         } ?>
 
         <div class="span3">
-            <input type="text" name="pesquisa" id="pesquisa" placeholder="Nome do cliente a pesquisar" class="span12" value="">
+            <input type="text" name="pesquisa" id="cliente" placeholder="Nome do cliente a pesquisar" class="span12" value="">
         </div>
         <div class="span2">
-            <select name="status[]" id="status" class="span12">
+            <select name="status" id="" class="span12">
+            	<option value="">Todos os Status</option>
 				<option value="Orçamento">Orçamento</option>
 				<option value="Orçamento Concluido">Orçamento Concluido</option>
 				<option value="Orçamento Aprovado">Orçamento Aprovado</option>
@@ -57,17 +58,19 @@
         </span>
         <h5>Ordens de Serviço</h5>
     </div>
-    <div class="widget-content nopadding">
-        <table id="tabela" width="100%" class="table">
+    <div class="widget_content nopadding">
+        <table id="tabela" width="100%" class="table_p">
                 <thead>
                     <tr>
                         <th>N° OS</th>
                         <th>Cliente</th>
                         <th>Responsável</th>
                         <th>Data de Entrada</th>
-                        <th>Venc. Garantia</th>
+                        <th>Garantia Até</th>
                         <th>Valor Total</th>
+                        <!--
                         <th>Faturado</th>
+                        -->
                      	<th>Status</th>
                         <th>Ações</th>
                     </tr>
@@ -153,13 +156,15 @@
                             $vencGarantia = dateInterval($r->dataFinal, $r->garantia);
                         }
                             echo '<tr>';
-                            echo '<td><div align="center">' . $r->idOs . '</div></td>';
+                            echo '<td><div align="center">' . $r->idOs . '</td>';
 							echo '<td>' . $NomeClienteShort . '</td>';
-                            echo '<td>' . $r->nome . '</td>';
-                            echo '<td><div align="center">' . $dataInicial . '</div></td>';
-							echo '<td><div align="center">' . $r->garantia . '</div></td>';
-							echo '<td><div align="center">R$: ' . number_format($r->totalProdutos + $r->totalServicos, 2, ',', '.') . '</div></td>';
+                            echo '<td><div align="center">' . $r->nome . '</td>';
+                            echo '<td><div align="center">' . $dataInicial . '</td>';
+							echo '<td><div align="center">' . $r->garantia . '</td>';
+							echo '<td><div align="center">R$: ' . number_format($r->totalProdutos + $r->totalServicos, 2, ',', '.') . '</td>';
+							/*
 							echo '<td><div align="center">R$: ' . number_format($r->valorTotal, 2, ',', '.') . '</div></td>';
+							*/
 					echo '<td><div align="center"><span class="badge" style="background-color: ' . $cor . '; border-color: ' . $cor . '">' . $r->status . '</span></div></td>';
                             echo '<td><div align="center">';
 						if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
@@ -182,11 +187,7 @@
                             if ($this->permission->checkPermission($this->session->userdata('permissao'), 'dOs')) {
                                 echo '<a href="#modal-excluir" role="button" data-toggle="modal" os="' . $r->idOs . '" class="btn btn-danger tip-top" title="Excluir OS"><i class="fas fa-trash-alt"></i></a>  ';
 								}
-							if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
-								echo '<a style="margin-right: 1%" target="_new" href="https://www.linkcorreios.com.br/' . $r->rastreio . '" class="btn btn-warning tip-top" title="Rastreio Correio"><i class="fas fa-envelope"></i></a>';
-								}
-							
-                            echo  '</div></td>';
+                            echo  '</td>';
                             echo '</tr>';
                         } ?>
                 </tbody>
@@ -198,11 +199,11 @@
 <?php echo $this->pagination->create_links(); ?>
 
 <!-- Modal -->
-<div id="modal-excluir" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="modal-excluir" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="<?php echo base_url() ?>index.php/os/excluir" method="post">
-        <div class="modal-header">
+        <div class="modal_header_anexos">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h5 id="myModalLabel">Excluir OS</h5>
+            <h3 id="myModalLabel">Excluir OS</h3>
         </div>
         <div class="modal-body">
             <input type="hidden" id="idOs" name="id" value="" />
@@ -219,6 +220,13 @@
         $(document).on('click', 'a', function(event) {
             var os = $(this).attr('os');
             $('#idOs').val(os);
+        });
+		$("#cliente").autocomplete({
+            source: "<?php echo base_url(); ?>index.php/os/autoCompleteClienteOs",
+            minLength: 2,
+            select: function(event, ui) {
+                $("#clienteHide").val(ui.item.id);
+            }
         });
         $(document).on('click', '#excluir-notificacao', function(event) {
             event.preventDefault();
