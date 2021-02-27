@@ -352,3 +352,63 @@ hr{ border-top-color:#f00;}
 .widget_box_vizualizar2 {border-left: 1px solid #f00;} /*Borda Lateral Esquerda*/
 .widget_box_vizualizar2 {border-right: 1px solid #f00;} /*Borda Lateral Direita*/
 .widget_box_vizualizar2 {border-radius: 0px 0px 5px 5px;}
+
+.widget_box_vizualizar4 {border-bottom: 1px solid #f00;} /*Borda Geral*/
+.widget_box_vizualizar4 {border-top: 1px solid #f00;} /*Borda Superior*/
+.widget_box_vizualizar4 {border-bottom: 1px solid #f00;} /*Borda inferior*/
+.widget_box_vizualizar4 {border-left: 1px solid #f00;} /*Borda Lateral Esquerda*/
+.widget_box_vizualizar4 {border-right: 1px solid #f00;} /*Borda Lateral Direita*/
+.widget_box_vizualizar4 {border-radius: 5px 5px 5px 5px;}
+
+.modal_header {border-bottom: 1px solid #f00; height: auto; padding: 8px 15px 5px; background-color:#ccc} /*Borda inferior*/ 
+.modal_header {border-radius: 5px 5px 0px 0px;}
+.box_anexos {border: 1px solid #f00; padding: 0px;}
+.well {border-bottom: 1px solid #f00; border-top: 1px solid #f00; background-color:#eee}
+
+.well_i {min-height:20px;}
+.well_i {padding:19px;}
+.well_i {margin-bottom:20px;}
+.well_i {background-color:#f5f5f5}
+.well_i {border:1px solid #f00;}
+.well_i {border-radius:4px;}
+
+.well_o {min-height:20px;}
+.well_o {padding:19px;}
+.well_o {margin-bottom:20px;}
+.well_o {background-color:#f5f5f5}
+.well_o {border-left: 1px solid #f00;}
+.well_o {border-right: 1px solid #f00;}
+.well_o {border-bottom: 1px solid #f00;}
+.well_o {border-radius: 0px 0px 5px 5px}
+
+.table_r {border-left: 1px solid #f00;} /*Borda Geral da Tabela Interna*/
+.table_r {border-right: 1px solid #f00;} /*Borda Geral da Tabela Interna*/
+.table_r {border-bottom: 1px solid #f00;} /*Borda Geral da Tabela Interna*/
+.table_r tr td {border: 1px solid #f00; font-size:12px; padding: 5px;} /*Cor das Bordas da Tabela Interna*/
+.table_r th {border:1px solid #f00;}/*Cor das colunas do cabeçalho da Tabela Interna*/
+.table_r th {text-align:center; padding: 5px;} /*Alinhamento da escrita do cabeçalho da Tabela Interna*/
+.table_r th {font-size: 12px;} /*Tamanho da escrita do cabeçalho da Tabela Interna*/
+.table_r th {color: #f00;} /*Cor da escrita do cabeçalho da Tabela Interna*/
+.table_r th {background:#ffff;} /*Cor Cabeçalho da Tabela Interna*/
+
+.table_p th  {border-left: 1px solid #f00;} /*Cor das colunas do cabeçalho da Tabela Interna*/
+.table_p th  {border-right: 1px solid #f00;} /*Cor das colunas do cabeçalho da Tabela Interna*/
+.table_p tr td {border: 1px solid #f00; font-size:12px; padding: 8px;} /*Cor das Bordas da Tabela Interna*/
+.table_p th {text-align:center; padding: 5px;} /*Alinhamento da escrita do cabeçalho da Tabela Interna*/
+.table_p th {font-size: 12px;} /*Tamanho da escrita do cabeçalho da Tabela Interna*/
+.table_p th {color: #f00;} /*Cor da escrita do cabeçalho da Tabela Interna*/
+.table_p th {background:#ffff;} /*Cor Cabeçalho da Tabela Interna*/
+
+.modal_header_anexos h3 {font-size: 15px; text-shadow: 0 1px 0 #ffffff; margin:0;line-height:30px}
+.modal_header_anexos {height: auto; padding: 5px 15px 5px;}
+.modal_header_anexos {border-bottom: 1px solid #f00;}
+.modal_header_anexos {background:#efefef; height: 30px;}
+.modal_header_anexos {border-radius: 5px 5px 0px 0px;}
+
+.control_group {border-top: 1px solid #ffffff; border-bottom: 1px solid #f00; margin-bottom: 0;}
+.control_group:last-child {border-bottom: 0;}
+
+/*
+.table_r th,.table td{padding:8px;line-height:20px;text-align:left;vertical-align:top;border-top:1px solid #ddd}
+.table th{font-weight:bold}
+.table thead th{vertical-align:bottom}
