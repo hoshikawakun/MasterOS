@@ -28,12 +28,14 @@
             }; ?>"><a href="<?= site_url('os') ?>"><i class="fas fa-diagnoses"></i> <span>Ordens de Serviço</span></a></li>
             <?php
         } ?>
-        <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vVenda')) { ?>
+       <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vVenda')) { ?>
             <li class="<?php if (isset($menuVendas)) {
                 echo 'active';
             }; ?>"><a href="<?= site_url('vendas') ?>"><i class="fas fa-cash-register"></i> <span>Vendas</span></a></li>
             <?php
         } ?>
+        
+        
         <!--
         <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vGarantia')) { ?>
             <li class="<?php if (isset($menuGarantia)) {
@@ -48,6 +50,9 @@
             }; ?>"><a href="<?= site_url('arquivos') ?>"><i class="fas fa-hdd"></i> <span>Arquivos</span></a></li>
             <?php
         } ?>
+        <li class="<?php if (isset($menuPesquisa)) {
+                echo 'active';
+            }; ?>"><a href="<?= site_url('mapos/pesquisar?termo=*') ?>"><i class="fas fa-search"></i> <span>Pesquisa</span></a></li>
         <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vLancamento')) { ?>
             <li class="submenu <?php if (isset($menuFinanceiro)) {
                 echo 'active open';
