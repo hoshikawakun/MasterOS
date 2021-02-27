@@ -3,15 +3,15 @@
 <?php } ?>
 
 <div class="widget-box">
-    <div class="widget-title">
-        <span class="icon">
-            <i class="fas fa-user"></i>
-        </span>
-        <h5>Clientes</h5>
+	<div class="widget-title">
+    <span class="icon"><i class="fas fa-user"></i></span>
+    <h5>Clientes</h5>
     </div>
-
     <div class="widget-content nopadding">
-        <table id="tabela" class="table">
+    <!--
+    <div class="widget_box_Painel2">
+    -->
+        <table id="tabela" width="100%" class="table_p">
             <thead>
                 <tr>
                     <th>Cod.</th>
@@ -68,11 +68,11 @@
 
 
 <!-- Modal -->
-<div id="modal-excluir" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="modal-excluir" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="<?php echo base_url() ?>index.php/clientes/excluir" method="post">
-        <div class="modal-header">
+        <div class="modal_header_anexos">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h5 id="myModalLabel">Excluir Cliente</h5>
+            <h3 id="myModalLabel">Excluir Cliente</h3>
         </div>
         <div class="modal-body">
             <input type="hidden" id="idCliente" name="id" value="" />
