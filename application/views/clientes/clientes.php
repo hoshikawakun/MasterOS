@@ -79,7 +79,7 @@
             <h5 style="text-align: center">Deseja realmente excluir este cliente e os dados associados a ele (OS, Vendas, Receitas)?</h5>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+            <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Cancelar</button>
             <button class="btn btn-danger">Excluir</button>
         </div>
     </form>
