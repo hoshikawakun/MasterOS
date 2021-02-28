@@ -192,6 +192,7 @@
 .media-object{margin-right:0;margin-left:0}
 .modal{top:10px;right:10px;left:10px}
 .modal-header .close{padding:10px;margin:-10px}
+.modal_header_login .close{padding:10px;margin:-10px}
 .carousel-caption{position:static}}@media(max-width:979px){body{padding-top:0}
 .navbar-fixed-top,.navbar-fixed-bottom{position:static}
 .navbar-fixed-top{margin-bottom:20px}
