@@ -26,7 +26,7 @@
                     
                     <div class="collapse in accordion-body" id="collapseGOne">
                         <div class="widget_content_vusualizar widget_box_vizualizar2">
-                            <table class="table">
+                            <table class="table_p">
                                 <tbody>
                                 <tr>
                                     <td style="text-align: right; width: 30%"><strong>Nome</strong></td>
@@ -68,7 +68,7 @@
                     </div>
                     <div class="collapse accordion-body" id="collapseGTwo">
                         <div class="widget_content_vusualizar widget_box_vizualizar2">
-                            <table class="table">
+                            <table class="table_p">
                                 <tbody>
                                 <tr>
                                         <td style="text-align: right; width: 30%"><strong>Telefone</strong></td>
@@ -114,7 +114,7 @@
                     </div>
                     <div class="collapse accordion-body" id="collapseGThree">
                         <div class="widget_content_vusualizar widget_box_vizualizar2">
-                            <table class="table">
+                            <table class="table_p">
                                 <tbody>
                                 <tr>
                                     <td style="text-align: right; width: 30%"><strong>Rua</strong></td>
@@ -167,14 +167,15 @@
                 <span class="icon"><i class="fas fa-diagnoses"></i></span>
                 <h5>Ordens de Serviço</h5>
             </div>
-                <table class="table">
+                <table class="table_p">
                     <thead>
-                    <tr style="backgroud-color: #2D335B">
+                    <tr>
                         <th>N° OS</th>
                         <th>Data Inicial</th>
                         <th>Data Final</th>
                         <th>Descricao</th>
                         <th>Defeito</th>
+                        <th>Ações</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -189,14 +190,15 @@
                 <span class="icon"><i class="fas fa-diagnoses"></i></span>
                 <h5>Ordens de Serviço</h5>
             </div>
-                <table class="table">
+                <table class="table_p">
                     <thead>
-                    <tr style="backgroud-color: #2D335B">
+                    <tr>
                         <th>N° OS</th>
                         <th>Data Inicial</th>
                         <th>Data Final</th>
                         <th>Descricao</th>
                         <th>Defeito</th>
+                        <th>Ações</th>
                     </tr>
                     </thead>
                     <tbody>
