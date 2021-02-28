@@ -102,7 +102,7 @@
 
                     <div class="form_actions" align="center">
                     <button type="submit" class="btn btn-primary">Salvar Alterações</button>
-                    <a href="<?php echo base_url() ?>index.php/produtos" id="" class="btn btn-primary"><i class="fas fa-backward"></i> Voltar</a>
+                    <a href="<?php echo base_url() ?>index.php/produtos" id="" class="btn btn-warning"><i class="fas fa-backward"></i> Voltar</a>
                     </div>
 
 
