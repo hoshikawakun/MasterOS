@@ -154,35 +154,40 @@
                                         </label>
                                         <textarea class="span12 editor" name="laudoTecnico" id="laudoTecnico" cols="30"
                                                   rows="5"><?php echo $result->laudoTecnico ?></textarea>
-                                  </div>
-                                    <div class="span12" style="padding: 1%; margin-left: 0">
-                                        <div class="span6 offset3" style="text-align: center">
-                                            <?php if ($result->faturado == 0) { ?>
-                                                <a href="#modal-faturar" title="Faturar" id="btn-faturar" role="button" data-toggle="modal" class="btn btn-danger"><i class="fas fa-cash-register"></i> Faturar</a>
-                                            <?php
-                                            } ?>
+			</div>
+			</form>
+            </div>
+            <!-- Botoes de Ação -->
+	<div class="span12" style="padding: 0px; margin-left: 0">
+    <div align="center">
+    <?php if ($result->faturado == 0) { ?>
+    <a href="#modal-faturar" title="Faturar" id="btn-faturar" role="button" data-toggle="modal" class="btn btn-danger"><i class="fas fa-cash-register"></i> Faturar</a>
+    
+	<?php } ?>
 	<button class="btn btn-primary" title="Atualizar" id="btnContinuar"><i class="fas fa-sync-alt"></i> Atualizar</button>
 
 	<a href="<?php echo base_url() ?>index.php/os/visualizar/<?php echo $result->idOs; ?>" title="Visualizar OS" class="btn btn-secondary"><i class="fas fa-eye"></i> Visualizar OS</a>
     
 	<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
-                        echo '<a target="_blank" title="Adicionar OS" class="btn btn-success" href=' . base_url() . 'index.php/os/adicionar><i class="fas fa-plus"></i> Adicionar OS</a>';} ?>
+		echo '<a target="_blank" title="Adicionar OS" class="btn btn-success" href=' . base_url() . 'index.php/os/adicionar><i class="fas fa-plus"></i> Adicionar OS</a>';} ?>
                         
 	<a href="#modal-whatsapp" title="Enviar WhatsApp" id="btn-whatsapp" role="button" data-toggle="modal" class="btn btn-success"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-    
+    </div>
+    <div align="center">
     <a target="_blank" title="Imprimir" class="btn btn-inverse" href="<?php echo site_url() ?>/os/imprimir/<?php echo $result->idOs; ?>"><i class="fas fa-print"></i> Imprimir A4</a>
     
     <a target="_blank" title="Imprimir Termica" class="btn btn-inverse" href="<?php echo site_url() ?>/os/imprimirTermica/<?php echo $result->idOs; ?>"><i class="fas fa-print"></i> Imprimir Termica</a>
     
     <a target="_blank" title="Imprimir Termica 2" class="btn btn-inverse" href="<?php echo site_url() ?>/os/imprimirTermica2/<?php echo $result->idOs; ?>"><i class="fas fa-print"></i> Imprimir Termica 2</a>
+    </div>
+    
+    <div align="center">
+    <a href="<?php echo base_url() ?>index.php/os" class="btn btn-warning"><i class="fas fa-backward"></i> Voltar</a>
+    </div>
+    </div>
+    <!-- Fim Botoes de Ação -->
+            </div>
                         
-	<a href="<?php echo base_url() ?>index.php/os" class="btn"><i class="fas fa-backward"></i> Voltar</a>
-                        
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
                         <!--Produtos-->
                         <div class="tab-pane" id="tab2">
                         <div class="span12 well" style="padding: 1%; margin-left: 0">
@@ -217,10 +222,10 @@
                             </div>
                             <div class="widget-box" id="divProdutos">
                             <div class="widget_content nopadding">
-                                <table width="100%" class="table_r" id="tblProdutos">
+                                <table width="100%" class="table_p" id="tblProdutos">
                                     <thead>
                                     <tr>
-                                       		<th width="8%">Cod. SKU</th>
+                                       		<th width="10%">Cod. Produto</th>
                                             <th width="10%">Cod. Barras</th>
                                             <th>Produto</th>
                                             <th width="8%">Quantidade</th>
@@ -284,7 +289,7 @@
                           </div>
                         <div class="widget-box" id="divServicos">
             			<div class="widget_content nopadding">
-									<table width="100%" class="table_r">
+									<table width="100%" class="table_p">
                                         <thead>
                                             <tr>
                                                 <th>Serviço</th>
@@ -337,6 +342,7 @@
                                     </form>
                           </div>
                           <div class="span12" id="divAnexos" style="margin-left: 0">
+                          
                                     <?php
                                     foreach ($anexos as $a) {
                                         if ($a->thumb == null) {
@@ -346,7 +352,7 @@
                                             $thumb = $a->url . '/thumbs/' . $a->thumb;
                                             $link = $a->url . '/' . $a->anexo;
                                         }
-                                        echo '<div class="span3" style="min-height: 230px; margin-left: 0">
+                                        echo '<div class="span3" style="min-height: 230px; margin-left: 0; overflow-y:hiden;  padding: 5px;">
 										<a style="min-height: 200px; border: 1px solid #bbbbbb;" href="#modal-anexo" imagem="' . $a->idAnexos . '" link="' . $link . '" role="button" class="btn anexo span12" data-toggle="modal">
 										<img src="' . $thumb . '" alt="">
 										</a>
@@ -357,12 +363,14 @@
                         
 						<!--Anotações-->
                         <div class="tab-pane" id="tab5">
+                        <div class="span12 well" style="padding: 1%; margin-left: 0">
             			<div class="span12" style="padding: 1%; margin-left: 0">
                         <a href="#modal-anotacao" id="btn-anotacao" role="button" data-toggle="modal" class="btn btn-success"><i class="fas fa-plus"></i> Adicionar anotação</a>
                         </div>
+                        </div>
             			<div class="widget-box" id="divAnotacoes">
             			<div class="widget_content nopadding">
-            			<table width="100%" class="table_r">
+            			<table width="100%" class="table_p">
                                         <thead>
                                             <tr>
                                                 <th width="73%">Anotação</th>
@@ -396,12 +404,14 @@
                         
                         <!--Equipamentos-->
                        	<div class="tab-pane" id="tab6">
+                        <div class="span12 well" style="padding: 1%; margin-left: 0">
                         <div class="span12" style="padding: 1%; margin-left: 0">
                         <a href="#modal-equipamento" id="btn-equipamento" role="button" data-toggle="modal" class="btn btn-success"><i class="fas fa-plus"></i> Adicionar Equipamento</a>
                         </div>
+                        </div>
                             <div class="widget-box" id="divEquipamento">
                             <div class="widget_content nopadding">
-                                    <table  width="100%" class="table_r">
+                                    <table  width="100%" class="table_p">
                                         <thead>
                                             <tr>
                                                 <th>Equipamento</th>
@@ -460,19 +470,17 @@
 <div id="modal-anotacao" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="#" method="POST" id="formAnotacao">
         <div class="modal_header_anexos">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="myModalLabel">Adicionar Anotação</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Adicionar Anotação</h3>
         </div>
         <div class="modal-body">
-            <div class="span12" id="divFormAnotacoes" style="margin-left: 0"></div>
-            <div class="span12" style="margin-left: 0">
-                <label for="anotacao">Anotação</label>
-                <textarea class="span12 editor" name="anotacao" id="anotacao" cols="30" rows="3"></textarea>
-                <input type="hidden" name="os_id" value="<?php echo $result->idOs; ?>">
-            </div>
+        <div class="span12">
+        <textarea class="span12 editor" name="anotacao" id="anotacao" cols="30" rows="3"></textarea>
+        <input type="hidden" name="os_id" value="<?php echo $result->idOs; ?>">
+        </div>
         </div>
         <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true" id="btn-close-anotacao">Fechar</button>
+            <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true" id="btn-close-anotacao">Fechar</button>
             <button class="btn btn-primary">Adicionar</button>
         </div>
     </form>
@@ -486,7 +494,6 @@
             <h3 id="myModalLabel">Adicionar Equipamento</h3>
         </div>
         <div class="modal-body">
-            <div class="span12" id="divformEquipamento" style="margin-left: 0"></div>
           <div class="span6" style="margin-left: 0">
                 <label for="equipamento">Equipamento<span class="required">*</span></label>
                 <input name="equipamento" type="text" class="span12" id="equipamento" value="" />
@@ -510,7 +517,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true" id="btn-close-equipamento">Fechar</button>
+            <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true" id="btn-close-equipamento">Fechar</button>
             <button class="btn btn-primary">Adicionar</button>
         </div>
     </form>
@@ -573,7 +580,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn" data-dismiss="modal" aria-hidden="true" id="btn-cancelar-faturar">Cancelar</button>
+                <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true" id="btn-cancelar-faturar">Cancelar</button>
                 <button class="btn btn-primary">Faturar</button>
             
             </div>
