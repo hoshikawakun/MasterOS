@@ -14,7 +14,7 @@
                 </span>
                 <h5>Cadastro de venda</h5>
             </div>
-            <div class="widget-content nopadding tab-content">
+            <div class="widget_box_Painel2">
                 <div class="span12" id="divProdutosServicos" style=" margin-left: 0">
                     <ul class="nav nav-tabs">
                         <li class="active" id="tabDetalhes"><a href="#tab1" data-toggle="tab">Detalhes da venda</a></li>
@@ -48,7 +48,7 @@
                                     <div class="span12" style="padding: 1%; margin-left: 0">
                                         <div class="span6 offset3" style="text-align: center">
                                             <button class="btn btn-success" id="btnContinuar"><i class="fas fa-share"></i> Continuar</button>
-                                            <a href="<?php echo base_url() ?>index.php/vendas" class="btn"><i class="fas fa-backward"></i> Voltar</a>
+                                            <a href="<?php echo base_url() ?>index.php/vendas" class="btn btn-warning"><i class="fas fa-backward"></i> Voltar</a>
                                         </div>
                                     </div>
                                 </form>
