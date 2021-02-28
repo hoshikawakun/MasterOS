@@ -271,7 +271,7 @@
             <h7 style="text-align: left"><br>* ./assets/arquivos</h7>
         </div>
         <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+            <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Cancelar</button>
             <button id="update-mapos" type="button" class="btn btn-danger"><i class="fas fa-sync-alt"></i>Atualizar</button>
         </div>
     </form>
@@ -291,7 +291,7 @@
             </h7>
         </div>
         <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+            <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Cancelar</button>
             <button id="update-database" type="button" class="btn btn-warning"><i class="fas fa-sync-alt"></i>Atualizar</button>
         </div>
     </form>
