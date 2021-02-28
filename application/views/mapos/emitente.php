@@ -110,7 +110,7 @@
 
             </div>
             <div class="modal-footer">
-                <button class="btn" data-dismiss="modal" aria-hidden="true" id="btnCancelExcluir">Cancelar</button>
+                <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true" id="btnCancelExcluir">Cancelar</button>
                 <button class="btn btn-success">Cadastrar</button>
             </div>
         </form>
@@ -244,7 +244,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn" data-dismiss="modal" aria-hidden="true" id="btnCancelExcluir">Cancelar</button>
+                <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true" id="btnCancelExcluir">Cancelar</button>
                 <button class="btn btn-primary">Atualizar</button>
             </div>
         </form>
@@ -269,7 +269,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn" data-dismiss="modal" aria-hidden="true" id="btnCancelExcluir">Cancelar</button>
+                <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true" id="btnCancelExcluir">Cancelar</button>
                 <button class="btn btn-primary">Atualizar</button>
             </div>
         </form>
@@ -294,7 +294,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn" data-dismiss="modal" aria-hidden="true" id="btnCancelExcluir">Cancelar</button>
+                <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true" id="btnCancelExcluir">Cancelar</button>
                 <button class="btn btn-primary">Atualizar</button>
             </div>
         </form>
