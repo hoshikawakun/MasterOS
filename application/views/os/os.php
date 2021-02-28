@@ -210,7 +210,7 @@
             <h5 style="text-align: center">Deseja realmente excluir esta OS?</h5>
         </div>
         <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+            <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Cancelar</button>
             <button class="btn btn-danger">Excluir</button>
         </div>
     </form>
