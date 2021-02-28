@@ -143,15 +143,9 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="form-actions">
-                            <div class="span12">
-                                <div class="span6 offset3">
-                                    <button type="submit" class="btn btn-primary"><i class="fas fa-sync-alt"></i>
-                                        Atualizar
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="form_actions" align="center">
+	<button type="submit" class="btn btn-primary">Salvar Alterações</button>
+					</div>
                     </div>
                     <!-- Menu Endereços -->
                     <div id="menu2" class="tab-pane fade">
@@ -200,16 +194,10 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="form-actions">
-                            <div class="span12">
-                                <div class="span6 offset3">
-                                    <button type="submit" class="btn btn-primary"><i class="fas fa-sync-alt"></i>
-                                        Atualizar
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                       <div class="form_actions" align="center">
+	<button type="submit" class="btn btn-primary">Salvar Alterações</button>
+					</div>
+				</div>
             </form>
             </div>
         </div>
