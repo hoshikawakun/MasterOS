@@ -73,7 +73,7 @@
                 <h5>Serviços Concluidos</h5>
             </div>
             <div class="widget_content">
-                <table class="table">
+                <table class="table_p">
                     <thead>
                         <tr>
                             <th>OS N°</th>
@@ -131,7 +131,7 @@
                 <h5>OS Aprovados</h5>
             </div>
             <div class="widget_content">
-                <table class="table">
+                <table class="table_p">
                     <thead>
                         <tr>
                             <th>OS N°</th>
@@ -189,7 +189,7 @@
                 <h5>Orçamentos Concluidos</h5>
             </div>
             <div class="widget_content">
-                <table class="table">
+                <table class="table_p">
                     <thead>
                         <tr>
                             <th>OS N°</th>
@@ -247,7 +247,7 @@
                 <h5>Em Orçamento</h5>
             </div>
             <div class="widget_content">
-                <table class="table">
+                <table class="table_p">
                     <thead>
                         <tr>
                             <th>OS N°</th>
@@ -305,7 +305,7 @@
                 <h5>Aguardando Peças</h5>
             </div>
             <div class="widget_content">
-                <table class="table">
+                <table class="table_p">
                     <thead>
                         <tr>
                             <th>OS N°</th>
@@ -363,7 +363,7 @@
                 <h5>Entregue - A Receber</h5>
             </div>
             <div class="widget_content">
-                <table class="table">
+                <table class="table_p">
                     <thead>
                         <tr>
                             <th>OS N°</th>
@@ -421,7 +421,7 @@
                 <h5>Produtos Com Estoque Mínimo</h5>
             </div>
             <div class="widget_content">
-                <table class="table">
+                <table class="table_p">
                     <thead>
                         <tr>
                             <th>Cod. Item</th>
@@ -928,7 +928,7 @@
             <h5 style="text-align: center">Deseja realmente excluir esta OS?</h5>
         </div>
         <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+            <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Cancelar</button>
             <button class="btn btn-danger">Excluir</button>
         </div>
     </form>
@@ -958,7 +958,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+            <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Cancelar</button>
             <button class="btn btn-primary">Atualizar</button>
         </div>
     </form>
