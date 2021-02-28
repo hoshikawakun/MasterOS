@@ -15,7 +15,7 @@
                 </span>
                 <h5>Editar Venda</h5>
             </div>
-            <div class="widget-content nopadding">
+            <div class="widget_box_Painel2">
                 <div class="span12" id="divProdutosServicos" style=" margin-left: 0">
                     <ul class="nav nav-tabs">
                         <li class="active" id="tabDetalhes"><a href="#tab1" data-toggle="tab">Detalhes da Venda</a></li>
@@ -24,8 +24,8 @@
                         <div class="tab-pane active" id="tab1">
                             <div class="span12" id="divEditarVenda">
                                 <form action="<?php echo current_url(); ?>" method="post" id="formVendas">
-                                    <?php echo form_hidden('idVendas', $result->idVendas) ?>
-                                    <div class="span12" style="padding: 1%; margin-left: 0">
+                <?php echo form_hidden('idVendas', $result->idVendas) ?>
+                <div class="span12" style="padding: 1%; margin-left: 0">
                                         <h3>#Venda:
                                             <?php echo $result->idVendas ?>
                                         </h3>
@@ -46,19 +46,7 @@
                                         </div>
                                     </div>
                                     
-                                    
-                                    <div class="span12" style="padding: 1%; margin-left: 0">
-                                        <div class="span8 offset2" style="text-align: center">
-                                            <?php if ($result->faturado == 0) { ?>
-                                                <a href="#modal-faturar" id="btn-faturar" role="button" data-toggle="modal" class="btn btn-success"><i class="fas fa-cash-register"></i> Faturar</a>
-                                            <?php
-                                            } ?>
-                                            <button class="btn btn-primary" id="btnContinuar"><i class="fas fa-sync-alt"></i> Atualizar</button>
-                                            <a href="<?php echo base_url() ?>index.php/vendas/visualizar/<?php echo $result->idVendas; ?>" class="btn btn-inverse"><i class="fas fa-eye"></i> Visualizar Venda</a>
-                                            <a href="<?php echo base_url() ?>index.php/vendas" class="btn"><i class="fas fa-backward"></i> Voltar</a>
-                                        </div>
-                                    </div>
-                                </form>
+                              </form>
                                 <div class="span12 well" style="padding: 1%; margin-left: 0">
                                     <form id="formProdutos" action="<?php echo base_url(); ?>index.php/vendas/adicionarProduto" method="post">
                                         <div class="span6">
@@ -84,12 +72,12 @@
                                 </div>
                                 
                <div class="span12" id="divProdutos" style="margin-left: 0">
-               <div class="widget-content nopadding">
+               <div class="widget_content nopadding">
 				<div class="tab-content">
 </div>
      </div>
-                                <div class="widget-content nopadding">
-                                    <table width="100%S" class="table" id="tblProdutos">
+                                <div class="widget_content nopadding">
+                                    <table width="100%" class="table_p" id="tblProdutos">
                                         <thead>
                                             <tr>
                                             	<th width="8%">Cod. SKU</th>
@@ -133,20 +121,28 @@
                 </div>
                                 -->
                                 </div>
-                            </div>
-                        </div>
-                    </div>
+                          </div>
+                      </div>
+                  </div>
                 </div>
-                &nbsp
+                <div class="form_actions" align="center">
+                    <?php if ($result->faturado == 0) { ?>
+                                                <a href="#modal-faturar" id="btn-faturar" role="button" data-toggle="modal" class="btn btn-danger"><i class="fas fa-cash-register"></i> Faturar</a>
+                                            <?php
+                                            } ?>
+                                            <button class="btn btn-primary" id="btnContinuar"><i class="fas fa-sync-alt"></i> Atualizar</button>
+                                            <a href="<?php echo base_url() ?>index.php/vendas/visualizar/<?php echo $result->idVendas; ?>" class="btn btn-inverse"><i class="fas fa-eye"></i> Visualizar Venda</a>
+                                            <a href="<?php echo base_url() ?>index.php/vendas" class="btn btn-warning"><i class="fas fa-backward"></i> Voltar</a>
+                    </div>
             </div>
         </div>
     </div>
 </div>
 
 <!-- Modal Faturar-->
-<div id="modal-faturar" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="modal-faturar" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form id="formFaturar" action="<?php echo current_url() ?>" method="post">
-        <div class="modal-header">
+        <div class="modal_header_anexos">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             <h3 id="myModalLabel">Faturar Venda</h3>
         </div>
@@ -200,7 +196,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true" id="btn-cancelar-faturar">Cancelar</button>
+            <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true" id="btn-cancelar-faturar">Cancelar</button>
             <button class="btn btn-primary">Faturar</button>
         </div>
     </form>
