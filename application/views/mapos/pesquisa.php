@@ -19,9 +19,9 @@
                 <h5>Ordens de Serviço</h5>
             </div>
             <div class="widget_content">
-                <table class="table">
+                <table class="table_p">
                     <thead>
-                        <tr style="backgroud-color: #2D335B">
+                        <tr>
                             <th>OS N°</th>
                             <th>Data de Entrada</th>
                             <th>Descrição</th>
@@ -141,9 +141,9 @@
                 <h5>Produtos</h5>
             </div>
             <div class="widget_content">
-                <table class="table">
+                <table class="table_p">
                         <thead>
-                            <tr style="backgroud-color: #2D335B">
+                            <tr>
                                 <th>Cod. Produto</th>
                                 <th>Cod. Barras</th>
                                 <th>Nome</th>
@@ -190,7 +190,7 @@
                 <h5>Clientes</h5>
             </div>
             <div class="widget_content">
-                <table class="table">
+                <table class="table_p">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -241,9 +241,9 @@
                 <h5>Serviços</h5>
             </div>
             <div class="widget_content">
-                <table class="table">
+                <table class="table_p">
                     <thead>
-                        <tr style="backgroud-color: #2D335B">
+                        <tr>
                             <th>#</th>
                             <th>Nome</th>
                             <th>Preço</th>
