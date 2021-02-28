@@ -15,7 +15,7 @@
                     <a target="_blank" title="Imprimir" class="btn btn-mini btn-inverse" href="<?php echo site_url() ?>/vendas/imprimirTermica/<?php echo $result->idVendas; ?>"><i class="fas fa-print"></i> Imprimir Não Fiscal</a>
                 </div>
             </div>
-            <div class="widget-content" id="printOs">
+            <div class="widget_content" id="printOs">
                 <div class="invoice-content">
                     <div class="invoice-head">
                     <!-- Inicio -->
@@ -84,7 +84,7 @@
   </table>
   <hr>
 							<?php if ($produtos != null) { ?>
-                            <table width="100%" style="font-size: 12px" class="table table-condensed" id="tblProdutos">
+                            <table width="100%" style="font-size: 12px" class="table table-bordered table-condensed" id="tblProdutos">
                                 <thead>
                                     <tr>
                                         <th width="12%">Cod. Produto</th>
