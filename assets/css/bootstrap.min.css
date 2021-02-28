@@ -698,6 +698,9 @@
 .modal-header{padding:9px 15px;border-bottom:1px solid #eee}
 .modal-header .close{margin-top:2px}
 .modal-header h3{margin:0;line-height:30px}
+.modal_header_login{background:#ddd; border-bottom: 1px solid #aaa; border-radius: 5px 5px 0px 0px; height: 20px; height: auto; padding: 5px 15px 5px;}
+.modal_header_login .close{margin-top:2px}
+.modal_header_login h8{margin:0; line-height:30px; font-family:inherit; font-weight:bold; font-size:16px; color:#555}
 .modal-body{position:relative;max-height:400px;padding:15px;overflow-y:auto}
 .modal-form{margin-bottom:0}
 .modal-footer{padding:14px 15px 15px;margin-bottom:0;text-align:right;background-color:#f5f5f5;border-top:1px solid #ddd;-webkit-border-radius:0 0 6px 6px;-moz-border-radius:0 0 6px 6px;border-radius:0 0 6px 6px;*zoom:1;-webkit-box-shadow:inset 0 1px 0 #fff;-moz-box-shadow:inset 0 1px 0 #fff;box-shadow:inset 0 1px 0 #fff}
@@ -706,6 +709,12 @@
 .modal-footer .btn+.btn{margin-bottom:0;margin-left:5px}
 .modal-footer .btn-group .btn+.btn{margin-left:-1px}
 .modal-footer .btn-block+.btn-block{margin-left:0}
+.modal_footer_login{background:#ddd; border-top: 1px solid #aaa; border-radius: 0px 0px 5px 5px; height: 35px; text-align:right; padding: 10px 10px 5px;}
+.modal_footer_login:before,.modal_footer_login:after{display:table;line-height:0;content:""}
+.modal_footer_login:after{clear:both}
+.modal_footer_login .btn+.btn{margin-bottom:0;margin-left:5px}
+.modal_footer_login .btn-group .btn+.btn{margin-left:-1px}
+.modal_footer_login .btn-block+.btn-block{margin-left:0}
 .tooltip{position:absolute;z-index:1030;display:block;font-size:11px;line-height:1.4;opacity:0;filter:alpha(opacity=0);visibility:visible}
 .tooltip.in{opacity:.8;filter:alpha(opacity=80)}
 .tooltip.top{padding:5px 0;margin-top:-3px}
