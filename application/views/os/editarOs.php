@@ -155,15 +155,12 @@
                                         <textarea class="span12 editor" name="laudoTecnico" id="laudoTecnico" cols="30"
                                                   rows="5"><?php echo $result->laudoTecnico ?></textarea>
 			</div>
-			</form>
-            </div>
             <!-- Botoes de Ação -->
 	<div class="span12" style="padding: 0px; margin-left: 0">
-    <div align="center">
+    <div align="center" style="padding: 3px">
     <?php if ($result->faturado == 0) { ?>
-    <a href="#modal-faturar" title="Faturar" id="btn-faturar" role="button" data-toggle="modal" class="btn btn-danger"><i class="fas fa-cash-register"></i> Faturar</a>
+    <a href="#modal-faturar" title="Faturar" id="btn-faturar" role="button" data-toggle="modal" class="btn btn-danger"><i class="fas fa-cash-register"></i> Faturar</a><?php } ?>
     
-	<?php } ?>
 	<button class="btn btn-primary" title="Atualizar" id="btnContinuar"><i class="fas fa-sync-alt"></i> Atualizar</button>
 
 	<a href="<?php echo base_url() ?>index.php/os/visualizar/<?php echo $result->idOs; ?>" title="Visualizar OS" class="btn btn-secondary"><i class="fas fa-eye"></i> Visualizar OS</a>
@@ -173,7 +170,7 @@
                         
 	<a href="#modal-whatsapp" title="Enviar WhatsApp" id="btn-whatsapp" role="button" data-toggle="modal" class="btn btn-success"><i class="fab fa-whatsapp"></i> WhatsApp</a>
     </div>
-    <div align="center">
+    <div align="center" style="padding: 3px">
     <a target="_blank" title="Imprimir" class="btn btn-inverse" href="<?php echo site_url() ?>/os/imprimir/<?php echo $result->idOs; ?>"><i class="fas fa-print"></i> Imprimir A4</a>
     
     <a target="_blank" title="Imprimir Termica" class="btn btn-inverse" href="<?php echo site_url() ?>/os/imprimirTermica/<?php echo $result->idOs; ?>"><i class="fas fa-print"></i> Imprimir Termica</a>
@@ -181,11 +178,13 @@
     <a target="_blank" title="Imprimir Termica 2" class="btn btn-inverse" href="<?php echo site_url() ?>/os/imprimirTermica2/<?php echo $result->idOs; ?>"><i class="fas fa-print"></i> Imprimir Termica 2</a>
     </div>
     
-    <div align="center">
+    <div align="center" style="padding: 3px">
     <a href="<?php echo base_url() ?>index.php/os" class="btn btn-warning"><i class="fas fa-backward"></i> Voltar</a>
     </div>
     </div>
     <!-- Fim Botoes de Ação -->
+			</form>
+            </div>
             </div>
                         
                         <!--Produtos-->
@@ -608,9 +607,9 @@
         <div>Sua <b>O.S <?php echo $result->idOs ?></b> referente ao equipamento <b><?php echo $result->descricaoProduto ?></b> foi atualizada para <b><?php echo $result->status ?></b></div>
         <br>
         <?php echo $result->defeito ?>
-        <br>
+        <br><br>
         <?php echo $result->laudoTecnico ?>
-        <br>
+        <br><br>
         <?php echo $result->observacoes ?>
         <br><br>
         <div>Valor Total <b>R$: <?php echo number_format($totals + $total, 2, ',', '.') ?></b></div>
@@ -624,6 +623,7 @@
         <br>Email: <b><?php echo $result->email ?></b>
         <br>Senha: <b><?php echo $result->senha ?></b></div>
         <div>Você poderá edita-los no menu <b>Minha Conta</b></div>
+        <br>
         </font>
       </div>
     </form>
