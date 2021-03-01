@@ -34,28 +34,30 @@ $totalProdutos = 0; ?>
                     
                     <a href="https://www.linkcorreios.com.br/<?php echo $result->rastreio ?>" title="Rastrear" target="_new" class="btn btn-mini btn-warning"><i class="fas fa-envelope"></i> Rastrear</a>
                     
+                    <a href="#modal-whatsapp" title="Enviar WhatsApp" id="btn-whatsapp" role="button" data-toggle="modal" class="btn btn-mini btn-success"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    
                 </div>
             </div>
             <div class="widget_content" id="printOs">
                 <div class="invoice-content">
                     <div class="invoice-head" style="margin-bottom: 0">
-
-                        <table class="table table-condensed">
-                            <tbody>
-                                <?php if ($emitente == null) { ?>
-
-                                    <tr>
-                                        <td colspan="3" class="alert">Você precisa configurar os dados do emitente. >>><a href="<?php echo base_url(); ?>index.php/mapos/emitente">Configurar</a>
-                                            <<<</td> </tr> <?php } else { ?> <tr>
-<td style="width: 25%"><br><img src=" <?php echo $emitente[0]->url_logo; ?> " style="max-height: 100px"></td>
-<td><span style="font-size: 15px"><b> <?php echo $emitente[0]->nome; ?></b></span></br>
+                    
+                    <table width="100%" class="table_r">
+  <?php if ($emitente == null) { ?>
+  <tr>
+    <td colspan="3" class="alert">Você precisa configurar os dados do emitente. >>><a href="<?php echo base_url(); ?>index.php/mapos/emitente">Configurar</a><<<
+    </td>
+    </tr>
+    <?php } else { ?>
+  <tr>
+    <td style="width: 25%"><br><img src=" <?php echo $emitente[0]->url_logo; ?> " style="max-height: 100px"></td>
+    <td><span style="font-size: 15px"><b> <?php echo $emitente[0]->nome; ?></b></span></br>
 <i class="fas fa-fingerprint" style="margin:5px 1px"></i> <?php echo $emitente[0]->cnpj; ?></br>
 <i class="fas fa-map-marker-alt" style="margin:4px 3px"></i> <?php echo $emitente[0]->rua . ', ' . $emitente[0]->numero . ' - ' . $emitente[0]->bairro . ' - ' . $emitente[0]->cidade . ' - ' . $emitente[0]->uf; ?></br>
 <i class="fas fa-map-marker-alt" style="margin:4px 3px"></i> <?= 'CEP: ' . $emitente[0]->cep; ?><br>
 <i class="fas fa-envelope" style="margin:5px 1px"></i> <?php echo $emitente[0]->email; ?></br>
 <i class="fas fa-phone-alt" style="margin:5px 1px"></i> <?php echo $emitente[0]->telefone; ?></td>
-        
-        <td style="text-align: center">
+    <td style="text-align: center">
         <span style="font-size: 12px"><b>OS N°: </b><span><?php echo $result->idOs ?></span></br>
         <span style="font-size: 12px"><b>Emissão:</b> <?php echo date('d/m/Y') ?></span></br>
         <span style="font-size: 12px"><b>Status OS: </b><?php echo $result->status ?></span></br>
@@ -65,15 +67,10 @@ $totalProdutos = 0; ?>
         <span style="font-size: 12px"><b>Data de Saida: </b><?php echo htmlspecialchars_decode($result->dataSaida) ?><?php } ?></span></br>
         <?php if ($result->garantia != null) { ?>
         <span style="font-size: 12px"><b>Garantia até: </b><?php echo htmlspecialchars_decode($result->garantia) ?><?php } ?></span></br></td>
-                                    </tr>
-
-                                <?php } ?>
-                            </tbody>
-                        </table>
-
-                        <table class="table table-condensend" width="100%">
-                      <tbody>
-                        <td>
+  </tr>
+  <?php } ?>
+  <tr>
+    <td colspan="2">
             <span style="font-size: 13px"><b>Cliente</b></span><br>
             <span style="font-size: 12px"><i class="fas fa-user-check"></i> <?php echo $result->nomeCliente ?></span><br>
             <span style="font-size: 12px"><i class="fas fa-map-marker-alt" style="margin:4px 3px"></i> <?php echo $result->rua ?>,
@@ -91,89 +88,69 @@ $totalProdutos = 0; ?>
             <span style="font-size: 12px"><i class="fas fa-envelope" style="margin:5px 1px"></i> <?php echo $result->email_responsavel ?></span><br>
             <span style="font-size: 12px"><i class="fas fa-phone-alt" style="margin:5px 1px"></i> <?php echo $result->telefone_usuario ?></span>
             </td>
-                        </tr>
-                      </tbody>
-                    </table>
-
-                    </div>
-                    <div style="margin-top: 0; padding-top: 0">
-                      
-                      <table class="table table-condensed" width="100%">
-                            <td><?php if ($result->serial != null) { ?>
+  </tr>
+  <tr>
+    <td colspan="2"><?php if ($result->serial != null) { ?>
                                     <span style="font-size: 13px; ">
                               <b>Nº Série:</b><br></span>
                                             <?php echo htmlspecialchars_decode($result->serial) ?>
                             <?php } ?></td>
-                            <td><?php if ($result->marca != null) { ?>
+    <td><?php if ($result->marca != null) { ?>
                                     <span style="font-size: 13px; ">
                               <b>Marca:</b><br></span>
                                             <?php echo htmlspecialchars_decode($result->marca) ?>
                             <?php } ?></td>
-                          </tr>
-                        </table>
-                        
-                  </div>
-                    <div style="margin-top: 0; padding-top: 0">
-
-                        <table width="100%" class="table table-condensed">
-                            <tbody>
-                            
-                            <?php if ($result->rastreio != null) { ?>
+  </tr>
+  <?php if ($result->rastreio != null) { ?>
                                     <tr>
-                                        <td><span style="font-size: 13px; ">
+                                        <td colspan="3"><span style="font-size: 13px; ">
                                             <b>Cod. de Rastreio:</b><br></span>
                                             <?php echo htmlspecialchars_decode($result->rastreio) ?>
                                         </td>
                                     </tr>
                                 <?php } ?>
-                            
-							<?php if ($result->descricaoProduto != null) { ?>
+  <?php if ($result->descricaoProduto != null) { ?>
                                     <tr>
-                                        <td><span style="font-size: 14px; ">
+                                        <td colspan="3"><span style="font-size: 14px; ">
                                             <b>Descrição Produto/Serviço:</b><br></span>
                                             <?php echo htmlspecialchars_decode($result->descricaoProduto) ?>
                                         </td>
                                     </tr>
                                 <?php } ?>
-
-                                <?php if ($result->defeito != null) { ?>
+  <?php if ($result->defeito != null) { ?>
                                     <tr>
-                                        <td><span style="font-size: 13px; ">
+                                        <td colspan="3"><span style="font-size: 13px; ">
                                             <b>Problema Informado:</b><br></span>
                                             <?php echo htmlspecialchars_decode($result->defeito) ?>
                                         </td>
                                     </tr>
                                 <?php } ?>
-
-                                <?php if ($result->observacoes != null) { ?>
+  <?php if ($result->observacoes != null) { ?>
                                     <tr>
-                                        <td><span style="font-size: 13px; ">
+                                        <td colspan="3"><span style="font-size: 13px; ">
                                             <b>Observações:</b><br></span>
                                             <?php echo htmlspecialchars_decode($result->observacoes) ?>
                                         </td>
                                     </tr>
                                 <?php } ?>
-
-                                <?php if ($result->laudoTecnico != null) { ?>
+  <?php if ($result->laudoTecnico != null) { ?>
                                     <tr>
-                                        <td><span style="font-size: 13px; ">
+                                        <td colspan="3"><span style="font-size: 13px; ">
                                             <b>Relatório Técnico:</b><br></span>
                                             <?php echo htmlspecialchars_decode($result->laudoTecnico) ?>
                                         </td>
                                     </tr>
                                 <?php } ?>
-                                <td><span style="font-size: 13px"></td>
-                            </tbody>
-                        </table>
-                        <div class"span12">
+  <tr>
+    <td colspan="3"><br /><div class"span12">
 						<?php if ($equipamento != null) { ?>
-                            <table width="100%" class="table table-bordered table-condensed" id="tblEquipamento">
+                            <table width="100%" class="table_p" id="tblEquipamento">
                                 <thead>
                                     <tr>
                                         <th width="20%">Equipamento</th>
                                         <th width="20%">Modelo/Cor</th>
                                         <th width="15%">Nº Série</th>
-                                        <th width="5%">Voltagem</th>
+                                        <th width="10%">Voltagem</th>
                                         <th width="40%">Observação</th>
                                     </tr>
                                 </thead>
@@ -192,14 +169,16 @@ $totalProdutos = 0; ?>
     									</tbody>
                             </table>
                         <?php } ?>
-						</div>
-                        <div class"span12">
+						</div></td>
+  </tr>
+  <tr>
+    <td colspan="3"><br /><div class"span12">
 						<?php if ($produtos != null) { ?>
-                            <table width="100%" class="table table-bordered table-condensed" id="tblProdutos">
+                            <table width="100%" class="table_p" id="tblProdutos">
                                 <thead>
                                     <tr>
-                                        <th width="8%">SKU</th>
-                                        <th width="10%">Cod. Barras</th>
+                                        <th width="10%">Cod. Produto</th>
+                                        <th width="12%">Cod. Barras</th>
                                         <th>Produto</th>
                                         <th width="10%">Quantidade</th>
                                         <th width="10%">Preço unit.</th>
@@ -217,12 +196,12 @@ $totalProdutos = 0; ?>
                                         echo '<td><div align="center">' . $p->codDeBarra . '</div></td>';
 										echo '<td>' . $p->descricao . '</td>';
                                         echo '<td><div align="center">' . $p->quantidade . '</div></td>';
-                                        echo '<td><div align="center">R$ ' . $p->preco ?: $p->precoVenda . '</div></td>';
-                                        echo '<td><div align="center">R$ ' . number_format($p->subTotal, 2, ',', '.') . '</div></td>';
+                                        echo '<td><div align="center">R$: ' . $p->preco ?: $p->precoVenda . '</div></td>';
+                                        echo '<td><div align="center">R$: ' . number_format($p->subTotal, 2, ',', '.') . '</div></td>';
                                         echo '</tr>';} ?>
     									<tr>
-                                        <td colspan="5" style="text-align: right"><strong>Total:</strong></td>
-                                        <td><strong><div align="center">R$ <?php echo number_format($totalProdutos, 2, ',', '.'); ?></div></strong></td>
+                                        <td colspan="5" style="text-align: right"><strong>Total: </strong></td>
+                                        <td><strong><div align="center">R$: <?php echo number_format($totalProdutos, 2, ',', '.'); ?></div></strong></td>
                                     	</tr>
                                 </tbody>
                             </table>
@@ -230,7 +209,7 @@ $totalProdutos = 0; ?>
                         </div>
                         <div class"span12">
 						<?php if ($servicos != null) { ?>
-                            <table width="100%" class="table table-bordered table-condensed">
+                            <table width="100%" class="table_p">
                                 <thead>
                                     <tr>
                                         <th>Serviço</th>
@@ -248,15 +227,16 @@ $totalProdutos = 0; ?>
                                         $totalServico = $totalServico + $subtotal;
                                         echo '<tr>';
                                         echo '<td>' . $s->nome . '</td>';
-                                        echo '<td>' . ($s->quantidade ?: 1) . '</td>';
-                                        echo '<td>R$ ' . $preco . '</td>';
-                                        echo '<td>R$ ' . number_format($subtotal, 2, ',', '.') . '</td>';
+                                        echo '<td><div align="center">' . ($s->quantidade ?: 1) . '</td>';
+                                        echo '<td><div align="center">R$: ' . $preco . '</td>';
+                                        echo '<td><div align="center">R$: ' . number_format($subtotal, 2, ',', '.') . '</td>';
                                         echo '</tr>';
+
                                     } ?>
 
                                     <tr>
-                                        <td colspan="3" style="text-align: right"><strong>Total:</strong></td>
-                                        <td><strong>R$ <?php echo number_format($totalServico, 2, ',', '.'); ?></strong></td>
+                                        <td colspan="3" style="text-align: right"><strong>Total: </strong></td>
+                                        <td><div align="center"><strong>R$: <?php echo number_format($totalServico, 2, ',', '.'); ?></strong></div></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -266,11 +246,14 @@ $totalProdutos = 0; ?>
                         if ($totalProdutos != 0 || $totalServico != 0) {
                             echo "<h4 style='font-size: 15px; text-align: right'>Valor Total: R$" . number_format($totalProdutos + $totalServico, 2, ',', '.') . "</h4>";
                         }
-                        ?>
+                        ?></td>
+  </tr>
+</table>
+
                         <!-- ANEXOS -->
                         <div class"span12">
 						<?php if ($anexos != null) { ?>
-                            <table class="table table-bordered table-condensed">
+                            <table width="100%" class="table_p">
                                 <thead>
                                     <tr>
                                         <th>Anexo</th>
@@ -289,8 +272,8 @@ $totalProdutos = 0; ?>
                                         $thumb = $a->url . '/thumbs/' . $a->thumb;
                                         $link = $a->url . '/' . $a->anexo;
                                     }
-                                    echo '<div class="span3" style="min-height: 200px; margin-left: 0">
-									<a style="min-height: 200px;" href="#modal-anexo" imagem="' . $a->idAnexos . '" link="' . $link . '" role="button" class="btn anexo span12" data-toggle="modal"><img src="' . $thumb . '" alt=""></a></div>';
+                                    echo '<div class="span3" style="min-height: 200px; margin-left: 0; padding: 5px;">
+									<a style="min-height: 180px; border: 1px solid #f00;" href="#modal-anexo" imagem="' . $a->idAnexos . '" link="' . $link . '" role="button" class="btn anexo span12" data-toggle="modal"><img src="' . $thumb . '" alt=""></a></div>';
 									
                                 } ?>
                                 
@@ -332,6 +315,51 @@ $totalProdutos = 0; ?>
         <a href="" link="" class="btn btn-danger" id="excluir-anexo">Excluir Anexo</a>
     </div>
 </div>
+<!-- Fim Modal visualizar anexo -->
+
+<!-- Modal WhatsApp-->
+<div id="modal-whatsapp" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <form action="<?php echo current_url() ?>" method="post">
+        <div class="modal_header_anexos">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <div align="center">
+              <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
+												$zapnumber = preg_replace("/[^0-9]/", "", $result->celular_cliente);
+												$totalOS = number_format($totalProdutos + $totalServico, 2, ',', '.');
+                        echo '<a title="Enviar Por WhatsApp" class="btn btn-success" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $result->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $result->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($result->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $result->status . '*.%0d%0a%0d%0a' . strip_tags($result->defeito) . '%0d%0a%0d%0a' . strip_tags($result->laudoTecnico) . '%0d%0a%0d%0a' . strip_tags($result->observacoes) . '%0d%0a%0d%0aValor%20Total%20*R$&#58%20'. $totalOS . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20estes%20dados%20para%20fazer%20Log-in%0d%0aEmail:%20*' . strip_tags($result->email) . '*%0d%0aSenha:%20*' . strip_tags($result->senha) . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*"><i class="fab fa-whatsapp"></i> Enviar WhatsApp</a>';} ?>
+              
+            </div>
+        </div>
+        <div class="modal-body">
+        <div class="span12" style="margin-left: 0">
+          <font size='2'>Prezado(a) <b><?php echo $result->nomeCliente ?></b>
+          <br><br>
+        <div>Sua <b>O.S <?php echo $result->idOs ?></b> referente ao equipamento <b><?php echo $result->descricaoProduto ?></b> foi atualizada para <b><?php echo $result->status ?></b></div>
+        <br>
+        <?php echo $result->defeito ?>
+        <br><br>
+        <?php echo $result->laudoTecnico ?>
+        <br><br>
+        <?php echo $result->observacoes ?>
+        <br><br>
+        <div>Valor Total <b>R$: <?php echo number_format($totalProdutos + $totalServico, 2, ',', '.') ?></b></div>
+        <br>
+		<?php echo $configuration['whats_app1'] ?>
+        <br><br>
+        <div>Atenciosamente <b><?php echo $configuration['whats_app2'] ?></b> - <b><?php echo $configuration['whats_app3'] ?></b></div>
+        <br>
+        <div>Acesse a área do cliente pelo link <font color='#1E90FF'><?php echo $configuration['whats_app4'] ?></font></div>
+        <div>E utilize estes dados para fazer Log-In.
+        <br>Email: <b><?php echo $result->email ?></b>
+        <br>Senha: <b><?php echo $result->senha ?></b></div>
+        <div>Você poderá edita-los no menu <b>Minha Conta</b></div>
+        <br>
+        </font>
+      </div>
+    </form>
+</div>
+<!-- Fim Modal WhatsApp-->
+
 <script type="text/javascript">
     $(document).ready(function () {
         $(document).on('click', '.anexo', function (event) {
