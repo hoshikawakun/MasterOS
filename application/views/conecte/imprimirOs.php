@@ -26,7 +26,7 @@ $totalProdutos = 0; ?>
                 <div class="invoice-content">
                     <div class="invoice-head" style="margin-bottom: 0">
 
-                        <table class="table">
+                        <table class="table_p">
                             <tbody>
                                 <?php if ($emitente == null) { ?>
 
@@ -131,7 +131,7 @@ $totalProdutos = 0; ?>
 
                         <?php if ($produtos != null) { ?>
                             <br />
-                            <table class="table table-mapos" id="tblProdutos">
+                            <table class="table table-bordered" id="tblProdutos">
                                 <thead>
                                     <tr>
                                         <th>Produto</th>
@@ -165,7 +165,7 @@ $totalProdutos = 0; ?>
                         } ?>
 
                         <?php if ($servicos != null) { ?>
-                            <table class="table table-mapos">
+                            <table class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th>Serviço</th>
