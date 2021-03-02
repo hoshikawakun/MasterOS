@@ -7,25 +7,25 @@
         <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vCliente')) { ?>
             <li class="<?php if (isset($menuClientes)) {
                 echo 'active';
-            }; ?>"><a href="<?= site_url('clientes') ?>"><i class="fas fa-users"></i> <span>Cliente / Fornecedor</span></a></li>
+            }; ?>"><a href="<?= site_url('clientes') ?>"><i class="fas fa-users"></i> <span>Cliente / Fornecedor</span><span class="counter_v"><?= $this->db->count_all('clientes'); ?></i></span></a></li>
             <?php
         } ?>
         <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vProduto')) { ?>
             <li class="<?php if (isset($menuProdutos)) {
                 echo 'active';
-            }; ?>"><a href="<?= site_url('produtos') ?>"><i class="fas fa-shopping-bag"></i> <span>Produtos</span></a></li>
+            }; ?>"><a href="<?= site_url('produtos') ?>"><i class="fas fa-shopping-bag"></i> <span>Produtos</span><span class="counter_v"><?= $this->db->count_all('produtos'); ?></i></span></a></li>
             <?php
         } ?>
         <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vServico')) { ?>
             <li class="<?php if (isset($menuServicos)) {
                 echo 'active';
-            }; ?>"><a href="<?= site_url('servicos') ?>"><i class="fas fa-wrench"></i> <span>Serviços</span></a></li>
+            }; ?>"><a href="<?= site_url('servicos') ?>"><i class="fas fa-wrench"></i> <span>Serviços</span><span class="counter_v"><?= $this->db->count_all('servicos'); ?></i></span></a></li>
             <?php
         } ?>
         <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) { ?>
             <li class="<?php if (isset($menuOs)) {
                 echo 'active';
-            }; ?>"><a href="<?= site_url('os') ?>"><i class="fas fa-diagnoses"></i> <span>Ordens de Serviço</span></a></li>
+            }; ?>"><a href="<?= site_url('os') ?>"><i class="fas fa-diagnoses"></i> <span>Ordens de Serviço</span><span class="counter_v"><?= $this->db->count_all('os'); ?></i></span></a></li>
             <?php
         } ?>
        <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vVenda')) { ?>
@@ -57,7 +57,7 @@
             <li class="submenu <?php if (isset($menuFinanceiro)) {
                 echo 'active open';
             }; ?>">
-                <a href="#"><i class="fas fa-hand-holding-usd"></i> <span>Financeiro</span> <span class="label"><i class="fas fa-chevron-down"></i></span></a>
+                <a href="#"><i class="fas fa-hand-holding-usd"></i> <span>Financeiro</span> <span class="counter_r"><i class="fas fa-chevron-down"></i></span></a>
                 <ul>
                     <li class="<?php if (isset($menuFinanceiro) && $menuFinanceiro == 'financeiro') {
                         echo 'active';
@@ -76,7 +76,7 @@
             <li class="submenu <?php if (isset($menuRelatorios)) {
                 echo 'active open';
             }; ?>">
-                <a href="#"><i class="fas fa-list-alt"></i> <span>Relatórios</span> <span class="label"><i class="fas fa-chevron-down"></i></span></a>
+                <a href="#"><i class="fas fa-list-alt"></i> <span>Relatórios</span> <span class="counter_r"><i class="fas fa-chevron-down"></i></span></a>
                 <ul>
                     <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'rCliente')) { ?>
                         <li><a href="<?= site_url('relatorios/clientes') ?>">Clientes</a></li>
@@ -124,7 +124,7 @@
             <li class="submenu <?php if (isset($menuConfiguracoes)) {
                 echo 'active open';
             }; ?>">
-                <a href="#"><i class="fas fa-cog"></i> <span>Configurações</span> <span class="label"><i class="fas fa-chevron-down"></i></span></a>
+                <a href="#"><i class="fas fa-cog"></i> <span>Configurações</span> <span class="counter_r"><i class="fas fa-chevron-down"></i></span></a>
                 <ul>
                     <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'cSistema')) { ?>
                         <li><a href="<?= site_url('mapos/configurar') ?>">Sistema</a></li>
