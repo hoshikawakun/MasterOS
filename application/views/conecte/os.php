@@ -21,12 +21,12 @@ if (!$results) {
 
             </div>
 
-            <div class="widget-content nopadding tab-content">
+            <div class="widget_box_Painel2">
 
 
-                <table id="tabela" class="table">
+                <table id="tabela" class="table table-bordered">
                     <thead>
-                        <tr style="backgroud-color: #2D335B">
+                        <tr>
                             <th>OS N°</th>
                             <th>Responsável</th>
                             <th>Data de Entrada</th>
@@ -64,12 +64,12 @@ if (!$results) {
 
             </div>
 
-            <div class="widget-content nopadding tab-content">
+            <div class="widget_box_Painel2">
 
 
-                <table class="table">
+                <table class="table table-bordered">
                     <thead>
-                        <tr style="backgroud-color: #2D335B">
+                        <tr>
                             <th>OS N°</th>
                             <th>Responsável</th>
                             <th>Data de Entrada</th>
