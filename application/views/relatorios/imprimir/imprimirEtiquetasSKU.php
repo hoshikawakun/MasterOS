@@ -16,7 +16,7 @@
 		<div class="row-fluid">
 			<div class="span12">
 				<div class="widget-box">
-					<div class="widget-content nopadding tab-content">
+					<div class="widget_box_Painel2">
 						<?php
                         if (
                             $this->input->get("etiquetaCode") !== "EAN13" && $this->input->get("etiquetaCode") !== "QR"
