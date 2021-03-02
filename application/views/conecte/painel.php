@@ -21,10 +21,10 @@
                 <span class="icon"><i class="fas fa-diagnoses"></i></span>
                 <h5>Últimas Ordens de Serviço</h5>
             </div>
-            <div class="widget-content">
-                <table id="tabela" class="table">
+            <div class="widget_content">
+                <table id="tabela" class="table table-bordered">
                     <thead>
-                       <tr style="backgroud-color: #2D335B">
+                       <tr>
                             <th>OS N°</th>
                             <th>Data de Entrada</th>
                             <th>Data Final</th>
@@ -94,8 +94,8 @@
         <div class="widget-title"><span class="icon"><i class="fas fa-shopping-cart"></i></span>
             <h5>Últimas Compras</h5>
         </div>
-        <div class="widget-content">
-            <table id="tabela" class="table">
+        <div class="widget_content">
+            <table id="tabela" class="table table-bordered">
                 <thead>
                     <tr>
                         <th>#</th>
