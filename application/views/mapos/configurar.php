@@ -41,9 +41,7 @@
                             <label for="app_theme" class="control-label">Tema do Sistema</label>
                             <div class="controls">
                                 <select name="app_theme" id="app_theme">
-                                    <option value="default">Padrão</option>
-                                    <option value="novo" <?= $configuration['app_theme'] == 'novo' ? 'selected' : ''; ?> >Novo</option>
-                                    <option value="white" <?= $configuration['app_theme'] == 'white' ? 'selected' : ''; ?> >Neve</option>
+                                    <option value="novo" <?= $configuration['app_theme'] == 'novo' ? 'selected' : ''; ?> >Padrão</option>
                                 </select>
                                 <span class="help-inline">Selecione o tema que que deseja usar no sistema</span>
                             </div>
@@ -65,21 +63,17 @@
                                 <span class="help-inline">
                                 <span class="help-inline">Complemento de eMail em Cadastro de Cliente</span>
                             </div></div>
-                    <hr />
-                        <div class="control-group">
+                            
+                        <div class="form_actions">
                         <label for="app_name" class="control-label">Mensagem Rápida</label>
                         <div class="controls">
                         <input id="telefone" class="telefone1" type="text" name="masteros_1" value="" />
                             <span class="help-inline"><a href="https://web.whatsapp.com/send?phone=55<?= $configuration['masteros_1']?>" title="Enviar WhatsWapp" target="_new" class="btn btn-success"><i class="fab fa-whatsapp"></i> Enviar WhatsWapp</a></span>
                             <span class="help-inline"><input disabled="disabled" value=" <?= $configuration['masteros_1']?>" readonly="readonly" /></span>
-                            </div></div><br />
-                        <div class="form-actions">
-                            <div class="span8">
-                                <div class="span9">
-                                    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
-                                </div>
-                            </div>
-                        </div>
+                            </div></div>
+                        <div class="form_actions" align="center">
+                    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                    </div>
                     </div>
                     <!-- Fim Menu Gerais -->
                     
@@ -125,13 +119,9 @@
                                 <span class="help-inline">Ativar ou desativar a visualização em tabelas dinâmicas</span>
                             </div>
                         </div>
-                        <div class="form-actions">
-                            <div class="span8">
-                                <div class="span9">
-                                    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="form_actions" align="center">
+                    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                    </div>
                     </div>
                     <!-- Fim Menu Misc -->
                     
@@ -164,13 +154,9 @@
                                 <span class="help-inline">Chave Pix para Recebimento de Pagamentos</span>
                             </div>
                         </div>
-                        <div class="form-actions">
-                            <div class="span8">
-                                <div class="span9">
-                                    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="form_actions" align="center">
+                    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                    </div>
                     </div>
                     <!-- Fim Menu Financeiro -->
                     
@@ -181,13 +167,9 @@
                         <div class="span8">
 <textarea name="termo_uso" class="editor"><?= $configuration['termo_uso']?></textarea>
                   </div></div>
-                    <div class="form-actions">
-                            <div class="span8">
-                                <div class="span9">
-                                    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="form_actions" align="center">
+                    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                    </div>
                     </div>
                     <!-- Fim Menu Termo de Uso OS -->
                     
@@ -207,13 +189,9 @@
                             </div>
                         </div>
                         
-                        <div class="form-actions">
-                            <div class="span8">
-                                <div class="span9">
-                                    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="form_actions" align="center">
+                    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                    </div>
                     </div>
                     <!-- Fim Menu Notificações -->
                     
@@ -239,13 +217,9 @@
                             " size="50" widg="50" />
                             <span class="help-inline">URL Area do Usuário</span>
                         </div>
-                        <div class="form-actions">
-                            <div class="span8">
-                                <div class="span9">
-                                    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
-                                </div>
-                          </div>
-                      </div>
+                       <div class="form_actions" align="center">
+                    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                    </div>
                   </div>
                   <!-- Fim Menu Mensagem WhatsApp -->
 </div>
