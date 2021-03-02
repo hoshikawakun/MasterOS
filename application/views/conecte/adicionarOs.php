@@ -26,7 +26,7 @@
                 </span>
                 <h5>Cadastro de OS</h5>
             </div>
-            <div class="widget-content nopadding tab-content">
+            <div class="widget_box_Painel2">
 
 
                 <div class="span12" id="divProdutosServicos" style=" margin-left: 0">
@@ -83,7 +83,7 @@
                                     <div class="span12" style="padding: 1%; margin-left: 0">
                                         <div class="span6 offset3" style="text-align: center">
                                             <button class="btn btn-success" id="btnContinuar"><i class="fas fa-plus"></i> Cadastrar</button>
-                                            <a href="<?php echo base_url() ?>index.php/mine/os" class="btn"><i class="fas fa-backward"></i> Voltar</a>
+                                            <a href="<?php echo base_url() ?>index.php/mine/os" class="btn btn-warning"><i class="fas fa-backward"></i> Voltar</a>
                                         </div>
                                     </div>
                                 </form>
