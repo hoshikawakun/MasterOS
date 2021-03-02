@@ -138,7 +138,8 @@
             <td>
 	<span style="font-size: 20px; "><b><?= $dados[0]->nome; ?></b></span><br><span>
 	<i class="fas fa-fingerprint" style="margin:5px 1px"></i> <?= $dados[0]->cnpj; ?><br>
-    <i class="fas fa-map-marker-alt" style="margin:4px 3px"></i> <?= $dados[0]->rua . ', nº: ' . $dados[0]->numero . ', ' . $dados[0]->bairro . ' - ' . $dados[0]->cidade . ' - ' . $dados[0]->uf; ?><br>
+    <i class="fas fa-map-marker-alt" style="margin:4px 3px"></i> <?= $dados[0]->rua . ', nº: ' . $dados[0]->numero . ', ' . $dados[0]->bairro; ?><br>
+    <i class="fas fa-map-marker-alt" style="margin:4px 3px"></i> <?= $dados[0]->cidade . ' - ' . $dados[0]->uf; ?><br>
     <i class="fas fa-map-marker-alt" style="margin:4px 3px"></i> <?= 'CEP: ' . $dados[0]->cep; ?><br>
 	<span><i class="fas fa-envelope" style="margin:5px 1px"></i> <?= $dados[0]->email; ?></span><br>
     <span><i class="fas fa-phone-alt" style="margin:5px 1px"></i> <?=  $dados[0]->telefone; ?></span>
