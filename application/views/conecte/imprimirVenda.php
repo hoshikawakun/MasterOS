@@ -24,7 +24,7 @@
 
                 <div class="invoice-content">
                     <div class="invoice-head">
-                        <table class="table">
+                        <table class="table_p">
                             <tbody>
 
                                 <?php if ($emitente == null) { ?>
@@ -41,7 +41,7 @@
                             </tbody>
                         </table>
 
-                        <table class="table">
+                        <table class="table_p">
                             <tbody>
                                 <tr>
                                     <td style="width: 50%; padding-left: 0">
@@ -78,7 +78,7 @@
 
                         <?php if ($produtos != null) { ?>
 
-                            <table class="table table-mapos table-condensed" id="tblProdutos">
+                            <table class="table table-bordered table-condensed" id="tblProdutos">
                                 <thead>
                                     <tr>
                                         <th style="font-size: 15px">Produto</th>
