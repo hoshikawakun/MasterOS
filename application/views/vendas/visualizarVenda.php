@@ -29,12 +29,16 @@
                                 <?php } ?>
       <tr>
 <td style="width: 25%"><br><img src=" <?php echo $emitente[0]->url_logo; ?> " style="max-height: 100px"></td>
-<td><span style="font-size: 15px"><b> <?php echo $emitente[0]->nome; ?></b></span></br>
-<i class="fas fa-fingerprint" style="margin:5px 1px"></i> <?php echo $emitente[0]->cnpj; ?></br>
-<i class="fas fa-map-marker-alt" style="margin:4px 3px"></i> <?php echo $emitente[0]->rua . ', ' . $emitente[0]->numero . ' - ' . $emitente[0]->bairro . ' - ' . $emitente[0]->cidade . ' - ' . $emitente[0]->uf; ?></br>
-<i class="fas fa-map-marker-alt" style="margin:4px 3px"></i> <?= 'CEP: ' . $emitente[0]->cep; ?><br>
-<i class="fas fa-envelope" style="margin:5px 1px"></i> <?php echo $emitente[0]->email; ?></br>
-<i class="fas fa-phone-alt" style="margin:5px 1px"></i> <?php echo $emitente[0]->telefone; ?></td>
+<td>
+<span style="font-size: 15px"><b><?php echo $emitente[0]->nome; ?></b></span></br>
+<span style="font-size: 13px"><i class="fas fa-fingerprint" style="margin:5px 1px"></i> <?php echo $emitente[0]->cnpj; ?></span></br>
+<span style="font-size: 13px"><i class="fas fa-map-marker-alt" style="margin:4px 3px"></i> <?php echo $emitente[0]->rua . ', ' . $emitente[0]->numero . ' - ' . $emitente[0]->bairro; ?></span></br>
+<span style="font-size: 13px"><i class="fas fa-map-marker-alt" style="margin:4px 3px"></i> <?php echo $emitente[0]->cidade . ' - ' . $emitente[0]->uf; ?></br>
+<span style="font-size: 13px"><i class="fas fa-map-marker-alt" style="margin:4px 3px"></i> <?= 'CEP: ' . $emitente[0]->cep; ?></span><br>
+<span style="font-size: 13px"><i class="fas fa-envelope" style="margin:5px 1px"></i>  <?php echo $emitente[0]->email; ?></span></br>
+<span style="font-size: 13px"><i class="fas fa-phone-alt" style="margin:5px 1px"></i>  <?php echo $emitente[0]->telefone; ?></span>
+</td>
+
         
         								<td style="width: 18%; text-align: center">
                                         <span>#Venda Nº: <?php echo $result->idVendas ?></span><br>
@@ -56,16 +60,14 @@
                                     <td style="width: 50%; padding-left: 0">
                                         
                                             <br>
-                                            <span style="font-size: 15px"><b>Cliente</b></span><br>
+                                            <span style="font-size: 13px"><b>Cliente</b></span><br>
             <span style="font-size: 12px"><i class="fas fa-user-check"></i> <?php echo $result->nomeCliente ?></span><br>
             <span style="font-size: 12px"><i class="fas fa-fingerprint" style="margin:5px 1px"></i> <?php echo $result->documento ?></span><br>
             <span style="font-size: 12px"><i class="fas fa-map-marker-alt" style="margin:4px 3px"></i> <?php echo $result->rua ?>,
                                                     <?php echo $result->numero ?>,
-                                                    <?php echo $result->bairro ?>,
-                                                    <?php echo $result->cidade ?> -
-                                                    <?php echo $result->estado ?></span><br>
-            <span style="font-size: 12px"><i class="fas fa-map-marker-alt" style="margin:5px 1px"></i> CEP: <?php echo $result->cep ?></span><br>
-            <span style="font-size: 12px"><i class="fas fa-envelope" style="margin:5px 1px"></i>  <?php echo $result->email ?></span><br>
+                                                    <?php echo $result->bairro ?></span><br>
+            <span style="font-size: 12px"><i class="fas fa-map-marker-alt" style="margin:4px 3px"></i> <?php echo $result->cidade ?> - <?php echo $result->estado ?></span><br> 
+            <span style="font-size: 12px"><i class="fas fa-map-marker-alt" style="margin:4px 3px"></i> CEP: <?php echo $result->cep ?></span><br>
             <span style="font-size: 12px"><i class="fas fa-phone-alt" style="margin:5px 1px"></i>  <?php echo $result->telefone ?></span>
                             </span>
                                             
