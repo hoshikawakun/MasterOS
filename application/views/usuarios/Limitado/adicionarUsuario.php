@@ -11,7 +11,7 @@
                 </span>
                 <h5>Cadastro de Usuário</h5>
             </div>
-            <div class="widget-content nopadding">
+            <div class="widget_content nopadding">
                 <?php if ($custom_error != '') {
                     echo '<div class="alert alert-danger">' . $custom_error . '</div>';
                 } ?>
@@ -134,7 +134,7 @@
                         <div class="span12">
                             <div class="span6 offset3">
                                 <button type="submit" class="btn btn-success"><i class="fas fa-user-plus"></i> Adicionar</button>
-                                <a href="<?php echo base_url() ?>index.php/usuarios" id="" class="btn"><i class="fas fa-backward"></i> Voltar</a>
+                                <a href="<?php echo base_url() ?>index.php/usuarios" id="" class="btn btn-warning"><i class="fas fa-backward"></i> Voltar</a>
                             </div>
                         </div>
                     </div>
