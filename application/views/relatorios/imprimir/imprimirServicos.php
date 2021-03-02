@@ -24,9 +24,9 @@
                             <?= ucfirst($title) ?>
                         </h4>
                     </div>
-                    <div class="widget-content nopadding">
+                    <div class="widget_content nopadding">
 
-                        <table width="1000" class="table table-mapos">
+                        <table width="1000" class="table_v">
                             <thead>
                                 <tr>
                                     <th width="300" style="font-size: 15px">Nome</th>
