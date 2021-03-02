@@ -11,7 +11,7 @@
                 </span>
                 <h5>Editar Meus Dados</h5>
             </div>
-            <div class="widget-content nopadding tab-content">
+            <div class="widget_box_Painel2">
 
                 <form action="<?php echo current_url(); ?>" id="formCliente" method="post" class="form-horizontal">
                     <div class="control-group">
@@ -110,7 +110,7 @@
                         <div class="span12">
                             <div class="span6 offset3">
                                 <button type="submit" class="btn btn-primary"><i class="fas fa-sync-alt"></i> Atualizar</button>
-                                <a href="<?php echo base_url() ?>index.php/mine/conta" id="" class="btn"><i class="fas fa-backward"></i> Voltar</a>
+                                <a href="<?php echo base_url() ?>index.php/mine/conta" id="" class="btn btn-warning"><i class="fas fa-backward"></i> Voltar</a>
                             </div>
                         </div>
                     </div>
