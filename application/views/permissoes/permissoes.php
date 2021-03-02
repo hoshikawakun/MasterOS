@@ -8,15 +8,15 @@
         <h5>Permissões</h5>
     </div>
 
-    <div class="widget-content nopadding tab-content">
-        <table id="tabela" class="table">
+    <div class="widget_content nopadding">
+        <table id="tabela" class="table_p">
             <thead>
                 <tr>
                     <th>#</th>
                     <th>Nome</th>
                     <th>Data de Criação</th>
                     <th>Situação</th>
-                    <th></th>
+                    <th>Ação</th>
                 </tr>
             </thead>
             <tbody>
@@ -50,18 +50,18 @@
 <?php echo $this->pagination->create_links(); ?>
 
 <!-- Modal -->
-<div id="modal-excluir" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="modal-excluir" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="<?php echo base_url() ?>index.php/permissoes/desativar" method="post">
-        <div class="modal-header">
+        <div class="modal_header_anexos">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h5 id="myModalLabel">Desativar Permissão</h5>
+            <h3 id="myModalLabel">Desativar Permissão</h3>
         </div>
         <div class="modal-body">
             <input type="hidden" id="idPermissao" name="id" value="" />
             <h5 style="text-align: center">Deseja realmente desativar esta permissão?</h5>
         </div>
         <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+            <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Cancelar</button>
             <button class="btn btn-danger">Excluir</button>
         </div>
     </form>
