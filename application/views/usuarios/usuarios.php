@@ -8,10 +8,13 @@
         <h5>Usuários</h5>
 
     </div>
-    <div class="widget-content nopadding tab-content">
-        <table id="tabela" class="table">
+    <div class="widget-content nopadding">
+    <!--
+    <div class="widget_box_Painel2">
+    -->
+        <table id="tabela" width="100%" class="table_p">
             <thead>
-                <tr style="backgroud-color: #2D335B">
+                <tr>
                     <th>#</th>
                     <th>Nome</th>
                     <th>CPF</th>
