@@ -12,10 +12,10 @@
                     <a id="imprimir" target="_blank" title="Imprimir" class="btn btn-mini btn-inverse" href="<?php echo site_url(); ?>/mine/imprimirCompra/<?php echo $result->idVendas; ?>"><i class="fas fa-print"></i> Imprimir</a>
                 </div>
             </div>
-            <div class="widget-content" id="printOs">
+            <div class="widget_content" id="printOs">
                 <div class="invoice-content">
                     <div class="invoice-head">
-                        <table class="table">
+                        <table class="table_p">
                             <tbody>
 
                                 <?php if ($emitente == null) { ?>
@@ -43,7 +43,7 @@
                             </tbody>
                         </table>
 
-                        <table class="table">
+                        <table class="table_p">
                             <tbody>
                                 <tr>
                                     <td style="width: 50%; padding-left: 0">
@@ -89,7 +89,7 @@
 
                         <?php if ($produtos != null) { ?>
 
-                            <table class="table table-condensed" id="tblProdutos" style="margin-top: 0; padding-top: 0">
+                            <table class="table table-bordered table-condensed" id="tblProdutos" style="margin-top: 0; padding-top: 0">
                                 <thead>
                                     <tr>
                                         <th style="font-size: 15px">Produto</th>
