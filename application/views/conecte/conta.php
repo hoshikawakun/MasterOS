@@ -8,7 +8,7 @@
             </div>
         </ul>
     </div>
-    <div class="widget-content tab-content">
+    <div class="widget_content tab-content">
         <div id="tab1" class="tab-pane active" style="min-height: 300px">
 
             <div class="accordion" id="collapse-group">
@@ -22,8 +22,8 @@
                         </div>
                     </div>
                     <div class="collapse in accordion-body" id="collapseGOne">
-                        <div class="widget-content">
-                            <table class="table">
+                        <div class="widget_content">
+                            <table class="table table-bordered">
                                 <tbody>
                                     <tr>
                                         <td style="text-align: right; width: 30%"><strong>Nome</strong></td>
@@ -58,8 +58,8 @@
                         </div>
                     </div>
                     <div class="collapse accordion-body" id="collapseGTwo">
-                        <div class="widget-content">
-                            <table class="table">
+                        <div class="widget_content">
+                            <table class="table table-bordered">
                                 <tbody>
                                     <tr>
                                         <td style="text-align: right; width: 30%"><strong>Telefone</strong></td>
@@ -94,8 +94,8 @@
                         </div>
                     </div>
                     <div class="collapse accordion-body" id="collapseGThree">
-                        <div class="widget-content">
-                            <table class="table">
+                        <div class="widget_content">
+                            <table class="table table-bordered">
                                 <tbody>
                                     <tr>
                                         <td style="text-align: right; width: 30%"><strong>Rua</strong></td>
