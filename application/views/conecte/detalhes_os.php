@@ -26,7 +26,7 @@
                 </span>
                 <h5>Detalhes OS</h5>
             </div>
-            <div class="widget-content nopadding tab-content">
+            <div class="widget_box_Painel2">
 
 
                 <div class="span12" id="divProdutosServicos" style=" margin-left: 0">
@@ -123,8 +123,8 @@
                         <!--Produtos-->
                         <div class="tab-pane" id="tab2">
                         <div class="widget-box" id="divProdutos">
-            			<div class="widget-content nopadding">
-                        <table width="100%" class="table" id="tblProdutos">
+            			<div class="widget_content nopadding">
+                        <table width="100%" class="table table-bordered" id="tblProdutos">
                                     <thead>
                                         <tr>
                                             <th width="8%">Cod. SKU</th>
@@ -164,8 +164,8 @@
                         <!--Serviços-->
                         <div class="tab-pane" id="tab3">
                         <div class="widget-box" id="divServicos">
-            			<div class="widget-content nopadding">
-                        <table width="100%" class="table">
+            			<div class="widget_content nopadding">
+                        <table width="100%" class="table table-bordered">
                                         <thead>
                                             <tr>
                                                 <th>Serviço</th>
@@ -248,8 +248,8 @@
 <!--Equipamentos-->
                        	<div class="tab-pane" id="tab6">
                         <div class="widget-box" id="divEquipamento">
-                        <div class="widget-content nopadding">
-                        <table  width="100%" class="table">
+                        <div class="widget_content nopadding">
+                        <table  width="100%" class="table table-bordered">
                                         <thead>
                                             <tr>
                                                 <th>Equipamento</th>
@@ -293,8 +293,8 @@
                         </div>
 
 <!-- Modal visualizar anexo -->
-<div id="modal-anexo" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-header">
+<div id="modal-anexo" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal_header_anexos">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h3 id="myModalLabel">Visualizar Anexo</h3>
     </div>
@@ -316,9 +316,9 @@
 
 
 <!-- Modal Faturar-->
-<div id="modal-faturar" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="modal-faturar" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form id="formFaturar" action="<?php echo current_url() ?>" method="post">
-        <div class="modal-header">
+        <div class="modal_header_anexos">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             <h3 id="myModalLabel">Faturar Venda</h3>
         </div>
@@ -382,7 +382,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true" id="btn-cancelar-faturar">Cancelar</button>
+            <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true" id="btn-cancelar-faturar">Cancelar</button>
             <button class="btn btn-primary">Faturar</button>
         </div>
     </form>
