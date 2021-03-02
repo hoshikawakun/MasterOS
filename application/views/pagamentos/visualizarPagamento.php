@@ -13,10 +13,10 @@
                     } ?>
                 </div>
             </div>
-            <div class="widget-content" id="printOs">
+            <div class="widget_content" id="printOs">
                 <div class="invoice-content">
                     <div class="invoice-head">
-                        <table class="table">
+                        <table class="table_p">
                             <tbody>
                                 <?php if ($emitente == null) { ?>
                                     <tr>
@@ -34,7 +34,7 @@
                                 } ?>
                             </tbody>
                         </table>
-                        <table class="table">
+                        <table class="table_p">
                             <tbody>
                                 <tr>
                                     <td style="width: 25%; padding-left: 0">
