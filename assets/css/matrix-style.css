@@ -9,7 +9,7 @@ html, body{height:100%}
 
 body {
 	overflow-x: hidden;
-	margin-top: -10px; font-family: 'Open Sans', sans-serif; font-size:12px; color:#666;
+	margin-top: -10px; font-family: 'Open Sans', sans-serif; font-size:12px; color:#000;
 }
 a{color:#666;}
 a:hover, a:focus {
@@ -65,7 +65,7 @@ hr{ border-top-color:#dadada;}
 #header h1 {
 	background: url("../img/logo2.png") no-repeat scroll 0 0 transparent;
 	height: 55px;
-	left: 4px;
+	left: 8px;
 	line-height: 600px;
 	overflow: hidden;
 	position: relative;
@@ -104,7 +104,7 @@ hr{ border-top-color:#dadada;}
 /* Top user navigation */
 #user-nav {
 	position: absolute;
-	left: 205px;
+	left: 215px;
 	top:0px;
 	z-index: 20;
 	margin: 0;
@@ -152,7 +152,7 @@ hr{ border-top-color:#dadada;}
 	display: block;
 	float: left;
 	position: relative;
-	width: 205px;
+	width: 215px;
 	z-index: 16;
 }
 #sidebar > ul {
@@ -160,7 +160,7 @@ hr{ border-top-color:#dadada;}
 	margin: 0px 0 0;
 	padding: 0;
 	position: absolute;
-	width: 205px;
+	width: 215px;
 }
 #sidebar > ul > li {
 	display: block;
@@ -205,7 +205,7 @@ hr{ border-top-color:#dadada;}
 /* Content */
 #content {
 	background: none repeat scroll 0 0 #eeeeee;
-	margin-left: 205px;
+	margin-left: 215px;
 	margin-right: 0;
 	padding-bottom: 25px;
 	position: relative;
@@ -817,7 +817,7 @@ hr{ border-top-color:#dadada;}
 }
 #chat-messages-inner .msg-block, #chat-messages-inner p.offline span {
 	background: none repeat scroll 0 0 #FFFFFF;
-	border: 1px solid #cccccc;
+	border: 1px solid #bbbbbb;
 	box-shadow: 1px 1px 0 1px rgba(0, 0, 0, 0.05);
 	display: block;
 	margin-left:0px;
@@ -1012,7 +1012,7 @@ span.icon .checker {
 	padding: 4px 10px !important;
 	border-style: solid;
 	border-width: 1px;
-	border-color: #dddddd #dddddd #cccccc; /* for IE < 9 */
+	border-color: #dddddd #dddddd #bbbbbb; /* for IE < 9 */
 	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 	display: inline-block;
 	line-height: 16px;
