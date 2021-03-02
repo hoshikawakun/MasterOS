@@ -24,9 +24,9 @@
                             <?= ucfirst($title) ?>
                         </h4>
                     </div>
-                        <div class="widget-content nopadding">
+                        <div class="widget_content nopadding">
 
-                            <table width="1100" class="table table-mapos">
+                            <table width="1100" class="table_v">
                                 <thead>
                                     <tr>
                                         <th width="480" style="font-size: 15px">Nome</th>
@@ -40,21 +40,11 @@
                                     <?php foreach ($clientes as $c) : ?>
                                     <?php $dataCadastro = date('d/m/Y', strtotime($c->dataCadastro)) ?>
                                     <tr>
-                                        <td>
-                                            <?= $c->nomeCliente ?>
-                                        </td>
-                                        <td>
-                                            <?= $c->documento ?>
-                                        </td>
-                                        <td>
-                                            <?= $c->telefone ?>
-                                        </td>
-                                        <td>
-                                            <?= $c->email ?>
-                                        </td>
-                                        <td>
-                                            <?= $dataCadastro ?>
-                                        </td>
+                                        <td><?= $c->nomeCliente ?></td>
+                                        <td align="center"><?= $c->documento ?></td>
+                                        <td align="center"><?= $c->telefone ?></td>
+                                        <td align="center"><?= $c->email ?></td>
+                                        <td align="center"><?= $dataCadastro ?></td>
                                     </tr>
                                     <?php endforeach ?>
                                 </tbody>
