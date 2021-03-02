@@ -9,8 +9,8 @@
             </div>
         </div>
         <div class="collapse in accordion-body">
-            <div class="widget-content">
-                <table class="table">
+            <div class="widget_content">
+                <table class="table table-bordered">
                     <tbody>
                         <tr>
                             <td style="text-align: right; width: 30%"><strong>Cliente</strong></td>
