@@ -24,8 +24,8 @@
                             <?= ucfirst($title) ?>
                         </h4>
                     </div>
-                    <div class="widget-content nopadding">
-                        <table class="table table-mapos">
+                    <div class="widget_content nopadding">
+                        <table class="table_v">
                             <thead>
                                 <tr>
                                     <th width="80" style="font-size: 15px">ID Cliente</th>
