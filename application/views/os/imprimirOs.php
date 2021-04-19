@@ -29,7 +29,7 @@ $totalProdutos = 0; ?>
     </tr>
     <?php } else { ?>
   <tr>
-    <td style="width: 25%"><br><img src=" <?php echo $emitente[0]->url_logo; ?> " style="max-height: 100px"></td>
+    <td style="width: 25%"><img src=" <?php echo $emitente[0]->url_logo; ?> "></td>
     <td>
 <span style="font-size: 15px"><b><?php echo $emitente[0]->nome; ?></b></span></br>
 <span style="font-size: 13px"><i class="fas fa-fingerprint" style="margin:5px 1px"></i> <?php echo $emitente[0]->cnpj; ?></span></br>

@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/matrix-media.css"/>
     <link href="<?php echo base_url(); ?>assets/font-awesome/css/font-awesome.css" rel="stylesheet"/>
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/fullcalendar.css"/>
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/tema2.css" />
     <link href="<?php echo base_url(); ?>assets/css/bootstrap-responsive.min.css" rel="stylesheet">
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="<?= base_url(); ?>assets/js/sweetalert.min.js"></script>
@@ -30,8 +31,6 @@
 <!--top-Header-menu-->
 <div id="user-nav" class="navbar navbar-inverse">
     <ul class="nav">
-      <li class="pull-right"><a href="https://github.com/RamonSilva20/mapos" target="_blank"><i class="fas fa-asterisk"></i> <span class="text">Versão:
-            <?= $this->config->item('app_version'); ?></span></a></li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fas fa-user-cog"></i> <?= $this->session->userdata('nome') ?> <b class="caret"></b></a>
         <ul class="dropdown-menu">

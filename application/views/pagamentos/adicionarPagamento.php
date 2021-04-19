@@ -8,21 +8,21 @@
 
 <div class="row-fluid" style="margin-top:0">
     <div class="span12">
-        <div class="widget-box">
-            <div class="widget-title">
+        <div class="widget-title">
                 <span class="icon">
                     <i class="fas fa-book"></i>
                 </span>
                 <h5>Cadastrar Credencial de Pagamento</h5>
             </div>
-            <div class="widget_content">
+            <div class="widget_content_vusualizar widget_box_pr">
 
                 <?php if ($custom_error == true) { ?>
                     <div class="span12 alert alert-danger" id="divInfo" style="padding: 1%;">Dados incompletos, verifique os campos com asterisco.</div>
                 <?php
                 } ?>
                 <form action="<?php echo current_url(); ?>" method="post" id="formPagamento">
-                    <div class="span12">
+                
+                <div class="span12">
                         <div class="span3">
                             <label for="Nome">Nome<span class="required"></span></label>
                             <select name="nomePag" id="nomePag" class="span12">
@@ -50,15 +50,16 @@
                             <input type="checkbox" class="span6" name="default_pag" id="default_pag">
                         </div>
                     </div>
-                    <div class="span12" style="padding: 1%; margin-left: 0">
-                        <div class="span6 offset3" style="text-align: center">
-                            <button class="btn btn-success" id="btnContinuar"><i class="fas fa-plus"></i> Adicionar</button>
-                            <a href="<?php echo base_url() ?>index.php/pagamentos" class="btn btn-warning"><i class="fas fa-backward"></i> Voltar</a>
-                        </div>
+                    &nbsp;
                     </div>
+                    <div class="widget_box_Painel2">
+                    <div class="form_actions" align="center">
+                    <button type="submit" class="btn btn-success"><i class="fas fa-plus"></i> Adicionar</button>
+                    <a href="<?php echo base_url() ?>index.php/pagamentos" id="" class="btn btn-warning"><i class="fas fa-backward"></i> Voltar</a>
+                    </div>
+
+
                 </form>
-                .
             </div>
         </div>
     </div>
-</div>

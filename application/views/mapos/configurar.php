@@ -63,14 +63,14 @@
                                 <span class="help-inline">
                                 <span class="help-inline">Complemento de eMail em Cadastro de Cliente</span>
                             </div></div>
-                            
-                        <div class="form_actions">
-                        <label for="app_name" class="control-label">Mensagem Rápida</label>
-                        <div class="controls">
-                        <input id="telefone" class="telefone1" type="text" name="masteros_1" value="" />
+                     <div class="control-group">
+                     		<label for="app_name" class="control-label">Mensagem Rápida</label>
+                            <div class="controls">
+                            <input id="telefone" class="telefone1" type="text" name="masteros_1" value="" />
                             <span class="help-inline"><a href="https://web.whatsapp.com/send?phone=55<?= $configuration['masteros_1']?>" title="Enviar WhatsWapp" target="_new" class="btn btn-success"><i class="fab fa-whatsapp"></i> Enviar WhatsWapp</a></span>
                             <span class="help-inline"><input disabled="disabled" value=" <?= $configuration['masteros_1']?>" readonly="readonly" /></span>
-                            </div></div>
+                     </div>       
+                     </div>   
                         <div class="form_actions" align="center">
                     <button type="submit" class="btn btn-primary">Salvar Alterações</button>
                     </div>
@@ -234,7 +234,7 @@
 <div id="modal-confirmaratualiza" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="<?php echo base_url() ?>index.php/clientes/excluir" method="post">
         <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>
             <h5 id="myModalLabel">Atualização de sistema</h5>
         </div>
         <div class="modal-body">
@@ -255,7 +255,7 @@
 <div id="modal-confirmabanco" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="<?php echo base_url() ?>index.php/clientes/excluir" method="post">
         <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>
             <h5 id="myModalLabel">Atualização de sistema</h5>
         </div>
         <div class="modal-body">

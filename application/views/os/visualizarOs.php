@@ -39,7 +39,7 @@ $totalProdutos = 0; ?>
                 </div>
             </div>
             <div class="widget_content" id="printOs">
-                <div class="invoice-content">
+                <div class="widget_content_vusualizar widget_box_Painel2">
                     <div class="invoice-head" style="margin-bottom: 0">
                     
                     <table width="100%" class="table_r">
@@ -50,7 +50,7 @@ $totalProdutos = 0; ?>
     </tr>
     <?php } else { ?>
   <tr>
-    <td style="width: 25%"><br><img src=" <?php echo $emitente[0]->url_logo; ?> " style="max-height: 100px"></td>
+    <td style="width: 25%"><img src=" <?php echo $emitente[0]->url_logo; ?> "></td>
     <td>
 <span style="font-size: 15px"><b><?php echo $emitente[0]->nome; ?></b></span></br>
 <span style="font-size: 13px"><i class="fas fa-fingerprint" style="margin:5px 1px"></i> <?php echo $emitente[0]->cnpj; ?></span></br>
@@ -293,6 +293,7 @@ $totalProdutos = 0; ?>
                     </div>
                     </div>
                     </div>
+                    </div>
 <a href="#modal-gerar-pagamento" id="btn-forma-pagamento" role="button" data-toggle="modal" class="btn btn-success"><i
             class="fas fa-cash-register"></i> Gerar Pagamento</a>
 
@@ -302,7 +303,7 @@ $totalProdutos = 0; ?>
 <div id="modal-anexo" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
     <div class="modal_header_anexos">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>
         <h3 id="myModalLabel">Visualizar Anexo</h3>
     </div>
     <div class="modal-body">
@@ -324,7 +325,7 @@ $totalProdutos = 0; ?>
 <div id="modal-whatsapp" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="<?php echo current_url() ?>" method="post">
         <div class="modal_header_anexos">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>
             <div align="center">
               <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
 												$zapnumber = preg_replace("/[^0-9]/", "", $result->celular_cliente);

@@ -212,7 +212,7 @@
                                                class="span12"/>
                                     </div>
                                     <div class="span2">
-                                        <label for="">.</label>
+                                        <label for="">&nbsp;</label>
                                         <button class="btn btn-success span12" id="btnAdicionarProduto"><i
                                                     class="fas fa-plus"></i> Adicionar
                                         </button>
@@ -281,7 +281,7 @@
                                             <input type="text" placeholder="Quantidade" id="quantidade_servico" name="quantidade" class="span12" />
                                         </div>
                                         <div class="span2">
-                                            <label for="">.</label>
+                                            <label for="">&nbsp;</label>
                                             <button class="btn btn-success span12"><i class="fas fa-plus"></i> Adicionar</button>
                                         </div>
                                     </form>
@@ -335,7 +335,7 @@
                                             <input type="file" class="span12" name="userfile[]" multiple="multiple" />
                                         </div>
                                         <div class="span2">
-                                            <label for="">.</label>
+                                            <label for="">&nbsp;</label>
                                             <button class="btn btn-success span12"><i class="fas fa-paperclip"></i> Anexar</button>
                                         </div>
                                     </form>
@@ -448,7 +448,7 @@
 <!-- Modal visualizar anexo -->
 <div id="modal-anexo" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal_header_anexos">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>
         <h3 id="myModalLabel">Visualizar Anexo</h3>
     </div>
     <div class="modal-body">
@@ -459,7 +459,7 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button class="btn" data-dismiss="modal" aria-hidden="true">Fechar</button>
+        <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Fechar</button>
         <a href="" id-imagem="" class="btn btn-inverse" id="download">Download</a>
         <a href="" link="" class="btn btn-danger" id="excluir-anexo">Excluir Anexo</a>
     </div>
@@ -469,7 +469,7 @@
 <div id="modal-anotacao" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="#" method="POST" id="formAnotacao">
         <div class="modal_header_anexos">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>
         <h3 id="myModalLabel">Adicionar Anotação</h3>
         </div>
         <div class="modal-body">
@@ -489,7 +489,7 @@
 <div id="modal-equipamento" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="#" method="POST" id="formEquipamento">
         <div class="modal_header_anexos">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>
             <h3 id="myModalLabel">Adicionar Equipamento</h3>
         </div>
         <div class="modal-body">
@@ -526,12 +526,12 @@
 <div id="modal-faturar" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form id="formFaturar" action="<?php echo current_url() ?>" method="post">
         <div class="modal_header_anexos">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>
             <h3 id="myModalLabel">Faturar OS</h3>
         </div>
         <div class="modal-body">
-            <div class="span12 alert alert-info" style="margin-left: 0"> Obrigatório o preenchimento dos campos com asterisco.</div>
-            <div class="span12" style="margin-left: 0">
+        <div class="span12 alert alert-info" style="margin-left: 0"> Obrigatório o preenchimento dos campos com asterisco.</div>
+        <div class="span12" style="margin-left: 0">
                 <label for="descricao">Descrição</label>
                 <input class="span12" id="descricao" type="text" name="descricao" value="Fatura de OS Nº: <?php echo $result->idOs; ?> " />
             </div>
@@ -552,10 +552,10 @@
                 </div>
                 <div class="span4">
                     <label for="vencimento">Data Entrada*</label>
-                    <input class="span12 datepicker" autocomplete="off" id="vencimento" type="text" name="vencimento" />
+                    <input class="span12 datepicker" autocomplete="on" id="vencimento" type="text" name="vencimento" />
                 </div>
             </div>
-            <div class="span12" style="margin-left: 0">
+        <div class="span12" style="margin-left: 0">
                 <div class="span4" style="margin-left: 0">
                     <label for="recebido">Recebido?</label>
                     &nbsp &nbsp &nbsp &nbsp <input id="recebido" type="checkbox" name="recebido" value="1" />
@@ -563,27 +563,26 @@
                 <div id="divRecebimento" class="span8" style=" display: none">
                     <div class="span6">
                         <label for="recebimento">Data Recebimento</label>
-                        <input class="span12 datepicker" autocomplete="off" id="recebimento" type="text" name="recebimento" />
+                        <input class="span12 datepicker" autocomplete="on" id="recebimento" type="text" name="recebimento" />
                     </div>
                     <div class="span6">
                         <label for="formaPgto">Forma Pgto</label>
                         <select name="formaPgto" id="formaPgto" class="span12">
                             <option value="Dinheiro">Dinheiro</option>
                             <option value="Cartão de Crédito">Cartão de Crédito</option>
+                            <option value="Débito">Débito</option>
                             <option value="Boleto">Boleto</option>
                             <option value="Depósito">Depósito</option>
-                            <option value="Débito">Débito</option>
                             <option value="Pix">Pix</option>
                         </select>
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true" id="btn-cancelar-faturar">Cancelar</button>
-                <button class="btn btn-primary">Faturar</button>
-            
-            </div>
-</div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true" id="btn-cancelar-faturar">Cancelar</button>
+            <button class="btn btn-primary">Faturar</button>
+        </div>
     </form>
 </div>
 
@@ -591,7 +590,7 @@
 <div id="modal-whatsapp" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="<?php echo current_url() ?>" method="post">
         <div class="modal_header_anexos">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>
             <div align="center">
               <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
 												$zapnumber = preg_replace("/[^0-9]/", "", $result->celular_cliente);

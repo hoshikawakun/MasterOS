@@ -10,9 +10,9 @@
         <h5>Pagamentos</h5>
     </div>
     <div class="widget_content nopadding">
-        <table id="tabela" class="table table-bordered">
+        <table id="tabela" width="100%" class="table_p">
             <thead>
-                <tr style="background-color: #2D335B">
+                <tr>
                     <th>#</th>
                     <th>Nome</th>
                     <th>Client ID</th>
@@ -26,7 +26,7 @@
                 <?php 
                     if(!$results){
                         echo '<tr>
-                                <td colspan="6">Nenhum Pagamento Cadastrado</td>
+                                <td colspan="7">Nenhum Pagamento Cadastrado</td>
                                 </tr>';
                     }
                     foreach ($results as $r) {
@@ -68,7 +68,7 @@
 <div id="modal-excluir" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="<?php echo base_url() ?>index.php/pagamentos/excluir" method="post">
         <div class="modal_header_anexos">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>
             <h3 id="myModalLabel">Excluir Credencial de Pagamento</h3>
         </div>
         <div class="modal-body">
