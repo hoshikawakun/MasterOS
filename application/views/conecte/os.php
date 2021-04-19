@@ -20,11 +20,8 @@ if (!$results) {
                 <h5>Ordens de Serviço</h5>
 
             </div>
-
-            <div class="widget_box_Painel2">
-
-
-                <table id="tabela" class="table table-bordered">
+            <div>
+            <table id="tabela" class="table_p">
                     <thead>
                         <tr>
                             <th>OS N°</th>
@@ -36,7 +33,7 @@ if (!$results) {
                             <th>Total</th>
                             <th>Faturado</th>
                             <th>Status</th>
-                            <th></th>
+                            <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -63,11 +60,8 @@ if (!$results) {
                 <h5>Ordens de Serviço</h5>
 
             </div>
-
-            <div class="widget_box_Painel2">
-
-
-                <table class="table table-bordered">
+             <div>
+            <table class="table_p">
                     <thead>
                         <tr>
                             <th>OS N°</th>
@@ -118,8 +112,8 @@ if (!$results) {
 		echo '<td><div align="center">R$: ' . number_format($r->valorTotal, 2, ',', '.') . '</td>';
 		echo '<td><div align="center">' . $status . '</div></td>';
 		echo '<td><div align="center"><a href="' . base_url() . 'index.php/mine/visualizarOs/' . $r->idOs . '" class="btn tip-top" title="Visualizar"><i class="fas fa-eye"></i></a>
-                                  <a href="' . base_url() . 'index.php/mine/imprimirOs/' . $r->idOs . '" target="_blank" class="btn btn-inverse tip-top" title="Imprimir"><i class="fas fa-print"></i></a>
-                                  <a href="' . base_url() . 'index.php/mine/detalhesOs/' . $r->idOs . '" class="btn btn-info tip-top" title="Visualizar mais detalhes"><i class="fas fa-bars"></i></a>  
+		<a href="' . base_url() . 'index.php/mine/detalhesOs/' . $r->idOs . '" class="btn btn-info tip-top" title="Visualizar mais detalhes"><i class="fas fa-bars"></i></a> 
+		<a href="' . base_url() . 'index.php/mine/imprimirOs/' . $r->idOs . '" target="_blank" class="btn btn-inverse tip-top" title="Imprimir"><i class="fas fa-print"></i></a> 
                               </td>';
 		echo '</tr>';
     } ?>
