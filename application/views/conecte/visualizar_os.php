@@ -8,27 +8,7 @@ $totalProdutos = 0; ?>
                     <i class="fas fa-diagnoses"></i>
                 </span>
                 <h5>Ordem de Serviço</h5>
-                <div class="buttons">
-                    
-					<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
-                        echo '<a target="_new" title="Adicionar OS" class="btn btn-mini btn-success" href="' . base_url() . 'index.php/os/adicionar"><i class="fas fa-plus"></i> Adicionar OS</a>';
-                    } ?>
-                    
-                    <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
-                        echo '<a title="Editar OS" class="btn btn-mini btn-info" href="' . base_url() . 'index.php/os/editar/' . $result->idOs . '"><i class="fas fa-edit"></i> Editar</a>';
-                    } ?>
-                    
-                    <a target="_blank" title="Imprimir OS" class="btn btn-mini btn-inverse" href="<?php echo site_url() ?>/os/imprimir/<?php echo $result->idOs; ?>"><i class="fas fa-print"></i> Imprimir A4</a>
-                    
-                    <a target="_blank" title="Imprimir Termica" class="btn btn-mini btn-inverse" href="<?php echo site_url() ?>/os/imprimirTermica/<?php echo $result->idOs; ?>"><i class="fas fa-print"></i> Imprimir Termica</a>
-                    
-                    <a target="_blank" title="Imprimir Termica 2" class="btn btn-mini btn-inverse" href="<?php echo site_url() ?>/os/imprimirTermica2/<?php echo $result->idOs; ?>"><i class="fas fa-print"></i> Imprimir Termica 2</a>
-                    
-                    <a href="https://www.linkcorreios.com.br/<?php echo $result->rastreio ?>" title="Rastrear" target="_new" class="btn btn-mini btn-warning"><i class="fas fa-envelope"></i> Rastrear</a>
-                    
-                    <a href="#modal-whatsapp" title="Enviar WhatsApp" id="btn-whatsapp" role="button" data-toggle="modal" class="btn btn-mini btn-success"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                    
-                </div>
+                
             </div>
             <div class="widget_content" id="printOs">
                 <div class="widget_content_vusualizar widget_box_Painel2">
@@ -243,41 +223,7 @@ $totalProdutos = 0; ?>
                         ?></td>
   </tr>
 </table>
-
-                        <!-- ANEXOS -->
-                        <div class"span12">
-						<?php if ($anexos != null) { ?>
-                            <table width="100%" class="table_p">
-                                <thead>
-                                    <tr>
-                                        <th>Anexo</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    
-                                    <tr>
-                                        <td>
-							<?php
-                                foreach ($anexos as $a) {
-                                    if ($a->thumb == null) {
-                                        $thumb = base_url() . 'assets/img/icon-file.png';
-                                        $link = base_url() . 'assets/img/icon-file.png';
-                                    } else {
-                                        $thumb = $a->url . '/thumbs/' . $a->thumb;
-                                        $link = $a->url . '/' . $a->anexo;
-                                    }
-                                    echo '<div class="span3" style="min-height: 200px; margin-left: 0; padding: 5px;">
-									<a style="min-height: 180px; border: 1px solid #f00;" href="#modal-anexo" imagem="' . $a->idAnexos . '" link="' . $link . '" role="button" class="btn anexo span12" data-toggle="modal"><img src="' . $thumb . '" alt=""></a></div>';
-									
-                                } ?>
-                                
-                                </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        <?php } ?>
-                        </div>
-                    <!-- Fim ANEXOS -->
+ 
                     </div>
                     </div>
                     </div>
