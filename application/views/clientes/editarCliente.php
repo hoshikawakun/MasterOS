@@ -46,7 +46,7 @@
                 <li><a data-toggle="tab" href="#menu2">Endereço</a></li>
             </ul>
             <form action="<?php echo current_url(); ?>" id="formCliente" method="post" class="form-horizontal">
-                <div class="widget-content nopadding tab-content">
+                <div class="nopadding tab-content">
                     <?php if ($custom_error != '') {
                         echo '<div class="alert alert-danger">' . $custom_error . '</div>';
                     } ?>
