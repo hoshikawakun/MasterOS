@@ -46,7 +46,7 @@
     <ul>
         <li class="<?php if (isset($menuPainel)) {
     echo 'active';
-}; ?>"><a href="<?php echo base_url() ?>index.php/mine/painel"><i class="icon fas fa-home"></i> <span>Painel</span></a></li>
+}; ?>"><a href="<?php echo base_url() ?>index.php/mine/painel"><i class="icon fas fa-home"></i> <span>Home</span></a></li>
         <li class="<?php if (isset($menuConta)) {
     echo 'active';
 }; ?>"><a href="<?php echo base_url() ?>index.php/mine/conta"><i class="icon fas fa-user"></i> <span>Minha Conta</span></a></li>
@@ -89,11 +89,7 @@
 </div>
 <!--Footer-part-->
 <div class="row-fluid">
-    <div id="footer" class="span12">
-        <?= date('Y') ?> &copy;
-        <?php echo $this->config->item('app_name'); ?> - Versão:
-        <?php echo $this->config->item('app_version'); ?>
-    </div>
+    <div id="footer" class="span12"><font color="#ffffff">2020 - 2021 &copy; Master-OS - Emanuel Victor - Versão: <?= $this->config->item('app_version'); ?></font></span></div>
 </div>
 
 <!-- javascript
