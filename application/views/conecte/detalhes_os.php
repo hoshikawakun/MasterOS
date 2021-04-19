@@ -12,10 +12,12 @@
         margin-bottom: 0;
     }
 </style>
-
+<!--
 <?php if ($result->rastreio == "") { ?>
+
 <button class="btn btn-primary" title="Atualizar" id="btnContinuar"><i class="fas fa-sync-alt"></i> Atualizar</button>
 <?php } ?><span class="required">    &larr; Não Funciona</span>
+-->
 
 <div class="row-fluid" style="margin-top:0">
     <div class="span12">
@@ -24,11 +26,9 @@
                 <span class="icon">
                     <i class="fas fa-diagnoses"></i>
                 </span>
-                <h5>Detalhes OS</h5>
+                <h5>Editar OS</h5>
             </div>
-            <div class="widget_box_Painel2">
-
-
+          <div class="widget_box_Painel2">
                 <div class="span12" id="divProdutosServicos" style=" margin-left: 0">
                     <ul class="nav nav-tabs">
                         <li class="active" id="tabDetalhes"><a href="#tab1" data-toggle="tab">Detalhes da OS</a></li>
@@ -39,6 +39,8 @@
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab1">
+                            <div class="span12" id="divCadastrarOs">
+                                <div class="tab-pane active" id="tab1">
 
                             <div class="span12" id="divCadastrarOs">
 
@@ -50,6 +52,7 @@
                                         <h3>N° OS: #<?php echo $result->idOs ?></h3>
                                         <input id="valorTotal" type="hidden" name="valorTotal" value="" />
                                     </div>
+                                    
                                     <div class="span6">
                                         <label for="tecnico">Técnico / Responsável</label>
                                         <input disabled="disabled" id="tecnico" class="span12" type="text" name="tecnico" value="<?php echo $result->nome ?>" />
@@ -58,10 +61,10 @@
                                 </div>
                                 <div class="span12" style="padding: 1%; margin-left: 0">
                                     <div class="span3">
-                                        <label for="status">Status<span class="required"></span></label>
-                                        <input disabled="disabled" type="text" name="status" id="status" value="<?php echo $result->status; ?>">
+                                      <label for="status">Status<span class="required"></span></label>
+                                        <input name="status" type="text" disabled="disabled" class="span12" id="status" value="<?php echo $result->status; ?>"  />
                                         <label for="rastreio">Rastreio</label>
-                                          <input name="rastreio" type="text" class="span12" id="rastreio" maxlength="13" value="<?php echo $result->rastreio ?>"  />
+                                          <input name="rastreio" type="text" disabled="disabled" class="span12" id="rastreio" value="<?php echo $result->rastreio ?>" maxlength="13"  />
 										  <a href="https://www.linkcorreios.com.br/<?php echo $result->rastreio ?>" title="Rastrear" target="_new" class="btn btn-warning"><i class="fas fa-envelope"></i> Rastrear</a>
 
                                     </div>
@@ -118,111 +121,102 @@
                             </div>
 
                         </div>
-
-
+            </div>
+            </div>
+                        
                         <!--Produtos-->
                         <div class="tab-pane" id="tab2">
-                        <div class="widget-box" id="divProdutos">
-            			<div class="widget_content nopadding">
-                        <table width="100%" class="table table-bordered" id="tblProdutos">
+                        
+                            <div class="widget-box" id="divProdutos">
+                            <div class="widget_content nopadding">
+                                <table width="100%" class="table_p" id="tblProdutos">
                                     <thead>
-                                        <tr>
-                                            <th width="8%">Cod. SKU</th>
+                                    <tr>
+                                       		<th width="10%">Cod. Produto</th>
                                             <th width="10%">Cod. Barras</th>
                                             <th>Produto</th>
-                                            <th width="10%">Preço unit.</th>
                                             <th width="8%">Quantidade</th>
+                                            <th width="10%">Preço unit.</th>
                                             <th width="10%">Sub-total</th>
-                                        </tr>
+                                    </tr>
                                     </thead>
                                     <tbody>
-                                        <?php
-                                        $total = 0;
-                                        foreach ($produtos as $p) {
-                                            $total = $total + $p->subTotal;
-                                            echo '<tr>';
+                                    <?php
+                                    $total = 0;
+                                    foreach ($produtos as $p) {
+                                        $total = $total + $p->subTotal;
+                                        echo '<tr>';
 											echo '<td><div align="center">' . $p->idProdutos . '</td>';
                                             echo '<td><div align="center">' . $p->codDeBarra . '</td>';
                                             echo '<td>' . $p->descricao . '</td>';
-                                            echo '<td><div align="center">R$: ' . number_format($p->preco, 2, ',', '.') . '</td>';
                                             echo '<td><div align="center">' . $p->quantidade . '</td>';
+                                            echo '<td><div align="center">R$: ' . ($p->preco ?: $p->precoVenda)  . '</td>';
                                             echo '<td><div align="center">R$: ' . number_format($p->subTotal, 2, ',', '.') . '</td>';
                                             echo '</tr>';
-                                        } ?>
-
-                                        <tr>
-                                            <td colspan="5" style="text-align: right"><strong>Total </strong></td>
-                                            <td><strong>R$:
-                                                    <?php echo number_format($total, 2, ',', '.'); ?><input type="hidden" id="total-venda" value="<?php echo number_format($total, 2); ?>"></strong></td>
-                                        </tr>
+                                    } ?>
+                                    <tr>
+                                        <td colspan="5" style="text-align: right"><strong>Total:</strong></td>
+                                        <td>
+                                        <div align="center">
+                                        <strong>R$
+                                         <?php echo number_format($total, 2, ',', '.'); ?><input type="hidden" id="total-venda" value="<?php echo number_format($total, 2); ?>">
+                                         </strong>
+                                         </div>
+                                        </td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
-                            </div>
-                            </div>
-
+                        </div>
+                        </div>
+                                
                         <!--Serviços-->
                         <div class="tab-pane" id="tab3">
+            			
                         <div class="widget-box" id="divServicos">
             			<div class="widget_content nopadding">
-                        <table width="100%" class="table table-bordered">
+									<table width="100%" class="table_p">
                                         <thead>
                                             <tr>
                                                 <th>Serviço</th>
-                                                <th width="10%">Preço unit.</th>
                                                 <th width="8%">Quantidade</th>
-                                                <th width="10%">Sub-total</th>
+                                                <th width="10%">Preço</th>
+                                                <th width="10%">Sub-totals</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $total = 0;
+                                            $totals = 0;
                                             foreach ($servicos as $s) {
-                                                $total = $total + $s->subTotal;
+                                                $preco = $s->preco ?: $s->precoVenda;
+                                                $subtotals = $preco * ($s->quantidade ?: 1);
+                                                $totals = $totals + $subtotals;
                                                 echo '<tr>';
                                                 echo '<td>' . $s->nome . '</td>';
-                                                echo '<td><div align="center">R$: ' . number_format($s->preco, 2, ',', '.') . '</td>';
-                                                echo '<td><div align="center">' . $s->quantidade . '</td>';
-                                                echo '<td><div align="center">R$: ' . number_format($s->subTotal, 2, ',', '.') . '</td>';
+                                                echo '<td><div align="center">' . ($s->quantidade ?: 1) . '</div></td>';
+                                                echo '<td><div align="center">R$ ' . $preco  . '</div></td>';
+                                                echo '<td><div align="center">R$ ' . number_format($subtotals, 2, ',', '.') . '</div></td>';
                                                 echo '</tr>';
                                             } ?>
-
                                             <tr>
-                                                <td colspan="3" style="text-align: right"><strong>Total </strong></td>
-                                                <td><strong>R$:
-                                                        <?php echo number_format($total, 2, ',', '.'); ?><input type="hidden" id="total-servico" value="<?php echo number_format($total, 2); ?>"></strong></td>
+                                                <td colspan="3" style="text-align: right"><strong>Total:</strong></td>
+                                                <td>
+                                                <div align="center">
+                                                <strong>R$
+                                                <?php echo number_format($totals, 2, ',', '.'); ?><input type="hidden" id="total-servico" value="
+												<?php echo number_format($totals, 2); ?>"></strong></div></td>
                                             </tr>
                                         </tbody>
                                     </table>
-                                </div>
-
-                            </div>
-                        </div>
-
-
+                          </div>
+                          </div>
+                      </div>
+                                
                         <!--Anexos-->
                         <div class="tab-pane" id="tab4">
-                            <div class="span12" style="padding: 1%; margin-left: 0">
-
-                                <?php if ($this->session->userdata('cliente_anexa')) { ?>
-                                    <div class="span12 well" style="padding: 1%; margin-left: 0" id="form-anexos">
-                                        <form id="formAnexos" enctype="multipart/form-data" action="javascript:;" accept-charset="utf-8" s method="post">
-                                            <div class="span10">
-
-                                                <input type="hidden" name="idOsServico" id="idOsServico" value="<?php echo $result->idOs ?>" />
-                                                <label for="">Anexo</label>
-                                                <input type="file" class="span12" name="userfile[]" multiple="multiple" size="20" />
-                                            </div>
-                                            <div class="span2">
-                                                <label for="">.</label>
-                                                <button class="btn btn-success span12"><i class="fas fa-paperclip"></i> Anexar</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                <?php
-                                } ?>
-
-                                <div class="span12" id="divAnexos" style="margin-left: 0">
+                        
+                        <div class="span12" id="divAnexos" style="margin-left: 0">
+                          
                                     <?php
                                     foreach ($anexos as $a) {
                                         if ($a->thumb == null) {
@@ -232,24 +226,21 @@
                                             $thumb = $a->url . '/thumbs/' . $a->thumb;
                                             $link = $a->url . '/' . $a->anexo;
                                         }
-                                        echo '<div class="span3" style="min-height: 230px; margin-left: 0">
-                                                    <a style="min-height: 200px;" href="#modal-anexo" imagem="' . $a->idAnexos . '" link="' . $link . '" role="button" class="btn anexo span12" data-toggle="modal">
-                                                        <img src="' . $thumb . '" alt="">
-                                                    </a>
-                                                    <span>' . $a->anexo . '</span>
-                                                </div>';
-                                    }
-                                    ?>
+                                        echo '<div class="span3" style="min-height: 230px; margin-left: 0; overflow-y:hiden;  padding: 5px;">
+										<a style="min-height: 200px; border: 1px solid #bbbbbb;" href="#modal-anexo" imagem="' . $a->idAnexos . '" link="' . $link . '" role="button" class="btn anexo span12" data-toggle="modal">
+										<img src="' . $thumb . '" alt="">
+										</a>
+										<span>' . $a->anexo . '</span>
+										</div>';} ?>
                                 </div>
-
                             </div>
-                        </div>
-
-<!--Equipamentos-->
+                        
+						<!--Equipamentos-->
                        	<div class="tab-pane" id="tab6">
-                        <div class="widget-box" id="divEquipamento">
-                        <div class="widget_content nopadding">
-                        <table  width="100%" class="table table-bordered">
+                        
+                            <div class="widget-box" id="divEquipamento">
+                            <div class="widget_content nopadding">
+                                    <table  width="100%" class="table_p">
                                         <thead>
                                             <tr>
                                                 <th>Equipamento</th>
@@ -257,7 +248,6 @@
                                                 <th>Nº Série</th>
                                                 <th>Voltagem</th>
                                                 <th>Observação</th>
-                                                <th>Ações</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -269,28 +259,17 @@
 												echo '<td><div align="center">' . $a->num_serie . '</div></td>';
 												echo '<td><div align="center">' . $a->voltagem . '</div></td>';
 												echo '<td><div align="center">' . $a->observacao . '</div></td>';
-                                                echo '<td><div align="center"><span idAcao="' . $a->idEquipamento . '" title="Excluir Equipamento" class="btn btn-danger equipamento"><i class="fas fa-trash-alt"></i></span></div></td>';
                                                 echo '</tr>';
                                             }
                                             if (!$equipamento) {
-                                                echo '<tr><td colspan="6">Nenhum Equipamento cadastrado</td></tr>';
+                                                echo '<tr><td colspan="5">Nenhum Equipamento cadastrado</td></tr>';
                                             }
 
                                             ?>
                                         </tbody>
                                     </table>
-                                    </div>
-                                    </div>
-                                    </div>
-                                    
-                        <!-- Fim tab Equipamentos -->
-                        
-                        </div>
-                        </div>
-                        </div>
-                        </div>
-                        </div>
-                        </div>
+                 </div></div></div></div></div>&nbsp
+                 </div></div></div></div>
 
 <!-- Modal visualizar anexo -->
 <div id="modal-anexo" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -311,82 +290,6 @@
     </div>
 </div>
 
-
-
-
-
-<!-- Modal Faturar-->
-<div id="modal-faturar" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <form id="formFaturar" action="<?php echo current_url() ?>" method="post">
-        <div class="modal_header_anexos">
-            <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="myModalLabel">Faturar Venda</h3>
-        </div>
-        <div class="modal-body">
-
-            <div class="span12 alert alert-info" style="margin-left: 0"> Obrigatório o preenchimento dos campos com asterisco.</div>
-            <div class="span12" style="margin-left: 0">
-                <label for="descricao">Descrição*</label>
-                <input class="span12" id="descricao" type="text" name="descricao" value="Fatura de Venda - #<?php echo $result->idOs; ?> " />
-
-            </div>
-            <div class="span12" style="margin-left: 0">
-                <div class="span12" style="margin-left: 0">
-                    <label for="cliente">Cliente*</label>
-                    <input class="span12" id="cliente" type="text" name="cliente" value="<?php echo $result->nomeCliente ?>" />
-                    <input type="hidden" name="clientes_id" id="clientes_id" value="<?php echo $result->clientes_id ?>">
-                    <input type="hidden" name="os_id" id="os_id" value="<?php echo $result->idOs; ?>">
-                </div>
-
-
-            </div>
-            <div class="span12" style="margin-left: 0">
-                <div class="span4" style="margin-left: 0">
-                    <label for="valor">Valor*</label>
-                    <input type="hidden" id="tipo" name="tipo" value="receita" />
-                    <input class="span12 money" id="valor" type="text" name="valor" value="<?php echo number_format($total, 2); ?> " />
-                </div>
-                <div class="span4">
-                    <label for="vencimento">Data Vencimento*</label>
-                    <input class="span12 datepicker" id="vencimento" type="text" name="vencimento" />
-                </div>
-
-            </div>
-
-            <div class="span12" style="margin-left: 0">
-                <div class="span4" style="margin-left: 0">
-                    <label for="recebido">Recebido?</label>
-                    &nbsp &nbsp &nbsp &nbsp <input id="recebido" type="checkbox" name="recebido" value="1" />
-                </div>
-                <div id="divRecebimento" class="span8" style=" display: none">
-                    <div class="span6">
-                        <label for="recebimento">Data Recebimento</label>
-                        <input class="span12 datepicker" id="recebimento" type="text" name="recebimento" />
-                    </div>
-                    <div class="span6">
-                        <label for="formaPgto">Forma Pgto</label>
-                        <select name="formaPgto" id="formaPgto" class="span12">
-                            <option value="Dinheiro">Dinheiro</option>
-                            <option value="Cartão de Crédito">Cartão de Crédito</option>
-                            <option value="Cheque">Cheque</option>
-                            <option value="Boleto">Boleto</option>
-                            <option value="Depósito">Depósito</option>
-                            <option value="Débito">Débito</option>
-                            <option value="Pix">Pix</option>
-                        </select>
-                    </div>
-
-                </div>
-
-
-            </div>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true" id="btn-cancelar-faturar">Cancelar</button>
-            <button class="btn btn-primary">Faturar</button>
-        </div>
-    </form>
-</div>
 
 <script type="text/javascript">
     $(document).ready(function() {
