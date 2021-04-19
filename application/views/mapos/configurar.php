@@ -27,7 +27,7 @@
                 <li><a data-toggle="tab" href="#menu4">Mensagem WhatsApp</a></li>
             </ul>
             <form action="<?php echo current_url(); ?>" id="formConfigurar" method="post" class="form-horizontal">
-            <div class="widget_content nopadding tab-content">
+            <div class="nopadding tab-content">
             <?php echo $custom_error; ?>
             <!-- Menu Gerais -->
                     <div id="home" class="tab-pane fade in active">
