@@ -10,17 +10,17 @@ if (!$results) { ?>
 
         </div>
 
-        <div class="widget_box_Painel2">
+        <div>
 
 
-            <table id="tabela" class="table table-bordered">
+            <table id="tabela" class="table_p">
                 <thead>
                     <tr>
                         <th>#</th>
                         <th>Data da Compra</th>
                         <th>Responsável</th>
                         <th>Faturado</th>
-                        <th></th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -45,17 +45,17 @@ if (!$results) { ?>
 
         </div>
 
-        <div class="widget_box_Painel2">
+        <div>
 
 
-            <table id="tabela" class="table table-bordered">
+            <table id="tabela" class="table_p">
                 <thead>
                     <tr>
                         <th>#</th>
                         <th>Data da Compra</th>
                         <th>Responsável</th>
                         <th>Faturado</th>
-                        <th></th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
