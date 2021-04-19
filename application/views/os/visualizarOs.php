@@ -276,7 +276,7 @@ $totalProdutos = 0; ?>
                                         $link = $a->url . '/' . $a->anexo;
                                     }
                                     echo '<div class="span3" style="min-height: 200px; margin-left: 0; padding: 5px;">
-									<a style="min-height: 180px; border: 1px solid #f00;" href="#modal-anexo" imagem="' . $a->idAnexos . '" link="' . $link . '" role="button" class="btn anexo span12" data-toggle="modal"><img src="' . $thumb . '" alt=""></a></div>';
+									<a style="min-height: 180px; border: 1px solid #bbbbbb;" href="#modal-anexo" imagem="' . $a->idAnexos . '" link="' . $link . '" role="button" class="btn anexo span12" data-toggle="modal"><img src="' . $thumb . '" alt=""></a></div>';
 									
                                 } ?>
                                 
