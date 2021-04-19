@@ -93,7 +93,7 @@ input {
 #sidebar > ul > li > a > .label{background-color: #ff6666;}
 
 /* COR DOS ICONES MENU LATERAL E MENU SUPERIOR */
-#user-nav > ul > li > a > i, #sidebar li a i{color:#ffffff;}
+#user-nav > ul > li > a > i, #sidebar li a i{color:ffffff;}
 
 /*ITENS DO DASHBOARD - ICONES*/
 .bg_lb {border-radius: 5px;}	/*Clientes*/

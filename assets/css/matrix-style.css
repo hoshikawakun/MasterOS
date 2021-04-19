@@ -62,10 +62,10 @@ hr{ border-top-color:#dadada;}
 	width: 50%;
 	z-index: -9;
 }
-#header h1 {
+#header h1 { /*Menu Lateral*/
 	background: url("../img/logo2.png") no-repeat scroll 0 0 transparent;
 	height: 55px;
-	left: 8px;
+	left: 10px;
 	line-height: 600px;
 	overflow: hidden;
 	position: relative;
@@ -101,10 +101,10 @@ hr{ border-top-color:#dadada;}
 }
 
 
-/* Top user navigation */
+/* Top user navigation */ /*Menu Lateral*/
 #user-nav {
 	position: absolute;
-	left: 215px;
+	left: 220px;
 	top:0px;
 	z-index: 20;
 	margin: 0;
@@ -147,20 +147,20 @@ hr{ border-top-color:#dadada;}
 }
 #user-nav > ul ul > li > a:hover {
 }
-/* Sidebar Navigation */
+/* Sidebar Navigation */ /*Menu Lateral*/
 #sidebar {
 	display: block;
 	float: left;
 	position: relative;
-	width: 215px;
+	width: 220px;
 	z-index: 16;
 }
-#sidebar > ul {
+#sidebar > ul { /*Menu Lateral*/
 	list-style: none;
 	margin: 0px 0 0;
 	padding: 0;
 	position: absolute;
-	width: 215px;
+	width: 220px;
 }
 #sidebar > ul > li {
 	display: block;
@@ -202,10 +202,10 @@ hr{ border-top-color:#dadada;}
 #sidebar > ul li ul li:last-child a {
 	border-bottom: 0;
 }
-/* Content */
+/* Content */ /*Menu Lateral*/
 #content {
 	background: none repeat scroll 0 0 #eeeeee;
-	margin-left: 215px;
+	margin-left: 220px;
 	margin-right: 0;
 	padding-bottom: 25px;
 	position: relative;
