@@ -73,7 +73,13 @@
 		echo '<td><div align="center">R$: ' . $ValorTotal . '</td>';
 		echo '<td><div align="center">R$: ' . number_format($o->valorTotal, 2, ',', '.') . '</td>';
 		echo '<td><div align="center">' . $status . '</td>';
-		echo '<td><div align="center"><a href="' . base_url() . 'index.php/mine/visualizarOs/' . $o->idOs . '" class="btn tip-top" title="Visualizar"><i class="fas fa-eye"></i></a> <a href="' . base_url() . 'index.php/mine/imprimirOs/' . $o->idOs . '" target="_blank" class="btn btn-inverse tip-top" title="Imprimir"><i class="fas fa-print"></i></a> <a href="' . base_url() . 'index.php/mine/detalhesOs/' . $o->idOs . '" class="btn btn-info tip-top" title="Visualizar mais detalhes"><i class="fas fa-bars"></i></a></td>';
+		echo '<td><div align="center">
+		<a href="' . base_url() . 'index.php/mine/visualizarOs/' . $o->idOs . '" class="btn tip-top" title="Visualizar"><i class="fas fa-eye"></i></a>
+		
+		<a href="' . base_url() . 'index.php/mine/detalhesOs/' . $o->idOs . '" class="btn btn-info tip-top" title="Visualizar mais detalhes"><i class="fas fa-bars"></i></a>
+		
+		<a href="' . base_url() . 'index.php/mine/imprimirOs/' . $o->idOs . '" target="_blank" class="btn btn-inverse tip-top" title="Imprimir"><i class="fas fa-print"></i></a>
+							</td>';
                             echo '</tr>';}}
 							else {
 							echo '<tr><td colspan="9">Nenhum ordem de serviço encontrada.</td></tr>';
