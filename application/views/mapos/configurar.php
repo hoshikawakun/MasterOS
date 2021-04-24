@@ -67,7 +67,7 @@
                      		<label for="app_name" class="control-label">Mensagem Rápida</label>
                             <div class="controls">
                             <input id="telefone" class="telefone1" type="text" name="masteros_1" value="" />
-                            <span class="help-inline"><a href="https://web.whatsapp.com/send?phone=55<?= $configuration['masteros_1']?>" title="Enviar WhatsWapp" target="_new" class="btn btn-success"><i class="fab fa-whatsapp"></i> Enviar WhatsWapp</a></span>
+                            <span class="help-inline"><a href="whatsapp://send?phone=55<?= $configuration['masteros_1']?>" title="Enviar WhatsWapp" target="_new" class="btn btn-success"><i class="fab fa-whatsapp"></i> Enviar WhatsWapp</a></span>
                             <span class="help-inline"><input disabled="disabled" value=" <?= $configuration['masteros_1']?>" readonly="readonly" /></span>
                      </div>       
                      </div>   
