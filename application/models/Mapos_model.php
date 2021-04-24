@@ -127,7 +127,8 @@ class Mapos_model extends CI_Model
 		COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos');
 		$this->db->select('os.*, clientes.nomeCliente');
 		$this->db->select('os.*, clientes.telefone');
-		$this->db->select('os.*, clientes.senha');
+		$this->db->select('os.*, clientes.senha as senha_cliente');
+		$this->db->select('os.*, clientes.email as email_cliemte');
 		$this->db->from('os');
 		$this->db->join('clientes', 'clientes.idClientes = os.clientes_id', 'emitente', 'emitente.telefone');
 		$this->db->where('os.status', 'Orçamento');
@@ -143,7 +144,8 @@ class Mapos_model extends CI_Model
 		COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos');
 		$this->db->select('os.*, clientes.nomeCliente');
 		$this->db->select('os.*, clientes.telefone');
-		$this->db->select('os.*, clientes.senha');
+		$this->db->select('os.*, clientes.senha as senha_cliente');
+		$this->db->select('os.*, clientes.email as email_cliemte');
 		$this->db->from('os');
 		$this->db->join('clientes', 'clientes.idClientes = os.clientes_id');
  		$this->db->where('os.status', 'Orçamento Concluido');
@@ -159,7 +161,8 @@ class Mapos_model extends CI_Model
 		COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos');
 		$this->db->select('os.*, clientes.nomeCliente');
 		$this->db->select('os.*, clientes.telefone');
-		$this->db->select('os.*, clientes.senha');
+		$this->db->select('os.*, clientes.senha as senha_cliente');
+		$this->db->select('os.*, clientes.email as email_cliemte');
 		$this->db->from('os');
 		$this->db->join('clientes', 'clientes.idClientes = os.clientes_id');
 		$this->db->where('os.status', 'Orçamento Aprovado');
@@ -175,7 +178,8 @@ class Mapos_model extends CI_Model
 		COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos');
 		$this->db->select('os.*, clientes.nomeCliente');
 		$this->db->select('os.*, clientes.telefone');
-		$this->db->select('os.*, clientes.senha');
+		$this->db->select('os.*, clientes.senha as senha_cliente');
+		$this->db->select('os.*, clientes.email as email_cliemte');
 		$this->db->from('os');
 		$this->db->join('clientes', 'clientes.idClientes = os.clientes_id');
 		$this->db->where('os.status', 'Em Andamento');
@@ -191,7 +195,8 @@ class Mapos_model extends CI_Model
 		COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos');
 		$this->db->select('os.*, clientes.nomeCliente');
 		$this->db->select('os.*, clientes.telefone');
-		$this->db->select('os.*, clientes.senha');
+		$this->db->select('os.*, clientes.senha as senha_cliente');
+		$this->db->select('os.*, clientes.email as email_cliemte');
 		$this->db->from('os');
 		$this->db->join('clientes', 'clientes.idClientes = os.clientes_id');
 		$this->db->where('os.status', 'Aguardando Peças');
@@ -207,7 +212,8 @@ class Mapos_model extends CI_Model
 		COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos');
 		$this->db->select('os.*, clientes.nomeCliente');
 		$this->db->select('os.*, clientes.telefone');
-		$this->db->select('os.*, clientes.senha');
+		$this->db->select('os.*, clientes.senha as senha_cliente');
+		$this->db->select('os.*, clientes.email as email_cliemte');
 		$this->db->from('os');
 		$this->db->join('clientes', 'clientes.idClientes = os.clientes_id');
 		$this->db->where('os.status', 'Serviço Concluido');
@@ -223,7 +229,8 @@ class Mapos_model extends CI_Model
 		COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos');
 		$this->db->select('os.*, clientes.nomeCliente');
 		$this->db->select('os.*, clientes.telefone');
-		$this->db->select('os.*, clientes.senha');
+		$this->db->select('os.*, clientes.senha as senha_cliente');
+		$this->db->select('os.*, clientes.email as email_cliemte');
 		$this->db->from('os');
 		$this->db->join('clientes', 'clientes.idClientes = os.clientes_id');
 		$this->db->where('os.status', 'Entregue - A Receber');

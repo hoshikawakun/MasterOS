@@ -162,7 +162,7 @@
                                 echo '<td><div align="center">' . $r->idProdutos . '</div></td>';
 								echo '<td><div align="center">' . $r->codDeBarra . '</div></td>';
                                 echo '<td>' . $descricaoShort . '</td>';
-                                echo '<td><div align="center">' . $r->precoVenda . '</div></td>';
+                                echo '<td><div align="center">R$: ' . $r->precoVenda . '</div></td>';
                                 echo '<td><div align="center">';
                                 if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vProduto')) {
                                     echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/produtos/visualizar/' . $r->idProdutos . '" class="btn tip-top" title="Visualizar mais detalhes"><i class="fas fa-eye"></i></a>';
@@ -259,7 +259,7 @@
                             echo '<tr>';
                             echo '<td><div align="center">' . $r->idServicos . '</div></td>';
                             echo '<td>' . $r->nome . '</td>';
-                            echo '<td><div align="center">' . $r->preco . '</div></td>';
+                            echo '<td><div align="center">R$: ' . $r->preco . '</div></td>';
                             echo '<td><div align="center">';
                             if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eServico')) {
                                 echo '<a href="' . base_url() . 'index.php/servicos/editar/' . $r->idServicos . '" class="btn btn-info tip-top" title="Editar Serviço"><i class="fas fa-edit"></i></a>';
