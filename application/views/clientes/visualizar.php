@@ -77,7 +77,7 @@
                         			<td>
                         <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
 												$zapnumber = preg_replace("/[^0-9]/", "", $result->telefone);
-                        echo '<a title="Enviar Por WhatsApp" class="btn btn-mini btn btn-success" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '"><i class="fab fa-whatsapp"></i> WhatsApp</a>';} ?>
+                        echo '<a title="Enviar Por WhatsApp" class="btn btn-mini btn btn-success" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '"><i class="fab fa-whatsapp"></i> WhatsApp</a>';} ?>
                                     </td>
                                     </tr>
                                 <tr>
