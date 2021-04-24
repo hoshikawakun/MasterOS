@@ -25,13 +25,12 @@
                         </h4>
                     </div>
                     <div class="widget_content nopadding">
-
-                        <table width="1000" class="table_v">
+                    <table width="100%" class="table_v">
                             <thead>
                                 <tr>
-                                    <th width="300" style="font-size: 15px">Nome</th>
-                                    <th width="600" style="font-size: 15px">Descrição</th>
-                                    <th width="100" style="font-size: 15px">Preço</th>
+                                    <th width="350" style="font-size: 15px">Nome</th>
+                                    <th width="650" style="font-size: 15px">Descrição</th>
+                                    <th width="140" style="font-size: 15px">Preço</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -40,7 +39,7 @@
                                         echo '<tr>';
                                         echo '<td>' . $s->nome . '</td>';
                                         echo '<td>' . $s->descricao . '</td>';
-                                        echo '<td>' . $s->preco . '</td>';
+                                        echo '<td align="center">R$: ' . $s->preco . '</td>';
                                         echo '</tr>';
                                     }
                                 ?>

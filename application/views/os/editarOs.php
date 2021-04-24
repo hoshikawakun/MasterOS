@@ -310,7 +310,7 @@
                                                 echo '<td><div align="center">' . ($s->quantidade ?: 1) . '</div></td>';
                                                 echo '<td><div align="center">R$ ' . $preco  . '</div></td>';
                                                 echo '<td><div align="center"><span idAcao="' . $s->idServicos_os . '" title="Excluir Serviço" class="btn btn-danger servico"><i class="fas fa-trash-alt"></i></span></div></td>';
-                                                echo '<td><div align="center">R$ ' . number_format($subtotals, 2, ',', '.') . '</div></td>';
+                                                echo '<td><div align="center">R$: ' . number_format($subtotals, 2, ',', '.') . '</div></td>';
                                                 echo '</tr>';
                                             } ?>
                                             <tr>

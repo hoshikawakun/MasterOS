@@ -25,28 +25,37 @@
                         </h4>
                     </div>
                     <div class="widget_content nopadding">
-
-                        <table width="1000" class="table_v">
+                    <table width="100%" class="table_v">
                             <thead>
                                 <tr>
-                                    <th width="600" style="font-size: 1.1em; padding: 5px;">Cliente</th>
-                                    <th width="100" style="font-size: 1.1em; padding: 5px;">Total</th>
-                                    <th width="100" style="font-size: 1.1em; padding: 5px;">Data</th>
-                                    <th width="200" style="font-size: 1.1em; padding: 5px;">Vendedor</th>
+                                	<th width="110" align="center" style="font-size: 15px">#</th>
+                                    <th width="500" align="center" style="font-size: 15px">Cliente</th>
+                                    <th width="150" align="center" style="font-size: 15px">Vendedor</th>
+                                    <th width="140" align="center" style="font-size: 15px">Data</th>
+                                    <th width="140" align="center" style="font-size: 15px">Total</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                        foreach ($vendas as $c) {
-
-                                            echo '<tr>';
-                                            echo '<td>' . $c->nomeCliente . '</td>';
-                                            echo '<td>' . $c->valorTotal . '</td>';
-                                            echo '<td>' . date('d/m/Y', strtotime($c->dataVenda)) . '</td>';
-                                            echo '<td>' . $c->nome . '</td>';
+                                        foreach ($vendas as $v) {
+											$vTotal = $v->valorTotal;
+											$totalVendas = $totalVendas + $v->valorTotal;
+											$Vendas = $v->idVendas;
+											echo '<tr>';
+											echo '<td align="center">' . $Vendas . '</td>';
+                                            echo '<td>' . $v->nomeCliente . '</td>';
+                                            echo '<td align="center">' . $v->nome . '</td>';
+                                            echo '<td align="center">' . date('d/m/Y', strtotime($v->dataVenda)) . '</td>';
+											echo '<td align="center">R$: ' . number_format($vTotal, 2, ',', '.') .'</td>';
+                                            //echo '<td align="center">R$: ' . number_format($vTotal, 2, ',', '.') .'</td>';//
                                             echo '</tr>';
                                         }
                                         ?>
+                            <tr>
+                            <td colspan="3"></td>
+                            <td align="right"><b>TOTAL: </b></td>
+                            <td align="center"><b>R$: <?php echo number_format($totalVendas, 2, ',', '.'); ?></b></td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
