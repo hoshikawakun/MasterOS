@@ -8,10 +8,7 @@
     <h5>Clientes</h5>
     </div>
     <div class="widget-content nopadding">
-    <!--
-    <div class="widget_box_Painel2">
-    -->
-        <table id="tabela" width="100%" class="table_p">
+    <table id="tabela" width="100%" class="table_p">
             <thead>
                 <tr>
                     <th>Cod.</th>
@@ -32,7 +29,7 @@
                                 </tr>';
                     }
                     foreach ($results as $r) {
-						$NomeClienteShort = mb_strimwidth(strip_tags($r->nomeCliente), 0, 44, "...");
+						$NomeClienteShort = mb_strimwidth(strip_tags($r->nomeCliente), 0, 30, "...");
 						
                         echo '<tr>';
                         echo '<td><div align="center">' . $r->idClientes . '</div></td>';
