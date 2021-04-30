@@ -5,8 +5,8 @@
         </span>
         <h5>Lista de envio de e-mails</h5>
     </div>
-    <div class="widget_box_Painel2">
-        <table id="tabela" class="table table-bordered">
+    <div class="widget-content nopadding">
+        <table id="tabela" width="100%" class="table_p">
             <thead>
                 <tr>
                     <th>Código</th>

@@ -23,7 +23,7 @@
                 <li><a data-toggle="tab" href="#menu5">Misc</a></li>
                 <li><a data-toggle="tab" href="#menu1">Financeiro</a></li>
                 <li><a data-toggle="tab" href="#menu2">Termo de Uso OS</a></li>
-           <!-- <li><a data-toggle="tab" href="#menu3">Notificações</a></li> -->
+           <li><a data-toggle="tab" href="#menu3">Notificações</a></li>
                 <li><a data-toggle="tab" href="#menu4">Mensagem WhatsApp</a></li>
             </ul>
             <form action="<?php echo current_url(); ?>" id="formConfigurar" method="post" class="form-horizontal">
