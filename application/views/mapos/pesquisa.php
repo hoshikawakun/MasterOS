@@ -205,7 +205,7 @@
                                 echo '<tr><td colspan="4">Nenhum cliente foi encontrado.</td></tr>';
                             }
                             foreach ($clientes as $r) {
-								$NomeClienteShort = mb_strimwidth(strip_tags($r->nomeCliente), 0, 25, "...");
+								$NomeClienteShort = mb_strimwidth(strip_tags($r->nomeCliente), 0, 30, "...");
 								
                                 echo '<tr>';
                                 echo '<td><div align="center">' . $r->idClientes . '</div></td>';
