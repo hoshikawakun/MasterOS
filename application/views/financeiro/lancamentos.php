@@ -138,15 +138,15 @@ $periodo = $this->input->get('periodo');
                         $label = 'important';
                     }
                     echo '<tr>';
-                    echo '<td>' . $r->idLancamentos . '</td>';
-                    echo '<td><span class="label label-' . $label . '">' . ucfirst($r->tipo) . '</span></td>';
-                    echo '<td>' . $r->cliente_fornecedor . '</td>';
-                    echo '<td>' . $r->descricao . '</td>';
-                    echo '<td>' . $vencimento . '</td>';
-                    echo '<td>' . $status . '</td>';
-                    echo '<td>' . $r->observacoes . '</td>';
-                    echo '<td> R$ ' . number_format($r->valor, 2, ',', '.') . '</td>';
-                    echo '<td>';
+                    echo '<td><div align="center">' . $r->idLancamentos . '</td>';
+                    echo '<td><div align="center"><span class="label label-' . $label . '">' . ucfirst($r->tipo) . '</span></td>';
+                    echo '<td><div align="center">' . $r->cliente_fornecedor . '</td>';
+                    echo '<td><div align="center">' . $r->descricao . '</td>';
+                    echo '<td><div align="center">' . $vencimento . '</td>';
+                    echo '<td><div align="center">' . $status . '</td>';
+                    echo '<td><div align="center">' . $r->observacoes . '</td>';
+                    echo '<td><div align="center">R$: ' . number_format($r->valor, 2, ',', '.') . '</td>';
+                    echo '<td><div align="center">';
                     if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eLancamento')) {
                         echo '<a href="#modalEditar" style="margin-right: 1%" data-toggle="modal" role="button" idLancamento="' . $r->idLancamentos . '" descricao="' . $r->descricao . '" valor="' . $r->valor . '" vencimento="' . date('d/m/Y', strtotime($r->data_vencimento)) . '" pagamento="' . date('d/m/Y', strtotime($r->data_pagamento)) . '" baixado="' . $r->baixado . '" cliente="' . $r->cliente_fornecedor . '" formaPgto="' . $r->forma_pgto . '" tipo="' . $r->tipo . '" observacoes="' . $r->observacoes . '" usuario="' . $r->nome . '" class="btn btn-info tip-top editar" title="Editar Lançamento"><i class="fas fa-edit"></i></a>';
                     }
@@ -162,17 +162,17 @@ $periodo = $this->input->get('periodo');
                 <tr>
                     <td colspan="7" style="text-align: right; color: green"><strong>Total Receitas:</strong></td>
                     <td colspan="3" style="text-align: left; color: green">
-                        <strong>R$ <?php echo number_format($totals['receitas'], 2, ',', '.') ?></strong></td>
+                        <strong>R$: <?php echo number_format($totals['receitas'], 2, ',', '.') ?></strong></td>
                 </tr>
                 <tr>
                     <td colspan="7" style="text-align: right; color: red"><strong>Total Despesas:</strong></td>
                     <td colspan="3" style="text-align: left; color: red">
-                        <strong>R$ <?php echo number_format($totals['despesas'], 2, ',', '.') ?></strong></td>
+                        <strong>R$: <?php echo number_format($totals['despesas'], 2, ',', '.') ?></strong></td>
                 </tr>
                 <tr>
                     <td colspan="7" style="text-align: right"><strong>Saldo:</strong></td>
                     <td colspan="3" style="text-align: left;">
-                        <strong>R$ <?php echo number_format($totals['receitas'] - $totals['despesas'], 2, ',', '.') ?></strong>
+                        <strong>R$: <?php echo number_format($totals['receitas'] - $totals['despesas'], 2, ',', '.') ?></strong>
                     </td>
                 </tr>
                 </tfoot>
