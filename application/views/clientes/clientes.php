@@ -29,7 +29,7 @@
                                 </tr>';
                     }
                     foreach ($results as $r) {
-						$NomeClienteShort = mb_strimwidth(strip_tags($r->nomeCliente), 0, 30, "...");
+						$NomeClienteShort = mb_strimwidth(strip_tags($r->nomeCliente), 0, 45, "...");
 						
                         echo '<tr>';
                         echo '<td><div align="center">' . $r->idClientes . '</div></td>';
