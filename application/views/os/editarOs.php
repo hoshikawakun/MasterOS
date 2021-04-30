@@ -547,10 +547,16 @@
                 <div class="span4" style="margin-left: 0">
                     <label for="valor">Valor*</label>
                     <input type="hidden" id="tipo" name="tipo" value="receita" />
-                    <input class="span12 money" id="valor" type="text" name="valor"
-                           value="<?php echo number_format($total, 2); ?> "/>
+                    <input class="span12 money" id="valor" type="text" name="valor" value="<?php echo number_format($totals + $total, 2); ?>"/>
+                    <strong><span style="color: red" id="resultado"></span></strong>
                 </div>
                 <div class="span4">
+                    <label>Desconto</label>
+                    <input style="width: 4em;" id="num2"  type="text" placeholder="%" onblur="calcular()" maxlength="3" size="2"/>
+                </div>
+            </div>
+            <div class="span12" style="margin-left: 0">
+                <div class="span4" style="margin-left: 0">
                     <label for="vencimento">Data Entrada*</label>
                     <input class="span12 datepicker" autocomplete="on" id="vencimento" type="text" name="vencimento" />
                 </div>
@@ -642,7 +648,20 @@
 <script src="<?php echo base_url(); ?>assets/js/maskmoney.js"></script>
 
 <script type="text/javascript">
-    $(document).ready(function() {
+    function calcular(){
+    var desconto = Number(document.getElementById("valor").value);
+    var num2 = Number(document.getElementById("num2").value);
+    var elemResult = document.getElementById("resultado");
+	
+    if (elemResult.textContent === undefined) {
+       elemResult.textContent = "Preço com Desconto: R$ " + String(desconto - num2 * desconto / 100) + ".	";
+    }
+    else { // IE
+       elemResult.innerText = "(Preço com Desconto: R$ " + String(desconto - num2 * desconto / 100) + ")";
+    }
+	}
+	
+	$(document).ready(function() {
 
         $(".money").maskMoney();
 
@@ -653,28 +672,6 @@
             } else {
                 $('#divRecebimento').hide();
             }
-        });
-
-        $(document).on('click', '#btn-faturar', function(event) {
-            event.preventDefault();
-            valor = $('#total-venda').val();
-            total_servico = $('#total-servico').val();
-            valor = valor.replace(',', '');
-            total_servico = total_servico.replace(',', '');
-            total_servico = parseFloat(total_servico);
-            valor = parseFloat(valor);
-            $('#valor').val(valor + total_servico);
-        });
-
-        $(document).on('click', '#btn-whatsapp', function(event) {
-            event.preventDefault();
-            valor = $('#total-venda').val();
-            total_servico = $('#total-servico').val();
-            valor = valor.replace(',', '');
-            total_servico = total_servico.replace(',', '');
-            total_servico = parseFloat(total_servico);
-            valor = parseFloat(valor);
-            $('#valor').val(valor + total_servico);
         });
 
         $("#formFaturar").validate({
