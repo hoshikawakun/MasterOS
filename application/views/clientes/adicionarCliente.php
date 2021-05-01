@@ -102,7 +102,7 @@
 ?>
                         <div class="controls">
                         
-                            <input id="senha" class="senha" type="password" name="senha" value="<?php echo gerar_senha(10, true, true, true, false); ?>" />
+                            <input id="senha" class="senha" type="password" name="senha" value="<?php echo gerar_senha(12, true, true, true, false); ?>" />
                       </div>
                   </div>
                         <div class="control-group">
