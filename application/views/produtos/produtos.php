@@ -18,9 +18,7 @@
     <h5>Produtos</h5>
     </div>
     <div class="widget-content nopadding">
-    <!--
-    <div class="widget_box_Painel2">
-    -->
+    
         <table id="tabela" width="100%" class="table_p">
             <thead>
             <tr>
@@ -37,7 +35,7 @@
 
             if (!$results) {
                 echo '<tr>
-                                <td colspan="5">Nenhum Produto Cadastrado</td>
+                                <td colspan="6">Nenhum Produto Cadastrado</td>
                                 </tr>';
             }
             foreach ($results as $r) {
