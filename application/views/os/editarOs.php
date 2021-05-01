@@ -544,7 +544,7 @@
                 </div>
             </div>
             <div class="span12" style="margin-left: 0">
-                <div class="span4" style="margin-left: 0">
+                <div class="span5" style="margin-left: 0">
                     <label for="valor">Valor*</label>
                     <input type="hidden" id="tipo" name="tipo" value="receita" />
                     <input class="span12 money" id="valor" type="text" name="valor" value="<?php echo number_format($totals + $total, 2); ?>"/>
