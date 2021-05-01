@@ -8,9 +8,7 @@
     <h5>Vendas</h5>
     </div>
     <div class="widget-content nopadding">
-    <!--
-    <div class="widget_box_Painel2">
-    -->
+    
         <table id="tabela" width="100%" class="table_p">
             <thead>
                 <tr style="background-color: #2D335B">
