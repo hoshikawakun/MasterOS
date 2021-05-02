@@ -50,8 +50,7 @@
 							  echo '<td align="center">' . $p->codDeBarra . '</td>';
                               echo '<td align="center">R$: ' . $p->precoCompra . '</td>' ;
 							  echo '<td align="center">R$: ' . ($p->preco ?: $p->precoVenda)  . '</td>' ;
-							 // echo '<td align="center">R$: ' . number_format($p->precoVenda, 2, ',', '.') . '</td>' ;//
-                              echo '<td align="center">' . $p->estoque . '</td>';
+							  echo '<td align="center">' . $p->estoque . '</td>';
 							  echo '<td align="center">R$: ' . number_format($subtotals, 2, ',', '.') . '</td>';
                               echo '</tr>';
                           }

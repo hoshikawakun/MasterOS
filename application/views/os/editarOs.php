@@ -250,10 +250,10 @@
                                     } ?>
                                     <tr>
                                         <td colspan="6" style="text-align: right"><strong>Total:</strong></td>
-                                        <td><strong>R$
+                                        <td><strong><div align="center">R$:
                                                 <?php echo number_format($total, 2, ',', '.'); ?><input type="hidden"
                                                                                                         id="total-venda"
-                                                                                                        value="<?php echo number_format($total, 2); ?>"></strong>
+                                                                                                        value="<?php echo number_format($total, 2); ?>"></strong></div>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -308,16 +308,16 @@
                                                 echo '<tr>';
                                                 echo '<td>' . $s->nome . '</td>';
                                                 echo '<td><div align="center">' . ($s->quantidade ?: 1) . '</div></td>';
-                                                echo '<td><div align="center">R$ ' . $preco  . '</div></td>';
+                                                echo '<td><div align="center">R$: ' . $preco  . '</div></td>';
                                                 echo '<td><div align="center"><span idAcao="' . $s->idServicos_os . '" title="Excluir Serviço" class="btn btn-danger servico"><i class="fas fa-trash-alt"></i></span></div></td>';
                                                 echo '<td><div align="center">R$: ' . number_format($subtotals, 2, ',', '.') . '</div></td>';
                                                 echo '</tr>';
                                             } ?>
                                             <tr>
                                                 <td colspan="4" style="text-align: right"><strong>Total:</strong></td>
-                                                <td><strong>R$
+                                                <td><strong><div align="center">R$:
                                                 <?php echo number_format($totals, 2, ',', '.'); ?><input type="hidden" id="total-servico" value="
-												<?php echo number_format($totals, 2); ?>"></strong></td>
+												<?php echo number_format($totals, 2); ?>"></strong></div></td>
                                             </tr>
                                         </tbody>
                                     </table>

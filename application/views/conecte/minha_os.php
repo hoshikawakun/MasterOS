@@ -159,7 +159,7 @@
                                                 echo '<td style="text-align: center">' . $p->descricao . '</td>';
                                                 echo '<td style="text-align: center">' . $p->quantidade . '</td>';
 
-                                                echo '<td style="text-align: center">R$ ' . number_format($p->subTotal, 2, ',', '.') . '</td>';
+                                                echo '<td style="text-align: center">R$: ' . number_format($p->subTotal, 2, ',', '.') . '</td>';
                                                 echo '</tr>';
                                             } ?>
 
@@ -172,7 +172,7 @@
                                                 echo '<tr>';
                                                 echo '<td style="text-align: center">' . $s->nome . '</td>';
                                                 echo '<td></td>';
-                                                echo '<td style="text-align: center">R$ ' . number_format($s->preco, 2, ',', '.') . '</td>';
+                                                echo '<td style="text-align: center">R$: ' . number_format($s->preco, 2, ',', '.') . '</td>';
                                                 echo '</tr>';
                                             }
                                             ?>

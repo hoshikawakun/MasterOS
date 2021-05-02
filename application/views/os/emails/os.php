@@ -235,7 +235,7 @@ $totalProdutos = 0; ?>
     echo '<td>' . $p->descricao . '</td>';
     echo '<td>' . $p->quantidade . '</td>';
     echo '<td>' . $p->preco ?: $p->precoVenda . '</td>';
-    echo '<td style="text-align: center">R$ ' . number_format($p->subTotal, 2, ',', '.') . '</td>';
+    echo '<td style="text-align: center">R$: ' . number_format($p->subTotal, 2, ',', '.') . '</td>';
     echo '</tr>';
 } ?>
 
@@ -262,7 +262,7 @@ $totalProdutos = 0; ?>
     echo '<td>' . $s->nome . '</td>';
     echo '<td>' . ($s->quantidade ?: 1) . '</td>';
     echo '<td>' . $preco . '</td>';
-    echo '<td>R$ ' . number_format($subtotal, 2, ',', '.') . '</td>';
+    echo '<td>R$: ' . number_format($subtotal, 2, ',', '.') . '</td>';
     echo '</tr>';
 } ?>
 

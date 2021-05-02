@@ -47,7 +47,6 @@
                                             echo '<td align="center">' . $v->nome . '</td>';
                                             echo '<td align="center">' . date('d/m/Y', strtotime($v->dataVenda)) . '</td>';
 											echo '<td align="center">R$: ' . number_format($vTotal, 2, ',', '.') .'</td>';
-                                            //echo '<td align="center">R$: ' . number_format($vTotal, 2, ',', '.') .'</td>';//
                                             echo '</tr>';
                                         }
                                         ?>

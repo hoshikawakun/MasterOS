@@ -158,7 +158,7 @@
                                         <td colspan="5" style="text-align: right"><strong>Total:</strong></td>
                                         <td>
                                         <div align="center">
-                                        <strong>R$
+                                        <strong>R$:
                                          <?php echo number_format($total, 2, ',', '.'); ?><input type="hidden" id="total-venda" value="<?php echo number_format($total, 2); ?>">
                                          </strong>
                                          </div>
@@ -194,15 +194,15 @@
                                                 echo '<tr>';
                                                 echo '<td>' . $s->nome . '</td>';
                                                 echo '<td><div align="center">' . ($s->quantidade ?: 1) . '</div></td>';
-                                                echo '<td><div align="center">R$ ' . $preco  . '</div></td>';
-                                                echo '<td><div align="center">R$ ' . number_format($subtotals, 2, ',', '.') . '</div></td>';
+                                                echo '<td><div align="center">R$: ' . $preco  . '</div></td>';
+                                                echo '<td><div align="center">R$: ' . number_format($subtotals, 2, ',', '.') . '</div></td>';
                                                 echo '</tr>';
                                             } ?>
                                             <tr>
                                                 <td colspan="3" style="text-align: right"><strong>Total:</strong></td>
                                                 <td>
                                                 <div align="center">
-                                                <strong>R$
+                                                <strong>R$:
                                                 <?php echo number_format($totals, 2, ',', '.'); ?><input type="hidden" id="total-servico" value="
 												<?php echo number_format($totals, 2); ?>"></strong></div></td>
                                             </tr>

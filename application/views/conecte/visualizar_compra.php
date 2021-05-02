@@ -106,14 +106,14 @@
                                         echo '<td>' . $p->descricao . '</td>';
                                         echo '<td>' . $p->quantidade . '</td>';
 
-                                        echo '<td>R$ ' . number_format($p->subTotal, 2, ',', '.') . '</td>';
+                                        echo '<td>R$: ' . number_format($p->subTotal, 2, ',', '.') . '</td>';
                                         echo '</tr>';
                                     } ?>
 
                                     <tr>
                                         <td colspan="2" style="text-align: right"><strong>Total:</strong></td>
-                                        <td><strong>R$
-                                                <?php echo number_format($totalProdutos, 2, ',', '.'); ?></strong></td>
+                                        <td><strong><div align="center">R$:
+                                                <?php echo number_format($totalProdutos, 2, ',', '.'); ?></strong></div></td>
                                     </tr>
                                 </tbody>
                             </table>

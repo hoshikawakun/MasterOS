@@ -70,7 +70,7 @@
 
                         <tr>
                             <td style="text-align: right"><strong>Valor da cobrança</strong></td>
-                            <td>R$
+                            <td>R$:
                                 <?php echo number_format($result->total / 100, 2, ',', '.'); ?>
                             </td>
                         </tr>

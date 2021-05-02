@@ -45,7 +45,7 @@
                         }
 
                         echo '<td>' . $cobrancaStatus . '</td>';
-                        echo '<td>R$ ' . number_format($r->total / 100, 2, ',', '.') . '</td>';
+                        echo '<td>R$: ' . number_format($r->total / 100, 2, ',', '.') . '</td>';
                         echo '<td>';
                         if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vCobranca')) {
                             echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/mine/atualizarcobranca/' . $r->idCobranca . '" class="btn btn-inverse tip-top" title="Atualizar Cobrança"><i class="fas fa-sync"></i></a>';

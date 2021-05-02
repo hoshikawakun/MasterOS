@@ -44,7 +44,7 @@
                         }
 
                         echo '<td>' .  $cobrancaStatus . '</td>';
-                        echo '<td>R$ ' . number_format($r->total / 100, 2, ',', '.') . '</td>';
+                        echo '<td>R$: ' . number_format($r->total / 100, 2, ',', '.') . '</td>';
                         echo '<td>';
                         if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vCobranca')) {
                             echo '<a style="margin-right: 1%" href="#modal-cancelar" role="button" data-toggle="modal" cancela_id="' . $r->idCobranca . '" class="btn tip-top" title="Cancelar cobrança"><i class="fas fa-power-off"></i></a>';

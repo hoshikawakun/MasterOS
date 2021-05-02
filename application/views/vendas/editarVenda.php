@@ -100,14 +100,14 @@
 												echo '<td><div align="center">' . $p->codDeBarra . '</div></td>';
                                                 echo '<td>' . $p->descricao . '</td>';
                                                 echo '<td><div align="center">' . $p->quantidade . '</div></td>';
-                                                echo '<td><div align="center">R$ ' . $preco . '</div></td>';
+                                                echo '<td><div align="center">R$: ' . $preco . '</div></td>';
                                                 echo '<td><div align="center"><a href="" idAcao="' . $p->idItens . '" prodAcao="' . $p->idProdutos . '" quantAcao="' . $p->quantidade . '" title="Excluir Produto" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></div></td>';
-                                                echo '<td><div align="center">R$ ' . number_format($p->subTotal, 2, ',', '.') . '</div></td>';
+                                                echo '<td><div align="center">R$: ' . number_format($p->subTotal, 2, ',', '.') . '</div></td>';
                                                 echo '</tr>';
                                             } ?>
                                             <tr>
                                                 <td colspan="6" style="text-align: right"><strong>Total:</strong></td>
-                                                <td><div align="center"><strong>R$
+                                                <td><div align="center"><strong>R$:
                                                         <?php echo number_format($total, 2, ',', '.'); ?></strong> <input type="hidden" id="total-venda" value="<?php echo number_format($total, 2); ?>"></div></td>
                                             </tr>
                                         </tbody>

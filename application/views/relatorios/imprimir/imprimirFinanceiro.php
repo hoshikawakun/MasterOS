@@ -70,7 +70,7 @@
                                         <strong>Total Receitas:</strong>
                                     </td>
                                     <td colspan="3" style="text-align: left; color: green">
-                                        <strong>R$
+                                        <strong>R$:
                                             <?php echo number_format($totalReceita, 2, ',', '.') ?>
                                         </strong>
                                     </td>
@@ -80,7 +80,7 @@
                                         <strong>Total Despesas:</strong>
                                     </td>
                                     <td colspan="3" style="text-align: left; color: red">
-                                        <strong>R$
+                                        <strong>R$:
                                             <?php echo number_format($totalDespesa, 2, ',', '.') ?>
                                         </strong>
                                     </td>
@@ -90,7 +90,7 @@
                                         <strong>Saldo:</strong>
                                     </td>
                                     <td colspan="3" style="text-align: left;">
-                                        <strong>R$
+                                        <strong>R$:
                                             <?php echo number_format($totalReceita - $totalDespesa, 2, ',', '.') ?>
                                         </strong>
                                     </td>
