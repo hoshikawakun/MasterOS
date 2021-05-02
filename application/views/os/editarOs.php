@@ -33,6 +33,10 @@
                                             <?php } ?>
                                             
 <a href="#modal-whatsapp" title="Enviar WhatsApp" id="btn-whatsapp" role="button" data-toggle="modal" class="btn btn-mini btn-success"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+
+<a title="Enviar por E-mail" class="btn btn-mini btn-warning"
+                       href="<?php echo site_url() ?>/os/enviar_email/<?php echo $result->idOs; ?>"><i
+                                class="fas fa-envelope"></i> Enviar por E-mail</a>
                         
 <div class="row-fluid" style="margin-top:0">
     <div class="span12">
