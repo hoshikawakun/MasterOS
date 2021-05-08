@@ -1163,12 +1163,10 @@
 
         });
 
-        $(document).on('click', '#excluir-anexo', function (event) {
+        $(document).on('click', '#excluir-anexo', function(event) {
             event.preventDefault();
-
             var link = $(this).attr('link');
-            var idOS = "<?php echo $result->idOs; ?>"
-
+            var idOS = "<?php echo $result->idOs ?>"
             $('#modal-anexo').modal('hide');
             $("#divAnexos").html("<div class='progress progress-info progress-striped active'><div class='bar' style='width: 100%'></div></div>");
 
@@ -1177,7 +1175,7 @@
                 url: link,
                 dataType: 'json',
                 data: "idOs=" + idOS,
-                success: function (data) {
+                success: function(data) {
                     if (data.result == true) {
                         $("#divAnexos").load("<?php echo current_url(); ?> #divAnexos");
                     } else {
@@ -1191,18 +1189,44 @@
             });
         });
 
-        $(document).on('click', '.anotacao', function (event) {
-            var idAnotacao = $(this).attr('idAcao');
-            var idOS = "<?php echo $result->idOs; ?>"
+        $(document).on('click', '.equipamento', function(event) {
+            var idEquipamento = $(this).attr('idAcao');
+			var idOS = "<?php echo $result->idOs ?>"
+            if ((idEquipamento % 1) == 0) {
+                $("#divEquipamento").html("<div class='progress progress-info progress-striped active'><div class='bar' style='width: 100%'></div></div>");
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo base_url(); ?>index.php/os/excluirEquipamento",
+					data: "idEquipamento=" + idEquipamento + "&idOs=" + idOS,
+                    dataType: 'json',
+                    success: function(data) {
+                        if (data.result == true) {
+                            $("#divEquipamento").load("<?php echo current_url(); ?> #divEquipamento");
 
+                        } else {
+                            Swal.fire({
+                                type: "error",
+                                title: "Atenção",
+                                text: "Ocorreu um erro ao tentar excluir Equipamento."
+                            });
+                        }
+                    }
+                });
+                return false;
+            }
+        });
+
+        $(document).on('click', '.anotacao', function(event) {
+            var idAnotacao = $(this).attr('idAcao');
+			var idOS = "<?php echo $result->idOs ?>"
             if ((idAnotacao % 1) == 0) {
                 $("#divAnotacoes").html("<div class='progress progress-info progress-striped active'><div class='bar' style='width: 100%'></div></div>");
                 $.ajax({
                     type: "POST",
                     url: "<?php echo base_url(); ?>index.php/os/excluirAnotacao",
-                    data: "idAnotacao=" + idAnotacao + "&idOs=" + idOS,
+					data: "idAnotacao=" + idAnotacao + "&idOs=" + idOS,
                     dataType: 'json',
-                    success: function (data) {
+                    success: function(data) {
                         if (data.result == true) {
                             $("#divAnotacoes").load("<?php echo current_url(); ?> #divAnotacoes");
 
@@ -1210,7 +1234,7 @@
                             Swal.fire({
                                 type: "error",
                                 title: "Atenção",
-                                text: "Ocorreu um erro ao tentar excluir serviço."
+                                text: "Ocorreu um erro ao tentar excluir Anotação."
                             });
                         }
                     }
