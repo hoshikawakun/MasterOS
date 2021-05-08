@@ -431,16 +431,15 @@
                                                 echo '<tr>';
                                                 echo '<td><div align="center">' . $a->equipamento . '</div></td>';
                                                 echo '<td><div align="center">' . $a->modelo . '</div></td>';
-												echo '<td><div align="center">' . $a->num_serie . '</div></td>';
-												echo '<td><div align="center">' . $a->voltagem . '</div></td>';
-												echo '<td><div align="center">' . $a->observacao . '</div></td>';
+                                                echo '<td><div align="center">' . $a->num_serie . '</div></td>';
+                                                echo '<td><div align="center">' . $a->voltagem . '</div></td>';
+                                                echo '<td><div align="center">' . $a->observacao . '</div></td>';
                                                 echo '<td><div align="center"><span idAcao="' . $a->idEquipamento . '" title="Excluir Equipamento" class="btn btn-danger equipamento"><i class="fas fa-trash-alt"></i></span></div></td>';
                                                 echo '</tr>';
                                             }
                                             if (!$equipamento) {
                                                 echo '<tr><td colspan="6">Nenhum Equipamento cadastrado</td></tr>';
                                             }
-
                                             ?>
                                         </tbody>
                                     </table>
