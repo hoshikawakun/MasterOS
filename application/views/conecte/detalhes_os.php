@@ -256,9 +256,9 @@
                                                 echo '<tr>';
                                                 echo '<td><div align="center">' . $a->equipamento . '</div></td>';
                                                 echo '<td><div align="center">' . $a->modelo . '</div></td>';
-												echo '<td><div align="center">' . $a->num_serie . '</div></td>';
-												echo '<td><div align="center">' . $a->voltagem . '</div></td>';
-												echo '<td><div align="center">' . $a->observacao . '</div></td>';
+                                                echo '<td><div align="center">' . $a->num_serie . '</div></td>';
+                                                echo '<td><div align="center">' . $a->voltagem . '</div></td>';
+                                                echo '<td><div align="center">' . $a->observacao . '</div></td>';
                                                 echo '</tr>';
                                             }
                                             if (!$equipamento) {
