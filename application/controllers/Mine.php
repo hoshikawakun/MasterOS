@@ -327,7 +327,6 @@ class Mine extends CI_Controller
         $data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
         $data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
         $data['equipamentos'] = $this->os_model->getEquipamentos($this->uri->segment(3));
-
         $data['emitente'] = $this->mapos_model->getEmitente();
 
         if ($data['result']->idClientes != $this->session->userdata('cliente_id')) {
