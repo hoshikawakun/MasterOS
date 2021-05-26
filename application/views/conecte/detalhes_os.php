@@ -253,21 +253,21 @@
                                         </thead>
                                         <tbody>
                                             <?php
-                                            foreach ($equipamentos as $a) {
+                                            foreach ($equipamentos as $x) {
                                                 echo '<tr>';
-                                                echo '<td><div align="center">' . $a->equipamento . '</div></td>';
-                                                echo '<td><div align="center">' . $a->marca . '</div></td>';
-                                                echo '<td><div align="center">' . $a->tipo . '</div></td>';
-                                                echo '<td><div align="center">' . $a->num_serie . '</div></td>';
-                                                echo '<td><div align="center">' . $a->modelo . '</div></td>';
-                                                echo '<td><div align="center">' . $a->cor . '</div></td>';
-                                                echo '<td><div align="center">' . $a->voltagem . '</div></td>';
-                                                echo '<td><div align="center">' . $a->potencia . '</div></td>';
-                                                echo '<td><div align="center">' . $a->observacao . '</div></td>';
+                                                echo '<td><div align="center">' . $x->equipamento . '</div></td>';
+                                                echo '<td><div align="center">' . $x->marca . '</div></td>';
+                                                echo '<td><div align="center">' . $x->tipo . '</div></td>';
+                                                echo '<td><div align="center">' . $x->num_serie . '</div></td>';
+                                                echo '<td><div align="center">' . $x->modelo . '</div></td>';
+                                                echo '<td><div align="center">' . $x->cor . '</div></td>';
+                                                echo '<td><div align="center">' . $x->voltagem . '</div></td>';
+                                                echo '<td><div align="center">' . $x->potencia . '</div></td>';
+                                                echo '<td><div align="center">' . $x->observacao . '</div></td>';
                                                 echo '</tr>';
                                             }
-                                            if (!$equipamento) {
-                                                echo '<tr><td colspan="5">Nenhum Equipamento cadastrado</td></tr>';
+                                            if (!$equipamentos) {
+                                                echo '<tr><td colspan="9">Nenhum Equipamento cadastrado</td></tr>';
                                             }
                                             ?>
                                         </tbody>

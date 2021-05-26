@@ -326,7 +326,8 @@ class Mine extends CI_Controller
         $data['result'] = $this->os_model->getById($this->uri->segment(3));
         $data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
         $data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
-        $data['equipamentos'] = $this->os_model->getEquipamento($this->uri->segment(3));
+        $data['equipamentos'] = $this->os_model->getEquipamentos($this->uri->segment(3));
+
         $data['emitente'] = $this->mapos_model->getEmitente();
 
         if ($data['result']->idClientes != $this->session->userdata('cliente_id')) {
@@ -367,7 +368,7 @@ class Mine extends CI_Controller
         $data['result'] = $this->os_model->getById($this->uri->segment(3));
         $data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
         $data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
-        $data['equipamentos'] = $this->os_model->getEquipamento($this->uri->segment(3));
+        $data['equipamentos'] = $this->os_model->getEquipamentos($this->uri->segment(3));
         $data['emitente'] = $this->mapos_model->getEmitente();
         $data['configuracoes'] = $this->mapos_model->getTermo();
 
@@ -450,7 +451,7 @@ class Mine extends CI_Controller
             } else {
                 $data['produtos'] = $this->os_model->getProdutos($id);
                 $data['servicos'] = $this->os_model->getServicos($id);
-                $data['equipamentos'] = $this->os_model->getEquipamento($id);
+                $data['equipamentos'] = $this->os_model->getEquipamentos($id);
                 $data['emitente'] = $this->mapos_model->getEmitente();
 
                 $this->load->view('conecte/minha_os', $data);
@@ -525,11 +526,10 @@ class Mine extends CI_Controller
         if (is_numeric($id) && $id != null) {
             $this->load->model('mapos_model');
             $this->load->model('os_model');
-
             $this->data['result'] = $this->os_model->getById($id);
             $this->data['produtos'] = $this->os_model->getProdutos($id);
             $this->data['servicos'] = $this->os_model->getServicos($id);
-            $this->data['equipamentos'] = $this->os_model->getEquipamentos($idOs);
+            $this->data['equipamentos'] = $this->os_model->getEquipamentos($id);
             $this->data['anexos'] = $this->os_model->getAnexos($id);
 
             if ($this->data['result']->idClientes != $this->session->userdata('cliente_id')) {
