@@ -228,13 +228,12 @@
                                 <table width="100%" class="table_p" id="tblProdutos">
                                     <thead>
                                     <tr>
-                                    	<th width="10%">Cod. Produto</th>
-                                    	<th width="10%">Cod. Barras</th>
-                                    	<th>Produto</th>
-                                    	<th width="8%">Quantidade</th>
-                                    	<th width="10%">Preço unit.</th>
-                                    	<th width="6%">Ações</th>
-                                    	<th width="10%">Sub-total</th>
+                                       		<th width="10%">Cod. Produto</th>
+                                       		<th>Produto</th>
+                                       		<th width="8%">Quantidade</th>
+                                       		<th width="10%">Preço unit.</th>
+                                       		<th width="6%">Ações</th>
+                                       		<th width="10%">Sub-total</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -242,18 +241,17 @@
                                     $total = 0;
                                     foreach ($produtos as $p) {
                                         $total = $total + $p->subTotal;
-                                        echo '<tr>';
-                                        echo '<td><div align="center">' . $p->idProdutos . '</td>';
-                                        echo '<td><div align="center">' . $p->codDeBarra . '</td>';
-                                        echo '<td>' . $p->descricao . '</td>';
-                                        echo '<td><div align="center">' . $p->quantidade . '</td>';
-                                        echo '<td><div align="center">R$: ' . ($p->preco ?: $p->precoVenda)  . '</td>';
-                                        echo '<td><div align="center"><a href="" idAcao="' . $p->idProdutos_os . '" prodAcao="' . $p->idProdutos . '" quantAcao="' . $p->quantidade . '" title="Excluir Produto" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></td>';
-                                        echo '<td><div align="center">R$: ' . number_format($p->subTotal, 2, ',', '.') . '</td>';
-                                        echo '</tr>';
+                                            echo '<tr>';
+                                            echo '<td><div align="center">' . $p->idProdutos . '</td>';
+                                            echo '<td>' . $p->descricao . '</td>';
+                                            echo '<td><div align="center">' . $p->quantidade . '</td>';
+                                            echo '<td><div align="center">R$: ' . ($p->preco ?: $p->precoVenda)  . '</td>';
+                                            echo '<td><div align="center"><a href="" idAcao="' . $p->idProdutos_os . '" prodAcao="' . $p->idProdutos . '" quantAcao="' . $p->quantidade . '" title="Excluir Produto" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></td>';
+                                            echo '<td><div align="center">R$: ' . number_format($p->subTotal, 2, ',', '.') . '</td>';
+                                            echo '</tr>';
                                     } ?>
                                     <tr>
-                                        <td colspan="6" style="text-align: right"><strong>Total:</strong></td>
+                                        <td colspan="5" style="text-align: right"><strong>Total:</strong></td>
                                         <td><strong><div align="center">R$:
                                                 <?php echo number_format($total, 2, ',', '.'); ?><input type="hidden"
                                                                                                         id="total-venda"
@@ -327,8 +325,8 @@
                                     </table>
                           </div>
                           </div>
-                          </div>
-                          
+                      </div>
+                                
                         <!--Anexos-->
                         <div class="tab-pane" id="tab4">
                             <div class="span12 well" style="padding: 1%; margin-left: 0" id="form-anexos">
@@ -418,34 +416,52 @@
                                         <thead>
                                             <tr>
                                                 <th>Equipamento</th>
-                                                <th>Modelo/Cor</th>
-                                                <th>Nº Série</th>
+                                                <th>Marca</th>
+                                                <th>Tipo</th>
+                                                <th>Nº Serie</th>
+                                                <th>Modelo</th>
+                                                <th>Cor</th>
                                                 <th>Voltagem</th>
-                                                <th>Observação</th>
-                                                <th>Ações</th>
+                                                <th>Potência</th>
+                                                <th>Obs:</th>
+                                                <th>Ação</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            foreach ($equipamento as $a) {
+                                            foreach ($equipamentos as $a) {
                                                 echo '<tr>';
                                                 echo '<td><div align="center">' . $a->equipamento . '</div></td>';
-                                                echo '<td><div align="center">' . $a->modelo . '</div></td>';
+                                                echo '<td><div align="center">' . $a->marca . '</div></td>';
+                                                echo '<td><div align="center">' . $a->tipo . '</div></td>';
                                                 echo '<td><div align="center">' . $a->num_serie . '</div></td>';
+                                                echo '<td><div align="center">' . $a->modelo . '</div></td>';
+                                                echo '<td><div align="center">' . $a->cor . '</div></td>';
                                                 echo '<td><div align="center">' . $a->voltagem . '</div></td>';
+                                                echo '<td><div align="center">' . $a->potencia . '</div></td>';
                                                 echo '<td><div align="center">' . $a->observacao . '</div></td>';
                                                 echo '<td><div align="center"><span idAcao="' . $a->idEquipamento . '" title="Excluir Equipamento" class="btn btn-danger equipamento"><i class="fas fa-trash-alt"></i></span></div></td>';
                                                 echo '</tr>';
                                             }
-                                            if (!$equipamento) {
-                                                echo '<tr><td colspan="6">Nenhum Equipamento cadastrado</td></tr>';
+                                            if (!$equipamentos) {
+                                                echo '<tr><td colspan="10">Nenhum Equipamento cadastrado</td></tr>';
                                             }
+
                                             ?>
                                         </tbody>
                                     </table>
-                 </div></div></div></div></div>&nbsp
-                 </div></div></div></div></div>
-                        <!-- Fim tab Equipamentos -->
+                 </div>
+                 </div>
+                 </div>
+                 <!-- Fim tab Equipamentos -->
+                 </div>
+                 </div>&nbsp
+                 </div>
+                 </div>
+                 </div>
+                 </div>
+                 </div>
+                        
                  
 
 <!-- Modal visualizar anexo -->
@@ -489,41 +505,58 @@
 </div>
 
 <!-- Modal cadastro Equipamentos -->
-<div id="modal-equipamento" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <form action="#" method="POST" id="formEquipamento">
-        <div class="modal_header_anexos">
+          <div id="modal-equipamento" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <form action="#" method="POST" id="formEquipamento">
+          <div class="modal_header_anexos">
             <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>
             <h3 id="myModalLabel">Adicionar Equipamento</h3>
-        </div>
-        <div class="modal-body">
+          </div>
+          <div class="modal-body">
           <div class="span6" style="margin-left: 0">
-                <label for="equipamento">Equipamento<span class="required">*</span></label>
+                <label for="equipamentos">Equipamento<span class="required">*</span></label>
                 <input name="equipamento" type="text" class="span12" id="equipamento" value="" />
           </div>
           <div class="span6">
-                <label for="modelo">Modelo/Cor</label>
-                <input name="modelo" type="text" class="span12" id="equipamento" value="" />
+                <label for="marca">Marca</label>
+                <input name="marca" type="text" class="span12" id="equipamento" value="" />
           </div>
           <div class="span6" style="margin-left: 0">
-                <label for="num_serie">Nº Série</label>
-                <input name="num_serie" type="text" class="span12" id="equipamento" value="" />
+          		<label for="modelo">Modelo</label>
+          		<input name="modelo" type="text" class="span12" id="equipamento" value="" />      
           </div>
           <div class="span6">
-                <label for="voltagem">Voltagem</label>
-                <input name="voltagem" type="text" class="span12" id="equipamento" value="" />
+          		<label for="cor">Cor</label>
+          		<input name="cor" type="text" class="span12" id="equipamento" value="" />
           </div>
-            <div class="span12" style="margin-left: 0">
+          <div class="span6" style="margin-left: 0">
+          		<label for="tipo">Tipo</label>
+          		<input name="tipo" type="text" class="span12" id="equipamento" value="" />      
+          </div>
+          <div class="span6">
+          		<label for="num_serie">Nº Serie</label>
+          		<input name="num_serie" type="text" class="span12" id="equipamento" value="" />
+          </div>
+          <div class="span6" style="margin-left: 0">
+          		<label for="voltagem">Voltagem</label>
+          		<input name="voltagem" type="text" class="span12" id="equipamento" value="" />      
+          </div>
+          <div class="span6">
+          		<label for="potencia">Potência</label>
+          		<input name="potencia" type="text" class="span12" id="equipamento" value="" />
+          </div>
+          <div class="span12" style="margin-left: 0">
               <label for="observacao">Observação</label>
-                <input name="observacao" type="text" class="span12" id="equipamento" value="" />
-                <input type="hidden" name="os_id" value="<?php echo $result->idOs; ?>">
-            </div>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true" id="btn-close-equipamento">Fechar</button>
-            <button class="btn btn-primary">Adicionar</button>
-        </div>
-    </form>
-</div>
+              <input name="observacao" type="text" class="span12" id="equipamento" value="" />
+              <input type="hidden" name="os_id" value="<?php echo $result->idOs; ?>">
+          </div>
+          </div>
+          <div class="modal-footer">
+              <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true" id="btn-close-equipamento">Fechar</button>
+              <button class="btn btn-primary">Adicionar</button>
+          </div>
+          </form>
+          </div>
+<!-- Fim Modal cadastro Equipamentos -->
 
 <!-- Modal Faturar-->
 <div id="modal-faturar" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -649,10 +682,10 @@
     var elemResult = document.getElementById("resultado");
 	
     if (elemResult.textContent === undefined) {
-    	elemResult.textContent = "Preço com Desconto: R$ " + String(desconto - num2 * desconto / 100) + ".	";
-    	}
+       elemResult.textContent = "Preço com Desconto: R$ " + String(desconto - num2 * desconto / 100) + ".	";
+    }
     else { // IE
-    	elemResult.innerText = "(Preço com Desconto: R$ " + String(desconto - num2 * desconto / 100) + ")";
+       elemResult.innerText = "(Preço com Desconto: R$ " + String(desconto - num2 * desconto / 100) + ")";
     }
 	}
 	
@@ -788,7 +821,7 @@
             minLength: 2,
             select: function(event, ui) {
                 $("#codDeBarra").val(ui.item.codbar);
-                $("#idProduto").val(ui.item.id);
+				$("#idProduto").val(ui.item.id);
                 $("#estoque").val(ui.item.estoque);
                 $("#preco").val(ui.item.preco);
                 $("#quantidade").focus();
@@ -934,24 +967,12 @@
             rules: {
                 servico: {
                     required: true
-                },
-                preco: {
-                    required: true
-                },
-                quantidade: {
-                    required: true
-                },
+                }
             },
             messages: {
                 servico: {
                     required: 'Insira um serviço'
-                },
-                preco: {
-                    required: 'Insira o preço'
-                },
-                quantidade: {
-                    required: 'Insira a quantidade'
-                },
+                }
             },
             submitHandler: function(form) {
                 var dados = $(form).serialize();
@@ -1163,8 +1184,8 @@
         });
 
         $(document).on('click', '#excluir-anexo', function(event) {
-            event.preventDefault();
-            var link = $(this).attr('link');
+            event.preventDefault();            
+			var link = $(this).attr('link');
             var idOS = "<?php echo $result->idOs ?>"
             $('#modal-anexo').modal('hide');
             $("#divAnexos").html("<div class='progress progress-info progress-striped active'><div class='bar' style='width: 100%'></div></div>");
@@ -1173,7 +1194,7 @@
                 type: "POST",
                 url: link,
                 dataType: 'json',
-                data: "idOs=" + idOS,
+				data: "idOs=" + idOS,
                 success: function(data) {
                     if (data.result == true) {
                         $("#divAnexos").load("<?php echo current_url(); ?> #divAnexos");

@@ -326,12 +326,12 @@ class Mine extends CI_Controller
         $data['result'] = $this->os_model->getById($this->uri->segment(3));
         $data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
         $data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
-		$data['equipamento'] = $this->os_model->getEquipamento($this->uri->segment(3));
+        $data['equipamentos'] = $this->os_model->getEquipamento($this->uri->segment(3));
         $data['emitente'] = $this->mapos_model->getEmitente();
 
         if ($data['result']->idClientes != $this->session->userdata('cliente_id')) {
-            $this->session->set_flashdata('error', 'Esta OS não pertence ao cliente logado.');
-            redirect('mine/painel');
+        $this->session->set_flashdata('error', 'Esta OS não pertence ao cliente logado.');
+        redirect('mine/painel');
         }
 
         $data['output'] = 'conecte/visualizar_os';
@@ -367,8 +367,9 @@ class Mine extends CI_Controller
         $data['result'] = $this->os_model->getById($this->uri->segment(3));
         $data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
         $data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
-		$data['equipamento'] = $this->os_model->getEquipamento($this->uri->segment(3));
+        $data['equipamentos'] = $this->os_model->getEquipamento($this->uri->segment(3));
         $data['emitente'] = $this->mapos_model->getEmitente();
+        $data['configuracoes'] = $this->mapos_model->getTermo();
 
         if ($data['result']->idClientes != $this->session->userdata('cliente_id')) {
             $this->session->set_flashdata('error', 'Esta OS não pertence ao cliente logado.');
@@ -449,7 +450,7 @@ class Mine extends CI_Controller
             } else {
                 $data['produtos'] = $this->os_model->getProdutos($id);
                 $data['servicos'] = $this->os_model->getServicos($id);
-                $data['equipamento'] = $this->os_model->getEquipamento($id);
+                $data['equipamentos'] = $this->os_model->getEquipamento($id);
                 $data['emitente'] = $this->mapos_model->getEmitente();
 
                 $this->load->view('conecte/minha_os', $data);
@@ -528,7 +529,7 @@ class Mine extends CI_Controller
             $this->data['result'] = $this->os_model->getById($id);
             $this->data['produtos'] = $this->os_model->getProdutos($id);
             $this->data['servicos'] = $this->os_model->getServicos($id);
-			$this->data['equipamento'] = $this->os_model->getEquipamento($id);
+            $this->data['equipamentos'] = $this->os_model->getEquipamentos($idOs);
             $this->data['anexos'] = $this->os_model->getAnexos($id);
 
             if ($this->data['result']->idClientes != $this->session->userdata('cliente_id')) {

@@ -19,14 +19,14 @@ class Mapos extends MY_Controller
 
     public function index()
     {
-		$this->data['ordens1'] = $this->mapos_model->getOsOrcamento();
-		$this->data['ordens2'] = $this->mapos_model->getOsOrcamentoConcluido();
-		$this->data['ordens3'] = $this->mapos_model->getOsOrcamentoAprovado();
-		$this->data['ordens4'] = $this->mapos_model->getOsEmAndamento();
-		$this->data['ordens5'] = $this->mapos_model->getOsAguardandoPecas();
-		$this->data['ordens6'] = $this->mapos_model->getOsConcluido();
-		$this->data['ordens7'] = $this->mapos_model->getOsEntregueAReceber();
-		$this->data['produtos'] = $this->mapos_model->getProdutosMinimo();
+        $this->data['ordens1'] = $this->mapos_model->getOsOrcamento();
+        $this->data['ordens2'] = $this->mapos_model->getOsOrcamentoConcluido();
+        $this->data['ordens3'] = $this->mapos_model->getOsOrcamentoAprovado();
+        $this->data['ordens4'] = $this->mapos_model->getOsEmAndamento();
+        $this->data['ordens5'] = $this->mapos_model->getOsAguardandoPecas();
+        $this->data['ordens6'] = $this->mapos_model->getOsConcluido();
+        $this->data['ordens7'] = $this->mapos_model->getOsEntregueAReceber();
+        $this->data['produtos'] = $this->mapos_model->getProdutosMinimo();
         $this->data['os'] = $this->mapos_model->getOsEstatisticas();
         $this->data['estatisticas_financeiro'] = $this->mapos_model->getEstatisticasFinanceiro();
         $this->data['financeiro_mes'] = $this->mapos_model->getEstatisticasFinanceiroMes($this->input->get('year'));
@@ -78,6 +78,7 @@ class Mapos extends MY_Controller
         $data['results'] = $this->mapos_model->pesquisar($termo);
         $this->data['produtos'] = $data['results']['produtos'];
         $this->data['servicos'] = $data['results']['servicos'];
+        $this->data['equipamento_os'] = $data['results']['equipamento_os'];
         $this->data['os'] = $data['results']['os'];
         $this->data['clientes'] = $data['results']['clientes'];
         $this->data['view'] = 'mapos/pesquisa';
@@ -333,8 +334,8 @@ class Mapos extends MY_Controller
             $this->session->set_flashdata('error', 'Você não tem permissão para configurar o sistema');
             redirect(base_url());
         }
+		
         $this->data['menuConfiguracoes'] = 'Sistema';
-
         $this->load->library('form_validation');
         $this->load->model('mapos_model');
 

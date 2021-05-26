@@ -71,7 +71,7 @@ $totalProdutos = 0; ?>
   </tr>
                                 <tr>
     <td colspan="2">
-			<span style="font-size: 12px"><b>Responsável</b></span><br>
+            <span style="font-size: 12px"><b>Responsável</b></span><br>
             <span style="font-size: 10px"><i class="fas fa-user-check"></i> <?php echo $result->nome ?></span><br>
             <span style="font-size: 10px"><i class="fas fa-envelope" style="margin:5px 1px"></i>  <?php echo $result->email_responsavel ?></span><br>
             <span style="font-size: 10px"><i class="fas fa-phone-alt" style="margin:5px 1px"></i>  <?php echo $result->telefone_usuario ?></span>
@@ -136,31 +136,45 @@ $totalProdutos = 0; ?>
                                 
 						<td colspan="2"></td>
       </table>
-                        
-                        <?php if ($equipamento != null) { ?>
-                            <table width="100%" style="font-size: 10px" class="table_pr" id="tblEquipamento">
+                    <table width="100%">
+                    	<tr>
+                    		<td>
+                        <?php if ($equipamentos != null) { ?>
+                            <table width="100%" class="table_pr" id="tblEquipamento">
                                 <thead>
                                     <tr>
                                         <th>Equip.</th>
-                                        <th>Modelo/Cor</th>
-                                        <th>Nº Série</th>
-                                        <th>Volt ~</th>
-                                        <th>Obs.</th>
+                                        <th>Marca</th>
+                                        <th>Tipo</th>
+                                        <th>Nº Serie</th>
+                                        <th>Modelo</th>
+                                        <th>Cor</th>
+                                        <th>~</th>
+                                        <th>W</th>
+                                        <th>Obs:</th>
                                     </tr>
                                 </thead>
+                                <tbody>
                                     <?php
 
-                                    foreach ($equipamento as $e) {
-
+                                    foreach ($equipamentos as $x) {
                                         echo '<tr>';
-                                        echo '<td><div align="center">' . $e->equipamento . '</div></td>';
-                                        echo '<td><div align="center">' . $e->modelo . '</div></td>';
-										echo '<td><div align="center">' . $e->num_serie . '</div></td>';
-										echo '<td><div align="center">' . $e->voltagem . '</div></td>';
-										echo '<td><div align="center">' . $e->observacao . '</div></td>';
+                                        echo '<td><div align="center">' . $x->equipamento . '</div></td>';
+                                        echo '<td><div align="center">' . $x->marca . '</div></td>';
+                                        echo '<td><div align="center">' . $x->tipo . '</div></td>';
+                                        echo '<td><div align="center">' . $x->num_serie . '</div></td>';
+                                        echo '<td><div align="center">' . $x->modelo . '</div></td>';
+                                        echo '<td><div align="center">' . $x->cor . '</div></td>';
+                                        echo '<td><div align="center">' . $x->voltagem . '</div></td>';
+                                        echo '<td><div align="center">' . $x->potencia . '</div></td>';
+                                        echo '<td><div align="center">' . $x->observacao . '</div></td>';
                                         echo '</tr>';} ?>
-      </table>
+                                </tbody>
+                            </table>
                         <?php } ?>
+                     </td>
+                  </tr>
+               </table>
                         
 						<table width="100%">
   <tr>
@@ -183,18 +197,19 @@ $totalProdutos = 0; ?>
 
                                         $totalProdutos = $totalProdutos + $p->subTotal;
                                         echo '<tr>';
-										echo '<td><div align="center">' . $p->idProdutos . '</div></td>';
-										echo '<td>' . $p->descricao . '</td>';
+                                        echo '<td><div align="center">' . $p->idProdutos . '</div></td>';
+                                        echo '<td>' . $p->descricao . '</td>';
                                         echo '<td><div align="center">' . $p->quantidade . '</div></td>';
                                         echo '<td><div align="center">R$: ' . $p->preco ?: $p->precoVenda . '</div></td>';
                                         echo '<td><div align="center">R$: ' . number_format($p->subTotal, 2, ',', '.') . '</div></td>';
                                         echo '</tr>';} ?>
-    									<tr>
-                                        <td colspan="5" style="text-align: right"><strong>Total Produtos R$: <?php echo number_format($totalProdutos, 2, ',', '.'); ?></strong></td>
-                                    	</tr>
+                                    <tr>
+                                    <td colspan="5" style="text-align: right"><strong>Total Produtos R$: <?php echo number_format($totalProdutos, 2, ',', '.'); ?></strong></td>
+                                    </tr>
                                 </tbody>
                             </table>
-      <?php } ?></td>
+      <?php } ?>
+      </td>
   </tr>
 </table>
                         
@@ -236,6 +251,9 @@ $totalProdutos = 0; ?>
           echo "<h4 style='font-size: 12px; text-align: right'>Valor Total da OS R$: " . number_format($totalProdutos + $totalServico, 2, ',', '.') . "</h4>";}?></td>
   </tr>
 </table>
+</div>
+
+<!-- Fim -->
 
 
 <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>

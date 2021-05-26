@@ -116,43 +116,52 @@ $totalProdutos = 0; ?>
                                     </tr>
                                 <?php } ?>
   <tr>
-    <td colspan="3"><br /><div class"span12">
-						<?php if ($equipamento != null) { ?>
+    
+    <td colspan="3"><br />
+    	
+                         <div class"span12">
+                         <?php if ($equipamentos != null) { ?>
                             <table width="100%" class="table_p" id="tblEquipamento">
                                 <thead>
                                     <tr>
-                                        <th width="20%">Equipamento</th>
-                                        <th width="20%">Modelo/Cor</th>
-                                        <th width="15%">Nº Série</th>
-                                        <th width="10%">Voltagem</th>
-                                        <th width="40%">Observação</th>
+                                        <th>Equipamento</th>
+                                        <th>Marca</th>
+                                        <th>Tipo</th>
+                                        <th>Nº Serie</th>
+                                        <th>Modelo</th>
+                                        <th>Cor</th>
+                                        <th>Voltagem</th>
+                                        <th>Potência</th>
+                                        <th>Obs:</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
 
-                                    foreach ($equipamento as $e) {
+                                    foreach ($equipamentos as $e) {
 
-                                        		echo '<tr>';
-                                                echo '<td><div align="center">' . $e->equipamento . '</div></td>';
-                                                echo '<td><div align="center">' . $e->modelo . '</div></td>';
-												echo '<td><div align="center">' . $e->num_serie . '</div></td>';
-												echo '<td><div align="center">' . $e->voltagem . '</div></td>';
-												echo '<td><div align="center">' . $e->observacao . '</div></td>';
-                                                echo '</tr>';} ?>
-    									</tbody>
+                                        echo '<tr>';
+                                        echo '<td><div align="center">' . $e->equipamento . '</div></td>';
+                                        echo '<td><div align="center">' . $e->marca . '</div></td>';
+                                        echo '<td><div align="center">' . $e->tipo . '</div></td>';
+                                        echo '<td><div align="center">' . $e->num_serie . '</div></td>';
+                                        echo '<td><div align="center">' . $e->modelo . '</div></td>';
+                                        echo '<td><div align="center">' . $e->cor . '</div></td>';
+                                        echo '<td><div align="center">' . $e->voltagem . '</div></td>';
+                                        echo '<td><div align="center">' . $e->potencia . '</div></td>';
+                                        echo '<td><div align="center">' . $e->observacao . '</div></td>';
+                                        echo '</tr>';} ?>
+                                </tbody>
                             </table>
                         <?php } ?>
-						</div></td>
-  </tr>
-  <tr>
-    <td colspan="3"><br /><div class"span12">
-						<?php if ($produtos != null) { ?>
+                     </div>
+    	
+                        <div class"span12">
+                        <?php if ($produtos != null) { ?>
                             <table width="100%" class="table_p" id="tblProdutos">
                                 <thead>
                                     <tr>
                                         <th width="10%">Cod. Produto</th>
-                                        <th width="12%">Cod. Barras</th>
                                         <th>Produto</th>
                                         <th width="10%">Quantidade</th>
                                         <th width="10%">Preço unit.</th>
@@ -163,24 +172,23 @@ $totalProdutos = 0; ?>
                                     <?php
 
                                     foreach ($produtos as $p) {
-
-                                        $totalProdutos = $totalProdutos + $p->subTotal;
+                                    	$totalProdutos = $totalProdutos + $p->subTotal;
                                         echo '<tr>';
-										echo '<td><div align="center">' . $p->idProdutos . '</div></td>';
-                                        echo '<td><div align="center">' . $p->codDeBarra . '</div></td>';
-										echo '<td>' . $p->descricao . '</td>';
+                                        echo '<td><div align="center">' . $p->idProdutos . '</div></td>';
+                                        echo '<td>' . $p->descricao . '</td>';
                                         echo '<td><div align="center">' . $p->quantidade . '</div></td>';
                                         echo '<td><div align="center">R$: ' . $p->preco ?: $p->precoVenda . '</div></td>';
                                         echo '<td><div align="center">R$: ' . number_format($p->subTotal, 2, ',', '.') . '</div></td>';
                                         echo '</tr>';} ?>
-    									<tr>
-                                        <td colspan="5" style="text-align: right"><strong>Total: </strong></td>
-                                        <td><strong><div align="center">R$: <?php echo number_format($totalProdutos, 2, ',', '.'); ?></div></strong></td>
-                                    	</tr>
+                                    <tr>
+                                    <td colspan="4" style="text-align: right"><strong>Total: </strong></td>
+                                    <td><strong><div align="center">R$: <?php echo number_format($totalProdutos, 2, ',', '.'); ?></div></strong></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         <?php } ?>
                         </div>
+                        
                         <div class"span12">
 						<?php if ($servicos != null) { ?>
                             <table width="100%" class="table_p">

@@ -30,9 +30,9 @@ class Conecte_model extends CI_Model
 COALESCE((SELECT SUM(produtos_os.preco * produtos_os.quantidade ) FROM produtos_os WHERE produtos_os.os_id = os.idOs), 0) totalProdutos,
 COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos');
         $this->db->where('clientes_id', $cliente);
-		$this->db->join('usuarios', 'os.usuarios_id = usuarios.idUsuarios', 'left');
+        $this->db->join('usuarios', 'os.usuarios_id = usuarios.idUsuarios', 'left');
         $this->db->limit(10);
-		$this->db->order_by('idOs', 'desc');
+        $this->db->order_by('idOs', 'desc');
 
         return $this->db->get('os')->result();
     }
@@ -44,8 +44,8 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
         $this->db->from('vendas');
         $this->db->join('usuarios', 'usuarios.idUsuarios = vendas.usuarios_id');
         $this->db->where('clientes_id', $cliente);
-		$this->db->limit(10);
-		$this->db->order_by('idVendas', 'desc');
+        $this->db->limit(10);
+        $this->db->order_by('idVendas', 'desc');
 
         return $this->db->get()->result();
     }
@@ -59,7 +59,7 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
         $this->db->join('usuarios', 'vendas.usuarios_id = usuarios.idUsuarios', 'left');
         $this->db->where('clientes_id', $cliente);
         $this->db->limit($perpage, $start);
-		$this->db->order_by('idVendas', 'desc');
+        $this->db->order_by('idVendas', 'desc');
         if ($where) {
             $this->db->where($where);
         }
@@ -78,7 +78,7 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
         $this->db->join('clientes', 'cobrancas.clientes_id = clientes.idClientes', 'left');
         $this->db->where('clientes_id', $cliente);
         $this->db->limit($perpage, $start);
-		$this->db->order_by('idCobranca', 'desc');
+        $this->db->order_by('idCobranca', 'desc');
         if ($where) {
             $this->db->where($where);
         }
@@ -93,7 +93,7 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
         
         $this->db->select($fields);
         $this->db->from($table);
-		$this->db->select('
+        $this->db->select('
 	   COALESCE((SELECT SUM(produtos_os.preco * produtos_os.quantidade ) FROM produtos_os WHERE produtos_os.os_id = os.idOs), 0) totalProdutos,
 	   COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos');
         $this->db->join('usuarios', 'os.usuarios_id = usuarios.idUsuarios', 'left');

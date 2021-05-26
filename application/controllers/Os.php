@@ -278,9 +278,9 @@ class Os extends MY_Controller
         }
 
         $this->data['result'] = $this->os_model->getById($this->uri->segment(3));
-		$this->data['equipamento'] = $this->os_model->getEquipamento($this->uri->segment(3));
-		$this->data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
+        $this->data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
         $this->data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
+        $this->data['equipamentos'] = $this->os_model->getEquipamentos($this->uri->segment(3));
         $this->data['anexos'] = $this->os_model->getAnexos($this->uri->segment(3));
         $this->data['anotacoes'] = $this->os_model->getAnotacoes($this->uri->segment(3));
 
@@ -315,10 +315,10 @@ class Os extends MY_Controller
         $this->data['result'] = $this->os_model->getById($this->uri->segment(3));
         $this->data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
         $this->data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
+        $this->data['equipamentos'] = $this->os_model->getEquipamentos($this->uri->segment(3));
         $this->data['emitente'] = $this->mapos_model->getEmitente();
         $this->data['anexos'] = $this->os_model->getAnexos($this->uri->segment(3));
         $this->data['anotacoes'] = $this->os_model->getAnotacoes($this->uri->segment(3));
-		$this->data['equipamento'] = $this->os_model->getEquipamento($this->uri->segment(3));
         $this->data['editavel'] = $this->os_model->isEditable($this->uri->segment(3));
         $this->data['modalGerarPagamento'] = $this->load->view(
             'cobrancas/modalGerarPagamento',
@@ -355,8 +355,9 @@ class Os extends MY_Controller
         $this->data['result'] = $this->os_model->getById($this->uri->segment(3));
         $this->data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
         $this->data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
-		$this->data['equipamento'] = $this->os_model->getEquipamento($this->uri->segment(3));
         $this->data['emitente'] = $this->mapos_model->getEmitente();
+        $this->data['equipamentos'] = $this->os_model->getEquipamentos($this->uri->segment(3));
+        $this->data['configuracoes'] = $this->mapos_model->getTermo();
         $this->data['qrCode'] = $this->os_model->getQrCode(
             $this->uri->segment(3),
             $this->data['configuration']['pix_key'],
@@ -383,9 +384,10 @@ class Os extends MY_Controller
         $this->data['result'] = $this->os_model->getById($this->uri->segment(3));
         $this->data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
         $this->data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
-		$this->data['equipamento'] = $this->os_model->getEquipamento($this->uri->segment(3));
+        $this->data['equipamentos'] = $this->os_model->getEquipamentos($this->uri->segment(3));
         $this->data['emitente'] = $this->mapos_model->getEmitente();
-		$this->data['qrCode'] = $this->os_model->getQrCode(
+        $this->data['configuracoes'] = $this->mapos_model->getTermo();
+        $this->data['qrCode'] = $this->os_model->getQrCode(
             $this->uri->segment(3),
             $this->data['configuration']['pix_key'],
             $this->data['emitente'][0]
@@ -410,9 +412,9 @@ class Os extends MY_Controller
         $this->data['result'] = $this->os_model->getById($this->uri->segment(3));
         $this->data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
         $this->data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
-		$this->data['equipamento'] = $this->os_model->getEquipamento($this->uri->segment(3));
+        $this->data['equipamentos'] = $this->os_model->getEquipamentos($this->uri->segment(3));
         $this->data['emitente'] = $this->mapos_model->getEmitente();
-		$this->data['qrCode'] = $this->os_model->getQrCode(
+        $this->data['qrCode'] = $this->os_model->getQrCode(
             $this->uri->segment(3),
             $this->data['configuration']['pix_key'],
             $this->data['emitente'][0]
@@ -445,7 +447,7 @@ class Os extends MY_Controller
 
         $this->data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
         $this->data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
-		$this->data['equipamento'] = $this->os_model->getEquipamento($this->uri->segment(3));
+        $this->data['equipamentos'] = $this->os_model->getEquipamentos($this->uri->segment(3));
         $this->data['emitente'] = $this->mapos_model->getEmitente();
 
         if (!isset($this->data['emitente'][0]->email)) {
@@ -544,6 +546,7 @@ class Os extends MY_Controller
             }
         }
 
+        $this->os_model->delete('equipamento_os', 'os_id', $id);
         $this->os_model->delete('servicos_os', 'os_id', $id);
         $this->os_model->delete('produtos_os', 'os_id', $id);
         $this->os_model->delete('anexos', 'os_id', $id);
@@ -947,6 +950,7 @@ class Os extends MY_Controller
 
         $dados['produtos'] = $this->os_model->getProdutos($idOs);
         $dados['servicos'] = $this->os_model->getServicos($idOs);
+        $dados['equipamentos'] = $this->os_model->getEquipamentos($idOs);
         $dados['emitente'] = $this->mapos_model->getEmitente();
 
         $emitente = $dados['emitente'][0]->email;
@@ -982,11 +986,14 @@ class Os extends MY_Controller
         } else {
             $data = array(
                 'equipamento' => $this->input->post('equipamento'),
+                'marca' => $this->input->post('marca'),
+                'tipo' => $this->input->post('tipo'),
                 'num_serie' => $this->input->post('num_serie'),
                 'modelo' => $this->input->post('modelo'),
-                'descricao' => $this->input->post('descricao'),
+                'cor' => $this->input->post('cor'),
                 'voltagem' => $this->input->post('voltagem'),
-				'observacao' => $this->input->post('observacao'),
+                'potencia' => $this->input->post('potencia'),
+                'observacao' => $this->input->post('observacao'),
                 'os_id' => $this->input->post('os_id'),
             );
 
@@ -1006,7 +1013,7 @@ class Os extends MY_Controller
 		$idOs = $this->input->post('idOs');
         if ($this->os_model->delete('equipamento_os', 'idEquipamento', $id) == true) {
 
-            log_info('Removeu um Equipamento de uma OS. ID (OS): ' . $idOs);
+            log_info('Removeu um Equipamento da OS. ID (OS): ' . $idOs);
             echo json_encode(array('result' => true));
         } else {
             echo json_encode(array('result' => false));

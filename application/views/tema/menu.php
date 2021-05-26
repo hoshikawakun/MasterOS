@@ -35,7 +35,6 @@
             <?php
         } ?>
         
-        
         <!--
         <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vGarantia')) { ?>
             <li class="<?php if (isset($menuGarantia)) {
@@ -44,6 +43,7 @@
             <?php
         } ?>
         -->
+        
         <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vArquivo')) { ?>
             <li class="<?php if (isset($menuArquivos)) {
                 echo 'active';
@@ -62,12 +62,14 @@
                     <li class="<?php if (isset($menuFinanceiro) && $menuFinanceiro == 'financeiro') {
                         echo 'active';
                     }; ?>"><a href="<?= site_url('financeiro/lancamentos') ?>">Lançamentos</a>
+                    
                     <!--
                     </li>
                     <li class="<?php if (isset($menuFinanceiro) && $menuFinanceiro == 'cobrancas') {
                         echo 'active';
                     }; ?>"><a href="<?= site_url('cobrancas/cobrancas') ?>">Cobranças</a></li>
                     -->
+                    
                 </ul>
             </li>
             <?php
@@ -98,12 +100,14 @@
                         <li><a href="<?= site_url('relatorios/vendas') ?>">Vendas</a></li>
                         <?php
                     } ?>
+                    
                     <!--
                     <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'rGarantia')) { ?>
                         <li><a href="<?= site_url('relatorios/Garantias') ?>">Termo Garantia</a></li>
                         <?php
                     } ?>
                     -->
+                    
                     <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'rFinanceiro')) { ?>
                         <li><a href="<?= site_url('relatorios/financeiro') ?>">Financeiro</a></li>
                         <?php
@@ -129,6 +133,14 @@
                     <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'cSistema')) { ?>
                         <li><a href="<?= site_url('mapos/configurar') ?>">Sistema</a></li>
                     <?php } ?>
+                    
+                    <!--
+                    <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'cSistema')) { ?>
+                        <li class="<?php if (isset($menuTermo)) {echo 'active';}; ?>"><a href="<?= site_url('termo') ?>"><span>Termo</span></a></li>
+                    <?php
+                    } ?>
+                    -->
+                    
                     <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'cUsuario')) { ?>
                         <li><a href="<?= site_url('usuarios') ?>">Usuários</a></li>
                     <?php } ?>
@@ -147,11 +159,13 @@
                     <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'cBackup')) { ?>
                         <li><a href="<?= site_url('mapos/backup') ?>">Backup</a></li>
                     <?php } ?>
+                    
                     <!--
                     <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vPagamento')) { ?>
                     <li><a href="<?= site_url('pagamentos') ?>"><span>Pagamentos</span></a></li>
                     <?php } ?>
                     -->
+                    
                 </ul>
             </li>
             <?php

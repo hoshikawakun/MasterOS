@@ -133,11 +133,10 @@
                                     <thead>
                                     <tr>
                                        		<th width="10%">Cod. Produto</th>
-                                            <th width="10%">Cod. Barras</th>
-                                            <th>Produto</th>
-                                            <th width="8%">Quantidade</th>
-                                            <th width="10%">Preço unit.</th>
-                                            <th width="10%">Sub-total</th>
+                                       		<th>Produto</th>
+                                       		<th width="8%">Quantidade</th>
+                                       		<th width="10%">Preço unit.</th>
+                                       		<th width="10%">Sub-total</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -146,16 +145,15 @@
                                     foreach ($produtos as $p) {
                                         $total = $total + $p->subTotal;
                                         echo '<tr>';
-											echo '<td><div align="center">' . $p->idProdutos . '</td>';
-                                            echo '<td><div align="center">' . $p->codDeBarra . '</td>';
-                                            echo '<td>' . $p->descricao . '</td>';
-                                            echo '<td><div align="center">' . $p->quantidade . '</td>';
-                                            echo '<td><div align="center">R$: ' . ($p->preco ?: $p->precoVenda)  . '</td>';
-                                            echo '<td><div align="center">R$: ' . number_format($p->subTotal, 2, ',', '.') . '</td>';
-                                            echo '</tr>';
+                                        echo '<td><div align="center">' . $p->idProdutos . '</td>';
+                                        echo '<td>' . $p->descricao . '</td>';
+                                        echo '<td><div align="center">' . $p->quantidade . '</td>';
+                                        echo '<td><div align="center">R$: ' . ($p->preco ?: $p->precoVenda)  . '</td>';
+                                        echo '<td><div align="center">R$: ' . number_format($p->subTotal, 2, ',', '.') . '</td>';
+                                        echo '</tr>';
                                     } ?>
                                     <tr>
-                                        <td colspan="5" style="text-align: right"><strong>Total:</strong></td>
+                                        <td colspan="4" style="text-align: right"><strong>Total:</strong></td>
                                         <td>
                                         <div align="center">
                                         <strong>R$:
@@ -235,41 +233,56 @@
                                 </div>
                             </div>
                         
-						<!--Equipamentos-->
-                       	<div class="tab-pane" id="tab6">
-                        
+                 <!--Equipamentos-->
+                            <div class="tab-pane" id="tab6">
                             <div class="widget-box" id="divEquipamento">
                             <div class="widget_content nopadding">
                                     <table  width="100%" class="table_p">
                                         <thead>
                                             <tr>
                                                 <th>Equipamento</th>
-                                                <th>Modelo/Cor</th>
-                                                <th>Nº Série</th>
+                                                <th>Marca</th>
+                                                <th>Tipo</th>
+                                                <th>Nº Serie</th>
+                                                <th>Modelo</th>
+                                                <th>Cor</th>
                                                 <th>Voltagem</th>
-                                                <th>Observação</th>
+                                                <th>Potência</th>
+                                                <th>Obs:</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            foreach ($equipamento as $a) {
+                                            foreach ($equipamentos as $a) {
                                                 echo '<tr>';
                                                 echo '<td><div align="center">' . $a->equipamento . '</div></td>';
-                                                echo '<td><div align="center">' . $a->modelo . '</div></td>';
+                                                echo '<td><div align="center">' . $a->marca . '</div></td>';
+                                                echo '<td><div align="center">' . $a->tipo . '</div></td>';
                                                 echo '<td><div align="center">' . $a->num_serie . '</div></td>';
+                                                echo '<td><div align="center">' . $a->modelo . '</div></td>';
+                                                echo '<td><div align="center">' . $a->cor . '</div></td>';
                                                 echo '<td><div align="center">' . $a->voltagem . '</div></td>';
+                                                echo '<td><div align="center">' . $a->potencia . '</div></td>';
                                                 echo '<td><div align="center">' . $a->observacao . '</div></td>';
                                                 echo '</tr>';
                                             }
                                             if (!$equipamento) {
                                                 echo '<tr><td colspan="5">Nenhum Equipamento cadastrado</td></tr>';
                                             }
-
                                             ?>
                                         </tbody>
                                     </table>
-                 </div></div></div></div></div>&nbsp
-                 </div></div></div></div>
+                 </div>
+                 </div>
+                 </div>
+                 <!--Fim Equipamentos-->
+                 
+                 </div>
+                 </div>&nbsp
+                 </div>
+                 </div>
+                 </div>
+                 </div>
 
 <!-- Modal visualizar anexo -->
 <div id="modal-anexo" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

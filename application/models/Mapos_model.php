@@ -366,6 +366,11 @@ class Mapos_model extends CI_Model
         return $this->db->query($sql, [intval($numbersOnly)])->row();
     }
 
+    public function getTermo()
+    {
+        return $this->db->get('configuracoes')->result();
+    }
+
     public function getEmitente()
     {
         return $this->db->get('emitente')->result();
