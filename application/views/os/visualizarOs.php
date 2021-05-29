@@ -147,8 +147,34 @@ $totalProdutos = 0; ?>
                                 <tr>
                                 <td colspan="3">
                                 	<br />
-                      <div class"span12">
-                         <?php if ($equipamentos != null) { ?>
+                         <?php if ($anotacoes != null) { ?>
+                         <div class"span12">
+                        <table width="100%" class="table_p">
+                            <thead>
+                            <tr>
+                                <th>Anotação</th>
+                                <th>Data/Hora</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                            foreach ($anotacoes as $a) {
+                                echo '<tr>';
+                                echo '<td><div align="center">' . $a->anotacao . '</div></td>';
+                                echo '<td><div align="center">' . date('d/m/Y H:i:s', strtotime($a->data_hora)) . '</div></td>';
+                                echo '</tr>';
+                            }
+                            if (!$anotacoes) {
+                                echo '<tr><td colspan="2">Nenhuma anotação cadastrada</td></tr>';
+                            }
+                            ?>
+                            </tbody>
+                        </table>
+                        </div>
+                        <?php } ?>
+                        
+                        <?php if ($equipamentos != null) { ?>
+                         <div class"span12">
                             <table width="100%" class="table_p" id="tblEquipamento">
                                 <thead>
                                     <tr>
@@ -180,10 +206,12 @@ $totalProdutos = 0; ?>
                                         echo '</tr>';} ?>
                                 </tbody>
                             </table>
+                            </div>
                         <?php } ?>
-                     </div>
-                        <div class"span12">
+                     
+                        
 						<?php if ($produtos != null) { ?>
+                        <div class"span12">
                             <table width="100%" class="table_p" id="tblProdutos">
                                 <thead>
                                     <tr>
@@ -213,10 +241,12 @@ $totalProdutos = 0; ?>
                                     	</tr>
                                 </tbody>
                             </table>
+                            </div>
                         <?php } ?>
-                        </div>
-                        <div class"span12">
+                        
+                       
 						<?php if ($servicos != null) { ?>
+                         <div class"span12">
                             <table width="100%" class="table_p">
                                 <thead>
                                     <tr>
@@ -248,8 +278,9 @@ $totalProdutos = 0; ?>
                                     </tr>
                                 </tbody>
                             </table>
+                            </div>
                         <?php } ?>
-                        </div>
+                        
                         <?php
                         if ($totalProdutos != 0 || $totalServico != 0) {
                             echo "<h4 style='font-size: 15px; text-align: right'>Valor Total: R$" . number_format($totalProdutos + $totalServico, 2, ',', '.') . "</h4>";
@@ -259,8 +290,9 @@ $totalProdutos = 0; ?>
 </table>
 
                         <!-- ANEXOS -->
-                        <div class"span12">
+                        
 						<?php if ($anexos != null) { ?>
+                        <div class"span12">
                             <table width="100%" class="table_p">
                                 <thead>
                                     <tr>
@@ -289,8 +321,9 @@ $totalProdutos = 0; ?>
                                     </tr>
                                 </tbody>
                             </table>
+                            </div>
                         <?php } ?>
-                        </div>
+                        
                     <!-- Fim ANEXOS -->
                     </div>
                     </div>
