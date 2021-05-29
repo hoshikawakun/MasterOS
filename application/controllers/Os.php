@@ -355,8 +355,8 @@ class Os extends MY_Controller
         $this->data['result'] = $this->os_model->getById($this->uri->segment(3));
         $this->data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
         $this->data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
-        $this->data['emitente'] = $this->mapos_model->getEmitente();
         $this->data['equipamentos'] = $this->os_model->getEquipamentos($this->uri->segment(3));
+        $this->data['emitente'] = $this->mapos_model->getEmitente();
         $this->data['configuracoes'] = $this->mapos_model->getTermo();
         $this->data['qrCode'] = $this->os_model->getQrCode(
             $this->uri->segment(3),
@@ -546,9 +546,9 @@ class Os extends MY_Controller
             }
         }
 
-        $this->os_model->delete('equipamento_os', 'os_id', $id);
         $this->os_model->delete('servicos_os', 'os_id', $id);
         $this->os_model->delete('produtos_os', 'os_id', $id);
+		$this->os_model->delete('equipamento_os', 'os_id', $id);
         $this->os_model->delete('anexos', 'os_id', $id);
         $this->os_model->delete('os', 'idOs', $id);
         if ((int)$os->faturado === 1) {

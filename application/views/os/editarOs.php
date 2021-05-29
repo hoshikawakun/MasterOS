@@ -428,18 +428,18 @@
                                         </thead>
                                         <tbody>
                                             <?php
-                                            foreach ($equipamentos as $a) {
+                                            foreach ($equipamentos as $x) {
                                                 echo '<tr>';
-                                                echo '<td><div align="center">' . $a->equipamento . '</div></td>';
-                                                echo '<td><div align="center">' . $a->marca . '</div></td>';
-                                                echo '<td><div align="center">' . $a->tipo . '</div></td>';
-                                                echo '<td><div align="center">' . $a->num_serie . '</div></td>';
-                                                echo '<td><div align="center">' . $a->modelo . '</div></td>';
-                                                echo '<td><div align="center">' . $a->cor . '</div></td>';
-                                                echo '<td><div align="center">' . $a->voltagem . '</div></td>';
-                                                echo '<td><div align="center">' . $a->potencia . '</div></td>';
-                                                echo '<td><div align="center">' . $a->observacao . '</div></td>';
-                                                echo '<td><div align="center"><span idAcao="' . $a->idEquipamento . '" title="Excluir Equipamento" class="btn btn-danger equipamento"><i class="fas fa-trash-alt"></i></span></div></td>';
+                                                echo '<td><div align="center">' . $x->equipamento . '</div></td>';
+                                                echo '<td><div align="center">' . $x->marca . '</div></td>';
+                                                echo '<td><div align="center">' . $x->tipo . '</div></td>';
+                                                echo '<td><div align="center">' . $x->num_serie . '</div></td>';
+                                                echo '<td><div align="center">' . $x->modelo . '</div></td>';
+                                                echo '<td><div align="center">' . $x->cor . '</div></td>';
+                                                echo '<td><div align="center">' . $x->voltagem . '</div></td>';
+                                                echo '<td><div align="center">' . $x->potencia . '</div></td>';
+                                                echo '<td><div align="center">' . $x->observacao . '</div></td>';
+                                                echo '<td><div align="center"><span idAcao="' . $x->idEquipamento . '" title="Excluir Equipamento" class="btn btn-danger equipamento"><i class="fas fa-trash-alt"></i></span></div></td>';
                                                 echo '</tr>';
                                             }
                                             if (!$equipamentos) {

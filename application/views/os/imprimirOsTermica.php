@@ -146,7 +146,7 @@ $totalProdutos = 0; ?>
                                         <th>Equip.</th>
                                         <th>Marca</th>
                                         <th>Tipo</th>
-                                        <th>Nº Serie</th>
+                                        <th>Nº Sèrie</th>
                                         <th>Modelo</th>
                                         <th>Cor</th>
                                         <th>~</th>
