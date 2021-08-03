@@ -52,7 +52,7 @@ class Os_model extends CI_Model
             }
         }
 
-        $this->db->select($fields . ',clientes.nomeCliente, clientes.telefone as celular_cliente, usuarios.nome, garantias.*');
+        $this->db->select($fields . ',clientes.idClientes, clientes.nomeCliente, clientes.telefone as celular_cliente, usuarios.nome, garantias.*');
         $this->db->select($fields . ',clientes.senha as senha_cliente');
         $this->db->select($fields . ',clientes.email as email_cliemte');
         $this->db->from($table);

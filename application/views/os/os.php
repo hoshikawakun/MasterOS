@@ -162,7 +162,8 @@
 							
                             echo '<tr>';
                             echo '<td><div align="center">' . $r->idOs . '</td>';
-							echo '<td>' . $NomeClienteShort . '</td>';
+							/*echo '<td>' . $NomeClienteShort . '</td>';*/
+							echo '<td><a href="' . base_url() . 'index.php/clientes/visualizar/' . $r->idClientes . '" style="margin-right: 1%">' . $NomeClienteShort . '</a></td>';
                             echo '<td><div align="center">' . $r->nome . '</td>';
                             echo '<td><div align="center">' . $dataInicial . '</td>';
 							echo '<td><div align="center">' . $r->garantia . '</td>';
