@@ -76,8 +76,8 @@ CREATE TABLE `clientes` (
   `cidade` varchar(45) DEFAULT NULL,
   `estado` varchar(20) DEFAULT NULL,
   `cep` varchar(20) DEFAULT NULL,
-  `foto_url` varchar(45) DEFAULT '',
-  `senha` varchar(45) DEFAULT '',
+  `foto_url` varchar(45) DEFAULT NULL,
+  `senha` varchar(45) DEFAULT NULL,
   `fornecedor` tinyint(1) DEFAULT 0,
   `contato` text DEFAULT NULL,
   `complemento` varchar(45) DEFAULT NULL,
@@ -126,7 +126,7 @@ CREATE TABLE `configuracoes` (
   `valor` text DEFAULT NULL,
   PRIMARY KEY (`idConfig`),
   UNIQUE KEY `config` (`config`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for contas
@@ -191,7 +191,7 @@ CREATE TABLE `emitente` (
   `telefone` varchar(20) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `url_logo` varchar(225) DEFAULT NULL,
-  `url_termica` varchar(255) DEFAULT '',
+  `url_termica` varchar(255) DEFAULT NULL,
   `cep` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -294,6 +294,8 @@ CREATE TABLE `lancamentos` (
   `idLancamentos` int(11) NOT NULL AUTO_INCREMENT,
   `descricao` varchar(255) DEFAULT NULL,
   `valor` varchar(15) NOT NULL,
+  `desconto` decimal(10,2) DEFAULT NULL,
+  `valor_desconto` decimal(10,2) DEFAULT NULL,
   `data_vencimento` date NOT NULL,
   `data_pagamento` date DEFAULT NULL,
   `baixado` tinyint(1) DEFAULT 0,
@@ -365,6 +367,8 @@ CREATE TABLE `os` (
   `observacoes` text DEFAULT NULL,
   `laudoTecnico` text DEFAULT NULL,
   `valorTotal` varchar(15) DEFAULT NULL,
+  `desconto` decimal(10,2) DEFAULT 0.00,
+  `valor_desconto` decimal(10,2) DEFAULT 0.00,
   `clientes_id` int(11) DEFAULT NULL,
   `usuarios_id` int(11) DEFAULT NULL,
   `lancamento` int(11) DEFAULT NULL,
@@ -506,9 +510,10 @@ CREATE TABLE `vendas` (
   `idVendas` int(11) NOT NULL AUTO_INCREMENT,
   `dataVenda` date DEFAULT NULL,
   `valorTotal` varchar(45) DEFAULT NULL,
-  `desconto` varchar(45) DEFAULT NULL,
+  `desconto` decimal(10,2) DEFAULT NULL,
+  `valor_desconto` decimal(10,2) DEFAULT NULL,
   `faturado` tinyint(1) DEFAULT NULL,
-  `obs` text DEFAULT '',
+  `obs` text DEFAULT NULL,
   `observacoes` text DEFAULT NULL,
   `observacoes_cliente` text DEFAULT NULL,
   `clientes_id` int(11) NOT NULL,
@@ -553,7 +558,7 @@ INSERT INTO `configuracoes` VALUES ('23', 'gerenciador_arquivos', 'arquivos_old/
 INSERT INTO `configuracoes` VALUES ('24', 'control_baixa', '1');
 INSERT INTO `configuracoes` VALUES ('25', 'control_editos', '0');
 INSERT INTO `configuracoes` VALUES ('26', 'control_datatable', '0');
-INSERT INTO `configuracoes` VALUES ('27', 'pix_key', '');
+INSERT INTO `configuracoes` VALUES ('27', 'pix_key', null);
 INSERT INTO `configuracoes` VALUES ('28', 'os_status_list', '[\"Or\\u00e7amento\",\"Or\\u00e7amento Concluido\",\"Or\\u00e7amento Aprovado\",\"Em Andamento\",\"Aguardando Pe\\u00e7as\",\"Servi\\u00e7o Concluido\",\"Sem Reparo\",\"N\\u00e3o Autorizado\",\"Contato sem Sucesso\",\"Cancelado\",\"Pronto-Despachar\",\"Aguardando Envio\",\"Enviado\",\"Aguardando Entrega Correio\",\"Garantia\",\"Abandonado\",\"Comprado pela Loja\",\"Entregue - A Receber\",\"Entregue - Faturado\"]');
 INSERT INTO `migrations` VALUES ('20210114151944');
 INSERT INTO `permissoes` VALUES ('1', 'Administrador', 'a:53:{s:8:\"aCliente\";s:1:\"1\";s:8:\"eCliente\";s:1:\"1\";s:8:\"dCliente\";s:1:\"1\";s:8:\"vCliente\";s:1:\"1\";s:8:\"aProduto\";s:1:\"1\";s:8:\"eProduto\";s:1:\"1\";s:8:\"dProduto\";s:1:\"1\";s:8:\"vProduto\";s:1:\"1\";s:8:\"aServico\";s:1:\"1\";s:8:\"eServico\";s:1:\"1\";s:8:\"dServico\";s:1:\"1\";s:8:\"vServico\";s:1:\"1\";s:3:\"aOs\";s:1:\"1\";s:3:\"eOs\";s:1:\"1\";s:3:\"dOs\";s:1:\"1\";s:3:\"vOs\";s:1:\"1\";s:6:\"aVenda\";s:1:\"1\";s:6:\"eVenda\";s:1:\"1\";s:6:\"dVenda\";s:1:\"1\";s:6:\"vVenda\";s:1:\"1\";s:9:\"aGarantia\";s:1:\"1\";s:9:\"eGarantia\";s:1:\"1\";s:9:\"dGarantia\";s:1:\"1\";s:9:\"vGarantia\";s:1:\"1\";s:8:\"aArquivo\";s:1:\"1\";s:8:\"eArquivo\";s:1:\"1\";s:8:\"dArquivo\";s:1:\"1\";s:8:\"vArquivo\";s:1:\"1\";s:10:\"aPagamento\";s:1:\"1\";s:10:\"ePagamento\";s:1:\"1\";s:10:\"dPagamento\";s:1:\"1\";s:10:\"vPagamento\";s:1:\"1\";s:11:\"aLancamento\";s:1:\"1\";s:11:\"eLancamento\";s:1:\"1\";s:11:\"dLancamento\";s:1:\"1\";s:11:\"vLancamento\";s:1:\"1\";s:8:\"cUsuario\";s:1:\"1\";s:9:\"cEmitente\";s:1:\"1\";s:10:\"cPermissao\";s:1:\"1\";s:7:\"cBackup\";s:1:\"1\";s:10:\"cAuditoria\";s:1:\"1\";s:6:\"cEmail\";s:1:\"1\";s:8:\"cSistema\";s:1:\"1\";s:8:\"rCliente\";s:1:\"1\";s:8:\"rProduto\";s:1:\"1\";s:8:\"rServico\";s:1:\"1\";s:3:\"rOs\";s:1:\"1\";s:6:\"rVenda\";s:1:\"1\";s:11:\"rFinanceiro\";s:1:\"1\";s:9:\"aCobranca\";s:1:\"1\";s:9:\"eCobranca\";s:1:\"1\";s:9:\"dCobranca\";s:1:\"1\";s:9:\"vCobranca\";s:1:\"1\";}', '1', '2021-02-08');
