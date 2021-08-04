@@ -110,6 +110,7 @@
                                 <span class="help-inline">Ativar ou desativar o controle de estoque.</span>
                             </div>
                         </div>
+                        <!--
                         <div class="control-group">
                             <label for="control_datatable" class="control-label">Visualização em Tabelas Dinâmicas</label>
                             <div class="controls">
@@ -120,6 +121,7 @@
                                 <span class="help-inline">Ativar ou desativar a visualização em tabelas dinâmicas</span>
                             </div>
                         </div>
+                        -->
                         <div class="form_actions" align="center">
                     <button type="submit" class="btn btn-primary">Salvar Alterações</button>
                     </div>
