@@ -88,18 +88,16 @@
                     <tbody>
                         <?php if ($ordens6 != null) : ?>
                             <?php foreach ($ordens6 as $o) : 
-							$descricaoShort = mb_strimwidth(strip_tags($o->descricaoProduto), 0, 30, "...");?>
+							$descricaoShort = mb_strimwidth(strip_tags($o->descricaoProduto), 0, 40, "...");?>
                                 <tr>
-				<td><div align="center"><?= $o->idOs ?></div></td>
+				<td><div align="center"><a title="Visualizar detalhes da OS" href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="new" class="tip-top"><?= $o->idOs ?></a></td>
                 <td><div align="center"><?= $descricaoShort ?></div></td>
 				<td><div align="center"><?= date('d/m/Y', strtotime($o->dataInicial)) ?></div></td>
 				<td><div align="center"><?= $o->nomeCliente ?></div></td>
 				<td><div align="center"><?= $o->telefone ?></div></td>
 				<td><div align="center">R$: <?= number_format($o->totalProdutos + $o->totalServicos, 2, ',', '.') ?></div></td>
 				<td><div align="center">
-				<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a title="Visualizar OS" class="btn tip-top" href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" class="btn"><i class="fas fa-eye"></i></a>
-				<?php endif ?>
-                <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) : ?><a title="Editar OS" class="btn btn-info tip-top" href="<?= base_url() ?>index.php/os/editar/<?= $o->idOs ?>" class="btn"><i class="fas fa-edit"></i></a>
+				<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) : ?><a title="Editar OS" class="btn btn-info tip-top" href="<?= base_url() ?>index.php/os/editar/<?= $o->idOs ?>" target="new" class="btn"><i class="fas fa-edit"></i></a>
 				<?php endif ?>
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
 					$zapnumber = preg_replace("/[^0-9]/", "", $o->telefone);
@@ -147,18 +145,16 @@
                     <tbody>
                         <?php if ($ordens3 != null) : ?>
                             <?php foreach ($ordens3 as $o) : 
-							$descricaoShort = mb_strimwidth(strip_tags($o->descricaoProduto), 0, 30, "...");?>
+							$descricaoShort = mb_strimwidth(strip_tags($o->descricaoProduto), 0, 40, "...");?>
                                 <tr>
-				<td><div align="center"><?= $o->idOs ?></div></td>
+				<td><div align="center"><a title="Visualizar detalhes da OS" href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="new" class="tip-top"><?= $o->idOs ?></a></td>
                 <td><div align="center"><?= $descricaoShort ?></div></td>
 				<td><div align="center"><?= date('d/m/Y', strtotime($o->dataInicial)) ?></div></td>
 				<td><div align="center"><?= $o->nomeCliente ?></div></td>
 				<td><div align="center"><?= $o->telefone ?></div></td>
 				<td><div align="center">R$: <?= number_format($o->totalProdutos + $o->totalServicos, 2, ',', '.') ?></div></td>
 				<td><div align="center">
-				<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a title="Visualizar OS" class="btn tip-top" href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" class="btn"><i class="fas fa-eye"></i></a>
-				<?php endif ?>
-                <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) : ?><a title="Editar OS" class="btn btn-info tip-top" href="<?= base_url() ?>index.php/os/editar/<?= $o->idOs ?>" class="btn"><i class="fas fa-edit"></i></a>
+				<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) : ?><a title="Editar OS" class="btn btn-info tip-top" href="<?= base_url() ?>index.php/os/editar/<?= $o->idOs ?>" target="new" class="btn"><i class="fas fa-edit"></i></a>
 				<?php endif ?>
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
 					$zapnumber = preg_replace("/[^0-9]/", "", $o->telefone);
@@ -206,18 +202,16 @@
                     <tbody>
                         <?php if ($ordens2 != null) : ?>
                             <?php foreach ($ordens2 as $o) : 
-							$descricaoShort = mb_strimwidth(strip_tags($o->descricaoProduto), 0, 30, "...");?>
+							$descricaoShort = mb_strimwidth(strip_tags($o->descricaoProduto), 0, 40, "...");?>
                                 <tr>
-				<td><div align="center"><?= $o->idOs ?></div></td>
+				<td><div align="center"><a title="Visualizar detalhes da OS" href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="new" class="tip-top"><?= $o->idOs ?></a></td>
                 <td><div align="center"><?= $descricaoShort ?></div></td>
 				<td><div align="center"><?= date('d/m/Y', strtotime($o->dataInicial)) ?></div></td>
 				<td><div align="center"><?= $o->nomeCliente ?></div></td>
 				<td><div align="center"><?= $o->telefone ?></div></td>
 				<td><div align="center">R$: <?= number_format($o->totalProdutos + $o->totalServicos, 2, ',', '.') ?></div></td>
 				<td><div align="center">
-				<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a title="Visualizar OS" class="btn tip-top" href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" class="btn"><i class="fas fa-eye"></i></a>
-				<?php endif ?>
-                <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) : ?><a title="Editar OS" class="btn btn-info tip-top" href="<?= base_url() ?>index.php/os/editar/<?= $o->idOs ?>" class="btn"><i class="fas fa-edit"></i></a>
+				<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) : ?><a title="Editar OS" class="btn btn-info tip-top" href="<?= base_url() ?>index.php/os/editar/<?= $o->idOs ?>" target="new" class="btn"><i class="fas fa-edit"></i></a>
 				<?php endif ?>
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
 					$zapnumber = preg_replace("/[^0-9]/", "", $o->telefone);
@@ -265,18 +259,16 @@
                     <tbody>
                         <?php if ($ordens1 != null) : ?>
                             <?php foreach ($ordens1 as $o) : 
-							$descricaoShort = mb_strimwidth(strip_tags($o->descricaoProduto), 0, 30, "...");?>
+							$descricaoShort = mb_strimwidth(strip_tags($o->descricaoProduto), 0, 40, "...");?>
                                 <tr>
-				<td><div align="center"><?= $o->idOs ?></div></td>
+				<td><div align="center"><a title="Visualizar detalhes da OS" href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="new" class="tip-top"><?= $o->idOs ?></a></td>
                 <td><div align="center"><?= $descricaoShort ?></div></td>
 				<td><div align="center"><?= date('d/m/Y', strtotime($o->dataInicial)) ?></div></td>
 				<td><div align="center"><?= $o->nomeCliente ?></div></td>
 				<td><div align="center"><?= $o->telefone ?></div></td>
 				<td><div align="center">R$: <?= number_format($o->totalProdutos + $o->totalServicos, 2, ',', '.') ?></div></td>
 				<td><div align="center">
-				<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a title="Visualizar OS" class="btn tip-top" href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" class="btn"><i class="fas fa-eye"></i></a>
-				<?php endif ?>
-                <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) : ?><a title="Editar OS" class="btn btn-info tip-top" href="<?= base_url() ?>index.php/os/editar/<?= $o->idOs ?>" class="btn"><i class="fas fa-edit"></i></a>
+				<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) : ?><a title="Editar OS" class="btn btn-info tip-top" href="<?= base_url() ?>index.php/os/editar/<?= $o->idOs ?>" target="new" class="btn"><i class="fas fa-edit"></i></a>
 				<?php endif ?>
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
 					$zapnumber = preg_replace("/[^0-9]/", "", $o->telefone);
@@ -324,18 +316,16 @@
                     <tbody>
                         <?php if ($ordens5 != null) : ?>
                             <?php foreach ($ordens5 as $o) : 
-							$descricaoShort = mb_strimwidth(strip_tags($o->descricaoProduto), 0, 30, "...");?>
+							$descricaoShort = mb_strimwidth(strip_tags($o->descricaoProduto), 0, 40, "...");?>
                                 <tr>
-				<td><div align="center"><?= $o->idOs ?></div></td>
+				<td><div align="center"><a title="Visualizar detalhes da OS" href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="new" class="tip-top"><?= $o->idOs ?></a></td>
                 <td><div align="center"><?= $descricaoShort ?></div></td>
 				<td><div align="center"><?= date('d/m/Y', strtotime($o->dataInicial)) ?></div></td>
 				<td><div align="center"><?= $o->nomeCliente ?></div></td>
 				<td><div align="center"><?= $o->telefone ?></div></td>
 				<td><div align="center">R$: <?= number_format($o->totalProdutos + $o->totalServicos, 2, ',', '.') ?></div></td>
 				<td><div align="center">
-				<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a title="Visualizar OS" class="btn tip-top" href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" class="btn"><i class="fas fa-eye"></i></a>
-				<?php endif ?>
-                <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) : ?><a title="Editar OS" class="btn btn-info tip-top" href="<?= base_url() ?>index.php/os/editar/<?= $o->idOs ?>" class="btn"><i class="fas fa-edit"></i></a>
+				<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) : ?><a title="Editar OS" class="btn btn-info tip-top" href="<?= base_url() ?>index.php/os/editar/<?= $o->idOs ?>" target="new" class="btn"><i class="fas fa-edit"></i></a>
 				<?php endif ?>
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
 					$zapnumber = preg_replace("/[^0-9]/", "", $o->telefone);
@@ -383,18 +373,16 @@
                     <tbody>
                         <?php if ($ordens7 != null) : ?>
                             <?php foreach ($ordens7 as $o) : 
-							$descricaoShort = mb_strimwidth(strip_tags($o->descricaoProduto), 0, 30, "...");?>
+							$descricaoShort = mb_strimwidth(strip_tags($o->descricaoProduto), 0, 40, "...");?>
                                 <tr>
-				<td><div align="center"><?= $o->idOs ?></div></td>
+				<td><div align="center"><a title="Visualizar detalhes da OS" href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="new" class="tip-top"><?= $o->idOs ?></a></td>
                 <td><div align="center"><?= $descricaoShort ?></div></td>
 				<td><div align="center"><?= date('d/m/Y', strtotime($o->dataInicial)) ?></div></td>
 				<td><div align="center"><?= $o->nomeCliente ?></div></td>
 				<td><div align="center"><?= $o->telefone ?></div></td>
 				<td><div align="center">R$: <?= number_format($o->totalProdutos + $o->totalServicos, 2, ',', '.') ?></div></td>
 				<td><div align="center">
-				<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a title="Visualizar OS" class="btn tip-top" href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" class="btn"><i class="fas fa-eye"></i></a>
-				<?php endif ?>
-                <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) : ?><a title="Editar OS" class="btn btn-info tip-top" href="<?= base_url() ?>index.php/os/editar/<?= $o->idOs ?>" class="btn"><i class="fas fa-edit"></i></a>
+				<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) : ?><a title="Editar OS" class="btn btn-info tip-top" href="<?= base_url() ?>index.php/os/editar/<?= $o->idOs ?>" target="new" class="btn"><i class="fas fa-edit"></i></a>
 				<?php endif ?>
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
 					$zapnumber = preg_replace("/[^0-9]/", "", $o->telefone);
@@ -463,7 +451,7 @@
                                     <td>
                                         <div align="center">
                                           <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eProduto')) : ?>
-                                          <a title="Editar Produto" href="<?= base_url() ?>index.php/produtos/editar/<?= $p->idProdutos ?>" class="btn btn-info">
+                                          <a title="Editar Produto" href="<?= base_url() ?>index.php/produtos/editar/<?= $p->idProdutos ?>" target="new" class="btn btn-info">
                                             <i class="fas fa-edit"></i></a>
                                           
                                           <a title="Atualizar Estoque" href="#atualizar-estoque" role="button" data-toggle="modal" produto="<?= $p->idProdutos?>" estoque="<?=$p->estoque?>" class="btn btn-primary" ><i class="fas fa-plus-square"></i></a>

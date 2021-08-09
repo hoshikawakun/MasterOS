@@ -161,20 +161,19 @@
                             $vencGarantia = dateInterval($r->dataFinal, $r->garantia);}
 							
                             echo '<tr>';
-                            echo '<td><div align="center">' . $r->idOs . '</td>';
-							/*echo '<td>' . $NomeClienteShort . '</td>';*/
-							echo '<td><a href="' . base_url() . 'index.php/clientes/visualizar/' . $r->idClientes . '" style="margin-right: 1%">' . $NomeClienteShort . '</a></td>';
+                            echo '<td><div align="center"><a href="' . base_url() . 'index.php/os/visualizar/' . $r->idOs . '" target="new" class="tip-top" title="Visualizar detalhes da OS" style="margin-right: 1%">' . $r->idOs . '</a></td>';
+							echo '<td><a href="' . base_url() . 'index.php/clientes/visualizar/' . $r->idClientes . '" target="new" class="tip-top" title="Visualizar Cliente" style="margin-right: 1%">' . $NomeClienteShort . '</a></td>';
                             echo '<td><div align="center">' . $r->nome . '</td>';
                             echo '<td><div align="center">' . $dataInicial . '</td>';
 							echo '<td><div align="center">' . $r->garantia . '</td>';
 							echo '<td><div align="center">R$: ' . number_format($r->totalProdutos + $r->totalServicos, 2, ',', '.') . '</td>';
 							echo '<td><div align="center"><span class="badge" style="background-color: ' . $cor . '; border-color: ' . $cor . '">' . $r->status . '</span></div></td>';
                             echo '<td><div align="center">';
-						if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
+						/*if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
 							echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/visualizar/' . $r->idOs . '" class="btn tip-top" title="Visualizar mais detalhes"><i class="fas fa-eye"></i></a>';
-								}
+								}*/
 						if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
-                                echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/editar/' . $r->idOs . '" class="btn btn-info tip-top" title="Editar OS"><i class="fas fa-edit"></i></a>';
+                                echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/editar/' . $r->idOs . '" target="new" class="btn btn-info tip-top" title="Editar OS"><i class="fas fa-edit"></i></a>';
 								}
 								if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
                                 $zapnumber = preg_replace("/[^0-9]/", "", $r->celular_cliente);

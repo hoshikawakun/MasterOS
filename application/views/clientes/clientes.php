@@ -33,7 +33,6 @@
 						
                         echo '<tr>';
                         echo '<td><div align="center">' . $r->idClientes . '</div></td>';
-						/*echo '<td>' . $NomeClienteShort . '</td>';*/
 						echo '<td><a href="' . base_url() . 'index.php/mine?e=' . $r->email . '&c=' . $r->senha . '" target="new" style="margin-right: 1%" class="tip-top" title="Área do cliente">' . $NomeClienteShort . '</a></td>';
                         echo '<td><div align="center">' . $r->documento . '</div></td>';
                         echo '<td><div align="center">' . $r->senha . '</div></td>';
