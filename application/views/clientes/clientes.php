@@ -21,19 +21,19 @@
                 </tr>
             </thead>
             <tbody>
-                <?php 
+                <?php
                     
-                    if(!$results){
+                    if (!$results) {
                         echo '<tr>
                                 <td colspan="5">Nenhum Cliente Cadastrado</td>
                                 </tr>';
                     }
                     foreach ($results as $r) {
-						$NomeClienteShort = mb_strimwidth(strip_tags($r->nomeCliente), 0, 45, "...");
-						
+                        $NomeClienteShort = mb_strimwidth(strip_tags($r->nomeCliente), 0, 45, "...");
+                        
                         echo '<tr>';
                         echo '<td><div align="center">' . $r->idClientes . '</div></td>';
-						echo '<td><a href="' . base_url() . 'index.php/mine?e=' . $r->email . '&c=' . $r->senha . '" target="new" style="margin-right: 1%" class="tip-top" title="Área do cliente">' . $NomeClienteShort . '</a></td>';
+                        echo '<td><a href="' . base_url() . 'index.php/mine?e=' . $r->email . '&c=' . $r->senha . '" target="new" style="margin-right: 1%" class="tip-top" title="Área do cliente">' . $NomeClienteShort . '</a></td>';
                         echo '<td><div align="center">' . $r->documento . '</div></td>';
                         echo '<td><div align="center">' . $r->senha . '</div></td>';
                         echo '<td><div align="center">' . $r->telefone . '</div></td>';
@@ -41,12 +41,12 @@
                         echo '<td><div align="center">';
                         if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vCliente')) {
                             echo '<a href="' . base_url() . 'index.php/clientes/visualizar/' . $r->idClientes . '" style="margin-right: 1%" class="btn tip-top" title="Visualizar mais detalhes"><i class="fas fa-eye"></i></a>';
-							/*echo '<a href="' . base_url() . 'index.php/mine?e=' . $r->email . '&c=' . $r->senha . '" target="new" style="margin-right: 1%" class="btn btn-warning tip-top" title="Área do cliente"><i class="fas fa-key"></i></a>';*/
+                            /*echo '<a href="' . base_url() . 'index.php/mine?e=' . $r->email . '&c=' . $r->senha . '" target="new" style="margin-right: 1%" class="btn btn-warning tip-top" title="Área do cliente"><i class="fas fa-key"></i></a>';*/
                         }
-						if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vCliente')) {
-                                $zapnumber = preg_replace("/[^0-9]/", "", $r->telefone);
-								echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Msg WhatsApp" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '"><i class="fab fa-whatsapp" style="font-size:16px;"></i></a>';
-                            }
+                        if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vCliente')) {
+                            $zapnumber = preg_replace("/[^0-9]/", "", $r->telefone);
+                            echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Msg WhatsApp" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '"><i class="fab fa-whatsapp" style="font-size:16px;"></i></a>';
+                        }
                         if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eCliente')) {
                             echo '<a href="' . base_url() . 'index.php/clientes/editar/' . $r->idClientes . '" style="margin-right: 1%" class="btn btn-info tip-top" title="Editar Cliente"><i class="fas fa-edit"></i></a>';
                         }

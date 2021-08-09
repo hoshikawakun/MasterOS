@@ -54,8 +54,10 @@
             <div class="control-group">
                 <div class="controls">
                     <div class="main_input_box">
-                        <span class="add-on bg_lb"><i class="fas fa-lock"></i></span><input name="senha" type="password" value="<?php if (isset($_GET['c'])) { echo $_GET['c']; ?>
-                            <?php } ?>
+                        <span class="add-on bg_lb"><i class="fas fa-lock"></i></span><input name="senha" type="password" value="<?php if (isset($_GET['c'])) {
+    echo $_GET['c']; ?>
+                            <?php
+} ?>
                          "/>
                     </div>
                 </div>

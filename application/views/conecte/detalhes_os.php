@@ -229,7 +229,8 @@
 										<img src="' . $thumb . '" alt="">
 										</a>
 										<span>' . $a->anexo . '</span>
-										</div>';} ?>
+										</div>';
+                                    } ?>
                                 </div>
                             </div>
                         

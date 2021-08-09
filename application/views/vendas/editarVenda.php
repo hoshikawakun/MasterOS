@@ -96,8 +96,8 @@
                                                 $preco = $p->preco ?: $p->precoVenda;
                                                 $total = $total + $p->subTotal;
                                                 echo '<tr>';
-												echo '<td><div align="center">' . $p->idProdutos . '</div></td>';
-												echo '<td><div align="center">' . $p->codDeBarra . '</div></td>';
+                                                echo '<td><div align="center">' . $p->idProdutos . '</div></td>';
+                                                echo '<td><div align="center">' . $p->codDeBarra . '</div></td>';
                                                 echo '<td>' . $p->descricao . '</td>';
                                                 echo '<td><div align="center">' . $p->quantidade . '</div></td>';
                                                 echo '<td><div align="center">R$: ' . $preco . '</div></td>';
@@ -366,9 +366,9 @@
                 var quantidade = parseInt($("#quantidade").val());
                 var estoque = parseInt($("#estoque").val());
 
-                <?php if(!$configuration['control_estoque']){ 
-                    echo 'estoque = 1000000';
-                }; ?>
+                <?php if (!$configuration['control_estoque']) {
+                                                echo 'estoque = 1000000';
+                                            }; ?>
                 
                 if (estoque < quantidade) {
                     Swal.fire({

@@ -76,121 +76,122 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php 
+                    <?php
                         
-                        if(!$results){
+                        if (!$results) {
                             echo '<tr>
                                     <td colspan="10">Nenhuma OS Cadastrada</td>
                                   </tr>';
                         }
                         foreach ($results as $r) {
                             $NomeClienteShort = mb_strimwidth(strip_tags($r->nomeCliente), 0, 25, "...");
-							$dataInicial = date(('d/m/Y'), strtotime($r->dataInicial));
+                            $dataInicial = date(('d/m/Y'), strtotime($r->dataInicial));
                             if ($r->dataFinal != null) {
                                 $dataFinal = date(('d/m/Y'), strtotime($r->dataFinal));
                             } else {
                                 $dataFinal = "";
                             }
-							if ($this->input->get('pesquisa') === null && is_array(json_decode($configuration['os_status_list']))) {
-                            if (in_array($r->status, json_decode($configuration['os_status_list'])) != true) {
-                                continue;
+                            if ($this->input->get('pesquisa') === null && is_array(json_decode($configuration['os_status_list']))) {
+                                if (in_array($r->status, json_decode($configuration['os_status_list'])) != true) {
+                                    continue;
+                                }
                             }
-                        }
                             switch ($r->status) {
-				case 'Orçamento':
+                case 'Orçamento':
                     $cor = '#CCCC00';
                     break;
-				case 'Orçamento Concluido':
+                case 'Orçamento Concluido':
                     $cor = '#CC9966';
                     break;
-				case 'Orçamento Aprovado':
+                case 'Orçamento Aprovado':
                     $cor = '#339999';
-					break;
-				case 'Em Andamento':
+                    break;
+                case 'Em Andamento':
                     $cor = '#9933FF';
                     break;
-				case 'Aguardando Peças':
+                case 'Aguardando Peças':
                     $cor = '#FF6600';
-                 	break;
-				case 'Serviço Concluido':
+                     break;
+                case 'Serviço Concluido':
                     $cor = '#0066FF';
                     break;
-				case 'Sem Reparo':
+                case 'Sem Reparo':
                     $cor = '#999999';
                     break;
-				case 'Não Autorizado':
+                case 'Não Autorizado':
                     $cor = '#990000';
                     break;
-				case 'Contato sem Sucesso':
+                case 'Contato sem Sucesso':
                     $cor = '#660099';
                     break;
-				case 'Cancelado':
+                case 'Cancelado':
                     $cor = '#990000';
                     break;
-				case 'Pronto-Despachar':
+                case 'Pronto-Despachar':
                     $cor = '#33CCCC';
                     break;
-				case 'Enviado':
+                case 'Enviado':
                     $cor = '#99CC33';
                     break;
-				case 'Aguardando Envio':
+                case 'Aguardando Envio':
                     $cor = '#CC66CC';
                     break;
-				case 'Aguardando Entrega Correio':
+                case 'Aguardando Entrega Correio':
                     $cor = '#996699';
                     break;
-				case 'Entregue - A Receber':
+                case 'Entregue - A Receber':
                     $cor = '#FF0000';
                     break;
-				case 'Garantia':
+                case 'Garantia':
                     $cor = '#FF66CC';
                     break;
-				case 'Abandonado':
+                case 'Abandonado':
                     $cor = '#000000';
                     break;
-				case 'Comprado pela Loja':
+                case 'Comprado pela Loja':
                     $cor = '#666666';
                     break;
-				case 'Entregue - Faturado':
+                case 'Entregue - Faturado':
                     $cor = '#006633';
                     break;
                             }
-                    $vencGarantia = '';
+                            $vencGarantia = '';
 
-                        if ($r->garantia && is_numeric($r->garantia)) {
-                            $vencGarantia = dateInterval($r->dataFinal, $r->garantia);}
-							
+                            if ($r->garantia && is_numeric($r->garantia)) {
+                                $vencGarantia = dateInterval($r->dataFinal, $r->garantia);
+                            }
+                            
                             echo '<tr>';
                             echo '<td><div align="center"><a href="' . base_url() . 'index.php/os/visualizar/' . $r->idOs . '" target="new" class="tip-top" title="Visualizar detalhes da OS" style="margin-right: 1%">' . $r->idOs . '</a></td>';
-							echo '<td><a href="' . base_url() . 'index.php/clientes/visualizar/' . $r->idClientes . '" target="new" class="tip-top" title="Visualizar Cliente" style="margin-right: 1%">' . $NomeClienteShort . '</a></td>';
+                            echo '<td><a href="' . base_url() . 'index.php/clientes/visualizar/' . $r->idClientes . '" target="new" class="tip-top" title="Visualizar Cliente" style="margin-right: 1%">' . $NomeClienteShort . '</a></td>';
                             echo '<td><div align="center">' . $r->nome . '</td>';
                             echo '<td><div align="center">' . $dataInicial . '</td>';
-							echo '<td><div align="center">' . $r->garantia . '</td>';
-							echo '<td><div align="center">R$: ' . number_format($r->totalProdutos + $r->totalServicos, 2, ',', '.') . '</td>';
-							echo '<td><div align="center"><span class="badge" style="background-color: ' . $cor . '; border-color: ' . $cor . '">' . $r->status . '</span></div></td>';
+                            echo '<td><div align="center">' . $r->garantia . '</td>';
+                            echo '<td><div align="center">R$: ' . number_format($r->totalProdutos + $r->totalServicos, 2, ',', '.') . '</td>';
+                            echo '<td><div align="center"><span class="badge" style="background-color: ' . $cor . '; border-color: ' . $cor . '">' . $r->status . '</span></div></td>';
                             echo '<td><div align="center">';
-						/*if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
-							echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/visualizar/' . $r->idOs . '" class="btn tip-top" title="Visualizar mais detalhes"><i class="fas fa-eye"></i></a>';
-								}*/
-						if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
+                            /*if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
+                                echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/visualizar/' . $r->idOs . '" class="btn tip-top" title="Visualizar mais detalhes"><i class="fas fa-eye"></i></a>';
+                                    }*/
+                            if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
                                 echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/editar/' . $r->idOs . '" target="new" class="btn btn-info tip-top" title="Editar OS"><i class="fas fa-edit"></i></a>';
-								}
-								if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
-                                $zapnumber = preg_replace("/[^0-9]/", "", $r->celular_cliente);
-								$eMailCliente = $r->email_cliemte;
-								$SenhaCliente = $r->senha_cliente;
-								$total_os = number_format($r->totalProdutos + $r->totalServicos, 2, ',', '.');
-								echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $r->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $r->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($r->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $r->status . '*.%0d%0a%0d%0a' . strip_tags($r->defeito) . '%0d%0a%0d%0a' . strip_tags($r->observacoes) . '%0d%0a%0d%0a' . strip_tags($r->laudoTecnico) . '%0d%0a%0d%0aValor%20Total%20R$&#58%20*'. $total_os . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20estes%20dados%20para%20fazer%20Log-in%0d%0aEmail:%20*' . $eMailCliente . '*%0d%0aSenha:%20*' . $SenhaCliente . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*"><i class="fab fa-whatsapp" style="font-size:16px;"></i></a>';
                             }
-							if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
+                            if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
+                                $zapnumber = preg_replace("/[^0-9]/", "", $r->celular_cliente);
+                                $eMailCliente = $r->email_cliemte;
+                                $SenhaCliente = $r->senha_cliente;
+                                $total_os = number_format($r->totalProdutos + $r->totalServicos, 2, ',', '.');
+                                echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $r->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $r->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($r->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $r->status . '*.%0d%0a%0d%0a' . strip_tags($r->defeito) . '%0d%0a%0d%0a' . strip_tags($r->observacoes) . '%0d%0a%0d%0a' . strip_tags($r->laudoTecnico) . '%0d%0a%0d%0aValor%20Total%20R$&#58%20*'. $total_os . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20estes%20dados%20para%20fazer%20Log-in%0d%0aEmail:%20*' . $eMailCliente . '*%0d%0aSenha:%20*' . $SenhaCliente . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*"><i class="fab fa-whatsapp" style="font-size:16px;"></i></a>';
+                            }
+                            if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
                                 echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/imprimir/' . $r->idOs . '" target="_blank" class="btn btn-inverse tip-top" title="Imprimir Normal A4"><i class="fas fa-print"></i></a>';
                             }
-							if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
+                            if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
                                 echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/imprimirTermica2/' . $r->idOs . '" target="_blank" class="btn btn-inverse tip-top" title="Imprimir Termica 2"><i class="fas fa-print"></i></a>';
                             }
                             if ($this->permission->checkPermission($this->session->userdata('permissao'), 'dOs')) {
                                 echo '<a href="#modal-excluir" role="button" data-toggle="modal" os="' . $r->idOs . '" class="btn btn-danger tip-top" title="Excluir OS"><i class="fas fa-trash-alt"></i></a>  ';
-								}
+                            }
                             echo  '</td>';
                             echo '</tr>';
                         } ?>

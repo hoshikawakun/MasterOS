@@ -94,15 +94,15 @@ $totalProdutos = 0; ?>
                                     <?php
 
                                     foreach ($produtos as $p) {
-
                                         $totalProdutos = $totalProdutos + $p->subTotal;
                                         echo '<tr>';
-										echo '<td><div align="center">' . $p->idProdutos . '</div></td>';
-										echo '<td>' . $p->descricao . '</td>';
+                                        echo '<td><div align="center">' . $p->idProdutos . '</div></td>';
+                                        echo '<td>' . $p->descricao . '</td>';
                                         echo '<td><div align="center">' . $p->quantidade . '</div></td>';
                                         echo '<td><div align="center">R$: ' . $p->preco ?: $p->precoVenda . '</div></td>';
                                         echo '<td><div align="center">R$: ' . number_format($p->subTotal, 2, ',', '.') . '</div></td>';
-                                        echo '</tr>';} ?>
+                                        echo '</tr>';
+                                    } ?>
     									<tr>
                                         <td colspan="5" style="text-align: right"><strong>Total Produtos R$: <?php echo number_format($totalProdutos, 2, ',', '.'); ?></strong></td>
                                     	</tr>

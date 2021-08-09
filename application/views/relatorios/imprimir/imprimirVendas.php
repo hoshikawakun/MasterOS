@@ -38,15 +38,15 @@
                             <tbody>
                                 <?php
                                         foreach ($vendas as $v) {
-											$vTotal = $v->valorTotal;
-											$totalVendas = $totalVendas + $v->valorTotal;
-											$Vendas = $v->idVendas;
-											echo '<tr>';
-											echo '<td align="center">' . $Vendas . '</td>';
+                                            $vTotal = $v->valorTotal;
+                                            $totalVendas = $totalVendas + $v->valorTotal;
+                                            $Vendas = $v->idVendas;
+                                            echo '<tr>';
+                                            echo '<td align="center">' . $Vendas . '</td>';
                                             echo '<td>' . $v->nomeCliente . '</td>';
                                             echo '<td align="center">' . $v->nome . '</td>';
                                             echo '<td align="center">' . date('d/m/Y', strtotime($v->dataVenda)) . '</td>';
-											echo '<td align="center">R$: ' . number_format($vTotal, 2, ',', '.') .'</td>';
+                                            echo '<td align="center">R$: ' . number_format($vTotal, 2, ',', '.') .'</td>';
                                             echo '</tr>';
                                         }
                                         ?>

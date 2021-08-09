@@ -19,12 +19,12 @@ $totalProdutos = 0; ?>
                 <div class="buttons">
                     
 					<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
-                        echo '<a target="_new" title="Adicionar OS" class="btn btn-mini btn-success" href="' . base_url() . 'index.php/os/adicionar"><i class="fas fa-plus"></i> Adicionar OS</a>';
-                    } ?>
+    echo '<a target="_new" title="Adicionar OS" class="btn btn-mini btn-success" href="' . base_url() . 'index.php/os/adicionar"><i class="fas fa-plus"></i> Adicionar OS</a>';
+} ?>
                     
                     <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
-                        echo '<a title="Editar OS" class="btn btn-mini btn-info" href="' . base_url() . 'index.php/os/editar/' . $result->idOs . '"><i class="fas fa-edit"></i> Editar</a>';
-                    } ?>
+    echo '<a title="Editar OS" class="btn btn-mini btn-info" href="' . base_url() . 'index.php/os/editar/' . $result->idOs . '"><i class="fas fa-edit"></i> Editar</a>';
+} ?>
                     
                     <a target="_blank" title="Imprimir OS" class="btn btn-mini btn-inverse" href="<?php echo site_url() ?>/os/imprimir/<?php echo $result->idOs; ?>"><i class="fas fa-print"></i> Imprimir A4</a>
                     
@@ -203,7 +203,8 @@ $totalProdutos = 0; ?>
                                         echo '<td><div align="center">' . $x->voltagem . '</div></td>';
                                         echo '<td><div align="center">' . $x->potencia . '</div></td>';
                                         echo '<td><div align="center">' . $x->observacao . '</div></td>';
-                                        echo '</tr>';} ?>
+                                        echo '</tr>';
+                                    } ?>
                                 </tbody>
                             </table>
                             </div>
@@ -226,7 +227,6 @@ $totalProdutos = 0; ?>
                                     <?php
 
                                     foreach ($produtos as $p) {
-
                                         $totalProdutos = $totalProdutos + $p->subTotal;
                                         echo '<tr>';
                                         echo '<td><div align="center">' . $p->idProdutos . '</div></td>';
@@ -234,7 +234,8 @@ $totalProdutos = 0; ?>
                                         echo '<td><div align="center">' . $p->quantidade . '</div></td>';
                                         echo '<td><div align="center">R$: ' . $p->preco ?: $p->precoVenda . '</div></td>';
                                         echo '<td><div align="center">R$: ' . number_format($p->subTotal, 2, ',', '.') . '</div></td>';
-                                        echo '</tr>';} ?>
+                                        echo '</tr>';
+                                    } ?>
                                     <tr>
                                         <td colspan="4" style="text-align: right"><strong>Total: </strong></td>
                                         <td><strong><div align="center">R$: <?php echo number_format($totalProdutos, 2, ',', '.'); ?></div></strong></td>
@@ -269,7 +270,6 @@ $totalProdutos = 0; ?>
                                         echo '<td><div align="center">R$: ' . $preco . '</td>';
                                         echo '<td><div align="center">R$: ' . number_format($subtotal, 2, ',', '.') . '</td>';
                                         echo '</tr>';
-
                                     } ?>
 
                                     <tr>
@@ -314,7 +314,6 @@ $totalProdutos = 0; ?>
                                     }
                                     echo '<div class="span3" style="min-height: 200px; margin-left: 0; padding: 5px;">
 									<a style="min-height: 180px; border: 1px solid #bbbbbb;" href="#modal-anexo" imagem="' . $a->idAnexos . '" link="' . $link . '" role="button" class="btn anexo span12" data-toggle="modal"><img src="' . $thumb . '" alt=""></a></div>';
-									
                                 } ?>
                                 
                                 </td>
@@ -366,9 +365,10 @@ $totalProdutos = 0; ?>
         <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>
             <div align="center">
               <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
-												$zapnumber = preg_replace("/[^0-9]/", "", $result->celular_cliente);
-												$totalOS = number_format($totalProdutos + $totalServico, 2, ',', '.');
-                        echo '<a title="Enviar Por WhatsApp" class="btn btn-success" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $result->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $result->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($result->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $result->status . '*.%0d%0a%0d%0a' . strip_tags($result->defeito) . '%0d%0a%0d%0a' . strip_tags($result->observacoes) . '%0d%0a%0d%0a' . strip_tags($result->laudoTecnico) . '%0d%0a%0d%0aValor%20Total%20*R$&#58%20'. $totalOS . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20estes%20dados%20para%20fazer%20Log-in%0d%0aEmail:%20*' . strip_tags($result->email) . '*%0d%0aSenha:%20*' . strip_tags($result->senha) . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*"><i class="fab fa-whatsapp"></i> Enviar WhatsApp</a>';} ?>
+                                    $zapnumber = preg_replace("/[^0-9]/", "", $result->celular_cliente);
+                                    $totalOS = number_format($totalProdutos + $totalServico, 2, ',', '.');
+                                    echo '<a title="Enviar Por WhatsApp" class="btn btn-success" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $result->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $result->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($result->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $result->status . '*.%0d%0a%0d%0a' . strip_tags($result->defeito) . '%0d%0a%0d%0a' . strip_tags($result->observacoes) . '%0d%0a%0d%0a' . strip_tags($result->laudoTecnico) . '%0d%0a%0d%0aValor%20Total%20*R$&#58%20'. $totalOS . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20estes%20dados%20para%20fazer%20Log-in%0d%0aEmail:%20*' . strip_tags($result->email) . '*%0d%0aSenha:%20*' . strip_tags($result->senha) . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*"><i class="fab fa-whatsapp"></i> Enviar WhatsApp</a>';
+                                } ?>
               
             </div>
         </div>

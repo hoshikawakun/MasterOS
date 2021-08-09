@@ -168,7 +168,8 @@ $totalProdutos = 0; ?>
                                         echo '<td><div align="center">' . $x->voltagem . '</div></td>';
                                         echo '<td><div align="center">' . $x->potencia . '</div></td>';
                                         echo '<td><div align="center">' . $x->observacao . '</div></td>';
-                                        echo '</tr>';} ?>
+                                        echo '</tr>';
+                                    } ?>
                                 </tbody>
                             </table>
                         <?php } ?>
@@ -194,7 +195,6 @@ $totalProdutos = 0; ?>
                                     <?php
 
                                     foreach ($produtos as $p) {
-
                                         $totalProdutos = $totalProdutos + $p->subTotal;
                                         echo '<tr>';
                                         echo '<td><div align="center">' . $p->idProdutos . '</div></td>';
@@ -202,7 +202,8 @@ $totalProdutos = 0; ?>
                                         echo '<td><div align="center">' . $p->quantidade . '</div></td>';
                                         echo '<td><div align="center">R$: ' . $p->preco ?: $p->precoVenda . '</div></td>';
                                         echo '<td><div align="center">R$: ' . number_format($p->subTotal, 2, ',', '.') . '</div></td>';
-                                        echo '</tr>';} ?>
+                                        echo '</tr>';
+                                    } ?>
                                     <tr>
                                     <td colspan="5" style="text-align: right"><strong>Total Produtos R$: <?php echo number_format($totalProdutos, 2, ',', '.'); ?></strong></td>
                                     </tr>
@@ -239,7 +240,6 @@ $totalProdutos = 0; ?>
                                         echo '<td><div align="center">R$: ' . $preco . '</td>';
                                         echo '<td><div align="center">R$: ' . number_format($subtotal, 2, ',', '.') . '</td>';
                                         echo '</tr>';
-
                                     } ?>
 
                                     <tr>
@@ -248,7 +248,8 @@ $totalProdutos = 0; ?>
                                 </tbody>
                             </table>
       <?php } ?><?php if ($totalProdutos != 0 || $totalServico != 0) {
-          echo "<h4 style='font-size: 12px; text-align: right'>Valor Total da OS R$: " . number_format($totalProdutos + $totalServico, 2, ',', '.') . "</h4>";}?></td>
+                                        echo "<h4 style='font-size: 12px; text-align: right'>Valor Total da OS R$: " . number_format($totalProdutos + $totalServico, 2, ',', '.') . "</h4>";
+                                    }?></td>
   </tr>
 </table>
 </div>

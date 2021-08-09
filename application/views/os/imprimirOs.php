@@ -146,17 +146,18 @@ $totalProdutos = 0; ?>
                             <?php
                                 
                                 foreach ($equipamentos as $x) {
-                                        echo '<tr>';
-                                        echo '<td><div align="center">' . $x->equipamento . '</div></td>';
-                                        echo '<td><div align="center">' . $x->marca . '</div></td>';
-                                        echo '<td><div align="center">' . $x->tipo . '</div></td>';
-                                        echo '<td><div align="center">' . $x->num_serie . '</div></td>';
-                                        echo '<td><div align="center">' . $x->modelo . '</div></td>';
-                                        echo '<td><div align="center">' . $x->cor . '</div></td>';
-                                        echo '<td><div align="center">' . $x->voltagem . '</div></td>';
-                                        echo '<td><div align="center">' . $x->potencia . '</div></td>';
-                                        echo '<td><div align="center">' . $x->observacao . '</div></td>';
-                                        echo '</tr>';} ?>
+                                    echo '<tr>';
+                                    echo '<td><div align="center">' . $x->equipamento . '</div></td>';
+                                    echo '<td><div align="center">' . $x->marca . '</div></td>';
+                                    echo '<td><div align="center">' . $x->tipo . '</div></td>';
+                                    echo '<td><div align="center">' . $x->num_serie . '</div></td>';
+                                    echo '<td><div align="center">' . $x->modelo . '</div></td>';
+                                    echo '<td><div align="center">' . $x->cor . '</div></td>';
+                                    echo '<td><div align="center">' . $x->voltagem . '</div></td>';
+                                    echo '<td><div align="center">' . $x->potencia . '</div></td>';
+                                    echo '<td><div align="center">' . $x->observacao . '</div></td>';
+                                    echo '</tr>';
+                                } ?>
                                 </tbody>
                             </table>
                         <?php } ?>
@@ -178,7 +179,6 @@ $totalProdutos = 0; ?>
                                     <?php
 
                                     foreach ($produtos as $p) {
-
                                         $totalProdutos = $totalProdutos + $p->subTotal;
                                         echo '<tr>';
                                         echo '<td><div align="center">' . $p->idProdutos . '</div></td>';
@@ -186,7 +186,8 @@ $totalProdutos = 0; ?>
                                         echo '<td><div align="center">' . $p->quantidade . '</div></td>';
                                         echo '<td><div align="center">R$: ' . $p->preco ?: $p->precoVenda . '</div></td>';
                                         echo '<td><div align="center">R$: ' . number_format($p->subTotal, 2, ',', '.') . '</div></td>';
-                                        echo '</tr>';} ?>
+                                        echo '</tr>';
+                                    } ?>
                                     <tr>
                                     <td colspan="4" style="text-align: right"><strong>Total: </strong></td>
                                     <td><strong><div align="center">R$: <?php echo number_format($totalProdutos, 2, ',', '.'); ?></div></strong></td>
@@ -219,7 +220,6 @@ $totalProdutos = 0; ?>
                                         echo '<td><div align="center">R$: ' . $preco . '</td>';
                                         echo '<td><div align="center">R$: ' . number_format($subtotal, 2, ',', '.') . '</td>';
                                         echo '</tr>';
-
                                     } ?>
 
                                     <tr>

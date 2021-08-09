@@ -5,8 +5,8 @@
             <li><a data-toggle="tab" href="#tab2">Ordens de Serviço</a></li>
             <div class="buttons">
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eCliente')) {
-                    echo '<a title="Icon Title" class="btn btn-mini btn-info" href="' . base_url() . 'index.php/clientes/editar/' . $result->idClientes . '"><i class="fas fa-edit"></i> Editar</a>';
-                } ?>
+    echo '<a title="Icon Title" class="btn btn-mini btn-info" href="' . base_url() . 'index.php/clientes/editar/' . $result->idClientes . '"><i class="fas fa-edit"></i> Editar</a>';
+} ?>
                 <a title="Voltar" class="btn btn-mini btn-inverse" href="<?php echo site_url() ?>/clientes"><i class="fas fa-arrow-left"></i> Voltar</a>
             </div>
         </ul>
@@ -76,8 +76,9 @@
 						<?php echo $result->telefone ?></td>
                         			<td>
                         <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
-												$zapnumber = preg_replace("/[^0-9]/", "", $result->telefone);
-                        echo '<a title="Enviar Por WhatsApp" class="btn btn-mini btn btn-success" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '"><i class="fab fa-whatsapp"></i> WhatsApp</a>';} ?>
+    $zapnumber = preg_replace("/[^0-9]/", "", $result->telefone);
+    echo '<a title="Enviar Por WhatsApp" class="btn btn-mini btn btn-success" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '"><i class="fab fa-whatsapp"></i> WhatsApp</a>';
+} ?>
                                     </td>
                                     </tr>
                                 <tr>

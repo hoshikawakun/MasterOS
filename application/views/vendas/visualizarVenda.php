@@ -100,15 +100,14 @@
                                     <?php
 
                                     foreach ($produtos as $p) {
-
                                         $totalProdutos = $totalProdutos + $p->subTotal;
                                         echo '<tr>';
-										echo '<td><div align="center">' . $p->idProdutos . '</div></td>';
+                                        echo '<td><div align="center">' . $p->idProdutos . '</div></td>';
                                         echo '<td><div align="center">' . $p->codDeBarra . '</td>';
                                         echo '<td>' . $p->descricao . '</td>';
                                         echo '<td><div align="center">' . $p->quantidade . '</div></td>';
                                         echo '<td><div align="center">R$: ' . $p->preco ?: $p->precoVenda . '</div></td>';
-										echo '<td><div align="center">R$: ' . number_format($p->subTotal, 2, ',', '.') . '</div></td>';
+                                        echo '<td><div align="center">R$: ' . number_format($p->subTotal, 2, ',', '.') . '</div></td>';
                                         echo '</tr>';
                                     } ?>
                                     <tr>

@@ -23,8 +23,8 @@
                 </tr>
             </thead>
             <tbody>
-                <?php 
-                    if(!$results){
+                <?php
+                    if (!$results) {
                         echo '<tr>
                                 <td colspan="7">Nenhum Pagamento Cadastrado</td>
                                 </tr>';

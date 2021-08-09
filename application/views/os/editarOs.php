@@ -17,8 +17,8 @@
     }
 </style>
  <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
-                        echo '<a target="_new" title="Adicionar OS" class="btn btn-mini btn-success" href="' . base_url() . 'index.php/os/adicionar"><i class="fas fa-plus"></i> Adicionar OS</a>';
-                    } ?>
+    echo '<a target="_new" title="Adicionar OS" class="btn btn-mini btn-success" href="' . base_url() . 'index.php/os/adicionar"><i class="fas fa-plus"></i> Adicionar OS</a>';
+} ?>
                     
                     <a href="<?php echo base_url() ?>index.php/os/visualizar/<?php echo $result->idOs; ?>" title="Visualizar OS" class="btn btn-mini btn-secondary"><i class="fas fa-eye"></i> Visualizar OS</a>
                     
@@ -85,25 +85,63 @@
                                         <div class="span3">
                                             <label for="status">Status<span class="required">*</span></label>
                                             <select class="span12" name="status" id="status" value="">
-<option <?php if($result->status == 'Orçamento'){echo 'selected';} ?> value="Orçamento">Orçamento</option>
-<option <?php if($result->status == 'Orçamento Concluido'){echo 'selected';} ?> value="Orçamento Concluido">Orçamento Concluido</option>
-<option <?php if($result->status == 'Orçamento Aprovado'){echo 'selected';} ?> value="Orçamento Aprovado">Orçamento Aprovado</option>
-<option <?php if($result->status == 'Aguardando Peças'){echo 'selected';} ?> value="Aguardando Peças">Aguardando Peças</option>
-<option <?php if($result->status == 'Em Andamento'){echo 'selected';} ?> value="Em Andamento">Em Andamento</option>
-<option <?php if($result->status == 'Serviço Concluido'){echo 'selected';} ?> value="Serviço Concluido">Serviço Concluido</option>
-<option <?php if($result->status == 'Sem Reparo'){echo 'selected';} ?> value="Sem Reparo">Sem Reparo</option>
-<option <?php if($result->status == 'Não Autorizado'){echo 'selected';} ?> value="Não Autorizado">Não Autorizado</option>
-<option <?php if($result->status == 'Contato sem Sucesso'){echo 'selected';} ?> value="Contato sem Sucesso">Contato sem Sucesso</option>
-<option <?php if($result->status == 'Cancelado'){echo 'selected';} ?> value="Cancelado">Cancelado</option>
-<option <?php if($result->status == 'Pronto-Despachar'){echo 'selected';} ?> value="Pronto-Despachar">Pronto-Despachar</option>
-<option <?php if($result->status == 'Enviado'){echo 'selected';} ?> value="Enviado">Enviado</option>
-<option <?php if($result->status == 'Aguardando Envio'){echo 'selected';} ?> value="Aguardando Envio">Aguardando Envio</option>
-<option <?php if($result->status == 'Aguardando Entrega Correio'){echo 'selected';} ?> value="Aguardando Entrega Correio">Aguardando Entrega Correio</option>
-<option <?php if($result->status == 'Entregue - A Receber'){echo 'selected';} ?> value="Entregue - A Receber">Entregue - A Receber</option>
-<option <?php if($result->status == 'Garantia'){echo 'selected';} ?> value="Garantia">Garantia</option>
-<option <?php if($result->status == 'Abandonado'){echo 'selected';} ?> value="Abandonado">Abandonado</option>
-<option <?php if($result->status == 'Comprado pela Loja'){echo 'selected';} ?> value="Comprado pela Loja">Comprado pela Loja</option>
-<option <?php if($result->status == 'Entregue - Faturado'){echo 'selected';} ?> value="Entregue - Faturado">Entregue - Faturado</option>
+<option <?php if ($result->status == 'Orçamento') {
+    echo 'selected';
+} ?> value="Orçamento">Orçamento</option>
+<option <?php if ($result->status == 'Orçamento Concluido') {
+    echo 'selected';
+} ?> value="Orçamento Concluido">Orçamento Concluido</option>
+<option <?php if ($result->status == 'Orçamento Aprovado') {
+    echo 'selected';
+} ?> value="Orçamento Aprovado">Orçamento Aprovado</option>
+<option <?php if ($result->status == 'Aguardando Peças') {
+    echo 'selected';
+} ?> value="Aguardando Peças">Aguardando Peças</option>
+<option <?php if ($result->status == 'Em Andamento') {
+    echo 'selected';
+} ?> value="Em Andamento">Em Andamento</option>
+<option <?php if ($result->status == 'Serviço Concluido') {
+    echo 'selected';
+} ?> value="Serviço Concluido">Serviço Concluido</option>
+<option <?php if ($result->status == 'Sem Reparo') {
+    echo 'selected';
+} ?> value="Sem Reparo">Sem Reparo</option>
+<option <?php if ($result->status == 'Não Autorizado') {
+    echo 'selected';
+} ?> value="Não Autorizado">Não Autorizado</option>
+<option <?php if ($result->status == 'Contato sem Sucesso') {
+    echo 'selected';
+} ?> value="Contato sem Sucesso">Contato sem Sucesso</option>
+<option <?php if ($result->status == 'Cancelado') {
+    echo 'selected';
+} ?> value="Cancelado">Cancelado</option>
+<option <?php if ($result->status == 'Pronto-Despachar') {
+    echo 'selected';
+} ?> value="Pronto-Despachar">Pronto-Despachar</option>
+<option <?php if ($result->status == 'Enviado') {
+    echo 'selected';
+} ?> value="Enviado">Enviado</option>
+<option <?php if ($result->status == 'Aguardando Envio') {
+    echo 'selected';
+} ?> value="Aguardando Envio">Aguardando Envio</option>
+<option <?php if ($result->status == 'Aguardando Entrega Correio') {
+    echo 'selected';
+} ?> value="Aguardando Entrega Correio">Aguardando Entrega Correio</option>
+<option <?php if ($result->status == 'Entregue - A Receber') {
+    echo 'selected';
+} ?> value="Entregue - A Receber">Entregue - A Receber</option>
+<option <?php if ($result->status == 'Garantia') {
+    echo 'selected';
+} ?> value="Garantia">Garantia</option>
+<option <?php if ($result->status == 'Abandonado') {
+    echo 'selected';
+} ?> value="Abandonado">Abandonado</option>
+<option <?php if ($result->status == 'Comprado pela Loja') {
+    echo 'selected';
+} ?> value="Comprado pela Loja">Comprado pela Loja</option>
+<option <?php if ($result->status == 'Entregue - Faturado') {
+    echo 'selected';
+} ?> value="Entregue - Faturado">Entregue - Faturado</option>
                                             </select>
                                             <label for="rastreio">Rastreio</label>
                                           <input name="rastreio" type="text" class="span12" id="rastreio" maxlength="13" value="<?php echo $result->rastreio ?>"  />
@@ -170,7 +208,8 @@
 	<a href="<?php echo base_url() ?>index.php/os/visualizar/<?php echo $result->idOs; ?>" title="Visualizar OS" class="btn btn-secondary"><i class="fas fa-eye"></i> Visualizar OS</a>
     
 	<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
-		echo '<a target="_blank" title="Adicionar OS" class="btn btn-success" href=' . base_url() . 'index.php/os/adicionar><i class="fas fa-plus"></i> Adicionar OS</a>';} ?>
+    echo '<a target="_blank" title="Adicionar OS" class="btn btn-success" href=' . base_url() . 'index.php/os/adicionar><i class="fas fa-plus"></i> Adicionar OS</a>';
+} ?>
                         
 	<a href="#modal-whatsapp" title="Enviar WhatsApp" id="btn-whatsapp" role="button" data-toggle="modal" class="btn btn-success"><i class="fab fa-whatsapp"></i> WhatsApp</a>
     </div>
@@ -240,14 +279,14 @@
                                     $total = 0;
                                     foreach ($produtos as $p) {
                                         $total = $total + $p->subTotal;
-                                            echo '<tr>';
-                                            echo '<td><div align="center">' . $p->idProdutos . '</td>';
-                                            echo '<td>' . $p->descricao . '</td>';
-                                            echo '<td><div align="center">' . $p->quantidade . '</td>';
-                                            echo '<td><div align="center">R$: ' . ($p->preco ?: $p->precoVenda)  . '</td>';
-                                            echo '<td><div align="center"><a href="" idAcao="' . $p->idProdutos_os . '" prodAcao="' . $p->idProdutos . '" quantAcao="' . $p->quantidade . '" title="Excluir Produto" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></td>';
-                                            echo '<td><div align="center">R$: ' . number_format($p->subTotal, 2, ',', '.') . '</td>';
-                                            echo '</tr>';
+                                        echo '<tr>';
+                                        echo '<td><div align="center">' . $p->idProdutos . '</td>';
+                                        echo '<td>' . $p->descricao . '</td>';
+                                        echo '<td><div align="center">' . $p->quantidade . '</td>';
+                                        echo '<td><div align="center">R$: ' . ($p->preco ?: $p->precoVenda)  . '</td>';
+                                        echo '<td><div align="center"><a href="" idAcao="' . $p->idProdutos_os . '" prodAcao="' . $p->idProdutos . '" quantAcao="' . $p->quantidade . '" title="Excluir Produto" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></td>';
+                                        echo '<td><div align="center">R$: ' . number_format($p->subTotal, 2, ',', '.') . '</td>';
+                                        echo '</tr>';
                                     } ?>
                                     <tr>
                                         <td colspan="5" style="text-align: right"><strong>Total:</strong></td>
@@ -357,7 +396,8 @@
 										<img src="' . $thumb . '" alt="">
 										</a>
 										<span>' . $a->anexo . '</span>
-										</div>';} ?>
+										</div>';
+                                    } ?>
                                 </div>
                             </div>
                         
@@ -380,10 +420,10 @@
                                         </thead>
                                         <tbody>
                                             <?php
-											// DEFINE O FUSO HORARIO COMO O HORARIO DE BRASILIA
-											date_default_timezone_set('America/Sao_Paulo');
-											// CRIA UMA VARIAVEL E ARMAZENA A HORA ATUAL DO FUSO-HORÀRIO DEFINIDO (BRASÍLIA)
-											$dataLocal = date('d/m/Y H:i:s', time());
+                                            // DEFINE O FUSO HORARIO COMO O HORARIO DE BRASILIA
+                                            date_default_timezone_set('America/Sao_Paulo');
+                                            // CRIA UMA VARIAVEL E ARMAZENA A HORA ATUAL DO FUSO-HORÀRIO DEFINIDO (BRASÍLIA)
+                                            $dataLocal = date('d/m/Y H:i:s', time());
                                             foreach ($anotacoes as $a) {
                                                 echo '<tr>';
                                                 echo '<td>' . $a->anotacao . '</td>';
@@ -635,9 +675,10 @@
         <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>
             <div align="center">
               <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
-												$zapnumber = preg_replace("/[^0-9]/", "", $result->celular_cliente);
-												$totalOS = number_format($totals + $total, 2, ',', '.');
-                        echo '<a title="Enviar Por WhatsApp" class="btn btn-success" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $result->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $result->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($result->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $result->status . '*.%0d%0a%0d%0a' . strip_tags($result->defeito) . '%0d%0a%0d%0a' . strip_tags($result->observacoes) . '%0d%0a%0d%0a' . strip_tags($result->laudoTecnico) . '%0d%0a%0d%0aValor%20Total%20*R$&#58%20'. $totalOS . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20estes%20dados%20para%20fazer%20Log-in%0d%0aEmail:%20*' . strip_tags($result->email) . '*%0d%0aSenha:%20*' . strip_tags($result->senha) . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*"><i class="fab fa-whatsapp"></i> Enviar WhatsApp</a>';} ?>
+                                                $zapnumber = preg_replace("/[^0-9]/", "", $result->celular_cliente);
+                                                $totalOS = number_format($totals + $total, 2, ',', '.');
+                                                echo '<a title="Enviar Por WhatsApp" class="btn btn-success" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $result->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $result->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($result->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $result->status . '*.%0d%0a%0d%0a' . strip_tags($result->defeito) . '%0d%0a%0d%0a' . strip_tags($result->observacoes) . '%0d%0a%0d%0a' . strip_tags($result->laudoTecnico) . '%0d%0a%0d%0aValor%20Total%20*R$&#58%20'. $totalOS . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20estes%20dados%20para%20fazer%20Log-in%0d%0aEmail:%20*' . strip_tags($result->email) . '*%0d%0aSenha:%20*' . strip_tags($result->senha) . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*"><i class="fab fa-whatsapp"></i> Enviar WhatsApp</a>';
+                                            } ?>
                         
         </div>
         </div>
@@ -924,9 +965,9 @@
                 var quantidade = parseInt($("#quantidade").val());
                 var estoque = parseInt($("#estoque").val());
                 
-                <?php if(!$configuration['control_estoque']){ 
-                    echo 'estoque = 1000000';
-                }; ?>
+                <?php if (!$configuration['control_estoque']) {
+                                                echo 'estoque = 1000000';
+                                            }; ?>
 
                 if (estoque < quantidade) {
                     Swal.fire({

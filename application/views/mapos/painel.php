@@ -87,8 +87,8 @@
                     </thead>
                     <tbody>
                         <?php if ($ordens6 != null) : ?>
-                            <?php foreach ($ordens6 as $o) : 
-							$descricaoShort = mb_strimwidth(strip_tags($o->descricaoProduto), 0, 40, "...");?>
+                            <?php foreach ($ordens6 as $o) :
+                            $descricaoShort = mb_strimwidth(strip_tags($o->descricaoProduto), 0, 40, "...");?>
                                 <tr>
 				<td><div align="center"><a title="Visualizar detalhes da OS" href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="new" class="tip-top"><?= $o->idOs ?></a></td>
                 <td><div align="center"><?= $descricaoShort ?></div></td>
@@ -100,11 +100,12 @@
 				<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) : ?><a title="Editar OS" class="btn btn-info tip-top" href="<?= base_url() ?>index.php/os/editar/<?= $o->idOs ?>" target="new" class="btn"><i class="fas fa-edit"></i></a>
 				<?php endif ?>
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
-					$zapnumber = preg_replace("/[^0-9]/", "", $o->telefone);
-					$eMailCliente = $o->email_cliemte;
-					$SenhaCliente = $o->senha_cliente;
-					$total_os = number_format($o->totalProdutos + $o->totalServicos, 2, ',', '.');
-					echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a%0d%0a' . strip_tags($o->defeito) . '%0d%0a%0d%0a' . strip_tags($o->observacoes) . '%0d%0a%0d%0a' . strip_tags($o->laudoTecnico) . '%0d%0a%0d%0aValor%20Total%20R$&#58%20*'. $total_os . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20estes%20dados%20para%20fazer%20Log-in%0d%0aEmail:%20*' . $eMailCliente . '*%0d%0aSenha:%20*' . $SenhaCliente . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*"><i class="fab fa-whatsapp" style="font-size:16px;"></i></a>';} ?>
+                                $zapnumber = preg_replace("/[^0-9]/", "", $o->telefone);
+                                $eMailCliente = $o->email_cliemte;
+                                $SenhaCliente = $o->senha_cliente;
+                                $total_os = number_format($o->totalProdutos + $o->totalServicos, 2, ',', '.');
+                                echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a%0d%0a' . strip_tags($o->defeito) . '%0d%0a%0d%0a' . strip_tags($o->observacoes) . '%0d%0a%0d%0a' . strip_tags($o->laudoTecnico) . '%0d%0a%0d%0aValor%20Total%20R$&#58%20*'. $total_os . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20estes%20dados%20para%20fazer%20Log-in%0d%0aEmail:%20*' . $eMailCliente . '*%0d%0aSenha:%20*' . $SenhaCliente . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*"><i class="fab fa-whatsapp" style="font-size:16px;"></i></a>';
+                            } ?>
 				<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a title="Imprimir OS" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimir/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i></a>
 				<?php endif ?>
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a title="Imprimir Termica" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimirTermica/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i></a>
@@ -144,8 +145,8 @@
                     </thead>
                     <tbody>
                         <?php if ($ordens3 != null) : ?>
-                            <?php foreach ($ordens3 as $o) : 
-							$descricaoShort = mb_strimwidth(strip_tags($o->descricaoProduto), 0, 40, "...");?>
+                            <?php foreach ($ordens3 as $o) :
+                            $descricaoShort = mb_strimwidth(strip_tags($o->descricaoProduto), 0, 40, "...");?>
                                 <tr>
 				<td><div align="center"><a title="Visualizar detalhes da OS" href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="new" class="tip-top"><?= $o->idOs ?></a></td>
                 <td><div align="center"><?= $descricaoShort ?></div></td>
@@ -157,11 +158,12 @@
 				<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) : ?><a title="Editar OS" class="btn btn-info tip-top" href="<?= base_url() ?>index.php/os/editar/<?= $o->idOs ?>" target="new" class="btn"><i class="fas fa-edit"></i></a>
 				<?php endif ?>
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
-					$zapnumber = preg_replace("/[^0-9]/", "", $o->telefone);
-					$eMailCliente = $o->email_cliemte;
-					$SenhaCliente = $o->senha_cliente;
-					$total_os = number_format($o->totalProdutos + $o->totalServicos, 2, ',', '.');
-					echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a%0d%0a' . strip_tags($o->defeito) . '%0d%0a%0d%0a' . strip_tags($o->observacoes) . '%0d%0a%0d%0a' . strip_tags($o->laudoTecnico) . '%0d%0a%0d%0aValor%20Total%20R$&#58%20*'. $total_os . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20estes%20dados%20para%20fazer%20Log-in%0d%0aEmail:%20*' . $eMailCliente . '*%0d%0aSenha:%20*' . $SenhaCliente . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*"><i class="fab fa-whatsapp" style="font-size:16px;"></i></a>';} ?>
+                                $zapnumber = preg_replace("/[^0-9]/", "", $o->telefone);
+                                $eMailCliente = $o->email_cliemte;
+                                $SenhaCliente = $o->senha_cliente;
+                                $total_os = number_format($o->totalProdutos + $o->totalServicos, 2, ',', '.');
+                                echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a%0d%0a' . strip_tags($o->defeito) . '%0d%0a%0d%0a' . strip_tags($o->observacoes) . '%0d%0a%0d%0a' . strip_tags($o->laudoTecnico) . '%0d%0a%0d%0aValor%20Total%20R$&#58%20*'. $total_os . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20estes%20dados%20para%20fazer%20Log-in%0d%0aEmail:%20*' . $eMailCliente . '*%0d%0aSenha:%20*' . $SenhaCliente . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*"><i class="fab fa-whatsapp" style="font-size:16px;"></i></a>';
+                            } ?>
 				<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a title="Imprimir OS" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimir/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i></a>
 				<?php endif ?>
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a title="Imprimir Termica" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimirTermica/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i></a>
@@ -201,8 +203,8 @@
                     </thead>
                     <tbody>
                         <?php if ($ordens2 != null) : ?>
-                            <?php foreach ($ordens2 as $o) : 
-							$descricaoShort = mb_strimwidth(strip_tags($o->descricaoProduto), 0, 40, "...");?>
+                            <?php foreach ($ordens2 as $o) :
+                            $descricaoShort = mb_strimwidth(strip_tags($o->descricaoProduto), 0, 40, "...");?>
                                 <tr>
 				<td><div align="center"><a title="Visualizar detalhes da OS" href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="new" class="tip-top"><?= $o->idOs ?></a></td>
                 <td><div align="center"><?= $descricaoShort ?></div></td>
@@ -214,11 +216,12 @@
 				<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) : ?><a title="Editar OS" class="btn btn-info tip-top" href="<?= base_url() ?>index.php/os/editar/<?= $o->idOs ?>" target="new" class="btn"><i class="fas fa-edit"></i></a>
 				<?php endif ?>
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
-					$zapnumber = preg_replace("/[^0-9]/", "", $o->telefone);
-					$eMailCliente = $o->email_cliemte;
-					$SenhaCliente = $o->senha_cliente;
-					$total_os = number_format($o->totalProdutos + $o->totalServicos, 2, ',', '.');
-					echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a%0d%0a' . strip_tags($o->defeito) . '%0d%0a%0d%0a' . strip_tags($o->observacoes) . '%0d%0a%0d%0a' . strip_tags($o->laudoTecnico) . '%0d%0a%0d%0aValor%20Total%20R$&#58%20*'. $total_os . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20estes%20dados%20para%20fazer%20Log-in%0d%0aEmail:%20*' . $eMailCliente . '*%0d%0aSenha:%20*' . $SenhaCliente . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*"><i class="fab fa-whatsapp" style="font-size:16px;"></i></a>';} ?>
+                                $zapnumber = preg_replace("/[^0-9]/", "", $o->telefone);
+                                $eMailCliente = $o->email_cliemte;
+                                $SenhaCliente = $o->senha_cliente;
+                                $total_os = number_format($o->totalProdutos + $o->totalServicos, 2, ',', '.');
+                                echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a%0d%0a' . strip_tags($o->defeito) . '%0d%0a%0d%0a' . strip_tags($o->observacoes) . '%0d%0a%0d%0a' . strip_tags($o->laudoTecnico) . '%0d%0a%0d%0aValor%20Total%20R$&#58%20*'. $total_os . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20estes%20dados%20para%20fazer%20Log-in%0d%0aEmail:%20*' . $eMailCliente . '*%0d%0aSenha:%20*' . $SenhaCliente . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*"><i class="fab fa-whatsapp" style="font-size:16px;"></i></a>';
+                            } ?>
 				<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a title="Imprimir OS" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimir/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i></a>
 				<?php endif ?>
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a title="Imprimir Termica" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimirTermica/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i></a>
@@ -258,8 +261,8 @@
                     </thead>
                     <tbody>
                         <?php if ($ordens1 != null) : ?>
-                            <?php foreach ($ordens1 as $o) : 
-							$descricaoShort = mb_strimwidth(strip_tags($o->descricaoProduto), 0, 40, "...");?>
+                            <?php foreach ($ordens1 as $o) :
+                            $descricaoShort = mb_strimwidth(strip_tags($o->descricaoProduto), 0, 40, "...");?>
                                 <tr>
 				<td><div align="center"><a title="Visualizar detalhes da OS" href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="new" class="tip-top"><?= $o->idOs ?></a></td>
                 <td><div align="center"><?= $descricaoShort ?></div></td>
@@ -271,11 +274,12 @@
 				<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) : ?><a title="Editar OS" class="btn btn-info tip-top" href="<?= base_url() ?>index.php/os/editar/<?= $o->idOs ?>" target="new" class="btn"><i class="fas fa-edit"></i></a>
 				<?php endif ?>
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
-					$zapnumber = preg_replace("/[^0-9]/", "", $o->telefone);
-					$eMailCliente = $o->email_cliemte;
-					$SenhaCliente = $o->senha_cliente;
-					$total_os = number_format($o->totalProdutos + $o->totalServicos, 2, ',', '.');
-					echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a%0d%0a' . strip_tags($o->defeito) . '%0d%0a%0d%0a' . strip_tags($o->observacoes) . '%0d%0a%0d%0a' . strip_tags($o->laudoTecnico) . '%0d%0a%0d%0aValor%20Total%20R$&#58%20*'. $total_os . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20estes%20dados%20para%20fazer%20Log-in%0d%0aEmail:%20*' . $eMailCliente . '*%0d%0aSenha:%20*' . $SenhaCliente . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*"><i class="fab fa-whatsapp" style="font-size:16px;"></i></a>';} ?>
+                                $zapnumber = preg_replace("/[^0-9]/", "", $o->telefone);
+                                $eMailCliente = $o->email_cliemte;
+                                $SenhaCliente = $o->senha_cliente;
+                                $total_os = number_format($o->totalProdutos + $o->totalServicos, 2, ',', '.');
+                                echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a%0d%0a' . strip_tags($o->defeito) . '%0d%0a%0d%0a' . strip_tags($o->observacoes) . '%0d%0a%0d%0a' . strip_tags($o->laudoTecnico) . '%0d%0a%0d%0aValor%20Total%20R$&#58%20*'. $total_os . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20estes%20dados%20para%20fazer%20Log-in%0d%0aEmail:%20*' . $eMailCliente . '*%0d%0aSenha:%20*' . $SenhaCliente . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*"><i class="fab fa-whatsapp" style="font-size:16px;"></i></a>';
+                            } ?>
 				<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a title="Imprimir OS" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimir/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i></a>
 				<?php endif ?>
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a title="Imprimir Termica" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimirTermica/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i></a>
@@ -315,8 +319,8 @@
                     </thead>
                     <tbody>
                         <?php if ($ordens5 != null) : ?>
-                            <?php foreach ($ordens5 as $o) : 
-							$descricaoShort = mb_strimwidth(strip_tags($o->descricaoProduto), 0, 40, "...");?>
+                            <?php foreach ($ordens5 as $o) :
+                            $descricaoShort = mb_strimwidth(strip_tags($o->descricaoProduto), 0, 40, "...");?>
                                 <tr>
 				<td><div align="center"><a title="Visualizar detalhes da OS" href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="new" class="tip-top"><?= $o->idOs ?></a></td>
                 <td><div align="center"><?= $descricaoShort ?></div></td>
@@ -328,11 +332,12 @@
 				<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) : ?><a title="Editar OS" class="btn btn-info tip-top" href="<?= base_url() ?>index.php/os/editar/<?= $o->idOs ?>" target="new" class="btn"><i class="fas fa-edit"></i></a>
 				<?php endif ?>
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
-					$zapnumber = preg_replace("/[^0-9]/", "", $o->telefone);
-					$eMailCliente = $o->email_cliemte;
-					$SenhaCliente = $o->senha_cliente;
-					$total_os = number_format($o->totalProdutos + $o->totalServicos, 2, ',', '.');
-					echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a%0d%0a' . strip_tags($o->defeito) . '%0d%0a%0d%0a' . strip_tags($o->observacoes) . '%0d%0a%0d%0a' . strip_tags($o->laudoTecnico) . '%0d%0a%0d%0aValor%20Total%20R$&#58%20*'. $total_os . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20estes%20dados%20para%20fazer%20Log-in%0d%0aEmail:%20*' . $eMailCliente . '*%0d%0aSenha:%20*' . $SenhaCliente . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*"><i class="fab fa-whatsapp" style="font-size:16px;"></i></a>';} ?>
+                                $zapnumber = preg_replace("/[^0-9]/", "", $o->telefone);
+                                $eMailCliente = $o->email_cliemte;
+                                $SenhaCliente = $o->senha_cliente;
+                                $total_os = number_format($o->totalProdutos + $o->totalServicos, 2, ',', '.');
+                                echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a%0d%0a' . strip_tags($o->defeito) . '%0d%0a%0d%0a' . strip_tags($o->observacoes) . '%0d%0a%0d%0a' . strip_tags($o->laudoTecnico) . '%0d%0a%0d%0aValor%20Total%20R$&#58%20*'. $total_os . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20estes%20dados%20para%20fazer%20Log-in%0d%0aEmail:%20*' . $eMailCliente . '*%0d%0aSenha:%20*' . $SenhaCliente . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*"><i class="fab fa-whatsapp" style="font-size:16px;"></i></a>';
+                            } ?>
 				<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a title="Imprimir OS" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimir/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i></a>
 				<?php endif ?>
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a title="Imprimir Termica" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimirTermica/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i></a>
@@ -372,8 +377,8 @@
                     </thead>
                     <tbody>
                         <?php if ($ordens7 != null) : ?>
-                            <?php foreach ($ordens7 as $o) : 
-							$descricaoShort = mb_strimwidth(strip_tags($o->descricaoProduto), 0, 40, "...");?>
+                            <?php foreach ($ordens7 as $o) :
+                            $descricaoShort = mb_strimwidth(strip_tags($o->descricaoProduto), 0, 40, "...");?>
                                 <tr>
 				<td><div align="center"><a title="Visualizar detalhes da OS" href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="new" class="tip-top"><?= $o->idOs ?></a></td>
                 <td><div align="center"><?= $descricaoShort ?></div></td>
@@ -385,11 +390,12 @@
 				<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) : ?><a title="Editar OS" class="btn btn-info tip-top" href="<?= base_url() ?>index.php/os/editar/<?= $o->idOs ?>" target="new" class="btn"><i class="fas fa-edit"></i></a>
 				<?php endif ?>
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
-					$zapnumber = preg_replace("/[^0-9]/", "", $o->telefone);
-					$eMailCliente = $o->email_cliemte;
-					$SenhaCliente = $o->senha_cliente;
-					$total_os = number_format($o->totalProdutos + $o->totalServicos, 2, ',', '.');
-					echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a%0d%0a' . strip_tags($o->defeito) . '%0d%0a%0d%0a' . strip_tags($o->observacoes) . '%0d%0a%0d%0a' . strip_tags($o->laudoTecnico) . '%0d%0a%0d%0aValor%20Total%20R$&#58%20*'. $total_os . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20estes%20dados%20para%20fazer%20Log-in%0d%0aEmail:%20*' . $eMailCliente . '*%0d%0aSenha:%20*' . $SenhaCliente . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*"><i class="fab fa-whatsapp" style="font-size:16px;"></i></a>';} ?>
+                                $zapnumber = preg_replace("/[^0-9]/", "", $o->telefone);
+                                $eMailCliente = $o->email_cliemte;
+                                $SenhaCliente = $o->senha_cliente;
+                                $total_os = number_format($o->totalProdutos + $o->totalServicos, 2, ',', '.');
+                                echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $o->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $o->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($o->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $o->status . '*.%0d%0a%0d%0a' . strip_tags($o->defeito) . '%0d%0a%0d%0a' . strip_tags($o->observacoes) . '%0d%0a%0d%0a' . strip_tags($o->laudoTecnico) . '%0d%0a%0d%0aValor%20Total%20R$&#58%20*'. $total_os . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20estes%20dados%20para%20fazer%20Log-in%0d%0aEmail:%20*' . $eMailCliente . '*%0d%0aSenha:%20*' . $SenhaCliente . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*"><i class="fab fa-whatsapp" style="font-size:16px;"></i></a>';
+                            } ?>
 				<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a title="Imprimir OS" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimir/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i></a>
 				<?php endif ?>
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?><a title="Imprimir Termica" class="btn btn-inverse tip-top" href="<?= base_url() ?>index.php/os/imprimirTermica/<?= $o->idOs ?>" class="btn"><i class="fas fa-print"></i></a>
@@ -515,7 +521,7 @@
     
     <!-- Balanço Mensal do Ano -->
 <?php if ($estatisticas_financeiro != null) {
-    if ($estatisticas_financeiro->total_receita != null || $estatisticas_financeiro->total_despesa != null || $estatisticas_financeiro->total_receita_pendente != null || $estatisticas_financeiro->total_despesa_pendente != null) {  ?>
+                                if ($estatisticas_financeiro->total_receita != null || $estatisticas_financeiro->total_despesa != null || $estatisticas_financeiro->total_receita_pendente != null || $estatisticas_financeiro->total_despesa_pendente != null) {  ?>
 
         <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'rFinanceiro')) : ?>
             <div class="row-fluid" style="margin-top: 0">
@@ -580,52 +586,52 @@
                         series: [{
                                 name: 'Receita Líquida',
                                 data: [
-                                    [<?php echo ($financeiro_mes->VALOR_JAN_REC - $financeiro_mes->VALOR_JAN_DES); ?>],
-                                    [<?php echo ($financeiro_mes->VALOR_FEV_REC - $financeiro_mes->VALOR_FEV_DES); ?>],
-                                    [<?php echo ($financeiro_mes->VALOR_MAR_REC - $financeiro_mes->VALOR_MAR_DES); ?>],
-                                    [<?php echo ($financeiro_mes->VALOR_ABR_REC - $financeiro_mes->VALOR_ABR_DES); ?>],
-                                    [<?php echo ($financeiro_mes->VALOR_MAI_REC - $financeiro_mes->VALOR_MAI_DES); ?>],
-                                    [<?php echo ($financeiro_mes->VALOR_JUN_REC - $financeiro_mes->VALOR_JUN_DES); ?>],
-                                    [<?php echo ($financeiro_mes->VALOR_JUL_REC - $financeiro_mes->VALOR_JUL_DES); ?>],
-                                    [<?php echo ($financeiro_mes->VALOR_AGO_REC - $financeiro_mes->VALOR_AGO_DES); ?>],
-                                    [<?php echo ($financeiro_mes->VALOR_SET_REC - $financeiro_mes->VALOR_SET_DES); ?>],
-                                    [<?php echo ($financeiro_mes->VALOR_OUT_REC - $financeiro_mes->VALOR_OUT_DES); ?>],
-                                    [<?php echo ($financeiro_mes->VALOR_NOV_REC - $financeiro_mes->VALOR_NOV_DES); ?>],
-                                    [<?php echo ($financeiro_mes->VALOR_DEZ_REC - $financeiro_mes->VALOR_DEZ_DES); ?>]
+                                    [<?php echo($financeiro_mes->VALOR_JAN_REC - $financeiro_mes->VALOR_JAN_DES); ?>],
+                                    [<?php echo($financeiro_mes->VALOR_FEV_REC - $financeiro_mes->VALOR_FEV_DES); ?>],
+                                    [<?php echo($financeiro_mes->VALOR_MAR_REC - $financeiro_mes->VALOR_MAR_DES); ?>],
+                                    [<?php echo($financeiro_mes->VALOR_ABR_REC - $financeiro_mes->VALOR_ABR_DES); ?>],
+                                    [<?php echo($financeiro_mes->VALOR_MAI_REC - $financeiro_mes->VALOR_MAI_DES); ?>],
+                                    [<?php echo($financeiro_mes->VALOR_JUN_REC - $financeiro_mes->VALOR_JUN_DES); ?>],
+                                    [<?php echo($financeiro_mes->VALOR_JUL_REC - $financeiro_mes->VALOR_JUL_DES); ?>],
+                                    [<?php echo($financeiro_mes->VALOR_AGO_REC - $financeiro_mes->VALOR_AGO_DES); ?>],
+                                    [<?php echo($financeiro_mes->VALOR_SET_REC - $financeiro_mes->VALOR_SET_DES); ?>],
+                                    [<?php echo($financeiro_mes->VALOR_OUT_REC - $financeiro_mes->VALOR_OUT_DES); ?>],
+                                    [<?php echo($financeiro_mes->VALOR_NOV_REC - $financeiro_mes->VALOR_NOV_DES); ?>],
+                                    [<?php echo($financeiro_mes->VALOR_DEZ_REC - $financeiro_mes->VALOR_DEZ_DES); ?>]
                                 ]
                             },
                             {
                                 name: 'Receita Bruta',
                                 data: [
-                                    [<?php echo ($financeiro_mes->VALOR_JAN_REC); ?>],
-                                    [<?php echo ($financeiro_mes->VALOR_FEV_REC); ?>],
-                                    [<?php echo ($financeiro_mes->VALOR_MAR_REC); ?>],
-                                    [<?php echo ($financeiro_mes->VALOR_ABR_REC); ?>],
-                                    [<?php echo ($financeiro_mes->VALOR_MAI_REC); ?>],
-                                    [<?php echo ($financeiro_mes->VALOR_JUN_REC); ?>],
-                                    [<?php echo ($financeiro_mes->VALOR_JUL_REC); ?>],
-                                    [<?php echo ($financeiro_mes->VALOR_AGO_REC); ?>],
-                                    [<?php echo ($financeiro_mes->VALOR_SET_REC); ?>],
-                                    [<?php echo ($financeiro_mes->VALOR_OUT_REC); ?>],
-                                    [<?php echo ($financeiro_mes->VALOR_NOV_REC); ?>],
-                                    [<?php echo ($financeiro_mes->VALOR_DEZ_REC); ?>]
+                                    [<?php echo($financeiro_mes->VALOR_JAN_REC); ?>],
+                                    [<?php echo($financeiro_mes->VALOR_FEV_REC); ?>],
+                                    [<?php echo($financeiro_mes->VALOR_MAR_REC); ?>],
+                                    [<?php echo($financeiro_mes->VALOR_ABR_REC); ?>],
+                                    [<?php echo($financeiro_mes->VALOR_MAI_REC); ?>],
+                                    [<?php echo($financeiro_mes->VALOR_JUN_REC); ?>],
+                                    [<?php echo($financeiro_mes->VALOR_JUL_REC); ?>],
+                                    [<?php echo($financeiro_mes->VALOR_AGO_REC); ?>],
+                                    [<?php echo($financeiro_mes->VALOR_SET_REC); ?>],
+                                    [<?php echo($financeiro_mes->VALOR_OUT_REC); ?>],
+                                    [<?php echo($financeiro_mes->VALOR_NOV_REC); ?>],
+                                    [<?php echo($financeiro_mes->VALOR_DEZ_REC); ?>]
                                 ]
                             },
                             {
                                 name: 'Despesas',
                                 data: [
-                                    [<?php echo ($financeiro_mes->VALOR_JAN_DES); ?>],
-                                    [<?php echo ($financeiro_mes->VALOR_FEV_DES); ?>],
-                                    [<?php echo ($financeiro_mes->VALOR_MAR_DES); ?>],
-                                    [<?php echo ($financeiro_mes->VALOR_ABR_DES); ?>],
-                                    [<?php echo ($financeiro_mes->VALOR_MAI_DES); ?>],
-                                    [<?php echo ($financeiro_mes->VALOR_JUN_DES); ?>],
-                                    [<?php echo ($financeiro_mes->VALOR_JUL_DES); ?>],
-                                    [<?php echo ($financeiro_mes->VALOR_AGO_DES); ?>],
-                                    [<?php echo ($financeiro_mes->VALOR_SET_DES); ?>],
-                                    [<?php echo ($financeiro_mes->VALOR_OUT_DES); ?>],
-                                    [<?php echo ($financeiro_mes->VALOR_NOV_DES); ?>],
-                                    [<?php echo ($financeiro_mes->VALOR_DEZ_DES); ?>]
+                                    [<?php echo($financeiro_mes->VALOR_JAN_DES); ?>],
+                                    [<?php echo($financeiro_mes->VALOR_FEV_DES); ?>],
+                                    [<?php echo($financeiro_mes->VALOR_MAR_DES); ?>],
+                                    [<?php echo($financeiro_mes->VALOR_ABR_DES); ?>],
+                                    [<?php echo($financeiro_mes->VALOR_MAI_DES); ?>],
+                                    [<?php echo($financeiro_mes->VALOR_JUN_DES); ?>],
+                                    [<?php echo($financeiro_mes->VALOR_JUL_DES); ?>],
+                                    [<?php echo($financeiro_mes->VALOR_AGO_DES); ?>],
+                                    [<?php echo($financeiro_mes->VALOR_SET_DES); ?>],
+                                    [<?php echo($financeiro_mes->VALOR_OUT_DES); ?>],
+                                    [<?php echo($financeiro_mes->VALOR_NOV_DES); ?>],
+                                    [<?php echo($financeiro_mes->VALOR_DEZ_DES); ?>]
                                 ]
                             }
                         ]
@@ -634,13 +640,13 @@
             </script>
         <?php endif ?>
 <?php  }
-} ?>
+                            } ?>
     <!--Fim Balanço Mensal do Ano -->
 
 </div>
 
 <?php if ($estatisticas_financeiro != null) {
-    if ($estatisticas_financeiro->total_receita != null || $estatisticas_financeiro->total_despesa != null || $estatisticas_financeiro->total_receita_pendente != null || $estatisticas_financeiro->total_despesa_pendente != null) {  ?>
+                                if ($estatisticas_financeiro->total_receita != null || $estatisticas_financeiro->total_despesa != null || $estatisticas_financeiro->total_receita_pendente != null || $estatisticas_financeiro->total_despesa_pendente != null) {  ?>
 
         <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'rFinanceiro')) : ?>
         
@@ -692,7 +698,7 @@
         <?php endif ?>
 
 <?php  }
-} ?>
+                            } ?>
 
 <div class="row-fluid" style="margin-top: 0">
 <!-- Estatísticas de OS -->
@@ -758,8 +764,8 @@
         $(document).ready(function() {
             var data = [
                 <?php foreach ($os as $o) {
-                    echo "['" . $o->status . "', " . $o->total . "],";
-                } ?>
+                                echo "['" . $o->status . "', " . $o->total . "],";
+                            } ?>
 
             ];
             var plot1 = jQuery.jqplot('chart-os', [data], {
@@ -787,8 +793,8 @@
 
 
 <?php if (isset($estatisticas_financeiro) && $estatisticas_financeiro != null && $this->permission->checkPermission($this->session->userdata('permissao'), 'rFinanceiro')) {
-    if ($estatisticas_financeiro->total_receita != null || $estatisticas_financeiro->total_despesa != null || $estatisticas_financeiro->total_receita_pendente != null || $estatisticas_financeiro->total_despesa_pendente != null) {
-?>
+                                if ($estatisticas_financeiro->total_receita != null || $estatisticas_financeiro->total_despesa != null || $estatisticas_financeiro->total_receita_pendente != null || $estatisticas_financeiro->total_despesa_pendente != null) {
+                                    ?>
         <script type="text/javascript">
             $(document).ready(function() {
 
@@ -843,8 +849,8 @@
 
 
                 var data4 = [
-                    ['Total em Caixa', <?php echo ($estatisticas_financeiro->total_receita - $estatisticas_financeiro->total_despesa); ?>],
-                    ['Total a Entrar', <?php echo ($estatisticas_financeiro->total_receita_pendente - $estatisticas_financeiro->total_despesa_pendente); ?>]
+                    ['Total em Caixa', <?php echo($estatisticas_financeiro->total_receita - $estatisticas_financeiro->total_despesa); ?>],
+                    ['Total a Entrar', <?php echo($estatisticas_financeiro->total_receita_pendente - $estatisticas_financeiro->total_despesa_pendente); ?>]
                 ];
                 var plot4 = jQuery.jqplot('chart-financeiro-caixa', [data4], {
 
@@ -872,8 +878,8 @@
         </script>
 
 <?php
-    }
-} ?>
+                                }
+                            } ?>
 
 <!-- Modal Status OS Calendar -->
 <div id="calendarModal" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

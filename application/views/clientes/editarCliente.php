@@ -48,8 +48,8 @@
             <form action="<?php echo current_url(); ?>" id="formCliente" method="post" class="form-horizontal">
                 <div class="nopadding tab-content">
                     <?php if ($custom_error != '') {
-                        echo '<div class="alert alert-danger">' . $custom_error . '</div>';
-                    } ?>
+    echo '<div class="alert alert-danger">' . $custom_error . '</div>';
+} ?>
                     <div id="home" class="tab-pane fade in active">
                         <div class="control-group">
                             <label for="documento" class="control-label">CPF/CNPJ</label>
@@ -78,34 +78,35 @@
                     <!--
                     <div class="control-group">
                     <label for="senha" class="control-label">Senha<span class="required">*</span></label>
-					<?php function gerar_senha($tamanho, $maiusculas, $minusculas, $numeros, $simbolos){
-  $ma = "ABCDEFGHIJKLMNOPQRSTUVYXWZ"; // $ma contem as letras maiúsculas
+					<?php function gerar_senha($tamanho, $maiusculas, $minusculas, $numeros, $simbolos)
+{
+    $ma = "ABCDEFGHIJKLMNOPQRSTUVYXWZ"; // $ma contem as letras maiúsculas
   $mi = "abcdefghijklmnopqrstuvyxwz"; // $mi contem as letras minusculas
   $nu = "0123456789"; // $nu contem os números
   $si = "!@#$%¨&*()_+="; // $si contem os símbolos
 
-  if ($maiusculas){
-        // se $maiusculas for "true", a variável $ma é embaralhada e adicionada para a variável $senha
-        $senha .= str_shuffle($ma);
+  if ($maiusculas) {
+      // se $maiusculas for "true", a variável $ma é embaralhada e adicionada para a variável $senha
+      $senha .= str_shuffle($ma);
   }
 
-    if ($minusculas){
+    if ($minusculas) {
         // se $minusculas for "true", a variável $mi é embaralhada e adicionada para a variável $senha
         $senha .= str_shuffle($mi);
     }
 
-    if ($numeros){
+    if ($numeros) {
         // se $numeros for "true", a variável $nu é embaralhada e adicionada para a variável $senha
         $senha .= str_shuffle($nu);
     }
 
-    if ($simbolos){
+    if ($simbolos) {
         // se $simbolos for "true", a variável $si é embaralhada e adicionada para a variável $senha
         $senha .= str_shuffle($si);
     }
 
     // retorna a senha embaralhada com "str_shuffle" com o tamanho definido pela variável $tamanho
-    return substr(str_shuffle($senha),0,$tamanho);
+    return substr(str_shuffle($senha), 0, $tamanho);
 }
 ?>
                         <div class="controls">
