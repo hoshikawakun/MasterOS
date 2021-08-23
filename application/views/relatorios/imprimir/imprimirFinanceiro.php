@@ -29,8 +29,8 @@
                         <table width="1200" class="table_v">
                             <thead>
                                 <tr>
-                                	<th width="170" style="font-size: 15px">Cliente/Fornecedor</th>
-                                	<th width="355" style="font-size: 15px">Descrição</th>
+                                    <th width="170" style="font-size: 15px">Cliente/Fornecedor</th>
+                                    <th width="355" style="font-size: 15px">Descrição</th>
                                     <th width="80" style="font-size: 15px">Tipo</th>
                                     <th width="110" style="font-size: 15px">Valor</th>
                                     <th width="110" style="font-size: 15px">Entrada</th>

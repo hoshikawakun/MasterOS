@@ -1,11 +1,11 @@
 <div class="span6" style="margin-left: 0">
-        <div class="widget-title">
-            <span class="icon">
-                <i class="fas fa-user"></i>
-            </span>
-            <h5>Minha Conta</h5>
-        </div>
-        <div class="widget_box_master_os">
+    <div class="widget-title">
+        <span class="icon">
+            <i class="fas fa-user"></i>
+        </span>
+        <h5>Minha Conta</h5>
+    </div>
+    <div class="widget_box_master_os">
         <div class="widget_content">
             <div class="row-fluid">
                 <div class="span12" style="min-height: 260px">
@@ -29,14 +29,14 @@
 </div>
 
 <div class="span6">
-    
-        <div class="widget-title">
-            <span class="icon">
-                <i class="fas fa-lock"></i>
-            </span>
-            <h5>Alterar Minha Senha</h5>
-        </div>
-        <div class="widget_box_master_os">
+
+    <div class="widget-title">
+        <span class="icon">
+            <i class="fas fa-lock"></i>
+        </span>
+        <h5>Alterar Minha Senha</h5>
+    </div>
+    <div class="widget_box_master_os">
         <div class="widget_content">
             <div class="row-fluid">
                 <div class="span12" style="min-height: 260px">
@@ -68,41 +68,41 @@
 
 <script src="<?= base_url() ?>assets/js/jquery.validate.js"></script>
 <script type="text/javascript">
-    $(document).ready(function() {
+$(document).ready(function() {
 
-        $('#formSenha').validate({
-            rules: {
-                oldSenha: {
-                    required: true
-                },
-                novaSenha: {
-                    required: true
-                },
-                confirmarSenha: {
-                    equalTo: "#novaSenha"
-                }
+    $('#formSenha').validate({
+        rules: {
+            oldSenha: {
+                required: true
             },
-            messages: {
-                oldSenha: {
-                    required: 'Campo Requerido'
-                },
-                novaSenha: {
-                    required: 'Campo Requerido.'
-                },
-                confirmarSenha: {
-                    equalTo: 'As senhas não combinam.'
-                }
+            novaSenha: {
+                required: true
             },
-
-            errorClass: "help-inline",
-            errorElement: "span",
-            highlight: function(element, errorClass, validClass) {
-                $(element).parents('.control-group').addClass('error');
-            },
-            unhighlight: function(element, errorClass, validClass) {
-                $(element).parents('.control-group').removeClass('error');
-                $(element).parents('.control-group').addClass('success');
+            confirmarSenha: {
+                equalTo: "#novaSenha"
             }
-        });
+        },
+        messages: {
+            oldSenha: {
+                required: 'Campo Requerido'
+            },
+            novaSenha: {
+                required: 'Campo Requerido.'
+            },
+            confirmarSenha: {
+                equalTo: 'As senhas não combinam.'
+            }
+        },
+
+        errorClass: "help-inline",
+        errorElement: "span",
+        highlight: function(element, errorClass, validClass) {
+            $(element).parents('.control-group').addClass('error');
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).parents('.control-group').removeClass('error');
+            $(element).parents('.control-group').addClass('success');
+        }
     });
+});
 </script>

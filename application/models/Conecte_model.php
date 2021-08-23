@@ -11,7 +11,7 @@ class Conecte_model extends CI_Model
      *
      */
     
-    function add($table, $data, $returnId = false)
+    public function add($table, $data, $returnId = false)
     {
         $this->db->insert($table, $data);
         if ($this->db->affected_rows() == '1') {
@@ -39,7 +39,6 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
 
     public function getLastCompras($cliente)
     {
-        
         $this->db->select('vendas.*,usuarios.nome');
         $this->db->from('vendas');
         $this->db->join('usuarios', 'usuarios.idUsuarios = vendas.usuarios_id');
@@ -53,7 +52,6 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
 
     public function getCompras($table, $fields, $where = '', $perpage = 0, $start = 0, $one = false, $array = 'array', $cliente)
     {
-        
         $this->db->select($fields);
         $this->db->from($table);
         $this->db->join('usuarios', 'vendas.usuarios_id = usuarios.idUsuarios', 'left');
@@ -90,7 +88,6 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
     }
     public function getOs($table, $fields, $where = '', $perpage = 0, $start = 0, $one = false, $array = 'array', $cliente)
     {
-        
         $this->db->select($fields);
         $this->db->from($table);
         $this->db->select('
@@ -108,7 +105,6 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
 
     public function getProdutos($id = null)
     {
-
         $this->db->select('produtos_os.*, produtos.*');
         $this->db->from('produtos_os');
         $this->db->join('produtos', 'produtos.idProdutos = produtos_os.produtos_id');
@@ -133,14 +129,13 @@ COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_
 
     public function getDados()
     {
-        
         $this->db->where('idclientes', $this->session->userdata('cliente_id'));
         $this->db->limit(1);
         return $this->db->get('clientes')->row();
     }
 
 
-    function edit($table, $data, $fieldID, $ID)
+    public function edit($table, $data, $fieldID, $ID)
     {
         $this->db->where($fieldID, $ID);
         $this->db->update($table, $data);

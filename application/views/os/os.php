@@ -6,44 +6,47 @@
 <div class="span12" style="margin-left: 0">
     <form method="get" action="<?php echo base_url(); ?>index.php/os/gerenciar">
         <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'aOs')) { ?>
-            <div class="span3">
-                <a href="<?php echo base_url(); ?>index.php/os/adicionar" class="btn btn-success span12"><i class="fas fa-plus"></i> Adicionar OS</a>
-            </div>
+        <div class="span3">
+            <a href="<?php echo base_url(); ?>index.php/os/adicionar" class="btn btn-success span12"><i
+                    class="fas fa-plus"></i> Adicionar OS</a>
+        </div>
         <?php
         } ?>
 
         <div class="span3">
-            <input type="text" name="pesquisa" id="cliente" placeholder="Nome do cliente a pesquisar" class="span12" value="">
+            <input type="text" name="pesquisa" id="cliente" placeholder="Nome do cliente a pesquisar" class="span12"
+                value="">
         </div>
         <div class="span2">
             <select name="status" id="" class="span12">
-            	<option value="">Todos os Status</option>
-				<option value="Orçamento">Orçamento</option>
-				<option value="Orçamento Concluido">Orçamento Concluido</option>
-				<option value="Orçamento Aprovado">Orçamento Aprovado</option>
-				<option value="Em Andamento">Em Andamento</option>
+                <option value="">Todos os Status</option>
+                <option value="Orçamento">Orçamento</option>
+                <option value="Orçamento Concluido">Orçamento Concluido</option>
+                <option value="Orçamento Aprovado">Orçamento Aprovado</option>
+                <option value="Em Andamento">Em Andamento</option>
                 <option value="Aguardando Peças">Aguardando Peças</option>
                 <option value="Serviço Concluido">Serviço Concluido</option>
-				<option value="Sem Reparo">Sem Reparo</option>
-				<option value="Não Autorizado">Não Autorizado</option>
+                <option value="Sem Reparo">Sem Reparo</option>
+                <option value="Não Autorizado">Não Autorizado</option>
                 <option value="Contato sem Sucesso">Contato sem Sucesso</option>
                 <option value="Cancelado">Cancelado</option>
-				<option value="Pronto-Despachar">Pronto-Despachar</option>
+                <option value="Pronto-Despachar">Pronto-Despachar</option>
                 <option value="Enviado">Enviado</option>
                 <option value="Aguardando Envio">Aguardando Envio</option>
                 <option value="Aguardando Entrega Correio">Aguardando Entrega Correio</option>
                 <option value="Entregue - A Receber">Entregue - A Receber</option>
-				<option value="Garantia">Garantia</option>
+                <option value="Garantia">Garantia</option>
                 <option value="Abandonado">Abandonado</option>
-				<option value="Comprado pela Loja">Comprado pela Loja</option>
+                <option value="Comprado pela Loja">Comprado pela Loja</option>
                 <option value="Entregue - Faturado">Entregue - Faturado</option>
-                
+
             </select>
 
         </div>
 
         <div class="span3">
-            <input type="text" name="data" autocomplete="off" id="data" placeholder="Data de Entrada" class="span6 datepicker" value="">
+            <input type="text" name="data" autocomplete="off" id="data" placeholder="Data de Entrada"
+                class="span6 datepicker" value="">
         </div>
         <div class="span1">
             <button class="span12 btn"> <i class="fas fa-search"></i> </button>
@@ -60,23 +63,23 @@
     </div>
     <div class="widget_content nopadding">
         <table id="tabela" width="100%" class="table_p">
-                <thead>
-                    <tr>
-                        <th>N° OS</th>
-                        <th>Cliente</th>
-                        <th>Responsável</th>
-                        <th>Data de Entrada</th>
-                        <th>Garantia Até</th>
-                        <th>Valor Total</th>
-                        <!--
+            <thead>
+                <tr>
+                    <th>N° OS</th>
+                    <th>Cliente</th>
+                    <th>Responsável</th>
+                    <th>Data de Entrada</th>
+                    <th>Garantia Até</th>
+                    <th>Valor Total</th>
+                    <!--
                         <th>Faturado</th>
                         -->
-                     	<th>Status</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
                         
                         if (!$results) {
                             echo '<tr>
@@ -195,16 +198,17 @@
                             echo  '</td>';
                             echo '</tr>';
                         } ?>
-                </tbody>
-            </table>
-        </div>
+            </tbody>
+        </table>
     </div>
+</div>
 </div>
 
 <?php echo $this->pagination->create_links(); ?>
 
 <!-- Modal -->
-<div id="modal-excluir" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="modal-excluir" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="<?php echo base_url() ?>index.php/os/excluir" method="post">
         <div class="modal_header_anexos">
             <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>
@@ -221,44 +225,44 @@
     </form>
 </div>
 <script type="text/javascript">
-    $(document).ready(function() {
-        $(document).on('click', 'a', function(event) {
-            var os = $(this).attr('os');
-            $('#idOs').val(os);
-        });
-		$("#cliente").autocomplete({
-            source: "<?php echo base_url(); ?>index.php/os/autoCompleteClienteOs",
-            minLength: 2,
-            select: function(event, ui) {
-                $("#clienteHide").val(ui.item.id);
-            }
-        });
-        $(document).on('click', '#excluir-notificacao', function(event) {
-            event.preventDefault();
-            $.ajax({
-                    url: '<?php echo site_url() ?>/os/excluir_notificacao',
-                    type: 'GET',
-                    dataType: 'json',
-                })
-                .done(function(data) {
-                    if (data.result == true) {
-                        Swal.fire({
-                            type: "success",
-                            title: "Sucesso",
-                            text: "Notificação excluída com sucesso."
-                        });
-                        location.reload();
-                    } else {
-                        Swal.fire({
-                            type: "success",
-                            title: "Sucesso",
-                            text: "Ocorreu um problema ao tentar exlcuir notificação."
-                        });
-                    }
-                });
-        });
-        $(".datepicker").datepicker({
-            dateFormat: 'dd/mm/yy'
-        });
+$(document).ready(function() {
+    $(document).on('click', 'a', function(event) {
+        var os = $(this).attr('os');
+        $('#idOs').val(os);
     });
+    $("#cliente").autocomplete({
+        source: "<?php echo base_url(); ?>index.php/os/autoCompleteClienteOs",
+        minLength: 2,
+        select: function(event, ui) {
+            $("#clienteHide").val(ui.item.id);
+        }
+    });
+    $(document).on('click', '#excluir-notificacao', function(event) {
+        event.preventDefault();
+        $.ajax({
+                url: '<?php echo site_url() ?>/os/excluir_notificacao',
+                type: 'GET',
+                dataType: 'json',
+            })
+            .done(function(data) {
+                if (data.result == true) {
+                    Swal.fire({
+                        type: "success",
+                        title: "Sucesso",
+                        text: "Notificação excluída com sucesso."
+                    });
+                    location.reload();
+                } else {
+                    Swal.fire({
+                        type: "success",
+                        title: "Sucesso",
+                        text: "Ocorreu um problema ao tentar exlcuir notificação."
+                    });
+                }
+            });
+    });
+    $(".datepicker").datepicker({
+        dateFormat: 'dd/mm/yy'
+    });
+});
 </script>

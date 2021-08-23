@@ -9,30 +9,30 @@
             </div>
         </form>
     </div>
-    
+
     <div class="span12" style="margin-left: 0">
         <!--Ordens de Serviço-->
-    <div class="span12">
-        <div class="widget-box">
-            <div class="widget-title">
-                <span class="icon"><i class="fas fa-diagnoses"></i></span>
-                <h5>Ordens de Serviço</h5>
-            </div>
-            <div class="widget_content">
-                <table class="table_p">
-                    <thead>
-                        <tr>
-                            <th>OS N°</th>
-                            <th>Data de Entrada</th>
-                            <th>Descrição</th>
-                            <th>Problema Informado</th>
-                            <th>Nº Série</th>
-                            <th>Status</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
+        <div class="span12">
+            <div class="widget-box">
+                <div class="widget-title">
+                    <span class="icon"><i class="fas fa-diagnoses"></i></span>
+                    <h5>Ordens de Serviço</h5>
+                </div>
+                <div class="widget_content">
+                    <table class="table_p">
+                        <thead>
+                            <tr>
+                                <th>OS N°</th>
+                                <th>Data de Entrada</th>
+                                <th>Descrição</th>
+                                <th>Problema Informado</th>
+                                <th>Nº Série</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
                         
                         if ($os == null) {
                             echo '<tr><td colspan="7">Nenhuma os foi encontrado.</td></tr>';
@@ -123,25 +123,25 @@
                             echo '</tr>';
                         }
                         ?>
-                        <tr>
-                        </tr>
-                    </tbody>
-                </table>
+                            <tr>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-</div>
-    
+
     <div class="span12" style="margin-left: 0; margin-top: 0">
         <!--Produtoss-->
         <div class="span12">
-        <div class="widget-box">
-            <div class="widget-title">
-                <span class="icon"><i class="fas fa-shopping-bag"></i></span>
-                <h5>Produtos</h5>
-            </div>
-            <div class="widget_content">
-                <table class="table_p">
+            <div class="widget-box">
+                <div class="widget-title">
+                    <span class="icon"><i class="fas fa-shopping-bag"></i></span>
+                    <h5>Produtos</h5>
+                </div>
+                <div class="widget_content">
+                    <table class="table_p">
                         <thead>
                             <tr>
                                 <th>Cod. Produto</th>
@@ -180,17 +180,17 @@
                 </div>
             </div>
         </div>
-</div>
-	<div class="span12" style="margin-left: 0">
+    </div>
+    <div class="span12" style="margin-left: 0">
         <!--Clientes-->
         <div class="span12">
-        <div class="widget-box">
-            <div class="widget-title">
-                <span class="icon"><i class="fas fa-user"></i></span>
-                <h5>Clientes</h5>
-            </div>
-            <div class="widget_content">
-                <table class="table_p">
+            <div class="widget-box">
+                <div class="widget-title">
+                    <span class="icon"><i class="fas fa-user"></i></span>
+                    <h5>Clientes</h5>
+                </div>
+                <div class="widget_content">
+                    <table class="table_p">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -231,7 +231,7 @@
         </div>
     </div>
 </div>
-	
+
 <div class="span12" style="margin-left: 0">
     <!--Serviços-->
     <div class="span12">

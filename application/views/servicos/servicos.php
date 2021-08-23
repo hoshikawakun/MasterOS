@@ -1,14 +1,15 @@
 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'aServico')) { ?>
-    <a href="<?php echo base_url() ?>index.php/servicos/adicionar" class="btn btn-success"><i class="icon-plus icon-white"></i> Adicionar Serviço</a>
+<a href="<?php echo base_url() ?>index.php/servicos/adicionar" class="btn btn-success"><i
+        class="icon-plus icon-white"></i> Adicionar Serviço</a>
 <?php } ?>
 
 <div class="widget-box">
-	<div class="widget-title">
-	<span class="icon"><i class="fas fa-wrench"></i></span>
-	<h5>Serviços</h5>
-	</div>
-	<div class="widget-content nopadding">
-    
+    <div class="widget-title">
+        <span class="icon"><i class="fas fa-wrench"></i></span>
+        <h5>Serviços</h5>
+    </div>
+    <div class="widget-content nopadding">
+
         <table id="tabela" width="100%" class="table_p">
             <thead>
                 <tr>
@@ -49,7 +50,8 @@
 <?php echo $this->pagination->create_links(); ?>
 
 <!-- Modal -->
-<div id="modal-excluir" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="modal-excluir" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="<?php echo base_url() ?>index.php/servicos/excluir" method="post">
         <div class="modal_header_anexos">
             <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>
@@ -67,10 +69,10 @@
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        $(document).on('click', 'a', function(event) {
-            var servico = $(this).attr('servico');
-            $('#idServico').val(servico);
-        });
+$(document).ready(function() {
+    $(document).on('click', 'a', function(event) {
+        var servico = $(this).attr('servico');
+        $('#idServico').val(servico);
     });
+});
 </script>

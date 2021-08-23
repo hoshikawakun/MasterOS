@@ -23,13 +23,11 @@ class Mine extends CI_Controller
 
     public function login()
     {
-
         $this->load->library('form_validation');
         $this->form_validation->set_rules('email', 'Email', 'required|trim');
         $this->form_validation->set_rules('senha', 'Senha', 'required|trim');
         $ajax = $this->input->get('ajax');
         if ($this->form_validation->run() == false) {
-
             if ($ajax == true) {
                 $json = array('result' => false);
                 echo json_encode($json);
@@ -38,7 +36,6 @@ class Mine extends CI_Controller
                 redirect('mine');
             }
         } else {
-
             $email = $this->input->post('email');
             $senha = $this->input->post('senha');
 
@@ -46,7 +43,7 @@ class Mine extends CI_Controller
             $this->db->where('senha', $senha);
             $this->db->limit(1);
             $cliente = $this->db->get('clientes');
-            if($cliente->num_rows() > 0){
+            if ($cliente->num_rows() > 0) {
                 $cliente = $cliente->row();
                 $dados = array('nome' => $cliente->nomeCliente, 'cliente_id' => $cliente->idClientes, 'conectado' => true);
                 $this->session->set_userdata($dados);
@@ -58,7 +55,6 @@ class Mine extends CI_Controller
                     redirect(site_url() . '/mine');
                 }
             } else {
-
                 if ($ajax == true) {
                     $json = array('result' => false);
                     echo json_encode($json);
@@ -123,10 +119,10 @@ class Mine extends CI_Controller
                 'cidade' => $this->input->post('cidade'),
                 'estado' => $this->input->post('estado'),
                 'cep' => $this->input->post('cep'),
-				'foto_url' => $this->input->post('foto_url'),
-				'senha' => $this->input->post('senha'),
-				'foto_url' => $this->input->post('foto_url'),
-				'senha' => $this->input->post('senha'),
+                'foto_url' => $this->input->post('foto_url'),
+                'senha' => $this->input->post('senha'),
+                'foto_url' => $this->input->post('foto_url'),
+                'senha' => $this->input->post('senha'),
             ];
 
             if ($this->Conecte_model->edit('clientes', $data, 'idClientes', $this->input->post('idClientes')) == true) {
@@ -301,13 +297,16 @@ class Mine extends CI_Controller
         $this->pagination->initialize($config);
 
         $data['results'] = $this->Conecte_model->getOs(
-		'os',
-		'*',
-		'COALESCE((SELECT SUM(produtos_os.preco * produtos_os.quantidade ) FROM produtos_os WHERE produtos_os.os_id = os.idOs), 0) totalProdutos,
-		 COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos',  
-		$config['per_page'], 
-		$this->uri->segment(3), '', '', 
-		$this->session->userdata('cliente_id'));
+            'os',
+            '*',
+            'COALESCE((SELECT SUM(produtos_os.preco * produtos_os.quantidade ) FROM produtos_os WHERE produtos_os.os_id = os.idOs), 0) totalProdutos,
+		 COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos',
+            $config['per_page'],
+            $this->uri->segment(3),
+            '',
+            '',
+            $this->session->userdata('cliente_id')
+        );
 
         $data['output'] = 'conecte/os';
         $this->load->view('conecte/template', $data);
@@ -330,8 +329,8 @@ class Mine extends CI_Controller
         $data['emitente'] = $this->mapos_model->getEmitente();
 
         if ($data['result']->idClientes != $this->session->userdata('cliente_id')) {
-        $this->session->set_flashdata('error', 'Esta OS não pertence ao cliente logado.');
-        redirect('mine/painel');
+            $this->session->set_flashdata('error', 'Esta OS não pertence ao cliente logado.');
+            redirect('mine/painel');
         }
 
         $data['output'] = 'conecte/visualizar_os';
@@ -495,7 +494,7 @@ class Mine extends CI_Controller
 
             $data = [
                 'dataInicial' => date('Y-m-d'),
-				'dataFinal' => date('Y-m-d'),
+                'dataFinal' => date('Y-m-d'),
                 'clientes_id' => $this->session->userdata('cliente_id'), //set_value('idCliente'),
                 'usuarios_id' => $id, //set_value('idUsuario'),
                 'descricaoProduto' => $this->input->post('descricaoProduto'),
@@ -567,8 +566,8 @@ class Mine extends CI_Controller
                 'estado' => set_value('estado'),
                 'cep' => set_value('cep'),
                 'dataCadastro' => date('Y-m-d'),
-				'foto_url' => $this->input->post('foto_url'),
-				'senha' => $this->input->post('senha'),
+                'foto_url' => $this->input->post('foto_url'),
+                'senha' => $this->input->post('senha'),
             ];
 
             if ($this->clientes_model->add('clientes', $data) == true) {

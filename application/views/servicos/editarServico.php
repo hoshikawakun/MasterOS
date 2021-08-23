@@ -20,18 +20,21 @@
                     <div class="control-group">
                         <label for="preco" class="control-label"><span class="required">Preço*</span></label>
                         <div class="controls">
-                            <input id="preco" class="money" data-affixes-stay="true" data-thousands="" data-decimal="." type="text" name="preco" value="<?php echo $result->preco ?>" />
+                            <input id="preco" class="money" data-affixes-stay="true" data-thousands="" data-decimal="."
+                                type="text" name="preco" value="<?php echo $result->preco ?>" />
                         </div>
                     </div>
                     <div class="control-group">
                         <label for="descricao" class="control-label">Descrição</label>
                         <div class="controls">
-                            <input id="descricao" type="text" name="descricao" value="<?php echo $result->descricao ?>" />
+                            <input id="descricao" type="text" name="descricao"
+                                value="<?php echo $result->descricao ?>" />
                         </div>
                     </div>
                     <div class="form_actions" align="center">
-                    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
-                    <a href="<?php echo base_url() ?>index.php/servicos" id="btnAdicionar" class="btn btn-warning"><i class="fas fa-backward"></i> Voltar</a>
+                        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                        <a href="<?php echo base_url() ?>index.php/servicos" id="btnAdicionar"
+                            class="btn btn-warning"><i class="fas fa-backward"></i> Voltar</a>
                     </div>
                 </form>
             </div>
@@ -41,34 +44,34 @@
 <script src="<?php echo base_url() ?>assets/js/jquery.validate.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/maskmoney.js"></script>
 <script type="text/javascript">
-    $(document).ready(function() {
-        $(".money").maskMoney();
-        $('#formServico').validate({
-            rules: {
-                nome: {
-                    required: true
-                },
-                preco: {
-                    required: true
-                }
+$(document).ready(function() {
+    $(".money").maskMoney();
+    $('#formServico').validate({
+        rules: {
+            nome: {
+                required: true
             },
-            messages: {
-                nome: {
-                    required: 'Campo Requerido.'
-                },
-                preco: {
-                    required: 'Campo Requerido.'
-                }
-            },
-            errorClass: "help-inline",
-            errorElement: "span",
-            highlight: function(element, errorClass, validClass) {
-                $(element).parents('.control-group').addClass('error');
-            },
-            unhighlight: function(element, errorClass, validClass) {
-                $(element).parents('.control-group').removeClass('error');
-                $(element).parents('.control-group').addClass('success');
+            preco: {
+                required: true
             }
-        });
+        },
+        messages: {
+            nome: {
+                required: 'Campo Requerido.'
+            },
+            preco: {
+                required: 'Campo Requerido.'
+            }
+        },
+        errorClass: "help-inline",
+        errorElement: "span",
+        highlight: function(element, errorClass, validClass) {
+            $(element).parents('.control-group').addClass('error');
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).parents('.control-group').removeClass('error');
+            $(element).parents('.control-group').addClass('success');
+        }
     });
+});
 </script>

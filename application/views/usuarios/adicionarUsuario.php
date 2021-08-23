@@ -33,21 +33,24 @@
                     <div class="control-group">
                         <label for="cpf" class="control-label">CPF<span class="required">*</span></label>
                         <div class="controls">
-                            <input class="" type="text" id="cpfUser" name="cpf" value="<?php echo set_value('cpf'); ?>" />
+                            <input class="" type="text" id="cpfUser" name="cpf"
+                                value="<?php echo set_value('cpf'); ?>" />
                         </div>
                     </div>
 
                     <div class="control-group">
                         <label for="telefone" class="control-label">Telefone<span class="required">*</span></label>
                         <div class="controls">
-                            <input id="telefone" type="text" name="telefone" value="<?php echo set_value('telefone'); ?>" />
+                            <input id="telefone" type="text" name="telefone"
+                                value="<?php echo set_value('telefone'); ?>" />
                         </div>
                     </div>
 
                     <div class="control-group">
                         <label for="celular" class="control-label">Celular</label>
                         <div class="controls">
-                            <input id="celular" type="text" name="celular" value="<?php echo set_value('celular'); ?>" />
+                            <input id="celular" type="text" name="celular"
+                                value="<?php echo set_value('celular'); ?>" />
                         </div>
                     </div>
 
@@ -111,9 +114,11 @@
 
                     <!-- Campo para inserir a data de validade de acesso do usuário-->
                     <div class="control-group">
-                        <label for="dataExpiracao" class="control-label">Expira em <span class="required">*</span></label>
+                        <label for="dataExpiracao" class="control-label">Expira em <span
+                                class="required">*</span></label>
                         <div class="controls">
-                            <input id="dataExpiracao" type="date" name="dataExpiracao" value="<?php echo set_value('dataExpiracao'); ?>" />
+                            <input id="dataExpiracao" type="date" name="dataExpiracao"
+                                value="<?php echo set_value('dataExpiracao'); ?>" />
                         </div>
                     </div>
 
@@ -139,8 +144,9 @@
                     </div>
 
                     <div class="form_actions" align="center">
-                    <button type="submit" class="btn btn-success"><i class="fas fa-plus"></i> Adicionar</button>
-                    <a href="<?php echo base_url() ?>index.php/produtos" id="" class="btn btn-warning"><i class="fas fa-backward"></i> Voltar</a>
+                        <button type="submit" class="btn btn-success"><i class="fas fa-plus"></i> Adicionar</button>
+                        <a href="<?php echo base_url() ?>index.php/produtos" id="" class="btn btn-warning"><i
+                                class="fas fa-backward"></i> Voltar</a>
                     </div>
 
 
@@ -153,94 +159,94 @@
 
 <script src="<?php echo base_url() ?>assets/js/jquery.validate.js"></script>
 <script type="text/javascript">
-    $(document).ready(function() {
+$(document).ready(function() {
 
-        $('#formUsuario').validate({
-            rules: {
-                nome: {
-                    required: true
-                },
-                dataExpiracao: {
-                    required: true
-                },
-                cpf: {
-                    required: true
-                },
-                telefone: {
-                    required: true
-                },
-                email: {
-                    required: true
-                },
-                senha: {
-                    required: true
-                },
-                rua: {
-                    required: true
-                },
-                numero: {
-                    required: true
-                },
-                bairro: {
-                    required: true
-                },
-                cidade: {
-                    required: true
-                },
-                estado: {
-                    required: true
-                },
-                cep: {
-                    required: true
-                }
+    $('#formUsuario').validate({
+        rules: {
+            nome: {
+                required: true
             },
-            messages: {
-                nome: {
-                    required: 'Campo Requerido.'
-                },
-                dataExpiracao: {
-                    required: 'Campo Requerido.'
-                },
-                cpf: {
-                    required: 'Campo Requerido.'
-                },
-                telefone: {
-                    required: 'Campo Requerido.'
-                },
-                email: {
-                    required: 'Campo Requerido.'
-                },
-                senha: {
-                    required: 'Campo Requerido.'
-                },
-                rua: {
-                    required: 'Campo Requerido.'
-                },
-                numero: {
-                    required: 'Campo Requerido.'
-                },
-                bairro: {
-                    required: 'Campo Requerido.'
-                },
-                cidade: {
-                    required: 'Campo Requerido.'
-                },
-                estado: {
-                    required: 'Campo Requerido.'
-                },
-                cep: {
-                    required: 'Campo Requerido.'
-                }
+            dataExpiracao: {
+                required: true
             },
-            errorClass: "help-inline",
-            errorElement: "span",
-            highlight: function(element, errorClass, validClass) {
-                $(element).parents('.control-group').addClass('error');
+            cpf: {
+                required: true
             },
-            unhighlight: function(element, errorClass, validClass) {
-                $(element).parents('.control-group').removeClass('error');
-                $(element).parents('.control-group').addClass('success');
+            telefone: {
+                required: true
+            },
+            email: {
+                required: true
+            },
+            senha: {
+                required: true
+            },
+            rua: {
+                required: true
+            },
+            numero: {
+                required: true
+            },
+            bairro: {
+                required: true
+            },
+            cidade: {
+                required: true
+            },
+            estado: {
+                required: true
+            },
+            cep: {
+                required: true
             }
-        });
+        },
+        messages: {
+            nome: {
+                required: 'Campo Requerido.'
+            },
+            dataExpiracao: {
+                required: 'Campo Requerido.'
+            },
+            cpf: {
+                required: 'Campo Requerido.'
+            },
+            telefone: {
+                required: 'Campo Requerido.'
+            },
+            email: {
+                required: 'Campo Requerido.'
+            },
+            senha: {
+                required: 'Campo Requerido.'
+            },
+            rua: {
+                required: 'Campo Requerido.'
+            },
+            numero: {
+                required: 'Campo Requerido.'
+            },
+            bairro: {
+                required: 'Campo Requerido.'
+            },
+            cidade: {
+                required: 'Campo Requerido.'
+            },
+            estado: {
+                required: 'Campo Requerido.'
+            },
+            cep: {
+                required: 'Campo Requerido.'
+            }
+        },
+        errorClass: "help-inline",
+        errorElement: "span",
+        highlight: function(element, errorClass, validClass) {
+            $(element).parents('.control-group').addClass('error');
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).parents('.control-group').removeClass('error');
+            $(element).parents('.control-group').addClass('success');
+        }
     });
+});
 </script>

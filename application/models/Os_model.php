@@ -195,7 +195,7 @@ class Os_model extends CI_Model
         $query = $this->db->get('produtos');
         if ($query->num_rows() > 0) {
             foreach ($query->result_array() as $row) {
-            $row_set[] = array('label'=>$row['idProdutos'].' | '.$row['codDeBarra'].' | '.$row['descricao'].' | Preço: R$ '.$row['precoVenda'].' | Estoque: '.$row['estoque'],'estoque'=>$row['estoque'],'id'=>$row['idProdutos'],'preco'=>$row['precoVenda']);
+                $row_set[] = array('label'=>$row['idProdutos'].' | '.$row['codDeBarra'].' | '.$row['descricao'].' | Preço: R$ '.$row['precoVenda'].' | Estoque: '.$row['estoque'],'estoque'=>$row['estoque'],'id'=>$row['idProdutos'],'preco'=>$row['precoVenda']);
             }
             echo json_encode($row_set);
         }
@@ -212,7 +212,7 @@ class Os_model extends CI_Model
         $query = $this->db->get('produtos');
         if ($query->num_rows() > 0) {
             foreach ($query->result_array() as $row) {
-            $row_set[] = array('label'=>$row['idProdutos'].' | '.$row['codDeBarra'].' | '.$row['descricao'].' | Preço: R$ '.$row['precoVenda'].' | Estoque: '.$row['estoque'],'estoque'=>$row['estoque'],'id'=>$row['idProdutos'],'preco'=>$row['precoVenda']);
+                $row_set[] = array('label'=>$row['idProdutos'].' | '.$row['codDeBarra'].' | '.$row['descricao'].' | Preço: R$ '.$row['precoVenda'].' | Estoque: '.$row['estoque'],'estoque'=>$row['estoque'],'id'=>$row['idProdutos'],'preco'=>$row['precoVenda']);
             }
             echo json_encode($row_set);
         }
@@ -228,8 +228,8 @@ class Os_model extends CI_Model
         $query = $this->db->get('clientes');
         if ($query->num_rows() > 0) {
             foreach ($query->result_array() as $row) {
-		$row_set[] = array('label' => $row['nomeCliente'] . ' | Telefone: ' . $row['telefone'] . ' | ' . $row['celular'], 'id' => $row['idClientes']);
-		}
+                $row_set[] = array('label' => $row['nomeCliente'] . ' | Telefone: ' . $row['telefone'] . ' | ' . $row['celular'], 'id' => $row['idClientes']);
+            }
             echo json_encode($row_set);
         }
     }
@@ -242,15 +242,14 @@ class Os_model extends CI_Model
         $query = $this->db->get('clientes');
         if ($query->num_rows() > 0) {
             foreach ($query->result_array() as $row) {
-        $row_set[] = array('label' => $row['nomeCliente'], 'id' => $row['idClientes']);
-		}
+                $row_set[] = array('label' => $row['nomeCliente'], 'id' => $row['idClientes']);
+            }
             echo json_encode($row_set);
         }
     }
 
     public function autoCompleteUsuario($q)
     {
-
         $this->db->select('*');
         $this->db->limit($this->data['configuration']['per_page']);
         $this->db->like('nome', $q);
@@ -280,7 +279,6 @@ class Os_model extends CI_Model
 
     public function autoCompleteServico($q)
     {
-
         $this->db->select('*');
         $this->db->limit($this->data['configuration']['per_page']);
         $this->db->like('nome', $q);
@@ -310,14 +308,14 @@ class Os_model extends CI_Model
         return $this->db->get('anexos')->result();
     }
 
-   public function getEquipamentos($os)
+    public function getEquipamentos($os)
     {
         $this->db->where('os_id', $os);
         $this->db->order_by('idEquipamento', 'desc');
         return $this->db->get('equipamento_os')->result();
     }
 
-   public function getAnotacoes($os)
+    public function getAnotacoes($os)
     {
         $this->db->where('os_id', $os);
         $this->db->order_by('idAnotacoes', 'desc');

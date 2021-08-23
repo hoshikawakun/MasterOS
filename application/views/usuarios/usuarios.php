@@ -1,4 +1,5 @@
-<a href="<?php echo base_url() ?>index.php/usuarios/adicionar" class="btn btn-success"><i class="fas fa-user-plus"></i> Adicionar Usuário</a>
+<a href="<?php echo base_url() ?>index.php/usuarios/adicionar" class="btn btn-success"><i class="fas fa-user-plus"></i>
+    Adicionar Usuário</a>
 
 <div class="widget-box">
     <div class="widget-title">
@@ -9,7 +10,7 @@
 
     </div>
     <div class="widget-content nopadding">
-    
+
         <table id="tabela" width="100%" class="table_p">
             <thead>
                 <tr>

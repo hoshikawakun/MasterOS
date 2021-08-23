@@ -334,7 +334,7 @@ class Mapos extends MY_Controller
             $this->session->set_flashdata('error', 'Você não tem permissão para configurar o sistema');
             redirect(base_url());
         }
-		
+        
         $this->data['menuConfiguracoes'] = 'Sistema';
         $this->load->library('form_validation');
         $this->load->model('mapos_model');
@@ -351,7 +351,7 @@ class Mapos extends MY_Controller
         $this->form_validation->set_rules('control_baixa', 'Controle de Baixa', 'required|trim');
         $this->form_validation->set_rules('control_editos', 'Controle de Edição de OS', 'required|trim');
         //$this->form_validation->set_rules('control_datatable', 'Controle de Visualização em DataTables', 'required|trim');
-		$this->form_validation->set_rules('os_status_list[]', 'Controle de visualização de OS', 'required|trim', ['required' => 'Selecione ao menos uma das opções!']);
+        $this->form_validation->set_rules('os_status_list[]', 'Controle de visualização de OS', 'required|trim', ['required' => 'Selecione ao menos uma das opções!']);
         $this->form_validation->set_rules('pix_key', 'Chave Pix', 'trim|valid_pix_key', [
             'valid_pix_key' => 'Chave Pix inválida!',
         ]);
@@ -360,34 +360,34 @@ class Mapos extends MY_Controller
             $this->data['custom_error'] = (validation_errors() ? '<div class="alert">' . validation_errors() . '</div>' : false);
         } else {
             $data = [
-				'app_name' => $this->input->post('app_name'),
-				'per_page' => $this->input->post('per_page'),
-				'app_theme' => $this->input->post('app_theme'),
-				'os_notification' => $this->input->post('os_notification'),
-				'control_estoque' => $this->input->post('control_estoque'),
-				'termo_uso' => $this->input->post('termo_uso'),
-				'whats_app1' => $this->input->post('whats_app1'),
-				'whats_app2' => $this->input->post('whats_app2'),
-				'whats_app3' => $this->input->post('whats_app3'),
-				'whats_app4' => $this->input->post('whats_app4'),
-				'whats_app5' => $this->input->post('whats_app5'),
-				'whats_app6' => $this->input->post('whats_app6'),
-				'gerenciador_arquivos' => $this->input->post('gerenciador_arquivos'),
-				'masteros_0' => $this->input->post('masteros_0'),
-				'masteros_1' => $this->input->post('masteros_1'),
-				'masteros_2' => $this->input->post('masteros_2'),
-				'masteros_3' => $this->input->post('masteros_3'),
-				'masteros_4' => $this->input->post('masteros_4'),
-				'masteros_5' => $this->input->post('masteros_5'),
-				'masteros_6' => $this->input->post('masteros_6'),
-				'masteros_7' => $this->input->post('masteros_7'),
-				'masteros_8' => $this->input->post('masteros_8'),
-				'masteros_9' => $this->input->post('masteros_9'),
-				'control_baixa' => $this->input->post('control_baixa'),
-				'control_editos' => $this->input->post('control_editos'),
-				//'control_datatable' => $this->input->post('control_datatable'),
-				'pix_key' => $this->input->post('pix_key'),
-				'os_status_list' => json_encode($this->input->post('os_status_list')),
+                'app_name' => $this->input->post('app_name'),
+                'per_page' => $this->input->post('per_page'),
+                'app_theme' => $this->input->post('app_theme'),
+                'os_notification' => $this->input->post('os_notification'),
+                'control_estoque' => $this->input->post('control_estoque'),
+                'termo_uso' => $this->input->post('termo_uso'),
+                'whats_app1' => $this->input->post('whats_app1'),
+                'whats_app2' => $this->input->post('whats_app2'),
+                'whats_app3' => $this->input->post('whats_app3'),
+                'whats_app4' => $this->input->post('whats_app4'),
+                'whats_app5' => $this->input->post('whats_app5'),
+                'whats_app6' => $this->input->post('whats_app6'),
+                'gerenciador_arquivos' => $this->input->post('gerenciador_arquivos'),
+                'masteros_0' => $this->input->post('masteros_0'),
+                'masteros_1' => $this->input->post('masteros_1'),
+                'masteros_2' => $this->input->post('masteros_2'),
+                'masteros_3' => $this->input->post('masteros_3'),
+                'masteros_4' => $this->input->post('masteros_4'),
+                'masteros_5' => $this->input->post('masteros_5'),
+                'masteros_6' => $this->input->post('masteros_6'),
+                'masteros_7' => $this->input->post('masteros_7'),
+                'masteros_8' => $this->input->post('masteros_8'),
+                'masteros_9' => $this->input->post('masteros_9'),
+                'control_baixa' => $this->input->post('control_baixa'),
+                'control_editos' => $this->input->post('control_editos'),
+                //'control_datatable' => $this->input->post('control_datatable'),
+                'pix_key' => $this->input->post('pix_key'),
+                'os_status_list' => json_encode($this->input->post('os_status_list')),
             ];
             if ($this->mapos_model->saveConfiguracao($data) == true) {
                 $this->session->set_flashdata('success', 'Configurações do sistema atualizadas com sucesso!');
@@ -530,58 +530,58 @@ class Mapos extends MY_Controller
                 case 'Orçamento':
                     $cor = '#CCCC00';
                     break;
-								case 'Orçamento Concluido':
+                                case 'Orçamento Concluido':
                     $cor = '#CC9966';
                     break;
-								case 'Orçamento Aprovado':
+                                case 'Orçamento Aprovado':
                     $cor = '#339999';
-										break;
-								case 'Em Andamento':
+                                        break;
+                                case 'Em Andamento':
                     $cor = '#9933FF';
                     break;
-								case 'Aguardando Peças':
+                                case 'Aguardando Peças':
                     $cor = '#FF6600';
-                 		break;
-								case 'Serviço Concluido':
+                         break;
+                                case 'Serviço Concluido':
                     $cor = '#0066FF';
                     break;
-								case 'Sem Reparo':
+                                case 'Sem Reparo':
                     $cor = '#999999';
                     break;
-								case 'Não Autorizado':
+                                case 'Não Autorizado':
                     $cor = '#990000';
                     break;
-								case 'Contato sem Sucesso':
+                                case 'Contato sem Sucesso':
                     $cor = '#660099';
                     break;
-								case 'Cancelado':
+                                case 'Cancelado':
                     $cor = '#990000';
                     break;
-								case 'Pronto-Despachar':
+                                case 'Pronto-Despachar':
                     $cor = '#33CCCC';
                     break;
-								case 'Enviado':
+                                case 'Enviado':
                     $cor = '#99CC33';
                     break;
-								case 'Aguardando Envio':
+                                case 'Aguardando Envio':
                     $cor = '#CC66CC';
                     break;
-								case 'Aguardando Entrega Correio':
+                                case 'Aguardando Entrega Correio':
                     $cor = '#996699';
                     break;
-								case 'Entregue - A Receber':
+                                case 'Entregue - A Receber':
                     $cor = '#FF0000';
                     break;
-								case 'Garantia':
+                                case 'Garantia':
                     $cor = '#FF66CC';
                     break;
-								case 'Abandonado':
+                                case 'Abandonado':
                     $cor = '#000000';
                     break;
-								case 'Comprado pela Loja':
+                                case 'Comprado pela Loja':
                     $cor = '#666666';
                     break;
-								case 'Entregue - Faturado':
+                                case 'Entregue - Faturado':
                     $cor = '#006633';
                     break;
             }

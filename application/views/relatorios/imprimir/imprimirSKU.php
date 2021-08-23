@@ -62,7 +62,8 @@
                     </div>
                 </div>
 
-                <h5 style="text-align: right; font-size: 0.8em; padding: 5px;">Data do Relatório: <?php echo date('d/m/Y'); ?>
+                <h5 style="text-align: right; font-size: 0.8em; padding: 5px;">Data do Relatório:
+                    <?php echo date('d/m/Y'); ?>
                 </h5>
             </div>
         </div>

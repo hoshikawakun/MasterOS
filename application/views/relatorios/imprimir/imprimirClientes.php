@@ -24,34 +24,34 @@
                             <?= ucfirst($title) ?>
                         </h4>
                     </div>
-                        <div class="widget_content nopadding">
+                    <div class="widget_content nopadding">
                         <table width="100%" class="table_v">
-                                <thead>
-                                    <tr>
-                                        <th width="400" style="font-size: 15px">Nome</th>
-                                        <th width="170" style="font-size: 15px">Documento</th>
-                                        <th width="150" style="font-size: 15px">Telefone</th>
-                                        <th width="200" style="font-size: 15px">Email</th>
-                                        <th width="150" style="font-size: 15px">Senha</th>
-                                        <th width="120" style="font-size: 15px">Cadastro</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach ($clientes as $c) : ?>
-                                    <?php $dataCadastro = date('d/m/Y', strtotime($c->dataCadastro)) ?>
-                                    <tr>
-                                        <td><?= $c->nomeCliente ?></td>
-                                        <td align="center"><?= $c->documento ?></td>
-                                        <td align="center"><?= $c->telefone ?></td>
-                                        <td align="center"><?= $c->email ?></td>
-                                        <td align="center"><?= $c->senha ?></td>
-                                        <td align="center"><?= $dataCadastro ?></td>
-                                    </tr>
-                                    <?php endforeach ?>
-                                </tbody>
-                            </table>
+                            <thead>
+                                <tr>
+                                    <th width="400" style="font-size: 15px">Nome</th>
+                                    <th width="170" style="font-size: 15px">Documento</th>
+                                    <th width="150" style="font-size: 15px">Telefone</th>
+                                    <th width="200" style="font-size: 15px">Email</th>
+                                    <th width="150" style="font-size: 15px">Senha</th>
+                                    <th width="120" style="font-size: 15px">Cadastro</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($clientes as $c) : ?>
+                                <?php $dataCadastro = date('d/m/Y', strtotime($c->dataCadastro)) ?>
+                                <tr>
+                                    <td><?= $c->nomeCliente ?></td>
+                                    <td align="center"><?= $c->documento ?></td>
+                                    <td align="center"><?= $c->telefone ?></td>
+                                    <td align="center"><?= $c->email ?></td>
+                                    <td align="center"><?= $c->senha ?></td>
+                                    <td align="center"><?= $dataCadastro ?></td>
+                                </tr>
+                                <?php endforeach ?>
+                            </tbody>
+                        </table>
 
-                        </div>
+                    </div>
 
                 </div>
                 <h5 style="text-align: right; font-size: 0.8em; padding: 5px;">Data do Relatório:

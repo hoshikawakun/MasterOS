@@ -1,83 +1,84 @@
 <?php
 // alterar para permissão de o cliente adicionar ou não a ordem de serviço
 if (!$this->session->userdata('cadastra_os')) { ?>
-    <div class="span12" style="margin-left: 0">
-        <div class="span3">
-            <a href="<?php echo base_url(); ?>index.php/mine/adicionarOs" class="btn btn-success span12"><i class="fas fa-plus"></i> Adicionar OS</a>
-        </div>
+<div class="span12" style="margin-left: 0">
+    <div class="span3">
+        <a href="<?php echo base_url(); ?>index.php/mine/adicionarOs" class="btn btn-success span12"><i
+                class="fas fa-plus"></i> Adicionar OS</a>
     </div>
+</div>
 <?php
 }
 
 if (!$results) {
     ?>
-    <div class="span12" style="margin-left: 0">
-        <div class="widget-box">
-            <div class="widget-title">
-                <span class="icon">
-                    <i class="fas fa-diagnoses"></i>
-                </span>
-                <h5>Ordens de Serviço</h5>
+<div class="span12" style="margin-left: 0">
+    <div class="widget-box">
+        <div class="widget-title">
+            <span class="icon">
+                <i class="fas fa-diagnoses"></i>
+            </span>
+            <h5>Ordens de Serviço</h5>
 
-            </div>
-            <div>
-            <table id="tabela" class="table_p">
-                    <thead>
-                        <tr>
-                            <th>OS N°</th>
-                            <th>Responsável</th>
-                            <th>Data de Entrada</th>
-                            <th>Data Final</th>
-                            <th>Data de Saida</th>
-                            <th>Garantia até</th>
-                            <th>Total</th>
-                            <th>Faturado</th>
-                            <th>Status</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        <tr>
-                            <td colspan="10">Nenhum ordem de serviço encontrada.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
         </div>
+        <div>
+            <table id="tabela" class="table_p">
+                <thead>
+                    <tr>
+                        <th>OS N°</th>
+                        <th>Responsável</th>
+                        <th>Data de Entrada</th>
+                        <th>Data Final</th>
+                        <th>Data de Saida</th>
+                        <th>Garantia até</th>
+                        <th>Total</th>
+                        <th>Faturado</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
 
+                    <tr>
+                        <td colspan="10">Nenhum ordem de serviço encontrada.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
+
+</div>
 
 <?php
 } else { ?>
 
-    <div class="span12" style="margin-left: 0">
-        <div class="widget-box">
-            <div class="widget-title">
-                <span class="icon">
-                    <i class="fas fa-diagnoses"></i>
-                </span>
-                <h5>Ordens de Serviço</h5>
+<div class="span12" style="margin-left: 0">
+    <div class="widget-box">
+        <div class="widget-title">
+            <span class="icon">
+                <i class="fas fa-diagnoses"></i>
+            </span>
+            <h5>Ordens de Serviço</h5>
 
-            </div>
-             <div>
+        </div>
+        <div>
             <table class="table_p">
-                    <thead>
-                        <tr>
-                            <th>OS N°</th>
-                            <th>Responsável</th>
-                            <th>Data de Entrada</th>
-                            <th>Data Final</th>
-                            <th>Data de Saida</th>
-                            <th>Garantia até</th>
-                            <th>Total</th>
-                            <th>Faturado</th>
-                            <th>Status</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($results as $r) {
+                <thead>
+                    <tr>
+                        <th>OS N°</th>
+                        <th>Responsável</th>
+                        <th>Data de Entrada</th>
+                        <th>Data Final</th>
+                        <th>Data de Saida</th>
+                        <th>Garantia até</th>
+                        <th>Total</th>
+                        <th>Faturado</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($results as $r) {
         $dataInicial = date(('d/m/Y'), strtotime($r->dataInicial));
         $dataFinal = date(('d/m/Y'), strtotime($r->dataFinal));
         $ValorTotal = number_format($r->totalProdutos + $r->totalServicos, 2, ',', '.');
@@ -137,10 +138,10 @@ if (!$results) {
                               </td>';
         echo '</tr>';
     } ?>
-                    </tbody>
-                </table>
-            </div>
+                </tbody>
+            </table>
         </div>
     </div>
+</div>
 <?php echo $this->pagination->create_links();
 } ?>

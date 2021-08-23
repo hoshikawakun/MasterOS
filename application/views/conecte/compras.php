@@ -1,65 +1,65 @@
 <?php
 
 if (!$results) { ?>
-    <div class="widget-box">
-        <div class="widget-title">
-            <span class="icon">
-                <i class="fas fa-tags"></i>
-            </span>
-            <h5>Compras</h5>
+<div class="widget-box">
+    <div class="widget-title">
+        <span class="icon">
+            <i class="fas fa-tags"></i>
+        </span>
+        <h5>Compras</h5>
 
-        </div>
-
-        <div>
-
-
-            <table id="tabela" class="table_p">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Data da Compra</th>
-                        <th>Responsável</th>
-                        <th>Faturado</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr>
-                        <td colspan="6">Nenhuma compra cadastrada</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
     </div>
+
+    <div>
+
+
+        <table id="tabela" class="table_p">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Data da Compra</th>
+                    <th>Responsável</th>
+                    <th>Faturado</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td colspan="6">Nenhuma compra cadastrada</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 <?php
 } else { ?>
 
 
-    <div class="widget-box">
-        <div class="widget-title">
-            <span class="icon">
-                <i class="fas fa-shopping-cart"></i>
-            </span>
-            <h5>Compras</h5>
+<div class="widget-box">
+    <div class="widget-title">
+        <span class="icon">
+            <i class="fas fa-shopping-cart"></i>
+        </span>
+        <h5>Compras</h5>
 
-        </div>
+    </div>
 
-        <div>
+    <div>
 
 
-            <table id="tabela" class="table_p">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Data da Compra</th>
-                        <th>Responsável</th>
-                        <th>Faturado</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($results as $r) {
+        <table id="tabela" class="table_p">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Data da Compra</th>
+                    <th>Responsável</th>
+                    <th>Faturado</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($results as $r) {
     $dataVenda = date(('d/m/Y'), strtotime($r->dataVenda));
     if ($r->faturado == 1) {
         $faturado = 'Sim';
@@ -78,10 +78,10 @@ if (!$results) { ?>
                   </td>';
     echo '</tr>';
 } ?>
-                </tbody>
-            </table>
-        </div>
+            </tbody>
+        </table>
     </div>
+</div>
 
 <?php echo $this->pagination->create_links();
 } ?>

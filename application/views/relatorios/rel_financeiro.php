@@ -9,8 +9,11 @@
             </div>
             <div class="widget_box_vizualizar2" style="background-color:#f5f5f5">
                 <ul class="site-stats">
-                    <li><a target="_blank" href="<?php echo base_url() ?>index.php/relatorios/financeiroRapid"><i class="fas fa-hand-holding-usd"></i> <small>Relatório do mês - pdf</small></a></li>
-                    <li><a target="_blank" href="<?php echo base_url() ?>index.php/relatorios/financeiroRapid?format=xls"><i class="fas fa-hand-holding-usd"></i> <small>Relatório do mês - xls</small></a></li>
+                    <li><a target="_blank" href="<?php echo base_url() ?>index.php/relatorios/financeiroRapid"><i
+                                class="fas fa-hand-holding-usd"></i> <small>Relatório do mês - pdf</small></a></li>
+                    <li><a target="_blank"
+                            href="<?php echo base_url() ?>index.php/relatorios/financeiroRapid?format=xls"><i
+                                class="fas fa-hand-holding-usd"></i> <small>Relatório do mês - xls</small></a></li>
                 </ul>
             </div>
         </div>
@@ -24,27 +27,28 @@
                 </span>
                 <h5>Relatórios Customizáveis</h5>
             </div>
-            
+
             <div class="span12 widget_box_vizualizar5" style="margin-left: 0">
 
-		<form target="_blank" action="<?php echo base_url() ?>index.php/relatorios/financeiroCustom" method="get">
+                <form target="_blank" action="<?php echo base_url() ?>index.php/relatorios/financeiroCustom"
+                    method="get">
 
-<div class="span12 well_i" style="margin-left: 0">
+                    <div class="span12 well_i" style="margin-left: 0">
 
-<div class="span6">
+                        <div class="span6">
                             <label for="">Vencimento de:</label>
                             <input type="date" name="dataInicial" class="span12" />
                         </div>
                         <div class="span6">
                             <label for="">até:</label>
                             <input type="date" name="dataFinal" class="span12" />
-                        </div>	
+                        </div>
 
-</div>
+                    </div>
 
-<div class="span12 well_i" style="margin-left: 0">
+                    <div class="span12 well_i" style="margin-left: 0">
 
-	<div class="span6">
+                        <div class="span6">
                             <label for="">Tipo:</label>
                             <select name="tipo" class="span12">
                                 <option value="todos">Todos</option>
@@ -61,11 +65,11 @@
                             </select>
                         </div>
 
-</div>
+                    </div>
 
-<div class="span12 well_i" style="margin-left: 0">
+                    <div class="span12 well_i" style="margin-left: 0">
 
-	<div class="span12">
+                        <div class="span12">
                             <label for="">Tipo de impressão:</label>
                             <select name="format" class="span12">
                                 <option value="">PDF</option>
@@ -73,18 +77,18 @@
                             </select>
                         </div>
 
-</div>
+                    </div>
 
 
-<div class="span12" style="margin-left: 0; text-align: center">
+                    <div class="span12" style="margin-left: 0; text-align: center">
 
-<input type="reset" class="btn" value="Limpar" />
+                        <input type="reset" class="btn" value="Limpar" />
                         <button class="btn btn-inverse"><i class="fas fa-print"></i> Imprimir</button>
 
-</div>
-</form>
-</div>
-            
+                    </div>
+                </form>
+            </div>
+
         </div>
     </div>
 </div>

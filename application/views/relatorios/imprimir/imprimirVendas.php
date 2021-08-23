@@ -25,10 +25,10 @@
                         </h4>
                     </div>
                     <div class="widget_content nopadding">
-                    <table width="100%" class="table_v">
+                        <table width="100%" class="table_v">
                             <thead>
                                 <tr>
-                                	<th width="110" align="center" style="font-size: 15px">#</th>
+                                    <th width="110" align="center" style="font-size: 15px">#</th>
                                     <th width="500" align="center" style="font-size: 15px">Cliente</th>
                                     <th width="150" align="center" style="font-size: 15px">Vendedor</th>
                                     <th width="140" align="center" style="font-size: 15px">Data</th>
@@ -50,16 +50,18 @@
                                             echo '</tr>';
                                         }
                                         ?>
-                            <tr>
-                            <td colspan="3"></td>
-                            <td align="right"><b>TOTAL: </b></td>
-                            <td align="center"><b>R$: <?php echo number_format($totalVendas, 2, ',', '.'); ?></b></td>
-                            </tr>
+                                <tr>
+                                    <td colspan="3"></td>
+                                    <td align="right"><b>TOTAL: </b></td>
+                                    <td align="center"><b>R$:
+                                            <?php echo number_format($totalVendas, 2, ',', '.'); ?></b></td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-                <h5 style="text-align: right; font-size: 0.8em; padding: 5px;">Data do Relatório: <?php echo date('d/m/Y'); ?>
+                <h5 style="text-align: right; font-size: 0.8em; padding: 5px;">Data do Relatório:
+                    <?php echo date('d/m/Y'); ?>
                 </h5>
             </div>
         </div>

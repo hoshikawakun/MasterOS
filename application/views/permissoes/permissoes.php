@@ -1,4 +1,5 @@
-<a href="<?php echo base_url(); ?>index.php/permissoes/adicionar" class="btn btn-success"><i class="fas fa-plus"></i> Adicionar Permissão</a>
+<a href="<?php echo base_url(); ?>index.php/permissoes/adicionar" class="btn btn-success"><i class="fas fa-plus"></i>
+    Adicionar Permissão</a>
 
 <div class="widget-box">
     <div class="widget-title">
@@ -50,7 +51,8 @@
 <?php echo $this->pagination->create_links(); ?>
 
 <!-- Modal -->
-<div id="modal-excluir" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="modal-excluir" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="<?php echo base_url() ?>index.php/permissoes/desativar" method="post">
         <div class="modal_header_anexos">
             <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>
@@ -69,10 +71,10 @@
 
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        $(document).on('click', 'a', function(event) {
-            var permissao = $(this).attr('permissao');
-            $('#idPermissao').val(permissao);
-        });
+$(document).ready(function() {
+    $(document).on('click', 'a', function(event) {
+        var permissao = $(this).attr('permissao');
+        $('#idPermissao').val(permissao);
     });
+});
 </script>

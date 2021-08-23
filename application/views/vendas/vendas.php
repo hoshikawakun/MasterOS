@@ -1,14 +1,15 @@
 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'aVenda')) { ?>
-    <a href="<?php echo base_url(); ?>index.php/vendas/adicionar" class="btn btn-success"><i class="fas fa-plus"></i> Adicionar Venda</a>
+<a href="<?php echo base_url(); ?>index.php/vendas/adicionar" class="btn btn-success"><i class="fas fa-plus"></i>
+    Adicionar Venda</a>
 <?php } ?>
 
 <div class="widget-box">
-	<div class="widget-title">
-    <span class="icon"><i class="fas fa-cash-register"></i></span>
-    <h5>Vendas</h5>
+    <div class="widget-title">
+        <span class="icon"><i class="fas fa-cash-register"></i></span>
+        <h5>Vendas</h5>
     </div>
     <div class="widget-content nopadding">
-    
+
         <table id="tabela" width="100%" class="table_p">
             <thead>
                 <tr style="background-color: #2D335B">
@@ -61,7 +62,8 @@
 <?php echo $this->pagination->create_links(); ?>
 
 <!-- Modal -->
-<div id="modal-excluir" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="modal-excluir" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="<?php echo base_url() ?>index.php/vendas/excluir" method="post">
         <div class="modal_header_anexos">
             <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>
@@ -79,10 +81,10 @@
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        $(document).on('click', 'a', function(event) {
-            var venda = $(this).attr('venda');
-            $('#idVenda').val(venda);
-        });
+$(document).ready(function() {
+    $(document).on('click', 'a', function(event) {
+        var venda = $(this).attr('venda');
+        $('#idVenda').val(venda);
     });
+});
 </script>

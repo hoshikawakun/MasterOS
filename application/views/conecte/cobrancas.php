@@ -1,24 +1,24 @@
  <div class="widget-box">
-    <div class="widget-title">
-        <span class="icon">
-            <i class="fas fa-cash-register"></i>
-        </span>
-        <h5>Cobranças</h5>
-    </div>
-    <div class="widget_box_Painel2">
-        <table width="100%" id="tabela" class="table table-bordered">
-            <thead>
-                <tr style="background-color: #2D335B">
-                    <th>#</th>
-                    <th>Data de Vencimento</th>
-                    <th>Referência</th>
-                    <th>Status</th>
-                    <th>Valor</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
+     <div class="widget-title">
+         <span class="icon">
+             <i class="fas fa-cash-register"></i>
+         </span>
+         <h5>Cobranças</h5>
+     </div>
+     <div class="widget_box_Painel2">
+         <table width="100%" id="tabela" class="table table-bordered">
+             <thead>
+                 <tr style="background-color: #2D335B">
+                     <th>#</th>
+                     <th>Data de Vencimento</th>
+                     <th>Referência</th>
+                     <th>Status</th>
+                     <th>Valor</th>
+                     <th>Ações</th>
+                 </tr>
+             </thead>
+             <tbody>
+                 <?php
 
                     if (!$results) {
                         echo '<tr>
@@ -58,82 +58,85 @@
                         echo '</td>';
                         echo '</tr>';
                     } ?>
-            </tbody>
-        </table>
-    </div>
-</div>
-<?php echo $this->pagination->create_links(); ?>
+             </tbody>
+         </table>
+     </div>
+ </div>
+ <?php echo $this->pagination->create_links(); ?>
 
-<!-- Modal -->
-<div id="modal-excluir" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <form action="<?php echo base_url() ?>index.php/cobrancas/excluir" method="post">
-        <div class="modal_header_anexos">
-            <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="myModalLabel">Excluir cobrança</h3>
-        </div>
-        <div class="modal-body">
-            <input type="hidden" id="charge_id" name="charge_id" value="" />
-            <h5 style="text-align: center">Deseja realmente excluir esta cobrança? A cobrança será cancelada.</h5>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Cancelar</button>
-            <button class="btn btn-danger">Excluir</button>
-        </div>
-    </form>
-</div>
-
-
-<div id="modal-confirmar" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <form action="<?php echo base_url() ?>index.php/cobrancas/confirmarpagamento" method="post">
-        <div class="modal_header_anexos">
-            <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="myModalLabel">Confirmar pagamento</h3>
-        </div>
-        <div class="modal-body">
-            <input type="hidden" id="confirma_id" name="confirma_id" value="" />
-            <h5 style="text-align: center">Deseja realmente confirmar pagamento desta cobrança?</h5>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Cancelar</button>
-            <button class="btn btn-success">Confirmar</button>
-        </div>
-    </form>
-</div>
+ <!-- Modal -->
+ <div id="modal-excluir" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+     <form action="<?php echo base_url() ?>index.php/cobrancas/excluir" method="post">
+         <div class="modal_header_anexos">
+             <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>
+             <h3 id="myModalLabel">Excluir cobrança</h3>
+         </div>
+         <div class="modal-body">
+             <input type="hidden" id="charge_id" name="charge_id" value="" />
+             <h5 style="text-align: center">Deseja realmente excluir esta cobrança? A cobrança será cancelada.</h5>
+         </div>
+         <div class="modal-footer">
+             <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+             <button class="btn btn-danger">Excluir</button>
+         </div>
+     </form>
+ </div>
 
 
-<div id="modal-cancelar" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <form action="<?php echo base_url() ?>index.php/cobrancas/cancelar" method="post">
-        <div class="modal_header_anexos">
-            <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="myModalLabel">Cancelar cobrança</h3>
-        </div>
-        <div class="modal-body">
-            <input type="hidden" id="cancela_id" name="cancela_id" value="" />
-            <h5 style="text-align: center">Deseja realmente Cancelar esta cobrança?</h5>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Cancelar</button>
-            <button class="btn btn-danger">Confirmar</button>
-        </div>
-    </form>
-</div>
+ <div id="modal-confirmar" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+     <form action="<?php echo base_url() ?>index.php/cobrancas/confirmarpagamento" method="post">
+         <div class="modal_header_anexos">
+             <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>
+             <h3 id="myModalLabel">Confirmar pagamento</h3>
+         </div>
+         <div class="modal-body">
+             <input type="hidden" id="confirma_id" name="confirma_id" value="" />
+             <h5 style="text-align: center">Deseja realmente confirmar pagamento desta cobrança?</h5>
+         </div>
+         <div class="modal-footer">
+             <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+             <button class="btn btn-success">Confirmar</button>
+         </div>
+     </form>
+ </div>
 
-<script type="text/javascript">
-    $(document).ready(function() {
 
-        $(document).on('click', 'a', function(event) {
-            var cobranca = $(this).attr('charge_id');
-            $('#charge_id').val(cobranca);
-        });
+ <div id="modal-cancelar" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+     <form action="<?php echo base_url() ?>index.php/cobrancas/cancelar" method="post">
+         <div class="modal_header_anexos">
+             <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>
+             <h3 id="myModalLabel">Cancelar cobrança</h3>
+         </div>
+         <div class="modal-body">
+             <input type="hidden" id="cancela_id" name="cancela_id" value="" />
+             <h5 style="text-align: center">Deseja realmente Cancelar esta cobrança?</h5>
+         </div>
+         <div class="modal-footer">
+             <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+             <button class="btn btn-danger">Confirmar</button>
+         </div>
+     </form>
+ </div>
 
-        $(document).on('click', 'a', function(event) {
-            var cobranca = $(this).attr('confirma_id');
-            $('#confirma_id').val(cobranca);
-        });
+ <script type="text/javascript">
+$(document).ready(function() {
 
-        $(document).on('click', 'a', function(event) {
-            var cobranca = $(this).attr('cancela_id');
-            $('#cancela_id').val(cobranca);
-        });
+    $(document).on('click', 'a', function(event) {
+        var cobranca = $(this).attr('charge_id');
+        $('#charge_id').val(cobranca);
     });
-</script>
+
+    $(document).on('click', 'a', function(event) {
+        var cobranca = $(this).attr('confirma_id');
+        $('#confirma_id').val(cobranca);
+    });
+
+    $(document).on('click', 'a', function(event) {
+        var cobranca = $(this).attr('cancela_id');
+        $('#cancela_id').val(cobranca);
+    });
+});
+ </script>

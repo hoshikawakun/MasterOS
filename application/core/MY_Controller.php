@@ -31,7 +31,7 @@ class MY_Controller extends CI_Controller
             'control_baixa' => '0',
             'control_editos' => '1',
             //'control_datatable' => '1',
-			'pix_key' => '',
+            'pix_key' => '',
         ],
     ];
 

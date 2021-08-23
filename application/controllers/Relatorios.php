@@ -787,8 +787,8 @@ class Relatorios extends MY_Controller
             $writer = new XLSXWriter();
             $writer->writeSheetRow(null, []);
             $writer->writeSheetHeader('Sheet1', $cabecalho);
-        foreach ($vendasFormatadas as $venda) {
-            $writer->writeSheetRow('Sheet1', $venda);
+            foreach ($vendasFormatadas as $venda) {
+                $writer->writeSheetRow('Sheet1', $venda);
             }
             $writer->writeSheetRow(null, []);
             $writer->writeSheetRow(null, []);
@@ -796,7 +796,7 @@ class Relatorios extends MY_Controller
             $writer->writeSheetRow('Sheet1', []);
             $writer->writeSheetRow('Sheet1', [
             null, null, null, null,
-				$totalVendas,
+                $totalVendas,
             ]);
 
             $arquivo = $writer->writeToString();
@@ -842,7 +842,7 @@ class Relatorios extends MY_Controller
             $vendasFormatadas = array_map(function ($item) {
                 return [
                     '#' => $item['idVendas'],
-					'cliente' => $item['nomeCliente'],
+                    'cliente' => $item['nomeCliente'],
                     'vendedor' => $item['nome'],
                     'data' => $item['dataVenda'],
                     'total' => $item['valorTotal'] ?: 0,
@@ -858,17 +858,17 @@ class Relatorios extends MY_Controller
             ];
 
             $writer = new XLSXWriter();
-			$writer->writeSheetHeader('Sheet1', $cabecalho);
+            $writer->writeSheetHeader('Sheet1', $cabecalho);
             foreach ($vendasFormatadas as $venda) {
                 $writer->writeSheetRow('Sheet1', $venda);
             }
             $writer->writeSheetRow(null, []);
-			$writer->writeSheetRow(null, []);
-			$writer->writeSheetRow(null, []);
-			$writer->writeSheetRow('Sheet1', []);
-			$writer->writeSheetRow('Sheet1', [
-				null, null, null, null,
-				$totalVendas,
+            $writer->writeSheetRow(null, []);
+            $writer->writeSheetRow(null, []);
+            $writer->writeSheetRow('Sheet1', []);
+            $writer->writeSheetRow('Sheet1', [
+                null, null, null, null,
+                $totalVendas,
             ]);
 
             $arquivo = $writer->writeToString();

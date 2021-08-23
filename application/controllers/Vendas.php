@@ -69,7 +69,7 @@ class Vendas extends MY_Controller
 
             $data = [
                 'dataVenda' => $dataVenda,
-				'clientes_id' => $this->input->post('clientes_id'),
+                'clientes_id' => $this->input->post('clientes_id'),
                 'usuarios_id' => $this->input->post('usuarios_id'),
                 'faturado' => 0,
             ];
@@ -116,7 +116,7 @@ class Vendas extends MY_Controller
 
             $data = [
                 'dataVenda' => $dataVenda,
-				'observacoes' => $this->input->post('observacoes'),
+                'observacoes' => $this->input->post('observacoes'),
                 'usuarios_id' => $this->input->post('usuarios_id'),
                 'clientes_id' => $this->input->post('clientes_id'),
             ];
@@ -211,7 +211,7 @@ class Vendas extends MY_Controller
         $this->data['result'] = $this->vendas_model->getById($this->uri->segment(3));
         $this->data['produtos'] = $this->vendas_model->getProdutos($this->uri->segment(3));
         $this->data['emitente'] = $this->mapos_model->getEmitente();
-		$this->data['qrCode'] = $this->vendas_model->getQrCode(
+        $this->data['qrCode'] = $this->vendas_model->getQrCode(
             $this->uri->segment(3),
             $this->data['configuration']['pix_key'],
             $this->data['emitente'][0]

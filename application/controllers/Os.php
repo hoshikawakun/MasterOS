@@ -394,8 +394,8 @@ class Os extends MY_Controller
         );
         $this->load->view('os/imprimirOsTermica', $this->data);
     }
-	
-	public function imprimirTermica2()
+    
+    public function imprimirTermica2()
     {
         if (!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))) {
             $this->session->set_flashdata('error', 'Item não pode ser encontrado, parâmetro não foi passado corretamente.');
@@ -548,7 +548,7 @@ class Os extends MY_Controller
 
         $this->os_model->delete('servicos_os', 'os_id', $id);
         $this->os_model->delete('produtos_os', 'os_id', $id);
-		$this->os_model->delete('equipamento_os', 'os_id', $id);
+        $this->os_model->delete('equipamento_os', 'os_id', $id);
         $this->os_model->delete('anexos', 'os_id', $id);
         $this->os_model->delete('os', 'idOs', $id);
         if ((int)$os->faturado === 1) {
@@ -998,7 +998,6 @@ class Os extends MY_Controller
             );
 
             if ($this->os_model->add('equipamento_os', $data) == true) {
-
                 log_info('Adicionou um equipamento a OS. ID (OS): ' . $this->input->post('os_id'));
                 echo json_encode(array('result' => true));
             } else {
@@ -1006,21 +1005,20 @@ class Os extends MY_Controller
             }
         }
     }
-	
-	public function excluirEquipamento()
+    
+    public function excluirEquipamento()
     {
         $id = $this->input->post('idEquipamento');
-		$idOs = $this->input->post('idOs');
+        $idOs = $this->input->post('idOs');
         if ($this->os_model->delete('equipamento_os', 'idEquipamento', $id) == true) {
-
             log_info('Removeu um Equipamento da OS. ID (OS): ' . $idOs);
             echo json_encode(array('result' => true));
         } else {
             echo json_encode(array('result' => false));
         }
     }
-	
-	public function adicionarAnotacao()
+    
+    public function adicionarAnotacao()
     {
         $this->load->library('form_validation');
         if ($this->form_validation->run('anotacoes_os') == false) {

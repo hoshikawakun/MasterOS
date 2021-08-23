@@ -3,8 +3,10 @@
         <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#tab1">Meus Dados</a></li>
             <div class="buttons">
-                <a title="Editar" class="btn btn-mini btn-info" href="<?php echo base_url() ?>index.php/mine/editarDados/<?php echo $result->idClientes ?>"><i class="fas fa-edit"></i> Editar</a>
-                </div>
+                <a title="Editar" class="btn btn-mini btn-info"
+                    href="<?php echo base_url() ?>index.php/mine/editarDados/<?php echo $result->idClientes ?>"><i
+                        class="fas fa-edit"></i> Editar</a>
+            </div>
         </ul>
     </div>
     <div class="widget_content_vusualizar tab-content">
@@ -19,7 +21,7 @@
                             </a>
                         </div>
                     </div>
-                    
+
                     <div class="collapse in accordion-body" id="collapseGOne">
                         <div class="widget_content">
                             <table class="table_p">

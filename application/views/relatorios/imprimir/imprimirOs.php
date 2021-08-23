@@ -56,9 +56,12 @@
 
                                 <tr style="background-color: gainsboro;">
                                     <td colspan="5"></td>
-                                    <td align="center"><small>R$: <?= number_format($total_produtos, 2, ',', '.') ?></small></td>
-                                    <td align="center"><small>R$: <?= number_format($total_servicos, 2, ',', '.') ?></small></td>
-                                    <td align="center"><small>R$: <?= number_format($total_geral, 2, ',', '.') ?></small></td>
+                                    <td align="center"><small>R$:
+                                            <?= number_format($total_produtos, 2, ',', '.') ?></small></td>
+                                    <td align="center"><small>R$:
+                                            <?= number_format($total_servicos, 2, ',', '.') ?></small></td>
+                                    <td align="center"><small>R$:
+                                            <?= number_format($total_geral, 2, ',', '.') ?></small></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -66,30 +69,33 @@
                 </div>
 
                 <h5 style="text-align: right; font-size: 0.8em; padding: 5px;">
-                <p>Data do Relatório: <?php echo date('d/m/Y'); ?>
-                </p>
-                </p>
-                <p>
-                <!-- QR Code PIX -->
-                            <table width="100%" class="table_x">
-                                		<tr>
-                                        <th><div align="center">
-                                        <table width="200">
-                                            <tr>
-                                              <td>
+                    <p>Data do Relatório: <?php echo date('d/m/Y'); ?>
+                    </p>
+                    </p>
+                    <p>
+                        <!-- QR Code PIX -->
+                    <table width="100%" class="table_x">
+                        <tr>
+                            <th>
+                                <div align="center">
+                                    <table width="200">
+                                        <tr>
+                                            <td>
                                                 <div align="center">
-                                                  <?php if ($qrCode): ?>
-                                                  <img src="../../../assets/img/logo_pix.png" width="150px">
-                                                  <img src="<?= $qrCode ?>" alt="QR Code de Pagamento" />
-                                              </div></td>
-                                              <?php endif ?>
-                                              
-                                          </table>
-                                          </div></th>
-                                          </tr>
-                                          </table>
-									<!-- Fim QR Code PIX -->
-                </p>
+                                                    <?php if ($qrCode): ?>
+                                                    <img src="../../../assets/img/logo_pix.png" width="150px">
+                                                    <img src="<?= $qrCode ?>" alt="QR Code de Pagamento" />
+                                                </div>
+                                            </td>
+                                            <?php endif ?>
+
+                                    </table>
+                                </div>
+                            </th>
+                        </tr>
+                    </table>
+                    <!-- Fim QR Code PIX -->
+                    </p>
             </div>
         </div>
     </div>

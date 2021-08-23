@@ -1,12 +1,15 @@
 <div class="quick-actions_homepage">
     <ul class="quick-actions">
-        <li class="bg_lo span3"> <a href="<?php echo base_url() ?>index.php/mine/os"> <i class="fas fa-diagnoses" style="font-size:36px"></i>
+        <li class="bg_lo span3"> <a href="<?php echo base_url() ?>index.php/mine/os"> <i class="fas fa-diagnoses"
+                    style="font-size:36px"></i>
                 <div>Ordens de Serviço</div>
             </a></li>
-        <li class="bg_ls span3"> <a href="<?php echo base_url() ?>index.php/mine/compras"><i class="fas fa-shopping-cart" style="font-size:36px"></i>
+        <li class="bg_ls span3"> <a href="<?php echo base_url() ?>index.php/mine/compras"><i
+                    class="fas fa-shopping-cart" style="font-size:36px"></i>
                 <div>Compras</div>
             </a></li>
-        <li class="bg_lg span3"> <a href="<?php echo base_url() ?>index.php/mine/conta"><i class="fas fa-user"  style="font-size:36px"></i>
+        <li class="bg_lg span3"> <a href="<?php echo base_url() ?>index.php/mine/conta"><i class="fas fa-user"
+                    style="font-size:36px"></i>
                 <div>Minha Conta</div>
             </a></li>
     </ul>
@@ -24,7 +27,7 @@
             <div class="widget_content">
                 <table id="tabela" class="table_p">
                     <thead>
-                       <tr>
+                        <tr>
                             <th>OS N°</th>
                             <th>Data de Entrada</th>
                             <th>Data Final</th>
@@ -107,7 +110,7 @@
                     }
 
                     ?>
-                            
+
                         <tr>
 
                         </tr>
@@ -159,9 +162,9 @@
         </div>
     </div>
 
-    </div>
-    
-    
-    
-    
+</div>
+
+
+
+
 </div>

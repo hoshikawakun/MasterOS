@@ -10,7 +10,7 @@ $config = [
         [
             'field' => 'documento',
             'label' => 'CPF/CNPJ',
-			'rules' => 'required|trim',
+            'rules' => 'required|trim',
         ],
         [
             'field' => 'telefone',

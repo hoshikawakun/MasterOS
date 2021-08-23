@@ -123,7 +123,7 @@ body{color:#555555;} /* Cor da fonte da escrtia interna das Tabelas */
 .view_table {border: 1px solid #bbbbb2;} /*Borda Geral da Tabela Interna*/
 .view_table tr td {border: 1px solid #bbbbb2;} /*Cor das Bordas da Tabela Interna*/
 .view_table th {border:1px solid #bbbbb2;}/*Cor das colunas do cabeçalho da Tabela Interna*/
-.view_table th {text-align:center padding: 5px 10px 2px;} /*Alinhamento da escrita do cabeçalho da Tabela Interna*/
+.view_table th {text-align:center; padding: 5px 10px 2px;} /*Alinhamento da escrita do cabeçalho da Tabela Interna*/
 .view_table th {font-size: 10px;} /*Tamanho da escrita do cabeçalho da Tabela Interna*/
 .view_table th {color: #333333;} /*Cor da escrita do cabeçalho da Tabela Interna*/
 .view_table th {background:#eeeeee;} /*Cor Cabeçalho da Tabela Interna*/
@@ -396,12 +396,14 @@ hr{border-top-color:#999999;}
 	border-bottom: 0;
 	text-align: center;
 	color: #666666;
+}
 
 /* Fim Visualizar Vendas e OS */
 
 .table_p {width:100%;margin-bottom:20px}
 .table_p {background-color:#ffffff;}
 .table_p th  {border: 1px solid #999999;} /*Cor das colunas do cabeçalho da Tabela Interna*/
+.table_p {font-size:12px;}
 
 .table_p tr td {border: 1px solid #999999; font-size:12px; padding: 8px;} /*Cor das Bordas da Tabela Interna*/
 .table_p th {text-align:center; padding: 5px;} /*Alinhamento da escrita do cabeçalho da Tabela Interna*/
@@ -448,7 +450,7 @@ hr{border-top-color:#999999;}
 .table {border-top: 0px solid #999999;} /*Borda Superior da Tabela Interna*/
 .table tr td {border: 1px solid #999999;} /*Cor das Bordas da Tabela Interna*/
 .table th {border:1px solid #999999;}/*Cor das colunas do cabeçalho da Tabela Interna*/
-.table th {text-align:center padding: 5px 10px 2px;} /*Alinhamento da escrita do cabeçalho da Tabela Interna*/
+.table th {text-align:center; padding: 5px 10px 2px;} /*Alinhamento da escrita do cabeçalho da Tabela Interna*/
 .table th {font-size: 10px;} /*Tamanho da escrita do cabeçalho da Tabela Interna*/
 .table th {color: #333333;} /*Cor da escrita do cabeçalho da Tabela Interna*/
 .table th {background:#ffff;} /*Cor Cabeçalho da Tabela Interna*/
@@ -463,3 +465,94 @@ hr{border-top-color:#999999;}
 .well_box {border-top: 1px solid #999999;}
 .well_box {border-bottom: 1px solid #999999;}
 
+/*Tela de Impressão*/
+
+.widget_box_boddy { /*Bordas*/
+	background: none repeat scroll 0 0 #F9F9F9;  /*Cor Interna*/
+	border-left: 1px solid #333; /*Borda Lateral Esquerda*/
+	border-right: 1px solid #333; /*Borda Lateral Direita*/
+	border-top: 1px solid #333; /*Borda Superior*/
+	border-bottom: 1px solid #333; /*Borda inferior*/
+	clear: both;
+	line-height:1.3;
+	margin-top: 2px;
+	margin-bottom: 2px; /*Espaço inferior para a Proxima Tabela*/
+	position: relative;
+}
+
+.widget_box_printer { /*Bordas*/
+	background: none repeat scroll 0 0 #F9F9F9;  /*Cor Interna*/
+	border-left: 1px solid #333; /*Borda Lateral Esquerda*/
+	border-right: 1px solid #333; /*Borda Lateral Direita*/
+	border-top: 1px solid #333; /*Borda Superior*/
+	border-bottom: 1px solid #333; /*Borda inferior*/
+	clear: both;
+	line-height:1.3;
+	margin-top: 2px;
+	margin-bottom: 2px; /*Espaço inferior para a Proxima Tabela*/
+	position: relative;
+}
+
+.widget_box_printer2 { /*Bordas*/
+	background: none repeat scroll 0 0 #F9F9F9;  /*Cor Interna*/
+	border-left: 1px solid #333; /*Borda Lateral Esquerda*/
+	border-right: 1px solid #333; /*Borda Lateral Direita*/
+	border-top: 0px solid #333; /*Borda Superior*/
+	border-bottom: 0px solid #333; /*Borda inferior*/
+	clear: both;
+	line-height:1.3;
+	margin-top: 2px;
+	margin-bottom: 2px; /*Espaço inferior para a Proxima Tabela*/
+	position: relative;
+}
+
+.widget_box_printer3 { /*Bordas*/
+	background: none repeat scroll 0 0 #F9F9F9;  /*Cor Interna*/
+	border-left: 0px solid #333; /*Borda Lateral Esquerda*/
+	border-right: 0px solid #333; /*Borda Lateral Direita*/
+	border-top: 0px solid #333; /*Borda Superior*/
+	border-bottom: 0px solid #333; /*Borda inferior*/
+	clear: both;
+	line-height:1.5;
+	margin-top: 3px;
+	margin-bottom: 3px; /*Espaço inferior para a Proxima Tabela*/
+	position: relative;
+}
+
+.widget_content_printer {
+	padding: 25px; /*Margem entre a tabela interna e externa*/
+} 
+
+.widget_content_printer2 {
+	padding: 1px; /*Margem entre a tabela interna e externa*/
+}
+
+.widget_content_printer3 {
+	padding: 30px; /*Margem entre a tabela interna e externa*/
+}
+
+.table_boddy {width:100%;}/**/
+.table_boddy tr td {font-size:12px; padding: 2px;} /*Bordas da Tabela Interna*/
+
+.table_box {width:100%;margin-bottom:0px}/**/
+.table_box tr td {font-size:12px; padding-left: 3px; padding-top: 3px;} /*Cor das Bordas da Tabela Interna*/
+.table_box tr td {border-bottom: 1px solid #333;}/**/
+.table_box tr td {border-top: 1px solid #333;}/**/
+
+.table_print {width:100%;margin-bottom:5px}/**/
+.table_print tr td {font-size:12px; padding: 2px;} /*Bordas da Tabela Interna*/
+
+.table_print2 {width:100%;margin-bottom:25px}/**/
+.table_print2 tr td {font-size:12px; padding: 1px;} /*Cor das Bordas da Tabela Interna*/
+.table_print2 tr td {border-bottom: 1px solid #333;}/**/
+.table_print2 tr td {border-top: 1px solid #333;}/**/
+
+.table_print3{width:100%;margin-bottom:20px}
+.table_print3 tr td {border: 1px solid #333;}
+.table_print3 tr td {font-size:12px; padding: 2px;} /*Cor das Bordas da Tabela Interna*/
+.table_print3 th {font-size:12px; text-align:center; padding: 2px; color: #333; background:#eee; border: 1px solid #333;} /**/
+
+.print_termo {width:100%;margin-bottom:20px}
+.print_termo tr td {font-size:12px;  padding: 5px;} /*Texto*/
+.print_termo tr td {border: 1px solid #333;} /*Cor das Bordas da Tabela Interna*/
+.print_termo th {text-align:center; padding: 3px; font-size:12px; color: #333; background:#eee; border: 1px solid #333;} /**/

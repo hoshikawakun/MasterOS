@@ -1,14 +1,15 @@
 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'aCliente')) { ?>
-    <a href="<?php echo base_url(); ?>index.php/clientes/adicionar" class="btn btn-success"><i class="fas fa-plus"></i> Adicionar Cliente</a>
+<a href="<?php echo base_url(); ?>index.php/clientes/adicionar" class="btn btn-success"><i class="fas fa-plus"></i>
+    Adicionar Cliente</a>
 <?php } ?>
 
 <div class="widget-box">
-	<div class="widget-title">
-    <span class="icon"><i class="fas fa-user"></i></span>
-    <h5>Clientes</h5>
+    <div class="widget-title">
+        <span class="icon"><i class="fas fa-user"></i></span>
+        <h5>Clientes</h5>
     </div>
     <div class="widget-content nopadding">
-    <table id="tabela" width="100%" class="table_p">
+        <table id="tabela" width="100%" class="table_p">
             <thead>
                 <tr>
                     <th>Cod.</th>
@@ -55,7 +56,7 @@
                         echo '</td>';
                         echo '</tr>';
                     } ?>
-          
+
             </tbody>
         </table>
     </div>
@@ -64,7 +65,8 @@
 
 
 <!-- Modal -->
-<div id="modal-excluir" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="modal-excluir" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="<?php echo base_url() ?>index.php/clientes/excluir" method="post">
         <div class="modal_header_anexos">
             <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>
@@ -72,7 +74,8 @@
         </div>
         <div class="modal-body">
             <input type="hidden" id="idCliente" name="id" value="" />
-            <h5 style="text-align: center">Deseja realmente excluir este cliente e os dados associados a ele (OS, Vendas, Receitas)?</h5>
+            <h5 style="text-align: center">Deseja realmente excluir este cliente e os dados associados a ele (OS,
+                Vendas, Receitas)?</h5>
         </div>
         <div class="modal-footer">
             <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Cancelar</button>
@@ -82,10 +85,10 @@
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        $(document).on('click', 'a', function(event) {
-            var cliente = $(this).attr('cliente');
-            $('#idCliente').val(cliente);
-        });
+$(document).ready(function() {
+    $(document).on('click', 'a', function(event) {
+        var cliente = $(this).attr('cliente');
+        $('#idCliente').val(cliente);
     });
+});
 </script>

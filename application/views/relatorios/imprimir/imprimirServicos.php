@@ -25,7 +25,7 @@
                         </h4>
                     </div>
                     <div class="widget_content nopadding">
-                    <table width="100%" class="table_v">
+                        <table width="100%" class="table_v">
                             <thead>
                                 <tr>
                                     <th width="350" style="font-size: 15px">Nome</th>
@@ -47,7 +47,8 @@
                         </table>
                     </div>
                 </div>
-                <h5 style="text-align: right; font-size: 0.8em; padding: 5px;">Data do Relatório: <?php echo date('d/m/Y'); ?>
+                <h5 style="text-align: right; font-size: 0.8em; padding: 5px;">Data do Relatório:
+                    <?php echo date('d/m/Y'); ?>
                 </h5>
             </div>
         </div>

@@ -1,4 +1,5 @@
-<a href="#modal-excluir" role="button" data-toggle="modal" class="btn btn-danger tip-top" title="Excluir Logs"><i class="fas fa-trash-alt"></i> Remover Logs - 30 dias ou mais</a>
+<a href="#modal-excluir" role="button" data-toggle="modal" class="btn btn-danger tip-top" title="Excluir Logs"><i
+        class="fas fa-trash-alt"></i> Remover Logs - 30 dias ou mais</a>
 
 <div class="widget-box">
     <div class="widget-title">
@@ -8,7 +9,7 @@
         <h5>Logs</h5>
     </div>
     <div class="widget-content nopadding">
-    
+
         <table id="tabela" width="100%" class="table_p">
             <thead>
                 <tr>
@@ -30,9 +31,9 @@
     echo '</tr>';
 } ?>
                 <?php if (!$results) { ?>
-                    <tr>
-                        <td colspan="5">Nenhum registro encontrado.</td>
-                    </tr>
+                <tr>
+                    <td colspan="5">Nenhum registro encontrado.</td>
+                </tr>
                 <?php } ?>
             </tbody>
         </table>
@@ -41,7 +42,8 @@
 <?php echo $this->pagination->create_links(); ?>
 
 <!-- Modal -->
-<div id="modal-excluir" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="modal-excluir" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="<?php echo site_url('auditoria/clean') ?>" method="post">
         <div class="modal_header_anexos">
             <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>

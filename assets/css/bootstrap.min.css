@@ -905,7 +905,7 @@
 .table_box {width:100%;margin-bottom:0px}/**/
 .table_box tr td {font-size:8px; padding-left: 3px; padding-top: 3px;} /*Cor das Bordas da Tabela Interna*/
 .table_box tr td {border-bottom: 1px solid #333;}/**/
-.table_box tr td {border-top: 1px solid #333;}/**//
+.table_box tr td {border-top: 1px solid #333;}/**/
 
 .table_print {width:100%;margin-bottom:5px}/**/
 .table_print tr td {font-size:10px; padding: 2px;} /*Bordas da Tabela Interna*/
@@ -913,7 +913,7 @@
 .table_print2 {width:100%;margin-bottom:25px}/**/
 .table_print2 tr td {font-size:11px; padding: 1px;} /*Cor das Bordas da Tabela Interna*/
 .table_print2 tr td {border-bottom: 1px solid #333;}/**/
-.table_print2 tr td {border-top: 1px solid #333;}/**//
+.table_print2 tr td {border-top: 1px solid #333;}/**/
 
 .table_print3{width:100%;margin-bottom:20px}
 .table_print3 tr td {border: 1px solid #333;}

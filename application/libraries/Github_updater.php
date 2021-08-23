@@ -274,7 +274,8 @@ class Github_updater
     {
         $whereIsCommand = (PHP_OS == 'WINNT') ? 'where' : 'which';
 
-        $process = proc_open("$whereIsCommand $command",
+        $process = proc_open(
+            "$whereIsCommand $command",
             [
                 0 => ["pipe", "r"], //STDIN
                 1 => ["pipe", "w"], //STDOUT

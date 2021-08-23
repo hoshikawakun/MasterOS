@@ -229,4 +229,4 @@
 .fc .fc-list-event-dot{display:inline-block;box-sizing:content-box;width:0;height:0;border:5px solid #3788d8;border:calc(var(--fc-list-event-dot-width,10px)/ 2) solid var(--fc-event-border-color,#3788d8);border-radius:5px;border-radius:calc(var(--fc-list-event-dot-width,10px)/ 2)}
 .fc .fc-list-event-title a{color:inherit}
 .fc .fc-list-event.fc-event-forced-url:hover a{text-decoration:underline}
-.fc-theme-bootstrap a:not([href]){color:inherit}zzzz
+.fc-theme-bootstrap a:not([href]){color:inherit}
