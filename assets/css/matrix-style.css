@@ -1674,3 +1674,69 @@ fieldset[disabled] .btn-info.active {
 	color: #26A38E;
 	background-color: #FFFFFF;
 }
+
+/*Tela de Impressão*/
+
+.widget_box_boddy { /*Bordas*/
+	background: none repeat scroll 0 0 #F9F9F9;  /*Cor Interna*/
+	border-left: 1px solid #333; /*Borda Lateral Esquerda*/
+	border-right: 1px solid #333; /*Borda Lateral Direita*/
+	border-top: 1px solid #333; /*Borda Superior*/
+	border-bottom: 1px solid #333; /*Borda inferior*/
+	clear: both;
+	line-height:1.3;
+	margin-top: 2px;
+	margin-bottom: 2px; /*Espaço inferior para a Proxima Tabela*/
+	position: relative;
+}
+
+.widget_box_printer { /*Bordas*/
+	background: none repeat scroll 0 0 #F9F9F9;  /*Cor Interna*/
+	border-left: 1px solid #333; /*Borda Lateral Esquerda*/
+	border-right: 1px solid #333; /*Borda Lateral Direita*/
+	border-top: 1px solid #333; /*Borda Superior*/
+	border-bottom: 1px solid #333; /*Borda inferior*/
+	clear: both;
+	line-height:1.3;
+	margin-top: 2px;
+	margin-bottom: 2px; /*Espaço inferior para a Proxima Tabela*/
+	position: relative;
+}
+
+.widget_box_printer2 { /*Bordas*/
+	background: none repeat scroll 0 0 #F9F9F9;  /*Cor Interna*/
+	border-left: 1px solid #333; /*Borda Lateral Esquerda*/
+	border-right: 1px solid #333; /*Borda Lateral Direita*/
+	border-top: 0px solid #333; /*Borda Superior*/
+	border-bottom: 0px solid #333; /*Borda inferior*/
+	clear: both;
+	line-height:1.3;
+	margin-top: 2px;
+	margin-bottom: 2px; /*Espaço inferior para a Proxima Tabela*/
+	position: relative;
+}
+
+.widget_box_printer3 { /*Bordas*/
+	background: none repeat scroll 0 0 #F9F9F9;  /*Cor Interna*/
+	border-left: 0px solid #333; /*Borda Lateral Esquerda*/
+	border-right: 0px solid #333; /*Borda Lateral Direita*/
+	border-top: 0px solid #333; /*Borda Superior*/
+	border-bottom: 0px solid #333; /*Borda inferior*/
+	clear: both;
+	line-height:1.5;
+	margin-top: 3px;
+	margin-bottom: 3px; /*Espaço inferior para a Proxima Tabela*/
+	position: relative;
+}
+
+.widget_content_printer {
+	padding: 25px; /*Margem entre a tabela interna e externa*/
+} 
+
+.widget_content_printer2 {
+	padding: 1px; /*Margem entre a tabela interna e externa*/
+}
+
+.widget_content_printer3 {
+	padding: 30px; /*Margem entre a tabela interna e externa*/
+}
