@@ -898,3 +898,29 @@
 .show{display:block}
 .invisible{visibility:hidden}
 .affix{position:fixed}
+
+.table_boddy {width:100%;}/**/
+.table_boddy tr td {font-size:8px; padding: 2px; alignment-adjust:auto;} /*Bordas da Tabela Interna*/
+
+.table_box {width:100%;margin-bottom:0px}/**/
+.table_box tr td {font-size:8px; padding-left: 3px; padding-top: 3px;} /*Cor das Bordas da Tabela Interna*/
+.table_box tr td {border-bottom: 1px solid #333;}/**/
+.table_box tr td {border-top: 1px solid #333;}/**//
+
+.table_print {width:100%;margin-bottom:5px}/**/
+.table_print tr td {font-size:10px; padding: 2px;} /*Bordas da Tabela Interna*/
+
+.table_print2 {width:100%;margin-bottom:25px}/**/
+.table_print2 tr td {font-size:11px; padding: 1px;} /*Cor das Bordas da Tabela Interna*/
+.table_print2 tr td {border-bottom: 1px solid #333;}/**/
+.table_print2 tr td {border-top: 1px solid #333;}/**//
+
+.table_print3{width:100%;margin-bottom:20px}
+.table_print3 tr td {border: 1px solid #333;}
+.table_print3 tr td {font-size:8px; padding: 2px;} /*Cor das Bordas da Tabela Interna*/
+.table_print3 th {font-size:8px; text-align:center; padding: 2px; color: #333; background:#eee; border: 1px solid #333;} /**/
+
+.print_termo {width:100%;margin-bottom:20px}
+.print_termo tr td {font-size:10px;  padding: 5px;} /*Texto*/
+.print_termo tr td {border: 1px solid #333;} /*Cor das Bordas da Tabela Interna*/
+.print_termo th {text-align:center; padding: 3px; font-size:9px; color: #333; background:#eee; border: 1px solid #333;} /**/
