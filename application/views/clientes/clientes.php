@@ -33,15 +33,14 @@
                         
                         echo '<tr>';
                         echo '<td><div align="center">' . $r->idClientes . '</div></td>';
-                        echo '<td><a href="' . base_url() . 'index.php/mine?e=' . $r->email . '&c=' . $r->senha . '" target="new" style="margin-right: 1%" class="tip-top" title="Área do cliente">' . $NomeClienteShort . '</a></td>';
+                        echo '<td><a href="' . base_url() . 'index.php/clientes/visualizar/' . $r->idClientes . '" style="margin-right: 1%" class="tip-top" title="Visualizar mais detalhes">' . $NomeClienteShort . '</a></td>';
                         echo '<td><div align="center">' . $r->documento . '</div></td>';
                         echo '<td><div align="center">' . $r->senha . '</div></td>';
                         echo '<td><div align="center">' . $r->telefone . '</div></td>';
                         echo '<td><div align="center">' . $r->email . '</div></td>';
                         echo '<td><div align="center">';
-                        if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vCliente')) {
-                            echo '<a href="' . base_url() . 'index.php/clientes/visualizar/' . $r->idClientes . '" style="margin-right: 1%" class="btn tip-top" title="Visualizar mais detalhes"><i class="fas fa-eye"></i></a>';
-                            /*echo '<a href="' . base_url() . 'index.php/mine?e=' . $r->email . '&c=' . $r->senha . '" target="new" style="margin-right: 1%" class="btn btn-warning tip-top" title="Área do cliente"><i class="fas fa-key"></i></a>';*/
+                        if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eCliente')) {
+                            echo '<a href="' . base_url() . 'index.php/mine?e=' . $r->email . '&c=' . $r->senha . '" target="new" style="margin-right: 1%" class="btn btn-warning tip-top" title="Área do cliente"><i class="fas fa-key"></i></a>';
                         }
                         if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vCliente')) {
                             $zapnumber = preg_replace("/[^0-9]/", "", $r->telefone);

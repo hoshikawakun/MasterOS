@@ -103,8 +103,8 @@
                             echo '</tr>';
                         }
                     } else {
-                                echo '<tr><td colspan="9">Nenhum ordem de serviço encontrada.</td></tr>';
-                            }
+                        echo '<tr><td colspan="9">Nenhum ordem de serviço encontrada.</td></tr>';
+                    }
 
                     ?>
                             

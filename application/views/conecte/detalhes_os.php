@@ -233,7 +233,7 @@
                                     } ?>
                                 </div>
                             </div>
-                        
+                 <!--Fim Anexos-->       
                  <!--Equipamentos-->
                             <div class="tab-pane" id="tab6">
                             <div class="widget-box" id="divEquipamento">

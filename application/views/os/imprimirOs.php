@@ -20,8 +20,13 @@ $totalProdutos = 0; ?>
 </head>
 <body>
 
-    <div class="invoice-content">
-    <table width="100%" class="table_r">
+<div class="widget_content_printer">
+
+
+<div class="widget_content_printer2">
+<div class="widget_box_boddy">
+<table width="100%" class="table_boddy">
+
   <?php if ($emitente == null) { ?>
   <tr>
     <td colspan="3" class="alert">Você precisa configurar os dados do emitente. >>><a href="<?php echo base_url(); ?>index.php/mapos/emitente">Configurar</a><<<
@@ -31,104 +36,124 @@ $totalProdutos = 0; ?>
   <tr>
     <td style="width: 25%"><img src=" <?php echo $emitente[0]->url_logo; ?> "></td>
     <td>
-<span style="font-size: 15px"><b><?php echo $emitente[0]->nome; ?></b></span></br>
-<span style="font-size: 13px"><i class="fas fa-fingerprint" style="margin:5px 1px"></i> <?php echo $emitente[0]->cnpj; ?></span></br>
-<span style="font-size: 13px"><i class="fas fa-map-marker-alt" style="margin:4px 3px"></i> <?php echo $emitente[0]->rua . ', ' . $emitente[0]->numero . ' - ' . $emitente[0]->bairro; ?></span></br>
-<span style="font-size: 13px"><i class="fas fa-map-marker-alt" style="margin:4px 3px"></i> <?php echo $emitente[0]->cidade . ' - ' . $emitente[0]->uf; ?></br>
-<span style="font-size: 13px"><i class="fas fa-map-marker-alt" style="margin:4px 3px"></i> <?= 'CEP: ' . $emitente[0]->cep; ?></span><br>
-<span style="font-size: 13px"><i class="fas fa-envelope" style="margin:5px 1px"></i>  <?php echo $emitente[0]->email; ?></span></br>
-<span style="font-size: 13px"><i class="fas fa-phone-alt" style="margin:5px 1px"></i>  <?php echo $emitente[0]->telefone; ?></span>
+<b><?php echo $emitente[0]->nome; ?></b></br>
+<i class="fas fa-fingerprint" style="margin:0px 1px"></i> <?php echo $emitente[0]->cnpj; ?></br>
+<i class="fas fa-map-marker-alt" style="margin:0px 3px"></i> <?php echo $emitente[0]->rua . ', ' . $emitente[0]->numero . ' - ' . $emitente[0]->bairro; ?></br>
+<i class="fas fa-map-marker-alt" style="margin:0px 3px"></i> <?php echo $emitente[0]->cidade . ' - ' . $emitente[0]->uf; ?></br>
+<i class="fas fa-map-marker-alt" style="margin:0px 3px"></i> <?= 'CEP: ' . $emitente[0]->cep; ?><br>
+<i class="fas fa-envelope" style="margin:0px 1px"></i>  <?php echo $emitente[0]->email; ?></br>
+<i class="fas fa-phone-alt" style="margin:0px 1px"></i>  <?php echo $emitente[0]->telefone; ?>
 </td>
 
-    <td style="text-align: center">
-        <span style="font-size: 12px"><b>OS N°: </b><span><?php echo $result->idOs ?></span></br>
-        <span style="font-size: 12px"><b>Emissão:</b> <?php echo date('d/m/Y') ?></span></br>
-        <span style="font-size: 12px"><b>Status OS: </b><?php echo $result->status ?></span></br>
-        <span style="font-size: 12px"><b>Data de Entrada: </b><?php echo date('d/m/Y', strtotime($result->dataInicial)); ?></span></br>
-        <span style="font-size: 12px"><b>Data Final: </b><?php echo date('d/m/Y', strtotime($result->dataFinal)); ?></span></br>
+<td style="text-align: center">
+        <b>OS N°: </b><span><?php echo $result->idOs ?></br>
+        <b>Emissão:</b> <?php echo date('d/m/Y') ?></br>
+        <b>Status OS: </b><?php echo $result->status ?></br>
+        <b>Data de Entrada: </b><?php echo date('d/m/Y', strtotime($result->dataInicial)); ?></br>
+        <b>Data Final: </b><?php echo date('d/m/Y', strtotime($result->dataFinal)); ?></br>
         <?php if ($result->dataSaida != null) { ?>
-        <span style="font-size: 12px"><b>Data de Saida: </b><?php echo htmlspecialchars_decode($result->dataSaida) ?><?php } ?></span></br>
+        <b>Data de Saida: </b><?php echo htmlspecialchars_decode($result->dataSaida) ?><?php } ?></br>
         <?php if ($result->garantia != null) { ?>
-        <span style="font-size: 12px"><b>Garantia até: </b><?php echo htmlspecialchars_decode($result->garantia) ?><?php } ?></span></br></td>
+        <b>Garantia até: </b><?php echo htmlspecialchars_decode($result->garantia) ?><?php } ?></br></td>
   </tr>
   <?php } ?>
-  <tr>
+  </table>
+</div>
+</div>
+
+<div class="widget_content_printer2">
+<div class="widget_box_boddy">
+<table width="100%" class="table_boddy">
+<tr>
     <td colspan="2">
-            <span style="font-size: 13px"><b>Cliente</b></span><br>
-            <span style="font-size: 12px"><i class="fas fa-user-check"></i> <?php echo $result->nomeCliente ?></span><br>
-            <span style="font-size: 12px"><i class="fas fa-fingerprint" style="margin:5px 1px"></i> <?php echo $result->documento ?></span><br>
-            <span style="font-size: 12px"><i class="fas fa-map-marker-alt" style="margin:4px 3px"></i> <?php echo $result->rua ?>,
+            <b>Cliente</b><br>
+            <i class="fas fa-user-check"></i> <?php echo $result->nomeCliente ?><br>
+            <i class="fas fa-fingerprint" style="margin:0px 1px"></i> <?php echo $result->documento ?><br>
+            <i class="fas fa-map-marker-alt" style="margin:0px 3px"></i> <?php echo $result->rua ?>,
                                                     <?php echo $result->numero ?>,
-                                                    <?php echo $result->bairro ?></span><br>
-            <span style="font-size: 12px"><i class="fas fa-map-marker-alt" style="margin:4px 3px"></i> <?php echo $result->cidade ?> - <?php echo $result->estado ?></span><br> 
-            <span style="font-size: 12px"><i class="fas fa-map-marker-alt" style="margin:4px 3px"></i> CEP: <?php echo $result->cep ?></span><br>
-            <span style="font-size: 12px"><i class="fas fa-phone-alt" style="margin:5px 1px"></i>  <?php echo $result->telefone ?></span>
+                                                    <?php echo $result->bairro ?><br>
+            <i class="fas fa-map-marker-alt" style="margin:0px 3px"></i> <?php echo $result->cidade ?> - <?php echo $result->estado ?><br> 
+            <i class="fas fa-map-marker-alt" style="margin:0px 3px"></i> CEP: <?php echo $result->cep ?><br>
+            <i class="fas fa-phone-alt" style="margin:0px 1px"></i>  <?php echo $result->telefone ?>
                           </td>
                           <td>
-            <span style="font-size: 13px"><b>Responsável</b></span><br>
-            <span style="font-size: 12px"><i class="fas fa-user-check"></i> <?php echo $result->nome ?></span><br>
-            <span style="font-size: 12px"><i class="fas fa-envelope" style="margin:5px 1px"></i> <?php echo $result->email_responsavel ?></span><br>
-            <span style="font-size: 12px"><i class="fas fa-phone-alt" style="margin:5px 1px"></i> <?php echo $result->telefone_usuario ?></span>
+            <b>Técnico</b><br>
+            <i class="fas fa-user-check"></i> <?php echo $result->nome ?><br>
+            <i class="fas fa-envelope" style="margin:0px 1px"></i> <?php echo $result->email_responsavel ?><br>
+            <i class="fas fa-phone-alt" style="margin:0px 1px"></i> <?php echo $result->telefone_usuario ?>
             </td>
   </tr>
-  <tr>
+</table>
+</div>
+</div>
+
+<div class="widget_content_printer2">
+<div class="widget_box_printer">
+<table width="100%" class="table_boddy">
+<tr>
     <td colspan="2"><?php if ($result->serial != null) { ?>
-                                    <span style="font-size: 13px; ">
-                              <b>Nº Série:</b><br></span>
-                                            <?php echo htmlspecialchars_decode($result->serial) ?>
+                              <b>Nº Série:</b><br>                                            <?php echo htmlspecialchars_decode($result->serial) ?>
                             <?php } ?></td>
     <td><?php if ($result->marca != null) { ?>
-                                    <span style="font-size: 13px; ">
-                              <b>Marca:</b><br></span>
+                              <b>Marca:</b><br>
                                             <?php echo htmlspecialchars_decode($result->marca) ?>
                             <?php } ?></td>
   </tr>
-  <?php if ($result->rastreio != null) { ?>
-                                    <tr>
-                                        <td colspan="3"><span style="font-size: 13px; ">
-                                            <b>Cod. de Rastreio:</b><br></span>
-                                            <?php echo htmlspecialchars_decode($result->rastreio) ?>
-                                        </td>
-                                    </tr>
-                                <?php } ?>
-  <?php if ($result->descricaoProduto != null) { ?>
-                                    <tr>
-                                        <td colspan="3"><span style="font-size: 14px; ">
-                                            <b>Descrição Produto/Serviço:</b><br></span>
-                                            <?php echo htmlspecialchars_decode($result->descricaoProduto) ?>
-                                        </td>
-                                    </tr>
-                                <?php } ?>
-  <?php if ($result->defeito != null) { ?>
-                                    <tr>
-                                        <td colspan="3"><span style="font-size: 13px; ">
-                                            <b>Problema Informado:</b><br></span>
-                                            <?php echo htmlspecialchars_decode($result->defeito) ?>
-                                        </td>
-                                    </tr>
-                                <?php } ?>
-  <?php if ($result->observacoes != null) { ?>
-                                    <tr>
-                                        <td colspan="3"><span style="font-size: 13px; ">
-                                            <b>Observações:</b><br></span>
-                                            <?php echo htmlspecialchars_decode($result->observacoes) ?>
-                                        </td>
-                                    </tr>
-                                <?php } ?>
-  <?php if ($result->laudoTecnico != null) { ?>
-                                    <tr>
-                                        <td colspan="3"><span style="font-size: 13px; ">
-                                            <b>Relatório Técnico:</b><br></span>
-                                            <?php echo htmlspecialchars_decode($result->laudoTecnico) ?>
-                                        </td>
-                                    </tr>
-                                <?php } ?>
-                                <tr>
-                                <td colspan="3"><br />
-                        
-                        <div class"span12">
+</table>
+</div>
+</div>
+
+<div class="widget_content_printer2">
+<div class="widget_box_printer2">
+<table width="100%" class="table_box">
+<tr>
+    <td>
+		<?php if ($result->rastreio != null) { ?>
+			<b>Cod. de Rastreio:</b><br>
+				<?php echo htmlspecialchars_decode($result->rastreio) ?></p>
+		<?php } ?>
+	</td>
+</tr>
+<tr>
+    <td>
+		<?php if ($result->descricaoProduto != null) { ?>
+			<b>Descrição Produto/Serviço:</b><br>
+				<?php echo htmlspecialchars_decode($result->descricaoProduto) ?>
+		<?php } ?>
+	</td>
+</tr>
+<tr>
+    <td>
+		<?php if ($result->defeito != null) { ?>
+			<b>Problema Informado:</b><br>
+				<?php echo htmlspecialchars_decode($result->defeito) ?>
+		<?php } ?>
+	</td>
+</tr>
+<tr>
+    <td>
+		<?php if ($result->observacoes != null) { ?>
+			<b>Observações:</b><br>
+				<?php echo htmlspecialchars_decode($result->observacoes) ?>
+		<?php } ?>
+	</td>
+</tr>
+<tr>
+    <td>
+		<?php if ($result->laudoTecnico != null) { ?>
+			<b>Relatório Técnico:</b><br>
+				<?php echo htmlspecialchars_decode($result->laudoTecnico) ?>
+		<?php } ?>
+	</td>
+</tr>
+</table>
+</div>
+</div>
+
+<div class="widget_content_printer2">
+<div class="widget_box_printer3">
                         	<?php if ($equipamentos != null) { ?>
-                            <table width="100%" class="table_p" id="tblEquipamento">
+                            <table width="100%" class="table_print3" id="tblEquipamento">
                                 <thead>
                                     <tr>
                                         <th>Equipamento</th>
@@ -161,11 +186,14 @@ $totalProdutos = 0; ?>
                                 </tbody>
                             </table>
                         <?php } ?>
-                        </div>
-                        
-                        <div class"span12">
+</div>
+</div>
+
+
+<div class="widget_content_printer2">
+<div class="widget_box_printer3">
 						<?php if ($produtos != null) { ?>
-                            <table width="100%" class="table_p" id="tblProdutos">
+                            <table width="100%" class="table_print3" id="tblProdutos">
                                 <thead>
                                     <tr>
                                         <th width="10%">Cod. Produto</th>
@@ -195,10 +223,14 @@ $totalProdutos = 0; ?>
                                 </tbody>
                             </table>
                         <?php } ?>
-                        </div>
-                        <div class"span12">
+</div>
+</div>
+
+
+<div class="widget_content_printer2">
+<div class="widget_box_printer3">
 						<?php if ($servicos != null) { ?>
-                            <table width="100%" class="table_p">
+                            <table width="100%" class="table_print3">
                                 <thead>
                                     <tr>
                                         <th>Serviço</th>
@@ -229,25 +261,27 @@ $totalProdutos = 0; ?>
                                 </tbody>
                             </table>
                         <?php } ?>
-                        </div>
-                        <?php
+</div>
+</div>
+
+<?php
                         if ($totalProdutos != 0 || $totalServico != 0) {
-                            echo "<h4 style='font-size: 15px; text-align: right'>Valor Total: R$" . number_format($totalProdutos + $totalServico, 2, ',', '.') . "</h4>";
+                            echo "<h4 style='font-size: 10px; text-align: right'>Valor Total: R$" . number_format($totalProdutos + $totalServico, 2, ',', '.') . "  "."</h4>";
                         }?>
-	</td>
-	</tr>
-    <tr>
-    	<td colspan="3">
-        					<!-- QR Code PIX -->
+
+<div class="widget_content_printer2">
+<div class="widget_box_printer3">
+<table width="100%" class="table_print">
+<!-- QR Code PIX -->
                             <table width="100%" class="table_x">
                                 		<tr>
                                         <th><div align="center">
-                                        <table width="200">
+                                        <table width="100">
                                             <tr>
                                               <td>
                                                 <div align="center">
                                                   <?php if ($qrCode): ?>
-                                                  <img src="../../../assets/img/logo_pix.png" width="150px">
+                                                  <img src="../../../assets/img/logo_pix.png" width="75px">
                                                   <img src="<?= $qrCode ?>" alt="QR Code de Pagamento" />
                                               </div></td>
                                               <?php endif ?>
@@ -257,22 +291,29 @@ $totalProdutos = 0; ?>
                                           </tr>
                                           </table>
 									<!-- Fim QR Code PIX -->
-	</td>
-    </tr>
-	<tr>
-		<td colspan="3">
-        <br>
-        <table width="100%" style="font-size: 10px" class="table_p">
-                                <thead>
-                                    <tr>
-                                        <th>Termo de Uso</th>
-                                        </tr>
-                                </thead><td>
-                                    <?php echo $configuracoes[5]->valor; ?>
-                                    </td>
-      </table>
-      <br>
-      <table width="100%" class="table_x">
+</table>
+</div>
+</div>
+
+<div class="widget_content_printer2">
+<div class="widget_box_printer3">
+		<table width="100%" class="print_termo">
+  <tr>
+    <td>
+    <div align="center"><b>Termo de Uso</b></div>
+    <br>
+<?php echo $configuracoes[5]->valor; ?>
+    </td>
+  </tr>
+</table>
+
+
+</div>
+</div>
+
+<div class="widget_content_printer2">
+<div class="widget_box_printer3">
+<table width="100%" class="table_x">
   <tr>
     <td><div style="font-size: 10px" align="center"><b>Assinatura do Tecnico</b></div>
                                     <div style="font-size: 11px" align="center"><?php echo $result->nome ?></div>
@@ -282,17 +323,20 @@ $totalProdutos = 0; ?>
                                 <hr></td>
   </tr>
 </table>
-      </td>
-	</tr>
-	<tr>
-</tr>
+</div>
+</div>
+
+<!--
+<div class="widget_content_printer2">
+<div class="widget_box_printer">
+<table width="100%" class="table_print">
+
 </table>
+</div>
+</div>
+-->
 
-
-                             </div>
-
-
-
+</div>
 <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/matrix.js"></script>
 
