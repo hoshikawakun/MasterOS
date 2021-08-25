@@ -915,7 +915,7 @@
 .table_print2 tr td {border-bottom: 1px solid #333;}/**/
 .table_print2 tr td {border-top: 1px solid #333;}/**/
 
-.table_print3{width:100%;margin-bottom:20px}
+.table_print3{width:100%;margin-bottom:3px}
 .table_print3 tr td {border: 1px solid #333;}
 .table_print3 tr td {font-size:8px; padding: 2px;} /*Cor das Bordas da Tabela Interna*/
 .table_print3 th {font-size:8px; text-align:center; padding: 2px; color: #333; background:#eee; border: 1px solid #333;} /**/
