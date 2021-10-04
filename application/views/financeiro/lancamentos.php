@@ -100,25 +100,24 @@ textarea {
             <span class="icon"><i class="fas fa-hand-holding-usd"></i></span>
             <h5>Lançamentos Financeiros</h5>
         </div>
-        <div class="widget_content_vusualizar widget_box_vizualizar2">
-            <div class="widget_content">
+        <div class="widget_content">
 
-                <table width="100%" class="table_p" id="divLancamentos">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Tipo</th>
-                            <th>Cliente / Fornecedor</th>
-                            <th>Descrição</th>
-                            <th>Vencimento</th>
-                            <th>Status</th>
-                            <th>Observações</th>
-                            <th>Valor</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
+            <table width="100%" class="table_p" id="divLancamentos">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Tipo</th>
+                        <th>Cliente / Fornecedor</th>
+                        <th>Descrição</th>
+                        <th>Vencimento</th>
+                        <th>Status</th>
+                        <th>Observações</th>
+                        <th>Valor</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
 
                 if (!$results) {
                     echo '<tr>
@@ -157,32 +156,31 @@ textarea {
                     echo '</td>';
                     echo '</tr>';
                 } ?>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="7" style="text-align: right; color: green"><strong>Total Receitas:</strong>
-                            </td>
-                            <td colspan="3" style="text-align: left; color: green">
-                                <strong>R$: <?php echo number_format($totals['receitas'], 2, ',', '.') ?></strong>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="7" style="text-align: right; color: red"><strong>Total Despesas:</strong></td>
-                            <td colspan="3" style="text-align: left; color: red">
-                                <strong>R$: <?php echo number_format($totals['despesas'], 2, ',', '.') ?></strong>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="7" style="text-align: right"><strong>Saldo:</strong></td>
-                            <td colspan="3" style="text-align: left;">
-                                <strong>R$:
-                                    <?php echo number_format($totals['receitas'] - $totals['despesas'], 2, ',', '.') ?></strong>
-                            </td>
-                        </tr>
-                    </tfoot>
-                </table>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="7" style="text-align: right; color: green"><strong>Total Receitas:</strong>
+                        </td>
+                        <td colspan="3" style="text-align: left; color: green">
+                            <strong>R$: <?php echo number_format($totals['receitas'], 2, ',', '.') ?></strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="7" style="text-align: right; color: red"><strong>Total Despesas:</strong></td>
+                        <td colspan="3" style="text-align: left; color: red">
+                            <strong>R$: <?php echo number_format($totals['despesas'], 2, ',', '.') ?></strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="7" style="text-align: right"><strong>Saldo:</strong></td>
+                        <td colspan="3" style="text-align: left;">
+                            <strong>R$:
+                                <?php echo number_format($totals['receitas'] - $totals['despesas'], 2, ',', '.') ?></strong>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
 
-            </div>
         </div>
     </div>
 </div>
@@ -196,7 +194,7 @@ textarea {
     <form id="formReceita" action="<?php echo base_url() ?>index.php/financeiro/adicionarReceita" method="post">
         <div class="modal_header_anexos">
             <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="myModalLabel">Adicionar Receita</h3>
+            <h3 id="myModalLabel">MapOS - Adicionar Receita</h3>
         </div>
         <div class="modal-body">
 
@@ -204,8 +202,8 @@ textarea {
                 asterisco.
             </div>
             <div class="span12" style="margin-left: 0">
-                <label for="descricao">Descrição</label>
-                <input class="span12" id="descricao" type="text" name="descricao*" />
+                <label for="descricao">Descrição*</label>
+                <input class="span12" id="descricao" type="text" name="descricao" />
                 <input id="urlAtual" type="hidden" name="urlAtual" value="<?php echo current_url() ?>" />
             </div>
             <div class="span12" style="margin-left: 0">
@@ -225,8 +223,7 @@ textarea {
                 <div class="span4" style="margin-left: 0">
                     <label for="valor">Valor*</label>
                     <input type="hidden" id="tipo" name="tipo" value="receita" />
-                    <input class="span12 money" id="valor" type="text" name="valor" data-affixes-stay="true"
-                        data-thousands="" data-decimal="." />
+                    <input class="span12 money" id="valor" type="text" name="valor" />
                 </div>
                 <div class="span4">
                     <label for="vencimento">Data Vencimento*</label>
@@ -250,9 +247,10 @@ textarea {
                         <select name="formaPgto" id="formaPgto" class="span12">
                             <option value="Dinheiro">Dinheiro</option>
                             <option value="Cartão de Crédito">Cartão de Crédito</option>
-                            <option value="Débito">Débito</option>
+                            <option value="Cheque">Cheque</option>
                             <option value="Boleto">Boleto</option>
                             <option value="Depósito">Depósito</option>
+                            <option value="Débito">Débito</option>
                             <option value="Pix">Pix</option>
                         </select>
                     </div>
@@ -263,7 +261,7 @@ textarea {
         </div>
         <div class="modal-footer">
             <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Cancelar</button>
-            <button class="btn btn-success">Adicionar Receita</button>
+            <button class="btn btn-success" id="submitReceita">Adicionar Receita</button>
         </div>
     </form>
 </div>
@@ -274,7 +272,7 @@ textarea {
     <form id="formDespesa" action="<?php echo base_url() ?>index.php/financeiro/adicionarDespesa" method="post">
         <div class="modal_header_anexos">
             <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="myModalLabel">Adicionar Despesa</h3>
+            <h3 id="myModalLabel">MapOS - Adicionar Despesa</h3>
         </div>
         <div class="modal-body">
             <div class="span12 alert alert-info" style="margin-left: 0"> Obrigatório o preenchimento dos campos com
@@ -302,8 +300,7 @@ textarea {
                 <div class="span4" style="margin-left: 0">
                     <label for="valor">Valor*</label>
                     <input type="hidden" name="tipo" value="despesa" />
-                    <input class="span12 money" type="text" name="valor" data-affixes-stay="true" data-thousands=""
-                        data-decimal="." />
+                    <input class="span12 money" type="text" name="valor" />
                 </div>
                 <div class="span4">
                     <label for="vencimento">Data Vencimento*</label>
@@ -328,9 +325,10 @@ textarea {
                         <select name="formaPgto" class="span12">
                             <option value="Dinheiro">Dinheiro</option>
                             <option value="Cartão de Crédito">Cartão de Crédito</option>
-                            <option value="Débito">Débito</option>
+                            <option value="Cheque">Cheque</option>
                             <option value="Boleto">Boleto</option>
                             <option value="Depósito">Depósito</option>
+                            <option value="Débito">Débito</option>
                             <option value="Pix">Pix</option>
                         </select>
                     </div>
@@ -341,19 +339,19 @@ textarea {
         </div>
         <div class="modal-footer">
             <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Cancelar</button>
-            <button class="btn btn-danger">Adicionar Despesa</button>
+            <button class="btn btn-danger" id="submitDespesa">Adicionar Despesa</button>
         </div>
     </form>
 </div>
 
 
 <!-- Modal editar lançamento -->
-<div id="modalEditar" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog"
-    aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="modalEditar" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
     <form id="formEditar" action="<?php echo base_url() ?>index.php/financeiro/editar" method="post">
-        <div class="modal_header_anexos">
-            <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="myModalLabel">Editar Lançamento</h3>
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">MapOS - Editar Lançamento</h3>
         </div>
         <div class="modal-body">
             <div class="span12 alert alert-info" style="margin-left: 0"> Obrigatório o preenchimento dos campos com
@@ -380,8 +378,7 @@ textarea {
                     <label for="valor">Valor*</label>
                     <input type="hidden" name="tipo" value="despesa" />
                     <input type="hidden" id="idEditar" name="id" value="" />
-                    <input class="span12 money" type="text" name="valor" id="valorEditar" data-affixes-stay="true"
-                        data-thousands="" data-decimal="." />
+                    <input class="span12 money" type="text" name="valor" id="valorEditar" />
                 </div>
                 <div class="span4">
                     <label for="vencimento">Data Vencimento*</label>
@@ -412,9 +409,10 @@ textarea {
                         <select name="formaPgto" id="formaPgtoEditar" class="span12">
                             <option value="Dinheiro">Dinheiro</option>
                             <option value="Cartão de Crédito">Cartão de Crédito</option>
-                            <option value="Débito">Débito</option>
+                            <option value="Cheque">Cheque</option>
                             <option value="Boleto">Boleto</option>
                             <option value="Depósito">Depósito</option>
+                            <option value="Débito">Débito</option>
                             <option value="Pix">Pix</option>
                         </select>
                     </div>
@@ -425,8 +423,7 @@ textarea {
         </div>
         <div class="modal-footer">
             Modificado:<input disabled id="usuarioEditar" value="" />
-            <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true"
-                id="btnCancelarEditar">Cancelar</button>
+            <button class="btn" data-dismiss="modal" aria-hidden="true" id="btnCancelarEditar">Cancelar</button>
             <button class="btn btn-primary">Salvar Alterações</button>
         </div>
     </form>
@@ -434,18 +431,18 @@ textarea {
 
 
 <!-- Modal Excluir lançamento-->
-<div id="modalExcluir" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog"
-    aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal_header_anexos">
-        <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="myModalLabel">Excluir Lançamento</h3>
+<div id="modalExcluir" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">MapOS - Excluir Lançamento</h3>
     </div>
     <div class="modal-body">
         <h5 style="text-align: center">Deseja realmente excluir esse lançamento?</h5>
         <input name="id" id="idExcluir" type="hidden" value="" />
     </div>
     <div class="modal-footer">
-        <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true" id="btnCancelExcluir">Cancelar</button>
+        <button class="btn" data-dismiss="modal" aria-hidden="true" id="btnCancelExcluir">Cancelar</button>
         <button class="btn btn-danger" id="btnExcluir">Excluir Lançamento</button>
     </div>
 </div>
@@ -516,6 +513,10 @@ jQuery(document).ready(function($) {
             vencimento: {
                 required: 'Campo Requerido.'
             }
+        },
+        submitHandler: function(form) {
+            $("#submitReceita").attr("disabled", true);
+            form.submit();
         }
     });
 
@@ -549,6 +550,10 @@ jQuery(document).ready(function($) {
             vencimento: {
                 required: 'Campo Requerido.'
             }
+        },
+        submitHandler: function(form) {
+            $("#submitDespesa").attr("disabled", true);
+            form.submit();
         }
     });
 
@@ -595,9 +600,9 @@ jQuery(document).ready(function($) {
                     $("#btnCancelExcluir").trigger('click');
                     $("#divLancamentos").html(
                         '<div class="progress progress-striped active"><div class="bar" style="width: 100%;"></div></div>'
-                        );
+                    );
                     $("#divLancamentos").load($(location).attr('href') +
-                    " #divLancamentos");
+                        " #divLancamentos");
 
                 } else {
                     $("#btnCancelExcluir").trigger('click');
