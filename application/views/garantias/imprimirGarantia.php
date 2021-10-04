@@ -11,9 +11,9 @@
     <link href="<?= base_url('assets/css/custom.css'); ?>" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
     <style>
-        .table {
-            margin-bottom: 5px;
-        }
+    .table {
+        margin-bottom: 5px;
+    }
     </style>
 </head>
 
@@ -30,26 +30,29 @@
                         <table class="table table-condensed">
                             <tbody>
                                 <?php if ($emitente == null) { ?>
-                                    <tr>
-                                        <td colspan="3" class="alert">Você precisa configurar os dados do emitente. >>><a href="<?php echo base_url(); ?>index.php/mapos/emitente">Configurar</a>
-                                            <<<</td> </tr> <?php
+                                <tr>
+                                    <td colspan="3" class="alert">Você precisa configurar os dados do emitente. >>><a
+                                            href="<?php echo base_url(); ?>index.php/mapos/emitente">Configurar</a>
+                                        <<<< /td>
+                                </tr> <?php
                                                             } else { ?> <tr>
-                                        <td style="width: 25%"><img src=" <?php echo $emitente[0]->url_logo; ?> "></td>
-                                        <td> <span style="font-size: 20px; ">
-                                                <?php echo $emitente[0]->nome; ?></span> <br />
-                                            <span>
-                                                <?php echo $emitente[0]->cnpj; ?> <br />
-                                                <?php echo $emitente[0]->rua . ', nº:' . $emitente[0]->numero . ', ' . $emitente[0]->bairro . ' - ' . $emitente[0]->cidade . ' - ' . $emitente[0]->uf; ?> </span> </br> <span> E-mail:
-                                                <?php echo $emitente[0]->email . ' - Fone: ' . $emitente[0]->telefone; ?>
-                                            </span>
-                                        </td>
-                                        <td style="width: 18%; text-align: center">
-                                            <br /> <br />
-                                            <span>Emissão:
-                                                <?php echo date('d/m/Y'); ?>
-                                            </span>
-                                        </td>
-                                    </tr>
+                                    <td style="width: 25%"><img src=" <?php echo $emitente[0]->url_logo; ?> "></td>
+                                    <td> <span style="font-size: 20px; ">
+                                            <?php echo $emitente[0]->nome; ?></span> <br />
+                                        <span>
+                                            <?php echo $emitente[0]->cnpj; ?> <br />
+                                            <?php echo $emitente[0]->rua . ', nº:' . $emitente[0]->numero . ', ' . $emitente[0]->bairro . ' - ' . $emitente[0]->cidade . ' - ' . $emitente[0]->uf; ?>
+                                        </span> </br> <span> E-mail:
+                                            <?php echo $emitente[0]->email . ' - Fone: ' . $emitente[0]->telefone; ?>
+                                        </span>
+                                    </td>
+                                    <td style="width: 18%; text-align: center">
+                                        <br /> <br />
+                                        <span>Emissão:
+                                            <?php echo date('d/m/Y'); ?>
+                                        </span>
+                                    </td>
+                                </tr>
                                 <?php
                                 } ?>
                             </tbody>
@@ -108,7 +111,7 @@
     <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/matrix.js"></script>
     <script>
-        window.print();
+    window.print();
     </script>
 </body>
 
