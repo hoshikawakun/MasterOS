@@ -41,18 +41,18 @@ $totalProdutos = 0; ?>
         <table width="100%" class="table_tr">
             <tr>
                 <td colspan="2">
-                    <span style="font-size: 15px"><b><?php echo $emitente[0]->nome; ?></b></span></br>
-                    <span style="font-size: 13px"><i class="fas fa-fingerprint" style="margin:5px 1px"></i>
+                    <span style="font-size: 12px"><b><?php echo $emitente[0]->nome; ?></b></span></br>
+                    <span style="font-size: 10px"><i class="fas fa-fingerprint" style="margin:5px 1px"></i>
                         <?php echo $emitente[0]->cnpj; ?></span></br>
-                    <span style="font-size: 13px"><i class="fas fa-map-marker-alt" style="margin:4px 3px"></i>
+                    <span style="font-size: 10px"><i class="fas fa-map-marker-alt" style="margin:4px 3px"></i>
                         <?php echo $emitente[0]->rua . ', ' . $emitente[0]->numero . ' - ' . $emitente[0]->bairro; ?></span></br>
-                    <span style="font-size: 13px"><i class="fas fa-map-marker-alt"
+                    <span style="font-size: 10px"><i class="fas fa-map-marker-alt"
                             style="margin:4px 3px"></i> <?php echo $emitente[0]->cidade . ' - ' . $emitente[0]->uf; ?></br>
-                        <span style="font-size: 13px"><i class="fas fa-map-marker-alt"
+                        <span style="font-size: 10px"><i class="fas fa-map-marker-alt"
                                 style="margin:4px 3px"></i> <?= 'CEP: ' . $emitente[0]->cep; ?></span><br>
-                        <span style="font-size: 13px"><i class="fas fa-envelope"
+                        <span style="font-size: 10px"><i class="fas fa-envelope"
                                 style="margin:5px 1px"></i>  <?php echo $emitente[0]->email; ?></span></br>
-                        <span style="font-size: 13px"><i class="fas fa-phone-alt"
+                        <span style="font-size: 10px"><i class="fas fa-phone-alt"
                                 style="margin:5px 1px"></i>  <?php echo $emitente[0]->telefone; ?></span>
                 </td>
             </tr>
