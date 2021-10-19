@@ -25,11 +25,20 @@
                     <i class="icon-tags"></i>
                 </span>
                 <h5>Cadastro de OS</h5>
+                <div class="buttons">
+                    <a title="Voltar" class="btn btn-mini btn-inverse" href="<?php echo site_url() ?>/os"><i
+                            class="fas fa-arrow-left"></i> Voltar</a>
+                    <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'aCliente')) { ?>
+<a title="Adicionar Cliente" target="_blank" href="<?php echo base_url(); ?>index.php/clientes/adicionar" class="btn btn-mini btn-success"><i class="fas fa-plus"></i>
+    Adicionar Cliente</a>
+<?php } ?>
+                </div>
             </div>
             <div class="span12" id="divProdutosServicos" style=" margin-left: 0">
                 <div class="widget_box_Painel2">
                     <ul class="nav nav-tabs">
-                        <li class="active" id="tabDetalhes"><a href="#tab1" data-toggle="tab">Detalhes da OS</a></li>
+                        <li class="active" id="tabDetalhes">
+                        <a href="#tab1" data-toggle="tab">Detalhes da OS</a></li>
                     </ul>
 
                     <div class="tab-content">
