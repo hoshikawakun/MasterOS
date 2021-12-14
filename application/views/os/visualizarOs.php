@@ -41,13 +41,6 @@ $totalProdutos = 0; ?>
                     <a href="https://www.linkcorreios.com.br/<?php echo $result->rastreio ?>" title="Rastrear"
                         target="_new" class="btn btn-mini btn-warning"><i class="fas fa-envelope"></i> Rastrear</a>
 
-                    <a href="#modal-whatsapp" title="Enviar WhatsApp" id="btn-whatsapp" role="button"
-                        data-toggle="modal" class="btn btn-mini btn-success"><i class="fab fa-whatsapp"></i>
-                        WhatsApp</a>
-                    <a title="Enviar por E-mail" class="btn btn-mini btn-warning"
-                        href="<?php echo site_url() ?>/os/enviar_email/<?php echo $result->idOs; ?>"><i
-                            class="fas fa-envelope"></i> Enviar por E-mail</a>
-
                 </div>
             </div>
             <div class="widget_content" id="printOs">
@@ -400,7 +393,7 @@ $totalProdutos = 0; ?>
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
                                     $zapnumber = preg_replace("/[^0-9]/", "", $result->celular_cliente);
                                     $totalOS = number_format($totalProdutos + $totalServico, 2, ',', '.');
-                                    echo '<a title="Enviar Por WhatsApp" class="btn btn-success" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $result->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $result->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($result->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $result->status . '*.%0d%0a%0d%0a' . strip_tags($result->defeito) . '%0d%0a%0d%0a' . strip_tags($result->observacoes) . '%0d%0a%0d%0a' . strip_tags($result->laudoTecnico) . '%0d%0a%0d%0aValor%20Total%20*R$&#58%20'. $totalOS . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20estes%20dados%20para%20fazer%20Log-in%0d%0aEmail:%20*' . strip_tags($result->email) . '*%0d%0aSenha:%20*' . strip_tags($result->senha) . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*"><i class="fab fa-whatsapp"></i> Enviar WhatsApp</a>';
+                                    echo '<a title="Enviar Por WhatsApp" class="btn btn-success" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $result->nomeCliente . '*.%0d%0a%0d%0aSua%20*OS:%20#' . $result->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($result->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $result->status . '*.%0d%0a%0d%0a' . strip_tags($result->defeito) . '%0d%0a%0d%0a' . strip_tags($result->observacoes) . '%0d%0a%0d%0a' . strip_tags($result->laudoTecnico) . '%0d%0a%0d%0aValor%20Total%20*R$&#58%20'. $totalOS . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20estes%20dados%20para%20fazer%20Log-in%0d%0aEmail:%20*' . strip_tags($result->email) . '*%0d%0aSenha:%20*' . strip_tags($result->senha) . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*"><i class="fab fa-whatsapp"></i> Enviar WhatsApp</a>';
                                 } ?>
 
             </div>
@@ -409,7 +402,7 @@ $totalProdutos = 0; ?>
             <div class="span12" style="margin-left: 0">
                 <font size='2'>Prezado(a) <b><?php echo $result->nomeCliente ?></b>
                     <br><br>
-                    <div>Sua <b>O.S <?php echo $result->idOs ?></b> referente ao equipamento
+                    <div>Sua <b>OS: #<?php echo $result->idOs ?></b> referente ao equipamento
                         <b><?php echo $result->descricaoProduto ?></b> foi atualizada para
                         <b><?php echo $result->status ?></b>
                     </div>
