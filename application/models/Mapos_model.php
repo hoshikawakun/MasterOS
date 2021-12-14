@@ -66,6 +66,11 @@ class Mapos_model extends CI_Model
         $this->db->or_like('serial', $termo);
         $this->db->limit($this->data['configuration']['per_page']);
         $data['os'] = $this->db->get('os')->result();
+		
+		// buscando equipamento os
+        $this->db->like('num_serie', $termo);
+        $this->db->limit($this->data['configuration']['per_page']);
+        $data['equipamento_os'] = $this->db->get('equipamento_os')->result();
 
         // buscando produtos
         $this->db->like('codDeBarra', $termo);
