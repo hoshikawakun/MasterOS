@@ -124,7 +124,8 @@
                                                         <div align="center"><strong>R$:
                                                                 <?php echo number_format($total, 2, ',', '.'); ?></strong>
                                                             <input type="hidden" id="total-venda"
-                                                                value="<?php echo number_format($total, 2); ?>"></div>
+                                                                value="<?php echo number_format($total, 2); ?>">
+                                                        </div>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -201,7 +202,8 @@
             <div class="span12" style="margin-left: 0">
                 <div class="span4" style="margin-left: 0">
                     <label for="vencimento">Data Entrada*</label>
-                    <input class="span12 datepicker" autocomplete="off" id="vencimento" type="text" name="vencimento" />
+                    <input class="span12 datepicker" autocomplete="off" id="vencimento" type="text" name="vencimento"
+                        value="<?php echo date('d/m/Y'); ?>" />
                 </div>
             </div>
             <div class="span12" style="margin-left: 0">
@@ -213,7 +215,7 @@
                     <div class="span6">
                         <label for="recebimento">Data Recebimento</label>
                         <input class="span12 datepicker" autocomplete="off" id="recebimento" type="text"
-                            name="recebimento" />
+                            name="recebimento" value="<?php echo date('d/m/Y'); ?>" />
                     </div>
                     <div class="span6">
                         <label for="formaPgto">Forma Pgto</label>
@@ -407,7 +409,7 @@ $(document).ready(function() {
                 var dados = $(form).serialize();
                 $("#divProdutos").html(
                     "<div class='progress progress-info progress-striped active'><div class='bar' style='width: 100%'></div></div>"
-                    );
+                );
                 $.ajax({
                     type: "POST",
                     url: "<?php echo base_url(); ?>index.php/vendas/adicionarProduto",
@@ -440,7 +442,7 @@ $(document).ready(function() {
         if ((idProduto % 1) == 0) {
             $("#divProdutos").html(
                 "<div class='progress progress-info progress-striped active'><div class='bar' style='width: 100%'></div></div>"
-                );
+            );
             $.ajax({
                 type: "POST",
                 url: "<?php echo base_url(); ?>index.php/vendas/excluirProduto",
