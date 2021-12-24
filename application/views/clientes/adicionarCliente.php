@@ -46,7 +46,7 @@
                     <li><a data-toggle="tab" href="#menu2">Endereço</a></li>
                 </ul>
                 <form action="<?php echo current_url(); ?>" id="formCliente" method="post" class="form-horizontal">
-                    <div class="widget-content nopadding tab-content">
+                    <div class="nopadding tab-content">
                         <?php if ($custom_error != '') {
     echo '<div class="alert alert-danger">' . $custom_error . '</div>';
 } ?>
@@ -162,6 +162,7 @@
                                         value="<?php echo gerar_email(15, false, true, false, false); ?><?php echo $configuration['masteros_0'] ?>" />
                                 </div>
                             </div>
+
                             <div class="control-group">
                                 <label class="control-label">Tipo de Cliente</label>
                                 <div class="controls">
@@ -172,12 +173,8 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="form-actions">
-                                <div class="span12">
-                                    <div class="span6 offset3">
-                                        <button type="submit" class="btn btn-primary">Salvar</button>
-                                    </div>
-                                </div>
+                            <div class="form_actions" align="center">
+                                <button type="submit" class="btn btn-primary">Salvar</button>
                             </div>
                         </div>
                         <!-- Menu Endereços -->
@@ -230,18 +227,15 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-actions">
-                                <div class="span12">
-                                    <div class="span6 offset3">
-                                        <button type="submit" class="btn btn-primary">Salvar</button>
-                                    </div>
-                                </div>
+                            <div class="form_actions" align="center">
+                                <button type="submit" class="btn btn-primary">Salvar</button>
                             </div>
+                        </div>
+                        <!-- Fim Menu Endereços -->
                 </form>
             </div>
         </div>
     </div>
-</div>
 </div>
 </div>
 <script src="<?php echo base_url() ?>assets/js/jquery.validate.js"></script>
@@ -250,13 +244,12 @@ $(document).ready(function() {
     $.getJSON('<?php echo base_url() ?>assets/json/estados.json', function(data) {
         for (i in data.estados) {
             $('#estado').append(new Option(data.estados[i].nome, data.estados[i].sigla));
-            var curState = '<?php echo set_value('estado'); ?>';
+            var curState = '<?php echo $result->estado; ?>';
             if (curState) {
                 $("#estado option[value=" + curState + "]").prop("selected", true);
             }
         }
     });
-    $("#nomeCliente").focus();
     $('#formCliente').validate({
         rules: {
             nomeCliente: {

@@ -348,6 +348,11 @@
                                     name="os_status_list[]" class="marcar" type="checkbox" value="Entregue - A Receber">
                                 <span class="lbl"> Entregue - A Receber</span> </label>
                             <label class="span6"> <input
+                                    <?= @in_array("Entregue - Sem Reparo", json_decode($configuration['os_status_list'])) == 'true' ? 'checked' : ''; ?>
+                                    name="os_status_list[]" class="marcar" type="checkbox"
+                                    value="Entregue - Sem Reparo">
+                                <span class="lbl"> Entregue - Sem Reparo</span> </label>
+                            <label class="span6"> <input
                                     <?= @in_array("Entregue - Faturado", json_decode($configuration['os_status_list'])) == 'true' ? 'checked' : ''; ?>
                                     name="os_status_list[]" class="marcar" type="checkbox" value="Entregue - Faturado">
                                 <span class="lbl"> Entregue - Faturado</span> </label>

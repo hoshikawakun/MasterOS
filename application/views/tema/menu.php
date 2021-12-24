@@ -163,7 +163,7 @@
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'cAuditoria')) { ?>
                 <li><a href="<?= site_url('auditoria') ?>">Auditoria</a></li>
                 <?php } ?>
-                <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'cEmail')) { ?>
+				<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'cEmail')) { ?>
                 <li><a href="<?= site_url('mapos/emails') ?>">Emails</a></li>
                 <?php } ?>
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'cBackup')) { ?>

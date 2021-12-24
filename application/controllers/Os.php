@@ -938,7 +938,80 @@ class Os extends MY_Controller
         echo json_encode($json);
     }
 
-    private function enviarOsPorEmail($idOs, $remetentes, $assunto)
+    public function faturarEntregueSemReparo()
+    {
+        $this->load->library('form_validation');
+        $this->data['custom_error'] = '';
+
+        if ($this->form_validation->run('receita') == false) {
+            $this->data['custom_error'] = (validation_errors() ? '<div class="form_error">' . validation_errors() . '</div>' : false);
+        } else {
+            $vencimento = $this->input->post('vencimento');
+            $recebimento = $this->input->post('recebimento');
+
+            try {
+                $vencimento = explode('/', $vencimento);
+                $vencimento = $vencimento[2] . '-' . $vencimento[1] . '-' . $vencimento[0];
+
+                if ($recebimento != null) {
+                    $recebimento = explode('/', $recebimento);
+                    $recebimento = $recebimento[2] . '-' . $recebimento[1] . '-' . $recebimento[0];
+                }
+            } catch (Exception $e) {
+                $vencimento = date('Y/m/d');
+            }
+
+            $data = [
+                'descricao' => set_value('descricao'),
+                'valor' => $this->input->post('valor'),
+                'clientes_id' => $this->input->post('clientes_id'),
+                'data_vencimento' => $vencimento,
+                'data_pagamento' => $recebimento,
+                'baixado' => $this->input->post('recebido') ?: 0,
+                'cliente_fornecedor' => set_value('cliente'),
+                'forma_pgto' => $this->input->post('formaPgto'),
+                'tipo' => $this->input->post('tipo'),
+                'observacoes' => set_value('observacoes'),
+                'usuarios_id' => $this->session->userdata('id'),
+            ];
+
+            $editavel = $this->os_model->isEditable($this->input->post('idOs'));
+            if (!$editavel) {
+                return $this->output
+                    ->set_content_type('application/json')
+                    ->set_status_header(200)
+                    ->set_output(json_encode(['result' => false]));
+            }
+
+            if ($this->os_model->add('lancamentos', $data) == true) {
+                $os = $this->input->post('os_id');
+
+                $this->db->set('faturado', 2);
+                $this->db->set('valorTotal', $this->input->post('valor'));
+                $this->db->set('status', 'Entregue - Sem Reparo');
+                $this->db->where('idOs', $os);
+                $this->db->update('os');
+
+                log_info('Faturou uma OS. ID: ' . $os);
+
+                $this->session->set_flashdata('success', 'OS faturada com sucesso!');
+                $json = ['result' => true];
+                echo json_encode($json);
+                die();
+            } else {
+                $this->session->set_flashdata('error', 'Ocorreu um erro ao tentar faturar OS.');
+                $json = ['result' => false];
+                echo json_encode($json);
+                die();
+            }
+        }
+
+        $this->session->set_flashdata('error', 'Ocorreu um erro ao tentar faturar OS.');
+        $json = ['result' => false];
+        echo json_encode($json);
+    }
+	
+	private function enviarOsPorEmail($idOs, $remetentes, $assunto)
     {
         $dados = [];
 

@@ -38,6 +38,7 @@
                 <option value="Garantia">Garantia</option>
                 <option value="Abandonado">Abandonado</option>
                 <option value="Comprado pela Loja">Comprado pela Loja</option>
+                <option value="Entregue - Sem Reparo">Entregue - Sem Reparo</option>
                 <option value="Entregue - Faturado">Entregue - Faturado</option>
 
             </select>
@@ -153,6 +154,9 @@
                     break;
                 case 'Comprado pela Loja':
                     $cor = '#666666';
+                    break;
+                case 'Entregue - Sem Reparo':
+                    $cor = '#000000';
                     break;
                 case 'Entregue - Faturado':
                     $cor = '#006633';

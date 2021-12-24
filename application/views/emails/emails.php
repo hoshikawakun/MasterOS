@@ -18,9 +18,9 @@
             </thead>
             <tbody>
                 <?php if (!$results) { ?>
-                    <tr>
-                        <td colspan="5">Nenhum e-mail na fila</td>
-                    </tr>
+                <tr>
+                    <td colspan="5">Nenhum e-mail na fila</td>
+                </tr>
                 <?php } ?>
 
                 <?php foreach ($results as $r) {
@@ -31,11 +31,11 @@
                         'failed' => '<span class="badge badge-warning">Falhou</span>',
                     ];
     echo '<tr>';
-    echo '<td>' . $r->id . '</td>';
+    echo '<td align="center">' . $r->id . '</td>';
     echo '<td>' . $r->to . '</td>';
-    echo '<td>' . $status[$r->status] . '</td>';
-    echo '<td>' . date('d/m/Y H:i:s', strtotime($r->date)) . '</td>';
-    echo '<td>';
+    echo '<td align="center">' . $status[$r->status] . '</td>';
+    echo '<td align="center">' . date('d/m/Y H:i:s', strtotime($r->date)) . '</td>';
+    echo '<td align="center">';
     echo '<a href="#modal-excluir" role="button" data-toggle="modal" email="' . $r->id . '" class="btn btn-danger tip-top" title="Excluir Item"><i class="fas fa-trash-alt"></i></a>  ';
     echo '</td>';
     echo '</tr>';
@@ -47,7 +47,8 @@
 </div>
 <?php echo $this->pagination->create_links(); ?>
 <!-- Modal -->
-<div id="modal-excluir" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="modal-excluir" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="<?= site_url('mapos/excluirEmail') ?>" method="post">
         <div class="modal_header_anexos">
             <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>
@@ -64,10 +65,10 @@
     </form>
 </div>
 <script type="text/javascript">
-    $(document).ready(function() {
-        $(document).on('click', 'a', function(event) {
-            var email = $(this).attr('email');
-            $('#idEmail').val(email);
-        });
+$(document).ready(function() {
+    $(document).on('click', 'a', function(event) {
+        var email = $(this).attr('email');
+        $('#idEmail').val(email);
     });
+});
 </script>

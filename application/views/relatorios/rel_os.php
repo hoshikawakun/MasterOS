@@ -82,6 +82,7 @@
                                 <option value="Garantia">Garantia</option>
                                 <option value="Abandonado">Abandonado</option>
                                 <option value="Comprado pela Loja">Comprado pela Loja</option>
+                                <option value="Entregue - Sem Reparo">Entregue - Sem Reparo</option>
                                 <option value="Entregue - Faturado">Entregue - Faturado</option>
                             </select>
                         </div>

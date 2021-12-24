@@ -29,16 +29,19 @@
                     <a title="Voltar" class="btn btn-mini btn-inverse" href="<?php echo site_url() ?>/os"><i
                             class="fas fa-arrow-left"></i> Voltar</a>
                     <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'aCliente')) { ?>
-<a title="Adicionar Cliente" target="_blank" href="<?php echo base_url(); ?>index.php/clientes/adicionar" class="btn btn-mini btn-success"><i class="fas fa-plus"></i>
-    Adicionar Cliente</a>
-<?php } ?>
+                    <a title="Adicionar Cliente" target="_blank"
+                        href="<?php echo base_url(); ?>index.php/clientes/adicionar" class="btn btn-mini btn-success"><i
+                            class="fas fa-plus"></i>
+                        Adicionar Cliente</a>
+                    <?php } ?>
                 </div>
             </div>
             <div class="span12" id="divProdutosServicos" style=" margin-left: 0">
                 <div class="widget_box_Painel2">
                     <ul class="nav nav-tabs">
                         <li class="active" id="tabDetalhes">
-                        <a href="#tab1" data-toggle="tab">Detalhes da OS</a></li>
+                            <a href="#tab1" data-toggle="tab">Detalhes da OS</a>
+                        </li>
                     </ul>
 
                     <div class="tab-content">
@@ -73,62 +76,41 @@
                                             <label for="status">Status<span class="required">*</span></label>
                                             <select class="span12" name="status" id="status" value="">
                                                 <option <?php if ($result->status == 'Orçamento') {
-                                    echo 'selected';
-                                } ?> value="Orçamento">Orçamento</option>
+                                    echo 'selected'; } ?> value="Orçamento">Orçamento</option>
                                                 <option <?php if ($result->status == 'Orçamento Concluido') {
-                                    echo 'selected';
-                                } ?> value="Orçamento Concluido">Orçamento Concluido</option>
+                                    echo 'selected'; } ?> value="Orçamento Concluido">Orçamento Concluido</option>
                                                 <option <?php if ($result->status == 'Orçamento Aprovado') {
-                                    echo 'selected';
-                                } ?> value="Orçamento Aprovado">Orçamento Aprovado</option>
+                                    echo 'selected'; } ?> value="Orçamento Aprovado">Orçamento Aprovado</option>
                                                 <option <?php if ($result->status == 'Aguardando Peças') {
-                                    echo 'selected';
-                                } ?> value="Aguardando Peças">Aguardando Peças</option>
+                                    echo 'selected'; } ?> value="Aguardando Peças">Aguardando Peças</option>
                                                 <option <?php if ($result->status == 'Em Andamento') {
-                                    echo 'selected';
-                                } ?> value="Em Andamento">Em Andamento</option>
+                                    echo 'selected'; } ?> value="Em Andamento">Em Andamento</option>
                                                 <option <?php if ($result->status == 'Serviço Concluido') {
-                                    echo 'selected';
-                                } ?> value="Serviço Concluido">Serviço Concluido</option>
+                                    echo 'selected'; } ?> value="Serviço Concluido">Serviço Concluido</option>
                                                 <option <?php if ($result->status == 'Sem Reparo') {
-                                    echo 'selected';
-                                } ?> value="Sem Reparo">Sem Reparo</option>
+                                    echo 'selected'; } ?> value="Sem Reparo">Sem Reparo</option>
                                                 <option <?php if ($result->status == 'Não Autorizado') {
-                                    echo 'selected';
-                                } ?> value="Não Autorizado">Não Autorizado</option>
+                                    echo 'selected'; } ?> value="Não Autorizado">Não Autorizado</option>
                                                 <option <?php if ($result->status == 'Contato sem Sucesso') {
-                                    echo 'selected';
-                                } ?> value="Contato sem Sucesso">Contato sem Sucesso</option>
+                                    echo 'selected'; } ?> value="Contato sem Sucesso">Contato sem Sucesso</option>
                                                 <option <?php if ($result->status == 'Cancelado') {
-                                    echo 'selected';
-                                } ?> value="Cancelado">Cancelado</option>
+                                    echo 'selected'; } ?> value="Cancelado">Cancelado</option>
                                                 <option <?php if ($result->status == 'Pronto-Despachar') {
-                                    echo 'selected';
-                                } ?> value="Pronto-Despachar">Pronto-Despachar</option>
+                                    echo 'selected'; } ?> value="Pronto-Despachar">Pronto-Despachar</option>
                                                 <option <?php if ($result->status == 'Enviado') {
-                                    echo 'selected';
-                                } ?> value="Enviado">Enviado</option>
+                                    echo 'selected'; } ?> value="Enviado">Enviado</option>
                                                 <option <?php if ($result->status == 'Aguardando Envio') {
-                                    echo 'selected';
-                                } ?> value="Aguardando Envio">Aguardando Envio</option>
+                                    echo 'selected'; } ?> value="Aguardando Envio">Aguardando Envio</option>
                                                 <option <?php if ($result->status == 'Aguardando Entrega Correio') {
-                                    echo 'selected';
-                                } ?> value="Aguardando Entrega Correio">Aguardando Entrega Correio</option>
+                                    echo 'selected'; } ?> value="Aguardando Entrega Correio">Aguardando Entrega Correio</option>
                                                 <option <?php if ($result->status == 'Entregue - A Receber') {
-                                    echo 'selected';
-                                } ?> value="Entregue - A Receber">Entregue - A Receber</option>
+                                    echo 'selected'; } ?> value="Entregue - A Receber">Entregue - A Receber</option>
                                                 <option <?php if ($result->status == 'Garantia') {
-                                    echo 'selected';
-                                } ?> value="Garantia">Garantia</option>
+                                    echo 'selected'; } ?> value="Garantia">Garantia</option>
                                                 <option <?php if ($result->status == 'Abandonado') {
-                                    echo 'selected';
-                                } ?> value="Abandonado">Abandonado</option>
+                                    echo 'selected'; } ?> value="Abandonado">Abandonado</option>
                                                 <option <?php if ($result->status == 'Comprado pela Loja') {
-                                    echo 'selected';
-                                } ?> value="Comprado pela Loja">Comprado pela Loja</option>
-                                                <option <?php if ($result->status == 'Entregue - Faturado') {
-                                    echo 'selected';
-                                } ?> value="Entregue - Faturado">Entregue - Faturado</option>
+                                    echo 'selected'; } ?> value="Comprado pela Loja">Comprado pela Loja</option>
                                             </select>
                                             <label for="rastreio">Rastreio</label>
                                             <input name="rastreio" type="text" class="span12" id="rastreio"

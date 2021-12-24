@@ -47,45 +47,26 @@
                             $dataFinal = date(('d/m/Y'), strtotime($o->dataFinal));
                             $ValorTotal = number_format($o->totalProdutos + $o->totalServicos, 2, ',', '.');
                             
-                            if ($o->status == "Orçamento") {
-                                $status = '<span class="label label-sonic01">Orçamento</span>';
-                            } elseif ($o->status == "Orçamento Concluido") {
-                                $status = '<span class="label label-sonic02">Orçamento Concluido</span>';
-                            } elseif ($o->status == "Orçamento Aprovado") {
-                                $status = '<span class="label label-sonic03">Orçamento Aprovado</span>';
-                            } elseif ($o->status == "Em Andamento") {
-                                $status = '<span class="label label-sonic04">Em Andamento</span>';
-                            } elseif ($o->status == "Aguardando Peças") {
-                                $status = '<span class="label label-sonic05">Aguardando Peças</span>';
-                            } elseif ($o->status == "Serviço Concluido") {
-                                $status = '<span class="label label-sonic06">Serviço Concluido</span>';
-                            } elseif ($o->status == "Sem Reparo") {
-                                $status = '<span class="label label-sonic07">Sem Reparo</span>';
-                            } elseif ($o->status == "Não Autorizado") {
-                                $status = '<span class="label label-sonic08">Não Autorizado</span>';
-                            } elseif ($o->status == "Contato sem Sucesso") {
-                                $status = '<span class="label label-sonic09">Contato sem Sucesso</span>';
-                            } elseif ($o->status == "Cancelado") {
-                                $status = '<span class="label label-sonic10">Cancelado</span>';
-                            } elseif ($o->status == "Pronto-Despachar") {
-                                $status = '<span class="label label-sonic11">Pronto-Despachar</span>';
-                            } elseif ($o->status == "Enviado") {
-                                $status = '<span class="label label-sonic12">Enviado</span>';
-                            } elseif ($o->status == "Aguardando Envio") {
-                                $status = '<span class="label label-sonic13">Aguardando Envio</span>';
-                            } elseif ($o->status == "Aguardando Entrega Correio") {
-                                $status = '<span class="label label-sonic14">Aguardando Entrega Correio</span>';
-                            } elseif ($o->status == "Entregue - A Receber") {
-                                $status = '<span class="label label-sonic15">Entregue - A Receber</span>';
-                            } elseif ($o->status == "Garantia") {
-                                $status = '<span class="label label-sonic16">Garantia</span>';
-                            } elseif ($o->status == "Abandonado") {
-                                $status = '<span class="label label-sonic17">Abandonado</span>';
-                            } elseif ($o->status == "Comprado pela Loja") {
-                                $status = '<span class="label label-sonic18">Comprado pela Loja</span>';
-                            } elseif ($o->status == "Entregue - Faturado") {
-                                $status = '<span class="label label-sonic19">Entregue - Faturado</span>';
-                            }
+        if ($r->status == "Orçamento") { $status = '<span class="label label-sonic01">Orçamento</span>'; }
+		elseif ($r->status == "Orçamento Concluido") { $status = '<span class="label label-sonic02">Orçamento Concluido</span>'; }
+		elseif ($r->status == "Orçamento Aprovado") { $status = '<span class="label label-sonic03">Orçamento Aprovado</span>'; }
+		elseif ($r->status == "Em Andamento") { $status = '<span class="label label-sonic04">Em Andamento</span>'; }
+		elseif ($r->status == "Aguardando Peças") { $status = '<span class="label label-sonic05">Aguardando Peças</span>'; }
+		elseif ($r->status == "Serviço Concluido") { $status = '<span class="label label-sonic06">Serviço Concluido</span>'; }
+		elseif ($r->status == "Sem Reparo") { $status = '<span class="label label-sonic07">Sem Reparo</span>'; }
+		elseif ($r->status == "Não Autorizado") { $status = '<span class="label label-sonic08">Não Autorizado</span>'; }
+		elseif ($r->status == "Contato sem Sucesso") { $status = '<span class="label label-sonic09">Contato sem Sucesso</span>'; }
+		elseif ($r->status == "Cancelado") { $status = '<span class="label label-sonic10">Cancelado</span>'; }
+		elseif ($r->status == "Pronto-Despachar") { $status = '<span class="label label-sonic11">Pronto-Despachar</span>'; }
+		elseif ($r->status == "Enviado") { $status = '<span class="label label-sonic12">Enviado</span>'; }
+		elseif ($r->status == "Aguardando Envio") { $status = '<span class="label label-sonic13">Aguardando Envio</span>'; }
+		elseif ($r->status == "Aguardando Entrega Correio") { $status = '<span class="label label-sonic14">Aguardando Entrega Correio</span>'; }
+		elseif ($r->status == "Entregue - A Receber") { $status = '<span class="label label-sonic15">Entregue - A Receber</span>'; }
+		elseif ($r->status == "Garantia") { $status = '<span class="label label-sonic16">Garantia</span>'; }
+		elseif ($r->status == "Abandonado") { $status = '<span class="label label-sonic17">Abandonado</span>'; }
+		elseif ($r->status == "Comprado pela Loja") { $status = '<span class="label label-sonic18">Comprado pela Loja</span>' ;}
+		elseif ($r->status == "Entregue - Sem Reparo") { $status = '<span class="label label-sonic17">Entregue - Sem Reparo</span>'; }
+		elseif ($r->status == "Entregue - Faturado") { $status = '<span class="label label-sonic19">Entregue - Faturado</span>'; }
                             
                             echo '<tr>';
                             echo '<td><div align="center">' . $o->idOs . '</td>';

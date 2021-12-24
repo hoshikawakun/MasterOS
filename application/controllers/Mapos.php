@@ -581,6 +581,9 @@ class Mapos extends MY_Controller
                                 case 'Comprado pela Loja':
                     $cor = '#666666';
                     break;
+                                case 'Entregue - Sem Reparo':
+                    $cor = '#000000';
+                    break;
                                 case 'Entregue - Faturado':
                     $cor = '#006633';
                     break;

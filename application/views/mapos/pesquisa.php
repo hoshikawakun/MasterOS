@@ -97,30 +97,33 @@
                 case 'Comprado pela Loja':
                     $cor = '#666666';
                     break;
+                case 'Entregue - Sem Reparo':
+                    $cor = '#000000';
+                    break;
                 case 'Entregue - Faturado':
                     $cor = '#006633';
                     break;
                             }
-							echo '<tr>';
-							echo '<td><div align="center"><a href="' . base_url() . 'index.php/os/visualizar/' . $r->idOs . '" target="new" class="tip-top" title="Visualizar detalhes da OS" style="margin-right: 1%">' . $r->idOs . '</a></td>';
-							echo '<td><div align="center">' . $dataInicial . '</div></td>';
-							echo '<td>' . $descricaoShort . '</td>';
-							echo '<td>' . $defeitoShort . '</td>';
-							echo '<td><div align="center">' . $r->serial . '</div></td>';
-							echo '<td><div align="center"><span class="badge" style="background-color: ' . $cor . '; border-color: ' . $cor . '">' . $r->status . '</span></div></td>';
-							echo '<td><div align="center">';
-                           	if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
-								echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/visualizar/' . $r->idOs . '" target="new" class="btn tip-top" title="Visualizar detalhes da OS"><i class="fas fa-eye"></i></a>';
+ 					echo '<tr>';
+ 					echo '<td><div align="center"><a href="' . base_url() . 'index.php/os/visualizar/' . $r->idOs . '" target="new" class="tip-top" title="Visualizar detalhes da OS" style="margin-right: 1%">' . $r->idOs . '</a></td>';
+ 					echo '<td><div align="center">' . $dataInicial . '</div></td>';
+ 					echo '<td>' . $descricaoShort . '</td>';
+ 					echo '<td>' . $defeitoShort . '</td>';
+ 					echo '<td><div align="center">' . $r->serial . '</div></td>';
+ 					echo '<td><div align="center"><span class="badge" style="background-color: ' . $cor . '; border-color: ' . $cor . '">' . $r->status . '</span></div></td>';
+ 					echo '<td><div align="center">';
+                            if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
+ 					echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/visualizar/' . $r->idOs . '" target="new" class="btn tip-top" title="Visualizar detalhes da OS"><i class="fas fa-eye"></i></a>';
                             }
                             if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
-								echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/editar/' . $r->idOs . '" target="new" class="btn btn-info tip-top" title="Editar OS"><i class="fas fa-edit"></i></a>';
+ 					echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/editar/' . $r->idOs . '" target="new" class="btn btn-info tip-top" title="Editar OS"><i class="fas fa-edit"></i></a>';
                             }
                             if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
-								echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/imprimir/' . $r->idOs . '" target="_blank" class="btn btn-inverse tip-top" title="Imprimir Normal A4"><i class="fas fa-print"></i></a>';
+ 					echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/imprimir/' . $r->idOs . '" target="_blank" class="btn btn-inverse tip-top" title="Imprimir Normal A4"><i class="fas fa-print"></i></a>';
                             }
                             
-							echo  '</div></td>';
-							echo '</tr>';
+ 					echo  '</div></td>';
+ 					echo '</tr>';
                         }
                         ?>
                             <tr>
@@ -154,28 +157,28 @@
                         <tbody>
                             <?php
                             if ($equipamento_os == null) {
-							echo '<tr><td colspan="7">Nenhum Equipamento foi encontrado.</td></tr>';
+ 					echo '<tr><td colspan="7">Nenhum Equipamento foi encontrado.</td></tr>';
                             }
     					foreach ($equipamento_os as $w) {
                                 
-							echo '<tr>';
-							echo '<td><div align="center">' . $w->os_id . '</div></td>';
-							echo '<td><div align="center">' . $w->equipamento . '</div></td>';
-							echo '<td><div align="center">' . $w->modelo . '</div></td>';
-							echo '<td><div align="center">' . $w->marca . '</div></td>';
+ 					echo '<tr>';
+ 					echo '<td><div align="center">' . $w->os_id . '</div></td>';
+ 					echo '<td><div align="center">' . $w->equipamento . '</div></td>';
+ 					echo '<td><div align="center">' . $w->modelo . '</div></td>';
+ 					echo '<td><div align="center">' . $w->marca . '</div></td>';
 													echo '<td><div align="center">' . $w->num_serie . '</div></td>';
-							echo '<td><div align="center">';
-
-								if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
-							echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/visualizar/' . $w->os_id . '" target="new" class="btn tip-top" title="Visualizar detalhes da OS"><i class="fas fa-eye"></i></a>';
+ 					echo '<td><div align="center">';
+								
+                                if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
+ 					echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/visualizar/' . $w->os_id . '" target="new" class="btn tip-top" title="Visualizar detalhes da OS"><i class="fas fa-eye"></i></a>';
                             }
 								
 								if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
-							echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/editar/' . $w->os_id . '" target="new" class="btn btn-info tip-top" title="Editar OS"><i class="fas fa-edit"></i></a>';
+ 					echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/editar/' . $w->os_id . '" target="new" class="btn btn-info tip-top" title="Editar OS"><i class="fas fa-edit"></i></a>';
                             }
 							
-							echo '</div></td>';
-							echo '</tr>';
+ 					echo '</div></td>';
+ 					echo '</tr>';
                             } ?>
                             <tr>
                             </tr>
@@ -209,24 +212,24 @@
                         <tbody>
                             <?php
                             if ($produtos == null) {
-							echo '<tr><td colspan="5">Nenhum produto foi encontrado.</td></tr>';
+ 					echo '<tr><td colspan="5">Nenhum produto foi encontrado.</td></tr>';
                             }
     					foreach ($produtos as $r) {
                                 $descricaoShort = mb_strimwidth(strip_tags($r->descricao), 0, 50, "...");
-							echo '<tr>';
-							echo '<td><div align="center">' . $r->idProdutos . '</div></td>';
-							echo '<td><div align="center">' . $r->codDeBarra . '</div></td>';
-							echo '<td>' . $descricaoShort . '</td>';
-							echo '<td><div align="center">R$: ' . $r->precoVenda . '</div></td>';
-							echo '<td><div align="center">';
-								if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vProduto')) {
+ 					echo '<tr>';
+ 					echo '<td><div align="center">' . $r->idProdutos . '</div></td>';
+ 					echo '<td><div align="center">' . $r->codDeBarra . '</div></td>';
+ 					echo '<td>' . $descricaoShort . '</td>';
+ 					echo '<td><div align="center">R$: ' . $r->precoVenda . '</div></td>';
+ 					echo '<td><div align="center">';
+                                if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vProduto')) {
      				echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/produtos/visualizar/' . $r->idProdutos . '" target="new" class="btn tip-top" title="Visualizar mais detalhes"><i class="fas fa-eye"></i></a>';
                                 }
-								if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eProduto')) {
+                                if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eProduto')) {
      				echo '<a href="' . base_url() . 'index.php/produtos/editar/' . $r->idProdutos . '" target="new" class="btn btn-info tip-top" title="Editar Produto"><i class="fas fa-edit"></i></a>';
                                 }
-							echo '</div></td>';
-							echo '</tr>';
+ 					echo '</div></td>';
+ 					echo '</tr>';
                             } ?>
                             <tr>
                             </tr>
@@ -259,24 +262,24 @@
                         <tbody>
                             <?php
                             if ($clientes == null) {
-							echo '<tr><td colspan="4">Nenhum cliente foi encontrado.</td></tr>';
+ 					echo '<tr><td colspan="4">Nenhum cliente foi encontrado.</td></tr>';
                             }
     					foreach ($clientes as $r) {
                                 $NomeClienteShort = mb_strimwidth(strip_tags($r->nomeCliente), 0, 30, "...");
                                 
-							echo '<tr>';
-							echo '<td><div align="center">' . $r->idClientes . '</div></td>';
-							echo '<td><a href="' . base_url() . 'index.php/clientes/visualizar/' . $r->idClientes . '" target="new" style="margin-right: 1%" class="tip-top" title="Visualizar detalhes do Cliente">' . $NomeClienteShort . '</a></td>';
-							echo '<td><div align="center">' . $r->documento . '</div></td>';
-							echo '<td><div align="center">';
-								if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vCliente')) {
+ 					echo '<tr>';
+ 					echo '<td><div align="center">' . $r->idClientes . '</div></td>';
+ 					echo '<td><a href="' . base_url() . 'index.php/clientes/visualizar/' . $r->idClientes . '" target="new" style="margin-right: 1%" class="tip-top" title="Visualizar detalhes do Cliente">' . $NomeClienteShort . '</a></td>';
+ 					echo '<td><div align="center">' . $r->documento . '</div></td>';
+ 					echo '<td><div align="center">';
+                                if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vCliente')) {
      				echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/clientes/visualizar/' . $r->idClientes . '" target="new" class="btn tip-top" title="Visualizar detalhes do Cliente"><i class="fas fa-eye"></i></a>';
                                 }
-								if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eCliente')) {
+                                if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eCliente')) {
      				echo '<a href="' . base_url() . 'index.php/clientes/editar/' . $r->idClientes . '" target="new" class="btn btn-info tip-top" title="Editar Cliente"><i class="fas fa-edit"></i></a>';
                                 }
-							echo '</div></td>';
-							echo '</tr>';
+ 					echo '</div></td>';
+ 					echo '</tr>';
                             }
                             ?>
                             <tr>
@@ -310,19 +313,19 @@
                         <tbody>
                             <?php
                         if ($servicos == null) {
-							echo '<tr><td colspan="4">Nenhum serviço foi encontrado.</td></tr>';
+ 					echo '<tr><td colspan="4">Nenhum serviço foi encontrado.</td></tr>';
                         }
 					foreach ($servicos as $r) {
-							echo '<tr>';
-							echo '<td><div align="center">' . $r->idServicos . '</div></td>';
-							echo '<td>' . $r->nome . '</td>';
-							echo '<td><div align="center">R$: ' . $r->preco . '</div></td>';
-							echo '<td><div align="center">';
+ 					echo '<tr>';
+ 					echo '<td><div align="center">' . $r->idServicos . '</div></td>';
+ 					echo '<td>' . $r->nome . '</td>';
+ 					echo '<td><div align="center">R$: ' . $r->preco . '</div></td>';
+ 					echo '<td><div align="center">';
                             if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eServico')) {
-							echo '<a href="' . base_url() . 'index.php/servicos/editar/' . $r->idServicos . '" target="new" class="btn btn-info tip-top" title="Editar Serviço"><i class="fas fa-edit"></i></a>';
+ 					echo '<a href="' . base_url() . 'index.php/servicos/editar/' . $r->idServicos . '" target="new" class="btn btn-info tip-top" title="Editar Serviço"><i class="fas fa-edit"></i></a>';
                             }
-							echo '</div></td>';
-							echo '</tr>';
+ 					echo '</div></td>';
+ 					echo '</tr>';
                         }
                         ?>
                             <tr>

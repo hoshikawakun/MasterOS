@@ -38,13 +38,18 @@
 <?php if ($result->faturado == 0) { ?>
 <a href="#modal-faturar" title="Faturar" id="btn-faturar" role="button" data-toggle="modal"
     class="btn btn-mini btn-danger"><i class="fas fa-cash-register"></i> Faturar</a>
+
+<a href="#modal-entregue" title="Faturar - Entregue - Sem Reparo" id="btn-faturarEntregueSemReparo" role="button"
+    data-toggle="modal" class="btn btn-mini btn-warning"><i class="fas fa-cash-register"></i> Entregue - Sem Reparo</a>
 <?php } ?>
 
 <a href="#modal-whatsapp" title="Enviar WhatsApp" id="btn-whatsapp" role="button" data-toggle="modal"
     class="btn btn-mini btn-success"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+
 <a title="Enviar por E-mail" class="btn btn-mini btn-warning"
     href="<?php echo site_url() ?>/os/enviar_email/<?php echo $result->idOs; ?>"><i class="fas fa-envelope"></i> Enviar
     por E-mail</a>
+
 <div class="row-fluid" style="margin-top:0">
     <div class="span12">
         <div class="widget-box">
@@ -93,62 +98,45 @@
                                             <label for="status">Status<span class="required">*</span></label>
                                             <select class="span12" name="status" id="status" value="">
                                                 <option <?php if ($result->status == 'Orçamento') {
-    echo 'selected';
-} ?> value="Orçamento">Orçamento</option>
+                                    echo 'selected'; } ?> value="Orçamento">Orçamento</option>
                                                 <option <?php if ($result->status == 'Orçamento Concluido') {
-    echo 'selected';
-} ?> value="Orçamento Concluido">Orçamento Concluido</option>
+                                    echo 'selected'; } ?> value="Orçamento Concluido">Orçamento Concluido</option>
                                                 <option <?php if ($result->status == 'Orçamento Aprovado') {
-    echo 'selected';
-} ?> value="Orçamento Aprovado">Orçamento Aprovado</option>
+                                    echo 'selected'; } ?> value="Orçamento Aprovado">Orçamento Aprovado</option>
                                                 <option <?php if ($result->status == 'Aguardando Peças') {
-    echo 'selected';
-} ?> value="Aguardando Peças">Aguardando Peças</option>
+                                    echo 'selected'; } ?> value="Aguardando Peças">Aguardando Peças</option>
                                                 <option <?php if ($result->status == 'Em Andamento') {
-    echo 'selected';
-} ?> value="Em Andamento">Em Andamento</option>
+                                    echo 'selected'; } ?> value="Em Andamento">Em Andamento</option>
                                                 <option <?php if ($result->status == 'Serviço Concluido') {
-    echo 'selected';
-} ?> value="Serviço Concluido">Serviço Concluido</option>
+                                    echo 'selected'; } ?> value="Serviço Concluido">Serviço Concluido</option>
                                                 <option <?php if ($result->status == 'Sem Reparo') {
-    echo 'selected';
-} ?> value="Sem Reparo">Sem Reparo</option>
+                                    echo 'selected'; } ?> value="Sem Reparo">Sem Reparo</option>
                                                 <option <?php if ($result->status == 'Não Autorizado') {
-    echo 'selected';
-} ?> value="Não Autorizado">Não Autorizado</option>
+                                    echo 'selected'; } ?> value="Não Autorizado">Não Autorizado</option>
                                                 <option <?php if ($result->status == 'Contato sem Sucesso') {
-    echo 'selected';
-} ?> value="Contato sem Sucesso">Contato sem Sucesso</option>
+                                    echo 'selected'; } ?> value="Contato sem Sucesso">Contato sem Sucesso</option>
                                                 <option <?php if ($result->status == 'Cancelado') {
-    echo 'selected';
-} ?> value="Cancelado">Cancelado</option>
+                                    echo 'selected'; } ?> value="Cancelado">Cancelado</option>
                                                 <option <?php if ($result->status == 'Pronto-Despachar') {
-    echo 'selected';
-} ?> value="Pronto-Despachar">Pronto-Despachar</option>
+                                    echo 'selected'; } ?> value="Pronto-Despachar">Pronto-Despachar</option>
                                                 <option <?php if ($result->status == 'Enviado') {
-    echo 'selected';
-} ?> value="Enviado">Enviado</option>
+                                    echo 'selected'; } ?> value="Enviado">Enviado</option>
                                                 <option <?php if ($result->status == 'Aguardando Envio') {
-    echo 'selected';
-} ?> value="Aguardando Envio">Aguardando Envio</option>
+                                    echo 'selected'; } ?> value="Aguardando Envio">Aguardando Envio</option>
                                                 <option <?php if ($result->status == 'Aguardando Entrega Correio') {
-    echo 'selected';
-} ?> value="Aguardando Entrega Correio">Aguardando Entrega Correio</option>
+                                    echo 'selected'; } ?> value="Aguardando Entrega Correio">Aguardando Entrega Correio</option>
                                                 <option <?php if ($result->status == 'Entregue - A Receber') {
-    echo 'selected';
-} ?> value="Entregue - A Receber">Entregue - A Receber</option>
+                                    echo 'selected'; } ?> value="Entregue - A Receber">Entregue - A Receber</option>
                                                 <option <?php if ($result->status == 'Garantia') {
-    echo 'selected';
-} ?> value="Garantia">Garantia</option>
+                                    echo 'selected'; } ?> value="Garantia">Garantia</option>
                                                 <option <?php if ($result->status == 'Abandonado') {
-    echo 'selected';
-} ?> value="Abandonado">Abandonado</option>
+                                    echo 'selected'; } ?> value="Abandonado">Abandonado</option>
                                                 <option <?php if ($result->status == 'Comprado pela Loja') {
-    echo 'selected';
-} ?> value="Comprado pela Loja">Comprado pela Loja</option>
+                                    echo 'selected'; } ?> value="Comprado pela Loja">Comprado pela Loja</option>
+                                                <option <?php if ($result->status == 'Entregue - Sem Reparo') {
+                                    echo 'selected'; } ?> value="Entregue - Sem Reparo">Entregue - Sem Reparo</option>
                                                 <option <?php if ($result->status == 'Entregue - Faturado') {
-    echo 'selected';
-} ?> value="Entregue - Faturado">Entregue - Faturado</option>
+                                    echo 'selected'; } ?> value="Entregue - Faturado">Entregue - Faturado</option>
                                             </select>
                                             <label for="rastreio">Rastreio</label>
                                             <input name="rastreio" type="text" class="span12" id="rastreio"
@@ -236,9 +224,6 @@
     echo '<a target="_blank" title="Adicionar OS" class="btn btn-success" href=' . base_url() . 'index.php/os/adicionar><i class="fas fa-plus"></i> Adicionar OS</a>';
 } ?>
 
-                                            <a href="#modal-whatsapp" title="Enviar WhatsApp" id="btn-whatsapp"
-                                                role="button" data-toggle="modal" class="btn btn-success"><i
-                                                    class="fab fa-whatsapp"></i> WhatsApp</a>
                                         </div>
                                         <div align="center" style="padding: 3px">
                                             <a target="_blank" title="Imprimir" class="btn btn-inverse"
@@ -676,7 +661,7 @@
             <div class="span12" style="margin-left: 0">
                 <div class="span12" style="margin-left: 0">
                     <label for="cliente">Cliente*</label>
-                    <input class="span12" id="cliente" type="text" name="cliente"
+                    <input name="cliente" type="text" class="span12" id="cliente"
                         value="<?php echo $result->nomeCliente ?>" />
                     <input type="hidden" name="clientes_id" id="clientes_id" value="<?php echo $result->clientes_id ?>">
                     <input type="hidden" name="os_id" id="os_id" value="<?php echo $result->idOs; ?>">
@@ -686,8 +671,10 @@
                 <div class="span5" style="margin-left: 0">
                     <label for="valor">Valor*</label>
                     <input type="hidden" id="tipo" name="tipo" value="receita" />
-                    <input class="span12 money" id="valor" type="text" data-affixes-stay="true" data-thousands=""
-                        data-decimal="." name="valor" value="<?php echo number_format($totals + $total, 2); ?>" />
+
+                    <input name="valor" type="text" class="span12" id="valor"
+                        value="<?php echo number_format($totals + $total, 2); ?>" data-affixes-stay="true"
+                        data-thousands="" data-decimal="." />
                     <strong><span style="color: red" id="resultado"></span></strong>
                 </div>
                 <div class="span4">
@@ -699,7 +686,8 @@
             <div class="span12" style="margin-left: 0">
                 <div class="span4" style="margin-left: 0">
                     <label for="vencimento">Data Entrada*</label>
-                    <input class="span12 datepicker" autocomplete="on" id="vencimento" type="text" name="vencimento" />
+                    <input class="span12 datepicker" autocomplete="on" id="vencimento" type="text" name="vencimento"
+                        value="<?php echo date('d/m/Y'); ?>" />
                 </div>
             </div>
             <div class="span12" style="margin-left: 0">
@@ -711,12 +699,11 @@
                     <div class="span6">
                         <label for="recebimento">Data Recebimento</label>
                         <input class="span12 datepicker" autocomplete="on" id="recebimento" type="text"
-                            name="recebimento" />
+                            name="recebimento" value="<?php echo date('d/m/Y'); ?>" />
                     </div>
                     <div class="span6">
                         <label for="formaPgto">Forma Pgto</label>
                         <select name="formaPgto" id="formaPgto" class="span12">
-
                             <option value="Dinheiro">Dinheiro</option>
                             <option value="Cartão de Crédito">Cartão de Crédito</option>
                             <option value="Débito">Débito</option>
@@ -735,6 +722,65 @@
         </div>
     </form>
 </div>
+<!-- Fim Modal Faturar-->
+
+<!-- Faturar - Entregue - Sem Reparo-->
+<div id="modal-entregue" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <form id="formfaturarEntregueSemReparo" action="<?php echo current_url() ?>" method="post">
+        <div class="modal_header_anexos">
+            <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">Faturar OS - Entregue - Sem Reparo</h3>
+        </div>
+        <div class="modal-body">
+            <div class="span12" style="margin-left: 0">
+                <label for="descricao">Descrição</label>
+                <input readonly="readonly" name="descricao" type="text" class="span12" id="descricao"
+                    value="OS Nº: <?php echo $result->idOs; ?> - Entregue - Sem Reparo" />
+            </div>
+            <div class="span12" style="margin-left: 0">
+                <div class="span12" style="margin-left: 0">
+                    <label for="cliente">Cliente</label>
+                    <input readonly="readonly" name="cliente" type="text" class="span12" id="cliente"
+                        value="<?php echo $result->nomeCliente ?>" />
+                    <input type="hidden" name="clientes_id" id="clientes_id" value="<?php echo $result->clientes_id ?>">
+                    <input type="hidden" name="os_id" id="os_id" value="<?php echo $result->idOs; ?>">
+                </div>
+            </div>
+            <div class="span12" style="margin-left: 0">
+                <div class="span5" style="margin-left: 0">
+                    <label for="valor">Valor</label>
+                    <input type="hidden" id="tipo" name="tipo" value="receita" />
+
+                    <input readonly="readonly" name="valor" type="text" class="span12" id="valor" value="0,00"
+                        data-affixes-stay="true" data-thousands="" data-decimal="." />
+                </div>
+
+            </div>
+            <div class="span12" style="margin-left: 0">
+                <div class="span4" style="margin-left: 0">
+                    <label for="vencimento">Data Saida</label>
+                    <input readonly="readonly" name="vencimento" type="text" class="span12 datepicker" id="vencimento"
+                        autocomplete="off" value="<?php echo date('d/m/Y'); ?>" />
+                </div>
+            </div>
+            <div class="span12 hide" style="margin-left: 0">
+                <div class="span4" style="margin-left: 0">
+                    <label for="recebimento">Data Recebimento</label>
+                    <input name="recebimento" type="text" class="span12 datepicker" id="recebimento" autocomplete="off"
+                        value="<?php echo date('d/m/Y'); ?>" />
+                    <input id="recebido" name="recebido" value="1" />
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true"
+                id="btn-cancelar-faturarEntregueSemReparo">Cancelar</button>
+            <button class="btn btn-primary">Faturar</button>
+        </div>
+    </form>
+</div>
+<!-- Fim Modal Faturar - Entregue - Sem Reparo-->
 
 <!-- Modal WhatsApp-->
 <div id="modal-whatsapp" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog"
@@ -875,42 +921,24 @@ $(document).ready(function() {
         }
     });
 
-    $("#formwhatsapp").validate({
+    $("#formfaturarEntregueSemReparo").validate({
         rules: {
-            descricao: {
-                required: true
-            },
-            cliente: {
-                required: true
-            },
-            valor: {
-                required: true
-            },
             vencimento: {
                 required: true
             }
 
         },
         messages: {
-            descricao: {
-                required: 'Campo Requerido.'
-            },
-            cliente: {
-                required: 'Campo Requerido.'
-            },
-            valor: {
-                required: 'Campo Requerido.'
-            },
             vencimento: {
                 required: 'Campo Requerido.'
             }
         },
         submitHandler: function(form) {
             var dados = $(form).serialize();
-            $('#btn-cancelar-faturar').trigger('click');
+            $('#btn-cancelar-faturarEntregueSemReparo').trigger('click');
             $.ajax({
                 type: "POST",
-                url: "<?php echo base_url(); ?>index.php/os/faturar",
+                url: "<?php echo base_url(); ?>index.php/os/faturarEntregueSemReparo",
                 data: dados,
                 dataType: 'json',
                 success: function(data) {
