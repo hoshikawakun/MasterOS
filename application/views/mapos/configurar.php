@@ -137,20 +137,6 @@
                             </div>
                         </div>
                         
-                        <div class="control-group">
-                            <label for="os_notification" class="control-label">Notificação de OS</label>
-                            <div class="controls">
-                                <select name="os_notification" id="os_notification">
-                                    <option value="todos">Notificar a Todos</option>
-                                    <option value="cliente" <?= $configuration['os_notification'] == 'cliente' ? 'selected' : ''; ?> >Somente o Cliente</option>
-                                    <option value="tecnico" <?= $configuration['os_notification'] == 'tecnico' ? 'selected' : ''; ?> >Somente o Técnico</option>
-                                    <option value="emitente" <?= $configuration['os_notification'] == 'emitente' ? 'selected' : ''; ?> >Somente o Emitente</option>
-                                    <option value="nenhum" <?= $configuration['os_notification'] == 'nenhum' ? 'selected' : ''; ?> >Não Notificar</option>
-                                </select>
-                                <span class="help-inline">Selecione a opção de notificação por e-mail no cadastro de OS.</span>
-                            </div>
-                        </div>
-                        
                         <div class="form_actions" align="center">
                             <button type="submit" class="btn btn-primary">Salvar Alterações</button>
                         </div>
