@@ -38,13 +38,13 @@
 <?php if ($result->faturado == 0) { ?>
 <a href="#modal-faturar" title="Faturar" id="btn-faturar" role="button" data-toggle="modal"
     class="btn btn-mini btn-danger"><i class="fas fa-cash-register"></i> Faturar</a>
+    
+<a href="#modal-whatsapp" title="Enviar WhatsApp" id="btn-whatsapp" role="button" data-toggle="modal"
+    class="btn btn-mini btn-success"><i class="fab fa-whatsapp"></i> WhatsApp</a>
 
 <a href="#modal-entregue" title="Faturar - Entregue - Sem Reparo" id="btn-faturarEntregueSemReparo" role="button"
     data-toggle="modal" class="btn btn-mini btn-warning"><i class="fas fa-cash-register"></i> Entregue - Sem Reparo</a>
 <?php } ?>
-
-<a href="#modal-whatsapp" title="Enviar WhatsApp" id="btn-whatsapp" role="button" data-toggle="modal"
-    class="btn btn-mini btn-success"><i class="fab fa-whatsapp"></i> WhatsApp</a>
 
 <a title="Enviar por E-mail" class="btn btn-mini btn-warning"
     href="<?php echo site_url() ?>/os/enviar_email/<?php echo $result->idOs; ?>"><i class="fas fa-envelope"></i> Enviar
