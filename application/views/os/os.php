@@ -67,10 +67,10 @@
             <thead>
                 <tr>
                     <th>N° OS</th>
+                    <th>Descrição</th>
                     <th>Cliente</th>
                     <th>Responsável</th>
                     <th>Data de Entrada</th>
-                    <th>Garantia Até</th>
                     <th>Valor Total</th>
                     <!--
                         <th>Faturado</th>
@@ -89,6 +89,8 @@
                         }
                         foreach ($results as $r) {
                             $NomeClienteShort = mb_strimwidth(strip_tags($r->nomeCliente), 0, 25, "...");
+							$DescricaoShort = mb_strimwidth(strip_tags($r->descricaoProduto), 0, 25, "...");
+							$ResponsávelShort = mb_strimwidth(strip_tags($r->nome), 0, 15, "...");
                             $dataInicial = date(('d/m/Y'), strtotime($r->dataInicial));
                             if ($r->dataFinal != null) {
                                 $dataFinal = date(('d/m/Y'), strtotime($r->dataFinal));
@@ -170,10 +172,10 @@
                             
                             echo '<tr>';
                             echo '<td><div align="center"><a href="' . base_url() . 'index.php/os/visualizar/' . $r->idOs . '" target="new" class="tip-top" title="Visualizar detalhes da OS" style="margin-right: 1%">' . $r->idOs . '</a></td>';
+							echo '<td><div align="center">' . $DescricaoShort . '</a></td>';
                             echo '<td><a href="' . base_url() . 'index.php/clientes/visualizar/' . $r->idClientes . '" target="new" class="tip-top" title="Visualizar Cliente" style="margin-right: 1%">' . $NomeClienteShort . '</a></td>';
-                            echo '<td><div align="center">' . $r->nome . '</td>';
+                            echo '<td><div align="center">' . $ResponsávelShort . '</td>';
                             echo '<td><div align="center">' . $dataInicial . '</td>';
-                            echo '<td><div align="center">' . $r->garantia . '</td>';
                             echo '<td><div align="center">R$: ' . number_format($r->totalProdutos + $r->totalServicos, 2, ',', '.') . '</td>';
                             echo '<td><div align="center"><span class="badge" style="background-color: ' . $cor . '; border-color: ' . $cor . '">' . $r->status . '</span></div></td>';
                             echo '<td><div align="center">';
