@@ -52,7 +52,7 @@ $(document).ready(function() {
                 required: true
             },
             preco: {
-                required: true
+                required: false
             }
         },
         messages: {
