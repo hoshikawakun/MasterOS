@@ -49,10 +49,16 @@ $(document).ready(function() {
         rules: {
             nome: {
                 required: true
+            },
+            preco: {
+                required: false
             }
         },
         messages: {
             nome: {
+                required: 'Campo Requerido.'
+            },
+            preco: {
                 required: 'Campo Requerido.'
             }
         },
