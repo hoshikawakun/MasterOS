@@ -67,7 +67,7 @@ $config = [
         [
             'field' => 'preco',
             'label' => '',
-            'rules' => 'required|trim',
+            'rules' => 'trim',
         ]
     ],
     'produtos' => [
