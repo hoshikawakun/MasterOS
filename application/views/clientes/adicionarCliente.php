@@ -114,6 +114,7 @@
                                 <div class="controls">
                                     <input id="telefone" class="telefone1" type="text" name="telefone"
                                         value="<?php echo set_value('telefone'); ?>" />
+                                        <span class="help-inline">Nº WhatsApp</span>
                                 </div>
                             </div>
                             <div class="control-group">

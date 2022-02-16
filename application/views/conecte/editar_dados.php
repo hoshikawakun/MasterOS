@@ -57,6 +57,7 @@
                                 <div class="controls">
                                     <input id="telefone" type="text" class="telefone1" name="telefone"
                                         value="<?php echo $result->telefone; ?>" />
+                                        <span class="help-inline">Nº WhatsApp</span>
                                 </div>
                             </div>
                             <div class="control-group">
