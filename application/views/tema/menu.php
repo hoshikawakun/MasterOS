@@ -120,12 +120,14 @@
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'cSistema')) { ?>
                 <li><a href="<?= site_url('mapos/configurar') ?>">Sistema</a></li>
                 <?php } ?>
-
-                <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'cSistema')) { ?>
+                
+				<!--
+				<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'cSistema')) { ?>
                 <li class="<?php if (isset($menuTermo)) {
             echo 'active';
         }; ?>"><a href="<?= site_url('termo') ?>"><span>Termo</span></a></li>
                 <?php } ?>
+                -->
 
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'cUsuario')) { ?>
                 <li><a href="<?= site_url('usuarios') ?>">Usuários</a></li>
