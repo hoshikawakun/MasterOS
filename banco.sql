@@ -1,10 +1,10 @@
-/*
+/*çã
 MySQL Data Transfer
 Source Host: localhost
-Source Database: banco
+Source Database:
 Target Host: localhost
-Target Database: banco
-Date: 17/02/2021 14:54:58
+Target Database:
+Date: 26/04/2022 10:17:47
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -13,10 +13,10 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 CREATE TABLE `anexos` (
   `idAnexos` int(11) NOT NULL AUTO_INCREMENT,
-  `anexo` varchar(1000) DEFAULT NULL,
-  `thumb` varchar(1000) DEFAULT NULL,
-  `url` varchar(1000) DEFAULT NULL,
-  `path` varchar(1000) DEFAULT NULL,
+  `anexo` text DEFAULT NULL,
+  `thumb` text DEFAULT NULL,
+  `url` text DEFAULT NULL,
+  `path` text DEFAULT NULL,
   `os_id` int(11) NOT NULL,
   PRIMARY KEY (`idAnexos`),
   KEY `fk_anexos_os1` (`os_id`),
@@ -28,11 +28,11 @@ CREATE TABLE `anexos` (
 -- ----------------------------
 CREATE TABLE `anotacoes_os` (
   `idAnotacoes` int(11) NOT NULL AUTO_INCREMENT,
-  `anotacao` varchar(255) NOT NULL,
+  `anotacao` text NOT NULL,
   `data_hora` datetime NOT NULL,
   `os_id` int(11) NOT NULL,
   PRIMARY KEY (`idAnotacoes`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for categorias
@@ -66,30 +66,30 @@ CREATE TABLE `clientes` (
   `sexo` varchar(20) DEFAULT NULL,
   `pessoa_fisica` tinyint(1) NOT NULL DEFAULT 1,
   `documento` varchar(20) NOT NULL,
-  `telefone` varchar(20) NOT NULL,
+  `telefone` varchar(20) DEFAULT NULL,
   `celular` varchar(20) DEFAULT NULL,
-  `email` varchar(100) NOT NULL,
+  `email` varchar(100) DEFAULT NULL,
   `dataCadastro` date DEFAULT NULL,
-  `rua` varchar(70) DEFAULT NULL,
+  `rua` text DEFAULT NULL,
   `numero` varchar(15) DEFAULT NULL,
   `bairro` varchar(45) DEFAULT NULL,
   `cidade` varchar(45) DEFAULT NULL,
   `estado` varchar(20) DEFAULT NULL,
   `cep` varchar(20) DEFAULT NULL,
-  `foto_url` varchar(45) DEFAULT NULL,
-  `senha` varchar(45) DEFAULT NULL,
+  `foto_url` text DEFAULT NULL,
+  `senha` text DEFAULT NULL,
   `fornecedor` tinyint(1) DEFAULT 0,
   `contato` text DEFAULT NULL,
   `complemento` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idClientes`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for cobrancas
 -- ----------------------------
 CREATE TABLE `cobrancas` (
   `idCobranca` int(11) NOT NULL AUTO_INCREMENT,
-  `charge_id` int(11) DEFAULT NULL,
+  `charge_id` varchar(255) DEFAULT NULL,
   `conditional_discount_date` date DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `custom_id` int(11) DEFAULT NULL,
@@ -126,7 +126,7 @@ CREATE TABLE `configuracoes` (
   `valor` text DEFAULT NULL,
   PRIMARY KEY (`idConfig`),
   UNIQUE KEY `config` (`config`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for contas
@@ -150,9 +150,9 @@ CREATE TABLE `documentos` (
   `idDocumentos` int(11) NOT NULL AUTO_INCREMENT,
   `documento` varchar(70) DEFAULT NULL,
   `descricao` text DEFAULT NULL,
-  `file` varchar(100) DEFAULT NULL,
-  `path` varchar(300) DEFAULT NULL,
-  `url` varchar(300) DEFAULT NULL,
+  `file` text DEFAULT NULL,
+  `path` text DEFAULT NULL,
+  `url` text DEFAULT NULL,
   `cadastro` date DEFAULT NULL,
   `categoria` varchar(80) DEFAULT NULL,
   `tipo` varchar(15) DEFAULT NULL,
@@ -183,15 +183,15 @@ CREATE TABLE `emitente` (
   `nome` varchar(255) DEFAULT NULL,
   `cnpj` varchar(45) DEFAULT NULL,
   `ie` varchar(50) DEFAULT NULL,
-  `rua` varchar(70) DEFAULT NULL,
+  `rua` text DEFAULT NULL,
   `numero` varchar(15) DEFAULT NULL,
   `bairro` varchar(45) DEFAULT NULL,
   `cidade` varchar(45) DEFAULT NULL,
   `uf` varchar(20) DEFAULT NULL,
   `telefone` varchar(20) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `url_logo` varchar(225) DEFAULT NULL,
-  `url_termica` varchar(255) DEFAULT NULL,
+  `email` text DEFAULT NULL,
+  `url_logo` text DEFAULT NULL,
+  `url_termica` text DEFAULT NULL,
   `cep` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -201,15 +201,15 @@ CREATE TABLE `emitente` (
 -- ----------------------------
 CREATE TABLE `equipamento_os` (
   `idEquipamento` int(11) NOT NULL AUTO_INCREMENT,
-  `equipamento` varchar(500) NOT NULL,
-  `marca` varchar(500) DEFAULT NULL,
-  `tipo` varchar(500) DEFAULT NULL,
-  `num_serie` varchar(500) DEFAULT NULL,
-  `modelo` varchar(500) DEFAULT NULL,
-  `cor` varchar(500) DEFAULT NULL,
-  `voltagem` varchar(500) DEFAULT NULL,
-  `potencia` varchar(500) DEFAULT NULL,
-  `observacao` varchar(500) DEFAULT NULL,
+  `equipamento` text DEFAULT NULL,
+  `marca` text DEFAULT NULL,
+  `tipo` text DEFAULT NULL,
+  `num_serie` text DEFAULT NULL,
+  `modelo` text DEFAULT NULL,
+  `cor` text DEFAULT NULL,
+  `voltagem` text DEFAULT NULL,
+  `potencia` text DEFAULT NULL,
+  `observacao` text DEFAULT NULL,
   `os_id` int(11) NOT NULL,
   PRIMARY KEY (`idEquipamento`),
   KEY `fk_equipamento_os` (`os_id`),
@@ -225,7 +225,7 @@ CREATE TABLE `equipamentos` (
   `num_serie` varchar(80) DEFAULT NULL,
   `modelo` varchar(80) DEFAULT NULL,
   `cor` varchar(45) DEFAULT NULL,
-  `descricao` varchar(150) DEFAULT NULL,
+  `descricao` text DEFAULT NULL,
   `tensao` varchar(45) DEFAULT NULL,
   `potencia` varchar(45) DEFAULT NULL,
   `voltagem` varchar(45) DEFAULT NULL,
@@ -275,9 +275,9 @@ CREATE TABLE `garantias` (
 -- ----------------------------
 CREATE TABLE `itens_de_vendas` (
   `idItens` int(11) NOT NULL AUTO_INCREMENT,
-  `subTotal` varchar(45) DEFAULT NULL,
+  `subTotal` decimal(10,2) DEFAULT 0.00,
   `quantidade` int(11) DEFAULT NULL,
-  `preco` varchar(15) DEFAULT NULL,
+  `preco` decimal(10,2) DEFAULT 0.00,
   `vendas_id` int(11) NOT NULL,
   `produtos_id` int(11) NOT NULL,
   PRIMARY KEY (`idItens`),
@@ -292,12 +292,12 @@ CREATE TABLE `itens_de_vendas` (
 -- ----------------------------
 CREATE TABLE `lancamentos` (
   `idLancamentos` int(11) NOT NULL AUTO_INCREMENT,
-  `descricao` varchar(255) DEFAULT NULL,
+  `descricao` text DEFAULT NULL,
   `valor` varchar(15) NOT NULL,
-  `desconto` decimal(10,2) DEFAULT NULL,
-  `valor_desconto` decimal(10,2) DEFAULT NULL,
-  `data_vencimento` date NOT NULL,
-  `data_pagamento` date DEFAULT NULL,
+  `desconto` decimal(10,2) DEFAULT 0.00,
+  `valor_desconto` decimal(10,2) DEFAULT 0.00,
+  `data_vencimento` text NOT NULL,
+  `data_pagamento` text DEFAULT '',
   `baixado` tinyint(1) DEFAULT 0,
   `cliente_fornecedor` varchar(255) DEFAULT NULL,
   `forma_pgto` varchar(100) DEFAULT NULL,
@@ -308,7 +308,8 @@ CREATE TABLE `lancamentos` (
   `categorias_id` int(11) DEFAULT NULL,
   `contas_id` int(11) DEFAULT NULL,
   `vendas_id` int(11) DEFAULT NULL,
-  `usuarios_id` int(11) DEFAULT NULL,
+  `usuarios_id` int(11) NOT NULL,
+  `data_vencimentox` text DEFAULT NULL,
   PRIMARY KEY (`idLancamentos`),
   KEY `fk_lancamentos_clientes1` (`clientes_id`),
   KEY `fk_lancamentos_categorias1_idx` (`categorias_id`),
@@ -325,8 +326,8 @@ CREATE TABLE `lancamentos` (
 -- ----------------------------
 CREATE TABLE `logs` (
   `idLogs` int(11) NOT NULL AUTO_INCREMENT,
-  `usuario` varchar(80) DEFAULT NULL,
-  `tarefa` varchar(100) DEFAULT NULL,
+  `usuario` text DEFAULT NULL,
+  `tarefa` text DEFAULT NULL,
   `data` date DEFAULT NULL,
   `hora` time DEFAULT NULL,
   `ip` varchar(45) DEFAULT NULL,
@@ -357,10 +358,12 @@ CREATE TABLE `migrations` (
 CREATE TABLE `os` (
   `idOs` int(11) NOT NULL AUTO_INCREMENT,
   `dataInicial` date DEFAULT NULL,
-  `dataFinal` varchar(15) DEFAULT NULL,
-  `dataSaida` varchar(15) DEFAULT NULL,
-  `garantia` varchar(15) DEFAULT NULL,
-  `rastreio` varchar(20) DEFAULT NULL,
+  `dataFinal` date DEFAULT NULL,
+  `dataSaida` text DEFAULT NULL,
+  `garantia` text DEFAULT NULL,
+  `rastreio` text DEFAULT NULL,
+  `marca` text DEFAULT NULL,
+  `serial` text DEFAULT NULL,
   `descricaoProduto` text DEFAULT NULL,
   `defeito` text DEFAULT NULL,
   `status` text DEFAULT NULL,
@@ -369,13 +372,11 @@ CREATE TABLE `os` (
   `valorTotal` varchar(15) DEFAULT NULL,
   `desconto` decimal(10,2) DEFAULT 0.00,
   `valor_desconto` decimal(10,2) DEFAULT 0.00,
-  `clientes_id` int(11) DEFAULT NULL,
-  `usuarios_id` int(11) DEFAULT NULL,
+  `clientes_id` int(11) NOT NULL,
+  `usuarios_id` int(11) NOT NULL,
   `lancamento` int(11) DEFAULT NULL,
-  `faturado` tinyint(1) DEFAULT NULL,
+  `faturado` tinyint(1) NOT NULL,
   `garantias_id` int(11) DEFAULT NULL,
-  `marca` varchar(90) DEFAULT NULL,
-  `serial` varchar(90) DEFAULT NULL,
   PRIMARY KEY (`idOs`),
   KEY `fk_os_clientes1` (`clientes_id`),
   KEY `fk_os_usuarios1` (`usuarios_id`),
@@ -387,38 +388,24 @@ CREATE TABLE `os` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
--- Table structure for pagamento
--- ----------------------------
-CREATE TABLE `pagamento` (
-  `idPag` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `client_id` varchar(200) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `client_secret` varchar(200) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `public_key` varchar(200) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `access_token` varchar(200) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `default_pag` int(1) NOT NULL,
-  PRIMARY KEY (`idPag`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- ----------------------------
 -- Table structure for permissoes
 -- ----------------------------
 CREATE TABLE `permissoes` (
   `idPermissao` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(80) NOT NULL,
+  `nome` text DEFAULT NULL,
   `permissoes` text DEFAULT NULL,
   `situacao` tinyint(1) DEFAULT NULL,
   `data` date DEFAULT NULL,
   PRIMARY KEY (`idPermissao`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for produtos
 -- ----------------------------
 CREATE TABLE `produtos` (
   `idProdutos` int(11) NOT NULL AUTO_INCREMENT,
-  `codDeBarra` varchar(70) NOT NULL,
-  `descricao` varchar(80) NOT NULL,
+  `codDeBarra` varchar(70) DEFAULT NULL,
+  `descricao` text DEFAULT NULL,
   `unidade` varchar(10) DEFAULT NULL,
   `precoCompra` decimal(10,2) DEFAULT NULL,
   `precoVenda` decimal(10,2) NOT NULL,
@@ -435,7 +422,7 @@ CREATE TABLE `produtos` (
 CREATE TABLE `produtos_os` (
   `idProdutos_os` int(11) NOT NULL AUTO_INCREMENT,
   `quantidade` int(11) NOT NULL,
-  `descricao` varchar(80) DEFAULT NULL,
+  `descricao` text DEFAULT NULL,
   `preco` varchar(15) DEFAULT NULL,
   `os_id` int(11) NOT NULL,
   `produtos_id` int(11) NOT NULL,
@@ -445,6 +432,18 @@ CREATE TABLE `produtos_os` (
   KEY `fk_produtos_os_produtos1` (`produtos_id`),
   CONSTRAINT `fk_produtos_os_os1` FOREIGN KEY (`os_id`) REFERENCES `os` (`idOs`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_produtos_os_produtos1` FOREIGN KEY (`produtos_id`) REFERENCES `produtos` (`idProdutos`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Table structure for resets_de_senha
+-- ----------------------------
+CREATE TABLE `resets_de_senha` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(200) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `data_expiracao` datetime NOT NULL,
+  `token_utilizado` tinyint(4) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
@@ -463,7 +462,7 @@ CREATE TABLE `servicos` (
 -- ----------------------------
 CREATE TABLE `servicos_os` (
   `idServicos_os` int(11) NOT NULL AUTO_INCREMENT,
-  `servico` varchar(80) DEFAULT NULL,
+  `servico` text DEFAULT NULL,
   `quantidade` double DEFAULT NULL,
   `preco` varchar(15) DEFAULT NULL,
   `os_id` int(11) NOT NULL,
@@ -481,11 +480,11 @@ CREATE TABLE `servicos_os` (
 -- ----------------------------
 CREATE TABLE `usuarios` (
   `idUsuarios` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(80) NOT NULL,
+  `nome` text DEFAULT NULL,
   `rg` varchar(20) DEFAULT NULL,
   `cpf` varchar(20) NOT NULL,
   `cep` varchar(9) NOT NULL,
-  `rua` varchar(70) DEFAULT NULL,
+  `rua` text DEFAULT NULL,
   `numero` varchar(15) DEFAULT NULL,
   `bairro` varchar(45) DEFAULT NULL,
   `cidade` varchar(45) DEFAULT NULL,
@@ -497,11 +496,13 @@ CREATE TABLE `usuarios` (
   `situacao` tinyint(1) NOT NULL,
   `dataCadastro` date NOT NULL,
   `permissoes_id` int(11) NOT NULL,
-  `dataExpiracao` date NOT NULL,
+  `dataExpiracao` date DEFAULT NULL,
+  `asaas_id` varchar(255) DEFAULT NULL,
+  `url_image_user` text DEFAULT NULL,
   PRIMARY KEY (`idUsuarios`),
   KEY `fk_usuarios_permissoes1_idx` (`permissoes_id`),
   CONSTRAINT `fk_usuarios_permissoes1` FOREIGN KEY (`permissoes_id`) REFERENCES `permissoes` (`idPermissao`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for vendas
@@ -510,8 +511,8 @@ CREATE TABLE `vendas` (
   `idVendas` int(11) NOT NULL AUTO_INCREMENT,
   `dataVenda` date DEFAULT NULL,
   `valorTotal` varchar(45) DEFAULT NULL,
-  `desconto` decimal(10,2) DEFAULT NULL,
-  `valor_desconto` decimal(10,2) DEFAULT NULL,
+  `desconto` decimal(10,2) DEFAULT 0.00,
+  `valor_desconto` decimal(10,2) DEFAULT 0.00,
   `faturado` tinyint(1) DEFAULT NULL,
   `obs` text DEFAULT NULL,
   `observacoes` text DEFAULT NULL,
@@ -531,35 +532,52 @@ CREATE TABLE `vendas` (
 -- ----------------------------
 -- Records 
 -- ----------------------------
-INSERT INTO `clientes` VALUES ('1', 'Geral', '', '1', '000.000.000-00', '(00) 0000-0000', '', 'teste@biglobe.ne.jp', '2019-04-23', 'Rua', '0', 'Centro', 'Cidade', 'Estado', '00000-000', null, 'fw6q3xSXbd', '0', null, '');
+
+INSERT INTO `clientes` VALUES ('1', 'Geral', null, '1', '000.000.000-00', '(00) 0000-0000', null, 'tk@biglobe.ne.jp', '2019-04-23', 'Rua', '0', 'Bairro', 'Cidade', 'CEP', '00000-000', null, null, '0', null, null);
 INSERT INTO `configuracoes` VALUES ('1', 'app_name', 'Nome da sua Loja');
 INSERT INTO `configuracoes` VALUES ('2', 'app_theme', 'novo');
 INSERT INTO `configuracoes` VALUES ('3', 'per_page', '20');
 INSERT INTO `configuracoes` VALUES ('4', 'os_notification', 'nenhum');
-INSERT INTO `configuracoes` VALUES ('5', 'control_estoque', '1');
-INSERT INTO `configuracoes` VALUES ('6', 'termo_uso', '<p><strong>Eu, abaixo assinado proprietário (e/ou fiel representante) do aparelho(s) acima descrito autorizo assumo as seguintes condições:<br>1.\r\n Por se tratar de equipamento(s) com micro componentes interligados \r\nentre si, os defeitos apresentados poderão provocar danos aos demais \r\ncomponentes, isentando assim a ASSISTÊNCIA TÉCNICA da responsabilidade \r\ndos defeitos.<br>2. Em caso de desistência do reparo, caberá a \r\nASSISTÊNCIA TÉCNICA apenas a responsabilidade da devolução do \r\nequipamento no estado em que se encontra, ficando isenta de qualquer \r\nreclamação e/ou ônus de minha parte;<br>3. Eu Abaixo Assinado estou ciente de que caso seja efetuado o procedimento de </strong><strong><strong>Reballing (BGA)</strong>\r\n para a tentativa do reparo, devido envolver altas temperaturas que são \r\nacima de 200°, sendo assim o equipamento pode vim a parar completamente \r\nde funcionar.<br>4. A Garantia dos serviços executados e informada nesse documento, e contada à partir da retirada do equipamento;<br>5.\r\n Os equipamentos em garantia no caso de defeito, só serão aceitos com a \r\napresentação desta ordem de serviço e desde que os selos de garantia não\r\n estejam violados;<br>6. A garantia será dada somente sobre os \r\ncomponentes eletrônicos e mão de obra aplicada no reparo especificado \r\nnesta Ordem de Serviço;<br>7. O cliente declara que o equipamento e de \r\nsua propriedade/responsabilidade, e não sendo produto de furto, roubo ou\r\n derivado de qualquer ato ilícito sendo de sua total responsabilidade;<br><br>ATENÇÃO:\r\n Os equipamentos não retirados no prazo de 15 dias, sofrerão reajuste e \r\ntaxa de armazenamento no valor de 2% ao dia sobre o valor do orçamento. \r\nDe acordo com o Código&nbsp; do Consumidor nº 8078/90 Artigo 39 incluso \r\nVII... A permanência do equipamento após o conserto ou orçamento e de no\r\n máximo&nbsp; 90 DIAS (Noventa DIAS). Após este prazo será tido como \r\nABANDONADO e será desmantelado para retirada das peças utilizadas no \r\nreparo e o restante será descartado, para a liberação de espaço.<br></strong></p>');
-INSERT INTO `configuracoes` VALUES ('7', 'whats_app1', 'Favor entrar em contato para saber mais detalhes. ');
-INSERT INTO `configuracoes` VALUES ('8', 'whats_app2', 'Nome da sua Loja');
-INSERT INTO `configuracoes` VALUES ('9', 'whats_app3', '(00) 00000-0000');
-INSERT INTO `configuracoes` VALUES ('10', 'whats_app4', null);
-INSERT INTO `configuracoes` VALUES ('11', 'whats_app5', null);
-INSERT INTO `configuracoes` VALUES ('12', 'whats_app6', null);
-INSERT INTO `configuracoes` VALUES ('13', 'masteros_0', '@sistema.com');
-INSERT INTO `configuracoes` VALUES ('14', 'masteros_1', null);
-INSERT INTO `configuracoes` VALUES ('15', 'masteros_2', null);
-INSERT INTO `configuracoes` VALUES ('16', 'masteros_3', null);
-INSERT INTO `configuracoes` VALUES ('17', 'masteros_4', null);
-INSERT INTO `configuracoes` VALUES ('18', 'masteros_5', null);
-INSERT INTO `configuracoes` VALUES ('19', 'masteros_6', null);
-INSERT INTO `configuracoes` VALUES ('20', 'masteros_7', null);
-INSERT INTO `configuracoes` VALUES ('21', 'masteros_8', null);
-INSERT INTO `configuracoes` VALUES ('22', 'masteros_9', null);
-INSERT INTO `configuracoes` VALUES ('23', 'gerenciador_arquivos', 'arquivos_old/arquivos');
-INSERT INTO `configuracoes` VALUES ('24', 'control_baixa', '1');
-INSERT INTO `configuracoes` VALUES ('25', 'control_editos', '0');
-INSERT INTO `configuracoes` VALUES ('26', 'control_datatable', '0');
-INSERT INTO `configuracoes` VALUES ('27', 'pix_key', null);
-INSERT INTO `configuracoes` VALUES ('28', 'os_status_list', '[\"Or\\u00e7amento\",\"Or\\u00e7amento Concluido\",\"Or\\u00e7amento Aprovado\",\"Em Andamento\",\"Aguardando Pe\\u00e7as\",\"Servi\\u00e7o Concluido\",\"Sem Reparo\",\"N\\u00e3o Autorizado\",\"Contato sem Sucesso\",\"Cancelado\",\"Pronto-Despachar\",\"Aguardando Envio\",\"Enviado\",\"Aguardando Entrega Correio\",\"Garantia\",\"Abandonado\",\"Comprado pela Loja\",\"Entregue - A Receber\",\"Entregue - Faturado\"]');
+INSERT INTO `configuracoes` VALUES ('5', 'notifica_whats', null);
+INSERT INTO `configuracoes` VALUES ('6', 'control_estoque', '0');
+INSERT INTO `configuracoes` VALUES ('7', 'termo_uso', '<p style=\"text-align: center;\"><strong>Eu, abaixo assinado proprietário (e/ou fiel representante) do aparelho(s) acima descrito autorizo assumo as seguintes condições:<br>1.\r\n Por se tratar de equipamento(s) com micro componentes interligados \r\nentre si, os defeitos apresentados poderão provocar danos aos demais \r\ncomponentes, isentando assim a ASSISTÊNCIA TÉCNICA da responsabilidade \r\ndos defeitos.<br>2. Em caso de desistência do reparo, caberá a \r\nASSISTÊNCIA TÉCNICA apenas a responsabilidade da devolução do \r\nequipamento no estado em que se encontra, ficando isenta de qualquer \r\nreclamação e/ou ônus de minha parte;<br>3. Eu Abaixo Assinado estou ciente de que caso seja efetuado o procedimento de </strong><strong><strong>Reballing (BGA)</strong>\r\n para a tentativa do reparo, devido envolver altas temperaturas que são \r\nacima de 200°, sendo assim o equipamento pode vim a parar completamente \r\nde funcionar.<br>4. A Garantia dos serviços executados e informada nesse documento, e contada à partir da retirada do equipamento;<br>5.\r\n Os equipamentos em garantia no caso de defeito, só serão aceitos com a \r\napresentação desta ordem de serviço e desde que os selos de garantia não\r\n estejam violados;<br>6. A garantia será dada somente sobre os \r\ncomponentes eletrônicos e mão de obra aplicada no reparo especificado \r\nnesta Ordem de Serviço;<br>7. O cliente declara que o equipamento e de \r\nsua propriedade/responsabilidade, e não sendo produto de furto, roubo ou\r\n derivado de qualquer ato ilícito sendo de sua total responsabilidade;<br><br>ATENÇÃO:\r\n Os equipamentos não retirados no prazo de 15 dias, sofrerão reajuste e \r\ntaxa de armazenamento no valor de 2% ao dia sobre o valor do orçamento. \r\nDe acordo com o Código&nbsp; do Consumidor nº 8078/90 Artigo 39 incluso \r\nVII... A permanência do equipamento após o conserto ou orçamento e de no\r\n máximo&nbsp; 90 DIAS (Noventa DIAS). Após este prazo será tido como \r\nABANDONADO e será desmantelado para retirada das peças utilizadas no \r\nreparo e o restante será descartado, para a liberação de espaço.<br></strong></p>');
+INSERT INTO `configuracoes` VALUES ('8', 'whats_app1', 'Favor entrar em contato para saber mais detalhes. ');
+INSERT INTO `configuracoes` VALUES ('9', 'whats_app2', 'Nome da sua Loja');
+INSERT INTO `configuracoes` VALUES ('10', 'whats_app3', '(00) 00000-0000');
+INSERT INTO `configuracoes` VALUES ('11', 'whats_app4', null);
+INSERT INTO `configuracoes` VALUES ('12', 'whats_app5', null);
+INSERT INTO `configuracoes` VALUES ('13', 'whats_app6', null);
+INSERT INTO `configuracoes` VALUES ('14', 'masteros_0', '@sistema.com');
+INSERT INTO `configuracoes` VALUES ('15', 'masteros_1', '');
+INSERT INTO `configuracoes` VALUES ('16', 'masteros_2', '1');
+INSERT INTO `configuracoes` VALUES ('17', 'masteros_3', '1');
+INSERT INTO `configuracoes` VALUES ('18', 'masteros_4', '1');
+INSERT INTO `configuracoes` VALUES ('19', 'masteros_5', null);
+INSERT INTO `configuracoes` VALUES ('20', 'masteros_6', null);
+INSERT INTO `configuracoes` VALUES ('21', 'masteros_7', null);
+INSERT INTO `configuracoes` VALUES ('22', 'masteros_8', null);
+INSERT INTO `configuracoes` VALUES ('23', 'masteros_9', null);
+INSERT INTO `configuracoes` VALUES ('24', 'gerenciador_arquivos', 'arquivos_old/arquivos');
+INSERT INTO `configuracoes` VALUES ('25', 'control_baixa', '0');
+INSERT INTO `configuracoes` VALUES ('26', 'control_editos', '0');
+INSERT INTO `configuracoes` VALUES ('27', 'control_datatable', null);
+INSERT INTO `configuracoes` VALUES ('28', 'pix_key', '62984054022');
+INSERT INTO `configuracoes` VALUES ('29', 'os_status_list', '[\"Or\\u00e7amento\",\"Or\\u00e7amento Concluido\",\"Or\\u00e7amento Aprovado\",\"Em Andamento\",\"Aguardando Pe\\u00e7as\",\"Servi\\u00e7o Concluido\",\"Sem Reparo\",\"N\\u00e3o Autorizado\",\"Contato sem Sucesso\",\"Cancelado\",\"Pronto-Despachar\",\"Aguardando Envio\",\"Enviado\",\"Aguardando Entrega Correio\",\"Garantia\",\"Abandonado\",\"Comprado pela Loja\",\"Entregue - A Receber\",\"Entregue - Sem Reparo\",\"Entregue - Faturado\"]');
+INSERT INTO `configuracoes` VALUES ('30', 'per_page_home', '5');
+INSERT INTO `configuracoes` VALUES ('31', 'orcamento', '1');
+INSERT INTO `configuracoes` VALUES ('32', 'orcamento_concluido', '1');
+INSERT INTO `configuracoes` VALUES ('33', 'orcamento_aprovado', '1');
+INSERT INTO `configuracoes` VALUES ('34', 'em_andamento', '1');
+INSERT INTO `configuracoes` VALUES ('35', 'aguardando_pecas', '1');
+INSERT INTO `configuracoes` VALUES ('36', 'servico_concluido', '1');
+INSERT INTO `configuracoes` VALUES ('37', 'sem_reparo', '1');
+INSERT INTO `configuracoes` VALUES ('38', 'nao_autorizado', '1');
+INSERT INTO `configuracoes` VALUES ('39', 'cancelado', '1');
+INSERT INTO `configuracoes` VALUES ('40', 'pronto_despachar', '1');
+INSERT INTO `configuracoes` VALUES ('41', 'entregue_a_receber', '1');
+INSERT INTO `configuracoes` VALUES ('42', 'em_garantia', '1');
+INSERT INTO `configuracoes` VALUES ('43', 'email_automatico', '0');
+INSERT INTO `configuracoes` VALUES ('44', 'control_edit_vendas', '0');
 INSERT INTO `migrations` VALUES ('20210114151944');
+INSERT INTO `usuarios` VALUES ('1', 'admin_name', 'XX-00.000.000', '000.000.000-00', '00000-000', 'Rua', '0', 'Bairro', 'Cidade', 'Estado', 'admin_email', 'admin_password', '(00) 00000-0000', null, '1', 'admin_created_at', '1', 'admin_expiracao', null, null);
 INSERT INTO `permissoes` VALUES ('1', 'Administrador', 'a:53:{s:8:\"aCliente\";s:1:\"1\";s:8:\"eCliente\";s:1:\"1\";s:8:\"dCliente\";s:1:\"1\";s:8:\"vCliente\";s:1:\"1\";s:8:\"aProduto\";s:1:\"1\";s:8:\"eProduto\";s:1:\"1\";s:8:\"dProduto\";s:1:\"1\";s:8:\"vProduto\";s:1:\"1\";s:8:\"aServico\";s:1:\"1\";s:8:\"eServico\";s:1:\"1\";s:8:\"dServico\";s:1:\"1\";s:8:\"vServico\";s:1:\"1\";s:3:\"aOs\";s:1:\"1\";s:3:\"eOs\";s:1:\"1\";s:3:\"dOs\";s:1:\"1\";s:3:\"vOs\";s:1:\"1\";s:6:\"aVenda\";s:1:\"1\";s:6:\"eVenda\";s:1:\"1\";s:6:\"dVenda\";s:1:\"1\";s:6:\"vVenda\";s:1:\"1\";s:9:\"aGarantia\";s:1:\"1\";s:9:\"eGarantia\";s:1:\"1\";s:9:\"dGarantia\";s:1:\"1\";s:9:\"vGarantia\";s:1:\"1\";s:8:\"aArquivo\";s:1:\"1\";s:8:\"eArquivo\";s:1:\"1\";s:8:\"dArquivo\";s:1:\"1\";s:8:\"vArquivo\";s:1:\"1\";s:10:\"aPagamento\";s:1:\"1\";s:10:\"ePagamento\";s:1:\"1\";s:10:\"dPagamento\";s:1:\"1\";s:10:\"vPagamento\";s:1:\"1\";s:11:\"aLancamento\";s:1:\"1\";s:11:\"eLancamento\";s:1:\"1\";s:11:\"dLancamento\";s:1:\"1\";s:11:\"vLancamento\";s:1:\"1\";s:8:\"cUsuario\";s:1:\"1\";s:9:\"cEmitente\";s:1:\"1\";s:10:\"cPermissao\";s:1:\"1\";s:7:\"cBackup\";s:1:\"1\";s:10:\"cAuditoria\";s:1:\"1\";s:6:\"cEmail\";s:1:\"1\";s:8:\"cSistema\";s:1:\"1\";s:8:\"rCliente\";s:1:\"1\";s:8:\"rProduto\";s:1:\"1\";s:8:\"rServico\";s:1:\"1\";s:3:\"rOs\";s:1:\"1\";s:6:\"rVenda\";s:1:\"1\";s:11:\"rFinanceiro\";s:1:\"1\";s:9:\"aCobranca\";s:1:\"1\";s:9:\"eCobranca\";s:1:\"1\";s:9:\"dCobranca\";s:1:\"1\";s:9:\"vCobranca\";s:1:\"1\";}', '1', '2021-02-08');
-INSERT INTO `usuarios` VALUES ('1', 'admin_name', 'XX-00.000.000', '000.000.000-00', '00000-000', 'Rua', '0', 'Bairro', 'Cidade', 'Estado', 'admin_email', 'admin_password', '(00) 00000-0000', '', '1', 'admin_created_at', '1', 'admin_expiracao');
