@@ -254,7 +254,7 @@ body .ui-tooltip { border-width: 2px; }
 .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #555555; text-decoration: none; }
 
 .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
-	border: 1px solid #000; background: #fff; /*Cor do dia com o Mouse Encima*/
+	border: 1px solid #ffcc00; background: #fff; /*Cor do dia com o Mouse Encima*/
 	url(images/ui-bg_glass_75_dadada_1x400.png) 50% 50% repeat-x; font-weight: normal; color: #f00; }
 	
 .ui-state-hover a, .ui-state-hover a:hover, .ui-state-hover a:link, .ui-state-hover a:visited { color: #212121; text-decoration: none; }
