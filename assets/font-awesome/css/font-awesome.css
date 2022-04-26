@@ -1057,13 +1057,16 @@
 .fa-satellite:before{content:"\f7bf"}
 .fa-satellite-dish:before{content:"\f7c0"}
 .fa-save:before{content:"\f0c7"}
+.fa-person-running:before{content:"\f70c"}
 .fa-schlix:before{content:"\f3ea"}
 .fa-school:before{content:"\f549"}
 .fa-screwdriver:before{content:"\f54a"}
 .fa-scribd:before{content:"\f28a"}
 .fa-scroll:before{content:"\f70e"}
 .fa-sd-card:before{content:"\f7c2"}
+
 .fa-search:before{content:"\f002"}
+
 .fa-search-dollar:before{content:"\f688"}
 .fa-search-location:before{content:"\f689"}
 .fa-search-minus:before{content:"\f010"}
@@ -1280,7 +1283,10 @@
 .fa-transgender:before{content:"\f224"}
 .fa-transgender-alt:before{content:"\f225"}
 .fa-trash:before{content:"\f1f8"}
+
 .fa-trash-alt:before{content:"\f2ed"}
+.fa-square-pen:before{content:"\f14b"}
+
 .fa-trash-restore:before{content:"\f829"}
 .fa-trash-restore-alt:before{content:"\f82a"}
 .fa-tree:before{content:"\f1bb"}
@@ -1417,7 +1423,16 @@
 .fa-wpressr:before{content:"\f3e4"}
 .fa-wrench:before{content:"\f0ad"}
 .fa-x-ray:before{content:"\f497"}
+
 .fa-xbox:before{content:"\f412"}
+
+.fa-xmark:before{content:"\f00d"}
+.fa-xmark-circle:before{content:"\f057"}
+
+.fa-sack-dollar:before{content:"\f81d"}
+
+.fa-circle-dollar:before{content:"\f2e8"}
+
 .fa-xing:before{content:"\f168"}
 .fa-xing-square:before{content:"\f169"}
 .fa-y-combinator:before{content:"\f23b"}
@@ -1439,3 +1454,7 @@
 .far{font-weight:400}@font-face{font-family:"Font Awesome 5 Free";font-style:normal;font-weight:900;font-display:auto;src:url(../webfonts/fa-solid-900.eot);src:url(../webfonts/fa-solid-900.eot?#iefix) format("embedded-opentype"),url(../webfonts/fa-solid-900.woff2) format("woff2"),url(../webfonts/fa-solid-900.woff) format("woff"),url(../webfonts/fa-solid-900.ttf) format("truetype"),url(../webfonts/fa-solid-900.svg#fontawesome) format("svg")}
 .fa,.far,.fas{font-family:"Font Awesome 5 Free"}
 .fa,.fas{font-weight:900}
+
+
+
+
