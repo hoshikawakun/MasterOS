@@ -1,25 +1,36 @@
-<div class="span12" style="margin-left: 0; margin-top: 0">
-    <div class="span12" style="margin-left: 0">
-        <form action="<?php echo current_url() ?>">
-            <div class="span10" style="margin-left: 0">
-                <input type="text" class="span12" name="termo" placeholder="Digite o termo a pesquisar" />
-            </div>
-            <div class="span2">
-                <button class="span12 btn"><i class=" fas fa-search"></i> Pesquisar</button>
-            </div>
-        </form>
-    </div>
 
-    <div class="span12" style="margin-left: 0">
-        <!--Ordens de Serviço-->
-        <div class="span12">
-            <div class="widget-box">
-                <div class="widget-title">
-                    <span class="icon"><i class="fas fa-diagnoses"></i></span>
-                    <h5>Ordens de Serviço</h5>
-                </div>
-                <div class="widget_content">
-                    <table class="table_p">
+<div class="row-fluid" style="margin-top:0">
+<div class="widget_content_3">
+<div class="widget_title_3">
+<h5>Pesquisa</h5>
+</div>
+
+
+<form action="<?php echo current_url() ?>" class="form_horizontal">
+<div class="control_group_up" style="padding: 1%; margin-top: 5px">
+<div class="span12 well" style="padding: 1%; margin-left: 0">
+<div class="span10">
+<input type="text" class="span12" name="termo" placeholder="Digite o termo a pesquisar"/>
+</div>
+<div class="span2">
+<button class="button_mini btn btn-mini btn-warning"><span class="button_icon"><i class='fas fa-search'></i></span> <span class="button_text">Pesquisar</span></button>
+</div>
+
+</div>
+</div>
+</form>
+
+
+
+<div class="widget_painel">
+<!-- Orçamento -->
+<?php if ($configuration['orcamento'] == 1 ) { ?>
+<div class="widget_content_4">
+<div class="widget_title_4">
+<h5>Ordens de Serviço</h5>
+</div>
+<div class="widget_painel">
+<table class="table_w">
                         <thead>
                             <tr>
                                 <th>OS N°</th>
@@ -130,20 +141,19 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
-            </div>
-        </div>
-    </div>
+</div>
+</div>
+<?php } ?>
+<!-- Fim Orçamento -->
 
-    <div class="span12" style="margin-left: 0">
-        <div class="span12">
-            <div class="widget-box">
-                <div class="widget-title">
-                    <span class="icon"><i class="fas fa-diagnoses"></i></span>
-                    <h5>Equipamento OS</h5>
-                </div>
-                <div class="widget_content">
-                    <table class="table_p">
+<!-- Orçamento Concluido -->
+<?php if ($configuration['orcamento_concluido'] == 1 ) { ?>
+<div class="widget_content_4">
+<div class="widget_title_4">
+<h5>Equipamento OS</h5>
+</div>
+<div class="widget_painel">
+<table class="table_w">
                         <thead>
                             <tr>
                                 <th>OS N°</th>
@@ -184,22 +194,19 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
-            </div>
-        </div>
-        <!--Fim Ordens de Serviço-->
-    </div>
+</div>
+</div>
+<?php } ?>
+<!-- Fim Orçamento Concluido -->
 
-    <div class="span12" style="margin-left: 0; margin-top: 0">
-        <!--Produtoss-->
-        <div class="span12">
-            <div class="widget-box">
-                <div class="widget-title">
-                    <span class="icon"><i class="fas fa-shopping-bag"></i></span>
-                    <h5>Produtos</h5>
-                </div>
-                <div class="widget_content">
-                    <table class="table_p">
+<!-- Orçamento Aprovado -->
+<?php if ($configuration['orcamento_aprovado'] == 1 ) { ?>
+<div class="widget_content_4">
+<div class="widget_title_4">
+<h5>Produtos</h5>
+</div>
+<div class="widget_painel">
+<table class="table_w">
                         <thead>
                             <tr>
                                 <th>Cod. Produto</th>
@@ -235,22 +242,19 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
-            </div>
-        </div>
-        <!--Fim Produtoss-->
-    </div>
+</div>
+</div>
+<?php } ?>
+<!-- Fim Orçamento Aprovado -->
 
-    <div class="span12" style="margin-left: 0">
-        <!--Clientes-->
-        <div class="span12">
-            <div class="widget-box">
-                <div class="widget-title">
-                    <span class="icon"><i class="fas fa-user"></i></span>
-                    <h5>Clientes</h5>
-                </div>
-                <div class="widget_content">
-                    <table class="table_p">
+<!-- Em Andamento -->
+<?php if ($configuration['em_andamento'] == 1 ) { ?>
+<div class="widget_content_4">
+<div class="widget_title_4">
+<h5>Clientes</h5>
+</div>
+<div class="widget_painel">
+                    <table class="table_w">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -286,22 +290,19 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
-            </div>
-        </div>
-        <!--Fim Clientes-->
-    </div>
+</div>
+</div>
+<?php } ?>
+<!-- Fim Em Andamento -->
 
-    <div class="span12" style="margin-left: 0">
-        <!--Serviços-->
-        <div class="span12">
-            <div class="widget-box">
-                <div class="widget-title">
-                    <span class="icon"><i class="fas fa-wrench"></i></span>
-                    <h5>Serviços</h5>
-                </div>
-                <div class="widget_content">
-                    <table class="table_p">
+<!-- Aguardando Peças -->
+<?php if ($configuration['aguardando_pecas'] == 1 ) { ?>
+<div class="widget_content_4">
+<div class="widget_title_4">
+<h5>Serviços</h5>
+</div>
+<div class="widget_painel">
+<table class="table_w">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -332,10 +333,15 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
-            </div>
-        </div>
-        <!--Fim Serviços-->
-    </div>
+</div>
+</div>
+<?php } ?>
+<!-- Fim Aguardando Peças -->
+</div>
 
+
+
+
+
+</div>
 </div>
