@@ -28,6 +28,7 @@ body {
   --border-box: #333333; /*Cor das Bordas*/
   --toggle    : #676779;
 
+  --modal   : #eaeaea;
   --white   : #676779;
   --cinza   : #a2a6ae;
   --cinza0  : #ffffff; /*Cor das Letras dos Menus*/
@@ -3624,7 +3625,7 @@ fieldset[disabled] .btn-info.active {
 
 /*Janelas MODAL*/
 .modal_box {
-	border-radius   : 10px 10px 10px 10px; /*Bordas Arredondadas*/
+	border-radius   : 12px 12px 12px 12px; /*Bordas Arredondadas*/
 	border          : 1px solid #999; /*Bordas*/
 	position        : fixed;
 	top             : 10%;
@@ -3640,14 +3641,22 @@ fieldset[disabled] .btn-info.active {
 
 .modal_title {
 	border-radius   : 10px 10px 0px 0px; /*Bordas Arredondadas*/
-	padding-left    : 10px;
 	background      : #eeeeee; /*Cor do Cabeçalho da Tabela Externa*/
-	background-color: #fff;
+	background-color: var(--modal);
 	border-bottom   : 1px solid #999; /*Borda inferior*/
 	height          : 30px; /*tamanho interno do cabeçalho*/
 	text-align      : left;
 	border-collapse : collapse;
 	vertical-align  : top;
+	padding-top     : 1px;
+	padding-bottom  : 10px;
+	padding-left    : 10px;
+	padding-right   : 10px;
+
+}      
+
+.modal_title h5{
+	color: #333;
 }
 
 .modal_content {/*Tabela Interna*/
@@ -3719,7 +3728,7 @@ fieldset[disabled] .btn-info.active {
 	border-left     : 0px solid #999; /*Borda Lateral Esquerda*/
 	border-right    : 0px solid #999; /*Borda Lateral Direita*/
 	padding         : 10px;
-	background-color: #ffffff;
+	background-color: var(--modal);
 }
 
 .form_actions_2 {
