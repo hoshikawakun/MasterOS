@@ -7,26 +7,26 @@
 <script type="text/javascript" src="<?php echo base_url() ?>assets/trumbowyg/langs/pt_br.js"></script>
 
 <style>
-.ui-datepicker {
-    z-index: 9999 !important;
-}
+    .ui-datepicker {
+        z-index: 9999 !important;
+    }
 
-.trumbowyg-box {
-    margin-top: 0;
-    margin-bottom: 0;
-}
+    .trumbowyg-box {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
 </style>
 
 <div class="row-fluid" style="margin-top:0">
     <div class="span12">
         <div class="widget-box">
-            <div class="widget-title">
+            <div class="widget-title" style="margin: -20px 0 0">
                 <span class="icon">
                     <i class="fas fa-diagnoses"></i>
                 </span>
                 <h5>Cadastro de OS</h5>
             </div>
-            <div class="widget_box_Painel2">
+            <div class="widget_content nopadding tab-content">
 
 
                 <div class="span12" id="divProdutosServicos" style=" margin-left: 0">
@@ -39,60 +39,44 @@
                             <div class="span12" id="divCadastrarOs">
 
                                 <form action="<?php echo current_url(); ?>" method="post" id="formOs">
+
                                     <div class="span12" style="padding: 1%;">
                                         <div class="span12 alert alert-info">
-                                            <h5 class="text-center">Preencha os campos abaixo detalhando o que você
-                                                precisa. Campos com asterisco são obrigatórios.</h5>
+                                            <h5 class="text-center">Preencha os campos abaixo detalhando o que você precisa. Campos com asterisco são obrigatórios.</h5>
                                         </div>
 
                                     </div>
-                                    <!-- EXTRA -->
+
+
                                     <div class="span12" style="padding: 1%; margin-left: 0">
-                                        <div class="span3">
-                                            <label for="serial">Nº Série</label>
-                                            <input id="serial" type="text" class="span12" name="serial" maxlength="30"
-                                                value="<?php echo $result->serial ?>" />
+
+                                        <div class="span12">
+                                            <label for="descricaoProduto">Descrição Produto/Serviço*</label>
+                                            <textarea class="span12 editor" name="descricaoProduto" id="descricaoProduto" cols="30" rows="5"></textarea>
                                         </div>
-                                        <div class="span3">
-                                            <label for="marca">Marca</label>
-                                            <input id="marca" type="text" class="span12" name="marca" maxlength="30"
-                                                value="<?php echo $result->marca ?>" />
-                                        </div>
-                                        <div class="span3">
-                                            <label for="rastreio">Rastreio</label>
-                                            <input name="rastreio" type="text" class="span12" id="rastreio"
-                                                maxlength="13" value="<?php echo $result->rastreio ?>" />
-                                        </div>
-                                    </div>
-                                    <!-- FIM EXTRA -->
-                                    <div class="span6" style="padding: 1%; margin-left: 0">
-                                        <label for="descricaoProduto">
-                                            <h4>Descrição Produto/Serviço</h4>
-                                        </label>
-                                        <textarea class="span12 editor" name="descricaoProduto" id="descricaoProduto"
-                                            cols="30" rows="5"></textarea>
                                     </div>
 
-                                    <div class="span6" style="padding: 1%; margin-left: 0">
-                                        <label for="defeito">
-                                            <h4>Problema Informado</h4>
-                                        </label>
-                                        <textarea class="span12 editor" name="defeito" id="defeito" cols="30"
-                                            rows="5"></textarea>
-                                    </div>
-                                    <div class="span6" style="padding: 1%; margin-left: 0">
-                                        <label for="observacoes">
-                                            <h4>Observações</h4>
-                                        </label>
-                                        <textarea class="span12 editor" name="observacoes" id="observacoes" cols="30"
-                                            rows="5"></textarea>
+                                    <div class="span12" style="padding: 1%; margin-left: 0">
+
+                                        <div class="span12">
+                                            <label for="defeito">Defeito</label>
+                                            <textarea class="span12 editor" name="defeito" id="defeito" cols="30" rows="5"></textarea>
+                                        </div>
+
                                     </div>
                                     <div class="span12" style="padding: 1%; margin-left: 0">
-                                        <div class="span6 offset3" style="text-align: center">
-                                            <button class="btn btn-success" id="btnContinuar"><i
-                                                    class="fas fa-plus"></i> Cadastrar</button>
-                                            <a href="<?php echo base_url() ?>index.php/mine/os"
-                                                class="btn btn-warning"><i class="fas fa-backward"></i> Voltar</a>
+                                        <div class="span12">
+                                            <label for="observacoes">Observações</label>
+                                            <textarea class="span12 editor" name="observacoes" id="observacoes" cols="30" rows="5"></textarea>
+                                        </div>
+
+                                    </div>
+                                    <div class="span12" style="padding: 1%; margin-left: 0">
+                                        <div class="span6 offset3" style="display:flex;justify-content: center">
+                                            <a href="<?php echo base_url() ?>index.php/mine/os" class="button_mini btn btn-mini btn-warning">
+                                              <span class="button_icon"><i class="fas fa-undo-alt"></i></span> <span class="button_text">Voltar</span></a>
+                                            <button class="button_mini btn btn-success" id="btnContinuar">
+                                              <span class="button_icon"><i class='fas fa-plus-circle'></i></span><span class="button_text">Cadastrar</span></button>
                                         </div>
                                     </div>
                                 </form>
@@ -116,38 +100,38 @@
 
 
 <script type="text/javascript">
-$(document).ready(function() {
+    $(document).ready(function() {
 
 
-    $("#formOs").validate({
-        rules: {
-            descricaoProduto: {
-                required: true
+        $("#formOs").validate({
+            rules: {
+                descricaoProduto: {
+                    required: true
+                }
+            },
+            messages: {
+                descricaoProduto: {
+                    required: 'O campo descrição da OS é obrigatório.'
+                }
+            },
+
+            errorClass: "help-inline",
+            errorElement: "span",
+            highlight: function(element, errorClass, validClass) {
+                $(element).parents('.control-group').addClass('error');
+            },
+            unhighlight: function(element, errorClass, validClass) {
+                $(element).parents('.control-group').removeClass('error');
+                $(element).parents('.control-group').addClass('success');
             }
-        },
-        messages: {
-            descricaoProduto: {
-                required: 'O campo descrição da OS é obrigatório.'
-            }
-        },
+        });
 
-        errorClass: "help-inline",
-        errorElement: "span",
-        highlight: function(element, errorClass, validClass) {
-            $(element).parents('.control-group').addClass('error');
-        },
-        unhighlight: function(element, errorClass, validClass) {
-            $(element).parents('.control-group').removeClass('error');
-            $(element).parents('.control-group').addClass('success');
-        }
-    });
+        $(".datepicker").datepicker({
+            dateFormat: 'dd/mm/yy'
+        });
 
-    $(".datepicker").datepicker({
-        dateFormat: 'dd/mm/yy'
+        $('.editor').trumbowyg({
+            lang: 'pt_br'
+        });
     });
-
-    $('.editor').trumbowyg({
-        lang: 'pt_br'
-    });
-});
 </script>

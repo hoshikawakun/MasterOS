@@ -1,30 +1,30 @@
-<div class="widget_box_vizualizar">
-    <div class="widget_title_vizualizar">
+<div class="widget-box">
+    <div class="widget-title">
         <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#tab1">Meus Dados</a></li>
-            <div class="buttons">
-                <a title="Editar" class="btn btn-mini btn-info"
-                    href="<?php echo base_url() ?>index.php/mine/editarDados/<?php echo $result->idClientes ?>"><i
-                        class="fas fa-edit"></i> Editar</a>
+
+            <div>
+                <a title="Editar" class="button_mini btn btn-success" style="max-width: 140px;margin: 5px" href="<?php echo base_url() ?>index.php/mine/editarDados/<?php echo $result->idClientes ?>">
+                  <span class="button_icon"><i class="fas fa-edit"></i> </span> <span class="button_text">Editar</span></a>
             </div>
         </ul>
     </div>
-    <div class="widget_content_vusualizar tab-content">
+    <div class="widget_content tab-content">
         <div id="tab1" class="tab-pane active" style="min-height: 300px">
+
             <div class="accordion" id="collapse-group">
-                <div class="accordion-group widget_box_vizualizar3">
+                <div class="accordion-group widget-box">
                     <div class="accordion-heading">
                         <div class="widget-title">
                             <a data-parent="#collapse-group" href="#collapseGOne" data-toggle="collapse">
-                                <span class="icon"><i class="fas fa-user"></i></span>
-                                <h5>Dados Pessoais</h5>
+                              <span><i class='bx bx-user icon-cli' ></i></span>
+                              <h5 style="padding-left: 28px">Dados Pessoais</h5>
                             </a>
                         </div>
                     </div>
-
                     <div class="collapse in accordion-body" id="collapseGOne">
                         <div class="widget_content">
-                            <table class="table_p">
+                            <table class="table table-bordered">
                                 <tbody>
                                     <tr>
                                         <td style="text-align: right; width: 30%"><strong>Nome</strong></td>
@@ -49,18 +49,18 @@
                         </div>
                     </div>
                 </div>
-                <div class="accordion-group widget_box_vizualizar3">
+                <div class="accordion-group widget-box">
                     <div class="accordion-heading">
                         <div class="widget-title">
                             <a data-parent="#collapse-group" href="#collapseGTwo" data-toggle="collapse">
-                                <span class="icon"><i class="fas fa-phone-alt"></i></span>
-                                <h5>Contatos</h5>
+                              <span><i class='bx bx-phone icon-cli'></i></span>
+                              <h5 style="padding-left: 28px">Contatos</h5>
                             </a>
                         </div>
                     </div>
                     <div class="collapse accordion-body" id="collapseGTwo">
                         <div class="widget_content">
-                            <table class="table_p">
+                            <table class="table table-bordered">
                                 <tbody>
                                     <tr>
                                         <td style="text-align: right; width: 30%"><strong>Telefone</strong></td>
@@ -69,7 +69,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style="text-align: right"><strong>Telefone 2</strong></td>
+                                        <td style="text-align: right"><strong>Celular</strong></td>
                                         <td>
                                             <?php echo $result->celular ?>
                                         </td>
@@ -80,29 +80,23 @@
                                             <?php echo $result->email ?>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td style="text-align: right"><strong>Senha</strong></td>
-                                        <td>
-                                            <?php echo $result->senha ?>
-                                        </td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
-                <div class="accordion-group widget_box_vizualizar3">
+                <div class="accordion-group widget-box">
                     <div class="accordion-heading">
                         <div class="widget-title">
                             <a data-parent="#collapse-group" href="#collapseGThree" data-toggle="collapse">
-                                <span class="icon"><i class="fas fa-map-marked-alt"></i></span>
-                                <h5>Endereço</h5>
+                              <span><i class='bx bx-map-alt icon-cli' ></i></span>
+                              <h5 style="padding-left: 28px">Endereço</h5>
                             </a>
                         </div>
                     </div>
                     <div class="collapse accordion-body" id="collapseGThree">
                         <div class="widget_content">
-                            <table class="table_p">
+                            <table class="table table-bordered">
                                 <tbody>
                                     <tr>
                                         <td style="text-align: right; width: 30%"><strong>Rua</strong></td>
@@ -148,3 +142,5 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
