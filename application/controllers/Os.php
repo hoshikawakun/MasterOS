@@ -92,27 +92,10 @@ class Os extends MY_Controller
             $dataFinal = $this->input->post('dataFinal');
             $termoGarantiaId = $this->input->post('termoGarantia');
 
-            try {
-                $dataInicial = explode('/', $dataInicial);
-                $dataInicial = $dataInicial[2] . '-' . $dataInicial[1] . '-' . $dataInicial[0];
-
-                if ($dataFinal) {
-                    $dataFinal = explode('/', $dataFinal);
-                    $dataFinal = $dataFinal[2] . '-' . $dataFinal[1] . '-' . $dataFinal[0];
-                } else {
-                    $dataFinal = date('Y/m/d');
-                }
-
-                $termoGarantiaId = (!$termoGarantiaId == null || !$termoGarantiaId == '')
-                    ? $this->input->post('garantias_id')
-                    : null;
-            } catch (Exception $e) {
-                $dataInicial = date('Y/m/d');
-                $dataFinal = date('Y/m/d');
-            }
-
             $data = [
                 'dataInicial' => $dataInicial,
+                //'dataInicial' => set_value('dataInicial'),
+                //'dataFinal' => set_value('dataFinal'),
                 'clientes_id' => $this->input->post('clientes_id'), //set_value('idCliente'),
                 'usuarios_id' => $this->input->post('usuarios_id'), //set_value('idUsuario'),
                 'dataFinal' => $dataFinal,
@@ -140,7 +123,7 @@ class Os extends MY_Controller
                 $tecnico = $this->usuarios_model->getById($os->usuarios_id);
 
                 // Verificar configuração de notificação
-                if ($this->data['configuration']['os_notification'] != 'nenhum') {
+                if ($this->data['configuration']['os_notification'] != 'nenhum' && $this->data['configuration']['email_automatico'] == 1) {
                     $remetentes = [];
                     switch ($this->data['configuration']['os_notification']) {
                         case 'todos':
@@ -191,6 +174,12 @@ class Os extends MY_Controller
         $this->load->library('form_validation');
         $this->data['custom_error'] = '';
         $this->data['texto_de_notificacao'] = $this->data['configuration']['notifica_whats'];
+        $this->data['editavel'] = $this->os_model->isEditable($this->input->post('idOs'));
+        if (!$this->data['editavel']) {
+            $this->session->set_flashdata('error', 'Esta OS já e seu status não pode ser alterado e nem suas informações atualizadas. Por favor abrir uma nova OS.');
+
+            redirect(site_url('os'));
+        }
 
         if ($this->form_validation->run('os') == false) {
             $this->data['custom_error'] = (validation_errors() ? '<div class="form_error">' . validation_errors() . '</div>' : false);
@@ -199,19 +188,11 @@ class Os extends MY_Controller
             $dataFinal = $this->input->post('dataFinal');
             $termoGarantiaId = $this->input->post('garantias_id') ?: null;
 
-            try {
-                $dataInicial = explode('/', $dataInicial);
-                $dataInicial = $dataInicial[2] . '-' . $dataInicial[1] . '-' . $dataInicial[0];
-
-                $dataFinal = explode('/', $dataFinal);
-                $dataFinal = $dataFinal[2] . '-' . $dataFinal[1] . '-' . $dataFinal[0];
-            } catch (Exception $e) {
-                $dataInicial = date('Y/m/d');
-            }
-
             $data = [
                 'dataInicial' => $dataInicial,
                 'dataFinal' => $dataFinal,
+                //'dataInicial' => set_value('dataInicial'),
+                //'dataFinal' => set_value('dataFinal'),
                 'garantia' => $this->input->post('garantia'),
                 'garantias_id' => $termoGarantiaId,
                 'descricaoProduto' => $this->input->post('descricaoProduto'),
@@ -227,11 +208,15 @@ class Os extends MY_Controller
                 'clientes_id' => $this->input->post('clientes_id'),
             ];
             $os = $this->os_model->getById($this->input->post('idOs'));
-            $this->data['editavel'] = $this->os_model->isEditable($this->input->post('idOs'));
-            if (!$this->data['editavel']) {
-                $this->session->set_flashdata('error', 'Esta OS já foi '.$os->status.' e seu status não pode ser alterado e nem suas informações atualizadas. Por favor abrir uma nova OS.');
 
-                redirect(site_url('os'));
+            //Verifica para poder fazer a devolução do produto para o estoque caso OS seja cancelada.
+
+            if (strtolower($this->input->post('status')) == "cancelado" && strtolower($os->status) != "cancelado") {
+                $this->devolucaoEstoque($this->input->post('idOs'));
+            }
+
+            if (strtolower($os->status) == "cancelado" && strtolower($this->input->post('status')) != "cancelado") {
+                $this->debitarEstoque($this->input->post('idOs'));
             }
 
             if ($this->os_model->edit('os', $data, 'idOs', $this->input->post('idOs')) == true) {
@@ -245,7 +230,7 @@ class Os extends MY_Controller
                 $tecnico = $this->usuarios_model->getById($os->usuarios_id);
 
                 // Verificar configuração de notificação
-                if ($this->data['configuration']['os_notification'] != 'nenhum') {
+                if ($this->data['configuration']['os_notification'] != 'nenhum' && $this->data['configuration']['email_automatico'] == 1) {
                     $remetentes = [];
                     switch ($this->data['configuration']['os_notification']) {
                         case 'todos':
@@ -270,7 +255,7 @@ class Os extends MY_Controller
                 }
 
                 $this->session->set_flashdata('success', 'Os editada com sucesso!');
-                log_info('Alterou uma OS. ID: ' . $this->input->post('idOs'));
+                log_info('Alterou a OS: ' . $this->input->post('idOs'));
                 redirect(site_url('os/editar/') . $this->input->post('idOs'));
             } else {
                 $this->data['custom_error'] = '<div class="form_error"><p>Ocorreu um erro</p></div>';
@@ -388,9 +373,9 @@ class Os extends MY_Controller
         $this->data['emitente'] = $this->mapos_model->getEmitente();
         $this->data['configuracoes'] = $this->mapos_model->getTermo();
         $this->data['qrCode'] = $this->os_model->getQrCode(
-            $this->uri->segment(3),
-            $this->data['configuration']['pix_key'],
-            $this->data['emitente'][0]
+        $this->uri->segment(3),
+        $this->data['configuration']['pix_key'],
+        $this->data['emitente'][0]
         );
         $this->load->view('os/imprimirOsTermica', $this->data);
     }
@@ -490,7 +475,7 @@ class Os extends MY_Controller
             if ($ValidarEmail) {
                 if (empty($this->data['result']->email) || !filter_var($this->data['result']->email, FILTER_VALIDATE_EMAIL)) {
                     $this->session->set_flashdata('error', 'Por favor preencha o email do cliente');
-                    redirect(site_url('os/visualizar/').$this->uri->segment(3));
+                    redirect(site_url('os/visualizar/') . $this->uri->segment(3));
                 }
             }
            
@@ -508,6 +493,32 @@ class Os extends MY_Controller
 
         $this->session->set_flashdata('success', 'O sistema está com uma configuração ativada para não notificar. Entre em contato com o administrador.');
         redirect(site_url('os'));
+    }
+
+    private function devolucaoEstoque($id)
+    {
+        if ($produtos = $this->os_model->getProdutos($id)) {
+            $this->load->model('produtos_model');
+            if ($this->data['configuration']['control_estoque']) {
+                foreach ($produtos as $p) {
+                    $this->produtos_model->updateEstoque($p->produtos_id, $p->quantidade, '+');
+                    log_info('ESTOQUE: Produto id ' . $p->produtos_id . ' voltou ao estoque. Quantidade: ' . $p->quantidade . '. Motivo: Cancelamento/Exclusão');
+                }
+            }
+        }
+    }
+
+    private function debitarEstoque($id)
+    {
+        if ($produtos = $this->os_model->getProdutos($id)) {
+            $this->load->model('produtos_model');
+            if ($this->data['configuration']['control_estoque']) {
+                foreach ($produtos as $p) {
+                    $this->produtos_model->updateEstoque($p->produtos_id, $p->quantidade, '-');
+                    log_info('ESTOQUE: Produto id ' . $p->produtos_id . ' baixa do estoque. Quantidade: ' . $p->quantidade . '. Motivo: Mudou status que já estava Cancelado para outro');
+                }
+            }
+        }
     }
 
     public function excluir()
@@ -536,14 +547,10 @@ class Os extends MY_Controller
             }
         }
 
-        if ($produtos = $this->os_model->getProdutos($id)) {
-            $this->load->model('produtos_model');
-            if ($this->data['configuration']['control_estoque']) {
-                foreach ($produtos as $p) {
-                    $this->produtos_model->updateEstoque($p->produtos_id, $p->quantidade, '+');
-                    log_info('ESTOQUE: produto id ' . $p->produtos_id . ' teve baixa de estoque quantidade: ' . $p->quantidade);
-                }
-            }
+        $osStockRefund = $this->os_model->getById($id);
+        //Verifica para poder fazer a devolução do produto para o estoque caso OS seja excluida.
+        if (strtolower($osStockRefund->status) != "cancelado") {
+            $this->devolucaoEstoque($id);
         }
 
         $this->os_model->delete('servicos_os', 'os_id', $id);
@@ -555,7 +562,7 @@ class Os extends MY_Controller
             $this->os_model->delete('lancamentos', 'descricao', "Fatura de OS - #${id}");
         }
 
-        log_info('Removeu uma OS. ID: ' . $id);
+        log_info('Removeu a OS: ' . $id);
         $this->session->set_flashdata('success', 'OS excluída com sucesso!');
         redirect(site_url('os/gerenciar/'));
     }
@@ -654,7 +661,13 @@ class Os extends MY_Controller
             if ($this->data['configuration']['control_estoque']) {
                 $this->produtos_model->updateEstoque($produto, $quantidade, '-');
             }
-            log_info('Adicionou produto a uma OS. ID (OS): ' . $this->input->post('idOsProduto'));
+
+            $this->db->set('desconto', 0.00);
+            $this->db->set('valor_desconto', 0.00);
+            $this->db->where('idOs', $id);
+            $this->db->update('os');
+
+            log_info('Adicionou um produto a OS: ' . $this->input->post('idOsProduto'));
 
             return $this->output
                 ->set_content_type('application/json')
@@ -688,7 +701,13 @@ class Os extends MY_Controller
             if ($this->data['configuration']['control_estoque']) {
                 $this->produtos_model->updateEstoque($produto, $quantidade, '+');
             }
-            log_info('Removeu produto de uma OS. ID (OS): ' . $idOs);
+
+            $this->db->set('desconto', 0.00);
+            $this->db->set('valor_desconto', 0.00);
+            $this->db->where('idOs', $idOs);
+            $this->db->update('os');
+
+            log_info('Removeu um produto da OS: ' . $idOs);
 
             echo json_encode(['result' => true]);
         } else {
@@ -718,7 +737,12 @@ class Os extends MY_Controller
         ];
 
         if ($this->os_model->add('servicos_os', $data) == true) {
-            log_info('Adicionou serviço a uma OS. ID (OS): ' . $this->input->post('idOsServico'));
+            log_info('Adicionou um serviço a OS: ' . $this->input->post('idOsServico'));
+
+            $this->db->set('desconto', 0.00);
+            $this->db->set('valor_desconto', 0.00);
+            $this->db->where('idOs', $this->input->post('idOsServico'));
+            $this->db->update('os');
 
             return $this->output
                 ->set_content_type('application/json')
@@ -738,7 +762,11 @@ class Os extends MY_Controller
         $idOs = $this->input->post('idOs');
 
         if ($this->os_model->delete('servicos_os', 'idServicos_os', $ID) == true) {
-            log_info('Removeu serviço de uma OS. ID (OS): ' . $idOs);
+            log_info('Removeu um serviço da OS: ' . $idOs);
+            $this->db->set('desconto', 0.00);
+            $this->db->set('valor_desconto', 0.00);
+            $this->db->where('idOs', $idOs);
+            $this->db->update('os');
             echo json_encode(['result' => true]);
         } else {
             echo json_encode(['result' => false]);
@@ -797,8 +825,8 @@ class Os extends MY_Controller
 
                         'source_image' => $upload_data['full_path'],
                         'new_image' => $upload_data['file_path'] . 'thumbs' . DIRECTORY_SEPARATOR . 'thumb_' . $upload_data['file_name'],
-                        'width' => 250,
-                        'height' => 175,
+                        'width' => 200,
+                        'height' => 200,
                     ];
 
                     $this->image_lib->initialize($resize_conf);
@@ -823,7 +851,7 @@ class Os extends MY_Controller
         if (count($error) > 0) {
             echo json_encode(['result' => false, 'mensagem' => 'Nenhum arquivo foi anexado.']);
         } else {
-            log_info('Adicionou anexo(s) a uma OS. ID (OS): ' . $this->input->post('idOsServico'));
+            log_info('Adicionou anexo(s) a OS: ' . $this->input->post('idOsServico'));
             echo json_encode(['result' => true, 'mensagem' => 'Arquivo(s) anexado(s) com sucesso .']);
         }
     }
@@ -844,7 +872,7 @@ class Os extends MY_Controller
             }
 
             if ($this->os_model->delete('anexos', 'idAnexos', $id) == true) {
-                log_info('Removeu anexo de uma OS. ID (OS): ' . $idOs);
+                log_info('Removeu um anexo da OS: ' . $idOs);
                 echo json_encode(['result' => true, 'mensagem' => 'Anexo excluído com sucesso.']);
             } else {
                 echo json_encode(['result' => false, 'mensagem' => 'Erro ao tentar excluir anexo.']);
@@ -865,6 +893,46 @@ class Os extends MY_Controller
         }
     }
 
+    public function adicionarDesconto()
+    {
+        if ($this->input->post('desconto') == "") {
+            return $this->output
+                ->set_content_type('application/json')
+                ->set_status_header(400)
+                ->set_output(json_encode(['messages' => 'Campo desconto vazio']));
+        } else {
+            $idOs = $this->input->post('idOs');
+            $data = [
+                'desconto' => $this->input->post('desconto'),
+                'valor_desconto' => $this->input->post('resultado')
+            ];
+            $editavel = $this->os_model->isEditable($idOs);
+            if (!$editavel) {
+                return $this->output
+                    ->set_content_type('application/json')
+                    ->set_status_header(400)
+                    ->set_output(json_encode(['result' => false, 'messages', 'Desconto não pode ser adiciona. Os não ja Faturada/Cancelada']));
+            }
+            if ($this->os_model->edit('os', $data, 'idOs', $idOs) == true) {
+                log_info('Adicionou um desconto na OS: ' . $idOs);
+                return $this->output
+                    ->set_content_type('application/json')
+                    ->set_status_header(201)
+                    ->set_output(json_encode(['result' => true, 'messages' => 'Desconto adicionado com sucesso!']));
+            } else {
+                log_info('Ocorreu um erro ao tentar adiciona desconto a OS: ' . $idOs);
+                return $this->output
+                    ->set_content_type('application/json')
+                    ->set_status_header(400)
+                    ->set_output(json_encode(['result' => false, 'messages', 'Ocorreu um erro ao tentar adiciona desconto a OS.']));
+            }
+        }
+        return $this->output
+            ->set_content_type('application/json')
+            ->set_status_header(400)
+            ->set_output(json_encode(['result' => false, 'messages', 'Ocorreu um erro ao tentar adiciona desconto a OS.']));
+    }
+
     public function faturar()
     {
         $this->load->library('form_validation');
@@ -876,7 +944,7 @@ class Os extends MY_Controller
             $vencimento = $this->input->post('vencimento');
             $recebimento = $this->input->post('recebimento');
 
-            try {
+            /*try {
                 $vencimento = explode('/', $vencimento);
                 $vencimento = $vencimento[2] . '-' . $vencimento[1] . '-' . $vencimento[0];
 
@@ -886,11 +954,13 @@ class Os extends MY_Controller
                 }
             } catch (Exception $e) {
                 $vencimento = date('Y/m/d');
-            }
-
+            }*/
+            $os = $this->os_model->getById($this->input->post('os_id'));
             $data = [
                 'descricao' => set_value('descricao'),
-                'valor' => $this->input->post('valor'),
+                'valor' => getAmount($this->input->post('valor')),
+                'desconto' => $os->desconto,
+                'valor_desconto' => $os->valor_desconto,
                 'clientes_id' => $this->input->post('clientes_id'),
                 'data_vencimento' => $vencimento,
                 'data_pagamento' => $recebimento,
@@ -906,7 +976,7 @@ class Os extends MY_Controller
             if (!$editavel) {
                 return $this->output
                     ->set_content_type('application/json')
-                    ->set_status_header(200)
+                    ->set_status_header(400)
                     ->set_output(json_encode(['result' => false]));
             }
 
@@ -919,7 +989,7 @@ class Os extends MY_Controller
                 $this->db->where('idOs', $os);
                 $this->db->update('os');
 
-                log_info('Faturou uma OS. ID: ' . $os);
+                log_info('Faturou a OS: ' . $os);
 
                 $this->session->set_flashdata('success', 'OS faturada com sucesso!');
                 $json = ['result' => true];
@@ -948,18 +1018,6 @@ class Os extends MY_Controller
         } else {
             $vencimento = $this->input->post('vencimento');
             $recebimento = $this->input->post('recebimento');
-
-            try {
-                $vencimento = explode('/', $vencimento);
-                $vencimento = $vencimento[2] . '-' . $vencimento[1] . '-' . $vencimento[0];
-
-                if ($recebimento != null) {
-                    $recebimento = explode('/', $recebimento);
-                    $recebimento = $recebimento[2] . '-' . $recebimento[1] . '-' . $recebimento[0];
-                }
-            } catch (Exception $e) {
-                $vencimento = date('Y/m/d');
-            }
 
             $data = [
                 'descricao' => set_value('descricao'),
@@ -992,7 +1050,7 @@ class Os extends MY_Controller
                 $this->db->where('idOs', $os);
                 $this->db->update('os');
 
-                log_info('Faturou uma OS. ID: ' . $os);
+                log_info('Finalizou a OS: ' . $os . 'Como Entregue - Sem Reparo');
 
                 $this->session->set_flashdata('success', 'OS faturada com sucesso!');
                 $json = ['result' => true];
@@ -1011,7 +1069,7 @@ class Os extends MY_Controller
         echo json_encode($json);
     }
 	
-	private function enviarOsPorEmail($idOs, $remetentes, $assunto)
+    private function enviarOsPorEmail($idOs, $remetentes, $assunto)
     {
         $dados = [];
 
@@ -1071,7 +1129,7 @@ class Os extends MY_Controller
             );
 
             if ($this->os_model->add('equipamento_os', $data) == true) {
-                log_info('Adicionou um equipamento a OS. ID (OS): ' . $this->input->post('os_id'));
+                log_info('Adicionou um equipamento a OS: ' . $this->input->post('os_id'));
                 echo json_encode(array('result' => true));
             } else {
                 echo json_encode(array('result' => false));
@@ -1084,7 +1142,7 @@ class Os extends MY_Controller
         $id = $this->input->post('idEquipamento');
         $idOs = $this->input->post('idOs');
         if ($this->os_model->delete('equipamento_os', 'idEquipamento', $id) == true) {
-            log_info('Removeu um Equipamento da OS. ID (OS): ' . $idOs);
+            log_info('Removeu um Equipamento da OS: ' . $idOs);
             echo json_encode(array('result' => true));
         } else {
             echo json_encode(array('result' => false));
@@ -1104,7 +1162,7 @@ class Os extends MY_Controller
             ];
 
             if ($this->os_model->add('anotacoes_os', $data) == true) {
-                log_info('Adicionou anotação a uma OS. ID (OS): ' . $this->input->post('os_id'));
+                log_info('Adicionou uma anotação a OS: ' . $this->input->post('os_id'));
                 echo json_encode(['result' => true]);
             } else {
                 echo json_encode(['result' => false]);
@@ -1118,7 +1176,7 @@ class Os extends MY_Controller
         $idOs = $this->input->post('idOs');
 
         if ($this->os_model->delete('anotacoes_os', 'idAnotacoes', $id) == true) {
-            log_info('Removeu anotação de uma OS. ID (OS): ' . $idOs);
+            log_info('Removeu uma anotação da OS: ' . $idOs);
             echo json_encode(['result' => true]);
         } else {
             echo json_encode(['result' => false]);

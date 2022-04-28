@@ -60,15 +60,10 @@ class Vendas extends MY_Controller
         } else {
             $dataVenda = $this->input->post('dataVenda');
 
-            try {
-                $dataVenda = explode('/', $dataVenda);
-                $dataVenda = $dataVenda[2] . '-' . $dataVenda[1] . '-' . $dataVenda[0];
-            } catch (Exception $e) {
-                $dataVenda = date('Y/m/d');
-            }
-
             $data = [
                 'dataVenda' => $dataVenda,
+                'observacoes' => $this->input->post('observacoes'),
+                'observacoes_cliente' => $this->input->post('observacoes_cliente'),
                 'clientes_id' => $this->input->post('clientes_id'),
                 'usuarios_id' => $this->input->post('usuarios_id'),
                 'faturado' => 0,
@@ -107,16 +102,10 @@ class Vendas extends MY_Controller
         } else {
             $dataVenda = $this->input->post('dataVenda');
 
-            try {
-                $dataVenda = explode('/', $dataVenda);
-                $dataVenda = $dataVenda[2] . '-' . $dataVenda[1] . '-' . $dataVenda[0];
-            } catch (Exception $e) {
-                $dataVenda = date('Y/m/d');
-            }
-
             $data = [
                 'dataVenda' => $dataVenda,
                 'observacoes' => $this->input->post('observacoes'),
+                'observacoes_cliente' => $this->input->post('observacoes_cliente'),
                 'usuarios_id' => $this->input->post('usuarios_id'),
                 'clientes_id' => $this->input->post('clientes_id'),
             ];
@@ -211,11 +200,7 @@ class Vendas extends MY_Controller
         $this->data['result'] = $this->vendas_model->getById($this->uri->segment(3));
         $this->data['produtos'] = $this->vendas_model->getProdutos($this->uri->segment(3));
         $this->data['emitente'] = $this->mapos_model->getEmitente();
-        $this->data['qrCode'] = $this->vendas_model->getQrCode(
-            $this->uri->segment(3),
-            $this->data['configuration']['pix_key'],
-            $this->data['emitente'][0]
-        );
+
         $this->load->view('vendas/imprimirVendaTermica', $this->data);
     }
 
@@ -229,6 +214,13 @@ class Vendas extends MY_Controller
         $this->load->model('vendas_model');
 
         $id = $this->input->post('id');
+
+        $editavel = $this->vendas_model->isEditable($id);
+        if (!$editavel) {
+            $this->session->set_flashdata('error', 'Erro ao tentar excluir. Venda já faturada');
+            redirect(site_url('vendas/gerenciar/'));
+        }
+
         $venda = $this->vendas_model->getByIdCobrancas($id);
         if ($venda == null) {
             $venda = $this->vendas_model->getById($id);
@@ -237,7 +229,6 @@ class Vendas extends MY_Controller
                 redirect(site_url('vendas/gerenciar/'));
             }
         }
-
 
         if ($venda->idCobranca != null) {
             if ($venda->status == "canceled") {
@@ -296,6 +287,14 @@ class Vendas extends MY_Controller
         $this->form_validation->set_rules('idProduto', 'Produto', 'trim|required');
         $this->form_validation->set_rules('idVendasProduto', 'Vendas', 'trim|required');
 
+        $editavel = $this->vendas_model->isEditable($this->input->post('idVendasProduto'));
+        if (!$editavel) {
+            return $this->output
+                ->set_content_type('application/json')
+                ->set_status_header(422)
+                ->set_output(json_encode(['result' => false, 'messages' => '<br /><br /> <strong>Motivo:</strong> Venda já faturada']));
+        }
+
         if ($this->form_validation->run() == false) {
             echo json_encode(['result' => false]);
         } else {
@@ -318,6 +317,11 @@ class Vendas extends MY_Controller
                     $this->produtos_model->updateEstoque($produto, $quantidade, '-');
                 }
 
+                $this->db->set('desconto', 0.00);
+                $this->db->set('valor_desconto', 0.00);
+                $this->db->where('idVendas', $this->input->post('idVendasProduto'));
+                $this->db->update('vendas');
+
                 log_info('Adicionou produto a uma venda.');
 
                 echo json_encode(['result' => true]);
@@ -334,6 +338,14 @@ class Vendas extends MY_Controller
             redirect(base_url());
         }
 
+        $editavel = $this->vendas_model->isEditable($this->input->post('idVendas'));
+        if (!$editavel) {
+            return $this->output
+                ->set_content_type('application/json')
+                ->set_status_header(422)
+                ->set_output(json_encode(['result' => false, 'messages' => '<br /><br /> <strong>Motivo:</strong> Venda já faturada']));
+        }
+
         $ID = $this->input->post('idProduto');
         if ($this->vendas_model->delete('itens_de_vendas', 'idItens', $ID) == true) {
             $quantidade = $this->input->post('quantidade');
@@ -345,11 +357,56 @@ class Vendas extends MY_Controller
                 $this->produtos_model->updateEstoque($produto, $quantidade, '+');
             }
 
+            $this->db->set('desconto', 0.00);
+            $this->db->set('valor_desconto', 0.00);
+            $this->db->where('idVendas', $this->input->post('idVendas'));
+            $this->db->update('vendas');
+
             log_info('Removeu produto de uma venda.');
             echo json_encode(['result' => true]);
         } else {
             echo json_encode(['result' => false]);
         }
+    }
+
+    public function adicionarDesconto()
+    {
+        if ($this->input->post('desconto') == "") {
+            return $this->output
+                ->set_content_type('application/json')
+                ->set_status_header(400)
+                ->set_output(json_encode(['messages' => 'Campo desconto vazio']));
+        } else {
+            $idVendas = $this->input->post('idVendas');
+            $data = [
+                'desconto' => $this->input->post('desconto'),
+                'valor_desconto' => $this->input->post('resultado')
+            ];
+            $editavel = $this->vendas_model->isEditable($idVendas);
+            if (!$editavel) {
+                return $this->output
+                    ->set_content_type('application/json')
+                    ->set_status_header(400)
+                    ->set_output(json_encode(['result' => false, 'messages', 'Desconto não pode ser adiciona. Venda não ja Faturada/Cancelada']));
+            }
+            if ($this->vendas_model->edit('vendas', $data, 'idVendas', $idVendas) == true) {
+                log_info('Adicionou um desconto na Venda. ID: ' . $idVendas);
+                return $this->output
+                    ->set_content_type('application/json')
+                    ->set_status_header(201)
+                    ->set_output(json_encode(['result' => true, 'messages' => 'Desconto adicionado com sucesso!']));
+            } else {
+                log_info('Ocorreu um erro ao tentar adiciona desconto a Venda: ' . $idVendas);
+                return $this->output
+                    ->set_content_type('application/json')
+                    ->set_status_header(400)
+                    ->set_output(json_encode(['result' => false, 'messages', 'Ocorreu um erro ao tentar adiciona desconto a Venda.']));
+            }
+        }
+        return $this->output
+            ->set_content_type('application/json')
+            ->set_status_header(400)
+            ->set_output(json_encode(['result' => false, 'messages', 'Ocorreu um erro ao tentar adiciona desconto a OS.']));
     }
 
     public function faturar()
@@ -369,22 +426,13 @@ class Vendas extends MY_Controller
             $vencimento = $this->input->post('vencimento');
             $recebimento = $this->input->post('recebimento');
 
-            try {
-                $vencimento = explode('/', $vencimento);
-                $vencimento = $vencimento[2] . '-' . $vencimento[1] . '-' . $vencimento[0];
-
-                if ($recebimento != null) {
-                    $recebimento = explode('/', $recebimento);
-                    $recebimento = $recebimento[2] . '-' . $recebimento[1] . '-' . $recebimento[0];
-                }
-            } catch (Exception $e) {
-                $vencimento = date('Y/m/d');
-            }
-
+            $vendas = $this->vendas_model->getById($venda_id);
             $data = [
                 'vendas_id' => $venda_id,
                 'descricao' => set_value('descricao'),
                 'valor' => $this->input->post('valor'),
+                'desconto' => $vendas->desconto,
+                'valor_desconto' => $vendas->valor_desconto,
                 'clientes_id' => $this->input->post('clientes_id'),
                 'data_vencimento' => $vencimento,
                 'data_pagamento' => $recebimento,

@@ -1,6 +1,6 @@
 <?php
 
-use Piggly\Pix\Payload;
+use Piggly\Pix\StaticPayload;
 
 if (! defined('BASEPATH')) {
     exit('No direct script access allowed');
@@ -48,6 +48,16 @@ class Vendas_model extends CI_Model
         $this->db->where('vendas.idVendas', $id);
         $this->db->limit(1);
         return $this->db->get()->row();
+    }
+
+    public function isEditable($id = null)
+    {
+        if ($vendas = $this->getById($id)) {
+            if ($vendas->faturado) {
+                return $this->data['configuration']['control_edit_vendas'] == '1';
+            }
+        }
+        return true;
     }
 
     public function getByIdCobrancas($id)
@@ -174,6 +184,7 @@ class Vendas_model extends CI_Model
         }
 
         $produtos = $this->getProdutos($id);
+        $valorDesconto = $this->getById($id);
         $totalProdutos = array_reduce(
             $produtos,
             function ($carry, $produto) {
@@ -181,23 +192,21 @@ class Vendas_model extends CI_Model
             },
             0
         );
-        $amount = round(floatval($totalProdutos), 2);
+        $amount = $valorDesconto->valor_desconto != 0 ? round(floatval($valorDesconto->valor_desconto), 2) : round(floatval($totalProdutos), 2);
 
         if ($amount <= 0) {
             return;
         }
 
-        $pix = (new Payload())
+        $pix = (new StaticPayload())
             ->applyValidCharacters()
             ->applyUppercase()
-            ->applyEmailWhitespace()
             ->setPixKey(getPixKeyType($pixKey), $pixKey)
-            ->setMerchantName($emitente->nome)
-            ->setMerchantCity($emitente->cidade)
+            ->setMerchantName($emitente->nome, true)
+            ->setMerchantCity($emitente->cidade, true)
             ->setAmount($amount)
             ->setTid($id)
-            ->setDescription(sprintf("%s - Pagamento - Venda %s", $emitente->nome, $id))
-            ->setAsReusable(false);
+            ->setDescription(sprintf("%s Venda %s", $emitente->nome, $id), true);
 
         return $pix->getQRCode();
     }
