@@ -16,7 +16,7 @@
     echo '<div class="alert alert-danger">' . $custom_error . '</div>';
 } ?>
                 <form action="<?php echo current_url(); ?>" id="formUsuario" method="post" class="form-horizontal">
-                    <div class="control-group">
+                    <div class="control_group_up">
                         <?php echo form_hidden('idUsuarios', $result->idUsuarios) ?>
                         <label for="nome" class="control-label">Nome<span class="required">*</span></label>
                         <div class="controls">
@@ -24,42 +24,42 @@
                         </div>
                     </div>
 
-                    <div class="control-group">
+                    <div class="control_group_up">
                         <label for="rg" class="control-label">RG<span class="required">*</span></label>
                         <div class="controls">
                             <input id="rg" type="text" name="rg" value="<?php echo $result->rg; ?>" />
                         </div>
                     </div>
                     
-                  <div class="control-group">
+                  <div class="control_group_up">
                         <label for="cpf" class="control-label">CPF<span class="required">*</span></label>
                         <div class="controls">
                             <input name="cpf" type="text" class="cpfcnpj" value="<?php echo $result->cpf; ?>" />
                       </div>
                     </div>
                     
-                    <div class="control-group">
+                    <div class="control_group_up">
                         <label for="telefone" class="control-label">Telefone<span class="required">*</span></label>
                         <div class="controls">
                             <input id="telefone" class="telefone1" type="text" name="telefone" value="<?php echo $result->telefone; ?>" />
                         </div>
                     </div>
 
-                    <div class="control-group">
+                    <div class="control_group_up">
                         <label for="celular" class="control-label">Telefone 2</label>
                         <div class="controls">
                             <input id="celular" class="telefone1" type="text" name="celular" value="<?php echo $result->celular; ?>" />
                         </div>
                     </div>
 
-                    <div class="control-group">
+                    <div class="control_group_up">
                         <label for="email" class="control-label">Email<span class="required">*</span></label>
                         <div class="controls">
                             <input id="email" type="text" name="email" value="<?php echo $result->email; ?>" />
                         </div>
                     </div>
 
-                    <div class="control-group">
+                    <div class="control_group_up">
                         <label for="senha" class="control-label">Senha</label>
                         <div class="controls">
                             <input id="senha" type="password" name="senha" value="" placeholder="Não preencha se não quiser alterar." />
@@ -67,42 +67,42 @@
                         </div>
                     </div>
 
-                    <div class="control-group" class="control-label">
+                    <div class="control_group_up" class="control-label">
                         <label for="cep" class="control-label">CEP<span class="required">*</span></label>
                         <div class="controls">
                             <input id="cep" type="text" name="cep" value="<?php echo $result->cep; ?>" />
                         </div>
                     </div>
 
-                    <div class="control-group">
+                    <div class="control_group_up">
                         <label for="rua" class="control-label">Rua<span class="required">*</span></label>
                         <div class="controls">
                             <input id="rua" type="text" name="rua" value="<?php echo $result->rua; ?>" />
                         </div>
                     </div>
 
-                    <div class="control-group">
+                    <div class="control_group_up">
                         <label for="numero" class="control-label">Numero<span class="required">*</span></label>
                         <div class="controls">
                             <input id="numero" type="text" name="numero" value="<?php echo $result->numero; ?>" />
                         </div>
                     </div>
 
-                    <div class="control-group">
+                    <div class="control_group_up">
                         <label for="bairro" class="control-label">Bairro<span class="required">*</span></label>
                         <div class="controls">
                             <input id="bairro" type="text" name="bairro" value="<?php echo $result->bairro; ?>" />
                         </div>
                     </div>
 
-                    <div class="control-group">
+                    <div class="control_group_up">
                         <label for="cidade" class="control-label">Cidade<span class="required">*</span></label>
                         <div class="controls">
                             <input id="cidade" type="text" name="cidade" value="<?php echo $result->cidade; ?>" />
                         </div>
                     </div>
 
-                    <div class="control-group">
+                    <div class="control_group_up">
                         <label for="estado" class="control-label">Estado<span class="required">*</span></label>
                         <div class="controls">
                             <input id="estado" type="text" name="estado" value="<?php echo $result->estado; ?>" />
@@ -110,7 +110,7 @@
                     </div>
 
                     <!--DATA-->
-                    <div class="control-group">
+                    <div class="control_group_up">
                         <label for="dataExpiracao" class="control-label">Expira em<span class="required">*</span></label>
                         <div class="controls">
                             <input id="dataExpiracao" type="date" readonly="readonly" name="dataExpiracao" value="<?php echo $result->dataExpiracao; ?>" />
@@ -118,7 +118,7 @@
                     </div>
 
 
-                    <div class="control-group">
+                    <div class="control_group_up">
                         <label class="control-label">Situação*</label>
                         <div class="controls">
                             <select name="situacao" id="situacao">
@@ -136,7 +136,7 @@
                     </div>
 
 
-                    <div class="control-group">
+                    <div class="control_group_up">
                         <label class="control-label">Permissões<span class="required">*</span></label>
                         <div class="controls">
                             <select name="permissoes_id" id="permissoes_id">
@@ -153,8 +153,8 @@
                     </div>
 
                     <div class="form_actions" align="center">
+                    <a href="<?php echo base_url() ?>index.php/produtos" id="" class="btn btn-warning"><i class="fas fa-undo-alt"></i> Voltar</a>
                     <button type="submit" class="btn btn-primary">Salvar Alterações</button>
-                    <a href="<?php echo base_url() ?>index.php/produtos" id="" class="btn btn-warning"><i class="fas fa-backward"></i> Voltar</a>
                     </div>
 
 

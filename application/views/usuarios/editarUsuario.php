@@ -27,7 +27,7 @@
                     <div class="control_group_up">
                         <label for="rg" class="control-label">RG</label>
                         <div class="controls">
-                            <input id="rg" type="text" name="rg" value="<?php echo $result->rg; ?>" />
+                            <input id="rg" class="rguser" type="text" name="rg" value="<?php echo $result->rg; ?>" />
                         </div>
                     </div>
 
@@ -152,9 +152,10 @@
                     </div>
 
 <div class="form_actions" align="center">
-<button type="submit" class="button_mini btn btn-success"><span class="button_icon"><i class='fas fa-plus-circle'></i></span><span class="button_text">Atualizar</span></button>
 <a href="<?php echo base_url() ?>index.php/usuarios" id="" class="button_mini btn btn-mini btn-warning">
 <span class="button_icon"><i class="fas fa-undo-alt"></i></span> <span class="button_text">Voltar</span></a>
+<button type="submit" class="button_mini btn btn-success">
+<span class="button_icon"><i class='fas fa-plus-circle'></i></span><span class="button_text">Atualizar</span></button>
 </div>
 </form>
 
