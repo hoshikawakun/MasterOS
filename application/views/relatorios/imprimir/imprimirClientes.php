@@ -20,7 +20,7 @@
                 <div class="widget-box">
                     <?= $topo ?>
                     <div class="widget-title">
-                        <h4 style="text-align: center; font-size: 1.1em; padding: 5px;">
+                  <h4 style="text-align: center; font-size: 14px; padding: 5px;">
                             <?= ucfirst($title) ?>
                         </h4>
                     </div>
@@ -28,12 +28,12 @@
                         <table width="100%" class="table_v">
                             <thead>
                                 <tr>
-                                    <th width="400" style="font-size: 15px">Nome</th>
-                                    <th width="170" style="font-size: 15px">Documento</th>
-                                    <th width="150" style="font-size: 15px">Telefone</th>
-                                    <th width="200" style="font-size: 15px">Email</th>
-                                    <th width="150" style="font-size: 15px">Senha</th>
-                                    <th width="120" style="font-size: 15px">Cadastro</th>
+                                    <th width="350">Nome</th>
+                                    <th width="170">Documento</th>
+                                    <th width="150">Telefone</th>
+                                    <th width="230">Email</th>
+                                    <th width="150">Senha</th>
+                                    <th width="120">Cadastro</th>
                                 </tr>
                             </thead>
                             <tbody>

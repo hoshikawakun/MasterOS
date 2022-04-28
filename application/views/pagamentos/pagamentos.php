@@ -37,13 +37,13 @@
                         
 
                         echo '<tr>';
-                        echo '<td><div align="center">' . $r->idPag . '</td>';
-                        echo '<td><div align="center">' . $r->nome . '</td>';
-                        echo '<td><div align="center">' . $textoClientIdShort . '</td>';
-                        echo '<td><div align="center">' . $textoClientSecretShort . '</td>';
-                        echo '<td><div align="center">' . $textoPublicKeyShort . '</td>';
-                        echo '<td><div align="center">' . $textoAccessTokenShort . '</td>';
-                        echo '<td><div align="center">';
+                        echo '<td align="center">' . $r->idPag . '</td>';
+                        echo '<td align="center">' . $r->nome . '</td>';
+                        echo '<td align="center">' . $textoClientIdShort . '</td>';
+                        echo '<td align="center">' . $textoClientSecretShort . '</td>';
+                        echo '<td align="center">' . $textoPublicKeyShort . '</td>';
+                        echo '<td align="center">' . $textoAccessTokenShort . '</td>';
+                        echo '<td align="center">';
                         if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vPagamento')) {
                             echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/pagamentos/visualizar/' . $r->idPag . '" class="btn tip-top" title="Visualizar mais detalhes"><i class="fas fa-eye"></i></a>';
                         }
@@ -51,7 +51,7 @@
                             echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/pagamentos/editar/' . $r->idPag . '" class="btn btn-info tip-top" title="Editar"><i class="fas fa-edit"></i></a>';
                         }
                         if ($this->permission->checkPermission($this->session->userdata('permissao'), 'dPagamento')) {
-                            echo '<a href="#modal-excluir" role="button" data-toggle="modal" pagamento="' . $r->idPag. '" class="btn btn-danger tip-top" title="Excluir"><i class="fas fa-trash-alt"></i></a>';
+                            echo '<a href="#modal-excluir" role="button" data-toggle="modal" pagamento="' . $r->idPag. '" class="btn btn-danger tip-top" title="Excluir"><i class="fas fa-trash"></i></a>';
                         }
                         echo '</td>';
                         echo '</tr>';
@@ -65,7 +65,7 @@
 <?php echo $this->pagination->create_links(); ?>
 
 <!-- Modal -->
-<div id="modal-excluir" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="modal-excluir" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="<?php echo base_url() ?>index.php/pagamentos/excluir" method="post">
         <div class="modal_header_anexos">
             <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>

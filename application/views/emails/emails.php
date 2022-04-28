@@ -1,12 +1,12 @@
 <div class="widget-box">
-    <div class="widget-title">
+    <div class="widget-title" style="margin: -20px 0 0">
         <span class="icon">
             <i class="fas fa-envelope"></i>
         </span>
         <h5>Lista de envio de e-mails</h5>
     </div>
-    <div class="widget-content nopadding">
-        <table id="tabela" width="100%" class="table_p">
+    <div class="widget_content nopadding tab-content">
+        <table id="tabela" class="table table-bordered ">
             <thead>
                 <tr>
                     <th>Código</th>
@@ -18,9 +18,9 @@
             </thead>
             <tbody>
                 <?php if (!$results) { ?>
-                <tr>
-                    <td colspan="5">Nenhum e-mail na fila</td>
-                </tr>
+                    <tr>
+                        <td colspan="5">Nenhum e-mail na fila</td>
+                    </tr>
                 <?php } ?>
 
                 <?php foreach ($results as $r) {
@@ -31,12 +31,12 @@
                         'failed' => '<span class="badge badge-warning">Falhou</span>',
                     ];
     echo '<tr>';
-    echo '<td align="center">' . $r->id . '</td>';
+    echo '<td>' . $r->id . '</td>';
     echo '<td>' . $r->to . '</td>';
-    echo '<td align="center">' . $status[$r->status] . '</td>';
-    echo '<td align="center">' . date('d/m/Y H:i:s', strtotime($r->date)) . '</td>';
-    echo '<td align="center">';
-    echo '<a href="#modal-excluir" role="button" data-toggle="modal" email="' . $r->id . '" class="btn btn-danger tip-top" title="Excluir Item"><i class="fas fa-trash-alt"></i></a>  ';
+    echo '<td>' . $status[$r->status] . '</td>';
+    echo '<td>' . date('d/m/Y H:i:s', strtotime($r->date)) . '</td>';
+    echo '<td>';
+    echo '<a href="#modal-excluir" role="button" data-toggle="modal" email="' . $r->id . '" class="btn-nwe4" title="Excluir item"><i class="fas fa-trash"></i></a>  ';
     echo '</td>';
     echo '</tr>';
 } ?>
@@ -47,28 +47,27 @@
 </div>
 <?php echo $this->pagination->create_links(); ?>
 <!-- Modal -->
-<div id="modal-excluir" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog"
-    aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="modal-excluir" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="<?= site_url('mapos/excluirEmail') ?>" method="post">
-        <div class="modal_header_anexos">
-            <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="myModalLabel">Excluir Email da Lista</h3>
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h5 id="myModalLabel">Excluir Email da Lista</h5>
         </div>
         <div class="modal-body">
             <input type="hidden" id="idEmail" name="id" value="" />
             <h5 style="text-align: center">Deseja realmente excluir este email da lista de envio?</h5>
         </div>
-        <div class="modal-footer">
-            <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Cancelar</button>
-            <button class="btn btn-danger">Excluir</button>
+        <div class="modal-footer" style="display:flex;justify-content: center">
+          <button class="button_mini btn btn-warning" data-dismiss="modal" aria-hidden="true"><span class="button_icon"><i class="fas fa-xmark-circle"></i></span><span class="button_text">Cancelar</span></button>
+          <button class="button_mini btn btn-danger"><span class="button_icon"><i class='fas fa-trash-alt'></i></span> <span class="button_text">Excluir</span></button>
         </div>
     </form>
 </div>
 <script type="text/javascript">
-$(document).ready(function() {
-    $(document).on('click', 'a', function(event) {
-        var email = $(this).attr('email');
-        $('#idEmail').val(email);
+    $(document).ready(function() {
+        $(document).on('click', 'a', function(event) {
+            var email = $(this).attr('email');
+            $('#idEmail').val(email);
+        });
     });
-});
 </script>

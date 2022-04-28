@@ -20,7 +20,7 @@
                 <div class="widget-box">
                     <?= $topo ?>
                     <div class="widget-title">
-                        <h4 style="text-align: center; font-size: 1.1em; padding: 5px;">
+                  <h4 style="text-align: center; font-size: 14px; padding: 5px;">
                             <?= ucfirst($title) ?>
                         </h4>
                     </div>
@@ -28,19 +28,19 @@
                         <table width="100%" class="table_v">
                             <thead>
                                 <tr>
-                                    <th width="350" style="font-size: 15px">Nome</th>
-                                    <th width="650" style="font-size: 15px">Descrição</th>
-                                    <th width="140" style="font-size: 15px">Preço</th>
+                                    <th width="350">Nome</th>
+                                    <th width="650">Descrição</th>
+                                    <th width="140">Preço</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
                                     foreach ($servicos as $s) {
-                                        echo '<tr>';
-                                        echo '<td>' . $s->nome . '</td>';
-                                        echo '<td>' . $s->descricao . '</td>';
-                                        echo '<td align="center">R$: ' . $s->preco . '</td>';
-                                        echo '</tr>';
+    					echo '<tr>';
+    					echo '<td>' . $s->nome . '</td>';
+    					echo '<td>' . $s->descricao . '</td>';
+    					echo '<td align="center">R$: ' . $s->preco . '</td>';
+    					echo '</tr>';
                                     }
                                 ?>
                             </tbody>

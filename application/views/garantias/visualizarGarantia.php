@@ -2,22 +2,24 @@
 <div class="row-fluid" style="margin-top: 0">
     <div class="span12">
         <div class="widget-box">
-            <div class="widget-title">
+            <div class="widget-title" style="margin: -20px 0 0">
                 <span class="icon">
                     <i class="fas fa-book"></i>
                 </span>
                 <h5>Termo de Garantia</h5>
                 <div class="buttons">
                     <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eGarantia')) {
-    echo '<a title="Editar Termo de Garantia" class="btn btn-mini btn-info" href="' . base_url() . 'index.php/garantias/editar/' . $result->idGarantias . '"><i class="fas fa-edit"></i> Editar</a>';
+    echo '<a title="Editar Termo de Garantia" class="button_mini btn btn-mini btn-success" href="' . base_url() . 'index.php/garantias/editar/' . $result->idGarantias . '">
+    <span class="button_icon"><i class="fas fa-edit"></i> </span> <span class="button_text">Editar</span></a>';
 } ?>
-                    <a target="_blank" title="Imprimir" class="btn btn-mini btn-inverse" href="<?php echo site_url() ?>/garantias/imprimir/<?php echo $result->idGarantias; ?>"><i class="fas fa-print"></i> Imprimir</a>
+                    <a target="_blank" title="Imprimir" class="button_mini btn btn-mini btn-inverse" href="<?php echo site_url() ?>/garantias/imprimir/<?php echo $result->idGarantias; ?>">
+                      <span class="button_icon"><i class="fas fa-print"></i></span> <span class="button_text">Imprimir</span></a>
                 </div>
             </div>
             <div class="widget_content" id="printOs">
                 <div class="invoice-content">
                     <div class="invoice-head">
-                        <table class="table_p">
+                        <table class="table">
                             <tbody>
                                 <?php if ($emitente == null) { ?>
                                     <tr>
@@ -32,7 +34,7 @@
                                                 <?php echo $emitente[0]->email . ' - Fone: ' . $emitente[0]->telefone; ?></span></td>
                                         <td style="width: 18%; text-align: center">#Venda: <span>
                                                 <?php echo $result->idVendas ?></span></br> </br> <span>Emissão:
-                                                <?php echo date('d/m/Y'); ?></span>
+                                                <?php echo date('Y-m-d'); ?></span>
                                             <?php if ($result->faturado) : ?>
                                                 <br>
                                                 Vencimento:
@@ -44,7 +46,7 @@
                                 } ?>
                             </tbody>
                         </table>
-                        <table class="table_p">
+                        <table class="table">
                             <tbody>
                                 <tr>
                                     <td style="width: 40%; padding-left: 0">
@@ -87,7 +89,7 @@
                             </tbody>
                         </table>
 
-                        <table class="table_p">
+                        <table class="table">
                             <tbody>
                                 <tr>
                                     <td style="width: 100%; padding-left: 0">

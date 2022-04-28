@@ -1,16 +1,23 @@
-<div class="accordion" id="collapse-group">
-    <div class="accordion-group widget-box">
-        <div class="accordion-heading">
-            <div class="widget-title">
-                <a data-parent="#collapse-group" href="#collapseGOne" data-toggle="collapse">
-                    <span class="icon"><i class="fas fa-shopping-bag"></i></span>
-                    <h5>Dados do Produto</h5>
-                </a>
-            </div>
-        </div>
-        <div class="collapse in accordion-body">
-            <div class="widget_content_vusualizar widget_box_vizualizar2">
-                <table class="table_p">
+<div class="row-fluid" style="margin-top:0">
+<div class="widget_content_3">
+
+<div class="widget_title_3">
+<h5>Produtos</h5>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="acordion_group_6" style="min-height: 360px"><!--Tamanho Geral da Pagina-->
+<div class="acordion_group_7">
+
+<table class="table_w">
                     <tbody>
                         <tr>
                             <td style="text-align: right; width: 30%"><strong>Código de Barra</strong></td>
@@ -32,13 +39,13 @@
                         </tr>
                         <tr>
                             <td style="text-align: right"><strong>Preço de Compra</strong></td>
-                            <td>R$:
+                            <td>R$
                                 <?php echo $result->precoCompra; ?>
                             </td>
                         </tr>
                         <tr>
                             <td style="text-align: right"><strong>Preço de Venda</strong></td>
-                            <td>R$:
+                            <td>R$
                                 <?php echo $result->precoVenda; ?>
                             </td>
                         </tr>
@@ -55,8 +62,29 @@
                             </td>
                         </tr>
                     </tbody>
-                </table>
-            </div>
-        </div>
+                </table> 
+
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="form_actions" align="center">
+        <a title="Voltar" class="button_mini btn btn-mini btn-warning" style="min-width: 140px; top:10px" href="<?php echo site_url() ?>/produtos">
+          <span class="button_icon"><i class="fas fa-undo-alt"></i></span><span class="button_text">Voltar</span></a>
     </div>
+    
+    
+</div>
 </div>

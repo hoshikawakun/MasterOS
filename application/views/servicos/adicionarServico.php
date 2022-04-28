@@ -1,76 +1,79 @@
 <div class="row-fluid" style="margin-top:0">
-    <div class="span12">
-        <div class="widget-box">
-            <div class="widget-title">
-                <span class="icon">
-                    <i class="fas fa-wrench"></i>
-                </span>
-                <h5>Cadastro de Serviço</h5>
-            </div>
-            <div class="widget_box_Painel2">
-                <?php echo $custom_error; ?>
-                <form action="<?php echo current_url(); ?>" id="formServico" method="post" class="form-horizontal">
-                    <div class="control-group">
+<div class="widget_content_3">
+<div class="widget_title_3">
+<h5>Cadastro de Serviço</h5>
+</div>
+<div class="acordion_group_6"><!--Tamanho Geral da Pagina-->
+<div class="acordion_group_8">
+<?php echo $custom_error; ?>
+        <form action="<?php echo current_url(); ?>" id="formServico" method="post" class="form-horizontal">
+
+<div class="control_group_up">
                         <label for="nome" class="control-label">Nome<span class="required">*</span></label>
                         <div class="controls">
                             <input id="nome" type="text" name="nome" value="<?php echo set_value('nome'); ?>" />
                         </div>
-                    </div>
-                    <div class="control-group">
+          </div>
+
+<div class="control_group_up">
                         <label for="preco" class="control-label"><span class="required">Preço*</span></label>
                         <div class="controls">
-                            <input id="preco" class="money" data-affixes-stay="true" data-thousands="" data-decimal="."
-                                type="text" name="preco" value="<?php echo set_value('preco'); ?>" />
+                            <input id="preco" class="money" data-affixes-stay="true" data-thousands="" data-decimal="." type="text" name="preco" value="<?php echo set_value('preco'); ?>" />
                         </div>
-                    </div>
-                    <div class="control-group">
+          </div>
+
+<div class="control_group_dn">
                         <label for="descricao" class="control-label">Descrição</label>
                         <div class="controls">
-                            <input id="descricao" type="text" name="descricao"
-                                value="<?php echo set_value('descricao'); ?>" />
-                        </div>
-                    </div>
-                    <div class="form_actions" align="center">
-                        <button type="submit" class="btn btn-success"><i class="fas fa-plus"></i> Adicionar</button>
-                        <a href="<?php echo base_url() ?>index.php/produtos" id="" class="btn btn-warning"><i
-                                class="fas fa-backward"></i> Voltar</a>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+                            <input id="descricao" type="text" name="descricao" value="<?php echo set_value('descricao'); ?>" />
 </div>
+
+</div>
+<div class="form_actions" align="center">
+<a href="<?php echo base_url() ?>index.php/servicos" id="btnAdicionar" class="button_mini btn btn-mini btn-warning" style="max-width: 160px">
+<span class="button_icon"><i class="fas fa-undo-alt"></i></span><span class="button_text">Voltar</span></a>
+<button type="submit" class="button_mini btn btn-mini btn-success" style="max-width: 160px">
+<span class="button_icon"><i class='fas fa-plus-circle'></i></span><span class="button_text">Adicionar</span></a></button>
+</div>
+
+</form>
+</div>
+</div>
+</div>
+</div>
+
+
 <script src="<?php echo base_url() ?>assets/js/jquery.validate.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/maskmoney.js"></script>
 <script type="text/javascript">
-$(document).ready(function() {
-    $(".money").maskMoney();
-    $('#formServico').validate({
-        rules: {
-            nome: {
-                required: true
+    $(document).ready(function() {
+        $(".money").maskMoney();
+        $('#formServico').validate({
+            rules: {
+                nome: {
+                    required: true
+                },
+                preco: {
+                    required: true
+                }
             },
-            preco: {
-                required: false
-            }
-        },
-        messages: {
-            nome: {
-                required: 'Campo Requerido.'
+            messages: {
+                nome: {
+                    required: 'Campo Requerido.'
+                },
+                preco: {
+                    required: 'Campo Requerido.'
+                }
             },
-            preco: {
-                required: 'Campo Requerido.'
+            errorClass: "help-inline",
+            errorElement: "span",
+            highlight: function(element, errorClass, validClass) {
+                $(element).parents('.control-group').addClass('error');
+            },
+            unhighlight: function(element, errorClass, validClass) {
+                $(element).parents('.control-group').removeClass('error');
+                $(element).parents('.control-group').addClass('success');
             }
-        },
-        errorClass: "help-inline",
-        errorElement: "span",
-        highlight: function(element, errorClass, validClass) {
-            $(element).parents('.control-group').addClass('error');
-        },
-        unhighlight: function(element, errorClass, validClass) {
-            $(element).parents('.control-group').removeClass('error');
-            $(element).parents('.control-group').addClass('success');
-        }
+        });
     });
-});
 </script>

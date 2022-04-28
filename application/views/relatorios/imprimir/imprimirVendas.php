@@ -20,7 +20,7 @@
                 <div class="widget-box">
                     <?= $topo ?>
                     <div class="widget-title">
-                        <h4 style="text-align: center; font-size: 1.1em; padding: 5px;">
+                  <h4 style="text-align: center; font-size: 14px; padding: 5px;">
                             <?= ucfirst($title) ?>
                         </h4>
                     </div>
@@ -28,33 +28,42 @@
                         <table width="100%" class="table_v">
                             <thead>
                                 <tr>
-                                    <th width="110" align="center" style="font-size: 15px">#</th>
-                                    <th width="500" align="center" style="font-size: 15px">Cliente</th>
-                                    <th width="150" align="center" style="font-size: 15px">Vendedor</th>
-                                    <th width="140" align="center" style="font-size: 15px">Data</th>
-                                    <th width="140" align="center" style="font-size: 15px">Total</th>
+                                    <th width="90" align="center">#</th>
+                                    <th width="500" align="center">Cliente</th>
+                                    <th width="150" align="center">Vendedor</th>
+                                    <th width="140" align="center">Data</th>
+                                    <th width="140" align="center">Total</th>
+                                    <th width="90" align="center">Desconto</th>
+                                    <th width="165" align="center">Total com Desconto</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                        foreach ($vendas as $v) {
-                                            $vTotal = $v->valorTotal;
-                                            $totalVendas = $totalVendas + $v->valorTotal;
-                                            $Vendas = $v->idVendas;
-                                            echo '<tr>';
-                                            echo '<td align="center">' . $Vendas . '</td>';
-                                            echo '<td>' . $v->nomeCliente . '</td>';
-                                            echo '<td align="center">' . $v->nome . '</td>';
-                                            echo '<td align="center">' . date('d/m/Y', strtotime($v->dataVenda)) . '</td>';
-                                            echo '<td align="center">R$: ' . number_format($vTotal, 2, ',', '.') .'</td>';
-                                            echo '</tr>';
+									foreach ($vendas as $v) {
+									$vTotal = $v->valorTotal;
+									$totalVendas = $totalVendas + $v->valorTotal;
+									$Vendas = $v->idVendas;
+									echo '<tr>';
+									echo '<td align="center">' . $Vendas . '</td>';
+									echo '<td>' . $v->nomeCliente . '</td>';
+									echo '<td align="center">' . $v->nome . '</td>';
+									echo '<td align="center">' . date('d/m/Y', strtotime($v->dataVenda)) . '</td>';
+									echo '<td align="center">R$: ' . number_format($vTotal, 2, ',', '.') .'</td>';
+									echo '<td align="center">' . $v->desconto . '%</td>';
+									echo '<td align="center">R$: ' . number_format($v->valor_desconto != 0 ? $v->valor_desconto : $v->valorTotal, 2, ',', '.') . '</td>';
+									echo '</tr>';
                                         }
                                         ?>
                                 <tr>
-                                    <td colspan="3"></td>
+                                    <td colspan="5"></td>
                                     <td align="right"><b>TOTAL: </b></td>
                                     <td align="center"><b>R$:
-                                            <?php echo number_format($totalVendas, 2, ',', '.'); ?></b></td>
+                                            <?php
+                                            foreach ($vendas as $valorTotal => $value) {
+												$sum += $value->valor_desconto != 0 ? $value->valor_desconto : $value->valorTotal;
+                                            }
+                                           echo number_format($sum, 2, ',', '.');
+                                            ?></b></td>
                                 </tr>
                             </tbody>
                         </table>

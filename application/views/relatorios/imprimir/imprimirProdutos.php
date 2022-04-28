@@ -20,7 +20,7 @@
                 <div class="widget-box">
                     <?= $topo ?>
                     <div class="widget-title">
-                        <h4 style="text-align: center; font-size: 1.1em; padding: 5px;">
+                  <h4 style="text-align: center; font-size: 14px; padding: 5px;">
                             <?= ucfirst($title) ?>
                         </h4>
                     </div>
@@ -28,20 +28,20 @@
                         <table width="100%" class="table_v">
                             <thead>
                                 <tr>
-                                    <th width="600" align="center" style="font-size: 15px">Nome</th>
-                                    <th width="130" align="center" style="font-size: 15px">Cod. Produto</th>
-                                    <th width="150" align="center" style="font-size: 15px">Cod. Barras</th>
-                                    <th width="130" align="center" style="font-size: 15px">Preço Compra</th>
-                                    <th width="130" align="center" style="font-size: 15px">Preço Venda</th>
-                                    <th width="145" align="center" style="font-size: 15px">Estoque</th>
-                                    <th width="145" align="center" style="font-size: 15px">Valor Estoque</th>
+                                    <th width="400" align="center">Nome</th>
+                                    <th width="130" align="center">Cod. Produto</th>
+                                    <th width="150" align="center">Cod. Barras</th>
+                                    <th width="130" align="center">Preço Compra</th>
+                                    <th width="130" align="center">Preço Venda</th>
+                                    <th width="145" align="center">Estoque</th>
+                                    <th width="145" align="center">Valor Estoque</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
                           foreach ($produtos as $p) {
                               $preco = $p->preco ?: $p->precoVenda;
-                              $subtotals = $preco * ($p->estoque ?: 1);
+                              $subtotals = $preco * ($p->estoque ?: 0);
                               $totals = $totals + $subtotals;
                               $totalestoque = $totalestoque + $p->estoque;
                               echo '<tr>';

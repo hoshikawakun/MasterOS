@@ -20,23 +20,25 @@
                 <div class="widget-box">
                     <?= $topo ?>
                     <div class="widget-title">
-                        <h4 style="text-align: center; font-size: 1.1em; padding: 5px;">
+                  <h4 style="text-align: center; font-size: 14px; padding: 5px;">
                             <?= ucfirst($title) ?>
                         </h4>
                     </div>
                     <div class="widget_content nopadding">
 
-                        <table width="1200" class="table_v">
+                        <table width="100%" class="table_v">
                             <thead>
                                 <tr>
-                                    <th width="170" style="font-size: 15px">Cliente/Fornecedor</th>
-                                    <th width="355" style="font-size: 15px">Descrição</th>
-                                    <th width="80" style="font-size: 15px">Tipo</th>
-                                    <th width="110" style="font-size: 15px">Valor</th>
-                                    <th width="110" style="font-size: 15px">Entrada</th>
-                                    <th width="110" style="font-size: 15px">Pagamento</th>
-                                    <th width="180" style="font-size: 15px">Forma de Pagamento</th>
-                                    <th width="85" style="font-size: 15px">Situação</th>
+                                    <th width="250">Cliente/Fornecedor</th>
+                                    <th width="360">Descrição</th>
+                                    <th width="80">Tipo</th>
+                                    <th width="110">Valor</th>
+                                    <th width="110">Desconto R$</th>
+                                    <th width="180">Valor Com Desc.</th>
+                                    <th width="110">Entrada</th>
+                                    <th width="110">Pagamento</th>
+                                    <th width="180">Forma de Pgto.</th>
+                                    <th width="85">Situação</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -53,26 +55,28 @@
                                             $situacao = 'Pendente';
                                         }
                                         if ($l->tipo == 'receita') {
-                                            $totalReceita += $l->valor;
+                                            $totalReceita += $l->valor_desconto;
                                         } else {
-                                            $totalDespesa += $l->valor;
+                                            $totalDespesa += $l->valor_desconto;
                                         }
-                                        echo '<tr>';
-                                        echo '<td>' . $l->cliente_fornecedor . '</td>';
-                                        echo '<td>' . $l->descricao . '</td>';
-                                        echo '<td>' . $l->tipo . '</td>';
-                                        echo '<td>R$: ' . $l->valor . '</td>';
-                                        echo '<td>' . $vencimento . '</td>';
-                                        echo '<td>' . $pagamento . '</td>';
-                                        echo '<td>' . $l->forma_pgto . '</td>';
-                                        echo '<td>' . $situacao . '</td>';
-                                        echo '</tr>';
+    					echo '<tr>';
+    					echo '<td>' . $l->cliente_fornecedor . '</td>';
+    					echo '<td>' . $l->descricao . '</td>';
+    					echo '<td align="center">' . $l->tipo . '</td>';
+    					echo '<td align="center">' . 'R$ ' . number_format($l->valor, 2, ',', '.') . '</td>';
+    					echo '<td align="center">' . 'R$ ' . number_format($l->desconto, 2, ',', '.') .'</td>';
+    					echo '<td align="center">' . 'R$ ' . number_format($l->valor_desconto, 2, ',', '.') . '</td>';
+    					echo '<td align="center">' . $vencimento . '</td>';
+    					echo '<td align="center">' . $pagamento . '</td>';
+    					echo '<td align="center">' . $l->forma_pgto . '</td>';
+    					echo '<td align="center">' . $situacao . '</td>';
+    					echo '</tr>';
                                     }
                                     ?>
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <td colspan="6" style="text-align: right; color: green">
+                                    <td colspan="8" style="text-align: right; color: green">
                                         <strong>Total Receitas:</strong>
                                     </td>
                                     <td colspan="3" style="text-align: left; color: green">
@@ -82,7 +86,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="6" style="text-align: right; color: red">
+                                    <td colspan="8" style="text-align: right; color: red">
                                         <strong>Total Despesas:</strong>
                                     </td>
                                     <td colspan="3" style="text-align: left; color: red">
@@ -92,7 +96,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="6" style="text-align: right">
+                                    <td colspan="8" style="text-align: right">
                                         <strong>Saldo:</strong>
                                     </td>
                                     <td colspan="3" style="text-align: left;">

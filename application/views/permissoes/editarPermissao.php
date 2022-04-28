@@ -1,50 +1,44 @@
 <?php $permissoes = unserialize($result->permissoes);?>
+<div class="row-fluid" style="margin-top:0">
+<div class="widget_content_3">
+<div class="widget_title_3">
+<h5>Editar Permissão</h5>
+</div>
 
-<div class="widget-box">
-    <div class="widget-title">
-        <span class="icon"><i class="fas fa-lock"></i></span>
-        <h5>Editar Permissão</h5>
-        <div class="buttons">
-            <a title="Voltar" class="btn btn-mini btn-inverse" href="<?php echo site_url() ?>/permissoes"><i
-                    class="fas fa-arrow-left"></i> Voltar</a>
-        </div>
-    </div>
+<form action="<?php echo base_url();?>index.php/permissoes/editar" class="form_horizontal" id="formPermissao" method="post">
+ 
+<div class="control_group_up" style="padding: 1%">
+<div class="span12 well_1" style="padding: 1%; margin-left: 0">
+<div class="span4">
+                        <label>Nome da Permissão</label>
+                        <input name="nome" type="text" id="nome" class="span12" value="<?php echo $result->nome; ?>" />
+                        <input type="hidden" name="idPermissao" value="<?php echo $result->idPermissao; ?>">
+                    </div>
+<div class="span3">
+                        <label>Situação</label>
+                        <select name="situacao" id="situacao" class="span12">
+                            <?php if ($result->situacao == 1) {
+    $sim = 'selected';
+    $nao ='';
+} else {
+    $sim = '';
+    $nao ='selected';
+}?>
+                            <option value="1" <?php echo $sim;?>>Ativo</option>
+                            <option value="0" <?php echo $nao;?>>Inativo</option>
+                        </select>
+                    </div>
+<div class="span4">
+<label>Marcar Todos</label>
+<input name="marcarTodos" type="checkbox" value="1" id="marcarTodos" />
+</div>
+</div>
+</div>
 
-    <div class="widget_box_pr">
-        <div class="span12 well_box">
-            <div class="widget_content">
-                <div class="span4">
-                    <label>Nome da Permissão</label>
-                    <input name="nome" type="text" id="nome" class="span12" value="<?php echo $result->nome; ?>" />
-                    <input type="hidden" name="idPermissao" value="<?php echo $result->idPermissao; ?>">
-                </div>
-                <div class="span3">
-                    <label>Situação</label>
-                    <select name="situacao" id="situacao" class="span12">
-                        <?php
-            if ($result->situacao == 1) {
-                $sim = 'selected';
-                $nao ='';
-            } else {
-                $sim = '';
-                $nao ='selected';
-            }?>
-                        <option value="1" <?php echo $sim;?>>Ativo</option>
-                        <option value="0" <?php echo $nao;?>>Inativo</option>
-                    </select>
-                </div>
-            </div>
-        </div>
 
-        <table class="table_pr">
-            <tr>
-                <td colspan="4">
-                    <label>
-                        <input name="" type="checkbox" value="1" id="marcarTodos" />
-                        <span class="lbl"> Marcar Todos</span>
-                    </label>
-                </td>
-            </tr>
+<!-- Editar Permissão -->
+<div class="permition_content">
+<table class="table_w">
             <tr>
                 <td>
                     <label>
@@ -597,36 +591,34 @@
                         <span class="lbl"> Sistema</span>
                     </label>
                 </td>
-                <td colspan="2"></td>
-            </tr>
-            <tr>
-                <td colspan="4">
-                    <div align="center">
-                        <button type="submit" class="btn btn-primary">Salvar alterações</button>
-                    </div>
-                </td>
-            </tr>
-        </table>
-
-    </div>
+			<td colspan="2"></td>
+		</tr>
+</table>
 </div>
+<!-- Fim Editar Permissão -->
+
+<div class="form_actions" align="center">
+<a title="Voltar" class="button_mini btn btn-mini btn-warning" href="<?php echo site_url() ?>/permissoes">
+<span class="button_icon"><i class="fas fa-undo-alt"></i></span> <span class="button_text">Voltar</span></a>
+<button type="submit" class="button_mini btn btn-primary">
+<span class="button_icon"><i class='fas fa-sd-card'></i></span><span class="button_text">Salvar Alterações</span></button>
+</div>
+</form>
+</div>
+</div>
+
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/validate.js"></script>
 <script type="text/javascript">
-$(document).ready(function() {
-    $("#marcarTodos").change(function() {
-        $("input:checkbox").prop('checked', $(this).prop("checked"));
+    $(document).ready(function(){
+        $("#marcarTodos").change(function () {
+            $("input:checkbox").prop('checked', $(this).prop("checked"));
+        });
+        $("#formPermissao").validate({
+            rules :{
+                nome: {required: true}
+            },
+            messages:{
+                nome: {required: 'Campo obrigatório'}
+            }});
     });
-    $("#formPermissao").validate({
-        rules: {
-            nome: {
-                required: true
-            }
-        },
-        messages: {
-            nome: {
-                required: 'Campo obrigatório'
-            }
-        }
-    });
-});
 </script>

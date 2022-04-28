@@ -139,6 +139,8 @@ $totalProdutos = 0; ?>
 
                             <td style="text-align: right">
                                 <?= $emitente[0]->nome; ?> <br>
+                                <?= $emitente[0]->rua ?>, <?= $emitente[0]->numero ?>, <?= $emitente[0]->bairro ?><br>
+                                <?= $emitente[0]->cidade ?> - <?= $emitente[0]->uf ?> CEP: <?= $emitente[0]->cep ?> <br>
                                 Responsável: <?= $result->nome ?><br>
                                 <?= $result->email_usuario ?>
                             </td>
@@ -210,7 +212,7 @@ $totalProdutos = 0; ?>
             <?php if ($result->laudoTecnico) { ?>
                 <tr class="heading">
                     <td colspan="4">
-                        <b>Relatório Técnico</b>
+                        <b>Laudo Técnico</b>
                     </td>
                 </tr>
                 <tr>
@@ -235,7 +237,7 @@ $totalProdutos = 0; ?>
     echo '<td>' . $p->descricao . '</td>';
     echo '<td>' . $p->quantidade . '</td>';
     echo '<td>' . $p->preco ?: $p->precoVenda . '</td>';
-    echo '<td style="text-align: center">R$: ' . number_format($p->subTotal, 2, ',', '.') . '</td>';
+    echo '<td style="text-align: center">R$ ' . number_format($p->subTotal, 2, ',', '.') . '</td>';
     echo '</tr>';
 } ?>
 
@@ -262,7 +264,7 @@ $totalProdutos = 0; ?>
     echo '<td>' . $s->nome . '</td>';
     echo '<td>' . ($s->quantidade ?: 1) . '</td>';
     echo '<td>' . $preco . '</td>';
-    echo '<td>R$: ' . number_format($subtotal, 2, ',', '.') . '</td>';
+    echo '<td>R$ ' . number_format($subtotal, 2, ',', '.') . '</td>';
     echo '</tr>';
 } ?>
 

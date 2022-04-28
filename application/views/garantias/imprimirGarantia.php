@@ -46,7 +46,7 @@
                                         <td style="width: 18%; text-align: center">
                                             <br /> <br />
                                             <span>Emissão:
-                                                <?php echo date('d/m/Y'); ?>
+                                                <?php echo date('Y-m-d'); ?>
                                             </span>
                                         </td>
                                     </tr>
@@ -54,7 +54,7 @@
                                 } ?>
                             </tbody>
                         </table>
-                        <table class="table_p">
+                        <table class="table">
                             <tbody>
                                 <tr>
                                     <td style="width: 50%; padding-left: 0">
@@ -69,7 +69,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <table class="table_p">
+                        <table class="table">
                             <tbody>
                                 <tr>
                                     <td style="width: 100%; padding-left: 0">

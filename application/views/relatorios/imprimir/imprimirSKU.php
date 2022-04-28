@@ -20,41 +20,41 @@
                 <div class="widget-box">
                     <?= $topo ?>
                     <div class="widget-title">
-                        <h4 style="text-align: center; font-size: 1.1em; padding: 5px;">
+                  <h4 style="text-align: center; font-size: 14px; padding: 5px;">
                             <?= ucfirst($title) ?>
                         </h4>
                     </div>
                     <div class="widget_content nopadding">
-                        <table class="table_v">
+                        <table width="100%" class="table_v">
                             <thead>
                                 <tr>
-                                    <th width="80" style="font-size: 15px">ID Cliente</th>
-                                    <th width="170" style="font-size: 15px">Nome Cliente</th>
-                                    <th width="80" style="font-size: 15px">ID Produto</th>
-                                    <th width="355" style="font-size: 15px">Descrição Produto</th>
-                                    <th width="80" style="font-size: 15px">Quantidade</th>
-                                    <th width="80" style="font-size: 15px">ID Relacionado</th>
-                                    <th width="110" style="font-size: 15px">Data</th>
-                                    <th width="110" style="font-size: 15px">Preço Unitário</th>
-                                    <th width="110" style="font-size: 15px">Preço Total</th>
-                                    <th width="80" style="font-size: 15px">Origem</th>
+                                    <th width="90">ID Cliente</th>
+                                    <th width="210">Nome Cliente</th>
+                                    <th width="95">ID Produto</th>
+                                    <th width="300">Descrição Produto</th>
+                                    <th width="95">Quantidade</th>
+                                    <th width="130">ID Relacionado</th>
+                                    <th width="110">Data</th>
+                                    <th width="120">Preço Unitário</th>
+                                    <th width="120">Preço Total</th>
+                                    <th width="75">Origem</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
                                     foreach ($resultados as $r) {
-                                        echo '<tr>';
-                                        echo '<td>' . $r->idClientes . '</td>';
-                                        echo '<td>' . $r->nomeCliente . '</td>';
-                                        echo '<td>' . $r->idProdutos . '</td>';
-                                        echo '<td>' . $r->descricao . '</td>';
-                                        echo '<td>' . $r->quantidade . '</td>';
-                                        echo '<td>' . $r->idRelacionado . '</td>';
-                                        echo '<td>' . date('d/m/Y', strtotime($r->dataOcorrencia)) . '</td>';
-                                        echo '<td>' . 'R$ ' . number_format($r->preco, 2, ',', '.') . '</td>';
-                                        echo '<td>' . 'R$ ' . number_format($r->precoTotal, 2, ',', '.') . '</td>';
-                                        echo '<td>' . $r->origem . '</td>';
-                                        echo '</tr>';
+    					echo '<tr>';
+    					echo '<td align="center">' . $r->idClientes . '</td>';
+    					echo '<td>' . $r->nomeCliente . '</td>';
+    					echo '<td align="center">' . $r->idProdutos . '</td>';
+    					echo '<td>' . $r->descricao . '</td>';
+    					echo '<td align="center">' . $r->quantidade . '</td>';
+    					echo '<td align="center">' . $r->idRelacionado . '</td>';
+    					echo '<td align="center">' . date('d/m/Y', strtotime($r->dataOcorrencia)) . '</td>';
+    					echo '<td align="center">' . 'R$: ' . number_format($r->preco, 2, ',', '.') . '</td>';
+    					echo '<td align="center">' . 'R$: ' . number_format($r->precoTotal, 2, ',', '.') . '</td>';
+    					echo '<td align="center">' . $r->origem . '</td>';
+    					echo '</tr>';
                                     }
                                 ?>
                             </tbody>

@@ -25,7 +25,7 @@
                     <div class="span12">
                         <div class="span2">
                             <label for="dataGarantia">Data<span class="required">*</span></label>
-                            <input id="dataGarantia" class="span12 datepicker" type="text" name="dataGarantia" value="<?php echo date('d/m/Y'); ?>" disabled />
+                            <input id="dataGarantia" class="span12" type="date" name="dataGarantia" value="<?php echo date('Y-m-d'); ?>" disabled />
                         </div>
                         <div class="span3">
                             <label for="usuarios_id">Responsável<span class="required">*</span></label>
@@ -43,9 +43,11 @@
                         </div>
                     </div>
                     <div class="span12" style="padding: 1%; margin-left: 0">
-                        <div class="span6 offset3" style="text-align: center">
-                            <button class="btn btn-success" id="btnContinuar"><i class="fas fa-plus"></i> Adicionar</button>
-                            <a href="<?php echo base_url() ?>index.php/garantias" class="btn btn-warning"><i class="fas fa-backward"></i> Voltar</a>
+                        <div class="span6 offset3" style="display:flex;justify-content: center">
+                            <a href="<?php echo base_url() ?>index.php/garantias" class="button_mini btn btn-mini btn-warning">
+                              <span class="button_icon"><i class="fas fa-undo-alt"></i></span> <span class="button_text">Voltar</span></a>
+                            <button class="button_mini btn btn-success" id="btnContinuar">
+                              <span class="button_icon"><i class='fas fa-plus-circle'></i></span><span class="button_text">Adicionar</span></button>
                         </div>
                     </div>
                 </form>

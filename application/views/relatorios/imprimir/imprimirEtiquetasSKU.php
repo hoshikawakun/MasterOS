@@ -33,7 +33,7 @@
                                         <td class="textoProdutoEtiqueta" align="left"><b>SKU:
                                                 <?php echo $p->idProdutos; ?></b></td>
                                         <td class="textoProdutoEtiqueta" align="right"><b>R$: <?php $precoVenda = str_replace(".", ",", $p->precoVenda);
-                                        echo $precoVenda; ?></b></td>
+    					echo $precoVenda; ?></b></td>
                                     </tr>
                                 </table>
                                 <?php $string = strtoupper($p->descricao); ?>
@@ -62,7 +62,7 @@
                                         <td class="textoProdutoEtiqueta" align="left"><b>SKU:
                                                 <?php echo $p->idProdutos; ?></b></td>
                                         <td class="textoProdutoEtiqueta" align="right"><b>R$: <?php $precoVenda = str_replace(".", ",", $p->precoVenda);
-                                    echo $precoVenda; ?></b></td>
+					echo $precoVenda; ?></b></td>
                                     </tr>
                                 </table>
                                 <?php $string = strtoupper($p->descricao); ?>
@@ -94,7 +94,7 @@
                                         <td class="textoProdutoEtiqueta" align="left"><b>SKU:
                                                 <?php echo $p->idProdutos; ?></b></td>
                                         <td class="textoProdutoEtiqueta" align="right"><b>R$: <?php $precoVenda = str_replace(".", ",", $p->precoVenda);
-                                        echo $precoVenda; ?></b></td>
+    					echo $precoVenda; ?></b></td>
                                     </tr>
                                 </table>
                                 <?php $string = strtoupper($p->descricao); ?>
@@ -125,7 +125,7 @@
                                         <td class="textoProdutoEtiqueta" align="left"><b>SKU:
                                                 <?php echo $p->idProdutos; ?></b></td>
                                         <td class="textoProdutoEtiqueta" align="right"><b>R$: <?php $precoVenda = str_replace(".", ",", $p->precoVenda);
-                                    echo $precoVenda; ?></b></td>
+					echo $precoVenda; ?></b></td>
                                     </tr>
                                 </table>
                                 <?php $string = strtoupper($p->descricao); ?>

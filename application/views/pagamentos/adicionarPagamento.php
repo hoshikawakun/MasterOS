@@ -54,8 +54,8 @@
                     </div>
                     <div class="widget_box_Painel2">
                     <div class="form_actions" align="center">
+                    <a href="<?php echo base_url() ?>index.php/pagamentos" id="" class="btn btn-warning"><i class="fas fa-undo-alt"></i> Voltar</a>
                     <button type="submit" class="btn btn-success"><i class="fas fa-plus"></i> Adicionar</button>
-                    <a href="<?php echo base_url() ?>index.php/pagamentos" id="" class="btn btn-warning"><i class="fas fa-backward"></i> Voltar</a>
                     </div>
 
 

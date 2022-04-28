@@ -1,43 +1,41 @@
 <style>
-/* Hiding the checkbox, but allowing it to be focused */
-.badgebox {
-    opacity: 0;
-}
+    /* Hiding the checkbox, but allowing it to be focused */
+    .badgebox {
+        opacity: 0;
+    }
 
-.badgebox+.badge {
-    /* Move the check mark away when unchecked */
-    text-indent: -999999px;
-    /* Makes the badge's width stay the same checked and unchecked */
-    width: 27px;
-}
+    .badgebox + .badge {
+        /* Move the check mark away when unchecked */
+        text-indent: -999999px;
+        /* Makes the badge's width stay the same checked and unchecked */
+        width: 27px;
+    }
 
-.badgebox:focus+.badge {
-    /* Set something to make the badge looks focused */
-    /* This really depends on the application, in my case it was: */
+    .badgebox:focus + .badge {
+        /* Set something to make the badge looks focused */
+        /* This really depends on the application, in my case it was: */
+        /* Adding a light border */
+        box-shadow: inset 0px 0px 0px;
+        /* Taking the difference out of the padding */
+    }
 
-    /* Adding a light border */
-    box-shadow: inset 0px 0px 5px;
-    /* Taking the difference out of the padding */
-}
-
-.badgebox:checked+.badge {
-    /* Move the check mark back when checked */
-    text-indent: 0;
-}
+    .badgebox:checked + .badge {
+        /* Move the check mark back when checked */
+        text-indent: 0;
+    }
 </style>
 <div class="row-fluid" style="margin-top:0">
-    <div class="span12">
-        <div class="widget-box">
-            <div class="widget-title">
-                <span class="icon">
-                    <i class="fas fa-shopping-bag"></i>
-                </span>
-                <h5>Cadastro de Produto</h5>
-            </div>
-            <div class="widget_box_Painel2">
-                <?php echo $custom_error; ?>
-                <form action="<?php echo current_url(); ?>" id="formProduto" method="post" class="form-horizontal">
-                    <div class="control-group">
+<div class="widget_content_3">
+<div class="widget_title_3">
+<h5>Cadastro de Produto</h5>
+</div>
+<div class="acordion_group_6"><!--Tamanho Geral da Pagina-->
+<div class="acordion_group_8">
+<?php echo $custom_error; ?>
+<form action="<?php echo current_url(); ?>" id="formProduto" method="post" class="form-horizontal">
+
+
+<div class="control_group_up">
                         <label for="codDeBarra" class="control-label">Código de Barra<span class=""></span></label>
                         <?php function gerar_cod_barras($tamanho, $maiusculas, $minusculas, $numeros, $simbolos)
 {
@@ -71,79 +69,80 @@
 }
 ?>
                         <div class="controls">
-                            <input id="codDeBarra" type="text" name="codDeBarra" maxlength="13"
-                                value="<?php echo gerar_cod_barras(10, false, false, true, false); ?><?php echo gerar_cod_barras(2, false, false, true, false); ?>" />
+                            <input id="codDeBarra" type="text" name="codDeBarra" maxlength="13" style="width:260px" value="<?php echo gerar_cod_barras(10, false, false, true, false); ?><?php echo gerar_cod_barras(2, false, false, true, false); ?>" />
                         </div>
-                    </div>
-                    <div class="control-group">
+</div>
+
+<div class="control_group_up">
                         <label for="descricao" class="control-label">Descrição<span class="required">*</span></label>
                         <div class="controls">
-                            <input id="descricao" type="text" name="descricao"
-                                value="<?php echo set_value('descricao'); ?>" />
+                            <input id="descricao" type="text" name="descricao" style="width:260px" value="<?php echo set_value('descricao'); ?>" />
                         </div>
-                    </div>
-                    <div class="control-group">
+</div>
+
+<div class="control_group_up">
                         <label class="control-label">Tipo de Movimento</label>
                         <div class="controls">
-                            <label for="entrada" class="btn btn-default" style="margin-top: 5px;">Entrada
-                                <input type="checkbox" id="entrada" name="entrada" class="badgebox" value="1" checked>
-                                <span class="badge">&check;</span>
+                            <label for="entrada" class="btn btn-default" style="width:120px">Entrada<input type="checkbox" id="entrada" name="entrada" class="badgebox" value="1" checked>
+                            <span class="badge">&check;</span>
                             </label>
-                            <label for="saida" class="btn btn-default" style="margin-top: 5px;">Saída
-                                <input type="checkbox" id="saida" name="saida" class="badgebox" value="1" checked>
-                                <span class="badge">&check;</span>
+                            <label for="saida" class="btn btn-default" style="width:100px">Saída<input type="checkbox" id="saida" name="saida" class="badgebox" value="1" checked>
+                            <span class="badge">&check;</span>
                             </label>
                         </div>
-                    </div>
-                    <div class="control-group">
+</div>
+
+<div class="control_group_up">
                         <label for="precoCompra" class="control-label">Preço de Compra</label>
                         <div class="controls">
-                            <input style="width: 9em;" id="precoCompra" class="money" data-affixes-stay="true"
-                                data-thousands="" data-decimal="." type="text" name="precoCompra"
-                                value="<?php echo set_value('precoCompra'); ?>" />
-                            Margem <input style="width: 3em;" id="margemLucro" name="margemLucro" type="text"
-                                placeholder="%" maxlength="3" size="2" />
+                            <input style="width:120px"  id="precoCompra" class="money" data-affixes-stay="true" data-thousands="" data-decimal="." type="text" name="precoCompra"
+                                value="<?php echo set_value('precoCompra'); ?>" />  Margem Lucro  <input style="width:35px"  id="margemLucro" name="margemLucro" type="text" placeholder="%" maxlength="3" size="2" />
                             <strong><span style="color: red" id="errorAlert"></span><strong>
                         </div>
-                    </div>
-                    <div class="control-group">
+</div>
+
+<div class="control_group_up">
                         <label for="precoVenda" class="control-label">Preço de Venda<span
                                 class="required">*</span></label>
                         <div class="controls">
-                            <input id="precoVenda" class="money" type="text" name="precoVenda"
-                                value="<?php echo set_value('precoVenda'); ?>" />
+                            <input id="precoVenda" class="money" type="text" name="precoVenda" style="width:260px" value="<?php echo set_value('precoVenda'); ?>" />
                         </div>
-                    </div>
-                    <div class="control-group">
+</div>
+
+<div class="control_group_up">
                         <label for="unidade" class="control-label">Unidade<span class="required">*</span></label>
                         <div class="controls">
-                            <select id="unidade" name="unidade"></select>
+                            <select id="unidade" name="unidade" style="width:275px"></select>
                         </div>
-                    </div>
-                    <div class="control-group">
+</div>
+
+<div class="control_group_up">
                         <label for="estoque" class="control-label">Estoque<span class="required">*</span></label>
                         <div class="controls">
-                            <input id="estoque" type="text" name="estoque"
-                                value="<?php echo set_value('estoque'); ?>" />
+                            <input id="estoque" type="text" name="estoque" style="width:260px" value="<?php echo set_value('estoque'); ?>" />
                         </div>
-                    </div>
-                    <div class="control-group">
+</div>
+
+<div class="control_group_dn">
                         <label for="estoqueMinimo" class="control-label">Estoque Mínimo</label>
                         <div class="controls">
-                            <input id="estoqueMinimo" type="text" name="estoqueMinimo"
-                                value="<?php echo set_value('estoqueMinimo'); ?>" />
+                            <input id="estoqueMinimo" type="text" name="estoqueMinimo" style="width:260px" value="<?php echo set_value('estoqueMinimo'); ?>" />
                         </div>
-                    </div>
-                    <div class="form_actions" align="center">
-                        <button type="submit" class="btn btn-success"><i class="fas fa-plus"></i> Adicionar</button>
-                        <a href="<?php echo base_url() ?>index.php/produtos" id="" class="btn btn-warning"><i
-                                class="fas fa-backward"></i> Voltar</a>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 </div>
+
+
+<div class="form_actions" align="center">
+<a href="<?php echo base_url() ?>index.php/produtos" id="" class="button_mini btn btn-mini btn-warning"><span class="button_icon"><i class="fas fa-undo-alt"></i></span><span class="button_text">Voltar</span></a>
+<button type="submit" class="button_mini btn btn-mini btn-success" style="max-width: 160px"><span class="button_icon"><i class='fas fa-plus-circle'></i></span><span class="button_text">Adicionar</span></button>
+</div>
+
+</form>
+</div>
+</div>
+</div>
+</div>
+
+
 <script src="<?php echo base_url() ?>assets/js/jquery.validate.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/maskmoney.js"></script>
 <script type="text/javascript">

@@ -9,7 +9,7 @@
 <div class="row-fluid" style="margin-top:0">
     <div class="span12">
         <div class="widget-box">
-            <div class="widget-title">
+            <div class="widget-title" style="margin: -20px 0 0">
                 <span class="icon">
                     <i class="fas fa-book"></i>
                 </span>
@@ -27,7 +27,7 @@
                         <div class="span2">
                             <label for="dataGarantia">Data</label>
                             <?php echo form_hidden('idGarantias', $result->idGarantias) ?>
-                            <input id="dataGarantia" class="span12 datepicker" type="text" name="dataGarantia" value="<?php echo date('d/m/Y', strtotime($result->dataGarantia)); ?>" disabled />
+                            <input id="dataGarantia" class="span12" type="date" name="dataGarantia" value="<?php echo date('d/m/Y', strtotime($result->dataGarantia)); ?>" disabled />
                         </div>
                         <div class="span5">
                             <label for="usuarios_id">Responsável</label>
@@ -47,9 +47,11 @@
                     </div>
 
                     <div class="span12" style="padding: 1%; margin-left: 0">
-                        <div class="span6 offset5">
-                            <button type="submit" class="btn btn-primary"><i class="fas fa-sync-alt"></i> Atualizar</button>
-                            <a href="<?php echo base_url() ?>index.php/garantias" id="" class="btn btn-warning"><i class="fas fa-backward"></i> Voltar</a>
+<div class="span6 offset5" style="display:flex;justify-content: center">
+<a href="<?php echo base_url() ?>index.php/garantias" id="" class="button_mini btn btn-mini btn-warning">
+<span class="button_icon"><i class="fas fa-undo-alt"></i></span> <span class="button_text">Voltar</span></a>
+<button type="submit" class="button_mini btn btn-primary">
+<span class="button_icon"><i class="fas fa-sync-alt"></i></span><span class="button_text">Atualizar</span></button>
                         </div>
                     </div>
                 </form>
