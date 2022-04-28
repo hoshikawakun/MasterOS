@@ -91,46 +91,68 @@ $totalProdutos = 0; ?>
                 </td>
             </tr>
             <tr>
-                <td colspan="2">
-                    <span style="font-size: 12px"><b>Vendedor</b></span><br>
-                    <span style="font-size: 10px"><i
-                            class="fas fa-user-check"></i> <?php echo $result->nome ?></span><br>
-                    <span style="font-size: 10px"><i class="fas fa-phone-alt"
-                            style="margin:5px 1px"></i>  <?php echo $result->telefone_usuario ?></span>
+                <td>
+<span style="font-size: 12px"><b>Vendedor</b></span><br>
+<span style="font-size: 10px"><i class="fas fa-user-check"></i> <?php echo $result->nome ?></span><br>
+<span style="font-size: 10px"><i class="fas fa-phone-alt" style="margin:5px 1px"></i> <?php echo $result->telefone_usuario ?></span><br>
+<span style="font-size: 10px"><i class="fas fa-envelope" style="margin:5px 1px"></i> <?php echo $result->email_usuario ?></span>
                 </td>
             </tr>
             <tr>
                 <td><?php if ($produtos != null) { ?>
                     <br />
-                    <table width="100%" class="table_pr" id="tblProdutos" style="font-size: 10px">
-                        <thead>
-                            <tr>
-                                <th width="8%">Cod. Produto</th>
-                                <th>Produto</th>
-                                <th width="8%"> Qt. </th>
-                                <th width="8%"> R$ UN </th>
-                                <th width="10%">Sub Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-
-                                    foreach ($produtos as $p) {
-                                        $totalProdutos = $totalProdutos + $p->subTotal;
-                                        echo '<tr>';
-                                        echo '<td><div align="center">' . $p->idProdutos . '</div></td>';
-                                        echo '<td>' . $p->descricao . '</td>';
-                                        echo '<td><div align="center">' . $p->quantidade . '</div></td>';
-                                        echo '<td><div align="center">R$: ' . $p->preco ?: $p->precoVenda . '</div></td>';
-                                        echo '<td><div align="center">R$: ' . number_format($p->subTotal, 2, ',', '.') . '</div></td>';
-                                        echo '</tr>';
-                                    } ?>
-                            <tr>
-                                <td colspan="5" style="text-align: right"><strong>Total Produtos R$:
-                                        <?php echo number_format($totalProdutos, 2, ',', '.'); ?></strong></td>
-                            </tr>
-                        </tbody>
-                    </table>
+<table width="100%" class="table_w" id="tblProdutos" style="font-size:10px">
+<thead>
+<tr>
+<th width="8%">Cod. Produto</th>
+<th>Produto</th>
+<th width="8%">  Qt.  </th>
+<th width="8%"> R$ UN </th>
+<th width="10%">Sub Total</th>
+</tr>
+</thead>
+<tbody>
+<?php
+$total = 0;
+foreach ($produtos as $p) {
+	$preco = $p->preco ?: $p->precoVenda;
+	$total = $total + $p->subTotal;
+echo '<tr>';
+echo '<td><div align="center">' . $p->idProdutos . '</div></td>';
+echo '<td>' . $p->descricao . '</td>';
+echo '<td><div align="center">' . $p->quantidade . '</div></td>';
+echo '<td><div align="center">R$: ' . $preco . '</div></td>';
+echo '<td><div align="center">R$: ' . number_format($p->subTotal, 2, ',', '.') . '</div></td>';
+echo '</tr>';
+} ?>
+<tr>
+<td colspan="4" style="text-align: right"><strong>Total:</strong>
+</td>
+<td>
+<div align="center"><strong>R$:
+<?php echo number_format($total, 2, ',', '.'); ?></strong>
+<input type="hidden" id="total-venda" value="<?php echo number_format($total, 2); ?>">
+</div>
+</td>
+</tr>
+<?php if ($result->valor_desconto != 0 && $result->desconto != 0) { ?>
+<tr>
+<td colspan="4" style="text-align: right"><strong>Desconto:</strong></td>
+<td>
+<div align="center">
+<strong>R$: <?php echo number_format($result->desconto, 2, ',', '.'); ?></strong></div>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="text-align: right"><strong>Total Com Desconto:</strong></td>
+<td>
+<div align="center"><strong>R$: <?php echo number_format($result->valor_desconto, 2, ',', '.'); ?></strong>
+</div><input type="hidden" id="total-desconto" value="<?php echo number_format($result->valor_desconto, 2); ?>">
+</td>
+</tr>
+<?php } ?>
+</tbody>
+</table>
                     <?php } ?>
                 </td>
             </tr>

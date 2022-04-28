@@ -1,23 +1,31 @@
+<div class="new122" style="margin-top: 0; min-height: 50vh">
+
+<div class="widget_painel_2">
+<div class="span12">
 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'aVenda')) { ?>
-<a href="<?php echo base_url(); ?>index.php/vendas/adicionar" class="btn btn-success"><i class="fas fa-plus"></i>
-    Adicionar Venda</a>
+<div class="span4">
+<a href="<?php echo base_url(); ?>index.php/vendas/adicionar" class="button_mini btn btn-mini btn-success" style="margin-bottom:10px; max-width: 160px">
+<span class="button_icon"><i class='fas fa-plus-circle'></i></span><span class="button_text">Nova Venda</span></a>
+</div>
 <?php } ?>
+</div>
+</div>
 
-<div class="widget-box">
-    <div class="widget-title">
-        <span class="icon"><i class="fas fa-cash-register"></i></span>
-        <h5>Vendas</h5>
-    </div>
-    <div class="widget-content nopadding">
 
-        <table id="tabela" width="100%" class="table_p">
+<div class="widget_box_2">
+
+<div class="widget_title_2">
+<h5>Vendas</h5>
+</div>
+
+        <table id="tabela" width="100%" class="table_w">
             <thead>
-                <tr style="background-color: #2D335B">
-                    <th>#</th>
-                    <th>Data da Venda</th>
+                <tr>
+                    <th width="7%">Nº</th>
+                    <th width="10%">Data</th>
                     <th>Cliente</th>
-                    <th>Faturado</th>
-                    <th>Ações</th>
+                    <th width="8%">Faturado</th>
+                    <th width="16%">Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,55 +44,63 @@
                             $faturado = 'Não';
                         }
                         echo '<tr>';
-                        echo '<td><div align="center">' . $r->idVendas . '</td>';
-                        echo '<td><div align="center">' . $dataVenda . '</td>';
+                        echo '<td align="center">' . $r->idVendas . '</td>';
+                        echo '<td align="center">' . $dataVenda . '</td>';
                         echo '<td><a href="' . base_url() . 'index.php/clientes/visualizar/' . $r->idClientes . '">' . $r->nomeCliente . '</a></td>';
-                        echo '<td><div align="center">' . $faturado . '</td>';
-                        echo '<td><div align="center">';
+                        echo '<td align="center">' . $faturado . '</td>';
+                        echo '<td align="center">';
                         if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vVenda')) {
-                            echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/vendas/visualizar/' . $r->idVendas . '" class="btn tip-top" title="Ver mais detalhes"><i class="fas fa-eye"></i></a>';
-                            echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/vendas/imprimir/' . $r->idVendas . '" target="_blank" class="btn btn-inverse tip-top" title="Imprimir A4"><i class="fas fa-print"></i></a>';
-                            echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/vendas/imprimirTermica/' . $r->idVendas . '" target="_blank" class="btn btn-inverse tip-top" title="Imprimir Não Fiscal"><i class="fas fa-print"></i></a>';
-                        }
+                            echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/vendas/visualizar/' . $r->idVendas . '" class="btn-nwe tip-top" title="Ver mais detalhes"><i class="fas fa-eye bx-xs"></i></a>';
+						}
                         if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eVenda')) {
-                            echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/vendas/editar/' . $r->idVendas . '" class="btn btn-info tip-top" title="Editar venda"><i class="fas fa-edit"></i></a>';
+                            echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/vendas/editar/' . $r->idVendas . '" class="btn-nwe3 tip-top" title="Editar venda"><i class="fas fa-edit bx-xs"></i></a>';
+                        }
+						if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vVenda')) {
+                            echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/vendas/imprimir/' . $r->idVendas . '" target="_blank" class="btn-nwe6 tip-top" title="Imprimir A4"><i class="fas fa-print bx-xs"></i></a>';
+                            echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/vendas/imprimirTermica/' . $r->idVendas . '" target="_blank" class="btn-nwe6 tip-top" title="Imprimir Não Fiscal"><i class="fas fa-print bx-xs"></i></a>';
                         }
                         if ($this->permission->checkPermission($this->session->userdata('permissao'), 'dVenda')) {
-                            echo '<a href="#modal-excluir" role="button" data-toggle="modal" venda="' . $r->idVendas . '" class="btn btn-danger tip-top" title="Excluir Venda"><i class="fas fa-trash-alt"></i></a>';
+                            echo '<a href="#modal-excluir" role="button" data-toggle="modal" venda="' . $r->idVendas . '" class="btn-nwe4 tip-top" title="Excluir Venda"><i class="fas fa-trash bx-xs"></i></a>';
                         }
                         echo '</td>';
                         echo '</tr>';
                     } ?>
             </tbody>
         </table>
-    </div>
 </div>
-<?php echo $this->pagination->create_links(); ?>
+<div class="widget_painel_2">
+<?= $this->pagination->create_links() ?>
+</div>
 
-<!-- Modal -->
-<div id="modal-excluir" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog"
-    aria-labelledby="myModalLabel" aria-hidden="true">
-    <form action="<?php echo base_url() ?>index.php/vendas/excluir" method="post">
-        <div class="modal_header_anexos">
-            <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="myModalLabel">Excluir Venda</h3>
-        </div>
-        <div class="modal-body">
-            <input type="hidden" id="idVenda" name="id" value="" />
-            <h5 style="text-align: center">Deseja realmente excluir esta Venda?</h5>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Cancelar</button>
-            <button class="btn btn-danger">Excluir</button>
-        </div>
-    </form>
 </div>
+
+
+<!-- Modal Excluir -->
+<div id="modal-excluir" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<form action="<?php echo base_url() ?>index.php/produtos/excluir" method="post">
+<div class="modal_title">
+<button type="button" class="close" style="color:#f00; padding-right:5px; padding-top:10px" data-dismiss="modal" aria-hidden="true">×</button>
+<h5>Excluir Serviço</h5>
+</div>
+<div class="modal_body">
+<input type="hidden" id="idVenda" name="id" value="" />
+<h4 style="text-align: center">Deseja realmente excluir esta Venda?</h4>
+</div>
+<div class="form_actions" align="center">
+<button class="button_mini btn btn-warning" data-dismiss="modal" aria-hidden="true"><span class="button_icon"><i class="fas fa-xmark-circle"></i></span><span class="button_text">Cancelar</span></button>
+<button class="button_mini btn btn-danger"><span class="button_icon"><i class='fas fa-trash-alt'></i></span> <span class="button_text">Excluir</span></button>
+</div>
+</form>
+</div>
+<!-- Fim Modal Excluir -->
+
+
 
 <script type="text/javascript">
-$(document).ready(function() {
-    $(document).on('click', 'a', function(event) {
-        var venda = $(this).attr('venda');
-        $('#idVenda').val(venda);
+    $(document).ready(function() {
+        $(document).on('click', 'a', function(event) {
+            var servico = $(this).attr('servico');
+            $('#idServico').val(servico);
+        });
     });
-});
 </script>
