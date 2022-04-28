@@ -6,49 +6,53 @@
 <script type="text/javascript" src="<?php echo base_url() ?>assets/trumbowyg/trumbowyg.js"></script>
 <script type="text/javascript" src="<?php echo base_url() ?>assets/trumbowyg/langs/pt_br.js"></script>
 <link href="<?= base_url('assets/css/custom.css'); ?>" rel="stylesheet">
-<?php $totalServico = 0;
-$totalProdutos = 0; ?>
-<div class="row-fluid" style="margin-top: 0">
-    <div class="span12">
-        <div class="widget-box">
-            <div class="widget-title">
-                <span class="icon">
-                    <i class="fas fa-diagnoses"></i>
-                </span>
-                <h5>Ordem de Serviço</h5>
-                <div class="buttons">
+<?php $totalServico = 0; $totalProdutos = 0; ?>
 
-                    <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
-    echo '<a target="_new" title="Adicionar OS" class="btn btn-mini btn-success" href="' . base_url() . 'index.php/os/adicionar"><i class="fas fa-plus"></i> Adicionar OS</a>';
-} ?>
 
-                    <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
-    echo '<a title="Editar OS" class="btn btn-mini btn-info" href="' . base_url() . 'index.php/os/editar/' . $result->idOs . '"><i class="fas fa-edit"></i> Editar</a>';
-} ?>
+<div class="row-fluid" style="margin-top:0">
+<div class="widget_content_3" align="center" style="padding:5px; margin-bottom:5px;">
 
-                    <a target="_blank" title="Imprimir OS" class="btn btn-mini btn-inverse"
-                        href="<?php echo site_url() ?>/os/imprimir/<?php echo $result->idOs; ?>"><i
-                            class="fas fa-print"></i> Imprimir A4</a>
+<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) { ?>
+<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Adicionar OS" class="button_mini btn btn-mini btn-success tip-top" target="new" href="<?php echo base_url(); ?>index.php/os/adicionar">
+<span class="button_icon"><i class='fas fa-plus-circle'></i></span><span class="button_text">Adicionar OS</span></a>
+<?php } ?>
 
-                    <a target="_blank" title="Imprimir Termica" class="btn btn-mini btn-inverse"
-                        href="<?php echo site_url() ?>/os/imprimirTermica/<?php echo $result->idOs; ?>"><i
-                            class="fas fa-print"></i> Imprimir Termica</a>
+<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) { ?>
+<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Editar OS" class="button_mini btn btn-mini btn-info tip-top" href="<?php echo site_url() ?>/os/editar/<?php echo $result->idOs; ?>">
+<span class="button_icon"><i class='fas fa-edit'></i></span><span class="button_text">Editar OS</span></a>
+<?php } ?>
 
-                    <a target="_blank" title="Imprimir Termica 2" class="btn btn-mini btn-inverse"
-                        href="<?php echo site_url() ?>/os/imprimirTermica2/<?php echo $result->idOs; ?>"><i
-                            class="fas fa-print"></i> Imprimir Termica 2</a>
+<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Imprimir" class="button_mini btn btn-mini btn-inverse tip-top" target="new" href="<?php echo site_url() ?>/os/imprimir/<?php echo $result->idOs; ?>">
+<span class="button_icon"><i class='fas fa-print'></i></span><span class="button_text">Imprimir A4</span></a>
 
-                    <a href="https://www.linkcorreios.com.br/<?php echo $result->rastreio ?>" title="Rastrear"
-                        target="_new" class="btn btn-mini btn-warning"><i class="fas fa-envelope"></i> Rastrear</a>
+<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Imprimir Termica" class="button_mini btn btn-mini btn-inverse tip-top" target="new" href="<?php echo site_url() ?>/os/imprimirTermica/<?php echo $result->idOs; ?>">
+<span class="button_icon"><i class='fas fa-print'></i></span><span class="button_text">Imprimir Termica</span></a>
 
-                </div>
-            </div>
-            <div class="widget_content" id="printOs">
-                <div class="widget_content_vusualizar widget_box_Painel2">
-                    <div class="invoice-head" style="margin-bottom: 0">
-                        <div class="widget_content_printer2">
-                            <div class="widget_box_boddy">
-                                <table width="100%" class="table_boddy">
+<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Imprimir Termica 2" class="button_mini btn btn-mini btn-inverse tip-top" target="new" href="<?php echo site_url() ?>/os/imprimirTermica2/<?php echo $result->idOs; ?>">
+<span class="button_icon"><i class='fas fa-print'></i></span><span class="button_text">Imprimir Termica 2</span></a>
+
+<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Enviar WhatsApp" class="button_mini btn btn-mini btn-success tip-top" id="btn-whatsapp" href="#modal-whatsapp" data-toggle="modal">
+<span class="button_icon"><i class='fab fa-whatsapp'></i></span><span class="button_text">WhatsApp</span></a>
+
+<!--<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Enviar por E-mail" class="button_mini btn btn-mini btn-warning tip-top" target="new" href="<?php echo site_url() ?>/os/enviar_email/<?php echo $result->idOs; ?>">
+<span class="button_icon"><i class='fas fa-envelope'></i></span><span class="button_text">Enviar por E-mail</span></a>-->
+
+<?php if ($result->rastreio != null) { ?>
+<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Rastrear" class="button_mini btn btn-mini btn-warning tip-top" target="new" href="https://www.linkcorreios.com.br/<?php echo $result->rastreio ?>">
+<span class="button_icon"><i class='fas fa-envelope'></i></span><span class="button_text">Rastrear</span></a>
+<?php } ?>
+</div>
+</div>
+
+<div class="row-fluid" style="margin-top:0">
+<div class="widget_content_3">
+<div class="widget_title_3">
+<h5>Visualizar OS</h5>
+</div>
+<div class="well_0">
+
+<div class="widget_content_printer2">
+<table width="100%" class="table_w">
 
                                     <?php if ($emitente == null) { ?>
                                     <tr>
@@ -86,20 +90,18 @@ $totalProdutos = 0; ?>
                                                 </b><?php echo date('d/m/Y', strtotime($result->dataFinal)); ?></br>
                                                 <?php if ($result->dataSaida != null) { ?>
                                                 <b>Data de Saida:
-                                                </b><?php echo htmlspecialchars_decode($result->dataSaida) ?><?php } ?></br>
+                                                </b><?php echo date('d/m/Y', strtotime($result->dataSaida)); ?><?php } ?></br>
                                                 <?php if ($result->garantia != null) { ?>
                                                 <b>Garantia até:
-                                                </b><?php echo htmlspecialchars_decode($result->garantia) ?><?php } ?></br>
+                                                </b><?php echo date('d/m/Y', strtotime($result->garantia)); ?><?php } ?></br>
                                         </td>
                                     </tr>
                                     <?php } ?>
                                 </table>
-                            </div>
-                        </div>
+</div>
 
-                        <div class="widget_content_printer2">
-                            <div class="widget_box_boddy">
-                                <table width="100%" class="table_boddy">
+<div class="widget_content_printer2">
+<table width="100%" class="table_w">
                                     <tr>
                                         <td colspan="2">
                                             <b>Cliente</b><br>
@@ -128,12 +130,10 @@ $totalProdutos = 0; ?>
                                         </td>
                                     </tr>
                                 </table>
-                            </div>
-                        </div>
+</div>
 
-                        <div class="widget_content_printer2">
-                            <div class="widget_box_printer">
-                                <table width="100%" class="table_boddy">
+<div class="widget_content_printer2">
+<table width="100%" class="table_w">
                                     <?php if ($result->serial != null) { ?>
                                     <tr>
                                         <td colspan="2">
@@ -149,12 +149,10 @@ $totalProdutos = 0; ?>
                                     </tr>
                                     <?php } ?>
                                 </table>
-                            </div>
-                        </div>
+</div>
 
-                        <div class="widget_content_printer2">
-                            <div class="widget_box_printer2">
-                                <table width="100%" class="table_box">
+<div class="widget_content_printer2">
+<table width="100%" class="table_w">
                                     <?php if ($result->rastreio != null) { ?>
                                     <tr>
                                         <td>
@@ -196,13 +194,48 @@ $totalProdutos = 0; ?>
                                     </tr>
                                     <?php } ?>
                                 </table>
-                            </div>
-                        </div>
+</div>
 
-                        <div class="widget_content_printer2">
-                            <div class="widget_box_printer3">
+<div class="widget_content_printer2">
+                                <?php if ($equipamentos != null) { ?>
+                                <table width="100%" class="table_w">
+                                    <thead>
+                        <tr>
+                            <th>Equipamento</th>
+                            <th>Marca</th>
+                            <th>Tipo</th>
+                            <th>Nº Serie</th>
+                            <th>Modelo</th>
+                            <th>Cor</th>
+                            <th>Voltagem</th>
+                            <th>Potência</th>
+                            <th>Obs:</th>
+                        </tr>
+                    </thead>
+                                    <tbody>
+                                        <?php
+                                
+                                foreach ($equipamentos as $x) {
+					echo '<tr>';
+					echo '<td align="center">' . $x->equipamento . '</td>';
+					echo '<td align="center">' . $x->marca . '</td>';
+					echo '<td align="center">' . $x->tipo . '</td>';
+					echo '<td align="center">' . $x->num_serie . '</td>';
+					echo '<td align="center">' . $x->modelo . '</td>';
+					echo '<td align="center">' . $x->cor . '</td>';
+					echo '<td align="center">' . $x->voltagem . '</td>';
+					echo '<td align="center">' . $x->potencia . '</td>';
+					echo '<td align="center">' . $x->observacao . '</td>';
+					echo '</tr>';
+                                } ?>
+                                    </tbody>
+                                </table>
+                                <?php } ?>
+</div>
+
+<div class="widget_content_printer2">
                                 <?php if ($anotacoes != null) { ?>
-                                <table width="100%" class="table_print3">
+                                <table width="100%" class="table_w">
                                     <thead>
                                         <tr>
                                             <th>Anotação</th>
@@ -213,21 +246,19 @@ $totalProdutos = 0; ?>
                                         <?php
                                 
                                 foreach ($anotacoes as $a) {
-                                    echo '<tr>';
-                                    echo '<td><div align="center">' . $a->anotacao . '</div></td>';
-                                    echo '<td><div align="center">' . date('d/m/Y H:i:s', strtotime($a->data_hora)) . '</div></td>';
-                                    echo '</tr>';
+					echo '<tr>';
+					echo '<td align="center">' . $a->anotacao . '</td>';
+					echo '<td align="center">' . date('d/m/Y H:i:s', strtotime($a->data_hora)) . '</td>';
+					echo '</tr>';
                                 } ?>
                                     </tbody>
                                 </table>
                                 <?php } ?>
-                            </div>
-                        </div>
+</div>
 
-                        <div class="widget_content_printer2">
-                            <div class="widget_box_printer3">
+<div class="widget_content_printer2">
                                 <?php if ($produtos != null) { ?>
-                                <table width="100%" class="table_print3" id="tblProdutos">
+                                <table width="100%" class="table_w" id="tblProdutos">
                                     <thead>
                                         <tr>
                                             <th width="10%">Cod. Produto</th>
@@ -242,13 +273,13 @@ $totalProdutos = 0; ?>
 
                                     foreach ($produtos as $p) {
                                         $totalProdutos = $totalProdutos + $p->subTotal;
-                                        echo '<tr>';
-                                        echo '<td><div align="center">' . $p->idProdutos . '</div></td>';
-                                        echo '<td>' . $p->descricao . '</td>';
-                                        echo '<td><div align="center">' . $p->quantidade . '</div></td>';
-                                        echo '<td><div align="center">R$: ' . $p->preco ?: $p->precoVenda . '</div></td>';
-                                        echo '<td><div align="center">R$: ' . number_format($p->subTotal, 2, ',', '.') . '</div></td>';
-                                        echo '</tr>';
+    					echo '<tr>';
+    					echo '<td align="center">' . $p->idProdutos . '</td>';
+    					echo '<td>' . $p->descricao . '</td>';
+    					echo '<td align="center">' . $p->quantidade . '</td>';
+    					echo '<td align="center">R$: ' . $p->preco ?: $p->precoVenda . '</td>';
+    					echo '<td align="center">R$: ' . number_format($p->subTotal, 2, ',', '.') . '</td>';
+    					echo '</tr>';
                                     } ?>
                                         <tr>
                                             <td colspan="4" style="text-align: right; font-size:12px">
@@ -262,13 +293,11 @@ $totalProdutos = 0; ?>
                                     </tbody>
                                 </table>
                                 <?php } ?>
-                            </div>
-                        </div>
+</div>
 
-                        <div class="widget_content_printer2">
-                            <div class="widget_box_printer3">
+<div class="widget_content_printer2">
                                 <?php if ($servicos != null) { ?>
-                                <table width="100%" class="table_print3">
+                                <table width="100%" class="table_w">
                                     <thead>
                                         <tr>
                                             <th>Serviço</th>
@@ -284,12 +313,12 @@ $totalProdutos = 0; ?>
                                         $preco = $s->preco ?: $s->precoVenda;
                                         $subtotal = $preco * ($s->quantidade ?: 1);
                                         $totalServico = $totalServico + $subtotal;
-                                        echo '<tr>';
-                                        echo '<td>' . $s->nome . '</td>';
-                                        echo '<td><div align="center">' . ($s->quantidade ?: 1) . '</td>';
-                                        echo '<td><div align="center">R$: ' . $preco . '</td>';
-                                        echo '<td><div align="center">R$: ' . number_format($subtotal, 2, ',', '.') . '</td>';
-                                        echo '</tr>';
+    					echo '<tr>';
+    					echo '<td>' . $s->nome . '</td>';
+    					echo '<td align="center">' . ($s->quantidade ?: 1) . '</td>';
+    					echo '<td align="center">R$: ' . $preco . '</td>';
+    					echo '<td align="center">R$: ' . number_format($subtotal, 2, ',', '.') . '</td>';
+    					echo '</tr>';
                                     } ?>
 
                                         <tr>
@@ -305,20 +334,23 @@ $totalProdutos = 0; ?>
                                     </tbody>
                                 </table>
                                 <?php } ?>
-                            </div>
-                        </div>
-
-                        <?php
-                        if ($totalProdutos != 0 || $totalServico != 0) {
-                            echo "<h4 style='font-size: 14px; text-align: right'>Valor Total: R$" . number_format($totalProdutos + $totalServico, 2, ',', '.') . "  "."</h4>";
-                        }?>
-
+</div>
+                        
+                       <!-- Total OS -->
+<?php
+if ($totalProdutos != 0 || $totalServico != 0) {
+echo "<h4 style='font-size: 14px; text-align: right'>Valor Total: R$ " . number_format($totalProdutos + $totalServico, 2, ',', '.') . "  "."</h4>";
+echo $result->valor_desconto != 0 ? "<h4 style='font-size: 14px; text-align: right'>Desconto: R$ " . number_format($result->valor_desconto != 0 ? $result->valor_desconto - ($totalProdutos + $totalServico) : 0.00, 2, ',', '.') . "  "."</h4>" : ".";
+echo $result->valor_desconto != 0 ? "<h4 style='font-size: 14px; text-align: right'>Total com Desconto: R$ " . number_format($result->valor_desconto, 2, ',', '.') . "  "."</h4>" : ".";
+                        }
+                        ?>
+                       <!-- Fim Total OS -->
 
                         <!-- ANEXOS -->
-
+<div class="widget_content_printer2">
                         <?php if ($anexos != null) { ?>
                         <div class"span12">
-                            <table width="100%" class="table_print3">
+                            <table width="100%" class="table_w">
                                 <thead>
                                     <tr>
                                         <th>Anexo</th>
@@ -336,9 +368,14 @@ $totalProdutos = 0; ?>
                                     } else {
                                         $thumb = $a->url . '/thumbs/' . $a->thumb;
                                         $link = $a->url . '/' . $a->anexo;
+										$NomeAnexo = mb_strimwidth(strip_tags($a->anexo), 0, 20, "...");
                                     }
-                                    echo '<div class="span3" style="min-height: 200px; margin-left: 0; padding: 5px;">
-									<a style="min-height: 180px; border: 1px solid #777;" href="#modal-anexo" imagem="' . $a->idAnexos . '" link="' . $link . '" role="button" class="btn anexo span12" data-toggle="modal"><img src="' . $thumb . '" alt=""></a></div>';
+					echo '<div class="grade2" style="margin-bottom:5px; margin-left:1%;">
+									<a style="min-height:210px; border: 1px solid #bbbbbb;" href="#modal-anexo" imagem="' . $a->idAnexos . '" link="' . $link . '" role="button" class="btn anexo span12" data-toggle="modal">
+									<img src="' . $thumb . '" alt="">
+									</a>
+									<span>' . $NomeAnexo . '</span>
+									</div>';
                                 } ?>
 
                                         </td>
@@ -347,62 +384,45 @@ $totalProdutos = 0; ?>
                             </table>
                         </div>
                         <?php } ?>
-
+</div>
                         <!-- Fim ANEXOS -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
+<!-- Visualizar Anexo -->
+<div id="modal-anexo" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal_title">
+<button type="button" class="close" style="color:#f00; padding-right:5px; padding-top:10px" data-dismiss="modal" aria-hidden="true">×</button>
+<h5>Visualizar Anexo</h5>
+</div>
+
+<div class="modal-body">
+<div class="span12" id="div-visualizar-anexo" style="text-align: center">
+<div class='progress progress-info progress-striped active'>
+<div class='bar' style='width: 100%'></div>
 </div>
 </div>
-<a href="#modal-gerar-pagamento" id="btn-forma-pagamento" role="button" data-toggle="modal" class="btn btn-success"><i
-        class="fas fa-cash-register"></i> Gerar Pagamento</a>
+</div>
 
-<?= $modalGerarPagamento ?>
-
-<!-- Modal visualizar anexo -->
-<div id="modal-anexo" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog"
-    aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal_header_anexos">
-        <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="myModalLabel">Visualizar Anexo</h3>
-    </div>
-    <div class="modal-body">
-        <div class="span12" id="div-visualizar-anexo" style="text-align: center">
-            <div class='progress progress-info progress-striped active'>
-                <div class='bar' style='width: 100%'></div>
-            </div>
-        </div>
-    </div>
-    <div class="modal-footer">
-        <button class="btn" data-dismiss="modal" aria-hidden="true">Fechar</button>
+<div class="form_actions" align="center">
+        <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Fechar</button>
         <a href="" id-imagem="" class="btn btn-inverse" id="download">Download</a>
         <a href="" link="" class="btn btn-danger" id="excluir-anexo">Excluir Anexo</a>
-    </div>
 </div>
-<!-- Fim Modal visualizar anexo -->
+</div>
+<!-- Fim Visualizar Anexo -->
 
-<!-- Modal WhatsApp-->
-<div id="modal-whatsapp" class="modal hide fade widget_box_vizualizar4" tabindex="-1" role="dialog"
-    aria-labelledby="myModalLabel" aria-hidden="true">
-    <form action="<?php echo current_url() ?>" method="post">
-        <div class="modal_header_anexos">
-            <button type="button" class="close" style="color:#f00" data-dismiss="modal" aria-hidden="true">×</button>
-            <div align="center">
-                <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
-                                    $zapnumber = preg_replace("/[^0-9]/", "", $result->celular_cliente);
-                                    $totalOS = number_format($totalProdutos + $totalServico, 2, ',', '.');
-                                    echo '<a title="Enviar Por WhatsApp" class="btn btn-success" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $result->nomeCliente . '*.%0d%0a%0d%0aSua%20*OS:%20#' . $result->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($result->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $result->status . '*.%0d%0a%0d%0a' . strip_tags($result->defeito) . '%0d%0a%0d%0a' . strip_tags($result->observacoes) . '%0d%0a%0d%0a' . strip_tags($result->laudoTecnico) . '%0d%0a%0d%0aValor%20Total%20*R$&#58%20'. $totalOS . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20estes%20dados%20para%20fazer%20Log-in%0d%0aEmail:%20*' . strip_tags($result->email) . '*%0d%0aSenha:%20*' . strip_tags($result->senha) . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*"><i class="fab fa-whatsapp"></i> Enviar WhatsApp</a>';
-                                } ?>
+<!-- Modal WhatsApp -->
+<div id="modal-whatsapp" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<form action="<?php echo base_url() ?>index.php/produtos/atualizar_estoque" method="post" id="formEstoque">
+<div class="modal_title">
+<button type="button" class="close" style="color:#f00; padding-right:5px; padding-top:10px" data-dismiss="modal" aria-hidden="true">×</button>
+<h5>Enviar WhatsApp</h5>
+</div>
 
-            </div>
-        </div>
-        <div class="modal-body">
-            <div class="span12" style="margin-left: 0">
-                <font size='2'>Prezado(a) <b><?php echo $result->nomeCliente ?></b>
+<div class="modal-body">
+<div class="span12" style="margin-left: 0">
+<font size='2'>Prezado(a) <b><?php echo $result->nomeCliente ?></b>
                     <br><br>
-                    <div>Sua <b>OS: #<?php echo $result->idOs ?></b> referente ao equipamento
+                    <div>Sua <b>O.S <?php echo $result->idOs ?></b> referente ao equipamento
                         <b><?php echo $result->descricaoProduto ?></b> foi atualizada para
                         <b><?php echo $result->status ?></b>
                     </div>
@@ -413,8 +433,53 @@ $totalProdutos = 0; ?>
                     <br><br>
                     <?php echo $result->laudoTecnico ?>
                     <br><br>
-                    <div>Valor Total <b>R$: <?php echo number_format($totalProdutos + $totalServico, 2, ',', '.') ?></b>
+                    <div>Valor Total <b>R$: <?php echo number_format($totals + $total, 2, ',', '.') ?></b></div>
+                    <br>
+                    <?php echo $configuration['whats_app1'] ?>
+                    <br><br>
+                    <div>Atenciosamente <b><?php echo $configuration['whats_app2'] ?></b> -
+                        <b><?php echo $configuration['whats_app3'] ?></b>
                     </div>
+                </font>
+</div>
+</div>
+<div class="form_actions" align="center">
+<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
+	$zapnumber = preg_replace("/[^0-9]/", "", $result->celular_cliente);
+	$totalOS = number_format($totals + $total, 2, ',', '.');
+	echo '<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 200px" title="Enviar Por WhatsApp" class="button_mini btn btn-mini btn-success tip-top" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $result->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $result->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($result->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $result->status . '*.%0d%0a%0d%0a' . strip_tags($result->defeito) . '%0d%0a%0d%0a' . strip_tags($result->observacoes) . '%0d%0a%0d%0a' . strip_tags($result->laudoTecnico) . '%0d%0a%0d%0aValor%20Total%20*R$&#58%20'. $totalOS . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] . '">
+<span class="button_icon"><i class="fab fa-whatsapp"></i></span><span class="button_text">Enviar Por WhatsApp</span></a>'
+; } ?>
+</div>
+</form>
+</div>
+<!-- Fim Modal WhatsApp -->
+
+
+<!-- Modal WhatsApp 2 -->
+<div id="modal-whatsapp-2" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<form action="<?php echo base_url() ?>index.php/produtos/atualizar_estoque" method="post" id="formEstoque">
+<div class="modal_title">
+<button type="button" class="close" style="color:#f00; padding-right:5px; padding-top:10px" data-dismiss="modal" aria-hidden="true">×</button>
+<h5>Enviar WhatsApp</h5>
+</div>
+
+<div class="modal-body">
+<div class="span12" style="margin-left: 0">
+<font size='2'>Prezado(a) <b><?php echo $result->nomeCliente ?></b>
+                    <br><br>
+                    <div>Sua <b>O.S <?php echo $result->idOs ?></b> referente ao equipamento
+                        <b><?php echo $result->descricaoProduto ?></b> foi atualizada para
+                        <b><?php echo $result->status ?></b>
+                    </div>
+                    <br>
+                    <?php echo $result->defeito ?>
+                    <br><br>
+                    <?php echo $result->observacoes ?>
+                    <br><br>
+                    <?php echo $result->laudoTecnico ?>
+                    <br><br>
+                    <div>Valor Total <b>R$: <?php echo number_format($totals + $total, 2, ',', '.') ?></b></div>
                     <br>
                     <?php echo $configuration['whats_app1'] ?>
                     <br><br>
@@ -432,10 +497,24 @@ $totalProdutos = 0; ?>
                     <div>Você poderá edita-los no menu <b>Minha Conta</b></div>
                     <br>
                 </font>
-            </div>
-    </form>
 </div>
-<!-- Fim Modal WhatsApp-->
+</div>
+<div class="form_actions" align="center">
+<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
+	$zapnumber = preg_replace("/[^0-9]/", "", $result->celular_cliente);
+	$totalOS = number_format($totals + $total, 2, ',', '.');
+	echo '<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 200px" title="Enviar Por WhatsApp" class="button_mini btn btn-mini btn-success tip-top" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $result->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $result->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($result->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $result->status . '*.%0d%0a%0d%0a' . strip_tags($result->defeito) . '%0d%0a%0d%0a' . strip_tags($result->observacoes) . '%0d%0a%0d%0a' . strip_tags($result->laudoTecnico) . '%0d%0a%0d%0aValor%20Total%20*R$&#58%20'. $totalOS . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20estes%20dados%20para%20fazer%20Log-in%0d%0aEmail:%20*' . strip_tags($result->email) . '*%0d%0aSenha:%20*' . strip_tags($result->senha) . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*">
+<span class="button_icon"><i class="fab fa-whatsapp"></i></span><span class="button_text">Enviar Por WhatsApp</span></a>'
+; } ?>
+</div>
+</form>
+</div>
+<!-- Fim Modal WhatsApp 2 -->
+
+</div>
+</div>
+</div>
+
 
 <script type="text/javascript">
 $(document).ready(function() {
