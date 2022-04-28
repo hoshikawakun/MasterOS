@@ -1,42 +1,59 @@
 $(function () {
-    $("#celular").mask("(00)00000-0000")
     $("#cep").mask("00000-000")
     $('#cpfUser').mask('000.000.000-00', { reverse: true });
     $('.cnpjEmitente').mask('00.000.000/0000-00', { reverse: true });
 });
 
-
 $(function () {
-    if ($('.cpfcnpjmine').val() != null) {
-        if ($('.cpfcnpjmine').val() != "") {
-            $(".cpfcnpjmine").prop('readonly', true);
-        }
-    }
-    if ($('.cpfUser').val() != null) {
-        var cpfUser = $('.cpfUser').val().length;
-        if (cpfUser == "14") {
-            $(".cpfUser").prop('readonly', true);
-        }
-    }
-
+    // INICIO FUNÇÃO DE MASCARA RG
+    var rgMascara = function (val) {
+        return val.replace(/\D/g, '').length > 9 ? '00.000.000-0' : '00.000.000-0';
+    },
+        rgOptions = {
+            onKeyPress: function (val, e, field, options) {
+                field.mask(rgMascara.apply({}, arguments), options);
+            },
+        };
+    $('.rguser').mask(rgMascara, rgOptions);
+    $('.rguser').on('paste', function (e) {
+        e.preventDefault();
+        var clipboardCurrentData = (e.originalEvent || e).clipboardData.getData('text/plain');
+        $('.rguser').val(clipboardCurrentData);
+    });
+    // FIM FUNÇÃO DE MASCARA RG
 });
 
 $(function () {
-    var telefoneN = function (val) {
-        return val.replace(/\D/g, '').length > 10 ? '(00)00000-0000' : '(00)0000-00009';
+    // INICIO FUNÇÃO DE MASCARA CPF-USER
+    var cpfMascara = function (val) {
+        return val.replace(/\D/g, '').length > 11 ? '00.000.000/0000-00' : '000.000.000-00';
+    },
+        cpfOptions = {
+            onKeyPress: function (val, e, field, options) {
+                field.mask(cpfMascara.apply({}, arguments), options);
+            },
+        };
+    $('.cpfuser').mask(cpfMascara, cpfOptions);
+    $('.cpfuser').on('paste', function (e) {
+        e.preventDefault();
+        var clipboardCurrentData = (e.originalEvent || e).clipboardData.getData('text/plain');
+        $('.cpfuser').val(clipboardCurrentData);
+    });
+    // FIM FUNÇÃO DE MASCARA CPF-USER
+});
+
+$(function () {
+    // INICIO FUNÇÃO DE MASCARA TELEFONE
+    var telefoneMascara = function (val) {
+        return val.replace(/\D/g, '').length > 10 ? '(00) 00000-0000' : '(00) 0000-00009';
     },
         telefoneOptions = {
             onKeyPress: function (val, e, field, options) {
-                field.mask(telefoneN.apply({}, arguments), options);
-            },
+                field.mask(telefoneMascara.apply({}, arguments), options);
+            }
         };
-    $('#telefone').mask(telefoneN, telefoneOptions);
-    $('#telefone').on('paste', function (e) {
-        e.preventDefault();
-        var clipboardCurrentData = (e.originalEvent || e).clipboardData.getData('text/plain');
-        $('#telefone').val(clipboardCurrentData);
-    });
-
+    $('.telefone1').mask(telefoneMascara, telefoneOptions);
+    // FIM FUNÇÃO DE MASCARA TELEFONE	
 });
 
 $(function () {
