@@ -24,11 +24,17 @@ class Mapos extends MY_Controller
         $this->data['ordens3'] = $this->mapos_model->getOsOrcamentoAprovado();
         $this->data['ordens4'] = $this->mapos_model->getOsEmAndamento();
         $this->data['ordens5'] = $this->mapos_model->getOsAguardandoPecas();
-        $this->data['ordens6'] = $this->mapos_model->getOsConcluido();
-        $this->data['ordens7'] = $this->mapos_model->getOsEntregueAReceber();
+        $this->data['ordens6'] = $this->mapos_model->getOsServicoConcluido();
+        $this->data['ordens7'] = $this->mapos_model->getOsSemReparo();
+        $this->data['ordens8'] = $this->mapos_model->getOsNaoAutorizado();
+        $this->data['ordens9'] = $this->mapos_model->getOsCancelado();
+        $this->data['ordens10'] = $this->mapos_model->getOsProntoDespachar();
+        $this->data['ordens11'] = $this->mapos_model->getOsEntregueAReceber();
+        $this->data['ordens12'] = $this->mapos_model->getOsEmGarantia();
         $this->data['produtos'] = $this->mapos_model->getProdutosMinimo();
         $this->data['os'] = $this->mapos_model->getOsEstatisticas();
         $this->data['estatisticas_financeiro'] = $this->mapos_model->getEstatisticasFinanceiro();
+        $this->data['financeiro_mes_dia'] = $this->mapos_model->getEstatisticasFinanceiroDia($this->input->get('year'));
         $this->data['financeiro_mes'] = $this->mapos_model->getEstatisticasFinanceiroMes($this->input->get('year'));
         $this->data['financeiro_mesinadipl'] = $this->mapos_model->getEstatisticasFinanceiroMesInadimplencia($this->input->get('year'));
         $this->data['menuPainel'] = 'Painel';
@@ -107,7 +113,7 @@ class Mapos extends MY_Controller
         log_info('Efetuou backup do banco de dados.');
 
         $this->load->helper('download');
-        force_download('backup' . date('d-m-y h:m:s') . '.zip', $backup);
+        force_download('backup' . date('d-m-Y H:m:s') . '.zip', $backup);
     }
 
     public function emitente()
@@ -158,6 +164,41 @@ class Mapos extends MY_Controller
         }
     }
 
+    public function do_upload_user()
+    {
+        if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'cEmitente')) {
+            $this->session->set_flashdata('error', 'Você não tem permissão para configurar emitente.');
+            redirect(base_url());
+        }
+
+        $this->load->library('upload');
+
+        $image_upload_folder = FCPATH . 'assets/userImage/';
+
+        if (!file_exists($image_upload_folder)) {
+            mkdir($image_upload_folder, DIR_WRITE_MODE, true);
+        }
+
+        $this->upload_config = [
+            'upload_path' => $image_upload_folder,
+            'allowed_types' => 'png|jpg|jpeg|bmp|gif',
+            'max_size' => 2048,
+            'remove_space' => true,
+            'encrypt_name' => true,
+        ];
+
+        $this->upload->initialize($this->upload_config);
+
+        if (!$this->upload->do_upload()) {
+            $upload_error = $this->upload->display_errors();
+            print_r($upload_error);
+            exit();
+        } else {
+            $file_info = [$this->upload->data()];
+            return $file_info[0]['file_name'];
+        }
+    }
+
     public function cadastrarEmitente()
     {
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'cEmitente')) {
@@ -171,7 +212,7 @@ class Mapos extends MY_Controller
         $this->form_validation->set_rules('ie', 'IE', 'trim');
         $this->form_validation->set_rules('cep', 'CEP', 'required|trim');
         $this->form_validation->set_rules('logradouro', 'Logradouro', 'required|trim');
-        $this->form_validation->set_rules('numero', 'Número', 'required|trim');
+        $this->form_validation->set_rules('numero', 'Número', 'trim');
         $this->form_validation->set_rules('bairro', 'Bairro', 'required|trim');
         $this->form_validation->set_rules('cidade', 'Cidade', 'required|trim');
         $this->form_validation->set_rules('uf', 'UF', 'required|trim');
@@ -220,7 +261,7 @@ class Mapos extends MY_Controller
         $this->form_validation->set_rules('ie', 'IE', 'trim');
         $this->form_validation->set_rules('cep', 'CEP', 'required|trim');
         $this->form_validation->set_rules('logradouro', 'Logradouro', 'required|trim');
-        $this->form_validation->set_rules('numero', 'Número', 'required|trim');
+        $this->form_validation->set_rules('numero', 'Número', 'trim');
         $this->form_validation->set_rules('bairro', 'Bairro', 'required|trim');
         $this->form_validation->set_rules('cidade', 'Cidade', 'required|trim');
         $this->form_validation->set_rules('uf', 'UF', 'required|trim');
@@ -281,6 +322,39 @@ class Mapos extends MY_Controller
             $this->session->set_flashdata('error', 'Ocorreu um erro ao tentar alterar as informações.');
         }
         redirect(site_url('mapos/emitente'));
+    }
+
+    public function uploadUserImage()
+    {
+        if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'cUsuario')) {
+            $this->session->set_flashdata('error', 'Você não tem permissão para mudar a foto.');
+            redirect(base_url());
+        }
+
+        $id = $this->session->userdata('id');
+        if ($id == null || !is_numeric($id)) {
+            $this->session->set_flashdata('error', 'Ocorreu um erro ao tentar alterar sua foto.');
+            redirect(site_url('mapos/minhaConta'));
+        }
+
+        $usuario = $this->mapos_model->getById($id);
+        
+        if (is_file(FCPATH . 'assets/userImage/' . $usuario->url_image_user)) {
+            unlink(FCPATH . 'assets/userImage/' . $usuario->url_image_user);
+        }
+
+        $image = $this->do_upload_user();
+        $imageUserPath = $image;
+        $retorno = $this->mapos_model->editImageUser($id, $imageUserPath);
+        
+        if ($retorno) {
+            $this->session->set_userdata('url_image_user', $imageUserPath);
+            $this->session->set_flashdata('success', 'Foto alterada com sucesso.');
+            log_info('Alterou a Imagem do Usuario.');
+        } else {
+            $this->session->set_flashdata('error', 'Ocorreu um erro ao tentar alterar sua foto.');
+        }
+        redirect(site_url('mapos/minhaConta'));
     }
 
     public function emails()
@@ -344,13 +418,16 @@ class Mapos extends MY_Controller
         $this->form_validation->set_rules('app_name', 'Nome do Sistema', 'required|trim');
         $this->form_validation->set_rules('per_page', 'Registros por página', 'required|numeric|trim');
         $this->form_validation->set_rules('app_theme', 'Tema do Sistema', 'required|trim');
-        $this->form_validation->set_rules('gerenciador_arquivos', 'Gerenciador de Arquivos', 'required|trim');
         $this->form_validation->set_rules('os_notification', 'Notificação de OS', 'trim');
+        $this->form_validation->set_rules('email_automatico', 'Enviar Email Automático', 'trim');
+        $this->form_validation->set_rules('gerenciador_arquivos', 'Gerenciador de Arquivos', 'required|trim');
         $this->form_validation->set_rules('control_estoque', 'Controle de Estoque', 'required|trim');
         $this->form_validation->set_rules('notifica_whats', 'Notificação Whatsapp', 'trim');
         $this->form_validation->set_rules('control_baixa', 'Controle de Baixa', 'required|trim');
         $this->form_validation->set_rules('control_editos', 'Controle de Edição de OS', 'required|trim');
+        $this->form_validation->set_rules('control_edit_vendas', 'Controle de Edição de Vendas', 'required|trim');
         //$this->form_validation->set_rules('control_datatable', 'Controle de Visualização em DataTables', 'required|trim');
+        $this->form_validation->set_rules('per_page_home', 'Registros por página', 'required|numeric|trim');
         $this->form_validation->set_rules('os_status_list[]', 'Controle de visualização de OS', 'required|trim', ['required' => 'Selecione ao menos uma das opções!']);
         $this->form_validation->set_rules('pix_key', 'Chave Pix', 'trim|valid_pix_key', [
             'valid_pix_key' => 'Chave Pix inválida!',
@@ -364,7 +441,9 @@ class Mapos extends MY_Controller
                 'per_page' => $this->input->post('per_page'),
                 'app_theme' => $this->input->post('app_theme'),
                 'os_notification' => $this->input->post('os_notification'),
+                'email_automatico' => $this->input->post('email_automatico'),
                 'control_estoque' => $this->input->post('control_estoque'),
+                'notifica_whats' => $this->input->post('notifica_whats'),
                 'termo_uso' => $this->input->post('termo_uso'),
                 'whats_app1' => $this->input->post('whats_app1'),
                 'whats_app2' => $this->input->post('whats_app2'),
@@ -385,9 +464,23 @@ class Mapos extends MY_Controller
                 'masteros_9' => $this->input->post('masteros_9'),
                 'control_baixa' => $this->input->post('control_baixa'),
                 'control_editos' => $this->input->post('control_editos'),
-                //'control_datatable' => $this->input->post('control_datatable'),
+                'control_edit_vendas' => $this->input->post('control_edit_vendas'),
+                'control_datatable' => $this->input->post('control_datatable'),
                 'pix_key' => $this->input->post('pix_key'),
                 'os_status_list' => json_encode($this->input->post('os_status_list')),
+                'per_page_home' => $this->input->post('per_page_home'),
+                'orcamento' => (set_value('orcamento') == true ? 1 : 0),
+                'orcamento_concluido' => (set_value('orcamento_concluido') == true ? 1 : 0),
+                'orcamento_aprovado' => (set_value('orcamento_aprovado') == true ? 1 : 0),
+                'em_andamento' => (set_value('em_andamento') == true ? 1 : 0),
+                'aguardando_pecas' => (set_value('aguardando_pecas') == true ? 1 : 0),
+                'servico_concluido' => (set_value('servico_concluido') == true ? 1 : 0),
+                'sem_reparo' => (set_value('sem_reparo') == true ? 1 : 0),
+                'nao_autorizado' => (set_value('nao_autorizado') == true ? 1 : 0),
+                'cancelado' => (set_value('cancelado') == true ? 1 : 0),
+                'pronto_despachar' => (set_value('pronto_despachar') == true ? 1 : 0),
+                'entregue_a_receber' => (set_value('entregue_a_receber') == true ? 1 : 0),
+                'em_garantia' => (set_value('em_garantia') == true ? 1 : 0),
             ];
             if ($this->mapos_model->saveConfiguracao($data) == true) {
                 $this->session->set_flashdata('success', 'Configurações do sistema atualizadas com sucesso!');
@@ -446,7 +539,7 @@ class Mapos extends MY_Controller
         return redirect(site_url('mapos/configurar'));
     }
 
-    public function te_upload()
+    public function do_upload_termica()
     {
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'cEmitente')) {
             $this->session->set_flashdata('error', 'Você não tem permissão para configurar emitente.');
@@ -471,7 +564,7 @@ class Mapos extends MY_Controller
 
         $this->upload->initialize($this->upload_config);
 
-        if (!$this->upload->te_upload()) {
+        if (!$this->upload->do_upload_termica()) {
             $upload_error = $this->upload->display_errors();
             print_r($upload_error);
             exit();
@@ -496,13 +589,13 @@ class Mapos extends MY_Controller
         $this->load->helper('file');
         delete_files(FCPATH . 'assets/logo_termica/');
 
-        $imagetermica = $this->te_upload();
+        $imagetermica = $this->do_upload_termica();
         $logotermica = base_url() . 'assets/logo_termica/' . $imagetermica;
 
         $retorno = $this->mapos_model->editLogoTermica($id, $logotermica);
         if ($retorno) {
             $this->session->set_flashdata('success', 'As informações foram alteradas com sucesso.');
-            log_info('Alterou a logomarca do emitente.');
+            log_info('Alterou a logomarca Termica do emitente.');
         } else {
             $this->session->set_flashdata('error', 'Ocorreu um erro ao tentar alterar as informações.');
         }
@@ -530,62 +623,65 @@ class Mapos extends MY_Controller
                 case 'Orçamento':
                     $cor = '#CCCC00';
                     break;
-                                case 'Orçamento Concluido':
+                case 'Orçamento Concluido':
                     $cor = '#CC9966';
                     break;
-                                case 'Orçamento Aprovado':
+                case 'Orçamento Aprovado':
                     $cor = '#339999';
-                                        break;
-                                case 'Em Andamento':
+                    break;
+                case 'Em Andamento':
                     $cor = '#9933FF';
                     break;
-                                case 'Aguardando Peças':
+                case 'Aguardando Peças':
                     $cor = '#FF6600';
-                         break;
-                                case 'Serviço Concluido':
+                     break;
+                case 'Serviço Concluido':
                     $cor = '#0066FF';
                     break;
-                                case 'Sem Reparo':
+                case 'Sem Reparo':
                     $cor = '#999999';
                     break;
-                                case 'Não Autorizado':
+                case 'Não Autorizado':
                     $cor = '#990000';
                     break;
-                                case 'Contato sem Sucesso':
+                case 'Contato sem Sucesso':
                     $cor = '#660099';
                     break;
-                                case 'Cancelado':
+                case 'Cancelado':
                     $cor = '#990000';
                     break;
-                                case 'Pronto-Despachar':
+                case 'Pronto-Despachar':
                     $cor = '#33CCCC';
                     break;
-                                case 'Enviado':
+                case 'Enviado':
                     $cor = '#99CC33';
                     break;
-                                case 'Aguardando Envio':
+                case 'Aguardando Envio':
                     $cor = '#CC66CC';
                     break;
-                                case 'Aguardando Entrega Correio':
+                case 'Aguardando Entrega Correio':
                     $cor = '#996699';
                     break;
-                                case 'Entregue - A Receber':
+                case 'Entregue - A Receber':
                     $cor = '#FF0000';
                     break;
-                                case 'Garantia':
+                case 'Garantia':
                     $cor = '#FF66CC';
                     break;
-                                case 'Abandonado':
+                case 'Abandonado':
                     $cor = '#000000';
                     break;
-                                case 'Comprado pela Loja':
+                case 'Comprado pela Loja':
                     $cor = '#666666';
                     break;
-                                case 'Entregue - Sem Reparo':
+                case 'Entregue - Sem Reparo':
                     $cor = '#000000';
                     break;
-                                case 'Entregue - Faturado':
+                case 'Entregue - Faturado':
                     $cor = '#006633';
+                    break;
+                default:
+                    $cor = '#E0E4CC';
                     break;
             }
             return [
@@ -596,9 +692,9 @@ class Mapos extends MY_Controller
                 'extendedProps' => [
                     'id' => $os->idOs,
                     'cliente' => '<b>Cliente:</b> ' . $os->nomeCliente,
-                    'dataInicial' => '<b>Data Inicial:</b> ' . $os->dataInicial,
-                    'dataFinal' => '<b>Data Final:</b> ' . $os->dataFinal,
-                    'garantia' => '<b>Garantia:</b> ' . $os->garantia,
+                    'dataInicial' => '<b>Data de Entrtada:</b> ' . date('d/m/Y', strtotime($os->dataInicial)),
+                    'dataFinal' => '<b>Data Final:</b> ' . date('d/m/Y', strtotime($os->dataFinal)) ,
+                    'garantia' => '<b>Garantia:</b> ' . date('d/m/Y', strtotime($os->garantia)) ,
                     'status' => '<b>Status da OS:</b> ' . $os->status,
                     'description' => '<b>Descrição/Produto:</b> ' . $os->descricaoProduto,
                     'defeito' => '<b>Defeito:</b> ' . $os->defeito,

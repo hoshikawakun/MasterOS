@@ -53,26 +53,26 @@ class Mapos_model extends CI_Model
     public function pesquisar($termo)
     {
         $data = [];
-        // buscando clientes
+        //buscando clientes
         $this->db->like('nomeCliente', $termo);
         $this->db->or_like('telefone', $termo);
         $this->db->or_like('celular', $termo);
         $this->db->limit($this->data['configuration']['per_page']);
         $data['clientes'] = $this->db->get('clientes')->result();
 
-        // buscando os
+        //buscando os
         $this->db->like('idOs', $termo);
         $this->db->or_like('descricaoProduto', $termo);
         $this->db->or_like('serial', $termo);
         $this->db->limit($this->data['configuration']['per_page']);
         $data['os'] = $this->db->get('os')->result();
 		
-		// buscando equipamento os
+        //buscando equipamento os
         $this->db->like('num_serie', $termo);
         $this->db->limit($this->data['configuration']['per_page']);
         $data['equipamento_os'] = $this->db->get('equipamento_os')->result();
 
-        // buscando produtos
+        //buscando produtos
         $this->db->like('codDeBarra', $termo);
         $this->db->or_like('idProdutos', $termo);
         $this->db->or_like('descricao', $termo);
@@ -210,9 +210,9 @@ class Mapos_model extends CI_Model
         return $this->db->get()->result();
     }
 
-    public function getOsConcluido()
+    public function getOsServicoConcluido()
     {
-        $this->db->select('
+        $this->db->select('os.*,
 		COALESCE((SELECT SUM(produtos_os.preco * produtos_os.quantidade ) FROM produtos_os WHERE produtos_os.os_id = os.idOs), 0) totalProdutos,
 		COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos');
         $this->db->select('os.*, clientes.nomeCliente');
@@ -222,6 +222,74 @@ class Mapos_model extends CI_Model
         $this->db->from('os');
         $this->db->join('clientes', 'clientes.idClientes = os.clientes_id');
         $this->db->where('os.status', 'Serviço Concluido');
+        $this->db->limit($this->data['configuration']['per_page']);
+        $this->db->order_by('idOs', 'desc');
+        return $this->db->get()->result();
+    }
+
+    public function getOsSemReparo()
+    {
+        $this->db->select('os.*,
+		COALESCE((SELECT SUM(produtos_os.preco * produtos_os.quantidade ) FROM produtos_os WHERE produtos_os.os_id = os.idOs), 0) totalProdutos,
+		COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos');
+        $this->db->select('os.*, clientes.nomeCliente');
+        $this->db->select('os.*, clientes.telefone');
+        $this->db->select('os.*, clientes.senha as senha_cliente');
+        $this->db->select('os.*, clientes.email as email_cliemte');
+        $this->db->from('os');
+        $this->db->join('clientes', 'clientes.idClientes = os.clientes_id');
+        $this->db->where('os.status', 'Sem Reparo');
+        $this->db->limit($this->data['configuration']['per_page']);
+        $this->db->order_by('idOs', 'desc');
+        return $this->db->get()->result();
+    }
+
+    public function getOsNaoAutorizado()
+    {
+        $this->db->select('os.*,
+		COALESCE((SELECT SUM(produtos_os.preco * produtos_os.quantidade ) FROM produtos_os WHERE produtos_os.os_id = os.idOs), 0) totalProdutos,
+		COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos');
+        $this->db->select('os.*, clientes.nomeCliente');
+        $this->db->select('os.*, clientes.telefone');
+        $this->db->select('os.*, clientes.senha as senha_cliente');
+        $this->db->select('os.*, clientes.email as email_cliemte');
+        $this->db->from('os');
+        $this->db->join('clientes', 'clientes.idClientes = os.clientes_id');
+        $this->db->where('os.status', 'Não Autorizado');
+        $this->db->limit($this->data['configuration']['per_page']);
+        $this->db->order_by('idOs', 'desc');
+        return $this->db->get()->result();
+    }
+
+    public function getOsCancelado()
+    {
+        $this->db->select('os.*,
+		COALESCE((SELECT SUM(produtos_os.preco * produtos_os.quantidade ) FROM produtos_os WHERE produtos_os.os_id = os.idOs), 0) totalProdutos,
+		COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos');
+        $this->db->select('os.*, clientes.nomeCliente');
+        $this->db->select('os.*, clientes.telefone');
+        $this->db->select('os.*, clientes.senha as senha_cliente');
+        $this->db->select('os.*, clientes.email as email_cliemte');
+        $this->db->from('os');
+        $this->db->join('clientes', 'clientes.idClientes = os.clientes_id');
+        $this->db->where('os.status', 'Não Autorizado');
+        $this->db->limit($this->data['configuration']['per_page']);
+        $this->db->order_by('idOs', 'desc');
+        return $this->db->get()->result();
+    }
+
+    public function getOsProntoDespachar()
+    {
+        $this->db->select('os.*,
+		COALESCE((SELECT SUM(produtos_os.preco * produtos_os.quantidade ) FROM produtos_os WHERE produtos_os.os_id = os.idOs), 0) totalProdutos,
+		COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos');
+        $this->db->select('os.*, clientes.nomeCliente');
+        $this->db->select('os.*, clientes.telefone');
+        $this->db->select('os.*, clientes.senha as senha_cliente');
+        $this->db->select('os.*, clientes.email as email_cliemte');
+        $this->db->from('os');
+        $this->db->join('clientes', 'clientes.idClientes = os.clientes_id');
+        $this->db->where('os.status', 'Pronto-Despachar');
         $this->db->limit($this->data['configuration']['per_page']);
         $this->db->order_by('idOs', 'desc');
         return $this->db->get()->result();
@@ -243,14 +311,32 @@ class Mapos_model extends CI_Model
         $this->db->order_by('idOs', 'desc');
         return $this->db->get()->result();
     }
+
+    public function getOsEmGarantia()
+    {
+        $this->db->select('os.*,
+		COALESCE((SELECT SUM(produtos_os.preco * produtos_os.quantidade ) FROM produtos_os WHERE produtos_os.os_id = os.idOs), 0) totalProdutos,
+		COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos');
+        $this->db->select('os.*, clientes.nomeCliente');
+        $this->db->select('os.*, clientes.telefone');
+        $this->db->select('os.*, clientes.senha as senha_cliente');
+        $this->db->select('os.*, clientes.email as email_cliemte');
+        $this->db->from('os');
+        $this->db->join('clientes', 'clientes.idClientes = os.clientes_id');
+        $this->db->where('os.status', 'Garantia');
+        $this->db->limit($this->data['configuration']['per_page']);
+        $this->db->order_by('idOs', 'desc');
+        return $this->db->get()->result();
+    }
     
     public function calendario($start, $end, $status = null)
     {
         $this->db->select(
             'os.*,
             clientes.nomeCliente,
-		COALESCE((SELECT SUM(produtos_os.preco * produtos_os.quantidade ) FROM produtos_os WHERE produtos_os.os_id = os.idOs), 0) totalProdutos,
-		COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos'
+            COALESCE((SELECT SUM(produtos_os.preco * produtos_os.quantidade ) FROM produtos_os WHERE produtos_os.os_id = os.idOs), 0) totalProdutos,
+            COALESCE((SELECT SUM(servicos_os.preco * servicos_os.quantidade ) FROM servicos_os WHERE servicos_os.os_id = os.idOs), 0) totalServicos'
+		
         );
         $this->db->from('os');
         $this->db->join('clientes', 'clientes.idClientes = os.clientes_id');
@@ -281,9 +367,9 @@ class Mapos_model extends CI_Model
 
     public function getEstatisticasFinanceiro()
     {
-        $sql = "SELECT SUM(CASE WHEN baixado = 1 AND tipo = 'receita' THEN valor END) as total_receita,
+        $sql = "SELECT SUM(CASE WHEN baixado = 1 AND tipo = 'receita' THEN valor - ((desconto * valor) / 100)  END) as total_receita,
                        SUM(CASE WHEN baixado = 1 AND tipo = 'despesa' THEN valor END) as total_despesa,
-                       SUM(CASE WHEN baixado = 0 AND tipo = 'receita' THEN valor END) as total_receita_pendente,
+                       SUM(CASE WHEN baixado = 0 AND tipo = 'receita' THEN valor - ((desconto * valor) / 100)  END) as total_receita_pendente,
                        SUM(CASE WHEN baixado = 0 AND tipo = 'despesa' THEN valor END) as total_despesa_pendente FROM lancamentos";
 
         return $this->db->query($sql)->row();
@@ -299,34 +385,50 @@ class Mapos_model extends CI_Model
 
         $sql = "
             SELECT
-                SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 1) AND baixado = 1 AND tipo = 'receita' THEN valor END) AS VALOR_JAN_REC,
+                SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 1) AND baixado = 1 AND tipo = 'receita' THEN valor - ((desconto * valor) / 100)  END) AS VALOR_JAN_REC,
                 SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 1) AND baixado = 1 AND tipo = 'despesa' THEN valor END) AS VALOR_JAN_DES,
-                SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 2) AND baixado = 1 AND tipo = 'receita' THEN valor END) AS VALOR_FEV_REC,
+                SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 2) AND baixado = 1 AND tipo = 'receita' THEN valor - ((desconto * valor) / 100)  END) AS VALOR_FEV_REC,
                 SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 2) AND baixado = 1 AND tipo = 'despesa' THEN valor END) AS VALOR_FEV_DES,
-                SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 3) AND baixado = 1 AND tipo = 'receita' THEN valor END) AS VALOR_MAR_REC,
+                SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 3) AND baixado = 1 AND tipo = 'receita' THEN valor - ((desconto * valor) / 100)  END) AS VALOR_MAR_REC,
                 SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 3) AND baixado = 1 AND tipo = 'despesa' THEN valor END) AS VALOR_MAR_DES,
-                SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 4) AND baixado = 1 AND tipo = 'receita' THEN valor END) AS VALOR_ABR_REC,
+                SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 4) AND baixado = 1 AND tipo = 'receita' THEN valor - ((desconto * valor) / 100)  END) AS VALOR_ABR_REC,
                 SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 4) AND baixado = 1 AND tipo = 'despesa' THEN valor END) AS VALOR_ABR_DES,
-                SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 5) AND baixado = 1 AND tipo = 'receita' THEN valor END) AS VALOR_MAI_REC,
+                SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 5) AND baixado = 1 AND tipo = 'receita' THEN valor - ((desconto * valor) / 100)  END) AS VALOR_MAI_REC,
                 SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 5) AND baixado = 1 AND tipo = 'despesa' THEN valor END) AS VALOR_MAI_DES,
-                SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 6) AND baixado = 1 AND tipo = 'receita' THEN valor END) AS VALOR_JUN_REC,
+                SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 6) AND baixado = 1 AND tipo = 'receita' THEN valor - ((desconto * valor) / 100)  END) AS VALOR_JUN_REC,
                 SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 6) AND baixado = 1 AND tipo = 'despesa' THEN valor END) AS VALOR_JUN_DES,
-                SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 7) AND baixado = 1 AND tipo = 'receita' THEN valor END) AS VALOR_JUL_REC,
+                SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 7) AND baixado = 1 AND tipo = 'receita' THEN valor - ((desconto * valor) / 100)  END) AS VALOR_JUL_REC,
                 SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 7) AND baixado = 1 AND tipo = 'despesa' THEN valor END) AS VALOR_JUL_DES,
-                SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 8) AND baixado = 1 AND tipo = 'receita' THEN valor END) AS VALOR_AGO_REC,
+                SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 8) AND baixado = 1 AND tipo = 'receita' THEN valor - ((desconto * valor) / 100)  END) AS VALOR_AGO_REC,
                 SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 8) AND baixado = 1 AND tipo = 'despesa' THEN valor END) AS VALOR_AGO_DES,
-                SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 9) AND baixado = 1 AND tipo = 'receita' THEN valor END) AS VALOR_SET_REC,
+                SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 9) AND baixado = 1 AND tipo = 'receita' THEN valor - ((desconto * valor) / 100)  END) AS VALOR_SET_REC,
                 SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 9) AND baixado = 1 AND tipo = 'despesa' THEN valor END) AS VALOR_SET_DES,
-                SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 10) AND baixado = 1 AND tipo = 'receita' THEN valor END) AS VALOR_OUT_REC,
+                SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 10) AND baixado = 1 AND tipo = 'receita' THEN valor - ((desconto * valor) / 100)  END) AS VALOR_OUT_REC,
                 SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 10) AND baixado = 1 AND tipo = 'despesa' THEN valor END) AS VALOR_OUT_DES,
-                SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 11) AND baixado = 1 AND tipo = 'receita' THEN valor END) AS VALOR_NOV_REC,
+                SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 11) AND baixado = 1 AND tipo = 'receita' THEN valor - ((desconto * valor) / 100)  END) AS VALOR_NOV_REC,
                 SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 11) AND baixado = 1 AND tipo = 'despesa' THEN valor END) AS VALOR_NOV_DES,
-                SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 12) AND baixado = 1 AND tipo = 'receita' THEN valor END) AS VALOR_DEZ_REC,
+                SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 12) AND baixado = 1 AND tipo = 'receita' THEN valor - ((desconto * valor) / 100)  END) AS VALOR_DEZ_REC,
                 SUM(CASE WHEN (EXTRACT(MONTH FROM data_pagamento) = 12) AND baixado = 1 AND tipo = 'despesa' THEN valor END) AS VALOR_DEZ_DES
             FROM lancamentos
             WHERE EXTRACT(YEAR FROM data_pagamento) = ?
         ";
 
+        return $this->db->query($sql, [intval($numbersOnly)])->row();
+    }
+
+    public function getEstatisticasFinanceiroDia($year)
+    {
+        $numbersOnly = preg_replace('/[^0-9]/', '', $year);
+        if (!$numbersOnly) {
+            $numbersOnly = date('Y');
+        }
+        $sql = "
+            SELECT
+                SUM(CASE WHEN (EXTRACT(DAY FROM data_pagamento) = " . date('d') . ") AND EXTRACT(MONTH FROM data_pagamento) = " . date('m') . " AND baixado = 1 AND tipo = 'receita' THEN valor - ((desconto * valor) / 100)  END) AS VALOR_" . date('m') . "_REC,
+                SUM(CASE WHEN (EXTRACT(DAY FROM data_pagamento) = " . date('d') . ") AND EXTRACT(MONTH FROM data_pagamento) = " . date('m') . " AND baixado = 1 AND tipo = 'despesa' THEN valor END) AS VALOR_" . date('m') . "_DES
+            FROM lancamentos
+            WHERE EXTRACT(YEAR FROM data_pagamento) = ?
+        ";
         return $this->db->query($sql, [intval($numbersOnly)])->row();
     }
 
@@ -422,6 +524,13 @@ class Mapos_model extends CI_Model
         return $this->db->update('emitente');
     }
 
+    public function editImageUser($id, $imageUserPath)
+    {
+        $this->db->set('url_image_user', $imageUserPath);
+        $this->db->where('idUsuarios', $id);
+        return $this->db->update('usuarios');
+    }
+
     public function check_credentials($email)
     {
         $this->db->where('email', $email);
@@ -435,6 +544,7 @@ class Mapos_model extends CI_Model
      * @param array $data
      * @return boolean
      */
+    
     public function editLogoTermica($id, $logotermica)
     {
         $this->db->set('url_termica', $logotermica);

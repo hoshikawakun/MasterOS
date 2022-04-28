@@ -120,7 +120,13 @@ class Relatorios_model extends CI_Model
         if ($estoqueInicial != null) {
             $whereEstoque = "AND estoque BETWEEN " . $this->db->escape($estoqueInicial) . " AND " . $this->db->escape($estoqueFinal);
         }
-        $query = "SELECT * FROM produtos WHERE estoque >= 0 $wherePreco $whereEstoque ORDER BY descricao";
+        $query = "
+            SELECT produtos.*, SUM(produtos.estoque * produtos.precoVenda) as valorEstoque
+            FROM produtos
+            WHERE estoque >= 0 $wherePreco $whereEstoque
+            GROUP BY produtos.idProdutos
+            ORDER BY descricao
+        ";
 
         return $this->db->query($query)->result();
     }

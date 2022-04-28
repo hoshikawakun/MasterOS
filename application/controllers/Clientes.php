@@ -63,6 +63,7 @@ class Clientes extends MY_Controller
                 'telefone' => set_value('telefone'),
                 'celular' => set_value('celular'),
                 'email' => set_value('email'),
+                'senha' => set_value('senha'),
                 'rua' => set_value('rua'),
                 'numero' => set_value('numero'),
                 'complemento' => set_value('complemento'),
@@ -72,7 +73,6 @@ class Clientes extends MY_Controller
                 'cep' => set_value('cep'),
                 'dataCadastro' => date('Y-m-d'),
                 'foto_url' => set_value('foto_url'),
-                'senha' => set_value('senha'),
                 'fornecedor' => (set_value('fornecedor') == true ? 1 : 0),
             ];
 
@@ -114,6 +114,7 @@ class Clientes extends MY_Controller
                 'telefone' => $this->input->post('telefone'),
                 'celular' => $this->input->post('celular'),
                 'email' => $this->input->post('email'),
+                'senha' => $this->input->post('senha'),
                 'rua' => $this->input->post('rua'),
                 'numero' => $this->input->post('numero'),
                 'complemento' => $this->input->post('complemento'),
@@ -122,7 +123,6 @@ class Clientes extends MY_Controller
                 'estado' => $this->input->post('estado'),
                 'cep' => $this->input->post('cep'),
                 'foto_url' => $this->input->post('foto_url'),
-                'senha' => $this->input->post('senha'),
                 'fornecedor' => (set_value('fornecedor') == true ? 1 : 0),
             ];
 
@@ -184,7 +184,7 @@ class Clientes extends MY_Controller
         }
 
         $this->clientes_model->delete('clientes', 'idClientes', $id);
-        log_info('Removeu um cliente. ID' . $id);
+        log_info('Removeu cliente ID: ' . $id);
 
         $this->session->set_flashdata('success', 'Cliente excluido com sucesso!');
         redirect(site_url('clientes/gerenciar/'));
