@@ -3,7 +3,7 @@
 /**
  * App current version
  */
-$config['app_version'] = '11.0';
+$config['app_version'] = '11.1';
 
 /**
  * Nome do sistema
