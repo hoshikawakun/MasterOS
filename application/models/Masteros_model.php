@@ -1,5 +1,5 @@
 <?php
-class Mapos_model extends CI_Model
+class Masteros_model extends CI_Model
 {
 
     /**
