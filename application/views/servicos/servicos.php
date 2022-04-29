@@ -31,7 +31,7 @@
 <div class="span12">
 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'aServico')) { ?>
 <div class="span4">
-<a href="<?php echo base_url() ?>index.php/servicos/adicionar" class="button_mini btn btn-mini btn-success" target="new" style="margin-bottom:10px; max-width: 170px">
+<a href="<?php echo base_url() ?>index.php/servicos/adicionar" class="button btn btn-mini btn-success" target="new" style="margin-bottom:10px; max-width: 170px">
 <span class="button_icon"><i class='fas fa-plus-circle'></i></span><span class="button_text">Add. Serviços</span></a>
 </div>
 <?php } ?>

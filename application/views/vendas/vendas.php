@@ -4,7 +4,7 @@
 <div class="span12">
 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'aVenda')) { ?>
 <div class="span4">
-<a href="<?php echo base_url(); ?>index.php/vendas/adicionar" class="button_mini btn btn-mini btn-success" style="margin-bottom:10px; max-width: 160px">
+<a href="<?php echo base_url(); ?>index.php/vendas/adicionar" class="button btn btn-mini btn-success" style="margin-bottom:10px; max-width: 160px">
 <span class="button_icon"><i class='fas fa-plus-circle'></i></span><span class="button_text">Nova Venda</span></a>
 </div>
 <?php } ?>

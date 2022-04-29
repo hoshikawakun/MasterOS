@@ -32,7 +32,7 @@ $periodo = $this->input->get('periodo');
 <div class="span12">
 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'aLancamento')) { ?>
 <div class="span4">
-<a href="#modalReceita" data-toggle="modal" role="button" class="button_mini btn btn-mini btn-success" style="margin-bottom:10px; margin-right:10px; width: 180px">
+<a href="#modalReceita" data-toggle="modal" role="button" class="button btn btn-mini btn-success" style="margin-bottom:10px; margin-right:10px; width: 180px">
 <span class="button_icon"><i class='fas fa-plus-circle'></i></span><span class="button_text" title="Cadastrar nova receita">Add. Receita/Despesa</span></a>
 </div>
 <?php } ?>
@@ -90,8 +90,12 @@ $periodo = $this->input->get('periodo');
         </div>
 
         <div class="span2 pull-right">
-                <button type="submit" class="button_mini btn btn-primary btn-sm" style="min-width: 120px">
-                    <span class="button_icon"><i class='bx bx-filter-alt'></i></span><span class="button_text">Filtrar</span></a></button>
+                <button type="submit" class="button_mini btn btn-mini btn-primary btn-sm" style="min-width: 120px">
+                    <span class="button_icon"><i class='fas fa-filter'></i></span><span class="button_text">Filtrar</span></a>   
+                    
+                    
+                    
+                    </button>
             </div>
 </form>
 </div>

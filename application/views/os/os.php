@@ -15,16 +15,16 @@
 
 <div class="widget_painel_2">
 <form method="get" action="<?php echo base_url(); ?>index.php/os/gerenciar">
-
-<div class="span11">
-		<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'aOs')) { ?>
-		<div class="span4">
-		<a title="Adicionar OS" href="<?php echo base_url(); ?>index.php/os/adicionar" class="button_mini btn btn-mini btn-success tip-top" target="new" style="margin-bottom:10px; max-width: 160px">
-		<span class="button_icon"><i class='fas fa-plus-circle'></i></span><span class="button_text">Adicionar OS</span></a>
-		</div>
-		<?php } ?>
-		<input style="margin-right:10px" type="text" name="pesquisa" id="pesquisa" placeholder="Nome do cliente a pesquisar" class="span2" value="">
-		<select style="margin-right:10px" name="status" id="" class="span2">
+<div class="span12">
+<div class="span3">
+<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'aOs')) { ?>
+<a title="Adicionar OS" href="<?php echo base_url(); ?>index.php/os/adicionar" class="button btn btn-mini btn-success tip-top" target="new" style="margin-bottom:10px">
+<span class="button_icon"><i class='fas fa-plus-circle'></i></span><span class="button_text">Adicionar OS</span></a>
+<?php } ?>
+</div>
+<div class="span7">
+<input style="margin-right:10px; width:190px" type="text" name="pesquisa" id="pesquisa" placeholder="Nome do cliente a pesquisar" class="span4" value="">
+<select style="margin-right:10px; width:190px" name="status" id="" class="span4">
 		<option value="">Todos os Status</option>
 			<option value="Orçamento">Orçamento</option>
 			<option value="Orçamento Concluido">Orçamento Concluido</option>
@@ -46,14 +46,13 @@
 			<option value="Comprado pela Loja">Comprado pela Loja</option>
 			<option value="Entregue - Sem Reparo">Entregue - Sem Reparo</option>
 			<option value="Entregue - Faturado">Entregue - Faturado</option>
-		</select>
-		<input style="margin-right:10px" type="text" name="data" autocomplete="off" id="data" placeholder="Data Inicial" class="span2 datepicker" value="" />
-		<input style="margin-right:10px" type="text" name="data2" autocomplete="off" id="data2" placeholder="Data Final" class="span2 datepicker" value="">
-		</div>
-		<div class="span1">
-		<button class="button_mini btn btn-mini btn-warning" style="min-width: 30px">
-		<span class="button_icon"><i class='fas fa-search'></i></span></button>
-		</div>
+</select>
+<input style="margin-right:10px; width:120px" type="text" name="data" autocomplete="off" id="data" placeholder="Data Inicial" class="span2 datepicker" value="" />
+<input style="margin-right:10px; width:120px" type="text" name="data2" autocomplete="off" id="data2" placeholder="Data Final" class="span2 datepicker" value="">
+</div>
+<div class="span2">
+<button class="button btn btn-mini btn-warning span2" style="margin-bottom:10px; max-width:100px"><span class="button_icon"><i class='fas fa-search'></i></span><span class="button_text">Pesquisar</span></button>
+</div>
 </form>
 </div>
 </div>

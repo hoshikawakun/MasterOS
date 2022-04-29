@@ -30,17 +30,17 @@
 <div class="widget_painel_2">
 <div class="span12">
 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'aProduto')) { ?>
-<a href="<?php echo base_url(); ?>index.php/produtos/adicionar" class="button_mini btn btn-mini btn-success" target="new" style="margin-bottom:10px; margin-right:10px; max-width: 160px">
+<a href="<?php echo base_url(); ?>index.php/produtos/adicionar" class="button btn btn-mini btn-success" target="new" style="margin-bottom:10px; margin-right:10px; max-width: 160px">
 <span class="button_icon"><i class='fas fa-plus-circle'></i></span><span class="button_text">Add. Produtos</span></a>
 <?php } ?>
 
-<a href="#modal-etiquetas" role="button" data-toggle="modal" class="button_mini btn btn-mini btn-warning" style="margin-bottom:10px; margin-right:10px; max-width: 300px">
+<a href="#modal-etiquetas" role="button" data-toggle="modal" class="button btn btn-mini btn-warning" style="margin-bottom:10px; margin-right:10px; max-width: 300px">
 <span class="button_icon"><i class='fas fa-barcode' ></i></span><span class="button_text">Gerar Etiquetas Cod. Barra</span></a>
 
-<a href="#modal-etiquetas_sku" role="button" data-toggle="modal" class="button_mini btn btn-mini btn-warning" style="margin-bottom:10px; margin-right:10px; max-width: 300px">
+<a href="#modal-etiquetas_sku" role="button" data-toggle="modal" class="button btn btn-mini btn-warning" style="margin-bottom:10px; margin-right:10px; max-width: 300px">
 <span class="button_icon"><i class='fas fa-barcode' ></i></span><span class="button_text">Gerar Etiquetas Cod. Produto</span></a>
 
-<a href="#modal-etiquetas-qr" role="button" data-toggle="modal" class="button_mini btn btn-mini btn-warning" style="margin-bottom:10px; margin-right:10px; max-width: 300px">
+<a href="#modal-etiquetas-qr" role="button" data-toggle="modal" class="button btn btn-mini btn-warning" style="margin-bottom:10px; margin-right:10px; max-width: 300px">
 <span class="button_icon"><i class='fas fa-barcode' ></i></span><span class="button_text">Gerar Etiquetas Cod. QR</span></a>
 </div>
 </div>
@@ -68,7 +68,7 @@
                     
                     if (!$results) {
                         echo '<tr>
-                                <td colspan="5">Nenhum Cliente Cadastrado</td>
+                                <td colspan="6">Nenhum Cliente Cadastrado</td>
                                 </tr>';
                     }
                     foreach ($results as $r) {
