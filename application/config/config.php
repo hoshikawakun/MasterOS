@@ -13,7 +13,7 @@ $config['app_name'] = 'Master-OS';
 /**
  * Descrição do sistema
  */
-$config['app_subname'] = 'Sistema de Gestão Financeira, controle de Estoque, Vendas, Ordens de Serviço e Banco de Arquivos';
+$config['app_subname'] = 'Sistema de Gestão Financeira, controle de Estoque, Vendas e Ordens de Serviço';
 
 
 /*
