@@ -37,7 +37,7 @@ class Arquivos extends MY_Controller
         $ate = $this->input->get('data2');
 
         if ($pesquisa == null && $de == null && $ate == null) {
-            $this->data['configuration']['base_url'] = site_url('arquivos/gerenciar/');
+            $this->data['configuration']['base_url'] = site_url('arquivos');
             $this->data['configuration']['total_rows'] = $this->arquivos_model->count('documentos');
 
             $this->pagination->initialize($this->data['configuration']);
@@ -177,7 +177,7 @@ class Arquivos extends MY_Controller
 
         if ($id == null || !is_numeric($id)) {
             $this->session->set_flashdata('error', 'Erro! O arquivo não pode ser localizado.');
-            redirect(base_url() . 'index.php/arquivos/gerenciar/');
+            redirect(base_url() . 'index.php/arquivos/');
         }
 
         $file = $this->arquivos_model->getById($id);
@@ -197,7 +197,7 @@ class Arquivos extends MY_Controller
         $id = $this->input->post('id');
         if ($id == null || !is_numeric($id)) {
             $this->session->set_flashdata('error', 'Erro! O arquivo não pode ser localizado.');
-            redirect(site_url('arquivos/gerenciar/'));
+            redirect(site_url('arquivos'));
         }
 
         $file = $this->arquivos_model->getById($id);
@@ -210,7 +210,7 @@ class Arquivos extends MY_Controller
         } else {
             $this->session->set_flashdata('error', 'Ocorreu um erro ao tentar excluir o arquivo.');
         }
-        redirect(site_url('arquivos/gerenciar/'));
+        redirect(site_url('arquivos'));
     }
 
     public function do_upload()
