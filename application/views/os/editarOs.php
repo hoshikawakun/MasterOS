@@ -780,7 +780,7 @@
                 <div class="span6" style="margin-left: 0">
                     <label for="valor">Valor*</label>
                     <input type="hidden" id="tipo" name="tipo" value="receita" />
-                    <input name="valor" type="text" class="span12 money" id="valor" value="<?php echo number_format($totals + $total, 2, ',', '.'); ?>" readonly="readonly" data-affixes-stay="true" data-thousands="" data-decimal="." />
+                    <input name="valor" type="text" class="span12 money" id="valor" value="<?php echo number_format($totals + $total, 2, ',', '.'); ?>" data-affixes-stay="true" data-thousands="" data-decimal="." />
                 </div>
                 <div class="span6" style="margin-left: 2;">
                     <label for="valor">Valor Com Desconto*</label>
