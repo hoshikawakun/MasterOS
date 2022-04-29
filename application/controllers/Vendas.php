@@ -86,7 +86,7 @@ class Vendas extends MY_Controller
     {
         if (!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))) {
             $this->session->set_flashdata('error', 'Item não pode ser encontrado, parâmetro não foi passado corretamente.');
-            redirect('mapos');
+            redirect('masteros');
         }
 
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'eVenda')) {
@@ -129,7 +129,7 @@ class Vendas extends MY_Controller
     {
         if (!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))) {
             $this->session->set_flashdata('error', 'Item não pode ser encontrado, parâmetro não foi passado corretamente.');
-            redirect('mapos');
+            redirect('masteros');
         }
 
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'vVenda')) {
@@ -138,10 +138,10 @@ class Vendas extends MY_Controller
         }
 
         $this->data['custom_error'] = '';
-        $this->load->model('mapos_model');
+        $this->load->model('masteros_model');
         $this->data['result'] = $this->vendas_model->getById($this->uri->segment(3));
         $this->data['produtos'] = $this->vendas_model->getProdutos($this->uri->segment(3));
-        $this->data['emitente'] = $this->mapos_model->getEmitente();
+        $this->data['emitente'] = $this->masteros_model->getEmitente();
         $this->data['modalGerarPagamento'] = $this->load->view(
             'cobrancas/modalGerarPagamento',
             [
@@ -161,7 +161,7 @@ class Vendas extends MY_Controller
     {
         if (!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))) {
             $this->session->set_flashdata('error', 'Item não pode ser encontrado, parâmetro não foi passado corretamente.');
-            redirect('mapos');
+            redirect('masteros');
         }
 
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'vVenda')) {
@@ -170,10 +170,10 @@ class Vendas extends MY_Controller
         }
 
         $this->data['custom_error'] = '';
-        $this->load->model('mapos_model');
+        $this->load->model('masteros_model');
         $this->data['result'] = $this->vendas_model->getById($this->uri->segment(3));
         $this->data['produtos'] = $this->vendas_model->getProdutos($this->uri->segment(3));
-        $this->data['emitente'] = $this->mapos_model->getEmitente();
+        $this->data['emitente'] = $this->masteros_model->getEmitente();
         $this->data['qrCode'] = $this->vendas_model->getQrCode(
             $this->uri->segment(3),
             $this->data['configuration']['pix_key'],
@@ -187,7 +187,7 @@ class Vendas extends MY_Controller
     {
         if (!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))) {
             $this->session->set_flashdata('error', 'Item não pode ser encontrado, parâmetro não foi passado corretamente.');
-            redirect('mapos');
+            redirect('masteros');
         }
 
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'vVenda')) {
@@ -196,10 +196,10 @@ class Vendas extends MY_Controller
         }
 
         $this->data['custom_error'] = '';
-        $this->load->model('mapos_model');
+        $this->load->model('masteros_model');
         $this->data['result'] = $this->vendas_model->getById($this->uri->segment(3));
         $this->data['produtos'] = $this->vendas_model->getProdutos($this->uri->segment(3));
-        $this->data['emitente'] = $this->mapos_model->getEmitente();
+        $this->data['emitente'] = $this->masteros_model->getEmitente();
         $this->data['qrCode'] = $this->vendas_model->getQrCode(
             $this->uri->segment(3),
             $this->data['configuration']['pix_key'],

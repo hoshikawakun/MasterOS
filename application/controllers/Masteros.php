@@ -2,7 +2,7 @@
     exit('No direct script access allowed');
 }
 
-class Mapos extends MY_Controller
+class Masteros extends MY_Controller
 {
 
     /**
@@ -14,48 +14,48 @@ class Mapos extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('mapos_model');
+        $this->load->model('masteros_model');
     }
 
     public function index()
     {
-        $this->data['ordens1'] = $this->mapos_model->getOsOrcamento();
-        $this->data['ordens2'] = $this->mapos_model->getOsOrcamentoConcluido();
-        $this->data['ordens3'] = $this->mapos_model->getOsOrcamentoAprovado();
-        $this->data['ordens4'] = $this->mapos_model->getOsEmAndamento();
-        $this->data['ordens5'] = $this->mapos_model->getOsAguardandoPecas();
-        $this->data['ordens6'] = $this->mapos_model->getOsServicoConcluido();
-        $this->data['ordens7'] = $this->mapos_model->getOsSemReparo();
-        $this->data['ordens8'] = $this->mapos_model->getOsNaoAutorizado();
-        $this->data['ordens9'] = $this->mapos_model->getOsCancelado();
-        $this->data['ordens10'] = $this->mapos_model->getOsProntoDespachar();
-        $this->data['ordens11'] = $this->mapos_model->getOsEntregueAReceber();
-        $this->data['ordens12'] = $this->mapos_model->getOsEmGarantia();
-        $this->data['produtos'] = $this->mapos_model->getProdutosMinimo();
-        $this->data['os'] = $this->mapos_model->getOsEstatisticas();
-        $this->data['estatisticas_financeiro'] = $this->mapos_model->getEstatisticasFinanceiro();
-        $this->data['financeiro_mes_dia'] = $this->mapos_model->getEstatisticasFinanceiroDia($this->input->get('year'));
-        $this->data['financeiro_mes'] = $this->mapos_model->getEstatisticasFinanceiroMes($this->input->get('year'));
-        $this->data['financeiro_mesinadipl'] = $this->mapos_model->getEstatisticasFinanceiroMesInadimplencia($this->input->get('year'));
+        $this->data['ordens1'] = $this->masteros_model->getOsOrcamento();
+        $this->data['ordens2'] = $this->masteros_model->getOsOrcamentoConcluido();
+        $this->data['ordens3'] = $this->masteros_model->getOsOrcamentoAprovado();
+        $this->data['ordens4'] = $this->masteros_model->getOsEmAndamento();
+        $this->data['ordens5'] = $this->masteros_model->getOsAguardandoPecas();
+        $this->data['ordens6'] = $this->masteros_model->getOsServicoConcluido();
+        $this->data['ordens7'] = $this->masteros_model->getOsSemReparo();
+        $this->data['ordens8'] = $this->masteros_model->getOsNaoAutorizado();
+        $this->data['ordens9'] = $this->masteros_model->getOsCancelado();
+        $this->data['ordens10'] = $this->masteros_model->getOsProntoDespachar();
+        $this->data['ordens11'] = $this->masteros_model->getOsEntregueAReceber();
+        $this->data['ordens12'] = $this->masteros_model->getOsEmGarantia();
+        $this->data['produtos'] = $this->masteros_model->getProdutosMinimo();
+        $this->data['os'] = $this->masteros_model->getOsEstatisticas();
+        $this->data['estatisticas_financeiro'] = $this->masteros_model->getEstatisticasFinanceiro();
+        $this->data['financeiro_mes_dia'] = $this->masteros_model->getEstatisticasFinanceiroDia($this->input->get('year'));
+        $this->data['financeiro_mes'] = $this->masteros_model->getEstatisticasFinanceiroMes($this->input->get('year'));
+        $this->data['financeiro_mesinadipl'] = $this->masteros_model->getEstatisticasFinanceiroMesInadimplencia($this->input->get('year'));
         $this->data['menuPainel'] = 'Painel';
-        $this->data['view'] = 'mapos/painel';
+        $this->data['view'] = 'masteros/painel';
         return $this->layout();
     }
 
     public function minhaConta()
     {
-        $this->data['usuario'] = $this->mapos_model->getById($this->session->userdata('id'));
-        $this->data['view'] = 'mapos/minhaConta';
+        $this->data['usuario'] = $this->masteros_model->getById($this->session->userdata('id'));
+        $this->data['view'] = 'masteros/minhaConta';
         return $this->layout();
     }
 
     public function alterarSenha()
     {
-        $current_user = $this->mapos_model->getById($this->session->userdata('id'));
+        $current_user = $this->masteros_model->getById($this->session->userdata('id'));
 
         if (!$current_user) {
             $this->session->set_flashdata('error', 'Ocorreu um erro ao pesquisar usuário!');
-            redirect(site_url('mapos/minhaConta'));
+            redirect(site_url('masteros/minhaConta'));
         }
 
         $oldSenha = $this->input->post('oldSenha');
@@ -63,31 +63,31 @@ class Mapos extends MY_Controller
 
         if (!password_verify($oldSenha, $current_user->senha)) {
             $this->session->set_flashdata('error', 'A senha atual não corresponde com a senha informada.');
-            redirect(site_url('mapos/minhaConta'));
+            redirect(site_url('masteros/minhaConta'));
         }
 
-        $result = $this->mapos_model->alterarSenha($senha);
+        $result = $this->masteros_model->alterarSenha($senha);
 
         if ($result) {
             $this->session->set_flashdata('success', 'Senha alterada com sucesso!');
-            redirect(site_url('mapos/minhaConta'));
+            redirect(site_url('masteros/minhaConta'));
         }
 
         $this->session->set_flashdata('error', 'Ocorreu um erro ao tentar alterar a senha!');
-        redirect(site_url('mapos/minhaConta'));
+        redirect(site_url('masteros/minhaConta'));
     }
 
     public function pesquisar()
     {
         $termo = $this->input->get('termo');
 
-        $data['results'] = $this->mapos_model->pesquisar($termo);
+        $data['results'] = $this->masteros_model->pesquisar($termo);
         $this->data['produtos'] = $data['results']['produtos'];
         $this->data['servicos'] = $data['results']['servicos'];
         $this->data['equipamento_os'] = $data['results']['equipamento_os'];
         $this->data['os'] = $data['results']['os'];
         $this->data['clientes'] = $data['results']['clientes'];
-        $this->data['view'] = 'mapos/pesquisa';
+        $this->data['view'] = 'masteros/pesquisa';
         return $this->layout();
     }
 
@@ -124,8 +124,8 @@ class Mapos extends MY_Controller
         }
 
         $this->data['menuConfiguracoes'] = 'Configuracoes';
-        $this->data['dados'] = $this->mapos_model->getEmitente();
-        $this->data['view'] = 'mapos/emitente';
+        $this->data['dados'] = $this->masteros_model->getEmitente();
+        $this->data['view'] = 'masteros/emitente';
         return $this->layout();
     }
 
@@ -221,7 +221,7 @@ class Mapos extends MY_Controller
 
         if ($this->form_validation->run() == false) {
             $this->session->set_flashdata('error', 'Campos obrigatórios não foram preenchidos.');
-            redirect(site_url('mapos/emitente'));
+            redirect(site_url('masteros/emitente'));
         } else {
             $nome = $this->input->post('nome');
             $cnpj = $this->input->post('cnpj');
@@ -237,14 +237,14 @@ class Mapos extends MY_Controller
             $image = $this->do_upload();
             $logo = base_url() . 'assets/uploads/' . $image;
 
-            $retorno = $this->mapos_model->addEmitente($nome, $cnpj, $ie, $cep, $logradouro, $numero, $bairro, $cidade, $uf, $telefone, $email, $logo);
+            $retorno = $this->masteros_model->addEmitente($nome, $cnpj, $ie, $cep, $logradouro, $numero, $bairro, $cidade, $uf, $telefone, $email, $logo);
             if ($retorno) {
                 $this->session->set_flashdata('success', 'As informações foram inseridas com sucesso.');
                 log_info('Adicionou informações de emitente.');
             } else {
                 $this->session->set_flashdata('error', 'Ocorreu um erro ao tentar inserir as informações.');
             }
-            redirect(site_url('mapos/emitente'));
+            redirect(site_url('masteros/emitente'));
         }
     }
 
@@ -270,7 +270,7 @@ class Mapos extends MY_Controller
 
         if ($this->form_validation->run() == false) {
             $this->session->set_flashdata('error', 'Campos obrigatórios não foram preenchidos.');
-            redirect(site_url('mapos/emitente'));
+            redirect(site_url('masteros/emitente'));
         } else {
             $nome = $this->input->post('nome');
             $cnpj = $this->input->post('cnpj');
@@ -285,14 +285,14 @@ class Mapos extends MY_Controller
             $email = $this->input->post('email');
             $id = $this->input->post('id');
 
-            $retorno = $this->mapos_model->editEmitente($id, $nome, $cnpj, $ie, $cep, $logradouro, $numero, $bairro, $cidade, $uf, $telefone, $email);
+            $retorno = $this->masteros_model->editEmitente($id, $nome, $cnpj, $ie, $cep, $logradouro, $numero, $bairro, $cidade, $uf, $telefone, $email);
             if ($retorno) {
                 $this->session->set_flashdata('success', 'As informações foram alteradas com sucesso.');
                 log_info('Alterou informações de emitente.');
             } else {
                 $this->session->set_flashdata('error', 'Ocorreu um erro ao tentar alterar as informações.');
             }
-            redirect(site_url('mapos/emitente'));
+            redirect(site_url('masteros/emitente'));
         }
     }
 
@@ -306,7 +306,7 @@ class Mapos extends MY_Controller
         $id = $this->input->post('id');
         if ($id == null || !is_numeric($id)) {
             $this->session->set_flashdata('error', 'Ocorreu um erro ao tentar alterar a logomarca.');
-            redirect(site_url('mapos/emitente'));
+            redirect(site_url('masteros/emitente'));
         }
         $this->load->helper('file');
         delete_files(FCPATH . 'assets/uploads/');
@@ -314,14 +314,14 @@ class Mapos extends MY_Controller
         $image = $this->do_upload();
         $logo = base_url() . 'assets/uploads/' . $image;
 
-        $retorno = $this->mapos_model->editLogo($id, $logo);
+        $retorno = $this->masteros_model->editLogo($id, $logo);
         if ($retorno) {
             $this->session->set_flashdata('success', 'As informações foram alteradas com sucesso.');
             log_info('Alterou a logomarca do emitente.');
         } else {
             $this->session->set_flashdata('error', 'Ocorreu um erro ao tentar alterar as informações.');
         }
-        redirect(site_url('mapos/emitente'));
+        redirect(site_url('masteros/emitente'));
     }
 
     public function uploadUserImage()
@@ -334,10 +334,10 @@ class Mapos extends MY_Controller
         $id = $this->session->userdata('id');
         if ($id == null || !is_numeric($id)) {
             $this->session->set_flashdata('error', 'Ocorreu um erro ao tentar alterar sua foto.');
-            redirect(site_url('mapos/minhaConta'));
+            redirect(site_url('masteros/minhaConta'));
         }
 
-        $usuario = $this->mapos_model->getById($id);
+        $usuario = $this->masteros_model->getById($id);
         
         if (is_file(FCPATH . 'assets/userImage/' . $usuario->url_image_user)) {
             unlink(FCPATH . 'assets/userImage/' . $usuario->url_image_user);
@@ -345,7 +345,7 @@ class Mapos extends MY_Controller
 
         $image = $this->do_upload_user();
         $imageUserPath = $image;
-        $retorno = $this->mapos_model->editImageUser($id, $imageUserPath);
+        $retorno = $this->masteros_model->editImageUser($id, $imageUserPath);
         
         if ($retorno) {
             $this->session->set_userdata('url_image_user', $imageUserPath);
@@ -354,7 +354,7 @@ class Mapos extends MY_Controller
         } else {
             $this->session->set_flashdata('error', 'Ocorreu um erro ao tentar alterar sua foto.');
         }
-        redirect(site_url('mapos/minhaConta'));
+        redirect(site_url('masteros/minhaConta'));
     }
 
     public function emails()
@@ -369,7 +369,7 @@ class Mapos extends MY_Controller
         $this->load->library('pagination');
         $this->load->model('email_model');
 
-        $this->data['configuration']['base_url'] = site_url('mapos/emails/');
+        $this->data['configuration']['base_url'] = site_url('masteros/emails/');
         $this->data['configuration']['total_rows'] = $this->email_model->count('email_queue');
 
         $this->pagination->initialize($this->data['configuration']);
@@ -390,7 +390,7 @@ class Mapos extends MY_Controller
         $id = $this->input->post('id');
         if ($id == null) {
             $this->session->set_flashdata('error', 'Erro ao tentar excluir e-mail da fila.');
-            redirect(site_url('mapos/emails/'));
+            redirect(site_url('masteros/emails/'));
         }
 
         $this->load->model('email_model');
@@ -399,7 +399,7 @@ class Mapos extends MY_Controller
         log_info('Removeu um e-mail da fila de envio. ID: ' . $id);
 
         $this->session->set_flashdata('success', 'E-mail removido da fila de envio!');
-        redirect(site_url('mapos/emails/'));
+        redirect(site_url('masteros/emails/'));
     }
 
     public function configurar()
@@ -411,7 +411,7 @@ class Mapos extends MY_Controller
         
         $this->data['menuConfiguracoes'] = 'Sistema';
         $this->load->library('form_validation');
-        $this->load->model('mapos_model');
+        $this->load->model('masteros_model');
 
         $this->data['custom_error'] = '';
 
@@ -482,15 +482,15 @@ class Mapos extends MY_Controller
                 'entregue_a_receber' => (set_value('entregue_a_receber') == true ? 1 : 0),
                 'em_garantia' => (set_value('em_garantia') == true ? 1 : 0),
             ];
-            if ($this->mapos_model->saveConfiguracao($data) == true) {
+            if ($this->masteros_model->saveConfiguracao($data) == true) {
                 $this->session->set_flashdata('success', 'Configurações do sistema atualizadas com sucesso!');
-                redirect(site_url('mapos/configurar'));
+                redirect(site_url('masteros/configurar'));
             } else {
                 $this->data['custom_error'] = '<div class="alert">Ocorreu um errro.</div>';
             }
         }
 
-        $this->data['view'] = 'mapos/configurar';
+        $this->data['view'] = 'masteros/configurar';
 
         return $this->layout();
     }
@@ -510,10 +510,10 @@ class Mapos extends MY_Controller
             $this->session->set_flashdata('success', 'Banco de dados atualizado com sucesso!');
         }
 
-        return redirect(site_url('mapos/configurar'));
+        return redirect(site_url('masteros/configurar'));
     }
 
-    public function atualizarMapos()
+    public function atualizarMasteros()
     {
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'cSistema')) {
             $this->session->set_flashdata('error', 'Você não tem permissão para configurar o sistema');
@@ -523,20 +523,20 @@ class Mapos extends MY_Controller
         $this->load->library('github_updater');
 
         if (!$this->github_updater->has_update()) {
-            $this->session->set_flashdata('success', 'Seu mapos já está atualizado!');
+            $this->session->set_flashdata('success', 'Seu masteros já está atualizado!');
 
-            return redirect(site_url('mapos/configurar'));
+            return redirect(site_url('masteros/configurar'));
         }
 
         $success = $this->github_updater->update();
 
         if ($success) {
-            $this->session->set_flashdata('success', 'Mapos atualizado com sucesso!');
+            $this->session->set_flashdata('success', 'Masteros atualizado com sucesso!');
         } else {
-            $this->session->set_flashdata('error', 'Erro ao atualizar mapos!');
+            $this->session->set_flashdata('error', 'Erro ao atualizar masteros!');
         }
 
-        return redirect(site_url('mapos/configurar'));
+        return redirect(site_url('masteros/configurar'));
     }
 
     public function do_upload_termica()
@@ -584,7 +584,7 @@ class Mapos extends MY_Controller
         $id = $this->input->post('id');
         if ($id == null || !is_numeric($id)) {
             $this->session->set_flashdata('error', 'Ocorreu um erro ao tentar alterar a logomarca.');
-            redirect(site_url('mapos/emitente'));
+            redirect(site_url('masteros/emitente'));
         }
         $this->load->helper('file');
         delete_files(FCPATH . 'assets/logo_termica/');
@@ -592,14 +592,14 @@ class Mapos extends MY_Controller
         $imagetermica = $this->do_upload_termica();
         $logotermica = base_url() . 'assets/logo_termica/' . $imagetermica;
 
-        $retorno = $this->mapos_model->editLogoTermica($id, $logotermica);
+        $retorno = $this->masteros_model->editLogoTermica($id, $logotermica);
         if ($retorno) {
             $this->session->set_flashdata('success', 'As informações foram alteradas com sucesso.');
             log_info('Alterou a logomarca Termica do emitente.');
         } else {
             $this->session->set_flashdata('error', 'Ocorreu um erro ao tentar alterar as informações.');
         }
-        redirect(site_url('mapos/emitente'));
+        redirect(site_url('masteros/emitente'));
     }
 
     public function calendario()
@@ -613,7 +613,7 @@ class Mapos extends MY_Controller
         $start = $this->input->get('start') ?: null;
         $end = $this->input->get('end') ?: null;
 
-        $allOs = $this->mapos_model->calendario(
+        $allOs = $this->masteros_model->calendario(
             $start,
             $end,
             $status

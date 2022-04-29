@@ -410,7 +410,7 @@ public function painel()
 
         if (!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))) {
             $this->session->set_flashdata('error', 'Item não pode ser encontrado, parâmetro não foi passado corretamente.');
-            redirect('mapos');
+            redirect('masteros');
         }
 
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'eCobranca')) {
@@ -432,7 +432,7 @@ public function painel()
 
         if (!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))) {
             $this->session->set_flashdata('error', 'Item não pode ser encontrado, parâmetro não foi passado corretamente.');
-            redirect('mapos');
+            redirect('masteros');
         }
 
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'eCobranca')) {
@@ -494,14 +494,14 @@ public function painel()
 
         $data['menuOs'] = 'os';
         $this->data['custom_error'] = '';
-        $this->load->model('mapos_model');
+        $this->load->model('masteros_model');
         $this->load->model('os_model');
 
         $data['result'] = $this->os_model->getById($this->uri->segment(3));
         $data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
         $data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
         $data['equipamentos'] = $this->os_model->getEquipamentos($this->uri->segment(3));
-        $data['emitente'] = $this->mapos_model->getEmitente();
+        $data['emitente'] = $this->masteros_model->getEmitente();
 
         if ($data['result']->idClientes != $this->session->userdata('cliente_id')) {
             $this->session->set_flashdata('error', 'Esta OS não pertence ao cliente logado.');
@@ -534,14 +534,14 @@ public function painel()
 
         $data['menuOs'] = 'os';
         $this->data['custom_error'] = '';
-        $this->load->model('mapos_model');
+        $this->load->model('masteros_model');
         $this->load->model('os_model');
         $data['result'] = $this->os_model->getById($this->uri->segment(3));
         $data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
         $data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
         $data['equipamentos'] = $this->os_model->getEquipamentos($this->uri->segment(3));
-        $data['emitente'] = $this->mapos_model->getEmitente();
-        $data['configuracoes'] = $this->mapos_model->getTermo();
+        $data['emitente'] = $this->masteros_model->getEmitente();
+        $data['configuracoes'] = $this->masteros_model->getTermo();
 
         if ($data['result']->idClientes != $this->session->userdata('cliente_id')) {
             $this->session->set_flashdata('error', 'Esta OS não pertence ao cliente logado.');
@@ -559,12 +559,12 @@ public function painel()
 
         $data['menuVendas'] = 'vendas';
         $data['custom_error'] = '';
-        $this->load->model('mapos_model');
+        $this->load->model('masteros_model');
         $this->load->model('vendas_model');
 
         $data['result'] = $this->vendas_model->getById($this->uri->segment(3));
         $data['produtos'] = $this->vendas_model->getProdutos($this->uri->segment(3));
-        $data['emitente'] = $this->mapos_model->getEmitente();
+        $data['emitente'] = $this->masteros_model->getEmitente();
 
         if ($data['result']->clientes_id != $this->session->userdata('cliente_id')) {
             $this->session->set_flashdata('error', 'Esta OS não pertence ao cliente logado.');
@@ -584,11 +584,11 @@ public function painel()
 
         $data['menuVendas'] = 'vendas';
         $data['custom_error'] = '';
-        $this->load->model('mapos_model');
+        $this->load->model('masteros_model');
         $this->load->model('vendas_model');
         $data['result'] = $this->vendas_model->getById($this->uri->segment(3));
         $data['produtos'] = $this->vendas_model->getProdutos($this->uri->segment(3));
-        $data['emitente'] = $this->mapos_model->getEmitente();
+        $data['emitente'] = $this->masteros_model->getEmitente();
 
         if ($data['result']->clientes_id != $this->session->userdata('cliente_id')) {
             $this->session->set_flashdata('error', 'Esta OS não pertence ao cliente logado.');
@@ -613,7 +613,7 @@ public function painel()
 
             $data['menuOs'] = 'os';
             $this->data['custom_error'] = '';
-            $this->load->model('mapos_model');
+            $this->load->model('masteros_model');
             $this->load->model('os_model');
             $data['result'] = $this->os_model->getById($id);
             if ($data['result'] == null) {
@@ -623,7 +623,7 @@ public function painel()
                 $data['produtos'] = $this->os_model->getProdutos($id);
                 $data['servicos'] = $this->os_model->getServicos($id);
                 $data['equipamentos'] = $this->os_model->getEquipamentos($id);
-                $data['emitente'] = $this->mapos_model->getEmitente();
+                $data['emitente'] = $this->masteros_model->getEmitente();
 
                 $this->load->view('conecte/minha_os', $data);
             }
@@ -683,7 +683,7 @@ public function painel()
             ];
 
             if (is_numeric($id = $this->Conecte_model->add('os', $data, true))) {
-                $this->load->model('mapos_model');
+                $this->load->model('masteros_model');
                 $this->load->model('usuarios_model');
 
                 $idOs = $id;
@@ -712,7 +712,7 @@ public function painel()
     public function detalhesOs($id = null)
     {
         if (is_numeric($id) && $id != null) {
-            $this->load->model('mapos_model');
+            $this->load->model('masteros_model');
             $this->load->model('os_model');
             $this->data['result'] = $this->os_model->getById($id);
             $this->data['produtos'] = $this->os_model->getProdutos($id);
@@ -820,10 +820,10 @@ public function painel()
     private function enviarRecuperarSenha($idClientes, $clienteEmail, $assunto, $token)
     {
         $dados = [];
-        $this->load->model('mapos_model');
+        $this->load->model('masteros_model');
         $this->load->model('clientes_model', '', true);
 
-        $dados['emitente'] = $this->mapos_model->getEmitente();
+        $dados['emitente'] = $this->masteros_model->getEmitente();
         $dados['cliente'] = $this->clientes_model->getById($idClientes);
         $dados['resets_de_senha'] = json_decode($token);
 
@@ -855,7 +855,7 @@ public function painel()
     {
         $dados = [];
 
-        $this->load->model('mapos_model');
+        $this->load->model('masteros_model');
         $this->load->model('os_model');
         $dados['result'] = $this->os_model->getById($idOs);
         if (!isset($dados['result']->email)) {
@@ -864,7 +864,7 @@ public function painel()
 
         $dados['produtos'] = $this->os_model->getProdutos($idOs);
         $dados['servicos'] = $this->os_model->getServicos($idOs);
-        $dados['emitente'] = $this->mapos_model->getEmitente();
+        $dados['emitente'] = $this->masteros_model->getEmitente();
 
         $emitente = $dados['emitente'][0]->email;
         if (!isset($emitente)) {
@@ -898,10 +898,10 @@ public function painel()
     private function enviarEmailBoasVindas($id)
     {
         $dados = [];
-        $this->load->model('mapos_model');
+        $this->load->model('masteros_model');
         $this->load->model('clientes_model', '', true);
 
-        $dados['emitente'] = $this->mapos_model->getEmitente();
+        $dados['emitente'] = $this->masteros_model->getEmitente();
         $dados['cliente'] = $this->clientes_model->getById($id);
 
         $emitente = $dados['emitente'][0]->email;
@@ -932,11 +932,11 @@ public function painel()
     private function enviarEmailTecnicoNotificaClienteNovo($id)
     {
         $dados = [];
-        $this->load->model('mapos_model');
+        $this->load->model('masteros_model');
         $this->load->model('clientes_model', '', true);
         $this->load->model('usuarios_model');
 
-        $dados['emitente'] = $this->mapos_model->getEmitente();
+        $dados['emitente'] = $this->masteros_model->getEmitente();
         $dados['cliente'] = $this->clientes_model->getById($id);
 
         $emitente = $dados['emitente'][0]->email;
