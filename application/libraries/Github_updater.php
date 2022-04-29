@@ -108,7 +108,7 @@ class Github_updater
                 // Update the current commit hash
                 $this->_set_github_updater_config_hash($hash);
 
-                // Update the mapos version in the config filename
+                // Update the masteros version in the config filename
                 $this->_set_config_app_version($currentVersion);
 
                 return true;
@@ -207,7 +207,7 @@ class Github_updater
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLINFO_HEADER_OUT, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, ['User-Agent: Mapos']);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, ['User-Agent: Masteros']);
 
         $response = curl_exec($ch);
 
@@ -245,9 +245,9 @@ class Github_updater
     }
 
     /**
-    * Get mapos current version.
+    * Get masteros current version.
     *
-    * @return string Mapos current version.
+    * @return string Masteros current version.
     */
     private function getCurrentVersion()
     {
