@@ -9,9 +9,7 @@
 
 
 
-
 <div class="new122" style="margin-top: 0; min-height: 50vh">
-<div class="span12" style="margin-left: 0">
 
 <div class="widget_painel_2">
 <form method="get" action="<?php echo base_url(); ?>index.php/os/gerenciar">
@@ -22,6 +20,7 @@
 <span class="button_icon"><i class='fas fa-plus-circle'></i></span><span class="button_text">Adicionar OS</span></a>
 <?php } ?>
 </div>
+
 <div class="span7">
 <input style="margin-right:10px; width:190px" type="text" name="pesquisa" id="pesquisa" placeholder="Nome do cliente a pesquisar" class="span4" value="">
 <select style="margin-right:10px; width:190px" name="status" id="" class="span4">
@@ -50,12 +49,14 @@
 <input style="margin-right:10px; width:120px" type="text" name="data" autocomplete="off" id="data" placeholder="Data Inicial" class="span2 datepicker" value="" />
 <input style="margin-right:10px; width:120px" type="text" name="data2" autocomplete="off" id="data2" placeholder="Data Final" class="span2 datepicker" value="">
 </div>
+
 <div class="span2">
 <button class="button btn btn-mini btn-warning span2" style="margin-bottom:10px; max-width:100px"><span class="button_icon"><i class='fas fa-search'></i></span><span class="button_text">Pesquisar</span></button>
 </div>
+</div>
 </form>
 </div>
-</div>
+
 
 <div class="widget_box_2">
 
@@ -217,6 +218,7 @@
 </div>
 
 </div>
+
 
 <!-- Modal Excluir -->
 <div id="modal-excluir" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
