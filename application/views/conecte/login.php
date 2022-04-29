@@ -69,7 +69,7 @@
                                 <img src="<?php echo base_url() ?>assets/img/logo-two.png">
                               </div>
                               <div class="title01">
-                                <?= $configuration['app_theme'] == 'white' ? '<img src="'. base_url() .'assets/img/logo-mapos.png">' : '<img src="'. base_url() .'assets/img/logo-mapos-branco.png">'; ?>
+                                <?= $configuration['app_theme'] == 'white' ? '<img src="'. base_url() .'assets/img/logo-masteros.png">' : '<img src="'. base_url() .'assets/img/logo-masteros-branco.png">'; ?>
                               </div>
                               </div>
                               <div id="mcell">Versão: <?= $this->config->item('app_version'); ?></div>
@@ -98,7 +98,7 @@
 
                                 <button style="margin: 0" class="btn btn-info btn-large"> Acessar</button>
                                 <a href="<?= site_url('mine/cadastrar') ?>" class="btn btn-success btn-large">Cadastrar-me</a>
-                                <div class="links-uteis"><a href="https://github.com/RamonSilva20/mapos"><p><?= date('Y'); ?> &copy; Ramon Silva</p></a></div>
+                                <div class="links-uteis"><a href="https://github.com/RamonSilva20/masteros"><p><?= date('Y'); ?> &copy; Ramon Silva</p></a></div>
                             </div>
                         </div>
                     </div>

@@ -77,7 +77,7 @@
 
 
 
-<form id="formSenha" action="<?= site_url('mapos/alterarSenha'); ?>" method="post">
+<form id="formSenha" action="<?= site_url('masteros/alterarSenha'); ?>" method="post">
 
 <div class="span12" style="margin-left: 0">
 <label for="">Senha Atual</label>
@@ -105,7 +105,7 @@
 
 <!-- Atualizar Imagem do Usuario -->
 <div id="modalImageUser" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-<form action="<?= site_url('mapos/uploadUserImage'); ?>" id="formImageUser" enctype="multipart/form-data" method="post" class="form-horizontal">
+<form action="<?= site_url('masteros/uploadUserImage'); ?>" id="formImageUser" enctype="multipart/form-data" method="post" class="form-horizontal">
 <div class="modal_title">
 <button type="button" class="close" style="color:#f00; padding-right:5px; padding-top:10px" data-dismiss="modal" aria-hidden="true">×</button>
 <h5>Atualizar Imagem do Usuario</h5>

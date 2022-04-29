@@ -610,10 +610,10 @@
 
 <script>
 $('#update-database').click(function() {
-    window.location = "<?= site_url('mapos/atualizarBanco') ?>"
+    window.location = "<?= site_url('masteros/atualizarBanco') ?>"
 });
-$('#update-mapos').click(function() {
-    window.location = "<?= site_url('mapos/atualizarMapos') ?>"
+$('#update-masteros').click(function() {
+    window.location = "<?= site_url('masteros/atualizarMasteros') ?>"
 });
 $(document).ready(function() {
     $('#notifica_whats_select').change(function() {

@@ -28,7 +28,7 @@
 
 <!-- Cadastrar Dados do Emitente -->
 <div id="modalCadastrar" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-<form action="<?= site_url('mapos/cadastrarEmitente'); ?>" id="formCadastrar" enctype="multipart/form-data" method="post" class="form-horizontal">
+<form action="<?= site_url('masteros/cadastrarEmitente'); ?>" id="formCadastrar" enctype="multipart/form-data" method="post" class="form-horizontal">
 <div class="modal_title">
 <button type="button" class="close" style="color:#f00; padding-right:5px; padding-top:10px" data-dismiss="modal" aria-hidden="true">×</button>
 <h5>Cadastrar Dados do Emitente</h5>
@@ -174,7 +174,7 @@
 
 <!-- Editar Dados do Emitente -->
 <div id="modalAlterar" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-<form action="<?= site_url('mapos/editarEmitente'); ?>" id="formAlterar" enctype="multipart/form-data" method="post" class="form-horizontal">
+<form action="<?= site_url('masteros/editarEmitente'); ?>" id="formAlterar" enctype="multipart/form-data" method="post" class="form-horizontal">
 <div class="modal_title">
 <button type="button" class="close" style="color:#f00; padding-right:5px; padding-top:10px" data-dismiss="modal" aria-hidden="true">×</button>
 <h5>Editar Dados do Emitente</h5>
@@ -265,7 +265,7 @@
 
 <!-- Atualizar Logo -->
 <div id="modalLogo" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-<form action="<?= site_url('mapos/editarLogo'); ?>" id="formLogo" enctype="multipart/form-data" method="post" class="form-horizontal">
+<form action="<?= site_url('masteros/editarLogo'); ?>" id="formLogo" enctype="multipart/form-data" method="post" class="form-horizontal">
 <div class="modal_title">
 <button type="button" class="close" style="color:#f00; padding-right:5px; padding-top:10px" data-dismiss="modal" aria-hidden="true">×</button>
 <h5>Atualizar Logo</h5>
@@ -294,7 +294,7 @@
 
 <!-- Atualizar Logo Termica -->
 <div id="modalTermica" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-<form action="<?= site_url('mapos/editarLogoTermica'); ?>" id="formLogoTermica" enctype="multipart/form-data" method="post" class="form-horizontal">
+<form action="<?= site_url('masteros/editarLogoTermica'); ?>" id="formLogoTermica" enctype="multipart/form-data" method="post" class="form-horizontal">
 <div class="modal_title">
 <button type="button" class="close" style="color:#f00; padding-right:5px; padding-top:10px" data-dismiss="modal" aria-hidden="true">×</button>
 <h5>Atualizar Logo Termica</h5>

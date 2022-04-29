@@ -1,5 +1,5 @@
 <div class="row-fluid">
-<div id="footer" class="span12 hide"> <a class="pecolor" href="https://github.com/RamonSilva20/mapos" target="_blank">
+<div id="footer" class="span12 hide"> <a class="pecolor" href="https://github.com/RamonSilva20/masteros" target="_blank">
 <?= date('Y'); ?> &copy; 2020 - 2022 &copy; Master-OS - Emanuel Victor - Versão: <?= $this->config->item('app_version'); ?></a></div>
 </div>
 

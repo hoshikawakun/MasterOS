@@ -49,7 +49,7 @@
         <div class="icon2">
             <img src="<?php echo base_url() ?>assets/img/logo-two.png">
         </div>
-            <img class="title1" src="<?php echo base_url() ?>assets/img/logo-mapos-branco.png">
+            <img class="title1" src="<?php echo base_url() ?>assets/img/logo-masteros-branco.png">
         </div>
 
         <div class="menu-bar">

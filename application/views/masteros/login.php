@@ -55,7 +55,7 @@ echo saudacao($login);
           <div class="card">
             <div class="content">
               <div id="newlog"><div class="title01">
-                  <?= $configuration['app_theme'] == 'white' ? '<img src="'. base_url() .'assets/img/logo-mapos.png">' : '<img src="'. base_url() .'assets/img/logox.png">'; ?>
+                  <?= $configuration['app_theme'] == 'white' ? '<img src="'. base_url() .'assets/img/logo-masteros.png">' : '<img src="'. base_url() .'assets/img/logox.png">'; ?>
                 </div>
               </div>
               <div id="mcell">Versão: <?= $this->config->item('app_version'); ?></div>
@@ -70,7 +70,7 @@ echo saudacao($login);
               </div>
               <div class="center"><button id="btn-acessar">Acessar</button>
               </div>
-              <div class="links-uteis hide"><a href="https://github.com/RamonSilva20/mapos"><p> &copy; 2020 - <?= date('Y'); ?> Emanuel Victor</p></a>
+              <div class="links-uteis hide"><a href="https://github.com/RamonSilva20/masteros"><p> &copy; 2020 - <?= date('Y'); ?> Emanuel Victor</p></a>
               </div>
               <div class="links-uteis" style="color:#FFF"><p> &copy; 2020 - <?= date('Y'); ?> Emanuel Victor</p>
               </div>
@@ -141,7 +141,7 @@ $(document).ready(function() {
                         dataType: 'json',
                         success: function(data) {
                             if (data.result == true) {
-                                window.location.href = "<?= site_url('mapos'); ?>";
+                                window.location.href = "<?= site_url('masteros'); ?>";
                             } else {
 
 

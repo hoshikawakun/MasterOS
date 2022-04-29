@@ -13,7 +13,7 @@
     </a>
 <!-- Start Pesquisar-->
 <li class="search-box">
-<form style="display: flex" action="<?= site_url('mapos/pesquisar') ?>">
+<form style="display: flex" action="<?= site_url('masteros/pesquisar') ?>">
 <button style="background: transparent;border: transparent" type="submit" class="tip-bottom" title="Pesquisar">
 <i class='fas fa-search iconX' style="font-size:17px"></i></button>
 <input type="search" name="termo" placeholder="Pesquise aqui..." value="">
