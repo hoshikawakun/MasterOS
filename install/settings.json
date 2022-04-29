@@ -1,5 +1,5 @@
 {
-	"title": "MasterOS - Sistema de Gestão e controle de Estoque, Vendas, Ordens de Serviço e Banco de Arquivos",
+	"title": "MasterOS - Sistema de Gestão Financeira, controle de Estoque, Vendas e Ordens de Serviço",
 	"extensions": [
 		"cURL",
 		"MySQLi",
