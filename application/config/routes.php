@@ -40,7 +40,7 @@
 |
 */
 
-$route['default_controller'] = "mapos";
+$route['default_controller'] = "masteros";
 $route['404_override'] = '';
 
 
