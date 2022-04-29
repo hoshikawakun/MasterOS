@@ -355,8 +355,7 @@ class Masteros_model extends CI_Model
 
     public function getProdutosMinimo()
     {
-        $sql = "SELECT * FROM produtos WHERE estoque <= estoqueMinimo AND estoqueMinimo > 0";
-		$this->db->limit($this->data['configuration']['per_page_home']);
+        $sql = "SELECT * FROM produtos WHERE estoque <= estoqueMinimo AND estoqueMinimo > 0 LIMIT 10";
         return $this->db->query($sql)->result();
     }
 
