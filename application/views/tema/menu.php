@@ -84,7 +84,7 @@
 
 			<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vArquivo')) { ?>
 				<li class="<?php if (isset($menuArquivos)) {echo 'active';}; ?>">
-					<a href="<?= site_url('arquivos/gerenciar/') ?>"><i class='fas fa-hdd iconX'></i>
+					<a href="<?= site_url('arquivos') ?>"><i class='fas fa-hdd iconX'></i>
 					<span class="title">Arquivos</span>
                     <span class="title-tooltip">Arquivos</span></a>
 				</li>
