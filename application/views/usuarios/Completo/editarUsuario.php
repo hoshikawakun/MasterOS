@@ -3,19 +3,19 @@
 <script src="<?php echo base_url() ?>assets/js/funcoes.js"></script>
 
 <div class="row-fluid" style="margin-top:0">
-    <div class="span12">
-        <div class="widget-box">
-            <div class="widget-title">
-                <span class="icon">
-                    <i class="fas fa-user"></i>
-                </span>
-                <h5>Editar Usuário</h5>
-            </div>
-            <div class="widget_box_Painel2">
-                <?php if ($custom_error != '') {
-    echo '<div class="alert alert-danger">' . $custom_error . '</div>';
-} ?>
-                <form action="<?php echo current_url(); ?>" id="formUsuario" method="post" class="form-horizontal">
+<div class="widget_content_3">
+<div class="widget_title_3">
+<h5>Editar Usuário</h5>
+</div>
+<div class="acordion_group_6"><!--Tamanho Geral da Pagina-->
+
+<div class="row-fluid" style="margin-top:0">
+<?php if ($custom_error != '') { echo '<div class="alert alert-danger">' . $custom_error . '</div>'; } ?>
+</div>
+
+<div class="acordion_group_8">
+<form action="<?php echo current_url(); ?>" id="formUsuario" method="post" class="form-horizontal">
+
                     <div class="control_group_up">
                         <?php echo form_hidden('idUsuarios', $result->idUsuarios) ?>
                         <label for="nome" class="control-label">Nome<span class="required">*</span></label>
@@ -25,32 +25,29 @@
                     </div>
 
                     <div class="control_group_up">
-                        <label for="rg" class="control-label">RG<span class="required">*</span></label>
+                        <label for="rg" class="control-label">RG</label>
                         <div class="controls">
-                            <input id="rg" type="text" name="rg" value="<?php echo $result->rg; ?>" />
+                            <input id="rg" class="rguser" type="text" name="rg" value="<?php echo $result->rg; ?>" />
                         </div>
                     </div>
 
                     <div class="control_group_up">
                         <label for="cpf" class="control-label">CPF<span class="required">*</span></label>
                         <div class="controls">
-                            <input name="cpf" type="text" class="cpfcnpj" value="<?php echo $result->cpf; ?>" />
+                            <input class="cpfUser" type="text" name="cpf" value="<?php echo $result->cpf; ?>"/>
                         </div>
                     </div>
-
                     <div class="control_group_up">
                         <label for="telefone" class="control-label">Telefone<span class="required">*</span></label>
                         <div class="controls">
-                            <input id="telefone" class="telefone1" type="text" name="telefone"
-                                value="<?php echo $result->telefone; ?>" />
+                            <input id="telefone" type="text" name="telefone" value="<?php echo $result->telefone; ?>" />
                         </div>
                     </div>
 
                     <div class="control_group_up">
-                        <label for="celular" class="control-label">Telefone 2</label>
+                        <label for="celular" class="control-label">Celular</label>
                         <div class="controls">
-                            <input id="celular" class="telefone1" type="text" name="celular"
-                                value="<?php echo $result->celular; ?>" />
+                            <input id="celular" type="text" name="celular" value="<?php echo $result->celular; ?>" />
                         </div>
                     </div>
 
@@ -64,10 +61,8 @@
                     <div class="control_group_up">
                         <label for="senha" class="control-label">Senha</label>
                         <div class="controls">
-                            <input id="senha" type="password" name="senha" value=""
-                                placeholder="Não preencha se não quiser alterar." />
-                            <i class="icon-exclamation-sign tip-top"
-                                title="Se não quiser alterar a senha, não preencha esse campo."></i>
+                            <input id="senha" type="password" name="senha" value="" placeholder="Não preencha se não quiser alterar." />
+                            <i class="icon-exclamation-sign tip-top" title="Se não quiser alterar a senha, não preencha esse campo."></i>
                         </div>
                     </div>
 
@@ -79,14 +74,14 @@
                     </div>
 
                     <div class="control_group_up">
-                        <label for="rua" class="control-label">Rua<span class="required">*</span></label>
+                        <label for="rua" class="control-label">Endereço<span class="required">*</span></label>
                         <div class="controls">
                             <input id="rua" type="text" name="rua" value="<?php echo $result->rua; ?>" />
                         </div>
                     </div>
 
                     <div class="control_group_up">
-                        <label for="numero" class="control-label">Numero<span class="required">*</span></label>
+                        <label for="numero" class="control-label">Numero</label>
                         <div class="controls">
                             <input id="numero" type="text" name="numero" value="<?php echo $result->numero; ?>" />
                         </div>
@@ -115,11 +110,9 @@
 
                     <!--DATA-->
                     <div class="control_group_up">
-                        <label for="dataExpiracao" class="control-label">Expira em<span
-                                class="required">*</span></label>
+                        <label for="dataExpiracao" class="control-label">Expira em<span class="required">*</span></label>
                         <div class="controls">
-                            <input id="dataExpiracao" type="date" name="dataExpiracao"
-                                value="<?php echo $result->dataExpiracao; ?>" />
+                            <input id="dataExpiracao" type="date" name="dataExpiracao" value="<?php echo $result->dataExpiracao; ?>" />
                         </div>
                     </div>
 
@@ -142,7 +135,7 @@
                     </div>
 
 
-                    <div class="control_group_up">
+                    <div class="control_group_dn">
                         <label class="control-label">Permissões<span class="required">*</span></label>
                         <div class="controls">
                             <select name="permissoes_id" id="permissoes_id">
@@ -158,108 +151,101 @@
                         </div>
                     </div>
 
-                    <div class="form_actions" align="center">
-                        <a href="<?php echo base_url() ?>index.php/produtos" id="" class="btn btn-warning"><i class="fas fa-undo-alt"></i> Voltar</a>
-                        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
-                    </div>
-
-
-                </form>
-            </div>
-        </div>
-    </div>
+<div class="form_actions" align="center">
+<a href="<?php echo base_url() ?>index.php/usuarios" id="" class="button_mini btn btn-mini btn-warning">
+<span class="button_icon"><i class="fas fa-undo-alt"></i></span> <span class="button_text">Voltar</span></a>
+<button type="submit" class="button_mini btn btn-success">
+<span class="button_icon"><i class='fas fa-plus-circle'></i></span><span class="button_text">Atualizar</span></button>
 </div>
+</form>
 
-
+</div>
+</div>
+</div>
+</div>
 
 
 <script src="<?php echo base_url() ?>assets/js/jquery.validate.js"></script>
 <script type="text/javascript">
-$(document).ready(function() {
+    $(document).ready(function() {
 
-    $('#formUsuario').validate({
-        rules: {
-            nome: {
-                required: true
+        $('#formUsuario').validate({
+            rules: {
+                nome: {
+                    required: true
+                },
+                dataExpiracao: {
+                    required: true
+                },
+                cpf: {
+                    required: true
+                },
+                telefone: {
+                    required: true
+                },
+                email: {
+                    required: true
+                },
+                rua: {
+                    required: true
+                },
+                bairro: {
+                    required: true
+                },
+                cidade: {
+                    required: true
+                },
+                estado: {
+                    required: true
+                },
+                cep: {
+                    required: true
+                }
             },
-            dataExpiracao: {
-                required: true
+            messages: {
+                nome: {
+                    required: 'Campo Requerido.'
+                },
+                dataExpiracao: {
+                    required: 'Campo Requerido.'
+                },
+                cpf: {
+                    required: 'Campo Requerido.'
+                },
+                telefone: {
+                    required: 'Campo Requerido.'
+                },
+                email: {
+                    required: 'Campo Requerido.'
+                },
+                rua: {
+                    required: 'Campo Requerido.'
+                },
+                bairro: {
+                    required: 'Campo Requerido.'
+                },
+                cidade: {
+                    required: 'Campo Requerido.'
+                },
+                estado: {
+                    required: 'Campo Requerido.'
+                },
+                cep: {
+                    required: 'Campo Requerido.'
+                }
+
             },
-            cpf: {
-                required: true
+
+            errorClass: "help-inline",
+            errorElement: "span",
+            highlight: function(element, errorClass, validClass) {
+                $(element).parents('.control_group_up').addClass('error');
             },
-            telefone: {
-                required: true
-            },
-            email: {
-                required: true
-            },
-            rua: {
-                required: true
-            },
-            numero: {
-                required: true
-            },
-            bairro: {
-                required: true
-            },
-            cidade: {
-                required: true
-            },
-            estado: {
-                required: true
-            },
-            cep: {
-                required: true
+            unhighlight: function(element, errorClass, validClass) {
+                $(element).parents('.control_group_up').removeClass('error');
+                $(element).parents('.control_group_up').addClass('success');
             }
-        },
-        messages: {
-            nome: {
-                required: 'Campo Requerido.'
-            },
-            dataExpiracao: {
-                required: 'Campo Requerido.'
-            },
-            cpf: {
-                required: 'Campo Requerido.'
-            },
-            telefone: {
-                required: 'Campo Requerido.'
-            },
-            email: {
-                required: 'Campo Requerido.'
-            },
-            rua: {
-                required: 'Campo Requerido.'
-            },
-            numero: {
-                required: 'Campo Requerido.'
-            },
-            bairro: {
-                required: 'Campo Requerido.'
-            },
-            cidade: {
-                required: 'Campo Requerido.'
-            },
-            estado: {
-                required: 'Campo Requerido.'
-            },
-            cep: {
-                required: 'Campo Requerido.'
-            }
+        });
 
-        },
-
-        errorClass: "help-inline",
-        errorElement: "span",
-        highlight: function(element, errorClass, validClass) {
-            $(element).parents('.control-group').addClass('error');
-        },
-        unhighlight: function(element, errorClass, validClass) {
-            $(element).parents('.control-group').removeClass('error');
-            $(element).parents('.control-group').addClass('success');
-        }
     });
-
-});
 </script>
