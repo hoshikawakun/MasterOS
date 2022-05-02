@@ -37,7 +37,7 @@ class Arquivos extends MY_Controller
         $ate = $this->input->get('data2');
 
         if ($pesquisa == null && $de == null && $ate == null) {
-            $this->data['configuration']['base_url'] = site_url('arquivos');
+            $this->data['configuration']['base_url'] = site_url('arquivos/gerenciar');
             $this->data['configuration']['total_rows'] = $this->arquivos_model->count('documentos');
 
             $this->pagination->initialize($this->data['configuration']);
