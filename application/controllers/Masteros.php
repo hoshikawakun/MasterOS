@@ -138,7 +138,7 @@ class Masteros extends MY_Controller
 
         $this->load->library('upload');
 
-        $image_upload_folder = FCPATH . 'assets/uploads';
+        $image_upload_folder = FCPATH . 'assets/logo_normal';
 
         if (!file_exists($image_upload_folder)) {
             mkdir($image_upload_folder, DIR_WRITE_MODE, true);
@@ -163,7 +163,7 @@ class Masteros extends MY_Controller
             return $file_info[0]['file_name'];
         }
     }
-
+	
     public function do_upload_user()
     {
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'cEmitente')) {
@@ -189,7 +189,7 @@ class Masteros extends MY_Controller
 
         $this->upload->initialize($this->upload_config);
 
-        if (!$this->upload->do_upload()) {
+        if (!$this->upload->do_upload_user()) {
             $upload_error = $this->upload->display_errors();
             print_r($upload_error);
             exit();
@@ -235,7 +235,7 @@ class Masteros extends MY_Controller
             $telefone = $this->input->post('telefone');
             $email = $this->input->post('email');
             $image = $this->do_upload();
-            $logo = base_url() . 'assets/uploads/' . $image;
+            $logo = base_url() . 'assets/logo_normal/' . $image;
 
             $retorno = $this->masteros_model->addEmitente($nome, $cnpj, $ie, $cep, $logradouro, $numero, $bairro, $cidade, $uf, $telefone, $email, $logo);
             if ($retorno) {
@@ -309,10 +309,10 @@ class Masteros extends MY_Controller
             redirect(site_url('masteros/emitente'));
         }
         $this->load->helper('file');
-        delete_files(FCPATH . 'assets/uploads/');
+        delete_files(FCPATH . 'assets/logo_normal/');
 
         $image = $this->do_upload();
-        $logo = base_url() . 'assets/uploads/' . $image;
+        $logo = base_url() . 'assets/logo_normal/' . $image;
 
         $retorno = $this->masteros_model->editLogo($id, $logo);
         if ($retorno) {
