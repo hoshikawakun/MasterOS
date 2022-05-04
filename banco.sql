@@ -89,7 +89,7 @@ CREATE TABLE `clientes` (
 -- ----------------------------
 CREATE TABLE `cobrancas` (
   `idCobranca` int(11) NOT NULL AUTO_INCREMENT,
-  `charge_id` varchar(255) DEFAULT NULL,
+  `charge_id` int(11) DEFAULT NULL,
   `conditional_discount_date` date DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `custom_id` int(11) DEFAULT NULL,
@@ -293,7 +293,7 @@ CREATE TABLE `itens_de_vendas` (
 CREATE TABLE `lancamentos` (
   `idLancamentos` int(11) NOT NULL AUTO_INCREMENT,
   `descricao` text DEFAULT NULL,
-  `valor` varchar(15) NOT NULL,
+  `valor` decimal(10,2) DEFAULT 0.00,
   `desconto` decimal(10,2) DEFAULT 0.00,
   `valor_desconto` decimal(10,2) DEFAULT 0.00,
   `data_vencimento` text NOT NULL,
@@ -309,7 +309,6 @@ CREATE TABLE `lancamentos` (
   `contas_id` int(11) DEFAULT NULL,
   `vendas_id` int(11) DEFAULT NULL,
   `usuarios_id` int(11) NOT NULL,
-  `data_vencimentox` text DEFAULT NULL,
   PRIMARY KEY (`idLancamentos`),
   KEY `fk_lancamentos_clientes1` (`clientes_id`),
   KEY `fk_lancamentos_categorias1_idx` (`categorias_id`),
@@ -326,8 +325,8 @@ CREATE TABLE `lancamentos` (
 -- ----------------------------
 CREATE TABLE `logs` (
   `idLogs` int(11) NOT NULL AUTO_INCREMENT,
-  `usuario` text DEFAULT NULL,
-  `tarefa` text DEFAULT NULL,
+  `usuario` varchar(80) DEFAULT NULL,
+  `tarefa` varchar(100) DEFAULT NULL,
   `data` date DEFAULT NULL,
   `hora` time DEFAULT NULL,
   `ip` varchar(45) DEFAULT NULL,
@@ -369,11 +368,11 @@ CREATE TABLE `os` (
   `status` text DEFAULT NULL,
   `observacoes` text DEFAULT NULL,
   `laudoTecnico` text DEFAULT NULL,
-  `valorTotal` varchar(15) DEFAULT NULL,
+  `valorTotal` decimal(10,2) DEFAULT 0.00,
   `desconto` decimal(10,2) DEFAULT 0.00,
   `valor_desconto` decimal(10,2) DEFAULT 0.00,
-  `clientes_id` int(11) NOT NULL,
-  `usuarios_id` int(11) NOT NULL,
+  `clientes_id` int(11) DEFAULT NULL,
+  `usuarios_id` int(11) DEFAULT NULL,
   `lancamento` int(11) DEFAULT NULL,
   `faturado` tinyint(1) NOT NULL,
   `garantias_id` int(11) DEFAULT NULL,
@@ -392,7 +391,7 @@ CREATE TABLE `os` (
 -- ----------------------------
 CREATE TABLE `permissoes` (
   `idPermissao` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` text DEFAULT NULL,
+  `nome` varchar(80) NOT NULL,
   `permissoes` text DEFAULT NULL,
   `situacao` tinyint(1) DEFAULT NULL,
   `data` date DEFAULT NULL,
@@ -462,7 +461,7 @@ CREATE TABLE `servicos` (
 -- ----------------------------
 CREATE TABLE `servicos_os` (
   `idServicos_os` int(11) NOT NULL AUTO_INCREMENT,
-  `servico` text DEFAULT NULL,
+  `servico` varchar(200) DEFAULT NULL,
   `quantidade` double DEFAULT NULL,
   `preco` varchar(15) DEFAULT NULL,
   `os_id` int(11) NOT NULL,
@@ -480,7 +479,7 @@ CREATE TABLE `servicos_os` (
 -- ----------------------------
 CREATE TABLE `usuarios` (
   `idUsuarios` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` text DEFAULT NULL,
+  `nome` varchar(200) NOT NULL,
   `rg` varchar(20) DEFAULT NULL,
   `cpf` varchar(20) NOT NULL,
   `cep` varchar(9) NOT NULL,
@@ -510,7 +509,7 @@ CREATE TABLE `usuarios` (
 CREATE TABLE `vendas` (
   `idVendas` int(11) NOT NULL AUTO_INCREMENT,
   `dataVenda` date DEFAULT NULL,
-  `valorTotal` varchar(45) DEFAULT NULL,
+  `valorTotal` decimal(10,2) DEFAULT 0.00,
   `desconto` decimal(10,2) DEFAULT 0.00,
   `valor_desconto` decimal(10,2) DEFAULT 0.00,
   `faturado` tinyint(1) DEFAULT NULL,
