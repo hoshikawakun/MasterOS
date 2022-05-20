@@ -292,6 +292,7 @@ CREATE TABLE `itens_de_vendas` (
 -- ----------------------------
 CREATE TABLE `lancamentos` (
   `idLancamentos` int(11) NOT NULL AUTO_INCREMENT,
+  `cliente_fornecedor` varchar(255) DEFAULT NULL,
   `descricao` text DEFAULT NULL,
   `valor` decimal(10,2) DEFAULT 0.00,
   `desconto` decimal(10,2) DEFAULT 0.00,
@@ -299,7 +300,6 @@ CREATE TABLE `lancamentos` (
   `data_vencimento` text NOT NULL,
   `data_pagamento` text DEFAULT '',
   `baixado` tinyint(1) DEFAULT 0,
-  `cliente_fornecedor` varchar(255) DEFAULT NULL,
   `forma_pgto` varchar(100) DEFAULT NULL,
   `tipo` varchar(45) DEFAULT NULL,
   `anexo` varchar(250) DEFAULT NULL,
