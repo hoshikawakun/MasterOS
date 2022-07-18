@@ -187,29 +187,35 @@ echo '</tr>';
 
 <!-- Botões de Funções -->
 <div class="form_actions" align="center">
-<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" href="<?php echo base_url() ?>index.php/vendas" class="button_mini btn btn-mini btn-warning">
-<span class="button_icon"><i class="fas fa-undo-alt"></i></span><span class="button_text">Voltar</span></a>
 <form action="<?php echo current_url(); ?>" class="form_horizontal" method="post" id="formVendas">
+
+<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" href="<?php echo base_url() ?>index.php/vendas" class="button_mini btn btn-mini btn-warning">
+<span class="button_icon"><i class="fas fa-undo-alt"></i></span><span class="button_text">Voltar</span></a>
+
+<!-------------------------------------------------------------------------->
 
 <button class="button_mini btn btn-primary" id="btnContinuar">
 <span class="button_icon"><i class="fas fa-sync-alt"></i></span><span class="button_text">Atualizar</span></button>
 
-<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" href="<?php echo base_url() ?>index.php/vendas/visualizar/<?php echo $result->idVendas; ?>" class="button_mini btn btn-primary">
+<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" href="<?php echo base_url() ?>index.php/vendas/visualizar/<?php echo $result->idVendas; ?>" class="button_mini btn btn-primary">
 <span class="button_icon"><i class="fas fa-eye"></i></span><span class="button_text">Visualizar</span></a>
 
 <?php if ($result->faturado == 0) { ?>
-<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" href="#modal-faturar" id="btn-faturar" role="button" data-toggle="modal" class="button_mini btn btn-danger">
+<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" href="#modal-faturar" id="btn-faturar" role="button" data-toggle="modal" class="button_mini btn btn-danger">
 <span class="button_icon"><i class='fas fa-cash-register'></i></span> <span class="button_text">Faturar</span></a>
 <?php } ?>
-</form>
 
-<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Imprimir" class="button_mini btn btn-mini btn-inverse tip-top" target="new" href="<?php echo site_url() ?>/vendas/imprimir/<?php echo $result->idVendas; ?>">
+<!-------------------------------------------------------------------------->
+
+<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Imprimir" class="button_mini btn btn-mini btn-inverse tip-top" target="new" href="<?php echo site_url() ?>/vendas/imprimir/<?php echo $result->idVendas; ?>">
 <span class="button_icon"><i class='fas fa-print'></i></span><span class="button_text">Imprimir A4</span></a>
 
-<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Imprimir Termica" class="button_mini btn btn-mini btn-inverse tip-top" target="new" href="<?php echo site_url() ?>/vendas/imprimirTermica/<?php echo $result->idVendas; ?>">
+<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Imprimir Termica" class="button_mini btn btn-mini btn-inverse tip-top" target="new" href="<?php echo site_url() ?>/vendas/imprimirTermica/<?php echo $result->idVendas; ?>">
 <span class="button_icon"><i class='fas fa-print'></i></span><span class="button_text">Imprimir Termica</span></a>
 
-<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Gerar Pagamento" class="button_mini btn btn-mini btn-success tip-top" href="#modal-gerar-pagamento" id="btn-forma-pagamento" role="button" data-toggle="modal"><span class="button_icon"><i class="fas fa-cash-register"></i></span><span class="button_text">Gerar Pagamento</span></a>
+<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Gerar Pagamento" class="button_mini btn btn-mini btn-success tip-top" href="#modal-gerar-pagamento" id="btn-forma-pagamento" role="button" data-toggle="modal"><span class="button_icon"><i class="fas fa-cash-register"></i></span><span class="button_text">Gerar Pagamento</span></a>
+
+</form>
 <?= $modalGerarPagamento ?>
 </div>
 <!-- Fim Botões de Funções -->

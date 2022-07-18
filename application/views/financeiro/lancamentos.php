@@ -26,7 +26,7 @@ $periodo = $this->input->get('periodo');
 </style>
 
 
-<div class="new122" style="margin-top: 0; min-height: 50vh">
+<div class="lancamentos123" style="margin-top: 0; min-height: 50vh">
 
 <div class="widget_painel_2">
 <div class="span12">

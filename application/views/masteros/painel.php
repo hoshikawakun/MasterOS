@@ -254,7 +254,7 @@
 <h5>Em Aberto</h5>
 </div>
 <div class="widget_painel">
-<table class="table_w">
+<table class="table_w" style="width:100%">
                 <thead>
                     <tr>
                         <th width="7%">OS N°</th>
@@ -344,7 +344,7 @@
 <h5>Orçamento Concluido</h5>
 </div>
 <div class="widget_painel">
-<table class="table_w">
+<table class="table_w" style="width:100%">
                 <thead>
                     <tr>
                         <th width="7%">OS N°</th>
@@ -434,7 +434,7 @@
 <h5>Orçamento Aprovado</h5>
 </div>
 <div class="widget_painel">
-<table class="table_w">
+<table class="table_w" style="width:100%">
                 <thead>
                     <tr>
                         <th width="7%">OS N°</th>
@@ -524,7 +524,7 @@
 <h5>Em Andamento</h5>
 </div>
 <div class="widget_painel">
-<table class="table_w">
+<table class="table_w" style="width:100%">
                 <thead>
                     <tr>
                         <th width="7%">OS N°</th>
@@ -614,7 +614,7 @@
 <h5>Aguardando Peças</h5>
 </div>
 <div class="widget_painel">
-<table class="table_w">
+<table class="table_w" style="width:100%">
                 <thead>
                     <tr>
                         <th width="7%">OS N°</th>
@@ -704,7 +704,7 @@
 <h5>Serviço Concluido</h5>
 </div>
 <div class="widget_painel">
-<table class="table_w">
+<table class="table_w" style="width:100%">
                 <thead>
                     <tr>
                         <th width="7%">OS N°</th>
@@ -794,7 +794,7 @@
 <h5>Sem Reparo</h5>
 </div>
 <div class="widget_painel">
-<table class="table_w">
+<table class="table_w" style="width:100%">
                 <thead>
                     <tr>
                         <th width="7%">OS N°</th>
@@ -884,7 +884,7 @@
 <h5>Não Autorizado</h5>
 </div>
 <div class="widget_painel">
-<table class="table_w">
+<table class="table_w" style="width:100%">
                 <thead>
                     <tr>
                         <th width="7%">OS N°</th>
@@ -974,7 +974,7 @@
 <h5>Cancelado</h5>
 </div>
 <div class="widget_painel">
-<table class="table_w">
+<table class="table_w" style="width:100%">
                 <thead>
                     <tr>
                         <th width="7%">OS N°</th>
@@ -1064,7 +1064,7 @@
 <h5>Pronto Despachar</h5>
 </div>
 <div class="widget_painel">
-<table class="table_w">
+<table class="table_w" style="width:100%">
                 <thead>
                     <tr>
                         <th width="7%">OS N°</th>
@@ -1154,7 +1154,7 @@
 <h5>Entregue - A Receber</h5>
 </div>
 <div class="widget_painel">
-<table class="table_w">
+<table class="table_w" style="width:100%">
                 <thead>
                     <tr>
                         <th width="7%">OS N°</th>
@@ -1244,7 +1244,7 @@
 <h5>OS em Garantia</h5>
 </div>
 <div class="widget_painel">
-<table class="table_w">
+<table class="table_w" style="width:100%">
                 <thead>
                     <tr>
                         <th width="7%">OS N°</th>
@@ -1334,7 +1334,7 @@
 <h5>Produtos com Estoque Mínimo</h5>
 </div>
 <div class="widget_painel">
-<table class="table_w">
+<table class="table_w" style="width:100%">
                 <thead>
                     <tr>
                         <th width="8%">Cod. Item</th>
@@ -1409,8 +1409,8 @@
 <div class="widget_title_4">
 <h5>Balanço Mensal do Ano:	</h5>
 <form method="get">
-<input type="number" name="year" style="height: 18px; margin-bottom: 0; margin-top: 4px; margin-left:10px" value="<?php echo intval(preg_replace('/[^0-9]/', '', $this->input->get('year'))) ?: date('Y') ?>">
-<button type="submit" class="btn-xs" style="height: 27px; margin-bottom: 0; margin-top: 4px">Pesquisar</button>
+<input type="number" name="year" style="max-width:120px; height: 18px; margin-bottom: 0; margin-top: 4px; margin-left:10px;" value="<?php echo intval(preg_replace('/[^0-9]/', '', $this->input->get('year'))) ?: date('Y') ?>">
+<button type="submit" class="btn-xs" style="margin-bottom:10px; margin-left:5px; min-width:90px; height: 27px; margin-bottom: 0; margin-top: 4px">Pesquisar</button>
 </form>
 </div>
 <div class="widget_painel">

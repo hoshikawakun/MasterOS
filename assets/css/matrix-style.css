@@ -1203,8 +1203,65 @@ section .profile .profile-img { /*Foto do Usuario*/
 .new122 {
   max-height   : 100%;
   background   : var(--widget-box);
-  padding      : 8px;
+  padding      : 10px;
   border-radius: 12px;
+  min-width    : 650px;
+}
+
+.lancamentos123 {
+  max-height   : 100%;
+  background   : var(--widget-box);
+  padding      : 10px;
+  border-radius: 12px;
+  min-width    : 880px;
+}
+
+.arquivos123 {
+  max-height   : 100%;
+  background   : var(--widget-box);
+  padding      : 10px;
+  border-radius: 12px;
+  min-width    : 820px;
+}
+
+.vendas123 {
+  max-height   : 100%;
+  background   : var(--widget-box);
+  padding      : 10px;
+  border-radius: 12px;
+  min-width    : 550px;
+}
+
+.os123 {
+  max-height   : 100%;
+  background   : var(--widget-box);
+  padding      : 10px;
+  border-radius: 12px;
+  min-width    : 660px;
+}
+
+.servicos123 {
+  max-height   : 100%;
+  background   : var(--widget-box);
+  padding      : 10px;
+  border-radius: 12px;
+  min-width    : 600px;
+}
+
+.produtos123 {
+  max-height   : 100%;
+  background   : var(--widget-box);
+  padding      : 10px;
+  border-radius: 12px;
+  min-width    : 600px;
+}
+
+.clientes123 {
+  max-height   : 100%;
+  background   : var(--widget-box);
+  padding      : 10px;
+  border-radius: 12px;
+  min-width    : 750px;
 }
 
 .quick-actions_homepage .quick-actions .span3 {
@@ -1765,6 +1822,7 @@ section .profile .profile-img { /*Foto do Usuario*/
   clear         : both;
   position      : relative;
   border-radius : 12px;
+  min-width : 460px; /*Tamanho Minimo Horizontal*/
 }
 
 .widget-box-statist {
@@ -3282,6 +3340,7 @@ fieldset[disabled] .btn-info.active {
 	border-radius   : 10px 10px 10px 10px; /*Bordas Arredondadas*/
 	/border          : 2px solid #0C0; /*Borda inferior*/
 	background-color: #ffffff;
+	min-width : 530px; /*Tamanho Minimo Horizontal*/
 }
 
 .widget_content_4 {
@@ -3290,6 +3349,15 @@ fieldset[disabled] .btn-info.active {
 	margin-top      : 15px; /*Espaço para a Proxima Tabela*/
 	margin-bottom   : 10px; /*Espaço para a Proxima Tabela*/
 	background-color: #ffffff;
+	min-width : 460px; /*Tamanho Minimo Horizontal*/
+}
+
+.widget_year {
+	max-width    : 120px;
+	height       : 18px;
+	margin-bottom: 0;
+	margin-top   : 4px;
+	margin-left  : 10px;
 }
 
 .widget_grid {
@@ -3316,6 +3384,17 @@ fieldset[disabled] .btn-info.active {
 .widget_title_3 h5 {
 	color         : var(--titletext);
 	float         : left;
+	font-weight   : 500;
+	font-size     : 20px;
+	padding-left  : 10px;
+	padding-bottom: 10px;
+	line-height   : 12px;
+}
+
+.widget_title_3 h9 {
+	color         : var(--titletext);
+	float         : left;
+	margin-top    : 10px;
 	font-weight   : 500;
 	font-size     : 20px;
 	padding-left  : 10px;
@@ -3354,6 +3433,17 @@ fieldset[disabled] .btn-info.active {
 	line-height   : 12px;
 }
 
+.widget_title_4 h9 {
+	margin-top    : 10px;
+	color         : var(--black2);
+	float         : left;
+	font-weight   : bold;
+	font-size     : 16px;
+	padding-left  : 15px;
+	line-height   : 12px;
+	margin-bottom : 10px;
+}
+
 .widget_title_5 {
 	border-radius   : 10px 10px 10px 10px; /*Bordas Arredondadas*/
 	background      : #eeeeee; /*Cor do Cabeçalho da Tabela Externa*/
@@ -3367,6 +3457,16 @@ fieldset[disabled] .btn-info.active {
 }
 
 .widget_title_5 h5 {
+	color         : var(--black2);
+	float         : left;
+	font-weight   : bold;
+	font-size     : 18px;
+	padding-left  : 15px;
+	line-height   : 12px;
+	margin-bottom : 10px;
+}
+
+.widget_title_5 h8 {
 	color         : var(--black2);
 	float         : left;
 	font-weight   : bold;
@@ -3859,10 +3959,6 @@ input[type="search"] { color:#fff;}
     padding      : 5px 0 0 20px;
   }
 
-  .new122 {
-    padding: 10px !important;
-  }
-
   .fc .fc-daygrid-day-number {
     font-size: 0.9em;
   }
@@ -3907,7 +4003,7 @@ input[type="search"] { color:#fff;}
   #content { /*Tamanho da area do Sistema*/
     margin-left  : 200px;
 	margin-right : -20px;
-    padding      : 0 25px 0 25px;
+    padding      : 0 30px 0 30px;
   }
 
   #userr .userT0 { /*Mensagem de Boas Vindas*/
@@ -3998,10 +4094,6 @@ input[type="search"] { color:#fff;}
   .cardHeader {
     font-size    : 20px;
     padding      : 5px 0 0 20px;
-  }
-
-  .new122 {
-    padding: 10px !important;
   }
 
   .fc .fc-daygrid-day-number {
@@ -4117,7 +4209,7 @@ input[type="search"] { color:#fff;}
   #content { /*Tamanho da area do Sistema*/
     margin-left  : 68px;
 	margin-right : -20px;
-    padding      : 0 25px 0 25px;
+    padding      : 0 20px 0 20px;
   }
 
   #userr .userT0 { /*Mensagem de Boas Vindas*/
@@ -4261,7 +4353,7 @@ input[type="search"] { color:#fff;}
   #content { /*Tamanho da area do Sistema*/
     margin-left  : 68px;
 	margin-right : -20px;
-    padding      : 0 25px 0 25px;
+    padding      : 0 20px 0 20px;
   }
   
   .search-box input {
@@ -4278,7 +4370,7 @@ input[type="search"] { color:#fff;}
     margin-top           : 12px;
   }
 
-  .cardBox {
+  .cardBox { /*Atalhos do Sistema*/
     grid-template-columns: repeat(3, 1fr);
     grid-gap             : 12px;
     margin-bottom        : 5px;
@@ -4340,7 +4432,7 @@ input[type="search"] { color:#fff;}
   }
 }
 
-@media (min-width: 491px) and (max-width: 834px) {
+@media (min-width: 587px) and (max-width: 834px) {
   body {
     padding  : 0 !important;
     font-size: 12px !important;
@@ -4478,7 +4570,7 @@ input[type="search"] { color:#fff;}
   #content { /*Tamanho da area do Sistema*/
     margin-left  : 68px;
 	margin-right : -20px;
-    padding      : 0 25px 0 25px;
+    padding      : 0 20px 0 20px;
   }
 
   .search-box input {
@@ -4516,7 +4608,7 @@ input[type="search"] { color:#fff;}
     grid-row-start: 2;
   }
 
-  .cardBox {
+  .cardBox { /*Atalhos do Sistema*/
     grid-template-columns: repeat(2, 1fr);
     grid-gap             : 12px;
     margin-bottom        : 5px;
@@ -4582,9 +4674,45 @@ input[type="search"] { color:#fff;}
   #content-bemv {
     right : 15px;
   }
+  
+  .widget_title_3 {
+	border-radius   : 10px 10px 0px 0px; /*Bordas Arredondadas*/
+	background      : #eeeeee; /*Cor do Cabeçalho da Tabela Externa*/
+	background-color: #fff;
+	border-bottom   : 1px solid var(--violeta0); /*Borda inferior*/
+	/*border-right    : 10px solid var(--violeta0); /*Borda Lateral Direita*/
+	height          : 35px; /*tamanho interno do cabeçalho*/
+	text-align      : left;
+	border-collapse : collapse;
+	margin-bottom   : 5px; /*Espaço inferior para a Proxima Tabela*/
+	vertical-align  : top;
+  }
+
+  .widget_title_3 h9 {
+	color         : var(--titletext);
+	float         : left;
+	margin-top    : 10px;
+	font-weight   : 500;
+	font-size     : 20px;
+	padding-left  : 10px;
+	padding-bottom: 10px;
+	line-height   : 12px;
+  }
+  
+  .form-horizontal .control-label {  /*Escrita da descrição dos campos de preenchimento*/
+	float      : left;
+	width      : 100px;
+	padding-top: 15px;
+	text-align : right;
+  }
+
+  .form-horizontal .controls {
+    margin-left: 120px;
+	padding    : 10px 0;
+  }
 }
 
-@media (max-width: 490px) {
+@media (max-width: 586px) {
   body {
     padding  : 0 !important;
     font-size: 12px !important;
@@ -4604,16 +4732,8 @@ input[type="search"] { color:#fff;}
     display: none;
   }
 
-  .new122 {
-    padding: 10px !important;
-  }
-
   .fc .fc-daygrid-day-top {
     font-size: 15px;
-  }
-
-  .form-horizontal .controls {
-    margin-left: 0 !important;
   }
 
   .dropdown-menu>li>a {
@@ -4640,10 +4760,6 @@ input[type="search"] { color:#fff;}
 
   #footer {
     padding: 10px;
-  }
-
-  .new122 {
-    margin-top: 10px !important;
   }
 
   .fc-direction-ltr {
@@ -4714,6 +4830,7 @@ input[type="search"] { color:#fff;}
   
   .cardBox { /*Atalhos do Sistema*/
     grid-template-columns: repeat(2, 1fr);
+	min-width            : 462px;
     grid-gap             : 13px;
     margin-bottom        : 0px;
   }
@@ -4732,6 +4849,13 @@ input[type="search"] { color:#fff;}
 
   .cardBox .card .iconBx {
     font-size: 2.3rem;
+  }
+
+  .cardBox .card {
+    padding        : 15px;
+    box-shadow     : none;
+    justify-content: space-between;
+	*min-width : 460px; /*Tamanho Minimo Horizontal*/
   }
 
   .dropdown-menu {
@@ -4813,9 +4937,9 @@ input[type="search"] { color:#fff;}
     background     : #f6ca84;
     color          : #000000;
     top            : 50%; /*Posição do botão abrir menu lateral*/
-    width          : 30px;
-    height         : 30px;
-    right          : -35px;
+    width          : 40px;
+    height         : 40px;
+    right          : -45px;
   }
   
   #sidebar.open #newlog .title1 { /*Tamanho da logo sistema menu aberto*/
@@ -4914,12 +5038,6 @@ input[type="search"] { color:#fff;}
     white-space  : nowrap;
     overflow     : hidden;
     text-overflow: ellipsis;
-  }
-
-  .cardBox .card {
-    padding        : 15px;
-    box-shadow     : none;
-    justify-content: space-between;
   }
 
   .span4S {
@@ -5022,10 +5140,6 @@ input[type="search"] { color:#fff;}
   #newlog .icon2 { /*Tamanho da logo sistema menu aberto*/
     width     : 220px !important;
     transition: var(--tran-05);
-  }
-
-  input[type="number"] {
-    margin-top: -2px !important;
   }
 
   #header {
@@ -5143,6 +5257,42 @@ input[type="search"] { color:#fff;}
 
   .table th {
     padding: 5px 4px 2px;
+  }
+  
+  .widget_title_3 {
+	border-radius   : 10px 10px 0px 0px; /*Bordas Arredondadas*/
+	background      : #eeeeee; /*Cor do Cabeçalho da Tabela Externa*/
+	background-color: #fff;
+	border-bottom   : 1px solid var(--violeta0); /*Borda inferior*/
+	/*border-right    : 10px solid var(--violeta0); /*Borda Lateral Direita*/
+	height          : 35px; /*tamanho interno do cabeçalho*/
+	text-align      : left;
+	border-collapse : collapse;
+	margin-bottom   : 5px; /*Espaço inferior para a Proxima Tabela*/
+	vertical-align  : top;
+  }
+
+  .widget_title_3 h9 {
+	color         : var(--titletext);
+	float         : left;
+	margin-top    : 10px;
+	font-weight   : 500;
+	font-size     : 20px;
+	padding-left  : 10px;
+	padding-bottom: 10px;
+	line-height   : 12px;
+  }
+  
+  .form-horizontal .control-label {  /*Escrita da descrição dos campos de preenchimento*/
+	float      : left;
+	width      : 100px;
+	padding-top: 15px;
+	text-align : right;
+  }
+
+  .form-horizontal .controls {
+    margin-left: 120px;
+	padding    : 10px 0;
   }
 }
 

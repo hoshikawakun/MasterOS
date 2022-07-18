@@ -1,24 +1,25 @@
 <link rel="stylesheet" href="<?= base_url(); ?>assets/js/jquery-ui/css/smoothness/jquery-ui-1.9.2.custom.css" />
 <script type="text/javascript" src="<?= base_url() ?>assets/js/jquery-ui/js/jquery-ui-1.9.2.custom.js"></script>
 
-<div class="new122" style="margin-top: 0; min-height: 50vh">
-<div class="widget_painel_2">
+<div class="arquivos123" style="margin-top: 0; min-height: 50vh">
+
+<div class="widget_painel_2 span12">
 <form method="get" action="<?= current_url(); ?>">
-<div class="span12">
-<div class="span4">
-<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'aArquivo')) : ?>
-<a href="<?= base_url(); ?>index.php/arquivos/adicionar" class="button btn btn-mini btn-success" style="margin-bottom:10px; max-width:150px">
-<span class="button_icon"><i class='fas fa-plus-circle'></i></span><span class="button_text">Arquivo</span></a>
-<?php endif ?>
-</div>
-<div class="span6">
-<input style="margin-right:10px; width:270px" class="span4" type="text" name="pesquisa" id="pesquisa" placeholder="Digite o nome do documento para pesquisar" value="<?= $this->input->get('pesquisa') ?>">
-<input style="margin-right:10px; width:120px" type="text" name="data" class="span2 datepicker" id="data" placeholder="Data de" value="<?= $this->input->get('data') ?>">
-<input style="margin-right:10px; width:120px" type="text" name="data2" class="span2 datepicker" id="data2" placeholder="Data até" value="<?= $this->input->get('data2') ?>">
-</div>
-<div class="span2">
-<button class="button btn btn-mini btn-warning span2" style="margin-bottom:10px; max-width:100px"><span class="button_icon"><i class='fas fa-search'></i></span><span class="button_text">Pesquisar</span></button>
-</div>
+
+<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'aOs')) { ?>
+<a title="Adicionar OS" href="<?php echo base_url(); ?>index.php/arquivos/adicionar" class="button btn btn-mini btn-success tip-top" target="new" style="margin-bottom:10px">
+<span class="button_icon"><i class='fas fa-plus-circle'></i></span><span class="button_text">Adicionar Arquivo</span></a>
+<?php } ?>
+
+<div style="float:right">
+<input style="margin-right:10px; max-width:180px" type="text" name="pesquisa" id="pesquisa" placeholder="Nome do Arquivo a Pesquisar" value="">
+
+<input style="margin-right:10px; max-width:100px" type="text" name="data" autocomplete="off" id="data" placeholder="Data Inicial" class="datepicker" value="" />
+
+<input style="margin-right:10px; max-width:100px" type="text" name="data2" autocomplete="off" id="data2" placeholder="Data Final" class="datepicker" value="">
+
+<button class="button btn btn-mini btn-warning" style="margin-bottom:10px; max-width:80px"><span class="button_icon"><i class='fas fa-search'></i></span><span class="button_text">Pesquisar</span></button>
+
 </div>
 </form>
 </div>

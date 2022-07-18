@@ -25,14 +25,14 @@
 <div class="control_group_up">
 <label for="nome" class="control-label">Nome do Arquivo*</label>
 <div class="controls">
-<input id="nome" type="text" name="nome" class="span7"/>
+<input id="nome" type="text" name="nome" class="span11"/>
 </div>
 </div>
 
 <div class="control_group_up">
 <label for="descricao" class="control-label">Descrição</label>
 <div class="controls">
-<div class="span7">
+<div class="span11">
 <textarea class="editor" name="descricao" id="descricao"></textarea>
 </div>
 </div>
@@ -41,7 +41,7 @@
 <div class="control_group_dn">
 <label for="descricao" class="control-label">Data</label>
 <div class="controls">
-<input id="data" class="span7" autocomplete="off" type="date" name="data" value="<?php echo date('Y-m-d'); ?>" />
+<input id="data" class="span11" autocomplete="off" type="date" name="data" value="<?php echo date('Y-m-d'); ?>" />
 </div>
 </div>
 

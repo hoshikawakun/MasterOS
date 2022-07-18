@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="<?php echo base_url() ?>assets/trumbowyg/ui/trumbowyg.css">
 <script type="text/javascript" src="<?php echo base_url() ?>assets/trumbowyg/trumbowyg.js"></script>
 <script type="text/javascript" src="<?php echo base_url() ?>assets/trumbowyg/langs/pt_br.js"></script>
-çã
+
 <style>
     .ui-datepicker {
         z-index: 99999 !important;
@@ -23,41 +23,41 @@
 
 
 <div class="row-fluid" style="margin-top:0">
-<div class="widget_content_3" align="center" style="padding:5px; margin-bottom:5px;">
+<div class="widget_content_3" align="center" style="padding-top:5px; padding-bottom:5px; margin-bottom:5px;">
 
 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) { ?>
-<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Adicionar OS" class="button_mini btn btn-mini btn-success tip-top" target="new" href="<?php echo base_url(); ?>index.php/os/adicionar">
+<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Adicionar OS" class="button_mini btn btn-mini btn-success tip-top" target="new" href="<?php echo base_url(); ?>index.php/os/adicionar">
 <span class="button_icon"><i class='fas fa-plus-circle'></i></span><span class="button_text">Adicionar OS</span></a>
 <?php } ?>
 
-<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Visualizar OS" class="button_mini btn btn-mini btn-primary tip-top" target="new" href="<?php echo base_url() ?>index.php/os/visualizar/<?php echo $result->idOs; ?>">
+<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Visualizar OS" class="button_mini btn btn-mini btn-primary tip-top" target="new" href="<?php echo base_url() ?>index.php/os/visualizar/<?php echo $result->idOs; ?>">
 <span class="button_icon"><i class='fas fa-eye'></i></span><span class="button_text">Visualizar OS</span></a>
 
-<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Imprimir" class="button_mini btn btn-mini btn-inverse tip-top" target="new" href="<?php echo site_url() ?>/os/imprimir/<?php echo $result->idOs; ?>">
+<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Imprimir" class="button_mini btn btn-mini btn-inverse tip-top" target="new" href="<?php echo site_url() ?>/os/imprimir/<?php echo $result->idOs; ?>">
 <span class="button_icon"><i class='fas fa-print'></i></span><span class="button_text">Imprimir A4</span></a>
 
-<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Imprimir Termica" class="button_mini btn btn-mini btn-inverse tip-top" target="new" href="<?php echo site_url() ?>/os/imprimirTermica/<?php echo $result->idOs; ?>">
+<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Imprimir Termica" class="button_mini btn btn-mini btn-inverse tip-top" target="new" href="<?php echo site_url() ?>/os/imprimirTermica/<?php echo $result->idOs; ?>">
 <span class="button_icon"><i class='fas fa-print'></i></span><span class="button_text">Imprimir Termica</span></a>
 
-<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Imprimir Termica 2" class="button_mini btn btn-mini btn-inverse tip-top" target="new" href="<?php echo site_url() ?>/os/imprimirTermica2/<?php echo $result->idOs; ?>">
+<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Imprimir Termica 2" class="button_mini btn btn-mini btn-inverse tip-top" target="new" href="<?php echo site_url() ?>/os/imprimirTermica2/<?php echo $result->idOs; ?>">
 <span class="button_icon"><i class='fas fa-print'></i></span><span class="button_text">Imprimir Termica 2</span></a>
 
-<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Enviar WhatsApp" class="button_mini btn btn-mini btn-success tip-top" id="btn-whatsapp" href="#modal-whatsapp" data-toggle="modal">
+<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Enviar WhatsApp" class="button_mini btn btn-mini btn-success tip-top" id="btn-whatsapp" href="#modal-whatsapp" data-toggle="modal">
 <span class="button_icon"><i class='fab fa-whatsapp'></i></span><span class="button_text">WhatsApp</span></a>
 
 <!-------------------------------------------------------------------------->
 
 <?php if ($result->faturado == 0) { ?>
-<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Faturar" class="button_mini btn btn-mini btn-danger tip-top" id="btn-faturar" href="#modal-faturar" data-toggle="modal">
+<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Faturar" class="button_mini btn btn-mini btn-danger tip-top" id="btn-faturar" href="#modal-faturar" data-toggle="modal">
 <span class="button_icon"><i class='fas fa-cash-register'></i></span><span class="button_text">Faturar</span></a>
 
-<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 200px" title="Faturar - Entregue - Sem Reparo" class="button_mini btn btn-mini btn-danger tip-top" id="btn-faturarEntregueSemReparo" href="#modal-entregue" data-toggle="modal">
+<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 200px" title="Faturar - Entregue - Sem Reparo" class="button_mini btn btn-mini btn-danger tip-top" id="btn-faturarEntregueSemReparo" href="#modal-entregue" data-toggle="modal">
 <span class="button_icon"><i class='fas fa-cash-register'></i></span><span class="button_text">Entregue - Sem Reparo</span></a>
 <?php } ?>
 
 <!-------------------------------------------------------------------------->
 
-<!--<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Enviar por E-mail" class="button_mini btn btn-mini btn-warning tip-top" target="new" href="<?php echo site_url() ?>/os/enviar_email/<?php echo $result->idOs; ?>">
+<!--<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Enviar por E-mail" class="button_mini btn btn-mini btn-warning tip-top" target="new" href="<?php echo site_url() ?>/os/enviar_email/<?php echo $result->idOs; ?>">
 <span class="button_icon"><i class='fas fa-envelope'></i></span><span class="button_text">Enviar por E-mail</span></a>-->
 </div>
 </div>
@@ -71,9 +71,11 @@
 <div class="widget_content_3">
 <ul class="nav nav-tabs">
 <li class="active" id="tabDetalhes"><a href="#tab1" data-toggle="tab">Detalhes da OS</a></li>
+<!--
 <?php if ($result->faturado == 0) { ?>
 <li id="tabDesconto"><a href="#tab2" data-toggle="tab">Desconto</a></li>
 <?php } ?>
+-->
 <li id="tabProdutos"><a href="#tab3" data-toggle="tab">Produtos</a></li>
 <li id="tabServicos"><a href="#tab4" data-toggle="tab">Serviços</a></li>
 <li id="tabAnexos"><a href="#tab5" data-toggle="tab">Anexos</a></li>
@@ -206,41 +208,40 @@
                                         <textarea class="span12 editor" name="laudoTecnico" id="laudoTecnico" cols="30" rows="5"><?php echo $result->laudoTecnico ?></textarea>
 </div>
 <!-- Botoes de Ação -->
+&nbsp;
 <div class="form_actions_2" align="center">
-<div align="center" style="padding: 3px">
 
-<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Voltar" class="button_mini btn btn-mini btn-warning tip-top" href="<?php echo base_url() ?>index.php/os">
+<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Voltar" class="button_mini btn btn-mini btn-warning tip-top" href="<?php echo base_url() ?>index.php/os">
 <span class="button_icon"><i class='fas fa-undo-alt'></i></span><span class="button_text">Voltar</span></a>
 
 <?php if ($result->faturado == 0) { ?>
-<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Faturar" class="button_mini btn btn-mini btn-danger tip-top" id="btn-faturar" href="#modal-faturar" data-toggle="modal">
+<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Faturar" class="button_mini btn btn-mini btn-danger tip-top" id="btn-faturar" href="#modal-faturar" data-toggle="modal">
 <span class="button_icon"><i class='fas fa-cash-register'></i></span><span class="button_text">Faturar</span></a>
 <?php } ?>
 
-<button style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" class="button_mini btn btn-primary tip-top" id="btnContinuar" title="Atualizar" >
+<button style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" class="button_mini btn btn-primary tip-top" id="btnContinuar" title="Atualizar" >
 <span class="button__icon"><i class="bx bx-sync"></i></span><span class="button__text2">Atualizar</span>
 </button>
 
 <!--
-<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Visualizar OS" class="button_mini btn btn-mini btn-primary tip-top" target="new" href="<?php echo base_url() ?>index.php/os/visualizar/<?php echo $result->idOs; ?>">
+<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Visualizar OS" class="button_mini btn btn-mini btn-primary tip-top" target="new" href="<?php echo base_url() ?>index.php/os/visualizar/<?php echo $result->idOs; ?>">
 <span class="button_icon"><i class='fas fa-eye'></i></span><span class="button_text">Visualizar OS</span></a>
 -->
 
 <!--
-<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Enviar WhatsApp" class="button_mini btn btn-mini btn-success tip-top" id="btn-whatsapp" href="#modal-whatsapp" data-toggle="modal">
+<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Enviar WhatsApp" class="button_mini btn btn-mini btn-success tip-top" id="btn-whatsapp" href="#modal-whatsapp" data-toggle="modal">
 <span class="button_icon"><i class='fab fa-whatsapp'></i></span><span class="button_text">WhatsApp</span></a>
 -->
 
-<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Imprimir" class="button_mini btn btn-mini btn-inverse tip-top" target="new" href="<?php echo site_url() ?>/os/imprimir/<?php echo $result->idOs; ?>">
+<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Imprimir" class="button_mini btn btn-mini btn-inverse tip-top" target="new" href="<?php echo site_url() ?>/os/imprimir/<?php echo $result->idOs; ?>">
 <span class="button_icon"><i class='fas fa-print'></i></span><span class="button_text">Imprimir A4</span></a>
 
-<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Imprimir Termica" class="button_mini btn btn-mini btn-inverse tip-top" target="new" href="<?php echo site_url() ?>/os/imprimirTermica/<?php echo $result->idOs; ?>">
+<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Imprimir Termica" class="button_mini btn btn-mini btn-inverse tip-top" target="new" href="<?php echo site_url() ?>/os/imprimirTermica/<?php echo $result->idOs; ?>">
 <span class="button_icon"><i class='fas fa-print'></i></span><span class="button_text">Imprimir Termica</span></a>
 
-<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Imprimir Termica 2" class="button_mini btn btn-mini btn-inverse tip-top" target="new" href="<?php echo site_url() ?>/os/imprimirTermica2/<?php echo $result->idOs; ?>">
+<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Imprimir Termica 2" class="button_mini btn btn-mini btn-inverse tip-top" target="new" href="<?php echo site_url() ?>/os/imprimirTermica2/<?php echo $result->idOs; ?>">
 <span class="button_icon"><i class='fas fa-print'></i></span><span class="button_text">Imprimir Termica 2</span></a>
 
-</div>
 </div>
 <!-- Fim Botoes de Ação -->
 </div>
@@ -923,7 +924,7 @@
 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
 	$zapnumber = preg_replace("/[^0-9]/", "", $result->celular_cliente);
 	$totalOS = number_format($totals + $total, 2, ',', '.');
-	echo '<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 200px" title="Enviar Por WhatsApp" class="button_mini btn btn-mini btn-success tip-top" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $result->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $result->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($result->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $result->status . '*.%0d%0a%0d%0a' . strip_tags($result->defeito) . '%0d%0a%0d%0a' . strip_tags($result->observacoes) . '%0d%0a%0d%0a' . strip_tags($result->laudoTecnico) . '%0d%0a%0d%0aValor%20Total%20*R$&#58%20'. $totalOS . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] . '">
+	echo '<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 200px" title="Enviar Por WhatsApp" class="button_mini btn btn-mini btn-success tip-top" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $result->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $result->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($result->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $result->status . '*.%0d%0a%0d%0a' . strip_tags($result->defeito) . '%0d%0a%0d%0a' . strip_tags($result->observacoes) . '%0d%0a%0d%0a' . strip_tags($result->laudoTecnico) . '%0d%0a%0d%0aValor%20Total%20*R$&#58%20'. $totalOS . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] . '">
 <span class="button_icon"><i class="fab fa-whatsapp"></i></span><span class="button_text">Enviar Por WhatsApp</span></a>'
 ; } ?>
 </div>
@@ -979,7 +980,7 @@
 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
 	$zapnumber = preg_replace("/[^0-9]/", "", $result->celular_cliente);
 	$totalOS = number_format($totals + $total, 2, ',', '.');
-	echo '<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 200px" title="Enviar Por WhatsApp" class="button_mini btn btn-mini btn-success tip-top" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $result->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $result->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($result->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $result->status . '*.%0d%0a%0d%0a' . strip_tags($result->defeito) . '%0d%0a%0d%0a' . strip_tags($result->observacoes) . '%0d%0a%0d%0a' . strip_tags($result->laudoTecnico) . '%0d%0a%0d%0aValor%20Total%20*R$&#58%20'. $totalOS . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20estes%20dados%20para%20fazer%20Log-in%0d%0aEmail:%20*' . strip_tags($result->email) . '*%0d%0aSenha:%20*' . strip_tags($result->senha) . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*">
+	echo '<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 200px" title="Enviar Por WhatsApp" class="button_mini btn btn-mini btn-success tip-top" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $result->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $result->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($result->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $result->status . '*.%0d%0a%0d%0a' . strip_tags($result->defeito) . '%0d%0a%0d%0a' . strip_tags($result->observacoes) . '%0d%0a%0d%0a' . strip_tags($result->laudoTecnico) . '%0d%0a%0d%0aValor%20Total%20*R$&#58%20'. $totalOS . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20estes%20dados%20para%20fazer%20Log-in%0d%0aEmail:%20*' . strip_tags($result->email) . '*%0d%0aSenha:%20*' . strip_tags($result->senha) . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*">
 <span class="button_icon"><i class="fab fa-whatsapp"></i></span><span class="button_text">Enviar Por WhatsApp</span></a>'
 ; } ?>
 </div>
