@@ -1822,7 +1822,7 @@ section .profile .profile-img { /*Foto do Usuario*/
   clear         : both;
   position      : relative;
   border-radius : 12px;
-  min-width : 460px; /*Tamanho Minimo Horizontal*/
+  *min-width : 460px; /*Tamanho Minimo Horizontal*/
 }
 
 .widget-box-statist {
@@ -4830,7 +4830,7 @@ input[type="search"] { color:#fff;}
   
   .cardBox { /*Atalhos do Sistema*/
     grid-template-columns: repeat(2, 1fr);
-	min-width            : 462px;
+	*min-width            : 462px;
     grid-gap             : 13px;
     margin-bottom        : 0px;
   }
