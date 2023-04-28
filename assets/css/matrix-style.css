@@ -3165,6 +3165,11 @@ fieldset[disabled] .btn-info.active {
 	padding-right : 10px;
 }
 
+.widget_pagination {
+	padding-left  : 10px;
+	padding-right : 10px;
+}
+
 .widget_box {
 	border-radius   : 10px 10px 10px 10px; /*Bordas Arredondadas*/
 	background      : none repeat scroll 0 0 #fff;  /*Cor Interna*/
@@ -3269,6 +3274,20 @@ fieldset[disabled] .btn-info.active {
 	padding-right   : 10px;
 	clear           : both;
 	margin-top      : 16px;
+	margin-bottom   : 16px; /*Espaço inferior para a Proxima Tabela*/
+	position        : relative;
+	background-color: #ffffff;
+}
+
+.widget_box_0 {/*Tabela Interna*/
+	border-radius   : 10px 10px 0px 0px; /*Bordas Arredondadas*/
+	background      : none repeat scroll 0 0 #fff;  /*Cor Interna*/
+	/*border-left     : 1px solid #555; /*Borda Esquerda*/
+	/*border-top      : 1px solid #555; /*Borda Superior*/
+    padding-left    : 10px;
+	padding-right   : 10px;
+	clear           : both;
+	margin-top      : 8px;
 	margin-bottom   : 16px; /*Espaço inferior para a Proxima Tabela*/
 	position        : relative;
 	background-color: #ffffff;
