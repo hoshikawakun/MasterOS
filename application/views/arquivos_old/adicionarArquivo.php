@@ -41,7 +41,7 @@
 <div class="control_group_dn">
 <label for="descricao" class="control-label">Data</label>
 <div class="controls">
-<input id="data" class="span11" autocomplete="off" type="date" name="data" value="<?php echo date('Y-m-d'); ?>" />
+<input id="data" type="text" class="datepicker" autocomplete="off" name="data" value="<?php echo date('d/m/Y'); ?>" />
 </div>
 </div>
 
