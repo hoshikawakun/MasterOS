@@ -58,7 +58,7 @@
 </table>
 
 </div>
-<div class="widget_painel_2">
+<div class="widget_pagination">
 <?= $this->pagination->create_links() ?>
 </div>
 

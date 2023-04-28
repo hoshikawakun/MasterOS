@@ -82,8 +82,6 @@
                 $(element).parents('.control-group').addClass('success');
             }
         });
-
-
         $(".datepicker").datepicker({
             dateFormat: 'dd/mm/yy'
         });

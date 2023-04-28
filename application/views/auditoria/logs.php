@@ -8,7 +8,6 @@
 </div>
 </div>
 
-
 <div class="widget_box_2">
 
 <div class="widget_title_2">
@@ -44,7 +43,8 @@
         </table>
 
 </div>
-<div class="widget_painel_2">
+
+<div class="widget_pagination">
 <?= $this->pagination->create_links() ?>
 </div>
 
