@@ -82,6 +82,12 @@
     echo '<a title="Enviar Por WhatsApp" class="button_mini btn btn-mini btn-success" style="min-width: 140px; top:10px" href="whatsapp://send?phone=55' . $zapnumber . '">
 <span class="button_icon"><i class="fab fa-whatsapp"></i></span><span class="button_text">WhatsApp</span></a>';
 } ?>
+
+<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
+    $zapnumber = preg_replace("/[^0-9]/", "", $result->telefone);
+    echo '<a title="Enviar Por WhatsApp Web" class="button_mini btn btn-mini btn-success" style="min-width: 140px; top:10px" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '">
+<span class="button_icon"><i class="fab fa-whatsapp"></i></span><span class="button_text">WhatsApp Web</span></a>';
+} ?>
                                     </td>
                                     </tr>
                                 <tr>

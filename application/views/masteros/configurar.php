@@ -82,6 +82,8 @@
                                 <input id="telefone" class="telefone1" type="text" name="masteros_1" value="" style="margin-top:3px; margin-bottom:3px;"/>
                                 <span class="help-inline">
                                 <a title="Enviar WhatsWapp" style="margin-top:3px; margin-bottom:3px;" class="button_mini btn btn-success" href="whatsapp://send?phone=55<?= $configuration['masteros_1']?>"><span class="button_icon"><i class="fab fa-whatsapp"></i></span> <span class="button_text">Enviar WhatsWapp</span></a>
+                                
+                                <a title="Enviar WhatsWapp" style="margin-top:3px; margin-bottom:3px;" class="button_mini btn btn-success" href="https://web.whatsapp.com/send?phone=55<?= $configuration['masteros_1']?>"><span class="button_icon"><i class="fab fa-whatsapp"></i></span> <span class="button_text">Enviar WhatsApp Web</span></a>
                                         </span>
                                 <span class="help-inline"><input disabled="disabled" value=" <?= $configuration['masteros_1']?>" readonly style="margin-top:3px; margin-bottom:3px;"/></span>
                             </div>

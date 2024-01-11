@@ -26,7 +26,7 @@
                     <th width="14%">Telefone</th>
                     <th>Email</th>
                     <th width="8%">Tipo</th>
-                    <th width="12%">Ações</th>
+                    <th width="13%">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,12 +49,18 @@
                         echo '<td align="center">' . $r->email . '</td>';
 						echo '<td align="center"><span class="badge" style="background-color: ' . $cor . '; border-color: ' . $cor . '">' . ($r->fornecedor ? 'Fornecedor' : 'Cliente') . '</span> </td>';
                         echo '<td align="center">';
-                        /*if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eCliente')) {
+                        if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eCliente')) {
                             echo '<a href="' . base_url() . 'index.php/mine?e=' . $r->email . '&c=' . $r->senha . '" target="new" style="margin-right: 1%" class="btn-nwe2 tip-top" title="Área do cliente"><i class="fas fa-key bx-xs"></i></a>';
-                        }*/
+                        }
+						
                         if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vCliente')) {
                             $zapnumber = preg_replace("/[^0-9]/", "", $r->telefone);
-                            echo '<a class="btn-nwe1 tip-top" style="margin-right: 1%" title="Enviar Msg WhatsApp" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '"><i class="fab fa-whatsapp" style="font-size:16px;"></i></a>';
+                            echo '<a class="btn-nwe1 tip-top" style="margin-right: 1%" title="Enviar Msg WhatsApp" id="enviarWhatsApp" href="whatsapp://send?phone= 55' . $zapnumber . '"><i class="fab fa-whatsapp" style="font-size:16px;"></i></a>';
+                        }
+						
+						if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vCliente')) {
+                            $zapnumber = preg_replace("/[^0-9]/", "", $r->telefone);
+                            echo '<a class="btn-nwe1 tip-top" style="margin-right: 1%" title="Enviar Msg WhatsApp Web" id="enviarWhatsApp" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '"><i class="fab fa-whatsapp" style="font-size:16px;"></i></a>';
                         }
                         if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eCliente')) {
                             echo '<a href="' . base_url() . 'index.php/clientes/editar/' . $r->idClientes . '" target="new" style="margin-right: 1%" class="btn-nwe3 tip-top" title="Editar Cliente"><i class="fas fa-edit bx-xs"></i></a>';

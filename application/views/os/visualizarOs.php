@@ -31,7 +31,11 @@
 <a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Imprimir Termica 2" class="button_mini btn btn-mini btn-inverse tip-top" target="new" href="<?php echo site_url() ?>/os/imprimirTermica2/<?php echo $result->idOs; ?>">
 <span class="button_icon"><i class='fas fa-print'></i></span><span class="button_text">Imprimir Termica 2</span></a>
 
-<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Enviar WhatsApp" class="button_mini btn btn-mini btn-success tip-top" id="btn-whatsapp" href="#modal-whatsapp" data-toggle="modal">
+<!--<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Enviar WhatsApp" class="button_mini btn btn-mini btn-success tip-top" id="btn-whatsapp" href="#modal-whatsapp" data-toggle="modal">
+<span class="button_icon"><i class='fab fa-whatsapp'></i></span><span class="button_text">WhatsApp</span></a>-->
+
+
+<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Enviar WhatsApp" class="button_mini btn btn-mini btn-success tip-top" id="btn-whatsapp" href="#modal-whatsapp-2" data-toggle="modal">
 <span class="button_icon"><i class='fab fa-whatsapp'></i></span><span class="button_text">WhatsApp</span></a>
 
 <!--<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Enviar por E-mail" class="button_mini btn btn-mini btn-warning tip-top" target="new" href="<?php echo site_url() ?>/os/enviar_email/<?php echo $result->idOs; ?>">
@@ -447,8 +451,15 @@ echo $result->valor_desconto != 0 ? "<h4 style='font-size: 14px; text-align: rig
 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
 	$zapnumber = preg_replace("/[^0-9]/", "", $result->celular_cliente);
 	$totalOS = number_format($totals + $total, 2, ',', '.');
-	echo '<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 200px" title="Enviar Por WhatsApp" class="button_mini btn btn-mini btn-success tip-top" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $result->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $result->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($result->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $result->status . '*.%0d%0a%0d%0a' . strip_tags($result->defeito) . '%0d%0a%0d%0a' . strip_tags($result->observacoes) . '%0d%0a%0d%0a' . strip_tags($result->laudoTecnico) . '%0d%0a%0d%0aValor%20Total%20*R$&#58%20'. $totalOS . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] . '">
+	echo '<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 200px" title="Enviar Por WhatsApp" class="button_mini btn btn-mini btn-success tip-top" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $result->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $result->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($result->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $result->status . '*.%0d%0a%0d%0a' . strip_tags($result->defeito) . '%0d%0a%0d%0a' . strip_tags($result->observacoes) . '%0d%0a%0d%0a' . strip_tags($result->laudoTecnico) . '%0d%0a%0d%0aValor%20Total%20*R$&#58%20'. $totalOS . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] . '">
 <span class="button_icon"><i class="fab fa-whatsapp"></i></span><span class="button_text">Enviar Por WhatsApp</span></a>'
+; } ?>
+
+<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
+	$zapnumber = preg_replace("/[^0-9]/", "", $result->celular_cliente);
+	$totalOS = number_format($totals + $total, 2, ',', '.');
+	echo '<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 200px" title="Enviar Por WhatsApp Web" class="button_mini btn btn-mini btn-success tip-top" id="enviarWhatsApp" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $result->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $result->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($result->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $result->status . '*.%0d%0a%0d%0a' . strip_tags($result->defeito) . '%0d%0a%0d%0a' . strip_tags($result->observacoes) . '%0d%0a%0d%0a' . strip_tags($result->laudoTecnico) . '%0d%0a%0d%0aValor%20Total%20*R$&#58%20'. $totalOS . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] . '">
+<span class="button_icon"><i class="fab fa-whatsapp"></i></span><span class="button_text">Enviar Por WhatsApp Web</span></a>'
 ; } ?>
 </div>
 </form>
@@ -503,8 +514,15 @@ echo $result->valor_desconto != 0 ? "<h4 style='font-size: 14px; text-align: rig
 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
 	$zapnumber = preg_replace("/[^0-9]/", "", $result->celular_cliente);
 	$totalOS = number_format($totals + $total, 2, ',', '.');
-	echo '<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 200px" title="Enviar Por WhatsApp" class="button_mini btn btn-mini btn-success tip-top" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $result->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $result->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($result->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $result->status . '*.%0d%0a%0d%0a' . strip_tags($result->defeito) . '%0d%0a%0d%0a' . strip_tags($result->observacoes) . '%0d%0a%0d%0a' . strip_tags($result->laudoTecnico) . '%0d%0a%0d%0aValor%20Total%20*R$&#58%20'. $totalOS . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20estes%20dados%20para%20fazer%20Log-in%0d%0aEmail:%20*' . strip_tags($result->email) . '*%0d%0aSenha:%20*' . strip_tags($result->senha) . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*">
+	echo '<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 200px" title="Enviar Por WhatsApp" class="button_mini btn btn-mini btn-success tip-top" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $result->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $result->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($result->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $result->status . '*.%0d%0a%0d%0a' . strip_tags($result->defeito) . '%0d%0a%0d%0a' . strip_tags($result->observacoes) . '%0d%0a%0d%0a' . strip_tags($result->laudoTecnico) . '%0d%0a%0d%0aValor%20Total%20*R$&#58%20'. $totalOS . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20estes%20dados%20para%20fazer%20Log-in%0d%0aEmail:%20*' . strip_tags($result->email) . '*%0d%0aSenha:%20*' . strip_tags($result->senha) . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*">
 <span class="button_icon"><i class="fab fa-whatsapp"></i></span><span class="button_text">Enviar Por WhatsApp</span></a>'
+; } ?>
+
+<?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
+	$zapnumber = preg_replace("/[^0-9]/", "", $result->celular_cliente);
+	$totalOS = number_format($totals + $total, 2, ',', '.');
+	echo '<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 200px" title="Enviar Por WhatsApp Web" class="button_mini btn btn-mini btn-success tip-top" id="enviarWhatsApp" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $result->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $result->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($result->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $result->status . '*.%0d%0a%0d%0a' . strip_tags($result->defeito) . '%0d%0a%0d%0a' . strip_tags($result->observacoes) . '%0d%0a%0d%0a' . strip_tags($result->laudoTecnico) . '%0d%0a%0d%0aValor%20Total%20*R$&#58%20'. $totalOS . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20estes%20dados%20para%20fazer%20Log-in%0d%0aEmail:%20*' . strip_tags($result->email) . '*%0d%0aSenha:%20*' . strip_tags($result->senha) . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*">
+<span class="button_icon"><i class="fab fa-whatsapp"></i></span><span class="button_text">Enviar Por WhatsApp Web</span></a>'
 ; } ?>
 </div>
 </form>
