@@ -9,7 +9,7 @@ if (!function_exists('convertUrlToUploadsPath')) {
             return;
         }
 
-        return FCPATH . 'assets' . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . basename($url);
+        return FCPATH . 'assets' . DIRECTORY_SEPARATOR . 'logo_normal' . DIRECTORY_SEPARATOR . basename($url);
     }
 }
 
