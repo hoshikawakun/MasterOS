@@ -4,7 +4,7 @@ class MY_Controller extends CI_Controller
 {
     public $data = [
         'configuration' => [
-            'per_page' => 10,
+            'per_page' => 20,
             'next_link' => 'Próxima',
             'prev_link' => 'Anterior',
             'full_tag_open' => '<div class="pagination alternate"><ul>',
