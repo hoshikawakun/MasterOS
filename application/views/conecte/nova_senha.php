@@ -2,7 +2,7 @@
 <html lang="pt-br">
 
 <head>
-    <title>Mine - Área do Cliente - <?php echo $this->config->item('app_name') ?></title>
+    <title>MasterOS - Área do Cliente - <?php echo $this->config->item('app_name') ?></title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="<?php echo $this->config->item('app_name') . ' - ' . $this->config->item('app_subname') ?>">
@@ -46,7 +46,7 @@
                             <div class="span12">
                                 <div class="span6 offset3" style="display:flex;justify-content: center">
                                     <button name="senhaClient" id="senhaClient" type="submit" class="button btn btn-success btn-large"><span class="button__icon"><i class='bx bx-lock-open'></i></span><span class="button__text2">Alterar</span></button>
-                                    <a href="<?php echo base_url() ?>index.php/mine" id="" class="button btn btn-warning"><span class="button__icon"><i class='bx bx-lock-alt'></i></span><span class="button__text2">Acessar</span></a>
+                                    <a href="<?php echo base_url() ?>index.php/conecte" id="" class="button btn btn-warning"><span class="button__icon"><i class='bx bx-lock-alt'></i></span><span class="button__text2">Acessar</span></a>
                                 </div>
                             </div>
                         </div>
@@ -65,7 +65,7 @@
 
                 $.ajax({
                     type: "POST",
-                    url: "<?php echo base_url() ?>index.php/mine/senhaSalvar",
+                    url: "<?php echo base_url() ?>index.php/conecte/senhaSalvar",
                     dataType: 'json',
                     data: {
                         token: token,
@@ -78,7 +78,7 @@
                                 title: "Salvo com Sucesso",
                                 text: data.message
                             });
-                            window.location.replace("<?php echo base_url() ?>index.php/mine/");
+                            window.location.replace("<?php echo base_url() ?>index.php/conecte/");
                         } else {
                             Swal.fire({
                                 type: "error",
