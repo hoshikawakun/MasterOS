@@ -95,7 +95,9 @@
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Configurações" class="tip-bottom"><i class='fas fa-cog iconN'></i><span class="text"> Configurações</span></a>
         <ul class="dropdown-menu">
+        <!--
         <li><a href="<?= site_url('conecte') ?>">Area do Cliente</a></li>
+        -->
         <li><a href="<?= site_url('masteros/configurar') ?>">Sistema</a></li>
         <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'cUsuario')) { ?>
         <li><a href="<?= site_url('usuarios') ?>">Usuários</a></li>
@@ -108,6 +110,10 @@
         <li><a href="<?= site_url('masteros/backup') ?>">Backup</a></li>
         </ul>
       </li>
+      
+      <li class="dropdown">
+        <a href="<?= site_url('conecte') ?>" title="Area do Cliente" target="_blank" class="tip-bottom"><i class='fas fa-users iconN'></i><span class="text"> Area do Cliente</span></a>
+      
     </ul>
   </div>
 
