@@ -4,7 +4,7 @@
 <div class="span12">
 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'cUsuario')) { ?>
 <div class="span4">
-<a href="<?php echo base_url(); ?>index.php/usuarios/adicionar" class="button_mini btn btn-mini btn-success" style="margin-bottom:10px; max-width: 170px" target="new">
+<a href="<?php echo base_url(); ?>index.php/usuarios/adicionar" class="button_mini btn btn-mini btn-success" style="margin-bottom:10px; max-width: 170px" target="_blank">
 <span class="button_icon"><i class='fas fa-plus-circle'></i></span><span class="button_text">Adicionar Usuário</span></a>
 </div>
 <?php } ?>
@@ -46,7 +46,7 @@
                         echo '<td align="center">' . $r->permissao . '</td>';
                         echo '<td align="center">' . $r->dataExpiracao . '</td>';
                         echo '<td align="center">
-						      <a style="margin-right: 1%" href="' . base_url() . 'index.php/usuarios/editar/' . $r->idUsuarios . '" target="new" class="btn-nwe3 tip-top" title="Editar OS"><i class="fas fa-edit"></i></a>';
+						      <a style="margin-right: 1%" href="' . base_url() . 'index.php/usuarios/editar/' . $r->idUsuarios . '" target="_blank" class="btn-nwe3 tip-top" title="Editar OS"><i class="fas fa-edit"></i></a>';
                         echo '</tr>';
                     } ?>
                 </tbody>
