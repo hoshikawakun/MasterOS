@@ -295,7 +295,7 @@ $periodo = $this->input->get('periodo');
 <input class="span12" id="descricao" type="text" name="descricao" required />
 <input id="urlAtual" type="hidden" name="urlAtual" value="<?php echo current_url() ?>" />
 </div>
-<div class="span12 hide" style="margin-left: 0">
+<div class="span12" style="margin-left: 0">
 <label for="observacoes">Observações</label>
 <textarea class="span12" id="observacoes" name="observacoes"></textarea>
 </div>
@@ -304,18 +304,17 @@ $periodo = $this->input->get('periodo');
 <label for="valor">Valor*</label>
 <input class="span12 money" id="valor" type="text" name="valor" data-affixes-stay="true" data-thousands="" data-decimal="." required />
 </div>
-</div>
-<div class="span12 hide" style="margin-left: 0">
-<div class="span4">  
+<div class="span4 hide">  
 <label for="descontos">Desconto</label>
 <input class="span6 money" id="descontos" type="text" name="descontos" value="" placeholder="em R$" style="float: left;" />
 <input class="btn btn-inverse" onclick="mostrarValores();" type="button" name="valor_desconto" value="Aplicar" placeholder="R$" style="margin-left:6px; width: 75px;" />
 </div>
-<div class="span4">  
+<div class="span4 hide">  
 <label for="valor_desconto">Val.Desc <i class="icon-info-sign tip-left" title="Não altere esta campo, caso clicar nele e sair e ficar vázio, terá que recarregar á pagina e inserir de novo"></i></label>
 <input class="span12 money" id="valor_desconto" readOnly="true" title="Não altere este campo" type="text" name="valor_desconto" value="<?php echo number_format("0.00",2,',','.') ?>"/>
 </div>
 </div>
+
 <div class="span12" style="margin-left: 0">
 <div class="span4" style="margin-left: 0">
 <label for="vencimento">Data Vencimento*</label>
@@ -406,7 +405,7 @@ $periodo = $this->input->get('periodo');
 <input class="span12" id="descricao_parc" type="text" name="descricao_parc" required />
 <input id="urlAtual" type="hidden" name="urlAtual" value="<?php echo current_url() ?>"/>
 </div>
-<div class="span12 hide" style="margin-left: 0">
+<div class="span12" style="margin-left: 0">
 <label for="observacoes_parc">Observações</label>
 <textarea class="span12" id="observacoes_parc" name="observacoes_parc"></textarea>
 </div>
@@ -415,12 +414,12 @@ $periodo = $this->input->get('periodo');
 <label for="valor_parc">Valor*</label>
 <input class="span12 money" id="valor_parc" type="text" name="valor_parc" required />
 </div>
-<div class="span4">  
+<div class="span4 hide">  
 <label for="descontos_parc">Desconto</label>
 <input class="span6 money" id="descontos_parc" type="text" name="descontos_parc" value="" placeholder="em R$" style="float: left;" />
 <input class="btn btn-inverse" onclick="mostrarValoresParc();" type="button" name="desconto_parc" value="Aplicar" placeholder="R$" style="width: 75px; margin-left:6px;" />
 </div>
-<div class="span4">  
+<div class="span4 hide">  
 <label for="desconto_parc">Desconto <i class="icon-info-sign tip-left" title="Não altere esta campo, caso clicar nele e sair e ficar vázio, terá que recarregar á pagina e inserir de novo"></i></label>
 <input class="span12 money"  id="desconto_parc" readOnly="true" title="Não altere este campo" type="text" name="desconto_parc" value="<?php echo number_format("0.00",2,',','.') ?>" style="float: left;" />
 </div>
@@ -434,6 +433,7 @@ $periodo = $this->input->get('periodo');
 <div id="divParcelamento" class="span3">
 <label for="qtdparcelas_parc">Parcelas</label>
 <select name="qtdparcelas_parc" id="qtdparcelas_parc" class="span12">
+<option value="0">Pagamento á vista</option>
 <option value="1">1x</option>
 <option value="2">2x</option>			
 <option value="3">3x</option>			
