@@ -15,7 +15,7 @@
   
   <?php if ($configuration['app_theme'] == 'white') { ?> <link rel="stylesheet" href="<?= base_url(); ?>assets/css/tema.css" /><?php } ?>
   <?php if ($configuration['app_theme'] == 'verde') { ?> <link rel="stylesheet" href="<?= base_url(); ?>assets/css/tema3.css" /><?php } ?>
-  <?php if ($configuration['app_theme'] == 'novo') { ?> <link rel="stylesheet" href="<?= base_url(); ?>assets/css/tema1.css" /><?php } ?>
+  <?php if ($configuration['app_theme'] == 'normal') { ?> <link rel="stylesheet" href="<?= base_url(); ?>assets/css/tema1.css" /><?php } ?>
   
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;700&display=swap' rel='stylesheet' type='text/css'>
@@ -69,7 +69,7 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Meu Perfil" class="tip-bottom"><i class='fas fa-user-cog iconN'></i><span class="text"> Meu Perfil</span></a>
         <ul class="dropdown-menu">
           <!--
-          <li class=""><a title="Área do Cliente" href="<?= site_url(); ?>/mine"> <span class="text">Área do Cliente</span></a></li>
+          <li class=""><a title="Área do Cliente" href="<?= site_url(); ?>/conecte"> <span class="text">Área do Cliente</span></a></li>
           -->
           <li class=""><a title="Meu Perfil" href="<?= site_url('masteros/minhaConta'); ?>"><span class="text">Meu Perfil</span></a></li>
           <li class="divider"></li>
@@ -95,6 +95,7 @@
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Configurações" class="tip-bottom"><i class='fas fa-cog iconN'></i><span class="text"> Configurações</span></a>
         <ul class="dropdown-menu">
+        <li><a href="<?= site_url('conecte') ?>">Area do Cliente</a></li>
         <li><a href="<?= site_url('masteros/configurar') ?>">Sistema</a></li>
         <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'cUsuario')) { ?>
         <li><a href="<?= site_url('usuarios') ?>">Usuários</a></li>
@@ -111,7 +112,7 @@
   </div>
 
 <!-- New User -->
-<div id="userr" style="padding-right:45px;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;">
+<div id="userr" style="display:flex; flex-direction:column; align-items:flex-end; justify-content:center;">
   <div class="user-names userT0"> <?php function saudacao($nome = '')
 {
     date_default_timezone_set('America/Sao_Paulo');
@@ -128,7 +129,7 @@
   </div>
   <div class="userT"><?= $this->session->userdata('nome') ?></div>
 
-  <section style="display:block;position:absolute;right:10px">
+  <section style="display:block;position:absolute;right:15px">
   <div class="profile">
     <div class="profile-img">
       <a href="<?= site_url('masteros/minhaConta'); ?>"><img src="<?= !is_file(FCPATH . "assets/userImage/" . $this->session->userdata('url_image_user')) ?  base_url() . "assets/img/User.png" : base_url() . "assets/userImage/" . $this->session->userdata('url_image_user') ?>" alt=""></a>
@@ -139,11 +140,4 @@
 </div>
 <!-- End User -->
 
-<!--start-top-serch-->
-<div style="display: none" id="search">
-    <form action="<?= site_url('masteros/pesquisar') ?>">
-      <input type="text" name="termo" placeholder="Pesquisar..." />
-      <button type="submit" class="tip-bottom" title="Pesquisar"><i class="fas fa-search fa-white"></i></button>
-    </form>
-  </div>
-  <!--close-top-serch-->
+

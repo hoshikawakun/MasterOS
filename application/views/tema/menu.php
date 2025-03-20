@@ -60,7 +60,6 @@
 					<a href="<?= site_url('os') ?>"><i class='fas fa-diagnoses iconX'></i>
 					<span class="title">Ordens de Serviço</span>
                     <span class="title-tooltip">OS.</span></a>
-                    
 				</li>
 			<?php } ?>
 
