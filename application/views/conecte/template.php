@@ -17,12 +17,12 @@
 </head>
 
 <body>
-<!--Header-part-->
-<div id="header">
-<h1><a href="dashboard.html">
-<?php echo $this->config->item('app_name'); ?></a></h1>
-</div>
-<!--close-Header-part-->
+    <!--Header-part-->
+    <div id="header">
+        <h1><a href="dashboard.html">
+                <?php echo $this->config->item('app_name'); ?></a></h1>
+    </div>
+    <!--close-Header-part-->
 
 <!-- Header Menu -->
 <div class="navebarn" style="margin-top: -55px;height: 25px">

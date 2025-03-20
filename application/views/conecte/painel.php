@@ -1,13 +1,15 @@
 <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 <script src='<?= base_url(); ?>assets/js/fullcalendar.min.js'></script>
 
+
+
 <!--Action boxes-->
 <ul class="cardBox">
 <li class="card">
             <div>
                 <div class="numbers">Minha Conta</div>
             </div>
-            <a href="<?= site_url('servicos') ?>">
+            <a href="<?php echo base_url() ?>index.php/conecte/conta">
                 <div class="iconBx">
                     <i class='fas fa-user-cog'></i>
                 </div>
@@ -18,7 +20,7 @@
             <div>
                 <div class="numbers">Ordens de Serviço</div>
             </div>
-            <a href="<?= site_url('os') ?>">
+            <a href="<?php echo base_url() ?>index.php/conecte/os">
                 <div class="iconBx">
                     <i class='fas fa-diagnoses'></i>
                 </div>
@@ -31,7 +33,7 @@
             <div>
                 <div class="numbers">Compras</div>
             </div>
-            <a href="<?= site_url('vendas') ?>">
+            <a href="<?php echo base_url() ?>index.php/conecte/compras">
                 <div class="iconBx">
                     <i class='fas fa-cash-register'></i>
                 </div>
@@ -63,6 +65,8 @@
     </div>
 </ul>
 <!--End-Action boxes-->
+
+
 
 <div class="widget_content_4">
 <div class="widget_title_4">
@@ -234,6 +238,56 @@
 </div>
 </div>
 <?php } ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!--
 <div class="span12" style="margin-left: 0">
