@@ -7,7 +7,7 @@
 <form method="get" action="<?= current_url(); ?>">
 
 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'aOs')) { ?>
-<a title="Adicionar OS" href="<?php echo base_url(); ?>index.php/arquivos/adicionar" class="button btn btn-mini btn-success tip-top" target="new" style="margin-bottom:10px">
+<a title="Adicionar OS" href="<?php echo base_url(); ?>index.php/arquivos/adicionar" class="button btn btn-mini btn-success tip-top" target="_blank" style="margin-bottom:10px">
 <span class="button_icon"><i class='fas fa-plus-circle'></i></span><span class="button_text">Adicionar Arquivo</span></a>
 <?php } ?>
 
@@ -54,10 +54,10 @@
                             <td align="center"><?= $r->idDocumentos ?></td>
                             <td align="center">
             			<?php if (@getimagesize($r->path)): ?>
-                            <a href="<?= $r->url ?>" target="_new"> <img src="<?= $r->url ?> "></a>
+                            <a href="<?= $r->url ?>" target="_blank"> <img src="<?= $r->url ?> "></a>
             			<?php else: ?>
                             <span>
-                            <a href="<?= $r->url ?>" target="_new"><img src="../../../assets/img/document.png" width="96" height="96" /></a>
+                            <a href="<?= $r->url ?>" target="_blank"><img src="../../../assets/img/document.png" width="96" height="96" /></a>
                             </span>
             			<?php endif ?>
                             </td>
