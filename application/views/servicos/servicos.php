@@ -31,7 +31,7 @@
 <div class="span12">
 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'aServico')) { ?>
 <div class="span4">
-<a href="<?php echo base_url() ?>index.php/servicos/adicionar" class="button btn btn-mini btn-success" target="new" style="margin-bottom:10px; max-width: 170px">
+<a href="<?php echo base_url() ?>index.php/servicos/adicionar" class="button btn btn-mini btn-success" target="_blank" style="margin-bottom:10px; max-width: 170px">
 <span class="button_icon"><i class='fas fa-plus-circle'></i></span><span class="button_text">Add. Serviços</span></a>
 </div>
 <?php } ?>
@@ -70,7 +70,7 @@
                         echo '<td>' . $r->descricao . '</td>';
                         echo '<td align="center">';
                         if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eServico')) {
-                            echo '<a target="new" style="margin-right: 1%" href="' . base_url() . 'index.php/servicos/editar/' . $r->idServicos . '" class="btn-nwe3 tip-top" title="Editar Serviço"><i class="fas fa-edit bx-xs"></i></a>';
+                            echo '<a target="_blank" style="margin-right: 1%" href="' . base_url() . 'index.php/servicos/editar/' . $r->idServicos . '" class="btn-nwe3 tip-top" title="Editar Serviço"><i class="fas fa-edit bx-xs"></i></a>';
                         }
                         if ($this->permission->checkPermission($this->session->userdata('permissao'), 'dServico')) {
                             echo '<a href="#modal-excluir" role="button" data-toggle="modal" servico="' . $r->idServicos . '" class="btn-nwe4 tip-top" title="Excluir Serviço"><i class="fas fa-trash bx-xs"></i></a>  ';
