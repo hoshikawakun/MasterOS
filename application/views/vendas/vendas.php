@@ -77,10 +77,10 @@
 
 <!-- Modal Excluir -->
 <div id="modal-excluir" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-<form action="<?php echo base_url() ?>index.php/produtos/excluir" method="post">
+<form action="<?php echo base_url() ?>index.php/vendas/excluir" method="post">
 <div class="modal_title">
 <button type="button" class="close" style="color:#f00; padding-right:5px; padding-top:10px" data-dismiss="modal" aria-hidden="true">×</button>
-<h5>Excluir Serviço</h5>
+<h5>Excluir Venda</h5>
 </div>
 <div class="modal_body">
 <input type="hidden" id="idVenda" name="id" value="" />
@@ -99,8 +99,8 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $(document).on('click', 'a', function(event) {
-            var servico = $(this).attr('servico');
-            $('#idServico').val(servico);
+            var venda = $(this).attr('venda');
+            $('#idVenda').val(venda);
         });
     });
 </script>
