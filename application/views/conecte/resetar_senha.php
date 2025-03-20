@@ -2,7 +2,7 @@
 <html lang="pt-br">
 
 <head>
-    <title>Mine - Área do Cliente - <?php echo $this->config->item('app_name') ?></title>
+    <title>MasterOS - Área do Cliente - <?php echo $this->config->item('app_name') ?></title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="<?php echo $this->config->item('app_name') . ' - ' . $this->config->item('app_subname') ?>">
@@ -29,7 +29,7 @@
                 </div>
                 <div class="widget-content nopadding tab-content">
 
-                    <form action="<?php echo base_url() . "index.php/mine/gerarTokenResetarSenha" ?>" id="formCliente" method="post" class="form-horizontal">
+                    <form action="<?php echo base_url() . "index.php/conecte/gerarTokenResetarSenha" ?>" id="formCliente" method="post" class="form-horizontal">
 
                         <div class="control-group" style="display: flex;margin-bottom: 7pxpx;grid-column-gap: 5px;justify-content: space-evenly;border-bottom: 0px">
                             <label style="width: auto" for="email" class="control-label">Email<span class="required">*</span></label>
@@ -42,7 +42,7 @@
                             <div class="span12">
                                 <div class="span6 offset3" style="display:flex;justify-content: center">
                                     <button type="submit" class="button btn btn-success btn-large"><span class="button__icon"><i class='bx bx-mail-send'></i></span><span class="button__text2">Enviar</span></button>
-                                    <a href="<?php echo base_url() ?>index.php/mine" id="" class="button btn btn-warning"><span class="button__icon"><i class='bx bx-lock-alt'></i></span><span class="button__text2">Acessar</span></a>
+                                    <a href="<?php echo base_url() ?>index.php/conecte" id="" class="button btn btn-warning"><span class="button__icon"><i class='bx bx-lock-alt'></i></span><span class="button__text2">Acessar</span></a>
                                 </div>
                             </div>
                         </div>
