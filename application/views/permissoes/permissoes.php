@@ -4,7 +4,7 @@
 <div class="span12">
 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'cPermissao')) { ?>
 <div class="span4">
-<a href="<?php echo base_url(); ?>index.php/permissoes/adicionar" class="button_mini btn btn-mini btn-success" style="margin-bottom:10px; max-width: 170px" target="new">
+<a href="<?php echo base_url(); ?>index.php/permissoes/adicionar" class="button_mini btn btn-mini btn-success" style="margin-bottom:10px; max-width: 170px" target="_blank">
 <span class="button_icon"><i class='fas fa-plus-circle'></i></span><span class="button_text">Adicionar</span></a>
 </div>
 <?php } ?>
@@ -49,7 +49,7 @@
                         echo '<td align="center">' . $situacao . '</td>';
 						echo '<td align="center">';
 						if ($this->permission->checkPermission($this->session->userdata('permissao'), 'cPermissao')) {
-                                echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/permissoes/editar/' . $r->idPermissao . '" target="new" class="btn-nwe3 tip-top" title="Editar OS"><i class="fas fa-edit"></i></a>';
+                                echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/permissoes/editar/' . $r->idPermissao . '" target="_blank" class="btn-nwe3 tip-top" title="Editar OS"><i class="fas fa-edit"></i></a>';
 								echo '<a href="#modal-excluir" role="button" data-toggle="modal" permissao="' . $r->idPermissao . '" class="btn-nwe4" title="Desativar Permissão"><i class="fas fa-trash" ></i></a>';
                             }
                         echo '</tr>';
