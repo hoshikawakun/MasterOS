@@ -281,15 +281,15 @@ $totalProdutos = 0; ?>
                     </table>
                     <?php } ?>
 					
-                       <!-- Total OS -->
+<!-- Total OS -->
 <?php
 if ($totalProdutos != 0 || $totalServico != 0) {
-echo "<h4 style='font-size: 12px; text-align: right'>Valor Total: R$ " . number_format($totalProdutos + $totalServico, 2, ',', '.') . "  "."</h4>";
-echo $result->valor_desconto != 0 ? "<h4 style='font-size: 12px; text-align: right'>Desconto: R$ " . number_format($result->valor_desconto != 0 ? $result->valor_desconto - ($totalProdutos + $totalServico) : 0.00, 2, ',', '.') . "  "."</h4>" : ".";
-echo $result->valor_desconto != 0 ? "<h4 style='font-size: 12px; text-align: right'>Total com Desconto: R$ " . number_format($result->valor_desconto, 2, ',', '.') . "  "."</h4>" : ".";
+echo "<h5 style='font-size: 12px; text-align: right'>Valor Total: R$ " . number_format($totalProdutos + $totalServico, 2, ',', '.') . "  "."</h4>";
+echo $result->valor_desconto  != 0 ? "<h4 style='font-size: 12px; text-align: right'>Desconto: R$ " . number_format($result->valor_desconto  != 0 ? $result->valor_desconto  - ($totalProdutos + $totalServico) : 0.00, 2, ',', '.') . "  </h4>" : ".";
+echo $result->valor_desconto  != 0 ? "<h4 style='font-size: 12px; text-align: right'>Total com Desconto: R$ " . number_format($result->valor_desconto , 2, ',', '.') . "  </h4>" : ".";
                         }
                         ?>
-                       <!-- Fim Total OS -->
+<!-- Fim Total OS -->
                     
                 </td>
             </tr>
