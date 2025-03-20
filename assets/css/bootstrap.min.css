@@ -1438,6 +1438,15 @@ input.grade,textarea.grade,.uneditable-input.grade{width:606px}
 .table_w th {color: #333;} /*Cor da escrita do cabeçalho da Tabela Interna*/
 .table_w th {background:#eee;} /*Cor Cabeçalho da Tabela Interna*/
 
+.table_z {width:100%;}
+.table_z {font-size:14px;}
+.table_z tr td {border: 1px solid #333; font-size:12px; padding: 5px;} /*Cor das Bordas da Tabela Interna*/
+.table_z th {border: 1px solid #333;} /*Cor das colunas do cabeçalho da Tabela Interna*/
+.table_z th {text-align:center; padding: 5px;} /*Alinhamento da escrita do cabeçalho da Tabela Interna*/
+.table_z th {font-size: 14px;} /*Tamanho da escrita do cabeçalho da Tabela Interna*/
+.table_z th {color: #333;} /*Cor da escrita do cabeçalho da Tabela Interna*/
+.table_z th {background:#eee;} /*Cor Cabeçalho da Tabela Interna*/
+
 .table{width:100%;margin-bottom:20px}
 .table th,.table td{padding:8px;line-height:20px;text-align:left;vertical-align:top;border-top:1px solid #ddd}
 .table th{font-weight:bold}
