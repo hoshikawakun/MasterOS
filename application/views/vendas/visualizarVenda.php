@@ -1,19 +1,9 @@
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/jquery-ui/css/smoothness/jquery-ui-1.9.2.custom.css" />
-<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery-ui/js/jquery-ui-1.9.2.custom.js"></script>
-<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.validate.js"></script>
-<script src="<?php echo base_url() ?>assets/js/sweetalert2.all.min.js"></script>
-<link rel="stylesheet" href="<?php echo base_url() ?>assets/trumbowyg/ui/trumbowyg.css">
-<script type="text/javascript" src="<?php echo base_url() ?>assets/trumbowyg/trumbowyg.js"></script>
-<script type="text/javascript" src="<?php echo base_url() ?>assets/trumbowyg/langs/pt_br.js"></script>
-<link href="<?= base_url('assets/css/custom.css'); ?>" rel="stylesheet">
-<?php $totalServico = 0; $totalProdutos = 0; ?>
+<div class="vendas123" style="margin-top: 0; min-height: 50vh">
 
-
-<div class="row-fluid" style="margin-top:0">
-<div class="widget_content_3" align="center" style="padding:5px; margin-bottom:5px;">
-
+<div class="widget_painel_2">
+<div class="span12" align="center">
 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eVenda')) { ?>
-<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Nova Venda" class="button_mini btn btn-mini btn-success tip-top" target="new" href="<?php echo base_url(); ?>index.php/vendas/adicionar">
+<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Nova Venda" class="button_mini btn btn-mini btn-success tip-top" target="_blank" href="<?php echo base_url(); ?>index.php/vendas/adicionar">
 <span class="button_icon"><i class='fas fa-plus-circle'></i></span><span class="button_text">Adicionar</span></a>
 <?php } ?>
 
@@ -22,23 +12,28 @@
 <span class="button_icon"><i class='fas fa-edit'></i></span><span class="button_text">Editar Venda</span></a>
 <?php } ?>
 
-<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Imprimir" class="button_mini btn btn-mini btn-inverse tip-top" target="new" href="<?php echo site_url() ?>/vendas/imprimir/<?php echo $result->idVendas; ?>">
+<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Imprimir" class="button_mini btn btn-mini btn-inverse tip-top" target="_blank" href="<?php echo site_url() ?>/vendas/imprimir/<?php echo $result->idVendas; ?>">
 <span class="button_icon"><i class='fas fa-print'></i></span><span class="button_text">Imprimir A4</span></a>
 
-<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Imprimir Termica" class="button_mini btn btn-mini btn-inverse tip-top" target="new" href="<?php echo site_url() ?>/vendas/imprimirTermica/<?php echo $result->idVendas; ?>">
+<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Imprimir Termica" class="button_mini btn btn-mini btn-inverse tip-top" target="_blank" href="<?php echo site_url() ?>/vendas/imprimirTermica/<?php echo $result->idVendas; ?>">
 <span class="button_icon"><i class='fas fa-print'></i></span><span class="button_text">Imprimir Termica</span></a>
 
+<!--
 <a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Gerar Pagamento" class="button_mini btn btn-mini btn-success tip-top" href="#modal-gerar-pagamento" id="btn-forma-pagamento" role="button" data-toggle="modal"><span class="button_icon"><i class="fas fa-cash-register"></i></span><span class="button_text">Gerar Pagamento</span></a>
 <?= $modalGerarPagamento ?>
-
+-->
 </div>
+</div>
+
+
+<div class="widget_box_1">
+
+<div class="widget_title_6">
+<h5>Dados da Venda</h5>
 </div>
 
 <div class="row-fluid" style="margin-top:0">
 <div class="widget_content_3">
-<div class="widget_title_3">
-<h5>Dados da Venda</h5>
-</div>
 <div class="well_0">
 
 
@@ -73,32 +68,32 @@
 </table>
 </div>
 
+<!-- Dados -->
 <div class="widget_content_printer2">
 <table width="100%" class="table_w">
-<tr>
-<td>
-<b>Cliente</b><br>
-<i class="fas fa-user-check"></i> <?php echo $result->nomeCliente ?><br>
-<i class="fas fa-fingerprint" style="margin:0px 1px"></i>
-<?php echo $result->documento ?><br>
-<i class="fas fa-map-marker-alt" style="margin:0px 3px"></i>
-<?php echo $result->rua ?>,
-<?php echo $result->numero ?>,
-<?php echo $result->bairro ?><br>
-<i class="fas fa-map-marker-alt" style="margin:0px 3px"></i> <?php echo $result->cidade ?> -
-<?php echo $result->estado ?><br>
-<i class="fas fa-map-marker-alt" style="margin:0px 3px"></i> CEP: <?php echo $result->cep ?><br>
-<i class="fas fa-phone-alt" style="margin:0px 1px"></i>  <?php echo $result->telefone ?>
-</td>
-<td>
-<span style="font-size: 15px"><b>Vendedor</b></span><br>
-<span style="font-size: 12px"><i class="fas fa-user-check"></i> <?php echo $result->nome ?></span><br>
-<span style="font-size: 12px"><i class="fas fa-phone-alt" style="margin:5px 1px"></i> <?php echo $result->telefone_usuario ?></span><br>
-<span style="font-size: 12px"><i class="fas fa-envelope" style="margin:5px 1px"></i> <?php echo $result->email_usuario ?></span>
-</td>
-</tr>
-</table>
+                                    <tr>
+                                        <td width="50%">
+                                        	<h5>Cliente</h5>
+                                            <i class="fas fa-user-check" style="margin:0px 3px 0px 0px"></i><?php echo $result->nomeCliente ?><br>
+                                            <i class="fas fa-fingerprint" style="margin:0px 6px 0px 0px"></i><?php echo $result->documento ?><br>
+                                            <i class="fas fa-map-marker-alt" style="margin:0px 8px 0px 2px"></i>
+                                            <?php echo $result->rua ?>,
+                                            <?php echo $result->numero ?>,
+                                            <?php echo $result->bairro ?><br>
+                                            <i class="fas fa-map-marker-alt" style="margin:0px 8px 0px 2px"></i><?php echo $result->cidade ?> - <?php echo $result->estado ?><br>
+                                            <i class="fas fa-map-marker-alt" style="margin:0px 8px 0px 2px"></i>CEP: <?php echo $result->cep ?><br>
+                                            <i class="fas fa-phone-alt" style="margin:0px 6px 0px 0px"></i><?php echo $result->telefone ?><br>
+                                            <i class="fas fa-envelope" style="margin:0px 7px 10px 0px"></i><?php echo $result->email ?>
+                                        </td>
+                                        <td width="50%">
+                                        	<h5>Vendedor</h5>
+                                            <i class="fas fa-user-check" style="margin:0px 2px 0px 0px"></i><?php echo $result->nome ?><br>
+                                            <i class="fas fa-phone-alt" style="margin:0px 4px 0px 0px"></i><?php echo $result->telefone_usuario ?>
+                                        </td>
+                                    </tr>
+                                </table>
 </div>
+<!-- Fim Dados -->
 
 <div class="widget_content_printer2">
 <table width="100%" class="table_w" id="tblProdutos">
@@ -158,21 +153,11 @@ echo '</tr>';
 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
 </div>
 </div>
+        
+</div>
+
+</div>
+

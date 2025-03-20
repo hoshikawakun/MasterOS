@@ -45,12 +45,6 @@
 <?php if ($custom_error != '') {
 	echo '<div class="alert alert-danger">' . $custom_error . '</div>'; } ?>
 
-
-
-
-
-
-
 <!-- Menu Gerais -->
 <div id="home" class="tab-pane fade in active">
 <div class="control_group_up">
@@ -245,14 +239,6 @@
                                     </select>
                                 </div>
                             </div>
-
-
-
-
-
-
-
-
 
 <div class="form_actions" align="center">
 <a title="Voltar" class="button_mini btn btn-warning" href="<?php echo site_url() ?>/clientes"><span class="button_icon"><i class="fas fa-undo-alt"></i></span> <span class="button_text">Voltar</span></a>

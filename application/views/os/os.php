@@ -15,7 +15,7 @@
 <form method="get" action="<?php echo base_url(); ?>index.php/os/gerenciar">
 
 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'aOs')) { ?>
-<a title="Adicionar OS" href="<?php echo base_url(); ?>index.php/os/adicionar" class="button btn btn-mini btn-success tip-top" target="new" style="margin-bottom:10px">
+<a title="Adicionar OS" href="<?php echo base_url(); ?>index.php/os/adicionar" class="button btn btn-mini btn-success tip-top" target="_blank" style="margin-bottom:10px">
 <span class="button_icon"><i class='fas fa-plus-circle'></i></span><span class="button_text">Adicionar OS</span></a>
 <?php } ?>
 
@@ -83,7 +83,7 @@
                 <?php
                         
                         if (!$results) {
-                            echo '<tr>
+			echo '<tr>
                                     <td colspan="10">Nenhuma OS Cadastrada</td>
                                   </tr>';
                         }
@@ -170,22 +170,22 @@
                                 $vencGarantia = dateInterval($r->dataFinal, $r->garantia);
                             }
                             
-                            echo '<tr>';
-                            echo '<td align="center"><a href="' . base_url() . 'index.php/os/visualizar/' . $r->idOs . '" target="new" class="tip-top" title="Visualizar detalhes da OS" style="margin-right: 1%">' . $r->idOs . '</a></td>';
-							echo '<td>' . $DescricaoShort . '</td>';
-                            echo '<td><a href="' . base_url() . 'index.php/clientes/visualizar/' . $r->idClientes . '" target="new" class="tip-top" title="Visualizar Cliente" style="margin-right: 1%">' . $NomeClienteShort . '</a></td>';
-                            echo '<td align="center">' . $ResponsávelShort . '</td>';
-                            echo '<td align="center">' . $dataInicial . '</td>';
-                            echo '<td align="center">R$: ' . number_format($r->totalProdutos + $r->totalServicos, 2, ',', '.') . '</td>';
-                            echo '<td align="center"><span class="badge" style="background-color: ' . $cor . '; border-color: ' . $cor . '">' . $r->status . '</span></td>';
-                            echo '<td align="center">';
-                            /*
+			echo '<tr>';
+			//echo '<td align="center"><a href="' . base_url() . 'index.php/os/visualizar/' . $r->idOs . '" target="_blank" class="tip-top" title="Visualizar detalhes da OS" style="margin-right: 1%">' . $r->idOs . '</a></td>';
+			echo '<td align="center">' . $r->idOs . '</td>';
+			echo '<td>' . $DescricaoShort . '</td>';
+			echo '<td><a href="' . base_url() . 'index.php/clientes/visualizar/' . $r->idClientes . '" target="_blank" class="tip-top" title="Visualizar Cliente" style="margin-right: 1%">' . $NomeClienteShort . '</a></td>';
+			echo '<td align="center">' . $ResponsávelShort . '</td>';
+			echo '<td align="center">' . $dataInicial . '</td>';
+			echo '<td align="center">R$: ' . number_format($r->totalProdutos + $r->totalServicos, 2, ',', '.') . '</td>';
+			echo '<td align="center"><span class="badge" style="background-color: ' . $cor . '; border-color: ' . $cor . '">' . $r->status . '</span></td>';
+			echo '<td align="center">';
+                            
 							if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
-                                echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/visualizar/' . $r->idOs . '" class="btn tip-top" title="Visualizar mais detalhes"><i class="fas fa-eye"></i></a>';
+    			echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/visualizar/' . $r->idOs . '" class="btn-nwe tip-top" title="Visualizar detalhes da OS"><i class="fas fa-eye"></i></a>';
                                     }
-									*/
                             if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
-                                echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/editar/' . $r->idOs . '" target="new" class="btn-nwe3 tip-top" title="Editar OS"><i class="fas fa-edit"></i></a>';
+    			echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/editar/' . $r->idOs . '" target="_blank" class="btn-nwe3 tip-top" title="Editar OS"><i class="fas fa-edit"></i></a>';
                             }
                             /*
 							if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
@@ -193,20 +193,20 @@
                                 $eMailCliente = $r->email_cliemte;
                                 $SenhaCliente = $r->senha_cliente;
                                 $total_os = number_format($r->totalProdutos + $r->totalServicos, 2, ',', '.');
-                                echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $r->nomeCliente . '*.%0d%0a%0d%0aSua%20*OS:%20#' . $r->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($r->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $r->status . '*.%0d%0a%0d%0a' . strip_tags($r->defeito) . '%0d%0a%0d%0a' . strip_tags($r->observacoes) . '%0d%0a%0d%0a' . strip_tags($r->laudoTecnico) . '%0d%0a%0d%0aValor%20Total%20R$&#58%20*'. $total_os . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20estes%20dados%20para%20fazer%20Log-in%0d%0aEmail:%20*' . $eMailCliente . '*%0d%0aSenha:%20*' . $SenhaCliente . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*"><i class="fab fa-whatsapp" style="font-size:16px;"></i></a>';
+    			echo '<a class="btn btn-success tip-top" style="margin-right: 1%" title="Enviar Por WhatsApp" id="enviarWhatsApp" href="whatsapp://send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $r->nomeCliente . '*.%0d%0a%0d%0aSua%20*OS:%20#' . $r->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($r->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $r->status . '*.%0d%0a%0d%0a' . strip_tags($r->defeito) . '%0d%0a%0d%0a' . strip_tags($r->observacoes) . '%0d%0a%0d%0a' . strip_tags($r->laudoTecnico) . '%0d%0a%0d%0aValor%20Total%20R$&#58%20*'. $total_os . '*%0d%0a%0d%0a' . $configuration['whats_app1'] .'%0d%0a%0d%0aAtenciosamente,%20*' . $configuration['whats_app2'] . '*%20-%20*' . $configuration['whats_app3'] .'*%0d%0a%0d%0aAcesse%20a%20área%20do%20cliente%20pelo%20link%0d%0a'. $configuration['whats_app4'] .'%0d%0aE%20utilize%20estes%20dados%20para%20fazer%20Log-in%0d%0aEmail:%20*' . $eMailCliente . '*%0d%0aSenha:%20*' . $SenhaCliente . '*%0d%0aVocê%20poderá%20edita-la%20no%20menu%20*Minha%20Conta*"><i class="fab fa-whatsapp" style="font-size:16px;"></i></a>';
                             }
 							*/
                             if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
-                                echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/imprimir/' . $r->idOs . '" target="_blank" class="btn-nwe6 tip-top" title="Imprimir Normal A4"><i class="fas fa-print"></i></a>';
+    			echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/imprimir/' . $r->idOs . '" target="_blank" class="btn-nwe6 tip-top" title="Imprimir Normal A4"><i class="fas fa-print"></i></a>';
                             }
                             if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
-                                echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/imprimirTermica2/' . $r->idOs . '" target="_blank" class="btn-nwe6 tip-top" title="Imprimir Termica 2"><i class="fas fa-print"></i></a>';
+    			echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/os/imprimirTermica2/' . $r->idOs . '" target="_blank" class="btn-nwe6 tip-top" title="Imprimir Termica 2"><i class="fas fa-print"></i></a>';
                             }
                             if ($this->permission->checkPermission($this->session->userdata('permissao'), 'dOs')) {
-                                echo '<a href="#modal-excluir" role="button" data-toggle="modal" os="' . $r->idOs . '" class="btn-nwe4 tip-top" title="Excluir OS"><i class="fas fa-trash"></i></a>  ';
+    			echo '<a href="#modal-excluir" role="button" data-toggle="modal" os="' . $r->idOs . '" class="btn-nwe4 tip-top" title="Excluir OS"><i class="fas fa-trash"></i></a>  ';
                             }
-                            echo  '</td>';
-                            echo '</tr>';
+			echo  '</td>';
+			echo '</tr>';
                         } ?>
             </tbody>
 </table>

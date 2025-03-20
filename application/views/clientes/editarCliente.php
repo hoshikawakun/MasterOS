@@ -45,12 +45,6 @@
 <?php if ($custom_error != '') {
 	echo '<div class="alert alert-danger">' . $custom_error . '</div>'; } ?>
 
-
-
-
-
-
-
 <!-- Menu Gerais -->
 <div id="home" class="tab-pane fade in active">
                             <div class="control_group_up">

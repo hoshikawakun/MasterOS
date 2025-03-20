@@ -1,10 +1,33 @@
-<div class="row-fluid">
-<div id="footer" class="span12 hide"> <a class="pecolor" href="https://github.com/RamonSilva20/masteros" target="_blank">
-<?= date('Y'); ?> &copy; 2020 - 2022 &copy; Master-OS - Emanuel Victor - Versão: <?= $this->config->item('app_version'); ?></a></div>
+<div class="row-fluid hide">
+<div id="footer" class="span12">
+2020 - <?= date('Y') ?> &copy;
+<?php echo $this->config->item('app_name'); ?> - Versão:
+<?php echo $this->config->item('app_version'); ?>
+</div>
 </div>
 
-<div id="footer" class="span12" style="color:#FFFFFF; ">
-2020 - <?= date('Y'); ?> &copy; Master-OS - Emanuel Victor - Versão: <?= $this->config->item('app_version'); ?>
+<div class="row-fluid">
+<div id="footer" class="span12">
+2020 - <?= date('Y') ?> &copy;
+<?php echo $this->config->item('app_name'); ?> - Emanuel Victor - Versão:
+<?php echo $this->config->item('app_version'); ?>
+</div>
+</div>
+
+<div class="row-fluid hide">
+<div id="footer" class="span12"><a class="pecolor" href="https://github.com/RamonSilva20/masteros" target="_blank">
+2020 - <?= date('Y') ?> &copy;
+<?php echo $this->config->item('app_name'); ?> - Versão:
+<?php echo $this->config->item('app_version'); ?></a>
+</div>
+</div>
+
+<div class="row-fluid hide">
+<div id="footer" class="span12"><a class="pecolor" href="https://github.com/RamonSilva20/masteros" target="_blank">
+2020 - <?= date('Y') ?> &copy;
+<?php echo $this->config->item('app_name'); ?> - Emanuel Victor - Versão
+<?php echo $this->config->item('app_version'); ?></a>
+</div>
 </div>
 <!--end-Footer-part-->
 <script src="<?= base_url(); ?>assets/js/bootstrap.min.js"></script>

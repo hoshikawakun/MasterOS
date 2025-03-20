@@ -11,7 +11,6 @@
 </div>
 </div>
 
-
 <div class="widget_box_2">
 
 <div class="widget_title_2">
@@ -74,7 +73,6 @@
 
 </div>
 
-
 <!-- Modal Excluir -->
 <div id="modal-excluir" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 <form action="<?php echo base_url() ?>index.php/vendas/excluir" method="post">
@@ -93,8 +91,6 @@
 </form>
 </div>
 <!-- Fim Modal Excluir -->
-
-
 
 <script type="text/javascript">
     $(document).ready(function() {

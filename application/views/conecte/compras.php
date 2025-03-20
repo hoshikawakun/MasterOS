@@ -1,65 +1,26 @@
-<?php
+<div class="vendas123" style="margin-top: 0; min-height: 50vh">
+<div class="widget_box_2">
+<div class="widget_title_2">
+<h5>Compras</h5>
+</div>
 
-if (!$results) { ?>
-    <div class="widget-box">
-        <div class="widget-title" style="margin: -20px 0 0">
-            <span class="icon">
-                <i class="fas fa-tags"></i>
-            </span>
-            <h5>Compras</h5>
-
-        </div>
-
-        <div class="widget_content nopadding tab-content">
-
-
-            <table id="tabela" class="table table-bordered ">
-                <thead>
-                    <tr style="backgroud-color: #2D335B">
-                        <th>#</th>
-                        <th>Data da Compra</th>
-                        <th>Responsável</th>
-                        <th>Faturado</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr>
-                        <td colspan="6">Nenhuma compra cadastrada</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-<?php
-} else { ?>
-
-
-    <div class="widget-box">
-        <div class="widget-title">
-            <span class="icon">
-                <i class="fas fa-shopping-cart"></i>
-            </span>
-            <h5>Compras</h5>
-
-        </div>
-
-        <div class="widget_content nopadding tab-content">
-
-
-            <table id="tabela" class="table table-bordered ">
-                <thead>
-                    <tr style="backgroud-color: #2D335B">
-                        <th>#</th>
-                        <th>Data da Compra</th>
-                        <th>Responsável</th>
-                        <th>Faturado</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($results as $r) {
+        <table id="tabela" width="100%" class="table_w">
+            <thead>
+                <tr>
+                    <th width="12%">Data da Compra</th>
+                    <th>Vendedor</th>
+                    <th width="15%">Faturado</th>
+                    <th width="15%">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+				if (!$results) {
+                        echo '<tr>
+                                <td colspan="5">Você ainda não fez nenhuma compra.</td>
+                            </tr>';
+                    }
+				foreach ($results as $r) {
     $dataVenda = date(('d/m/Y'), strtotime($r->dataVenda));
     if ($r->faturado == 1) {
         $faturado = 'Sim';
@@ -67,21 +28,20 @@ if (!$results) { ?>
         $faturado = 'Não';
     }
     echo '<tr>';
-    echo '<td>' . $r->idVendas . '</td>';
-    echo '<td>' . $dataVenda . '</td>';
+    echo '<td align="center">' . $dataVenda . '</td>';
     echo '<td>' . $r->nome . '</td>';
-    echo '<td>' . $faturado . '</td>';
-
-    echo '<td><a href="' . base_url() . 'index.php/mine/visualizarCompra/' . $r->idVendas . '" class="btn-nwe" title="Ver mais detalhes"><i class="fas fa-eye"></i></a>
-                      <a href="' . base_url() . 'index.php/mine/imprimirCompra/' . $r->idVendas . '" class="btn-nwe6" title="Imprimir"><i class="fas fa-print"></i></a>
+    echo '<td align="center">' . $faturado . '</td>';
+    echo '<td align="center"> <a href="' . base_url() . 'index.php/conecte/visualizarCompra/' . $r->idVendas . '" class="btn-nwe" title="Ver mais detalhes"><i class="fas fa-eye"></i></a>
+                      <a href="' . base_url() . 'index.php/conecte/imprimirCompra/' . $r->idVendas . '" class="btn-nwe6" title="Imprimir"><i class="fas fa-print"></i></a>
 
                   </td>';
     echo '</tr>';
 } ?>
-                </tbody>
-            </table>
-        </div>
-    </div>
+            </tbody>
+        </table>
+</div>
+<div class="widget_pagination">
+<?= $this->pagination->create_links() ?>
+</div>
 
-<?php echo $this->pagination->create_links();
-} ?>
+</div>

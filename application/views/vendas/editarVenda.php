@@ -21,20 +21,20 @@
 <!-- Dados da Venda -->
 <form action="<?php echo current_url(); ?>" class="form_horizontal" method="post" id="formVendas">
 <div class="control_group_up" style="padding: 1%">
-<div class="span12 well" style="padding: 1%; margin-left: 0">
+<div class="span12 well_2" style="padding: 1%; margin-left: 0">
 <div class="span2" style="margin-left: 0">
 <label for="dataFinal">Data da Venda</label>
-<input id="dataVenda" class="span12" type="date" name="dataVenda" value="<?php echo date('Y-m-d'); ?>" />
+<input id="dataVenda" class="span12" type="date" name="dataVenda" value="<?php echo date('Y-m-d'); ?>" readonly="readonly" />
 </div>
 <div class="span5">
-<label for="cliente">Cliente<span class="required">*</span></label>
-<input id="cliente" class="span12" type="text" name="cliente" value="<?php echo $result->nomeCliente ?>" />
+<label for="cliente">Cliente<span class="required">:</span></label>
+<input name="cliente" type="text" class="span12" id="cliente" value="<?php echo $result->nomeCliente ?>" readonly="readonly" />
 <input id="clientes_id" class="span12" type="hidden" name="clientes_id" value="<?php echo $result->clientes_id ?>" />
 <input id="valorTotal" type="hidden" name="valorTotal" value="" />
 </div>
 <div class="span5">
-<label for="tecnico">Vendedor<span class="required">*</span></label>
-<input id="tecnico" class="span12" type="text" name="tecnico" value="<?php echo $result->nome ?>" />
+<label for="tecnico">Vendedor<span class="required">:</span></label>
+<input name="tecnico" type="text" class="span12" id="tecnico" value="<?php echo $result->nome ?>" readonly="readonly" />
 <input id="usuarios_id" class="span12" type="hidden" name="usuarios_id" value="<?php echo $result->usuarios_id ?>" />
 </div>
 </div>
@@ -42,6 +42,7 @@
 </form>
 <!-- Fim Dados da Venda -->
 
+<?php if ($result->faturado == 0) { ?>
 <!-- observacoes -->
 <!--
 <div class="control_group_ct" style="padding: 1%">
@@ -64,14 +65,13 @@
 <!-- Fim observacoes -->
 
 <!-- Desconto -->
-<?php if ($result->faturado == 0) { ?>
 <form class="form_horizontal" id="formDesconto" action="<?php echo base_url(); ?>index.php/vendas/adicionarDesconto" method="POST">
 <div class="control_group_ct" style="padding: 1%">
 <div class="span12 well" style="padding: 1%; margin-left: 0">
 <div class="span2">
 <input type="hidden" name="idVendas" id="idVendas" value="<?php echo $result->idVendas; ?>" />
-<label for="">Desconto em R$</label>
-<input id="desconto" name="desconto" type="text" class="span12 money" placeholder="R$" value="<?php echo number_format($result->desconto, 2, ',', '.'); ?>"/>
+<label for="">Desconto em R$:</label>
+<input id="desconto" name="desconto" type="text" class="span12" placeholder="0.00" value="<?php echo number_format($result->desconto, 2, ',', '.'); ?>"/><br />
 <strong><span style="color: red" id="errorAlert"></span></strong>
 </div>
 <div class="span2">
@@ -86,7 +86,6 @@
 </div>
 </div>
 </form>
-<?php } ?>
 <!-- Fim Desconto -->
 
 <!-- Add Produto -->
@@ -117,6 +116,7 @@
 </div>
 </form>
 <!-- Fim Add Produto -->
+<?php } ?>
 
 <!-- Tabela Produto -->
 <div class="form_horizontal">
@@ -207,13 +207,13 @@ echo '</tr>';
 
 <!-------------------------------------------------------------------------->
 
-<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Imprimir" class="button_mini btn btn-mini btn-inverse tip-top" target="new" href="<?php echo site_url() ?>/vendas/imprimir/<?php echo $result->idVendas; ?>">
+<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Imprimir" class="button_mini btn btn-mini btn-inverse tip-top" target="_blank" href="<?php echo site_url() ?>/vendas/imprimir/<?php echo $result->idVendas; ?>">
 <span class="button_icon"><i class='fas fa-print'></i></span><span class="button_text">Imprimir A4</span></a>
 
-<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Imprimir Termica" class="button_mini btn btn-mini btn-inverse tip-top" target="new" href="<?php echo site_url() ?>/vendas/imprimirTermica/<?php echo $result->idVendas; ?>">
+<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Imprimir Termica" class="button_mini btn btn-mini btn-inverse tip-top" target="_blank" href="<?php echo site_url() ?>/vendas/imprimirTermica/<?php echo $result->idVendas; ?>">
 <span class="button_icon"><i class='fas fa-print'></i></span><span class="button_text">Imprimir Termica</span></a>
 
-<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Gerar Pagamento" class="button_mini btn btn-mini btn-success tip-top" href="#modal-gerar-pagamento" id="btn-forma-pagamento" role="button" data-toggle="modal"><span class="button_icon"><i class="fas fa-cash-register"></i></span><span class="button_text">Gerar Pagamento</span></a>
+<!--<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Gerar Pagamento" class="button_mini btn btn-mini btn-success tip-top" href="#modal-gerar-pagamento" id="btn-forma-pagamento" role="button" data-toggle="modal"><span class="button_icon"><i class="fas fa-cash-register"></i></span><span class="button_text">Gerar Pagamento</span></a>-->
 
 </form>
 <?= $modalGerarPagamento ?>
@@ -230,8 +230,7 @@ echo '</tr>';
     aria-hidden="true">
 <form id="formFaturar" action="<?php echo current_url() ?>" method="post">
 <div class="modal_title">
-<button type="button" class="close" style="color:#f00; padding-right:10px;" data-dismiss="modal"
-                aria-hidden="true">×</button>
+<button type="button" class="close" style="color:#f00; padding-right:5px; padding-top:10px" data-dismiss="modal" aria-hidden="true">×</button>
 <h5>Faturar Venda</h5>
 </div>
 
@@ -262,8 +261,14 @@ echo '</tr>';
 <input name="valor" type="text" class="span12 money" id="valor" value="<?php echo number_format($total, 2, '.', ''); ?> " />
 </div>
 
-<div class="span6" style="margin-left: 2">
-<label for="valor">Valor Com Desconto*</label>
+<div class="span3" style="margin-left: 2">
+<label for="valor">Desconto de*</label>
+<input type="hidden" id="tipo" name="tipo" value="receita" />
+<input name="valor" type="text" disabled="disabled" class="span12 money" id="valor" value="<?php echo number_format($result->desconto, 2, ',', '.'); ?>" readonly="readonly" data-affixes-stay="true" data-thousands="" data-decimal="." />
+                </div>
+
+<div class="span3" style="margin-left: 2">
+<label for="valor">Valor Total*</label>
         <input name="faturar-desconto" type="text" class="span12 money" id="faturar-desconto" value="<?php echo number_format($result->valor_desconto, 2, '.', ''); ?> " readonly="readonly" />
 </div>
 </div>

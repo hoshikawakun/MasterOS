@@ -1,129 +1,150 @@
-<?php $totalProdutos = 0; ?>
+<?php $totalServico = 0;
+$totalProdutos = 0; ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
-    <title>Map_OS_<?php echo $result->idVendas ?>_<?php echo $result->nomeCliente ?></title>
+    <title>Compras - <?php echo $result->nomeCliente ?></title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="<?php echo $this->config->item('app_name') . ' - ' . $this->config->item('app_subname') ?>">
-    <link rel="shortcut icon" type="image/png" href="<?php echo base_url(); ?>assets/img/favicon.png"/>
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap-responsive.min.css" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/matrix-style.css" />
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/matrix-media.css" />
     <link href="<?php echo base_url(); ?>assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="<?= base_url('assets/css/custom.css'); ?>" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
-    <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery-1.10.2.min.js"></script>
+    <style>
+    .table {
+        margin-bottom: 0px;
+    }
+    </style>
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <div class="span12">
 
-                <div class="invoice-content">
-                    <div class="invoice-head">
-                        <table class="table">
-                            <tbody>
+    <div class="widget_content_printer">
 
-                                <?php if ($emitente == null) { ?>
+<!-- Cabeçalho OS -->
+<div class="widget_content_printer2">
+<table width="100%" class="table_w">
 
+                                    <?php if ($emitente == null) { ?>
                                     <tr>
-                                        <td colspan="3" class="alert">Você precisa configurar os dados do emitente. >>><a href="<?php echo base_url(); ?>index.php/masteros/emitente">Configurar</a>
-                                            <<<</td> </tr> <?php } else { ?> <tr>
-                                        <td style="width: 25%"><img src=" <?php echo $emitente[0]->url_logo; ?> "></td>
-                                        <td> <span style="font-size: 20px; "> <?php echo $emitente[0]->nome; ?></span> </br><span><?php echo $emitente[0]->cnpj; ?> </br> <?php echo $emitente[0]->rua . ', nº:' . $emitente[0]->numero . ', ' . $emitente[0]->bairro . ' - ' . $emitente[0]->cidade . ' - ' . $emitente[0]->uf; ?> </span> </br> <span> E-mail: <?php echo $emitente[0]->email . ' - Fone: ' . $emitente[0]->telefone; ?></span></td>
-                                        <td style="width: 18%; text-align: center">#Venda: <span><?php echo $result->idVendas ?></span></br> </br> <span>Emissão: <?php echo date('Y-m-d'); ?></span></td>
+                                        <td colspan="3" class="alert">Os dados do emitente não foram configurados.</td>
                                     </tr>
-
-                                <?php } ?>
-                            </tbody>
-                        </table>
-
-                        <table class="table">
-                            <tbody>
-                                <tr>
-                                    <td style="width: 50%; padding-left: 0">
-                                        <ul>
-                                            <li>
-                                                <span>
-                                                    <h5>Cliente</h5>
-                                                    <span><?php echo $result->nomeCliente ?></span><br />
-                                                    <span><?php echo $result->rua ?>, <?php echo $result->numero ?>, <?php echo $result->bairro ?></span><br />
-                                                    <span><?php echo $result->cidade ?> - <?php echo $result->estado ?></span>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td style="width: 50%; padding-left: 0">
-                                        <ul>
-                                            <li>
-                                                <span>
-                                                    <h5>Vendedor</h5>
-                                                </span>
-                                                <span><?php echo $result->nome ?></span> <br />
-                                                <span>Telefone: <?php echo $result->telefone ?></span><br />
-                                                <span>Email: <?php echo $result->email_user ?></span>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                    </div>
-
-                    <div style="margin-top: 0; padding-top: 0">
-
-
-                        <?php if ($produtos != null) { ?>
-
-                            <table class="table table-bordered table-condensed" id="tblProdutos">
-                                <thead>
+                                    <?php } else { ?>
                                     <tr>
-                                        <th style="font-size: 15px">Produto</th>
-                                        <th style="font-size: 15px">Quantidade</th>
-                                        <th style="font-size: 15px">Sub-total</th>
+                                        <td style="width: 20%"><img src=" <?php echo $emitente[0]->url_logo; ?> "></td>
+                                        <td>
+                                            <span style=" font-weight:bold; font-size:15px"></i><?php echo $emitente[0]->nome; ?></span></br>
+                                            <i class="fas fa-fingerprint" style="margin:5px 0px 5px 0px"></i> <?php echo $emitente[0]->cnpj; ?></i></br>
+                                            <i class="fas fa-map-marker-alt" style="margin:0px 5px 3px 2px"></i><?php echo $emitente[0]->rua . ', ' . $emitente[0]->numero . ' - ' . $emitente[0]->bairro; ?></br>
+                                            <i class="fas fa-map-marker-alt" style="margin:0px 5px 3px 2px"></i><?php echo $emitente[0]->cidade . ' - ' . $emitente[0]->uf; ?></br>
+                                            <i class="fas fa-map-marker-alt" style="margin:0px 5px 3px 2px"></i><?= 'CEP: ' . $emitente[0]->cep; ?><br>
+                                            <i class="fas fa-envelope" style="margin:0px 5px 3px 0px"></i><?php echo $emitente[0]->email; ?></br>
+                                            <i class="fas fa-phone-alt" style="margin:0px 5px 3px 0px"></i><?php echo $emitente[0]->telefone; ?>
+                                        </td>
+
+                                        <td style="text-align: center; font-size:12px">
+                                            <b>Data Compra:</b> <?php echo date('d/m/Y', strtotime($result->dataVenda)); ?></br>
+                                                <b>Emissão:</b> <?php echo date('d/m/Y'); ?></br>
+                                        </td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
+                                    <?php } ?>
+                                </table>
+</div>
+<!-- Fim Cabeçalho OS -->
 
-                                        foreach ($produtos as $p) {
-                                            $totalProdutos = $totalProdutos + $p->subTotal;
-        					echo '<tr>';
-        					echo '<td>' . $p->descricao . '</td>';
-        					echo '<td>' . $p->quantidade . '</td>';
-
-        					echo '<td>R$ ' . number_format($p->subTotal, 2, ',', '.') . '</td>';
-        					echo '</tr>';
-                                        } ?>
-
+<!-- Dados -->
+<div class="widget_content_printer2">
+<table width="100%" class="table_w">
                                     <tr>
-                                        <td colspan="2" style="text-align: right"><strong>Total:</strong></td>
-                                        <td><strong>R$ <?php echo number_format($totalProdutos, 2, ',', '.'); ?></strong></td>
+                                        <td width="50%">
+                                            <b>Cliente</b><br>
+                                            <i class="fas fa-user-check" style="margin:0px 3px 0px 0px"></i><?php echo $result->nomeCliente ?><br>
+                                            <i class="fas fa-fingerprint" style="margin:0px 6px 0px 0px"></i><?php echo $result->documento ?><br>
+                                            <i class="fas fa-map-marker-alt" style="margin:0px 8px 0px 2px"></i>
+                                            <?php echo $result->rua ?>,
+                                            <?php echo $result->numero ?>,
+                                            <?php echo $result->bairro ?><br>
+                                            <i class="fas fa-map-marker-alt" style="margin:0px 8px 0px 2px"></i><?php echo $result->cidade ?> - <?php echo $result->estado ?><br>
+                                            <i class="fas fa-map-marker-alt" style="margin:0px 8px 0px 2px"></i>CEP: <?php echo $result->cep ?><br>
+                                            <i class="fas fa-phone-alt" style="margin:0px 6px 0px 0px"></i><?php echo $result->telefone ?><br>
+                                            <i class="fas fa-envelope" style="margin:0px 7px 10px 0px"></i><?php echo $result->email ?>
+                                        </td>
+                                        <td width="50%">
+                                            <b>Vendedor</b><br>
+                                            <i class="fas fa-user-check" style="margin:0px 2px 0px 0px"></i><?php echo $result->nome ?><br>
+                                        </td>
                                     </tr>
-                                </tbody>
-                            </table>
-                        <?php } ?>
+                                </table>
+</div>
+<!-- Fim Dados -->
 
+<!-- Tabela Produtos -->
+<div class="widget_content_printer2">
+<table width="100%" class="table_w" id="tblProdutos">
+<thead>
+<tr>
+<th width="8%">Cod. SKU</th>
+<th width="10%">Cod. Barras</th>
+<th>Produto</th>
+<th width="8%">Quantidade</th>
+<th width="10%">Preço</th>
+<th width="10%">Sub-total</th>
+</tr>
+</thead>
+<tbody>
+<?php
+$total = 0;
+foreach ($produtos as $p) {
+	$preco = $p->preco ?: $p->precoVenda;
+	$total = $total + $p->subTotal;
+echo '<tr>';
+echo '<td><div align="center">' . $p->idProdutos . '</div></td>';
+echo '<td><div align="center">' . $p->codDeBarra . '</div></td>';
+echo '<td>' . $p->descricao . '</td>';
+echo '<td><div align="center">' . $p->quantidade . '</div></td>';
+echo '<td><div align="center">R$: ' . $preco . '</div></td>';
+echo '<td><div align="center">R$: ' . number_format($p->subTotal, 2, ',', '.') . '</div></td>';
+echo '</tr>';
+} ?>
+<tr>
+<td colspan="5" style="text-align: right"><strong>Total:</strong>
+</td>
+<td>
+<div align="center"><strong>R$:
+<?php echo number_format($total, 2, ',', '.'); ?></strong>
+<input type="hidden" id="total-venda" value="<?php echo number_format($total, 2); ?>">
+</div>
+</td>
+</tr>
+<?php if ($result->valor_desconto != 0 && $result->desconto != 0) { ?>
+<tr>
+<td colspan="5" style="text-align: right"><strong>Desconto:</strong></td>
+<td>
+<div align="center">
+<strong>R$: <?php echo number_format($result->desconto, 2, ',', '.'); ?></strong></div>
+</td>
+</tr>
+<tr>
+<td colspan="5" style="text-align: right"><strong>Total Com Desconto:</strong></td>
+<td>
+<div align="center"><strong>R$: <?php echo number_format($result->valor_desconto, 2, ',', '.'); ?></strong>
+</div><input type="hidden" id="total-desconto" value="<?php echo number_format($result->valor_desconto, 2); ?>">
+</td>
+</tr>
+<?php } ?>
+</tbody>
+</table>
+</div>
+<!-- Fim Tabela Produtos -->
 
-                        <hr />
-
-                        <h4 style="text-align: right">Valor Total: R$ <?php echo number_format($totalProdutos, 2, ',', '.'); ?></h4>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
+</div>
     <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/matrix.js"></script>
+
     <script>
-        window.print();
+    window.print();
     </script>
 
 </body>

@@ -9,26 +9,27 @@
 <?php $totalServico = 0; $totalProdutos = 0; ?>
 
 
-<div class="row-fluid" style="margin-top:0">
-<div class="widget_content_3" align="center" style="padding:5px; margin-bottom:5px;">
+<div class="vendas123" style="margin-top: 0; min-height: 50vh">
 
+<div class="widget_painel_2">
+<div class="span12" align="center">
 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) { ?>
-<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Adicionar OS" class="button_mini btn btn-mini btn-success tip-top" target="new" href="<?php echo base_url(); ?>index.php/os/adicionar">
+<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Adicionar OS" class="button_mini btn btn-mini btn-success tip-top" target="_blank" href="<?php echo base_url(); ?>index.php/os/adicionar">
 <span class="button_icon"><i class='fas fa-plus-circle'></i></span><span class="button_text">Adicionar OS</span></a>
 <?php } ?>
 
 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) { ?>
-<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Editar OS" class="button_mini btn btn-mini btn-info tip-top" href="<?php echo site_url() ?>/os/editar/<?php echo $result->idOs; ?>">
+<a href="<?php echo site_url() ?>/os/editar/<?php echo $result->idOs; ?>" title="Editar OS" class="button_mini btn btn-mini btn-info tip-top" style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px">
 <span class="button_icon"><i class='fas fa-edit'></i></span><span class="button_text">Editar OS</span></a>
 <?php } ?>
 
-<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Imprimir" class="button_mini btn btn-mini btn-inverse tip-top" target="new" href="<?php echo site_url() ?>/os/imprimir/<?php echo $result->idOs; ?>">
+<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Imprimir" class="button_mini btn btn-mini btn-inverse tip-top" target="_blank" href="<?php echo site_url() ?>/os/imprimir/<?php echo $result->idOs; ?>">
 <span class="button_icon"><i class='fas fa-print'></i></span><span class="button_text">Imprimir A4</span></a>
 
-<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Imprimir Termica" class="button_mini btn btn-mini btn-inverse tip-top" target="new" href="<?php echo site_url() ?>/os/imprimirTermica/<?php echo $result->idOs; ?>">
+<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Imprimir Termica" class="button_mini btn btn-mini btn-inverse tip-top" target="_blank" href="<?php echo site_url() ?>/os/imprimirTermica/<?php echo $result->idOs; ?>">
 <span class="button_icon"><i class='fas fa-print'></i></span><span class="button_text">Imprimir Termica</span></a>
 
-<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Imprimir Termica 2" class="button_mini btn btn-mini btn-inverse tip-top" target="new" href="<?php echo site_url() ?>/os/imprimirTermica2/<?php echo $result->idOs; ?>">
+<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Imprimir Termica 2" class="button_mini btn btn-mini btn-inverse tip-top" target="_blank" href="<?php echo site_url() ?>/os/imprimirTermica2/<?php echo $result->idOs; ?>">
 <span class="button_icon"><i class='fas fa-print'></i></span><span class="button_text">Imprimir Termica 2</span></a>
 
 <!--<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Enviar WhatsApp" class="button_mini btn btn-mini btn-success tip-top" id="btn-whatsapp" href="#modal-whatsapp" data-toggle="modal">
@@ -38,23 +39,26 @@
 <a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Enviar WhatsApp" class="button_mini btn btn-mini btn-success tip-top" id="btn-whatsapp" href="#modal-whatsapp-2" data-toggle="modal">
 <span class="button_icon"><i class='fab fa-whatsapp'></i></span><span class="button_text">WhatsApp</span></a>
 
-<!--<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Enviar por E-mail" class="button_mini btn btn-mini btn-warning tip-top" target="new" href="<?php echo site_url() ?>/os/enviar_email/<?php echo $result->idOs; ?>">
+<!--<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Enviar por E-mail" class="button_mini btn btn-mini btn-warning tip-top" target="_blank" href="<?php echo site_url() ?>/os/enviar_email/<?php echo $result->idOs; ?>">
 <span class="button_icon"><i class='fas fa-envelope'></i></span><span class="button_text">Enviar por E-mail</span></a>-->
 
 <?php if ($result->rastreio != null) { ?>
-<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Rastrear" class="button_mini btn btn-mini btn-warning tip-top" target="new" href="https://www.linkcorreios.com.br/<?php echo $result->rastreio ?>">
+<a style="margin-right:5px; margin-bottom:2px; margin-top:2px; max-width: 160px" title="Rastrear" class="button_mini btn btn-mini btn-warning tip-top" target="_blank" href="https://www.linkcorreios.com.br/<?php echo $result->rastreio ?>">
 <span class="button_icon"><i class='fas fa-envelope'></i></span><span class="button_text">Rastrear</span></a>
 <?php } ?>
 </div>
 </div>
 
-<div class="row-fluid" style="margin-top:0">
-<div class="widget_content_3">
-<div class="widget_title_3">
+
+<div class="widget_box_1">
+
+<div class="widget_title_6">
 <h5>Visualizar OS</h5>
 </div>
+
 <div class="well_0">
 
+<!-- Cabeçalho OS -->
 <div class="widget_content_printer2">
 <table width="100%" class="table_w">
 
@@ -67,7 +71,7 @@
                                     </tr>
                                     <?php } else { ?>
                                     <tr>
-                                        <td style="width: 25%"><img src=" <?php echo $emitente[0]->url_logo; ?> "></td>
+                                        <td style="width: 20%"><img src=" <?php echo $emitente[0]->url_logo; ?> "></td>
                                         <td>
                                             <b><?php echo $emitente[0]->nome; ?></b></br>
                                             <i class="fas fa-fingerprint" style="margin:0px 1px"></i>
@@ -103,50 +107,47 @@
                                     <?php } ?>
                                 </table>
 </div>
+<!-- Fim Cabeçalho OS -->
 
+<!-- Dados -->
 <div class="widget_content_printer2">
 <table width="100%" class="table_w">
                                     <tr>
-                                        <td colspan="2">
-                                            <b>Cliente</b><br>
-                                            <i class="fas fa-user-check"></i> <?php echo $result->nomeCliente ?><br>
-                                            <i class="fas fa-fingerprint" style="margin:0px 1px"></i>
-                                            <?php echo $result->documento ?><br>
-                                            <i class="fas fa-map-marker-alt" style="margin:0px 3px"></i>
+                                        <td width="50%">
+                                        	<h5>Cliente</h5>
+                                            <i class="fas fa-user-check" style="margin:0px 3px 0px 0px"></i><?php echo $result->nomeCliente ?><br>
+                                            <i class="fas fa-fingerprint" style="margin:0px 6px 0px 0px"></i><?php echo $result->documento ?><br>
+                                            <i class="fas fa-map-marker-alt" style="margin:0px 8px 0px 2px"></i>
                                             <?php echo $result->rua ?>,
                                             <?php echo $result->numero ?>,
                                             <?php echo $result->bairro ?><br>
-                                            <i class="fas fa-map-marker-alt"
-                                                style="margin:0px 3px"></i> <?php echo $result->cidade ?> -
-                                            <?php echo $result->estado ?><br>
-                                            <i class="fas fa-map-marker-alt"
-                                                style="margin:0px 3px"></i> CEP: <?php echo $result->cep ?><br>
-                                            <i class="fas fa-phone-alt"
-                                                style="margin:0px 1px"></i>  <?php echo $result->telefone ?>
+                                            <i class="fas fa-map-marker-alt" style="margin:0px 8px 0px 2px"></i><?php echo $result->cidade ?> - <?php echo $result->estado ?><br>
+                                            <i class="fas fa-map-marker-alt" style="margin:0px 8px 0px 2px"></i>CEP: <?php echo $result->cep ?><br>
+                                            <i class="fas fa-phone-alt" style="margin:0px 6px 0px 0px"></i><?php echo $result->telefone ?><br>
+                                            <i class="fas fa-envelope" style="margin:0px 7px 10px 0px"></i><?php echo $result->email ?>
                                         </td>
-                                        <td>
-                                            <b>Técnico</b><br>
-                                            <i class="fas fa-user-check"></i> <?php echo $result->nome ?><br>
-                                            <i class="fas fa-envelope" style="margin:0px 1px"></i>
-                                            <?php echo $result->email_responsavel ?><br>
-                                            <i class="fas fa-phone-alt" style="margin:0px 1px"></i>
-                                            <?php echo $result->telefone_usuario ?>
+                                        <td width="50%">
+                                        	<h5>Técnico</h5>
+                                            <i class="fas fa-user-check" style="margin:0px 2px 0px 0px"></i><?php echo $result->nome ?><br>
+                                            <i class="fas fa-phone-alt" style="margin:0px 4px 0px 0px"></i><?php echo $result->telefone_usuario ?>
                                         </td>
                                     </tr>
-                                </table>
+</table>
 </div>
+<!-- Fim Dados -->
 
+<!-- Serial/Marca -->
 <div class="widget_content_printer2">
 <table width="100%" class="table_w">
                                     <?php if ($result->serial != null) { ?>
                                     <tr>
-                                        <td colspan="2">
+                                        <td width="50%">
                                             <b>Nº Série:</b><br>
                                             <?php echo htmlspecialchars_decode($result->serial) ?>
                                         </td>
                                         <?php } ?>
                                         <?php if ($result->marca != null) { ?>
-                                        <td>
+                                        <td width="50%">
                                             <b>Marca:</b><br>
                                             <?php echo htmlspecialchars_decode($result->marca) ?>
                                         </td>
@@ -172,6 +173,7 @@
                                             <?php echo htmlspecialchars_decode($result->descricaoProduto) ?>
                                         </td>
                                     </tr>
+
                                     <?php } ?>
                                     <?php if ($result->defeito != null) { ?>
                                     <tr>
@@ -199,7 +201,9 @@
                                     <?php } ?>
                                 </table>
 </div>
+<!-- Fim Dados da OS -->
 
+<!-- Equipamentos OS -->
 <div class="widget_content_printer2">
                                 <?php if ($equipamentos != null) { ?>
                                 <table width="100%" class="table_w">
@@ -236,7 +240,9 @@
                                 </table>
                                 <?php } ?>
 </div>
+<!-- Fim Equipamentos OS -->
 
+<!-- Anotações OS -->
 <div class="widget_content_printer2">
                                 <?php if ($anotacoes != null) { ?>
                                 <table width="100%" class="table_w">
@@ -259,7 +265,9 @@
                                 </table>
                                 <?php } ?>
 </div>
+<!-- Fim Anotações OS -->
 
+<!-- Produto OS -->
 <div class="widget_content_printer2">
                                 <?php if ($produtos != null) { ?>
                                 <table width="100%" class="table_w" id="tblProdutos">
@@ -298,7 +306,9 @@
                                 </table>
                                 <?php } ?>
 </div>
+<!-- Fim Produto OS -->
 
+<!-- Serviço OS -->
 <div class="widget_content_printer2">
                                 <?php if ($servicos != null) { ?>
                                 <table width="100%" class="table_w">
@@ -339,18 +349,37 @@
                                 </table>
                                 <?php } ?>
 </div>
-                        
-                       <!-- Total OS -->
-<?php
-if ($totalProdutos != 0 || $totalServico != 0) {
-echo "<h4 style='font-size: 14px; text-align: right'>Valor Total: R$ " . number_format($totalProdutos + $totalServico, 2, ',', '.') . "  "."</h4>";
-echo $result->valor_desconto != 0 ? "<h4 style='font-size: 14px; text-align: right'>Desconto: R$ " . number_format($result->valor_desconto != 0 ? $result->valor_desconto - ($totalProdutos + $totalServico) : 0.00, 2, ',', '.') . "  "."</h4>" : ".";
-echo $result->valor_desconto != 0 ? "<h4 style='font-size: 14px; text-align: right'>Total com Desconto: R$ " . number_format($result->valor_desconto, 2, ',', '.') . "  "."</h4>" : ".";
-                        }
-                        ?>
-                       <!-- Fim Total OS -->
+<!-- Fim Serviço OS -->
 
-                        <!-- ANEXOS -->
+<!-- Total OS -->
+<?php if ($totalProdutos != 0 || $totalServico != 0) { ?>
+<table width="100%" class="table_w">
+<thead>
+<tr>
+<th  colspan="2">TOTAL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right"><b>Valor Total: </b></td>
+<td width="10%" align="center"><b>R$: <?php echo number_format($totalProdutos + $totalServico, 2, ',', '.'); ?></b></td>
+</tr>
+<?php if ($result->valor_desconto  != 0) { ?>
+<tr>
+<td style="text-align:right"><b>Desconto: </b></td>
+<td width="10%" align="center"><b>R$: <?php echo number_format($result->valor_desconto  != 0 ? $result->valor_desconto  - ($totalProdutos + $totalServico) : 0.00, 2, ',', '.'); ?></b></td>
+</tr>
+<tr>
+<td style="text-align:right"><b>Total com Desconto: </b></td>
+<td width="10%" align="center"><b>R$: <?php echo number_format($result->valor_desconto , 2, ',', '.'); ?></b></td>
+</tr>
+<?php } ?>
+</tbody>
+</table>
+<?php } ?>
+<!-- Fim Total OS -->
+
+<!-- ANEXOS -->
 <div class="widget_content_printer2">
                         <?php if ($anexos != null) { ?>
                         <div class"span12">
@@ -389,7 +418,7 @@ echo $result->valor_desconto != 0 ? "<h4 style='font-size: 14px; text-align: rig
                         </div>
                         <?php } ?>
 </div>
-                        <!-- Fim ANEXOS -->
+<!-- Fim ANEXOS -->
 
 <!-- Visualizar Anexo -->
 <div id="modal-anexo" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -413,6 +442,12 @@ echo $result->valor_desconto != 0 ? "<h4 style='font-size: 14px; text-align: rig
 </div>
 </div>
 <!-- Fim Visualizar Anexo -->
+
+</div>
+        
+</div>
+
+</div>
 
 <!-- Modal WhatsApp -->
 <div id="modal-whatsapp" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -528,11 +563,6 @@ echo $result->valor_desconto != 0 ? "<h4 style='font-size: 14px; text-align: rig
 </form>
 </div>
 <!-- Fim Modal WhatsApp 2 -->
-
-</div>
-</div>
-</div>
-
 
 <script type="text/javascript">
 $(document).ready(function() {

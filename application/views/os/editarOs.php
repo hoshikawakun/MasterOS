@@ -21,25 +21,25 @@
     }
 </style>
 
+<div class="vendas123" style="margin-top: 0; min-height: 50vh">
 
-<div class="row-fluid" style="margin-top:0">
-<div class="widget_content_3" align="center" style="padding-top:5px; padding-bottom:5px; margin-bottom:5px;">
-
+<div class="widget_painel_2">
+<div class="span12" align="center">
 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) { ?>
-<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Adicionar OS" class="button_mini btn btn-mini btn-success tip-top" target="new" href="<?php echo base_url(); ?>index.php/os/adicionar">
+<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Adicionar OS" class="button_mini btn btn-mini btn-success tip-top" target="_blank" href="<?php echo base_url(); ?>index.php/os/adicionar">
 <span class="button_icon"><i class='fas fa-plus-circle'></i></span><span class="button_text">Adicionar OS</span></a>
 <?php } ?>
 
-<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Visualizar OS" class="button_mini btn btn-mini btn-primary tip-top" target="new" href="<?php echo base_url() ?>index.php/os/visualizar/<?php echo $result->idOs; ?>">
+<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Visualizar OS" class="button_mini btn btn-mini btn-primary tip-top" href="<?php echo base_url() ?>index.php/os/visualizar/<?php echo $result->idOs; ?>">
 <span class="button_icon"><i class='fas fa-eye'></i></span><span class="button_text">Visualizar OS</span></a>
 
-<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Imprimir" class="button_mini btn btn-mini btn-inverse tip-top" target="new" href="<?php echo site_url() ?>/os/imprimir/<?php echo $result->idOs; ?>">
+<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Imprimir" class="button_mini btn btn-mini btn-inverse tip-top" target="_blank" href="<?php echo site_url() ?>/os/imprimir/<?php echo $result->idOs; ?>">
 <span class="button_icon"><i class='fas fa-print'></i></span><span class="button_text">Imprimir A4</span></a>
 
-<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Imprimir Termica" class="button_mini btn btn-mini btn-inverse tip-top" target="new" href="<?php echo site_url() ?>/os/imprimirTermica/<?php echo $result->idOs; ?>">
+<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Imprimir Termica" class="button_mini btn btn-mini btn-inverse tip-top" target="_blank" href="<?php echo site_url() ?>/os/imprimirTermica/<?php echo $result->idOs; ?>">
 <span class="button_icon"><i class='fas fa-print'></i></span><span class="button_text">Imprimir Termica</span></a>
 
-<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Imprimir Termica 2" class="button_mini btn btn-mini btn-inverse tip-top" target="new" href="<?php echo site_url() ?>/os/imprimirTermica2/<?php echo $result->idOs; ?>">
+<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Imprimir Termica 2" class="button_mini btn btn-mini btn-inverse tip-top" target="_blank" href="<?php echo site_url() ?>/os/imprimirTermica2/<?php echo $result->idOs; ?>">
 <span class="button_icon"><i class='fas fa-print'></i></span><span class="button_text">Imprimir Termica 2</span></a>
 
 <!--<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Enviar WhatsApp" class="button_mini btn btn-mini btn-success tip-top" id="btn-whatsapp" href="#modal-whatsapp" data-toggle="modal">
@@ -61,25 +61,26 @@
 
 <!-------------------------------------------------------------------------->
 
-<!--<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Enviar por E-mail" class="button_mini btn btn-mini btn-warning tip-top" target="new" href="<?php echo site_url() ?>/os/enviar_email/<?php echo $result->idOs; ?>">
+<!--<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Enviar por E-mail" class="button_mini btn btn-mini btn-warning tip-top" target="_blank" href="<?php echo site_url() ?>/os/enviar_email/<?php echo $result->idOs; ?>">
 <span class="button_icon"><i class='fas fa-envelope'></i></span><span class="button_text">Enviar por E-mail</span></a>-->
 </div>
 </div>
 
-<div class="row-fluid" style="margin-top:0">
-<div class="widget_content_3">
-<div class="widget_title_3">
+
+<div class="widget_box_0" >
+
+<div class="widget_title_6">
 <h5>Editar OS</h5>
 </div>
 
 <div class="widget_content_3">
 <ul class="nav nav-tabs">
 <li class="active" id="tabDetalhes"><a href="#tab1" data-toggle="tab">Detalhes da OS</a></li>
-<!--
+
 <?php if ($result->faturado == 0) { ?>
 <li id="tabDesconto"><a href="#tab2" data-toggle="tab">Desconto</a></li>
 <?php } ?>
--->
+
 <li id="tabProdutos"><a href="#tab3" data-toggle="tab">Produtos</a></li>
 <li id="tabServicos"><a href="#tab4" data-toggle="tab">Serviços</a></li>
 <li id="tabAnexos"><a href="#tab5" data-toggle="tab">Anexos</a></li>
@@ -122,7 +123,9 @@
                                     echo 'selected'; } ?> value="Orçamento Aprovado">Orçamento Aprovado</option>
                                                 <option <?php if ($result->status == 'Aguardando Peças') {
                                     echo 'selected'; } ?> value="Aguardando Peças">Aguardando Peças</option>
-                                                <option <?php if ($result->status == 'Em Andamento') {
+                                              <option <?php if ($result->status == 'Em Andamento') {
+
+
                                     echo 'selected'; } ?> value="Em Andamento">Em Andamento</option>
                                                 <option <?php if ($result->status == 'Serviço Concluido') {
                                     echo 'selected'; } ?> value="Serviço Concluido">Serviço Concluido</option>
@@ -157,13 +160,14 @@
                                             </select>
 <label for="rastreio">Rastreio</label>
 <input name="rastreio" type="text" class="span12" id="rastreio" maxlength="13" value="<?php echo $result->rastreio ?>" />
-<a style="margin-right:5px; margin-bottom:5px" href="https://www.linkcorreios.com.br/<?php echo $result->rastreio ?>" title="Rastrear" target="_new" class="btn btn-warning"><i class="fas fa-envelope"></i> Rastrear</a>
 
-
-
+<?php if ($result->rastreio != null && $result->rastreio != '') { ?>
+<a style="margin-right:5px; margin-bottom:5px" href="https://www.linkcorreios.com.br/<?php echo $result->rastreio ?>" title="Rastrear" target="_blank" class="btn btn-warning">
+<i class="fas fa-envelope"></i> Rastrear</a>
+<?php } ?>
 
 <button style="margin-right:5px; margin-bottom:5px"  class="btn btn-primary" title="Atualizar" id="btnContinuar"><i class="fas fa-sync-alt"></i> Atualizar</button>
-                                        </div>
+</div>
 
 <div class="span3">
 <label for="dataInicial">Data de Entrtada<span class="required">*</span></label>
@@ -200,16 +204,20 @@
 <div class="span12" style="padding: 1%; margin-left: 0">
 <div class="span6">
                                         <label for="descricaoProduto"><h4>Descrição Produto/Serviço</h4></label>
-                                        <textarea class="span12 editor" name="descricaoProduto" id="descricaoProduto" cols="30" rows="5"><?php echo $result->descricaoProduto ?></textarea>
+                                        <!--<textarea class="span12 editor" style="height:150px" name="descricaoProduto" id="descricaoProduto" cols="30" rows="5"><?php echo $result->descricaoProduto ?></textarea>-->
+                                        <textarea class="span12" style="height:150px" name="descricaoProduto" id="descricaoProduto" cols="30" rows="5"><?php echo $result->descricaoProduto ?></textarea>
                                         <label for="observacoes"><h4>Observações</h4></label>
-                                        <textarea class="span12 editor" name="observacoes" id="observacoes" cols="30" rows="5"><?php echo $result->observacoes ?></textarea>
+                                        <!--<textarea class="span12 editor" style="height:150px" name="observacoes" id="observacoes" cols="30" rows="5"><?php echo $result->observacoes ?></textarea>-->
+                                        <textarea class="span12" style="height:150px" name="observacoes" id="observacoes" cols="30" rows="5"><?php echo $result->observacoes ?></textarea>
 </div>
 
 <div class="span6">
                                         <label for="defeito"><h4>Problema Informado</h4></label>
-                                        <textarea class="span12 editor" name="defeito" id="defeito" cols="30" rows="5"><?php echo $result->defeito ?></textarea>
+                                        <!--<textarea class="span12 editor" style="height:150px" name="defeito" id="defeito" cols="30" rows="5"><?php echo $result->defeito ?></textarea>-->
+                                        <textarea class="span12" style="height:150px" name="defeito" id="defeito" cols="30" rows="5"><?php echo $result->defeito ?></textarea>
                                         <label for="laudoTecnico"><h4>Relatório Técnico</h4></label>
-                                        <textarea class="span12 editor" name="laudoTecnico" id="laudoTecnico" cols="30" rows="5"><?php echo $result->laudoTecnico ?></textarea>
+                                        <!--<textarea class="span12 editor" style="height:150px" name="laudoTecnico" id="laudoTecnico" cols="30" rows="5"><?php echo $result->laudoTecnico ?></textarea>-->
+                                        <textarea class="span12" style="height:150px" name="laudoTecnico" id="laudoTecnico" cols="30" rows="5"><?php echo $result->laudoTecnico ?></textarea>
 </div>
 <!-- Botoes de Ação -->
 &nbsp;
@@ -228,7 +236,7 @@
 </button>
 
 <!--
-<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Visualizar OS" class="button_mini btn btn-mini btn-primary tip-top" target="new" href="<?php echo base_url() ?>index.php/os/visualizar/<?php echo $result->idOs; ?>">
+<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Visualizar OS" class="button_mini btn btn-mini btn-primary tip-top" target="_blank" href="<?php echo base_url() ?>index.php/os/visualizar/<?php echo $result->idOs; ?>">
 <span class="button_icon"><i class='fas fa-eye'></i></span><span class="button_text">Visualizar OS</span></a>
 -->
 
@@ -237,13 +245,13 @@
 <span class="button_icon"><i class='fab fa-whatsapp'></i></span><span class="button_text">WhatsApp</span></a>
 -->
 
-<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Imprimir" class="button_mini btn btn-mini btn-inverse tip-top" target="new" href="<?php echo site_url() ?>/os/imprimir/<?php echo $result->idOs; ?>">
+<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Imprimir" class="button_mini btn btn-mini btn-inverse tip-top" target="_blank" href="<?php echo site_url() ?>/os/imprimir/<?php echo $result->idOs; ?>">
 <span class="button_icon"><i class='fas fa-print'></i></span><span class="button_text">Imprimir A4</span></a>
 
-<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Imprimir Termica" class="button_mini btn btn-mini btn-inverse tip-top" target="new" href="<?php echo site_url() ?>/os/imprimirTermica/<?php echo $result->idOs; ?>">
+<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Imprimir Termica" class="button_mini btn btn-mini btn-inverse tip-top" target="_blank" href="<?php echo site_url() ?>/os/imprimirTermica/<?php echo $result->idOs; ?>">
 <span class="button_icon"><i class='fas fa-print'></i></span><span class="button_text">Imprimir Termica</span></a>
 
-<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Imprimir Termica 2" class="button_mini btn btn-mini btn-inverse tip-top" target="new" href="<?php echo site_url() ?>/os/imprimirTermica2/<?php echo $result->idOs; ?>">
+<a style="margin-right:5px; margin-bottom:3px; margin-top:3px; max-width: 160px" title="Imprimir Termica 2" class="button_mini btn btn-mini btn-inverse tip-top" target="_blank" href="<?php echo site_url() ?>/os/imprimirTermica2/<?php echo $result->idOs; ?>">
 <span class="button_icon"><i class='fas fa-print'></i></span><span class="button_text">Imprimir Termica 2</span></a>
 
 </div>
@@ -256,7 +264,7 @@
 <!-- Fim Detalhes da OS -->
 
 <!-- Desconto -->
-                        <?php
+<?php
                         $total = 0;
                         foreach ($produtos as $p) {
                             $total = $total + $p->subTotal;
@@ -276,41 +284,52 @@
 <div class="widget_os">
 <h2></h2>
 </div>
-
 <div class="span12 well" style="margin-left: 0">
-
 <form id="formDesconto" action="<?php echo base_url(); ?>index.php/os/adicionarDesconto" method="POST">
-<div id="divValorTotal">
-<div class="span2">
+
+<div class="span0"  style="width:120px">
 <label>Valor Total Da OS:</label>
-<input type="text" class="span12 money" value="<?php echo number_format($totals + $total, 2, ',', '.'); ?>" readonly="readonly"/>
-</div>
-<div class="span2 hide">
-<label for="">Valor Total Da OS:</label>
 <input class="span12 money" id="valorTotal" name="valorTotal" type="text" data-affixes-stay="true" data-thousands="" data-decimal="." name="valor" value="<?php echo number_format($totals + $total, 2, '.', ''); ?>" readonly />
 </div>
-</div>
-<div class="span2">
-<input type="hidden" name="idOs" id="idOs" value="<?php echo $result->idOs; ?>" />
-<label for="">Desconto em R$</label>
-<input id="desconto" name="desconto" type="text" class="span12 money" placeholder="R$" value="<?php echo number_format($result->desconto, 2, ',', '.'); ?>"/>
+<!--
+<div class="span0"  style="width:100px">
+<label for="">Tipo Desc.</label>
+<select style="width:100px" name="tipoDesconto" id="tipoDesconto">
+<option value="real">R$</option>
+<option value="porcento" <?= $result->tipo_desconto == "porcento" ? "selected" : "" ?>>%</option></select>
 <strong><span style="color: red" id="errorAlert"></span></strong>
 </div>
-<div class="span2">
-<label for="">Total com Desconto</label>
-<input class="span12 money" id="resultado" type="text" data-affixes-stay="true" data-thousands="" data-decimal="." name="resultado" value="<?php echo number_format($result->valor_desconto, 2, ',', '.'); ?>" readonly />
+-->
+<div class="span0"  style="width:100px">
+<input type="hidden" name="idOs" id="idOs" value="<?php echo $result->idOs; ?>" />
+<label for="">Desconto</label>
+<input style="width:100px" id="desconto" name="desconto" type="text" placeholder="0.00" maxlength="6" size="2" value="<?= $result->desconto ?>" />
 
+
+<strong><span style="color: red" id="errorAlert"></span></strong>
 </div>
-<div class="span2">
+
+<div class="span0"  style="width:150px">
+<label for="">Total com Desconto</label>
+<input style="width:150px" class="money" id="resultado" type="text" data-affixes-stay="true" data-thousands="" data-decimal="." name="resultado" value="<?php echo $result->valor_desconto  ?>" readonly />
+</div>
+
+<div class="span0"  style="width:100px">
 <label for="">&nbsp;</label>
 <button class="button_mini btn btn-success" id="btnAdicionarDesconto">
 <span class="button_icon"><i class='fas fa-plus-circle'></i></span><span class="button_text">Aplicar</span>
 </button>
 </div>
-</form>
 
+<div class="span0 hidden"  style="width:100px">
+<label for="">Tipo Desc.</label>
+<select style="width:100px" name="tipoDesconto" id="tipoDesconto">
+<option value="real">R$</option>
+<option value="porcento" <?= $result->tipo_desconto == "porcento" ? "selected" : "" ?>>%</option></select>
+<strong><span style="color: red" id="errorAlert"></span></strong>
+</div
+></form>
 </div>
-
 </div>
 </div>
 <!-- Fim Desconto -->
@@ -507,7 +526,7 @@
 </div>
                     
 <div class="span12" id="divAnexos" style="margin-left: 0" >
-<div class="span12 well_3">
+<div class="span12 well_2">
 <?php
 	foreach ($anexos as $a) {
 		if ($a->thumb == null) {
@@ -643,12 +662,9 @@
 
 
 </div>
-
-</div>
-
+</div>    
 </div>
 </div>
-
 
 <!-- Visualizar Anexo -->
 <div id="modal-anexo" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -710,7 +726,7 @@
 <div class="span6" style="margin-left: 0">
                 <label for="equipamentos">Equipamento<span class="required">*</span></label>
                 <input name="equipamento" type="text" class="span12" id="equipamento" value="" />
-            </div>
+      </div>
             <div class="span6">
                 <label for="marca">Marca</label>
                 <input name="marca" type="text" class="span12" id="equipamento" value="" />
@@ -735,6 +751,7 @@
                 <label for="voltagem">Voltagem</label>
                 <input name="voltagem" type="text" class="span12" id="equipamento" value="" />
             </div>
+
             <div class="span6">
                 <label for="potencia">Potência</label>
                 <input name="potencia" type="text" class="span12" id="equipamento" value="" />
@@ -772,7 +789,7 @@
       <div class="span12" style="margin-left: 0">
         <label for="descricao">Descrição</label>
           <input name="descricao" type="text" class="span12" id="descricao" value="Fatura da OS: <?php echo $result->idOs; ?> " readonly="readonly" />
-        </div>
+      </div>
             <div class="span12" style="margin-left: 0">
                 <div class="span12" style="margin-left: 0">
                     <label for="cliente">Cliente*</label>
@@ -782,14 +799,21 @@
                 </div>
             </div>
             <div class="span12" style="margin-left: 0">
-                <div class="span6" style="margin-left: 0">
+                <div class="span3" style="margin-left: 0">
                     <label for="valor">Valor*</label>
                     <input type="hidden" id="tipo" name="tipo" value="receita" />
                     <input name="valor" type="text" class="span12 money" id="valor" value="<?php echo number_format($totals + $total, 2, ',', '.'); ?>" data-affixes-stay="true" data-thousands="" data-decimal="." />
                 </div>
+                
+              <div class="span3" style="margin-left: 2">
+                    <label for="valor">Desconto de*</label>
+                    <input type="hidden" id="tipo" name="tipo" value="receita" />
+                  <input name="valor" type="text" disabled="disabled" class="span12 money" id="valor" value="<?= $result->desconto ?>" readonly="readonly" data-affixes-stay="true" data-thousands="" data-decimal="." />
+              </div>
+                
                 <div class="span6" style="margin-left: 2;">
                     <label for="valor">Valor Com Desconto*</label>
-                    <input name="faturar-desconto" type="text" class="span12 money" id="faturar-desconto" value="<?php echo number_format($result->valor_desconto, 2, ',', '.'); ?> " readonly="readonly" />
+                    <input name="faturar-desconto" type="text" class="span12 money" id="faturar-desconto" value="<?php echo number_format($result->valor_desconto , 2, ',', '.'); ?> " readonly="readonly" />
                     <strong><span style="color: red" id="resultado"></span></strong>
                 </div>
             </div>
@@ -805,7 +829,7 @@
                   <div class="span6">
                         <label for="recebimento">Data do Pagamento</label>
                         <input class="span12" autocomplete="off" id="recebimento" type="date" name="recebimento" value="<?php echo date('Y-m-d'); ?>" />
-                    </div>
+              </div>
                     <div class="span6">
                         <label for="formaPgto">Forma Pgto</label>
                         <select name="formaPgto" id="formaPgto" class="span12">
@@ -845,7 +869,7 @@
                 <label for="descricao">Descrição</label>
                 <input readonly="readonly" name="descricao" type="text" class="span12" id="descricao"
                     value="OS Nº: <?php echo $result->idOs; ?> - Entregue - Sem Reparo" />
-            </div>
+      </div>
             <div class="span12" style="margin-left: 0">
                 <div class="span12" style="margin-left: 0">
                     <label for="cliente">Cliente</label>
@@ -921,7 +945,7 @@
                     <div>Atenciosamente <b><?php echo $configuration['whats_app2'] ?></b> -
                         <b><?php echo $configuration['whats_app3'] ?></b>
                     </div>
-                </font>
+        </font>
 </div>
 </div>
 <div class="form_actions" align="center">
@@ -984,7 +1008,7 @@
                     </div>
                     <div>Você poderá edita-los no menu <b>Minha Conta</b></div>
                     <br>
-                </font>
+        </font>
 </div>
 </div>
 <div class="form_actions" align="center">
@@ -1006,13 +1030,17 @@
 </div>
 <!-- Fim Modal WhatsApp 2 -->
 
-
 <script src="<?php echo base_url(); ?>assets/js/maskmoney.js"></script>
 
 <script type="text/javascript">
-    function calcDesconto(valor, desconto) {
-
-        var resultado = (valor - desconto).toFixed(2);
+    function calcDesconto(valor, desconto, tipoDesconto) {
+        var resultado = 0;
+        if (tipoDesconto == 'real') {
+            resultado = valor - desconto;
+        }
+        if (tipoDesconto == 'porcento') {
+            resultado = (valor - desconto * valor / 100).toFixed(2);
+        }
         return resultado;
     }
 
@@ -1032,15 +1060,14 @@
     $("#quantidade_servico").keyup(function() {
         this.value = this.value.replace(/[^0-9.]/g, '');
     });
-
-    $("#desconto").keyup(function() {
-
-        this.value = this.value.replace(/[^0-9.]/g, '');
-        if ($('#desconto').val() > $("#valorTotal").val()) {
-            $('#errorAlert').text('Desconto não pode ser maior que o total.').css("display", "inline").fadeOut(5000);
-            $('#desconto').val('');
-            $("#desconto").focus();
+	$('#tipoDesconto').on('change', function () {
+        if (Number($("#desconto").val()) >= 0) {
+            $('#resultado').val(calcDesconto(Number($("#valorTotal").val()), Number($("#desconto").val()), $("#tipoDesconto").val()));
+            $('#resultado').val(validarDesconto(Number($('#resultado').val()), Number($("#valorTotal").val())));
         }
+    });
+    $("#desconto").keyup(function () {
+        this.value = this.value.replace(/[^0-9.]/g, '');
         if ($("#valorTotal").val() == null || $("#valorTotal").val() == '') {
             $('#errorAlert').text('Valor não pode ser apagado.').css("display", "inline").fadeOut(5000);
             $('#desconto').val('');
@@ -1049,7 +1076,7 @@
             $("#desconto").focus();
 
         } else if (Number($("#desconto").val()) >= 0) {
-            $('#resultado').val(calcDesconto(Number($("#valorTotal").val()), Number($("#desconto").val())));
+            $('#resultado').val(calcDesconto(Number($("#valorTotal").val()), Number($("#desconto").val()), $("#tipoDesconto").val()));
             $('#resultado').val(validarDesconto(Number($('#resultado').val()), Number($("#valorTotal").val())));
         } else {
             $('#errorAlert').text('Erro desconhecido.').css("display", "inline").fadeOut(5000);
@@ -1058,7 +1085,7 @@
         }
     });
 
-    $("#valorTotal").focusout(function() {
+    $("#valorTotal").focusout(function () {
         $("#valorTotal").val(valorBackup);
         if ($("#valorTotal").val() == '0.00' && $('#resultado').val() != '') {
             $('#errorAlert').text('Você não pode apagar o valor.').css("display", "inline").fadeOut(6000);
@@ -1215,7 +1242,6 @@
                 beforeSend: function() {
                     Swal.fire({
                         title: 'Processando',
-
                         text: 'Registrando desconto...',
                         icon: 'info',
                         showCloseButton: false,

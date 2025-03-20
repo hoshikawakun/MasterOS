@@ -121,21 +121,25 @@ Dados incompletos, verifique os campos com asterisco ou se selecionou corretamen
 <label class="hide" for="garantia">Garantia até</label>
 <input class="span12 hide" id="garantia" type="date" name="garantia" />
 </div>
-                                    </div>
-
-
+</div>
 
 <div class="span12" style="padding: 1%; margin-left: 0">
 <div class="span6">
                                         <label for="descricaoProduto"><h4>Descrição Produto/Serviço</h4></label>
-                                        <textarea class="span12 editor" name="descricaoProduto" id="descricaoProduto" cols="30" rows="5"></textarea>
+                                        <!--<textarea class="span12 editor" style="height:150px" name="descricaoProduto" id="descricaoProduto" cols="30" rows="5"><?php echo $result->descricaoProduto ?></textarea>-->
+                                        <textarea class="span12" style="height:150px" name="descricaoProduto" id="descricaoProduto" cols="30" rows="5"><?php echo $result->descricaoProduto ?></textarea>
                                         <label for="observacoes"><h4>Observações</h4></label>
-                                        <textarea class="span12 editor" name="observacoes" id="observacoes" cols="30" rows="5"></textarea>
+                                        <!--<textarea class="span12 editor" style="height:150px" name="observacoes" id="observacoes" cols="30" rows="5"><?php echo $result->observacoes ?></textarea>-->
+                                        <textarea class="span12" style="height:150px" name="observacoes" id="observacoes" cols="30" rows="5"><?php echo $result->observacoes ?></textarea>
 </div>
 
 <div class="span6">
                                         <label for="defeito"><h4>Problema Informado</h4></label>
-                                        <textarea class="span12 editor" name="defeito" id="defeito" cols="30" rows="5"></textarea>
+                                        <!--<textarea class="span12 editor" style="height:150px" name="defeito" id="defeito" cols="30" rows="5"><?php echo $result->defeito ?></textarea>-->
+                                        <textarea class="span12" style="height:150px" name="defeito" id="defeito" cols="30" rows="5"><?php echo $result->defeito ?></textarea>
+                                        <label for="laudoTecnico"><h4>Relatório Técnico</h4></label>
+                                        <!--<textarea class="span12 editor" style="height:150px" name="laudoTecnico" id="laudoTecnico" cols="30" rows="5"><?php echo $result->laudoTecnico ?></textarea>-->
+                                        <textarea class="span12" style="height:150px" name="laudoTecnico" id="laudoTecnico" cols="30" rows="5"><?php echo $result->laudoTecnico ?></textarea>
 </div>
 </div>
 </div>

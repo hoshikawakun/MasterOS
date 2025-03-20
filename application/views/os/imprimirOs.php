@@ -29,7 +29,7 @@ $totalProdutos = 0; ?>
 
                                     <?php if ($emitente == null) { ?>
                                     <tr>
-                                        <td colspan="3" class="alert">Você precisa configurar os dados do emitente.
+                                        <td colspan="4" class="alert">Você precisa configurar os dados do emitente.
                                             >>><a
                                                 href="<?php echo base_url(); ?>index.php/masteros/emitente">Configurar</a>
                                             <<< </td>
@@ -84,7 +84,7 @@ $totalProdutos = 0; ?>
         <div class="widget_content_printer2">
 <table width="100%" class="table_w">
                                     <tr>
-                                        <td colspan="2">
+                                        <td width="50%">
                                             <b>Cliente</b><br>
                                             <i class="fas fa-user-check"></i> <?php echo $result->nomeCliente ?><br>
                                             <i class="fas fa-fingerprint" style="margin:0px 1px"></i>
@@ -101,7 +101,7 @@ $totalProdutos = 0; ?>
                                             <i class="fas fa-phone-alt"
                                                 style="margin:0px 1px"></i>  <?php echo $result->telefone ?>
                                         </td>
-                                        <td>
+                                        <td width="50%">
                                             <b>Técnico</b><br>
                                             <i class="fas fa-user-check"></i> <?php echo $result->nome ?><br>
                                             <i class="fas fa-envelope" style="margin:0px 1px"></i>
@@ -118,13 +118,13 @@ $totalProdutos = 0; ?>
 <table width="100%" class="table_w">
                                     <?php if ($result->serial != null) { ?>
                                     <tr>
-                                        <td colspan="2">
+                                        <td width="50%">
                                             <b>Nº Série:</b><br>
                                             <?php echo htmlspecialchars_decode($result->serial) ?>
                                         </td>
                                         <?php } ?>
                                         <?php if ($result->marca != null) { ?>
-                                        <td>
+                                        <td width="50%">
                                             <b>Marca:</b><br>
                                             <?php echo htmlspecialchars_decode($result->marca) ?>
                                         </td>
@@ -224,9 +224,9 @@ $totalProdutos = 0; ?>
                                         <tr>
                                             <th width="10%">Cod. Produto</th>
                                             <th>Produto</th>
-                                            <th width="10%">Quantidade</th>
-                                            <th width="10%">Preço unit.</th>
-                                            <th width="10%">Sub-total</th>
+                                            <th width="12%">Quantidade</th>
+                                            <th width="12%">Preço unit.</th>
+                                            <th width="12%">Sub-total</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -263,9 +263,9 @@ $totalProdutos = 0; ?>
                                     <thead>
                                         <tr>
                                             <th>Serviço</th>
-                                            <th width="10%">Quantidade</th>
-                                            <th width="10%">Preço unit.</th>
-                                            <th width="10%">Sub-total</th>
+                                            <th width="12%">Quantidade</th>
+                                            <th width="12%">Preço unit.</th>
+                                            <th width="12%">Sub-total</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -298,15 +298,33 @@ $totalProdutos = 0; ?>
                                 <?php } ?>
 </div>
 
-                       <!-- Total OS -->
-<?php
-if ($totalProdutos != 0 || $totalServico != 0) {
-echo "<h4 style='font-size: 14px; text-align: right'>Valor Total: R$ " . number_format($totalProdutos + $totalServico, 2, ',', '.') . "  "."</h4>";
-echo $result->valor_desconto != 0 ? "<h4 style='font-size: 14px; text-align: right'>Desconto: R$ " . number_format($result->valor_desconto != 0 ? $result->valor_desconto - ($totalProdutos + $totalServico) : 0.00, 2, ',', '.') . "  "."</h4>" : ".";
-echo $result->valor_desconto != 0 ? "<h4 style='font-size: 14px; text-align: right'>Total com Desconto: R$ " . number_format($result->valor_desconto, 2, ',', '.') . "  "."</h4>" : ".";
-                        }
-                        ?>
-                       <!-- Fim Total OS -->
+<!-- Total OS -->
+<?php if ($totalProdutos != 0 || $totalServico != 0) { ?>
+<table width="100%" class="table_w">
+<thead>
+<tr>
+<th  colspan="2">TOTAL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right"><b>Valor Total: </b></td>
+<td width="12%" align="center"><b>R$: <?php echo number_format($totalProdutos + $totalServico, 2, ',', '.'); ?></b></td>
+</tr>
+<?php if ($result->valor_desconto  != 0) { ?>
+<tr>
+<td style="text-align:right"><b>Desconto: </b></td>
+<td width="12%" align="center"><b>R$: <?php echo number_format($result->valor_desconto  != 0 ? $result->valor_desconto  - ($totalProdutos + $totalServico) : 0.00, 2, ',', '.'); ?></b></td>
+</tr>
+<tr>
+<td style="text-align:right"><b>Total com Desconto: </b></td>
+<td width="12%" align="center"><b>R$: <?php echo number_format($result->valor_desconto , 2, ',', '.'); ?></b></td>
+</tr>
+<?php } ?>
+</tbody>
+</table>
+<?php } ?>
+<!-- Fim Total OS -->
 
         <!-- QR Code PIX -->
         <!--

@@ -17,7 +17,7 @@ class Configuracoes extends Seeder
             [
                 'idConfig' => 3,
                 'config' => 'app_theme',
-                'valor' => 'white',
+                'valor' => 'normal',
             ],
             [
                 'idConfig' => 4,
