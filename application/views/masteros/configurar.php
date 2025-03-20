@@ -53,15 +53,14 @@
                                 <select name="app_theme" id="app_theme">
 									<option value="normal"
                                         <?= $configuration['app_theme'] == 'normal' ? 'selected' : ''; ?>>Padrão</option>
-									<option value="verde"
-                                        <?= $configuration['app_theme'] == 'verde' ? 'selected' : ''; ?>>verde</option>
-									<option value="white"
-                                        <?= $configuration['app_theme'] == 'white' ? 'selected' : ''; ?>>white</option>
+									<!--<option value="verde"
+                                        <?= $configuration['app_theme'] == 'verde' ? 'selected' : ''; ?>>verde</option>-->
+									<!--<option value="white"
+                                        <?= $configuration['app_theme'] == 'white' ? 'selected' : ''; ?>>white</option>-->
                                 </select>
                                 <span class="help-inline">Selecione o tema que que deseja usar no sistema</span>
                             </div>
                         </div>
-                        <!--
                         <div class="control_group_up">
                             <label for="gerenciador_arquivos" class="control-label">Gerenciador de Arquivos</label>
                             <div class="controls">
@@ -69,14 +68,13 @@
                                     <option value="arquivos_old/arquivos"
                                         <?= $configuration['gerenciador_arquivos'] == 'arquivos_old/arquivos' ? 'selected' : ''; ?>>
                                         Classico</option>
-                                    <option value="arquivos/arquivos"
+                                    <!--<option value="arquivos/arquivos"
                                         <?= $configuration['gerenciador_arquivos'] == 'arquivos/arquivos' ? 'selected' : ''; ?>>
-                                        Novo</option>
+                                        Novo</option>-->
                                 </select>
                                 <span class="help-inline">Versão do Gerenciador de Arquivos.</span>
                             </div>
                         </div>
-                        -->
                         <div class="control_group_up">
                             <label for="masteros_0" class="control-label">Complemento de eMail</label>
                             <div class="controls">
