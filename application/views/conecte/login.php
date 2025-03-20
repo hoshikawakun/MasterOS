@@ -30,6 +30,7 @@
         }
     </script>
 </head>
+
 <?php
    $parse_email = $this->input->get('e');
    $parse_cpfcnpj = $this->input->get('c');
@@ -37,98 +38,123 @@
 
 <body>
 <div class="main-login">
-    <div class="left-login">
-    <h1 class="h-one">Área do Cliente</h1>
-            <img src="<?php echo base_url() ?>assets/img/forms-animate.svg"class="left-login-imagec" alt="Map-OS 5.0">
-        </div>
 
-<div id="loginbox">
-        <form class="form-vertical" id="formLogin" method="post" action="<?php echo site_url() ?>/mine/login">
-            <?php if ($this->session->flashdata('error') != null) { ?>
-                <div class="alert alert-danger">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <?php echo $this->session->flashdata('error'); ?>
-                </div>
-            <?php } ?>
+<div class="left-login">
+<!-- Saudação -->
+<h1 class="h-one">
+<?php function saudacao($nome = '')
+    {
+        date_default_timezone_set('America/Sao_Paulo');
+        $hora = date('H');
+        if ($hora >= 6 && $hora <= 12) {
+            return 'Olá! Bom dia' . (empty($nome) ? '' : ', ' . $nome);
+        } elseif ($hora > 12 && $hora <=18) {
+            return 'Olá! Boa tarde' . (empty($nome) ? '' : ', ' . $nome);
+        } else {
+            return 'Olá! Boa noite' . (empty($nome) ? '' : ', ' . $nome);
+        }
+    }
+$login = 'bem-vindo a';
+echo saudacao($login);
 
-            <?php if ($this->session->flashdata('success') != null) { ?>
-                <div class="alert alert-success">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <?php echo $this->session->flashdata('success'); ?>
-                </div>
-            <?php } ?>
+// Irá retornar conforme o horário:
+?></h1>
 
-    <div class="d-flex flex-column justify-content-center w-100 h-100">
-        <div class="d-flex flex-column justify-content-center align-items-center">
-            <div class="right-login">
-                <div class="container">
-                    <div class="card card-cad">
-                        <div class="content">
-                            <div id="newlog">
-                              <div class="icon2">
-                                <img src="<?php echo base_url() ?>assets/img/logo-two.png">
-                              </div>
-                              <div class="title01">
-                                <?= $configuration['app_theme'] == 'white' ? '<img src="'. base_url() .'assets/img/logo-masteros.png">' : '<img src="'. base_url() .'assets/img/logo-masteros-branco.png">'; ?>
-                              </div>
-                              </div>
-                              <div id="mcell">Versão: <?= $this->config->item('app_version'); ?></div>
-                              <div class="control_group_up">
-                                    <div class="controls">
-                                        <div class="main_input_box">
-                                            <span class="add-on bg_lg"><i class='bx bx-user-plus iconU'></i></span>
-                                            <input id="email" name="email" type="text" placeholder="Email" value="<?php echo trim($parse_email); ?>"/>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="control_group_up">
-                                    <div class="controls">
-                                        <div class="main_input_box">
-                                            <span class="add-on bg_ly"><i class='bx bx-id-card iconU'></i></span>
-                                            <input name="senha" type="password"
-                            value="<?php if (isset($_GET['c'])) {
-    echo $_GET['c']; ?>
-                            <?php
-} ?>
-                         " />
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <button style="margin: 0" class="btn btn-info btn-large"> Acessar</button>
-                                <a href="<?= site_url('mine/cadastrar') ?>" class="btn btn-success btn-large">Cadastrar-me</a>
-                                <div class="links-uteis"><a href="https://github.com/RamonSilva20/masteros"><p><?= date('Y'); ?> &copy; Ramon Silva</p></a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<h1 class="h-one">Área do Cliente</h1>
+    <img src="<?php echo base_url() ?>assets/img/forms-animate.svg"class="left-login-imagec" alt="Master-OS 5.0">
+<!-- Fim Saudação -->
 </div>
 
-    <a href="#notification" id="call-modal" role="button" class="btn" data-toggle="modal" style="display: none ">notification</a>
+<div id="loginbox">
+<form class="form-vertical" id="formLogin" method="post" action="<?php echo site_url() ?>/conecte/login">
+<?php if ($this->session->flashdata('error') != null) { ?>
+<div class="alert alert-danger">
+<button type="button" class="close" data-dismiss="alert">&times;</button>
+<?php echo $this->session->flashdata('error'); ?>
+</div>
+<?php } ?>
 
-    <div id="notification" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h4 id="myModalLabel">.:: <?php echo $this->config->item('app_name') ?> ::.</h4>
-        </div>
-        <div class="modal-body">
-            <h5 style="text-align: center">Os dados de acesso estão incorretos, por favor tente novamente!</h5>
-        </div>
-        <div class="form_actions" align="center">
-            <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Fechar</button>
-
-        </div>
-    </div>
+<?php if ($this->session->flashdata('success') != null) { ?>
+<div class="alert alert-success">
+<button type="button" class="close" data-dismiss="alert">&times;</button>
+<?php echo $this->session->flashdata('success'); ?>
+</div>
+<?php } ?>
 
 
-    <script src="<?php echo base_url() ?>assets/js/bootstrap.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/js/jquery.validate.js"></script>
 
-    <script type="text/javascript">
+
+<div class="d-flex flex-column justify-content-center w-100 h-100">
+<div class="d-flex flex-column justify-content-center align-items-center">
+<div class="right-login">
+<div class="container">
+<div class="card">
+<div class="content">
+
+
+
+
+<div id="newlog">
+<div class="title01">
+                  <?= $configuration['app_theme'] == 'normal' ? '<img src="'. base_url() .'assets/img/logo-masteros.png">' : '<img src="'. base_url() .'assets/img/logox.png">'; ?>
+                </div>
+              </div>
+
+<div id="mcell">Versão: <?= $this->config->item('app_version'); ?></div>
+
+
+
+<div class="input-field">
+<label class="fas fa-user" for="nome"></label>
+<input id="email" name="email" type="text" placeholder="Email" value="<?php echo trim($parse_email); ?>">
+</div>
+
+<div class="input-field">
+<label class="fas fa-lock" for="senha"></label>
+<input name="senha" type="password" placeholder="Senha" value="<?php if (isset($_GET['c'])) {
+    echo $_GET['c']; ?>
+<?php } ?>">
+</div>
+
+<div class="center">
+<button style="margin: 0" class="btn btn-info btn-large"> Acessar</button>
+
+<!--
+<a href="<?= site_url('conecte/cadastrar') ?>" style="color:#333;"  class="btn btn-success btn-large">Cadastrar-me</a>
+-->
+</div>
+
+<div class="links-uteis hide"><a href="https://github.com/hoshikawakun/MasterOS"><p> &copy; 2020 - <?= date('Y'); ?> Emanuel Victor</p></a>
+</div>
+<div class="links-uteis" style="color:#FFF"><p> &copy; 2020 - <?= date('Y'); ?> Emanuel Victor</p>
+</div>
+
+<a href="#notification" id="call-modal" role="button" class="btn" data-toggle="modal" style="display: none ">notification</a>
+
+<div id="notification" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-header">
+                  <h4 id="myModalLabel">Master-OS</h4>
+                </div>
+                <div class="modal-body">
+                  <h5 style="text-align: center" id="message">Os dados de acesso estão incorretos, por favor tente novamente!</h5>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Fechar</button>
+                </div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="<?php echo base_url() ?>assets/js/bootstrap.min.js"></script>
+<script src="<?php echo base_url() ?>assets/js/jquery.validate.js"></script>
+
+<script type="text/javascript">
         $(document).ready(function() {
 
 
@@ -158,12 +184,12 @@
 
                     $.ajax({
                         type: "POST",
-                        url: "<?php echo base_url(); ?>index.php/mine/login?ajax=true",
+                        url: "<?php echo base_url(); ?>index.php/conecte/login?ajax=true",
                         data: dados,
                         dataType: 'json',
                         success: function(data) {
                             if (data.result == true) {
-                                window.location.href = "<?php echo base_url(); ?>index.php/mine/painel";
+                                window.location.href = "<?php echo base_url(); ?>index.php/conecte/painel";
                             } else {
                                 $("#notification").modal();
                             }
