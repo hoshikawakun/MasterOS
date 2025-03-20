@@ -19,11 +19,15 @@
 <div class="widget_content_3">
 <ul class="nav nav-tabs">
 <li class="active"><a data-toggle="tab" href="#tab1">Gerais</a></li>
-<!--<li><a data-toggle="tab" href="#tab2">Gift Card</a></li>-->
+<!--
+<li><a data-toggle="tab" href="#tab2">Gift Card</a></li>
+-->
 <li><a data-toggle="tab" href="#tab3">Misc</a></li>
 <li><a data-toggle="tab" href="#tab4">Financeiro</a></li>
 <li><a data-toggle="tab" href="#tab5">Termo de Uso OS</a></li>
+<!--
 <li><a data-toggle="tab" href="#tab6">Notificações</a></li>
+-->
 <li><a data-toggle="tab" href="#tab7">Mensagem WhatsApp</a></li>
 <li><a data-toggle="tab" href="#tab8">OS</a></li>
 <li><a data-toggle="tab" href="#tab9">Itens Home</a></li>
@@ -47,8 +51,12 @@
                             <label for="app_theme" class="control-label">Tema do Sistema</label>
                             <div class="controls">
                                 <select name="app_theme" id="app_theme">
-                                    <option value="novo"
-                                        <?= $configuration['app_theme'] == 'novo' ? 'selected' : ''; ?>>Padrão</option>
+									<option value="normal"
+                                        <?= $configuration['app_theme'] == 'normal' ? 'selected' : ''; ?>>Padrão</option>
+									<option value="verde"
+                                        <?= $configuration['app_theme'] == 'verde' ? 'selected' : ''; ?>>verde</option>
+									<option value="white"
+                                        <?= $configuration['app_theme'] == 'white' ? 'selected' : ''; ?>>white</option>
                                 </select>
                                 <span class="help-inline">Selecione o tema que que deseja usar no sistema</span>
                             </div>
@@ -97,6 +105,7 @@
 <div id="tab2" class="tab-pane" style="min-height: 338px"><!--Tamanho Geral da Pagina-->
 <div class="acordion_config">
 
+<div align="center">Gift Card</div>
 
 </div>
 </div>
