@@ -62,7 +62,7 @@ body {
   font-size  : 12px;
   min-height : 100vh;
   overflow-x : hidden;
-  color      : var(--cinza2); 
+  color      : var(--cinza2);
 }
 
 body.dark {
@@ -255,11 +255,13 @@ h3 {
 }
 
 #footer {
-  padding    : 10px 0 10px 250px;
-  text-align : center;
-  color      : #f7bc4d;
-  background : var(--bodycolor);
-  border-top : 1px solid rgba(0, 0, 0, 0.1);
+  padding-top   : 10px;
+  padding-bottom: 10px;
+  text-align    : center;
+  color         : #f7bc4d;
+  background    : var(--bodycolor);
+  width         : 100%;
+  margin-top    : auto;  /* Empurra o rodapé para o fundo quando necessário */
 }
 
 hr {
@@ -291,7 +293,8 @@ hr {
 
 #btn-calendar .iconX2 {
   position: absolute;
-  bottom  : 2px;
+  bottom  : -2px;
+  left    : -2px;
 }
 
 .fc .fc-button-primary {
@@ -401,12 +404,14 @@ hr {
 
 #user-nav .iconN {
   padding-right: 5px;
+  margin-top: -2px;
 }
 
 #user-nav>ul>li>a:hover,
 #user-nav>ul>li.open>a {
-  color     : var(--laranja0);
-  background: var(--corfun);
+  color     : #000000;
+  background: #0099cc;
+  border-radius   : 6px;
 }
 
 .navbar-inverse .nav>li>a {
@@ -787,6 +792,8 @@ hr {
   transition     : var(--tran-04);
 }
 
+/* ===========================> MENUS LATERAIS* <=========================== */
+
 #sidebar li.active {
   background   : #000; /*Cor do Menu Selecionado*/
   border-radius: 6px;
@@ -798,7 +805,7 @@ hr {
 }
 
 #sidebar li a:hover {
-  background-color: #0099cc; /*Cor da Janela com mouse Encima*/
+  background-color: #ffcc00; /*Cor da Janela com mouse Encima*/
 }
 
 #sidebar li a:hover .iconX,
@@ -859,6 +866,8 @@ body.dark .switch::before {
   margin-left     : 220px;
   margin-top      : 3px;
   background-color: var(--bodycolor);
+  padding-top     : 2px;
+  padding-bottom  : 5px;
 }
 
 /* New User Perfil */
@@ -866,9 +875,9 @@ body.dark .switch::before {
   margin: 12px;
 }
 
-section .profileMC .profile-img {
-  height       : 80px;
-  width        : 80px;
+section .profileMC .profile-img { /*Foto do Usuario*/
+  height       : 130px;
+  width        : 130px;
   border-radius: 50%;
   background   : #fff;
   margin       : 3px auto;
@@ -884,13 +893,32 @@ section .profileMC .profile-img {
 }
 
 /* New User dashboard */
+ 
+
+#userr .userT0 { /*Mensagem de Boas Vindas*/
+  color      : var(--cinza0);
+  font-size  : 1.3em;
+  font-weight: 500;
+}
+
+#userr .userT { /*Posição e tamanho nome do Usuario*/
+  color      : var(--cinza0);
+  font-size  : 1em;
+}
+
+#userr { /*Nome do Usuario*/
+	font-size   : 14px;
+    margin-right: 68px;
+}
+
 section .profile .profile-img { /*Foto do Usuario*/
-  height       : 28px;
-  width        : 28px;
+  height       : 40px;
+  width        : 40px;
   border-radius: 50%;
   background   : #fff;
   border       : 1px solid var(--laranja1);
   padding      : 1px;
+  margin-right : 3px;
 }
 
 .profile .profile-img img {
@@ -919,15 +947,10 @@ section .profile .profile-img { /*Foto do Usuario*/
   margin-left            : 0px;
 }
 
-#userr .userT0 { /*Mensagem de Boas Vindas*/
-  color      : var(--cinza0);
-  font-size  : 1.3em;
-  font-weight: 500;
-}
-
-#userr .userT { /*Posição e tamanho nome do Usuario*/
-  color      : var(--cinza0);
-  font-size  : 1em;
+.widget-content { /*Margem entre a tabela interna e externa*/
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-bottom: 10px;
 }
 
 /* Content */
@@ -935,7 +958,7 @@ section .profile .profile-img { /*Foto do Usuario*/
   background : none repeat scroll 0 0 var(--bodycolor);
   border-top : 0px solid #4b4d60;
   margin-left: 200px;
-  margin-top : -15px;
+  margin-top : -20px;
   min-height : 100%;
   padding    : 0 15px 0 15px;
   transition : all 0.3s;
@@ -1022,8 +1045,8 @@ section .profile .profile-img { /*Foto do Usuario*/
   border       : 1px solid #76818d;
 }
 
-#breadcrumb a:hover {
-  background: var(--cinza0);
+#breadcrumb a:hover { /*pag anteriores*/
+  background: var(--cinza0); /*Cor com mouse encima*/
   color     : var(--funSider);
 }
 
@@ -1031,15 +1054,15 @@ section .profile .profile-img { /*Foto do Usuario*/
   background-image: none;
 }
 
-#breadcrumb a.current {
+#breadcrumb a.current { /*Cor do atual*/
   border     : 1px solid var(--laranja1);
   color      : var(--laranja1);
   font-weight: 500;
   margin-left: 3px;
 }
 
-#breadcrumb a.current:hover {
-  background: var(--laranja1);
+#breadcrumb a.current:hover { /*Cor do atual*/
+  background: var(--laranja1);/*Cor com mouse encima*/
   color     : #ffffff;
 }
 
@@ -1206,6 +1229,15 @@ section .profile .profile-img { /*Foto do Usuario*/
   padding      : 10px;
   border-radius: 12px;
   min-width    : 650px;
+}
+
+.cliente123 {
+  max-height   : 100%;
+  margin-top   : 120px; 
+  background   : var(--widget-box);
+  /*padding      : 10px;*/
+  border-radius: 12px;
+  min-width    : 880px;
 }
 
 .lancamentos123 {
@@ -1453,7 +1485,7 @@ section .profile .profile-img { /*Foto do Usuario*/
 .new-bottons {
   position             : relative;
   height               : 100%;
-  padding              : 0px 10px 10px 15px;
+  padding              : 5px 20px 10px 15px;
   margin-top           : -10px;
   display              : grid;
   grid-template-columns: repeat(2, 2fr);
@@ -1953,11 +1985,6 @@ section .profile .profile-img { /*Foto do Usuario*/
 
 .widget-calendar .widget-title .label {
   margin-right: 190px;
-}
-
-.widget-content {
-  margin-top: -25px;
-  padding   : 15px;
 }
 
 .widget-box.widget-plain .widget-content {
@@ -2955,7 +2982,7 @@ fieldset[disabled] .btn-info.active {
 
 .form_horizontal .control_group_up {
   margin-top   : -10px;
-  margin-bottom: -20px;
+  margin-bottom: -30px;
 }
 
 .form_horizontal .control_group_ct {
@@ -2964,7 +2991,7 @@ fieldset[disabled] .btn-info.active {
 }
 
 .form_horizontal .control_group_dn {
-  margin-top   : -20px;
+  margin-top   : -30px;
   margin-bottom: -10px;
 }
 
@@ -3154,6 +3181,11 @@ fieldset[disabled] .btn-info.active {
   background    : #eee; /*Cor Cabeçalho da Tabela Interna*/
 }
 
+.widget_pagination {
+	padding-left  : 10px;
+	padding-right : 10px;
+}
+
 .widget_painel {
 	padding-left  : 15px;
 	padding-right : 15px;
@@ -3161,11 +3193,6 @@ fieldset[disabled] .btn-info.active {
 }
 
 .widget_painel_2 {
-	padding-left  : 10px;
-	padding-right : 10px;
-}
-
-.widget_pagination {
 	padding-left  : 10px;
 	padding-right : 10px;
 }
@@ -3179,6 +3206,17 @@ fieldset[disabled] .btn-info.active {
 	margin-bottom   : 16px; /*Espaço inferior para a Proxima Tabela*/
 	position        : relative;
 	background-color: #ffffff;
+}
+
+.widget_content_0 {
+	border-radius   : 0px 0px 10px 10px; /*Bordas Arredondadas*/
+	alignment-adjust:central;
+	/*border-top      : 0px solid #555; /*Borda Superior*/
+	/*border-bottom   : 0px solid #555; /*Borda inferior*/
+	/*border-left     : 0px solid #555; /*Borda Lateral Esquerda*/
+	/*border-right    : 0px solid #555; /*Borda Lateral Direita*/
+	/*padding         : 15px;*/
+	background-color:#fff;
 }
 
 .widget_content {
@@ -3265,6 +3303,29 @@ fieldset[disabled] .btn-info.active {
 	line-height   : 12px;
 }
 
+.widget_box_0 {
+	border-radius   : 10px 10px 10px 10px; /*Bordas Arredondadas*/
+	background      : none repeat scroll 0 0 #fff;  /*Cor Interna*/
+	border          : 1px solid #555; /*Borda Geral*/
+	clear           : both;
+	margin-top      : 40px;
+	margin-bottom   : 16px; /*Espaço inferior para a Proxima Tabela*/
+	position        : relative;
+	background-color: #ffffff;
+	min-width : 530px; /*Tamanho Minimo Horizontal*/
+}
+
+.widget_box_1 {
+	border-radius   : 10px 10px 10px 10px; /*Bordas Arredondadas*/
+	background      : none repeat scroll 0 0 #fff;  /*Cor Interna*/
+	border          : 1px solid #555; /*Borda Geral*/
+	clear           : both;
+	margin-top      : 40px;
+	margin-bottom   : 16px; /*Espaço inferior para a Proxima Tabela*/
+	position        : relative;
+	background-color: #ffffff;
+}
+
 .widget_box_2 {/*Tabela externa*/
 	border-radius   : 10px 10px 0px 0px; /*Bordas Arredondadas*/
 	background      : none repeat scroll 0 0 #fff;  /*Cor Interna*/
@@ -3274,20 +3335,6 @@ fieldset[disabled] .btn-info.active {
 	padding-right   : 10px;
 	clear           : both;
 	margin-top      : 16px;
-	margin-bottom   : 16px; /*Espaço inferior para a Proxima Tabela*/
-	position        : relative;
-	background-color: #ffffff;
-}
-
-.widget_box_0 {/*Tabela Interna*/
-	border-radius   : 10px 10px 0px 0px; /*Bordas Arredondadas*/
-	background      : none repeat scroll 0 0 #fff;  /*Cor Interna*/
-	/*border-left     : 1px solid #555; /*Borda Esquerda*/
-	/*border-top      : 1px solid #555; /*Borda Superior*/
-    padding-left    : 10px;
-	padding-right   : 10px;
-	clear           : both;
-	margin-top      : 8px;
 	margin-bottom   : 16px; /*Espaço inferior para a Proxima Tabela*/
 	position        : relative;
 	background-color: #ffffff;
@@ -3351,13 +3398,22 @@ fieldset[disabled] .btn-info.active {
 	font-size     : 20px;
 	padding-top   : 1px;
 	padding-bottom: 1px;
-	padding-left  : 15px;
+	padding-left  : 10px;
 	line-height   : 12px;
+}
+
+.widget_title_2 h4 {
+	color         : var(--violeta0);
+	float         : left;
+	font-weight   : 500;
+	font-size     : 20px;
+	padding-left  : 10px;
+	margin-top    : 5px;
 }
 
 .widget_content_3 {
 	border-radius   : 10px 10px 10px 10px; /*Bordas Arredondadas*/
-	/border          : 2px solid #0C0; /*Borda inferior*/
+	/*border          : 2px solid #0C0; /*Borda inferior*/
 	background-color: #ffffff;
 	min-width : 530px; /*Tamanho Minimo Horizontal*/
 }
@@ -3387,6 +3443,30 @@ fieldset[disabled] .btn-info.active {
   grid-template-columns: repeat(2, 2fr);	
 }
 
+.widget_title_1 {
+	border-radius   : 10px 10px 0px 0px; /*Bordas Arredondadas*/
+	background      : #eeeeee; /*Cor do Cabeçalho da Tabela Externa*/
+	background-color: #fff;
+	border-bottom   : 1px solid var(--violeta0); /*Borda inferior*/
+	/*border-right    : 1px solid #555; /*Borda Lateral Direita*/
+	height          : 35px; /*tamanho interno do cabeçalho*/
+	text-align      : left;
+	border-collapse : collapse;
+	/*margin-bottom   : 5px; /*Espaço inferior para a Proxima Tabela*/
+	vertical-align  : top;
+}
+
+.widget_title_1 h5 {
+	color         : var(--black2);
+	float         : left;
+	font-weight   : bold;
+	font-size     : 16px;
+	padding-left  : 15px;
+	/*padding-bottom: 10px;*/
+	line-height   : 12px;
+	margin-bottom : 10px;
+}
+
 .widget_title_3 {
 	border-radius   : 10px 10px 0px 0px; /*Bordas Arredondadas*/
 	background      : #eeeeee; /*Cor do Cabeçalho da Tabela Externa*/
@@ -3403,9 +3483,9 @@ fieldset[disabled] .btn-info.active {
 .widget_title_3 h5 {
 	color         : var(--titletext);
 	float         : left;
-	font-weight   : 500;
-	font-size     : 20px;
-	padding-left  : 10px;
+	font-weight   : bold;
+	font-size     : 16px;
+	padding-left  : 15px;
 	padding-bottom: 10px;
 	line-height   : 12px;
 }
@@ -3493,6 +3573,33 @@ fieldset[disabled] .btn-info.active {
 	padding-left  : 15px;
 	line-height   : 12px;
 	margin-bottom : 10px;
+}
+
+.widget_title_6 {
+	border-radius   : 10px 10px 0px 0px; /*Bordas Arredondadas*/
+	background      : #eeeeee; /*Cor do Cabeçalho da Tabela Externa*/
+	background-color: #fff;
+	/*border-bottom   : 1px solid #555; /*Borda inferior*/
+	/*border-top      : 1px solid #999; /*Borda Lateral Direita*/
+	/*border-right    : 1px solid #999; /*Borda Lateral Direita*/
+	/*border-left     : 1px solid #999; /*Borda Lateral Esquerda*/
+	/*margin-bottom   : 0px; /*Espaço inferior para a Proxima Tabela*/
+	height          : 35px; /*tamanho interno do cabeçalho*/
+	text-align      : left;
+	border-collapse : collapse;
+	vertical-align  : top;
+}
+
+.widget_title_6 h5 {
+	color          : var(--violeta0);
+	float          : left;
+	font-weight    : 500;
+	font-size      : 20px;
+	padding-top    : 3px;
+	padding-bottom : 1px;
+	padding-left   : 10px;
+	padding-right  : 20px;
+	line-height    : 12px;
 }
 
 /*Acordion*/
@@ -3637,6 +3744,7 @@ fieldset[disabled] .btn-info.active {
 
 .acordion_title {
   text-align     : left;
+  margin-left    : 10px;
   border-collapse: collapse;
   vertical-align : top;
   color          : var(--titletext);
@@ -3723,6 +3831,16 @@ fieldset[disabled] .btn-info.active {
 .table_y th {color: var(--black2);} /*Cor da escrita do cabeçalho da Tabela Interna*/
 .table_y th {background:#eee;} /*Cor Cabeçalho da Tabela Interna*/
 
+.table_z {width:100%;}
+.table_z {background-color:#ffffff;}
+.table_z {font-size:12px;}
+.table_z tr td {border: 1px solid #999; font-size:12px; padding: 5px;} /*Cor das Bordas da Tabela Interna*/
+.table_z th  {border: 1px solid #999;} /*Cor das colunas do cabeçalho da Tabela Interna*/
+.table_z th {text-align:center; padding: 5px;} /*Alinhamento da escrita do cabeçalho da Tabela Interna*/
+.table_z th {font-size: 12px;} /*Tamanho da escrita do cabeçalho da Tabela Interna*/
+.table_z th {color: var(--black2);} /*Cor da escrita do cabeçalho da Tabela Interna*/
+.table_z th {background:#eee;} /*Cor Cabeçalho da Tabela Interna*/
+
 .table_p {
 	width        :100%;
 	margin-bottom:20px;
@@ -3756,6 +3874,27 @@ fieldset[disabled] .btn-info.active {
 	outline         : 0;
 	box-shadow      : 0 3px 7px rgba(0,0,0,0.3);
 	background-clip : padding-box;
+}
+
+.modal_title_0 {
+	border-radius   : 10px 10px 0px 0px; /*Bordas Arredondadas*/
+	background      : #fff; /*Cor do Cabeçalho da Tabela Externa*/
+	background-color: var(--modal);
+	border-bottom   : 1px solid #999; /*Borda inferior*/
+	height          : 30px; /*tamanho interno do cabeçalho*/
+	text-align      : left;
+	border-collapse : collapse;
+	vertical-align  : top;
+	margin-top      : 20px;
+	padding-top     : 1px;
+	padding-bottom  : 10px;
+	padding-left    : 10px;
+	padding-right   : 10px;
+
+}      
+
+.modal_title_0 h5{
+	color: #555;
 }
 
 .modal_title {
@@ -3940,6 +4079,10 @@ input[type="search"] { color:#fff;}
     padding  : 0 !important;
     font-size: 12px !important;
   }
+  
+  #user-nav .iconN {
+	  padding-left: 12px;
+	}
 
   .btn-xsx {
     top: 38px;
@@ -4011,8 +4154,7 @@ input[type="search"] { color:#fff;}
   }
 
   #newlog {
-    padding    : 0 18px;
-    margin-left: -4px;
+    padding    : 0 5px;
   }
 
   .cardBox .card {
@@ -4025,12 +4167,6 @@ input[type="search"] { color:#fff;}
     padding      : 0 30px 0 30px;
   }
 
-  #userr .userT0 { /*Mensagem de Boas Vindas*/
-  color      : #ffffff;
-  font-size  : 1.3em;
-  font-weight: 500;
-  }
-
   #newlog .icon2 { /*Tamanho da logo sistema menu aberto*/
     width: 220px;
   }
@@ -4038,21 +4174,7 @@ input[type="search"] { color:#fff;}
   #newlog .title1 {
     display: flex;
   }
-
-  section .profile .profile-img { /*Foto do Usuario*/
-    height       : 35px;
-    width        : 35px;
-    border-radius: 50%;
-    background   : #fff;
-    border       : 1px solid var(--laranja1);
-    padding      : 1px;
-  }
-
-  #userr { /*Nome do Usuario*/
-    font-size   : 14px;
-    margin-right: 10px;
-  }
-
+  
   .cardBox { /*Atalhos do Sistema*/
   grid-gap     : 10px;
   margin-bottom: 5px;
@@ -4148,8 +4270,7 @@ input[type="search"] { color:#fff;}
   }
 
   #newlog {
-    padding    : 0 18px;
-    margin-left: -4px;
+    padding    : 0 5px;
   }
 
   .cardBox .card {
@@ -4231,12 +4352,6 @@ input[type="search"] { color:#fff;}
     padding      : 0 20px 0 20px;
   }
 
-  #userr .userT0 { /*Mensagem de Boas Vindas*/
-  color      : #ffffff;
-  font-size  : 1.3em;
-  font-weight: 500;
-  }
-
   #newlog .icon2 { /*Tamanho da logo sistema menu aberto*/
     width     : 220px !important;
     transition: var(--tran-05);
@@ -4244,20 +4359,6 @@ input[type="search"] { color:#fff;}
 
   #newlog .title1 {
     display: none;
-  }
-
-  section .profile .profile-img { /*Foto do Usuario*/
-    height       : 35px;
-    width        : 35px;
-    border-radius: 50%;
-    background   : #fff;
-    border       : 1px solid var(--laranja1);
-    padding      : 1px;
-  }
-
-  #userr { /*Nome do Usuario*/
-    font-size   : 14px;
-    margin-right: 10px;
   }
 
   .cardBox { /*Atalhos do Sistema*/
@@ -4284,20 +4385,6 @@ input[type="search"] { color:#fff;}
   body {
     padding  : 0 !important;
     font-size: 12px !important;
-  }
-
-  section .profile .profile-img { /*Foto do Usuario*/
-    height       : 35px;
-    width        : 35px;
-    border-radius: 50%;
-    background   : #fff;
-    border       : 1px solid var(--laranja1);
-    padding      : 1px;
-  }
-
-  #userr { /*Nome do Usuario*/
-    font-size   : 14px;
-    margin-right: 10px;
   }
   
   #sidebar .toggle,
@@ -4407,11 +4494,6 @@ input[type="search"] { color:#fff;}
     font-size: 1.5rem;
   }
 
-  .new-bottons {
-    padding: 20px 0;
-    grid-gap: 0;
-  }
-
   .row-fluid .Sspan12 {
     grid-template-columns: 1fr !important;
     margin-top           : 15px;
@@ -4423,7 +4505,7 @@ input[type="search"] { color:#fff;}
   }
 
   #newlog {
-    padding: 0 21px;
+    padding: 0 5px;
   }
 
   [class*="span"],
@@ -4456,6 +4538,8 @@ input[type="search"] { color:#fff;}
     padding  : 0 !important;
     font-size: 12px !important;
   }
+  
+  #user-nav .iconN { padding-right: 5px;}
 
   .cli1 {
     max-width    : 90px;
@@ -4497,20 +4581,6 @@ input[type="search"] { color:#fff;}
   .container-fluid {
     padding-right: 5px;
     padding-left : 5px;
-  }
-
-  section .profile .profile-img { /*Foto do Usuario*/
-    height       : 35px;
-    width        : 35px;
-    border-radius: 50%;
-    background   : #fff;
-    border       : 1px solid var(--laranja1);
-    padding      : 1px;
-  }
-
-  #userr { /*Nome do Usuario*/
-    font-size   : 14px;
-    margin-right: 10px;
   }
 
   #user-nav>ul>li>a>span.text { /*Menu superior somente icones*/
@@ -4633,15 +4703,6 @@ input[type="search"] { color:#fff;}
     margin-bottom        : 5px;
   }
 
-  .new-bottons .card .cardName1 {
-    font-size: 1.2em;
-  }
-
-  .new-bottons {
-    padding: 20px 0;
-    grid-gap: 0;
-  }
-
   .fc .fc-toolbar-title {
     font-size: 1.5em!important;
   }
@@ -4657,7 +4718,7 @@ input[type="search"] { color:#fff;}
   }
 
   #newlog {
-    padding: 0 21px;
+    padding: 0 5px;
   }
 
   #newlog .title1 {
@@ -4736,7 +4797,13 @@ input[type="search"] { color:#fff;}
     padding  : 0 !important;
     font-size: 12px !important;
   }
-
+  
+  #user-nav .iconN {
+	  padding-right: 5px;
+	  padding-left: 8px;
+	  padding-top: 8px;
+}
+  
   .cli1 {
     max-width    : 77px;
     white-space  : nowrap;
@@ -4758,14 +4825,6 @@ input[type="search"] { color:#fff;}
   .dropdown-menu>li>a {
     padding  : 5px 13px;
     font-size: 13px;
-  }
-
-  .new-bottons .card .cardName2 {
-    font-size: 1.8em;
-  }
-
-  .new-bottons .card .cardName1 {
-    font-size: 1.2em;
   }
 
   h4 {
@@ -4820,13 +4879,6 @@ input[type="search"] { color:#fff;}
 
   .new-charts-es {
     grid-template-columns: 1fr;
-  }
-
-  .new-bottons .card {
-    flex-direction : row;
-    justify-content: flex-start;
-    align-items    : center;
-    grid-column-gap: 10px;
   }
 
   .widget-title .buttons>.btn {
@@ -5115,33 +5167,6 @@ input[type="search"] { color:#fff;}
     margin-top      : -7px;
   }
 
-  #userr .userT0 { /*Mensagem de Boas Vindas*/
-    font-size    : 14px;
-    padding-right: 4px;
-  }
-
-  #userr .userT { /*Posição e tamanho nome do Usuario*/
-    font-size    : 14px;
-    max-width    : 70px;
-    white-space  : nowrap;
-    overflow     : hidden;
-    text-overflow: ellipsis;
-  }
-
-  section .profile .profile-img { /*Foto do Usuario*/
-	/margin-top: 10px;
-    height     : 28px;
-    width      : 28px;
-  }
-
-  #userr { /*Nome do Usuario*/
-    padding-right : 39px !important;
-    align-items   : center !important;
-    flex-direction: row !important;
-	/font-size     : 14px;
-	margin-right  : 5px;
-  }
-
   .cardHeader {
     font-size    : 1.45em;
     padding      : 5px 0 0 15px;
@@ -5223,10 +5248,6 @@ input[type="search"] { color:#fff;}
     margin-left           : 0 !important;
     border-top-left-radius: 0;
     padding               : 0 1em 0 1em;
-  }
-
-  .widget-content {
-    padding: 12px !important;
   }
 
   #content-header h1,
@@ -5313,6 +5334,62 @@ input[type="search"] { color:#fff;}
     margin-left: 120px;
 	padding    : 10px 0;
   }
+  
+  section .profile .profile-img { /*Foto do Usuario*/
+	height     : 35px;
+    width      : 35px;
+	margin-right: 2px;
+  }
+
+  #userr { /*Nome do Usuario*/
+    align-items   : center !important;
+    flex-direction: row !important;
+	margin-right  : 60px;
+  }
+
+  #userr .userT0 { /*Mensagem de Boas Vindas*/
+    font-size    : 14px;
+    padding-right: 4px;
+  }
+
+  #userr .userT { /*Posição e tamanho nome do Usuario*/
+    max-width    : 70px;
+    white-space  : nowrap; /*Texto em Unica Linha*/
+    overflow     : hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@media (max-width: 1023px) {
+  .new-bottons .card {
+  position       : relative;
+  display        : flex;
+  /*flex-direction : column;*/
+  flex-direction : row;
+  justify-content: center;
+  align-items    : center;
+  border-radius  : 8px;
+  padding        : 10px 5px;
+  border         : 0px solid rgba(0, 0, 0, 0.1);
+}
+}
+
+@media (min-width: 587px) and (max-width: 1366px) {
+#userr { /*Nome do Usuario*/
+	font-size   : 14px;
+    margin-right: 58px;
+}
+
+section .profile .profile-img { /*Foto do Usuario*/
+  height       : 40px;
+  width        : 40px;
+  border-radius: 50%;
+  background   : #fff;
+  border       : 1px solid var(--laranja1);
+  padding      : 1px;
+  margin-right : -8px;
+}
+
 }
 
 /* Fim Responsive design */
