@@ -457,22 +457,22 @@ class Relatorios extends MY_Controller
                     'total_produto' => $item['total_produto'] ? $item['total_produto'] : 0,
                     'total_servico' => $item['total_servico'] ? $item['total_servico'] : 0,
                     'valorSubTotal' => $subTotal ? $subTotal : 0,
-                    'valorTotal' => $total ? $total : 0,
                     'total_geral_desconto' => $item['desconto'] ?: 0,
+                    'valorTotal' => $total ? $total : 0,
                 ];
             }, $os);
 
             $cabecalho = [
-                'ID OS' => 'integer',
+                'OS #' => 'integer',
                 'Cliente' => 'string',
                 'Status' => 'string',
-                'Data' => 'YYYY-MM-DD',
+                'Data' => 'DD-MM-YYYY',
                 'Descrição' => 'string',
                 'Total Produtos' => 'price',
                 'Total Serviços' => 'price',
-                'Total' => 'price',
-                'Total Com Desconto' => 'price',
+                'Total R$' => 'price',
                 'Desconto R$' => 'price',
+                'Total Com Desconto' => 'price',
             ];
 
             $writer = new XLSXWriter();
@@ -491,7 +491,8 @@ class Relatorios extends MY_Controller
                 $totalProdutos,
                 $totalServicos,
                 $totalProdutos + $totalServicos,
-                $totalValorDesconto + $valorTotal,
+				$totalDesconto,
+                $totalValorDesconto,
             ]);
 
             $arquivo = $writer->writeToString();
