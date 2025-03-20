@@ -1,10 +1,10 @@
-/*çã
+/*
 MySQL Data Transfer
 Source Host: localhost
-Source Database:
+Source Database: ontech15_ontech
 Target Host: localhost
-Target Database:
-Date: 26/04/2022 10:17:47
+Target Database: ontech15_ontech
+Date: 20/03/2025 14:08:20
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -80,7 +80,7 @@ CREATE TABLE `clientes` (
   `senha` text DEFAULT NULL,
   `fornecedor` tinyint(1) DEFAULT 0,
   `contato` text DEFAULT NULL,
-  `complemento` varchar(45) DEFAULT NULL,
+  `complemento` text DEFAULT NULL,
   PRIMARY KEY (`idClientes`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -89,7 +89,7 @@ CREATE TABLE `clientes` (
 -- ----------------------------
 CREATE TABLE `cobrancas` (
   `idCobranca` int(11) NOT NULL AUTO_INCREMENT,
-  `charge_id` int(11) DEFAULT NULL,
+  `charge_id` varchar(255) DEFAULT NULL,
   `conditional_discount_date` date DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `custom_id` int(11) DEFAULT NULL,
@@ -292,14 +292,14 @@ CREATE TABLE `itens_de_vendas` (
 -- ----------------------------
 CREATE TABLE `lancamentos` (
   `idLancamentos` int(11) NOT NULL AUTO_INCREMENT,
-  `cliente_fornecedor` varchar(255) DEFAULT NULL,
   `descricao` text DEFAULT NULL,
-  `valor` decimal(10,2) DEFAULT 0.00,
+  `valor` varchar(15) NOT NULL,
   `desconto` decimal(10,2) DEFAULT 0.00,
   `valor_desconto` decimal(10,2) DEFAULT 0.00,
   `data_vencimento` text NOT NULL,
-  `data_pagamento` text DEFAULT '',
+  `data_pagamento` text DEFAULT NULL,
   `baixado` tinyint(1) DEFAULT 0,
+  `cliente_fornecedor` varchar(255) DEFAULT NULL,
   `forma_pgto` varchar(100) DEFAULT NULL,
   `tipo` varchar(45) DEFAULT NULL,
   `anexo` varchar(250) DEFAULT NULL,
@@ -325,8 +325,8 @@ CREATE TABLE `lancamentos` (
 -- ----------------------------
 CREATE TABLE `logs` (
   `idLogs` int(11) NOT NULL AUTO_INCREMENT,
-  `usuario` varchar(80) DEFAULT NULL,
-  `tarefa` varchar(100) DEFAULT NULL,
+  `usuario` text DEFAULT NULL,
+  `tarefa` text DEFAULT NULL,
   `data` date DEFAULT NULL,
   `hora` time DEFAULT NULL,
   `ip` varchar(45) DEFAULT NULL,
@@ -371,8 +371,8 @@ CREATE TABLE `os` (
   `valorTotal` decimal(10,2) DEFAULT 0.00,
   `desconto` decimal(10,2) DEFAULT 0.00,
   `valor_desconto` decimal(10,2) DEFAULT 0.00,
-  `clientes_id` int(11) DEFAULT NULL,
-  `usuarios_id` int(11) DEFAULT NULL,
+  `clientes_id` int(11) NOT NULL,
+  `usuarios_id` int(11) NOT NULL,
   `lancamento` int(11) DEFAULT NULL,
   `faturado` tinyint(1) NOT NULL,
   `garantias_id` int(11) DEFAULT NULL,
@@ -385,6 +385,20 @@ CREATE TABLE `os` (
   CONSTRAINT `fk_os_lancamentos1` FOREIGN KEY (`lancamento`) REFERENCES `lancamentos` (`idLancamentos`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_os_usuarios1` FOREIGN KEY (`usuarios_id`) REFERENCES `usuarios` (`idUsuarios`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Table structure for pagamento
+-- ----------------------------
+CREATE TABLE `pagamento` (
+  `idPag` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `client_id` varchar(200) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `client_secret` varchar(200) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `public_key` varchar(200) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `access_token` varchar(200) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `default_pag` int(1) NOT NULL,
+  PRIMARY KEY (`idPag`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for permissoes
@@ -496,7 +510,7 @@ CREATE TABLE `usuarios` (
   `dataCadastro` date NOT NULL,
   `permissoes_id` int(11) NOT NULL,
   `dataExpiracao` date DEFAULT NULL,
-  `asaas_id` varchar(255) DEFAULT NULL,
+  `asaas_id` text DEFAULT NULL,
   `url_image_user` text DEFAULT NULL,
   PRIMARY KEY (`idUsuarios`),
   KEY `fk_usuarios_permissoes1_idx` (`permissoes_id`),
@@ -534,11 +548,11 @@ CREATE TABLE `vendas` (
 
 INSERT INTO `clientes` VALUES ('1', 'Geral', null, '1', '000.000.000-00', '(00) 0000-0000', null, 'tk@biglobe.ne.jp', '2019-04-23', 'Rua', '0', 'Bairro', 'Cidade', 'CEP', '00000-000', null, null, '0', null, null);
 INSERT INTO `configuracoes` VALUES ('1', 'app_name', 'Nome da sua Loja');
-INSERT INTO `configuracoes` VALUES ('2', 'app_theme', 'novo');
+INSERT INTO `configuracoes` VALUES ('2', 'app_theme', 'normal');
 INSERT INTO `configuracoes` VALUES ('3', 'per_page', '20');
 INSERT INTO `configuracoes` VALUES ('4', 'os_notification', 'nenhum');
 INSERT INTO `configuracoes` VALUES ('5', 'notifica_whats', null);
-INSERT INTO `configuracoes` VALUES ('6', 'control_estoque', '0');
+INSERT INTO `configuracoes` VALUES ('6', 'control_estoque', '1');
 INSERT INTO `configuracoes` VALUES ('7', 'termo_uso', '<p style=\"text-align: center;\"><strong>Eu, abaixo assinado proprietário (e/ou fiel representante) do aparelho(s) acima descrito autorizo assumo as seguintes condições:<br>1.\r\n Por se tratar de equipamento(s) com micro componentes interligados \r\nentre si, os defeitos apresentados poderão provocar danos aos demais \r\ncomponentes, isentando assim a ASSISTÊNCIA TÉCNICA da responsabilidade \r\ndos defeitos.<br>2. Em caso de desistência do reparo, caberá a \r\nASSISTÊNCIA TÉCNICA apenas a responsabilidade da devolução do \r\nequipamento no estado em que se encontra, ficando isenta de qualquer \r\nreclamação e/ou ônus de minha parte;<br>3. Eu Abaixo Assinado estou ciente de que caso seja efetuado o procedimento de </strong><strong><strong>Reballing (BGA)</strong>\r\n para a tentativa do reparo, devido envolver altas temperaturas que são \r\nacima de 200°, sendo assim o equipamento pode vim a parar completamente \r\nde funcionar.<br>4. A Garantia dos serviços executados e informada nesse documento, e contada à partir da retirada do equipamento;<br>5.\r\n Os equipamentos em garantia no caso de defeito, só serão aceitos com a \r\napresentação desta ordem de serviço e desde que os selos de garantia não\r\n estejam violados;<br>6. A garantia será dada somente sobre os \r\ncomponentes eletrônicos e mão de obra aplicada no reparo especificado \r\nnesta Ordem de Serviço;<br>7. O cliente declara que o equipamento e de \r\nsua propriedade/responsabilidade, e não sendo produto de furto, roubo ou\r\n derivado de qualquer ato ilícito sendo de sua total responsabilidade;<br><br>ATENÇÃO:\r\n Os equipamentos não retirados no prazo de 15 dias, sofrerão reajuste e \r\ntaxa de armazenamento no valor de 2% ao dia sobre o valor do orçamento. \r\nDe acordo com o Código&nbsp; do Consumidor nº 8078/90 Artigo 39 incluso \r\nVII... A permanência do equipamento após o conserto ou orçamento e de no\r\n máximo&nbsp; 90 DIAS (Noventa DIAS). Após este prazo será tido como \r\nABANDONADO e será desmantelado para retirada das peças utilizadas no \r\nreparo e o restante será descartado, para a liberação de espaço.<br></strong></p>');
 INSERT INTO `configuracoes` VALUES ('8', 'whats_app1', 'Favor entrar em contato para saber mais detalhes. ');
 INSERT INTO `configuracoes` VALUES ('9', 'whats_app2', 'Nome da sua Loja');
@@ -560,9 +574,9 @@ INSERT INTO `configuracoes` VALUES ('24', 'gerenciador_arquivos', 'arquivos_old/
 INSERT INTO `configuracoes` VALUES ('25', 'control_baixa', '0');
 INSERT INTO `configuracoes` VALUES ('26', 'control_editos', '0');
 INSERT INTO `configuracoes` VALUES ('27', 'control_datatable', null);
-INSERT INTO `configuracoes` VALUES ('28', 'pix_key', '62984054022');
+INSERT INTO `configuracoes` VALUES ('28', 'pix_key', null);
 INSERT INTO `configuracoes` VALUES ('29', 'os_status_list', '[\"Or\\u00e7amento\",\"Or\\u00e7amento Concluido\",\"Or\\u00e7amento Aprovado\",\"Em Andamento\",\"Aguardando Pe\\u00e7as\",\"Servi\\u00e7o Concluido\",\"Sem Reparo\",\"N\\u00e3o Autorizado\",\"Contato sem Sucesso\",\"Cancelado\",\"Pronto-Despachar\",\"Aguardando Envio\",\"Enviado\",\"Aguardando Entrega Correio\",\"Garantia\",\"Abandonado\",\"Comprado pela Loja\",\"Entregue - A Receber\",\"Entregue - Sem Reparo\",\"Entregue - Faturado\"]');
-INSERT INTO `configuracoes` VALUES ('30', 'per_page_home', '5');
+INSERT INTO `configuracoes` VALUES ('30', 'per_page_home', '10');
 INSERT INTO `configuracoes` VALUES ('31', 'orcamento', '1');
 INSERT INTO `configuracoes` VALUES ('32', 'orcamento_concluido', '1');
 INSERT INTO `configuracoes` VALUES ('33', 'orcamento_aprovado', '1');
