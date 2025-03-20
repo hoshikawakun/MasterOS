@@ -7,9 +7,9 @@ require_once __DIR__ . '/../vendor/autoload.php';
 function pdf_create($html, $filename, $stream = true, $landscape = false)
 {
     if ($landscape) {
-        $mpdf = new \Mpdf\Mpdf(['c', 'A4-L', 'tempDir' => FCPATH.'assets/uploads/temp/']);
+        $mpdf = new \Mpdf\Mpdf(['c', 'A4-L', 'tempDir' => FCPATH.'assets/logo_normal/temp/']);
     } else {
-        $mpdf = new \Mpdf\Mpdf(['c', 'A4', 'tempDir' => FCPATH.'assets/uploads/temp/']);
+        $mpdf = new \Mpdf\Mpdf(['c', 'A4', 'tempDir' => FCPATH.'assets/logo_normal/temp/']);
     }
 
     $mpdf->showImageErrors = true;
@@ -18,8 +18,8 @@ function pdf_create($html, $filename, $stream = true, $landscape = false)
     if ($stream) {
         $mpdf->Output($filename . '.pdf', 'I');
     } else {
-        $mpdf->Output(FCPATH.'assets/uploads/temp/' . $filename . '.pdf', 'F');
+        $mpdf->Output(FCPATH.'assets/logo_normal/temp/' . $filename . '.pdf', 'F');
 
-        return FCPATH.'assets/uploads/temp/' . $filename . '.pdf';
+        return FCPATH.'assets/logo_normal/temp/' . $filename . '.pdf';
     }
 }
