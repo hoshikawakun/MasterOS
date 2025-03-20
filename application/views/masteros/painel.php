@@ -158,7 +158,6 @@
                 </table>
             </div>
 
-
 </div>
 <!-- Fim Agenda -->
 <!-- widget right -->
@@ -239,8 +238,8 @@
                     <?php  }
 } ?>
                 </div>
-            </div>
-        </div>
+      </div>
+    </div>
 <!-- Fim widget right -->
 </div>
 </div>
@@ -274,7 +273,7 @@
                     <tr>
                         <td>
                             <div align="center"><a title="Visualizar detalhes da OS"
-                                    href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="new"
+                                    href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="_blank"
                                     class="tip-top"><?= $o->idOs ?></a>
                         </td>
                         <td>
@@ -364,7 +363,7 @@
                     <tr>
                         <td>
                             <div align="center"><a title="Visualizar detalhes da OS"
-                                    href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="new"
+                                    href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="_blank"
                                     class="tip-top"><?= $o->idOs ?></a>
                         </td>
                         <td>
@@ -454,7 +453,7 @@
                     <tr>
                         <td>
                             <div align="center"><a title="Visualizar detalhes da OS"
-                                    href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="new"
+                                    href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="_blank"
                                     class="tip-top"><?= $o->idOs ?></a>
                         </td>
                         <td>
@@ -544,7 +543,7 @@
                     <tr>
                         <td>
                             <div align="center"><a title="Visualizar detalhes da OS"
-                                    href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="new"
+                                    href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="_blank"
                                     class="tip-top"><?= $o->idOs ?></a>
                         </td>
                         <td>
@@ -634,7 +633,7 @@
                     <tr>
                         <td>
                             <div align="center"><a title="Visualizar detalhes da OS"
-                                    href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="new"
+                                    href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="_blank"
                                     class="tip-top"><?= $o->idOs ?></a>
                         </td>
                         <td>
@@ -724,7 +723,7 @@
                     <tr>
                         <td>
                             <div align="center"><a title="Visualizar detalhes da OS"
-                                    href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="new"
+                                    href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="_blank"
                                     class="tip-top"><?= $o->idOs ?></a>
                         </td>
                         <td>
@@ -814,7 +813,7 @@
                     <tr>
                         <td>
                             <div align="center"><a title="Visualizar detalhes da OS"
-                                    href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="new"
+                                    href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="_blank"
                                     class="tip-top"><?= $o->idOs ?></a>
                         </td>
                         <td>
@@ -904,7 +903,7 @@
                     <tr>
                         <td>
                             <div align="center"><a title="Visualizar detalhes da OS"
-                                    href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="new"
+                                    href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="_blank"
                                     class="tip-top"><?= $o->idOs ?></a>
                         </td>
                         <td>
@@ -994,7 +993,7 @@
                     <tr>
                         <td>
                             <div align="center"><a title="Visualizar detalhes da OS"
-                                    href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="new"
+                                    href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="_blank"
                                     class="tip-top"><?= $o->idOs ?></a>
                         </td>
                         <td>
@@ -1084,7 +1083,7 @@
                     <tr>
                         <td>
                             <div align="center"><a title="Visualizar detalhes da OS"
-                                    href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="new"
+                                    href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="_blank"
                                     class="tip-top"><?= $o->idOs ?></a>
                         </td>
                         <td>
@@ -1174,7 +1173,7 @@
                     <tr>
                         <td>
                             <div align="center"><a title="Visualizar detalhes da OS"
-                                    href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="new"
+                                    href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="_blank"
                                     class="tip-top"><?= $o->idOs ?></a>
                         </td>
                         <td>
@@ -1264,7 +1263,7 @@
                     <tr>
                         <td>
                             <div align="center"><a title="Visualizar detalhes da OS"
-                                    href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="new"
+                                    href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" target="_blank"
                                     class="tip-top"><?= $o->idOs ?></a>
                         </td>
                         <td>
