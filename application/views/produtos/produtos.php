@@ -30,7 +30,7 @@
 <div class="widget_painel_2">
 <div class="span12">
 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'aProduto')) { ?>
-<a href="<?php echo base_url(); ?>index.php/produtos/adicionar" class="button btn btn-mini btn-success" target="new" style="margin-bottom:10px; margin-right:10px; max-width: 160px">
+<a href="<?php echo base_url(); ?>index.php/produtos/adicionar" class="button btn btn-mini btn-success" target="_blank" style="margin-bottom:10px; margin-right:10px; max-width: 160px">
 <span class="button_icon"><i class='fas fa-plus-circle'></i></span><span class="button_text">Add. Produtos</span></a>
 <?php } ?>
 
@@ -82,9 +82,9 @@
 				echo '<td align="center"><b>RS: </b>' . number_format($r->precoVenda, 2, ',', '.') . '</td>';
 				echo '<td align="center">';
 			if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vProduto')) {
-				echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/produtos/visualizar/' . $r->idProdutos . '" target="new" class="btn-nwe tip-top" title="Visualizar Produto"><i class="fas fa-eye bx-xs"></i></a>  ';}
+				echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/produtos/visualizar/' . $r->idProdutos . '" target="_blank" class="btn-nwe tip-top" title="Visualizar Produto"><i class="fas fa-eye bx-xs"></i></a>  ';}
 			if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eProduto')) {
-				echo '<a target="new" style="margin-right: 1%" href="' . base_url() . 'index.php/produtos/editar/' . $r->idProdutos . '" class="btn-nwe3 tip-top" title="Editar Produto"><i class="fas fa-edit bx-xs"></i></a>';}
+				echo '<a target="_blank" style="margin-right: 1%" href="' . base_url() . 'index.php/produtos/editar/' . $r->idProdutos . '" class="btn-nwe3 tip-top" title="Editar Produto"><i class="fas fa-edit bx-xs"></i></a>';}
 			if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eProduto')) {
 				echo '<a href="#atualizar-estoque" role="button" data-toggle="modal" produto="' . $r->idProdutos . '" estoque="' . $r->estoque . '" class="btn-nwe5 tip-top" title="Atualizar Estoque"><i class="fas fa-plus-circle bx-xs"></i></a>';}
 			if ($this->permission->checkPermission($this->session->userdata('permissao'), 'dProduto')) {
@@ -157,7 +157,7 @@
 
 <!-- Modal Etiquetas Cod. Barras -->
 <div id="modal-etiquetas" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-<form action="<?php echo base_url() ?>index.php/relatorios/produtosEtiquetas" method="get" target="new">
+<form action="<?php echo base_url() ?>index.php/relatorios/produtosEtiquetas" method="get" target="_blank">
 <div class="modal_title">
 <button type="button" class="close" style="color:#f00; padding-right:5px; padding-top:10px" data-dismiss="modal" aria-hidden="true">×</button>
 <h5>Gerar etiquetas com Código de Barras</h5>
@@ -207,7 +207,7 @@
 
 <!-- Modal Etiquetas Cod. Produto - SKU -->
 <div id="modal-etiquetas_sku" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-<form action="<?php echo base_url() ?>index.php/relatorios/produtosEtiquetasSKU" method="get" target="new">
+<form action="<?php echo base_url() ?>index.php/relatorios/produtosEtiquetasSKU" method="get" target="_blank">
 <div class="modal_title">
 <button type="button" class="close" style="color:#f00; padding-right:5px; padding-top:10px" data-dismiss="modal" aria-hidden="true">×</button>
 <h5>Gerar etiquetas com Cód. Produto</h5>
@@ -249,7 +249,7 @@
 
 <!-- Modal Etiquetas Cod. QR -->
 <div id="modal-etiquetas-qr" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-<form action="<?php echo base_url() ?>index.php/relatorios/produtosEtiquetasQR" method="get" target="new">
+<form action="<?php echo base_url() ?>index.php/relatorios/produtosEtiquetasQR" method="get" target="_blank">
 <div class="modal_title">
 <button type="button" class="close" style="color:#f00; padding-right:5px; padding-top:10px" data-dismiss="modal" aria-hidden="true">×</button>
 <h5>Gerar etiquetas com Código QR</h5>
