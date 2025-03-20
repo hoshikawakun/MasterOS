@@ -344,10 +344,9 @@ class Os extends MY_Controller
         $this->data['emitente'] = $this->masteros_model->getEmitente();
         $this->data['configuracoes'] = $this->masteros_model->getTermo();
         $this->data['qrCode'] = $this->os_model->getQrCode(
-            $this->uri->segment(3),
-            $this->data['configuration']['pix_key'],
-            $this->data['emitente'][0]
-        );
+			$this->uri->segment(3),
+			$this->data['configuration']['pix_key'],
+			$this->data['emitente'][0]);
 
         $this->load->view('os/imprimirOs', $this->data);
     }
