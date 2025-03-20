@@ -61,6 +61,7 @@
                                 <span class="help-inline">Selecione o tema que que deseja usar no sistema</span>
                             </div>
                         </div>
+                        <!--
                         <div class="control_group_up">
                             <label for="gerenciador_arquivos" class="control-label">Gerenciador de Arquivos</label>
                             <div class="controls">
@@ -75,6 +76,7 @@
                                 <span class="help-inline">Versão do Gerenciador de Arquivos.</span>
                             </div>
                         </div>
+                        -->
                         <div class="control_group_up">
                             <label for="masteros_0" class="control-label">Complemento de eMail</label>
                             <div class="controls">
